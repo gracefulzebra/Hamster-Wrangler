@@ -14,10 +14,15 @@ public class CameraMovement : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     public float verticalSpeed;
+        
+    [Header("Locking Movement")]
+    private bool canMove = true;
+
+
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -25,7 +30,25 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         CameraRotate();
-        CameraMovements();
+
+        if (canMove)
+            CameraMovements();
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (canMove)
+            {
+                CameraMovements();
+                canMove = false;
+                print("b");
+            }
+            else
+            {
+                canMove = true;
+                print("l");
+
+            }
+        }
     }
 
 
