@@ -27,7 +27,6 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         MovementLock();
 
         // needs this so player can move/look on game start
@@ -35,9 +34,30 @@ public class CameraMovement : MonoBehaviour
         {
          CameraMovements();
          CameraRotate();
-        }
-            
+        }   
+    }
 
+    /// <summary>
+    /// Locks camera in position, player can still rotate.
+    /// unlocks cursor
+    /// </summary>
+    void MovementLock()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (canMove)
+            {
+                CameraRotate();
+                CameraMovements();
+                canMove = false;
+                Cursor.lockState = CursorLockMode.Confined;
+            }
+            else
+            {
+                canMove = true;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
     }
 
     /// <summary>
@@ -45,7 +65,6 @@ public class CameraMovement : MonoBehaviour
     /// </summary>
     void CameraMovements()
     {
-
         if (Input.GetKey(KeyCode.Space))
         {
             transform.position += transform.up * verticalSpeed * Time.deltaTime;
@@ -70,32 +89,5 @@ public class CameraMovement : MonoBehaviour
 
         transform.localRotation = Quaternion.AngleAxis(rotationX, Vector3.up);
         transform.localRotation *= Quaternion.AngleAxis(rotationY, Vector3.left);
-    }
-
-    /// <summary>
-    /// Locks camera in position, player can still rotate.
-    /// unlocks cursor
-    /// </summary>
-    void MovementLock()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (canMove)
-            {
-                CameraRotate();
-                CameraMovements();
-                canMove = false;
-                Cursor.lockState = CursorLockMode.Confined;
-                print("b");
-            }
-            else
-            {
-                canMove = true;
-                Cursor.lockState = CursorLockMode.Locked;
-                print("l");
-
-            }
-        }
-    }
-              
+    }           
 }
