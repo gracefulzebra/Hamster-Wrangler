@@ -26,8 +26,13 @@ public class HamsterBase : MonoBehaviour
         movement = (currentPoint - transform.position).normalized * spd;
 
         if((transform.position - currentPoint).magnitude < 2f && movementPoints.Count > 0)
-        {
+        {            
             currentPoint = GetCurrentPoint(); 
+        }
+
+        if(currentPoint == endPoint.position && (transform.position - currentPoint).magnitude < 2f)
+        {
+            Kill();
         }
     }
 
