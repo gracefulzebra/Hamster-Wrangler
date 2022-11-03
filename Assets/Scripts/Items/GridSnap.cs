@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridSnap : MonoBehaviour
 {
-
+    
     private Grid grid;
     bool onGround;
    
