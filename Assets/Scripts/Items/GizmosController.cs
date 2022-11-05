@@ -10,16 +10,6 @@ public class GizmosController : MonoBehaviour
     private GameObject isDrag;
     public Camera cam;
 
-
-
-}
-
-
-
-
-
-
-    /*
     void OnMouseDown()
     {
         screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
@@ -40,15 +30,8 @@ public class GizmosController : MonoBehaviour
         Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
         transform.position = curPosition;
     }
+
 }
-    */
-
-
-
-
-
-
-
 
 /*
 
