@@ -51,6 +51,7 @@ public class CameraMovement : MonoBehaviour
                 CameraMovements();
                 canMove = false;
                 Cursor.lockState = CursorLockMode.Confined;
+                 
             }
             else
             {

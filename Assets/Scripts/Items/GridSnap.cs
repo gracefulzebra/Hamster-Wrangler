@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridSnap : MonoBehaviour
-{
-    
+public class GridSnap : MonoBehaviour    
+{   
     public GridGenerator gridGen;
     private Grid grid;
     // Start is called before the first frame update
