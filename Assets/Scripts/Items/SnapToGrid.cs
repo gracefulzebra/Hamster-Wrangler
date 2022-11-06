@@ -4,26 +4,28 @@ using UnityEngine;
 
 public class SnapToGrid : MonoBehaviour
 {
-    public LayerMask layerMask;
+    public GameObject gridRefObject;
     public GridGenerator gridRef;
     public GameObject gameObject;
-    Vector3 adjustOffset = new Vector3(0f, 0.26f, 0f);
+    public bool hasItem;
 
+     void Start()
+     {
+        // finds the game object with gridgenerator script
+        // then assigns the compentant, cant just drag
+        // inspector cause its prefab
+        gridRefObject = GameObject.Find("OliverGriddy");
+        gridRef = gridRefObject.GetComponent<GridGenerator>();
+     }
 
-    public void Update()
+    private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        // has item is sanity check so it doesnt run this everytime mouse is clicked
+        if (Input.GetMouseButtonDown(0) && hasItem)
         {
             nodeCheck();
+            hasItem = false;
         }
-    }
-    
-    void OnMouseDown()
-    {  
-    }
-
-    void OnMouseDrag()
-    {
     }
 
     void nodeCheck()
@@ -35,7 +37,8 @@ public class SnapToGrid : MonoBehaviour
             Node nodehit = gridRef.GetNodeFromWorldPoint(hit.point);
             if (nodehit.walkable)
             {
-                gameObject.transform.position = nodehit.worldPosition + adjustOffset;
+                gameObject.transform.position = nodehit.worldPosition;
+                gameObject = null;
             }
         }
     }

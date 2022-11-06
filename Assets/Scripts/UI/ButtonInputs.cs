@@ -8,10 +8,14 @@ public class ButtonInputs : MonoBehaviour
 {
 
     public GameObject shopItem;
+    public SnapToGrid objectToSnap;
 
     public void SpawnItem()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Instantiate(shopItem, mousePos, Quaternion.identity);
+        Vector3 spawnPos = new Vector3(0f, 100f, 0f);
+        Instantiate(shopItem, spawnPos, Quaternion.identity);
+        objectToSnap.gameObject = this.gameObject;
+       // objectToSnap.hasItem = true;
     }
 }
+ 
