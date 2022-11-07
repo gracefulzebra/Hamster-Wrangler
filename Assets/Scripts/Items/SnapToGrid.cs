@@ -24,7 +24,6 @@ public class SnapToGrid : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && hasItem)
         {
             nodeCheck();
-            hasItem = false;
         }
     }
 
@@ -39,6 +38,7 @@ public class SnapToGrid : MonoBehaviour
             {
                 gameObject.transform.position = nodehit.worldPosition;
                 gameObject = null;
+                hasItem = false;
             }
         }
     }
