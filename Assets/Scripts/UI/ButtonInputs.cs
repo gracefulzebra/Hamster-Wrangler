@@ -14,8 +14,8 @@ public class ButtonInputs : MonoBehaviour
     {
         Vector3 spawnPos = new Vector3(0f, 100f, 0f);
         Instantiate(shopItem, spawnPos, Quaternion.identity);
-        objectToSnap.gameObject = this.gameObject;
-       // objectToSnap.hasItem = true;
+        objectToSnap.gameObject = shopItem;
+        objectToSnap.hasItem = true;
     }
 }
  
