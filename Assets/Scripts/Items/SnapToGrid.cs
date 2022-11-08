@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SnapToGrid : MonoBehaviour
 {
-    public GameObject gridRefObject;
-    public GridGenerator gridRef;
+    GameObject gridRefObject;
+    GridGenerator gridRef;
     public GameObject gameObject;
     public bool hasItem;
 
