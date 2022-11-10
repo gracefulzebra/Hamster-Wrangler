@@ -16,10 +16,8 @@ public class Fan : MonoBehaviour
         //   col.gameObject.GetComponent<HamsterBase>().spd = 0.05f;
 
         // Get direction from your postion toward the object you wish to push
-       // var direction = transform.position - col.transform.position ;
-
-        
-        
-        col.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.right * -0.1f, ForceMode.Impulse);
+        var direction = col.transform.position-transform.position;
+ 
+        col.gameObject.GetComponent<Rigidbody>().AddForce(direction * 35, ForceMode.Force);
     }
 }
