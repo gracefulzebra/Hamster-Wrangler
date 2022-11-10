@@ -8,7 +8,6 @@ public class FixedCam : MonoBehaviour
     public List<Transform> cameraPos = new List<Transform>();
     int count;
 
-    // Start is called before the first frame update
     void Start()
     {
         // spawns camera at first camera position
