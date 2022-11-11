@@ -52,18 +52,20 @@ public class SnapToGrid : MonoBehaviour
         {
             nodeCheck();
             confirmPlacement = true;
+            hasItem = false;
+            print("1");
         }
         // they can then rotate item to correct direction
-        if (Input.GetKeyDown(KeyCode.R) && hasItem)
+        if (Input.GetKeyDown(KeyCode.R) && confirmPlacement)
         {
             gameObject.transform.Rotate(rotVector, Space.World);
         }
         // and then they confrim placement
-        if (Input.GetMouseButtonDown(1) && confirmPlacement)
+        if (Input.GetMouseButtonDown(0) && confirmPlacement)
         {
             itemObject = null;
-            hasItem = false;
             confirmPlacement = false;
+            print("2");
         }
     }
 }
