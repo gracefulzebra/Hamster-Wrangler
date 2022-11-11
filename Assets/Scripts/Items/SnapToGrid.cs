@@ -6,9 +6,11 @@ public class SnapToGrid : MonoBehaviour
 {
     GameObject gridRefObject;
     GridGenerator gridRef;
-    public GameObject itemObject;
+    GameObject buttonInputObject;
+    ButtonInputs buttonRef;
+    GameObject itemObject;
     public bool hasItem;
-    public bool confirmPlacement;
+    bool confirmPlacement;
     Vector3 rotVector = new Vector3(0f, 90f, 0f);
 
      void Awake()
@@ -18,7 +20,9 @@ public class SnapToGrid : MonoBehaviour
         // inspector cause its prefab
         gridRefObject = GameObject.Find("OliverGriddy");
         gridRef = gridRefObject.GetComponent<GridGenerator>();
-     }
+        buttonInputObject = GameObject.Find("LawnMower button");
+        buttonRef = buttonInputObject.GetComponent<ButtonInputs>();
+    }
 
     private void Update()
     {
@@ -51,21 +55,20 @@ public class SnapToGrid : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && hasItem)
         {
             nodeCheck();
-            confirmPlacement = true;
-            hasItem = false;
-            print("1");
+            confirmPlacement = true;       
         }
         // they can then rotate item to correct direction
-        if (Input.GetKeyDown(KeyCode.R) && confirmPlacement)
+        if (Input.GetKeyDown(KeyCode.R) && hasItem)
         {
-            gameObject.transform.Rotate(rotVector, Space.World);
+            gameObject.transform.Rotate(rotVector, Space.Self);
         }
         // and then they confrim placement
-        if (Input.GetMouseButtonDown(0) && confirmPlacement)
+        if (Input.GetMouseButtonDown(1) && confirmPlacement)
         {
             itemObject = null;
+            hasItem = false;
             confirmPlacement = false;
-            print("2");
+            buttonRef.holdingItem = false;
         }
     }
 }
