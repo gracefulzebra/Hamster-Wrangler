@@ -20,6 +20,12 @@ public class GridGenerator : MonoBehaviour
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
         CreateGrid();
     }
+
+    public int MaxSize
+    {
+        get { return gridSizeX * gridSizeY; }
+    }
+
     public List<Node> path;
     private void OnDrawGizmos()
     {
