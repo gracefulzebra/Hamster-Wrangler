@@ -8,8 +8,7 @@ public class Lighter : MonoBehaviour
      {
         if (col.gameObject.tag == "Flammable")
         {
-            col.gameObject.GetComponent<Renderer>().material.color = Color.red;
-            print("IM BURNING FUCKKKK");
+            col.gameObject.GetComponent<ItemEffects>().OnFire();
         }
      }
 }

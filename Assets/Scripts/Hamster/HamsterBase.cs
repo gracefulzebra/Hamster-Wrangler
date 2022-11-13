@@ -12,6 +12,7 @@ public class HamsterBase : MonoBehaviour
     public List<Transform> movementPoints;
     Vector3 currentPoint;
 
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
