@@ -13,7 +13,14 @@ public class SnapToGrid : MonoBehaviour
     bool confirmPlacement;
     Vector3 rotVector = new Vector3(0f, 90f, 0f);
 
-     void Awake()
+    // for objects bigger than 1x1
+    public bool isGrounded;
+    [SerializeField] Transform groundCheck;
+    [SerializeField] float groundDistance;
+    [SerializeField] LayerMask groundMask;
+    [SerializeField] GameObject parentObject;
+  
+    void Awake()
      {
         // finds the game object with gridgenerator script
         // then assigns the compentant, cant just drag
@@ -27,6 +34,17 @@ public class SnapToGrid : MonoBehaviour
     private void Update()
     {
         PlacementConfirmtation();
+
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        if (!isGrounded)
+        {
+            while (!isGrounded)
+            {
+                print("isgrounded");
+                parentObject.gameObject.transform.Rotate(rotVector, Space.Self);
+            }
+        }
     }
 
     /// <summary>
@@ -55,7 +73,7 @@ public class SnapToGrid : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && hasItem)
         {
             nodeCheck();
-            confirmPlacement = true;       
+            confirmPlacement = true;
         }
         // they can then rotate item to correct direction
         if (Input.GetKeyDown(KeyCode.R) && hasItem)
