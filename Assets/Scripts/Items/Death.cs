@@ -7,6 +7,6 @@ public class Death : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        collision.gameObject.SetActive(false);
+        collision.gameObject.GetComponent<HamsterBase>().Kill();
     }
 }

@@ -11,6 +11,7 @@ public class HamsterBase : MonoBehaviour
     public float spd;
     public List<Transform> movementPoints;
     Vector3 currentPoint;
+    public ParticleSystem bloodAffect;
 
 
     private void Awake()
@@ -61,6 +62,8 @@ public class HamsterBase : MonoBehaviour
     ///</summary>
     public void Kill()
     {
+        bloodAffect.Play();
+        print("dead");
         Destroy(gameObject);
     }
 }

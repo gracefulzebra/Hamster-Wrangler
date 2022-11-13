@@ -10,7 +10,7 @@ public class SnapToGrid : MonoBehaviour
     ButtonInputs buttonRef;
     GameObject itemObject;
     public bool hasItem;
-    bool confirmPlacement;
+    public bool confirmPlacement;
     Vector3 rotVector = new Vector3(0f, 90f, 0f);
 
      void Awake()
@@ -55,18 +55,18 @@ public class SnapToGrid : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && hasItem)
         {
             nodeCheck();
+            hasItem = false;
             confirmPlacement = true;
         }
         // they can then rotate item to correct direction
-        if (Input.GetKeyDown(KeyCode.R) && hasItem)
+        if (Input.GetKeyDown(KeyCode.R) && confirmPlacement)
         {
             gameObject.transform.Rotate(rotVector, Space.Self);
         }
         // and then they confrim placement
         if (Input.GetMouseButtonDown(1) && confirmPlacement)
         {
-            itemObject = null;
-            hasItem = false;
+            itemObject = null; 
             confirmPlacement = false;
             buttonRef.holdingItem = false;
         }

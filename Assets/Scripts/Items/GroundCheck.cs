@@ -16,7 +16,7 @@ public class GroundCheck : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (!isGrounded)
+        if (!isGrounded && parentObject.GetComponent<SnapToGrid>().confirmPlacement)
         {
             while (!isGrounded)
             {
