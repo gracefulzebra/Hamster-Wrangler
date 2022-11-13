@@ -62,6 +62,7 @@ public class HamsterBase : MonoBehaviour
     ///</summary>
     public void Kill()
     {
+        bloodAffect.transform.position = transform.position;
         bloodAffect.Play();
         print("dead");
         Destroy(gameObject);
