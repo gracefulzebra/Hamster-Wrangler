@@ -18,11 +18,7 @@ public class GroundCheck : MonoBehaviour
 
         if (!isGrounded && parentObject.GetComponent<SnapToGrid>().confirmPlacement)
         {
-            while (!isGrounded)
-            {
-                print("isgrounded");
-                parentObject.gameObject.transform.Rotate(rotVector, Space.Self);
-            }
+            parentObject.gameObject.transform.Rotate(rotVector, Space.Self);
         }
     }
 }

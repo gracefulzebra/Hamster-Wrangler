@@ -54,19 +54,19 @@ public class SnapToGrid : MonoBehaviour
         // when player has item they choose grid square they want
         if (Input.GetMouseButtonDown(0) && hasItem)
         {
-            nodeCheck();
-            hasItem = false;
+            nodeCheck();       
             confirmPlacement = true;
         }
         // they can then rotate item to correct direction
-        if (Input.GetKeyDown(KeyCode.R) && confirmPlacement)
+        if (Input.GetKeyDown(KeyCode.R) && hasItem)
         {
             gameObject.transform.Rotate(rotVector, Space.Self);
         }
         // and then they confrim placement
         if (Input.GetMouseButtonDown(1) && confirmPlacement)
         {
-            itemObject = null; 
+            itemObject = null;
+            hasItem = false;
             confirmPlacement = false;
             buttonRef.holdingItem = false;
         }
