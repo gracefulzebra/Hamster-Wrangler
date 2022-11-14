@@ -17,13 +17,12 @@ public class ItemEffects : MonoBehaviour
         StartCoroutine(burnToDeath());
     }
 
-
     IEnumerator burnToDeath()
     {
         yield return delay;
         Kill();
     }
-
+     
     ///<summary>
     /// when player is no longer in tar the flammablke affect will wear off 
     ///</summary>
@@ -38,7 +37,6 @@ public class ItemEffects : MonoBehaviour
         gameObject.tag = "Untagged";
     }
 
-  
     void OnCollisionEnter(Collision col)
     {
         // if a hamster is onfire he can set other hamster on fire
@@ -56,5 +54,4 @@ public class ItemEffects : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
 }
