@@ -7,10 +7,12 @@ using UnityEngine.UI;
 public class ButtonInputs : MonoBehaviour
 {
 
-    public GameObject lawnMower;
-    public GameObject fan;
-    public GameObject rake;
-    public SnapToGrid objectToSnap;
+    [SerializeField] GameObject lawnMower;
+    [SerializeField] GameObject fan;
+    [SerializeField] GameObject rake;
+    [SerializeField] GameObject tar;
+    [SerializeField] GameObject lighter;
+    [SerializeField] SnapToGrid objectToSnap;
 
     void SpawnItem(GameObject itemToSpawn)
     {
@@ -26,7 +28,7 @@ public class ButtonInputs : MonoBehaviour
 
     public void SpawnLawnMower()
     {     
-            SpawnItem(lawnMower);
+         SpawnItem(lawnMower);
     }
 
     public void SpawnFan()
@@ -37,6 +39,16 @@ public class ButtonInputs : MonoBehaviour
     public void SpawnRake()
     {
             SpawnItem(rake);
+    }
+
+    public void SpawnTar()
+    {
+        SpawnItem(tar);
+    }
+
+    public void SpawnLighter()
+    {
+        SpawnItem(lighter);
     }
 }
  

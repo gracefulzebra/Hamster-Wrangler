@@ -6,7 +6,7 @@ public class HamsterBase : MonoBehaviour
 {
     public ParticleSystem bloodAffect;
     public Transform target;
-    float speed = 40;
+    public float speed = 40;
     Vector3[] path;
     int targetIndex;
     Rigidbody _rb;
@@ -92,9 +92,8 @@ public class HamsterBase : MonoBehaviour
     ///</summary>
     public void Kill()
     {
-        bloodAffect.transform.position = transform.position;
-        bloodAffect.Play();
-        print("dead");
+        Vector3 offset = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z) ; 
+        Instantiate(bloodAffect, offset, Quaternion.identity);
         Destroy(gameObject);
     }
 }
