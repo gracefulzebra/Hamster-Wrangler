@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class HamsterBase : MonoBehaviour
 {
-    public Transform spawnPoint;
-    public Transform endPoint;
-    Rigidbody _rb;
-    Vector3 movement;
-    public float spd;
-    public List<Transform> movementPoints;
-    Vector3 currentPoint;
     public ParticleSystem bloodAffect;
-
+    public Transform target;
+    float speed = 2;
+    Vector3[] path;
+    int targetIndex;
+    Rigidbody _rb;
 
     private void Awake()
     {
@@ -20,41 +17,66 @@ public class HamsterBase : MonoBehaviour
     }
 
     private void Start()
-    {   
-        currentPoint = GetCurrentPoint();
+    {
+        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
     }
+
+    public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
+    {
+        if (pathSuccessful)
+        {
+            path = newPath;
+            StopCoroutine(FollowPath());
+            StartCoroutine(FollowPath());
+        }
+    }
+
     private void Update()
     {
-        movement = (currentPoint - transform.position).normalized * spd;
+        
+    }
 
-        if((transform.position - currentPoint).magnitude < 2f && movementPoints.Count > 0)
-        {            
-            currentPoint = GetCurrentPoint(); 
-        }
+    IEnumerator FollowPath()
+    {
+        Vector3 currentWaypoint = path[0];
 
-        if(currentPoint == endPoint.position && (transform.position - currentPoint).magnitude < 2f)
+        while (true)
         {
-            Kill();
+            if(transform.position.x == currentWaypoint.x && transform.position.z == currentWaypoint.z )
+            {
+                targetIndex++;
+                if(targetIndex >= path.Length)
+                {
+                    yield break;
+                }
+                currentWaypoint = path[targetIndex];
+            }
+
+            
+            transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
+            yield return null;
         }
     }
 
-    private void FixedUpdate()
+    private void OnDrawGizmos()
     {
-        _rb.AddForce(movement, ForceMode.Impulse);
-    }
+        if(path != null)
+        {
+            for(int i = targetIndex; i < path.Length; i++)
+            {
+                Gizmos.color = Color.black;
+                Gizmos.DrawCube(path[i], Vector3.one);
 
-    /// <summary>
-    /// Finds the next target pathfinding point from the list of points 
-    /// and removes the elements from the list as they are achieved
-    /// </summary>
-    /// <returns>
-    /// Vector3 for next target position
-    /// </returns>
-    Vector3 GetCurrentPoint()
-    {
-        Vector3 temp = movementPoints[0].position;
-        movementPoints.RemoveAt(0);
-        return temp;
+                if(i == targetIndex)
+                {
+                    Gizmos.DrawLine(transform.position, path[i]);
+                }
+                else
+                {
+                    Gizmos.DrawLine(path[i - 1], path[i]);
+                }
+            }
+        }
     }
 
     ///<summary>
