@@ -11,39 +11,32 @@ public class ButtonInputs : MonoBehaviour
     public GameObject fan;
     public GameObject rake;
     public SnapToGrid objectToSnap;
-    public bool holdingItem;
 
-    public void SpawnLawnMower()
+    void SpawnItem(GameObject itemToSpawn)
     {
-        if (!holdingItem)
+        objectToSnap.holdingItem = false;
+        if (!objectToSnap.holdingItem)
         {
             Vector3 spawnPos = new Vector3(0f, 100f, 0f);
-            Instantiate(lawnMower, spawnPos, Quaternion.identity);
+            Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
             objectToSnap.hasItem = true;
-            holdingItem = true;    
+            objectToSnap.holdingItem = true;
         }
+    }
+
+    public void SpawnLawnMower()
+    {     
+            SpawnItem(lawnMower);
     }
 
     public void SpawnFan()
     {
-        if (!holdingItem)
-        {
-            Vector3 spawnPos = new Vector3(0f, 100f, 0f);
-            Instantiate(fan, spawnPos, Quaternion.identity);
-            objectToSnap.hasItem = true;
-            holdingItem = true;
-        }
+            SpawnItem(fan);
     }
 
     public void SpawnRake()
     {
-        if (!holdingItem)
-        {
-            Vector3 spawnPos = new Vector3(0f, 100f, 0f);
-            Instantiate(rake, spawnPos, Quaternion.identity);
-            objectToSnap.hasItem = true;
-            holdingItem = true;
-        }
+            SpawnItem(rake);
     }
 }
  

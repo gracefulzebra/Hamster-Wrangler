@@ -12,9 +12,10 @@ public class SnapToGrid : MonoBehaviour
     public bool hasItem;
     public bool confirmPlacement;
     Vector3 rotVector = new Vector3(0f, 90f, 0f);
+    public bool holdingItem;
 
-     void Awake()
-     {
+    void Awake()
+    {
         // finds the game object with gridgenerator script
         // then assigns the compentant, cant just drag
         // inspector cause its prefab
@@ -22,6 +23,7 @@ public class SnapToGrid : MonoBehaviour
         gridRef = gridRefObject.GetComponent<GridGenerator>();
         buttonInputObject = GameObject.Find("LawnMower button");
         buttonRef = buttonInputObject.GetComponent<ButtonInputs>();
+        holdingItem = false;
     }
 
     private void Update()
@@ -68,7 +70,7 @@ public class SnapToGrid : MonoBehaviour
             itemObject = null;
             hasItem = false;
             confirmPlacement = false;
-            buttonRef.holdingItem = false;
+            holdingItem = false;
         }
     }
 }
