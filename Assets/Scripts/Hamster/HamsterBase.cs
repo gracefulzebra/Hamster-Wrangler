@@ -6,10 +6,12 @@ public class HamsterBase : MonoBehaviour
 {
     public ParticleSystem bloodAffect;
     public Transform target;
-    float speed = 2;
+    float speed = 40;
     Vector3[] path;
     int targetIndex;
     Rigidbody _rb;
+    Vector3 currentWaypoint;
+    Vector3 direction;
 
     private void Awake()
     {
@@ -33,16 +35,18 @@ public class HamsterBase : MonoBehaviour
 
     private void Update()
     {
-        
+        direction = (currentWaypoint - transform.position).normalized;
+        _rb.AddForce(direction * speed * Time.deltaTime, ForceMode.Acceleration);
     }
+
 
     IEnumerator FollowPath()
     {
-        Vector3 currentWaypoint = path[0];
+        currentWaypoint = path[0];
 
         while (true)
         {
-            if(transform.position.x == currentWaypoint.x && transform.position.z == currentWaypoint.z)
+            if(Distance(transform.position, currentWaypoint) < 0.5)
             {
                 targetIndex++;
                 if(targetIndex >= path.Length)
@@ -53,9 +57,16 @@ public class HamsterBase : MonoBehaviour
             }
 
             
-            transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
+            //transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
             yield return null;
         }
+    }
+
+    float Distance(Vector3 currentPos, Vector3 targetPos)
+    {
+        float a = targetPos.x - currentPos.x;
+        float b = targetPos.z - currentPos.z;
+        return Mathf.Sqrt(a * a + b * b);
     }
 
     private void OnDrawGizmos()
