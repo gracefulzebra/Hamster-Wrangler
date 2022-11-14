@@ -42,7 +42,7 @@ public class HamsterBase : MonoBehaviour
 
         while (true)
         {
-            if(transform.position.x == currentWaypoint.x && transform.position.z == currentWaypoint.z )
+            if(transform.position.x == currentWaypoint.x && transform.position.z == currentWaypoint.z)
             {
                 targetIndex++;
                 if(targetIndex >= path.Length)

@@ -41,7 +41,7 @@ public class SnapToGrid : MonoBehaviour
             Node nodehit = gridRef.GetNodeFromWorldPoint(hit.point);
             if (nodehit.walkable)
             {
-                gameObject.transform.position = nodehit.worldPosition;
+                gameObject.transform.position = new Vector3(nodehit.worldPosition.x, nodehit.worldPosition.y -0.5f, nodehit.worldPosition.z);
             }
         }
     }
