@@ -17,14 +17,14 @@ public class ItemEffects : MonoBehaviour
     {
         print("john");
         onFire = true;
-        gameObject.GetComponent<Renderer>().material.color = Color.red;
+      //  gameObject.GetComponent<Renderer>().material.color = Color.red;
         StartCoroutine(burnToDeath());
     }
 
     IEnumerator burnToDeath()
     {
         yield return delay;
-        Vector3 offset = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+        Vector3 offset = new Vector3(transform.position.x, transform.position.y -0.3f, transform.position.z);
         Instantiate(cadaver, offset, Quaternion.identity);
         gameObject.GetComponent<HamsterBase>().Kill();
     }
