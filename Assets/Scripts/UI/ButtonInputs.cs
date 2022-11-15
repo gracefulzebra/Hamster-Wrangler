@@ -11,7 +11,11 @@ public class ButtonInputs : MonoBehaviour
     [SerializeField] GameObject rake;
     [SerializeField] GameObject tar;
     [SerializeField] GameObject lighter;
+    [SerializeField] GameObject hamster;
     [SerializeField] SnapToGrid objectToSnap;
+
+    GameObject gridRefObject;
+    GridGenerator gridRef;
 
     void SpawnItem(GameObject itemToSpawn)
     {
@@ -60,6 +64,11 @@ public class ButtonInputs : MonoBehaviour
     public void SpawnLighter()
     {
         SpawnItem(lighter);
+    }
+
+    public void SpawnHamster()
+    {
+
     }
 
     public void ReloadLevel()
