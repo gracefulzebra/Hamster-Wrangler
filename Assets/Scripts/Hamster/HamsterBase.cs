@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking.Types;
 
 public class HamsterBase : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class HamsterBase : MonoBehaviour
     Vector3 direction;
     Quaternion lookRotation;
     public float rotationSpeed;
+    [SerializeField] GridGenerator gridRef; 
 
     private void Awake()
     {
@@ -101,8 +103,10 @@ public class HamsterBase : MonoBehaviour
     ///</summary>
     public void Kill()
     {
-        Vector3 offset = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z) ; 
-        Instantiate(bloodAffect, offset, Quaternion.identity);
+        Vector3 deathPoint = transform.position;
+        Node nodeHit = gridRef.GetNodeFromWorldPoint(deathPoint);
+        Vector3 bloodSpawn = new Vector3(nodeHit.worldPosition.x, nodeHit.worldPosition.y - 0.1f, nodeHit.worldPosition.z);
+        Instantiate(bloodAffect, bloodSpawn, Quaternion.identity);
         Destroy(gameObject);
     }
 }

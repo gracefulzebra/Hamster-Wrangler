@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class ButtonInputs : MonoBehaviour
@@ -61,6 +60,11 @@ public class ButtonInputs : MonoBehaviour
     public void SpawnLighter()
     {
         SpawnItem(lighter);
+    }
+
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
  
