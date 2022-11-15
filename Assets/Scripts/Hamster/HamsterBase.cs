@@ -12,6 +12,8 @@ public class HamsterBase : MonoBehaviour
     Rigidbody _rb;
     Vector3 currentWaypoint;
     Vector3 direction;
+    Quaternion lookRotation;
+    public float rotationSpeed;
 
     private void Awake()
     {
@@ -37,6 +39,7 @@ public class HamsterBase : MonoBehaviour
     {
         direction = (currentWaypoint - transform.position).normalized;
         _rb.AddForce(direction * speed * Time.deltaTime, ForceMode.Acceleration);
+        GetRotation();
     }
 
 
@@ -85,6 +88,12 @@ public class HamsterBase : MonoBehaviour
                 }
             }
         }
+    }
+
+    void GetRotation()
+    {
+        lookRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
 
     ///<summary>

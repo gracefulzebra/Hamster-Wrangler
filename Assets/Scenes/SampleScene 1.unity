@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 396375068}
   m_Layer: 5
   m_Name: Tar Button
-  m_TagString: Untagged
+  m_TagString: ShopItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -317,7 +317,7 @@ MonoBehaviour:
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
   tar: {fileID: 1311498072736210763, guid: 4e1bc35fbf375f24da55c84648fd743a, type: 3}
   lighter: {fileID: 8896836849501073524, guid: 1c02f59c3be47d045b4bf37b0878ed7b, type: 3}
-  objectToSnap: {fileID: -7644999424451363237, guid: 1c02f59c3be47d045b4bf37b0878ed7b, type: 3}
+  objectToSnap: {fileID: -5688390605432094438, guid: 4e1bc35fbf375f24da55c84648fd743a, type: 3}
 --- !u!114 &396375069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,7 +728,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &694470403
 MonoBehaviour:
@@ -745,6 +745,7 @@ MonoBehaviour:
   bloodAffect: {fileID: 5721086318571805125, guid: 064c91c30d1466c4e89f3de2e3918ae1, type: 3}
   target: {fileID: 999360564}
   speed: 40
+  rotationSpeed: 2
 --- !u!114 &694470404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -766,12 +767,12 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694470401}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: bf184d9d26011eb4c8fee3ab01835a15, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.29977885
-  m_Center: {x: 0, y: 0.20022115, z: 0}
+  m_Radius: 0.49713114
+  m_Center: {x: -0.13789791, y: 0.3005924, z: -0.025722763}
 --- !u!1 &774863021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,7 +1126,7 @@ GameObject:
   - component: {fileID: 1039199347}
   m_Layer: 5
   m_Name: Rake Button
-  m_TagString: Untagged
+  m_TagString: ShopItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1351,7 +1352,7 @@ GameObject:
   - component: {fileID: 1065095918}
   m_Layer: 5
   m_Name: Fan Button
-  m_TagString: Untagged
+  m_TagString: ShopItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2009,7 +2010,7 @@ GameObject:
   - component: {fileID: 1352043555}
   m_Layer: 5
   m_Name: Lighter Button
-  m_TagString: Untagged
+  m_TagString: ShopItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2172,15 +2173,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c82ef6ed7719dd4dbfa5ea02ba5d328, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.1855476
+      value: -3.074
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c82ef6ed7719dd4dbfa5ea02ba5d328, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.72
+      value: 0.702
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c82ef6ed7719dd4dbfa5ea02ba5d328, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.37
+      value: -2.367
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c82ef6ed7719dd4dbfa5ea02ba5d328, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2209,6 +2210,18 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5c82ef6ed7719dd4dbfa5ea02ba5d328, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5427015128701523420, guid: 5c82ef6ed7719dd4dbfa5ea02ba5d328, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.112
+      objectReference: {fileID: 0}
+    - target: {fileID: -5427015128701523420, guid: 5c82ef6ed7719dd4dbfa5ea02ba5d328, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.099
+      objectReference: {fileID: 0}
+    - target: {fileID: -5427015128701523420, guid: 5c82ef6ed7719dd4dbfa5ea02ba5d328, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.045
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5c82ef6ed7719dd4dbfa5ea02ba5d328, type: 3}
       propertyPath: m_Name
@@ -2378,6 +2391,7 @@ MonoBehaviour:
   bloodAffect: {fileID: 0}
   target: {fileID: 999360564}
   speed: 40
+  rotationSpeed: 0
 --- !u!1 &1860551056
 GameObject:
   m_ObjectHideFlags: 0
@@ -2663,7 +2677,7 @@ GameObject:
   - component: {fileID: 2020148725}
   m_Layer: 5
   m_Name: LawnMower button
-  m_TagString: Untagged
+  m_TagString: ShopItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
