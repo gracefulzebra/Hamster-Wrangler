@@ -20,6 +20,7 @@ public class HamsterBase : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        target = GameObject.Find("Target").transform;
     }
 
     private void Start()
