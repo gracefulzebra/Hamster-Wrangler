@@ -16,7 +16,19 @@ public class ButtonInputs : MonoBehaviour
 
     void SpawnItem(GameObject itemToSpawn)
     {
+        // turns off all other buttons
+        GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("ShopItem");
+
+        foreach (GameObject go in gameObjectArray)
+        {
+            go.GetComponent<Button>().enabled = false;
+        }
+        // used for colour change
+        objectToSnap.itemHeld = gameObject;
+        gameObject.GetComponent<Image>().color = Color.yellow;
+        // resets bool when clicked - clean this up 
         objectToSnap.holdingItem = false;
+        // if not holdign item 
         if (!objectToSnap.holdingItem)
         {
             Vector3 spawnPos = new Vector3(0f, 100f, 0f);

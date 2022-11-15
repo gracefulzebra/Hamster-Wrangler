@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SnapToGrid : MonoBehaviour
 {
     GameObject gridRefObject;
     GridGenerator gridRef;
-    GameObject buttonInputObject;
-    ButtonInputs buttonRef;
-    GameObject itemObject;
     public bool hasItem;
     public bool confirmPlacement;
     Vector3 rotVector = new Vector3(0f, 90f, 0f);
     public bool holdingItem;
+    public GameObject itemHeld;
 
     void Awake()
     {
@@ -21,8 +20,6 @@ public class SnapToGrid : MonoBehaviour
         // inspector cause its prefab
         gridRefObject = GameObject.Find("OliverGriddy");
         gridRef = gridRefObject.GetComponent<GridGenerator>();
-        buttonInputObject = GameObject.Find("LawnMower button");
-        buttonRef = buttonInputObject.GetComponent<ButtonInputs>();
         holdingItem = false;
     }
 
@@ -67,10 +64,22 @@ public class SnapToGrid : MonoBehaviour
         // and then they confrim placement
         if (Input.GetMouseButtonDown(1) && confirmPlacement)
         {
-            itemObject = null;
             hasItem = false;
             confirmPlacement = false;
             holdingItem = false;
+            //resets colour
+            itemHeld.gameObject.GetComponent<Image>().color = Color.white;
+
+
+
+            // this is terrbile and hidous and awful and i promsie iwill fix it 
+            // finds all buttons tags and turns it on 
+            GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("ShopItem");
+
+            foreach (GameObject go in gameObjectArray)
+            {
+                go.GetComponent<Button>().enabled = true;
+            }
         }
     }
 }
