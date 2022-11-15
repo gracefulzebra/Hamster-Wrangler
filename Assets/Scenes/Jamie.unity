@@ -123,79 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &6527334
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-      propertyPath: m_Name
-      value: Tile_8x8 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
 --- !u!1 &12173078
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +317,7 @@ MonoBehaviour:
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
   tar: {fileID: 1311498072736210763, guid: 4e1bc35fbf375f24da55c84648fd743a, type: 3}
   lighter: {fileID: 8896836849501073524, guid: 1c02f59c3be47d045b4bf37b0878ed7b, type: 3}
+  hamster: {fileID: 0}
   objectToSnap: {fileID: -7644999424451363237, guid: 1c02f59c3be47d045b4bf37b0878ed7b, type: 3}
 --- !u!114 &396375069
 MonoBehaviour:
@@ -608,24 +536,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cadaver: {fileID: 919132149155446097, guid: 0d7a5470db9158b479569ccddf9d1304, type: 3}
   onFire: 0
---- !u!1 &525760526 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}
-  m_PrefabInstance: {fileID: 6527334}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &525760527
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 525760526}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.07999998, y: 0.010000003, z: 0.07999998}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &534150465
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,6 +1216,7 @@ MonoBehaviour:
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
   tar: {fileID: 0}
   lighter: {fileID: 0}
+  hamster: {fileID: 0}
   objectToSnap: {fileID: 7812816010334716722, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
 --- !u!114 &1039199348
 MonoBehaviour:
@@ -1652,6 +1563,7 @@ MonoBehaviour:
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
   tar: {fileID: 1311498072736210763, guid: 4e1bc35fbf375f24da55c84648fd743a, type: 3}
   lighter: {fileID: 8896836849501073524, guid: 1c02f59c3be47d045b4bf37b0878ed7b, type: 3}
+  hamster: {fileID: 0}
   objectToSnap: {fileID: 5238295128076242774, guid: 44b96fe7d09433d42ab58e017ba7007f, type: 3}
 --- !u!114 &1065095919
 MonoBehaviour:
@@ -2310,6 +2222,7 @@ MonoBehaviour:
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
   tar: {fileID: 1311498072736210763, guid: 4e1bc35fbf375f24da55c84648fd743a, type: 3}
   lighter: {fileID: 8896836849501073524, guid: 1c02f59c3be47d045b4bf37b0878ed7b, type: 3}
+  hamster: {fileID: 0}
   objectToSnap: {fileID: -7644999424451363237, guid: 1c02f59c3be47d045b4bf37b0878ed7b, type: 3}
 --- !u!114 &1352043556
 MonoBehaviour:
@@ -2867,7 +2780,7 @@ MonoBehaviour:
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 128
-  gridWorldSize: {x: 8, y: 16}
+  gridWorldSize: {x: 8, y: 8}
   nodeRadius: 0.5
 --- !u!4 &2009701583
 Transform:
@@ -3060,4 +2973,5 @@ MonoBehaviour:
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
   tar: {fileID: 1311498072736210763, guid: 4e1bc35fbf375f24da55c84648fd743a, type: 3}
   lighter: {fileID: 8896836849501073524, guid: 1c02f59c3be47d045b4bf37b0878ed7b, type: 3}
+  hamster: {fileID: 0}
   objectToSnap: {fileID: 3841686972010369609, guid: 5bff195b340548647a9e71e877e10744, type: 3}
