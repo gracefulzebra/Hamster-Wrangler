@@ -5,19 +5,12 @@ using UnityEngine;
 public class HamsterSpawner : MonoBehaviour
 {
     public GameObject hamster;
+    public Transform spawnPoint;
+    
 
     // Start is called before the first frame update
-    void Start()
+   void SpawnHamster()
     {
-        StartCoroutine(hamsterSpawn());
-    }
-
-    IEnumerator hamsterSpawn()
-    {
-        for (; ; )
-        {
-            yield return new WaitForSeconds(4);
-            Instantiate(hamster, transform.position, Quaternion.identity);
-        }
+        Instantiate(hamster, spawnPoint.position, Quaternion.identity);
     }
 }
