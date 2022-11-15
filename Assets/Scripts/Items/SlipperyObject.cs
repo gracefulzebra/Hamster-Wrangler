@@ -11,7 +11,7 @@ public class SlipperyObject : MonoBehaviour
     }
     private void OnTriggerExit(Collider col)
     {
-        gameObject.GetComponent<HamsterBase>().speed *= 2;
+        col.gameObject.GetComponent<HamsterBase>().speed *= 2;
         col.gameObject.GetComponent<ItemEffects>().LeftTarArea();
     }
 }

@@ -104,10 +104,8 @@ public class HamsterBase : MonoBehaviour
     ///</summary>
     public void Kill()
     {
-        Vector3 deathPoint = transform.position;
-        Node nodeHit = gridRef.GetNodeFromWorldPoint(deathPoint);
-        Vector3 bloodSpawn = new Vector3(nodeHit.worldPosition.x, nodeHit.worldPosition.y - 0.1f, nodeHit.worldPosition.z);
-        Instantiate(bloodAffect, bloodSpawn, Quaternion.identity);
+        Vector3 deathPoint = new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z);
+        Instantiate(bloodAffect, deathPoint, Quaternion.identity);
         Destroy(gameObject);
     }
 }

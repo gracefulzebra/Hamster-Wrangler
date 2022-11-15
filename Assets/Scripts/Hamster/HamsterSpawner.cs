@@ -9,7 +9,7 @@ public class HamsterSpawner : MonoBehaviour
     
 
     // Start is called before the first frame update
-   void SpawnHamster()
+   public void SpawnHamster()
     {
         Instantiate(hamster, spawnPoint.position, Quaternion.identity);
     }
