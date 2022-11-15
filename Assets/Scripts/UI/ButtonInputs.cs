@@ -8,7 +8,7 @@ public class ButtonInputs : MonoBehaviour
 {
 
     [SerializeField] GameObject lawnMower;
-    [SerializeField] GameObject fan;
+    [SerializeField] GameObject leafBlower;
     [SerializeField] GameObject rake;
     [SerializeField] GameObject tar;
     [SerializeField] GameObject lighter;
@@ -31,9 +31,9 @@ public class ButtonInputs : MonoBehaviour
          SpawnItem(lawnMower);
     }
 
-    public void SpawnFan()
+    public void SpawnLeafBlower()
     {
-            SpawnItem(fan);
+            SpawnItem(leafBlower);
     }
 
     public void SpawnRake()
