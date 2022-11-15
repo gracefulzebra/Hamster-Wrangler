@@ -6,9 +6,9 @@ public class ItemEffects : MonoBehaviour
 {
 
     [Header("Item Effects")]
-    WaitForSeconds delay = new WaitForSeconds(2);
+    WaitForSeconds delay = new WaitForSeconds(3);
     [SerializeField] GameObject cadaver;
-   public bool onFire = false;
+    public bool onFire = false;
 
     ///<summary>
     ///Starts courtine that will kill hamster in 2 seconds 
@@ -24,7 +24,7 @@ public class ItemEffects : MonoBehaviour
     IEnumerator burnToDeath()
     {
         yield return delay;
-        Vector3 offset = new Vector3(transform.position.x, transform.position.y -0.3f, transform.position.z);
+        Vector3 offset = new Vector3(transform.position.x, transform.position.y-0.15f, transform.position.z);
         Instantiate(cadaver, offset, Quaternion.identity);
         gameObject.GetComponent<HamsterBase>().Kill();
     }
@@ -41,7 +41,6 @@ public class ItemEffects : MonoBehaviour
     {
         yield return delay;
         gameObject.tag = "Untagged";
-        gameObject.GetComponent<HamsterBase>().speed *= 2;
     }
 
     void OnCollisionEnter(Collision col)
