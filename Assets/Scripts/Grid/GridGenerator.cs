@@ -45,19 +45,29 @@ public class GridGenerator : MonoBehaviour
         List<Node> neighbours = new List<Node>();
 
         for(int x = -1; x <= 1; x++)
-        {
-            for (int y = -1; y <= 1; y++)
-            {
-                if (x == 0 && y == 0)
-                    continue;
+        {  
+            if (x == 0)
+             continue;
 
                 int checkX = node.gridX + x;
-                int checkY = node.gridY + y;
-                
-                if(checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY)
+
+                if(checkX >= 0 && checkX < gridSizeX)
                 {
-                    neighbours.Add(grid[checkX, checkY]);
+                    neighbours.Add(grid[checkX, node.gridY]);
                 }
+        }
+
+        for (int y = -1; y <= 1; y++)
+        {
+            if (y == 0)
+                continue;
+
+            
+            int checkY = node.gridY + y;
+
+            if (checkY >= 0 && checkY < gridSizeY)
+            {
+                neighbours.Add(grid[node.gridX, checkY]);
             }
         }
 
