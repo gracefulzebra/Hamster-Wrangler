@@ -10,8 +10,9 @@ public class SnapToGrid : MonoBehaviour
     public bool hasItem;
     public bool confirmPlacement;
     Vector3 rotVector = new Vector3(0f, 90f, 0f);
-    public bool holdingItem;
-    public GameObject itemHeld;
+   // public bool holdingItem;
+    public GameObject buttonRef;
+    public GameManager gameManager;
 
     void Awake()
     {
@@ -20,7 +21,7 @@ public class SnapToGrid : MonoBehaviour
         // inspector cause its prefab
         gridRefObject = GameObject.Find("OliverGriddy");
         gridRef = gridRefObject.GetComponent<GridGenerator>();
-        holdingItem = false;
+       // holdingItem = false;
     }
 
     private void Update()
@@ -64,22 +65,13 @@ public class SnapToGrid : MonoBehaviour
         // and then they confrim placement
         if (Input.GetMouseButtonDown(1) && confirmPlacement)
         {
+            // need this bool so when you place item it doesnt place all previosu items aswell
             hasItem = false;
             confirmPlacement = false;
-            holdingItem = false;
+            // no longer holding item
+            gameManager.holdingItem = false;
             //resets colour
-            itemHeld.gameObject.GetComponent<Image>().color = Color.white;
-
-
-
-            // this is terrbile and hidous and awful and i promsie iwill fix it 
-            // finds all buttons tags and turns it on 
-            GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("ShopItem");
-
-            foreach (GameObject go in gameObjectArray)
-            {
-                go.GetComponent<Button>().enabled = true;
-            }
+            buttonRef.gameObject.GetComponent<Image>().color = Color.white;
         }
     }
 }

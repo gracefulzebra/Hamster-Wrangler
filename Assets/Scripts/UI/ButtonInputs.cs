@@ -13,31 +13,26 @@ public class ButtonInputs : MonoBehaviour
     [SerializeField] GameObject lighter;
     [SerializeField] GameObject hamster;
     [SerializeField] SnapToGrid objectToSnap;
+    [SerializeField] GameManager gameManager;
 
-    GameObject gridRefObject;
-    GridGenerator gridRef;
+
+     void Awake()
+     {
+        gameManager.holdingItem = false;
+     }
+
 
     void SpawnItem(GameObject itemToSpawn)
     {
-        // turns off all other buttons
-        GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("ShopItem");
-
-        foreach (GameObject go in gameObjectArray)
+      if (!gameManager.holdingItem)
         {
-            go.GetComponent<Button>().enabled = false;
-        }
         // used for colour change
-        objectToSnap.itemHeld = gameObject;
-        gameObject.GetComponent<Image>().color = Color.yellow;
-        // resets bool when clicked - clean this up 
-        objectToSnap.holdingItem = false;
-        // if not holdign item 
-        if (!objectToSnap.holdingItem)
-        {
-            Vector3 spawnPos = new Vector3(0f, 100f, 0f);
-            Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
-            objectToSnap.hasItem = true;
-            objectToSnap.holdingItem = true;
+        objectToSnap.buttonRef = gameObject;
+        gameObject.GetComponent<Image>().color = Color.yellow; 
+        Vector3 spawnPos = new Vector3(0f, 100f, 0f);
+        Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
+        objectToSnap.hasItem = true;
+        gameManager.holdingItem = true;
         }
     }
 
@@ -76,4 +71,11 @@ public class ButtonInputs : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
- 
+/*
+// turns off all other buttons
+GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("ShopItem");
+
+foreach (GameObject go in gameObjectArray)
+{
+    go.GetComponent<Button>().enabled = false;
+}*/

@@ -529,9 +529,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e64ef8eaf4c628469105ac8723dd15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 9118557075730911328}
   hasItem: 1
   confirmPlacement: 0
+  holdingItem: 1
+  buttonRef: {fileID: 0}
+  gameManager: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
 --- !u!114 &7855915974702622919
 MonoBehaviour:
   m_ObjectHideFlags: 0
