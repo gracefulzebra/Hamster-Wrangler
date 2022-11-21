@@ -13,6 +13,7 @@ public class SnapToGrid : MonoBehaviour
    // public bool holdingItem;
     public GameObject buttonRef;
     public GameManager gameManager;
+    public GameObject placementGuide;
 
     void Awake()
     {
@@ -54,13 +55,17 @@ public class SnapToGrid : MonoBehaviour
         // when player has item they choose grid square they want
         if (Input.GetMouseButtonDown(0) && hasItem)
         {
-            nodeCheck();       
+            nodeCheck();
+            Vector3 posVector = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+            Instantiate(placementGuide, posVector, Quaternion.identity);
+            placementGuide = GameObject.Find("Placement Guide(Clone)"); ;
             confirmPlacement = true;
         }
         // they can then rotate item to correct direction
         if (Input.GetKeyDown(KeyCode.R) && hasItem)
         {
             gameObject.transform.Rotate(rotVector, Space.Self);
+            placementGuide.transform.Rotate(rotVector, Space.Self);
         }
         // and then they confrim placement
         if (Input.GetMouseButtonDown(1) && confirmPlacement)
@@ -72,6 +77,7 @@ public class SnapToGrid : MonoBehaviour
             gameManager.holdingItem = false;
             //resets colour
             buttonRef.gameObject.GetComponent<Image>().color = Color.white;
+            DestroyImmediate(placementGuide, true);
         }
     }
 }

@@ -40,5 +40,4 @@ public class Fan : MonoBehaviour
             col.gameObject.GetComponent<Rigidbody>().AddForce(direction * 35, ForceMode.Force);
         }
     }
-
 }
