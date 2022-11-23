@@ -7,7 +7,7 @@ public class FixedCam : MonoBehaviour
 {
 
     public List<Transform> cameraPos = new List<Transform>();
-    int count;
+    public int count;
     public int speed;
     float t;
  public   bool moveToNewPos;
@@ -24,22 +24,22 @@ public class FixedCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(count);
         transform.LookAt(center);
-        t = speed * Time.deltaTime; // calculate distance to move
-        if (moveToNewPos)//&& count != cameraPos.Count - 1)
-        {      
-            transform.position = Vector3.MoveTowards(transform.position, cameraPos[count + 1].transform.position, t);
-            if (transform.position == nextPos)
-            {
-                moveToNewPos = false;
-            }       
-        } 
-       // else if (moveToNewTrans && count == cameraPos.Count - 1)
-        {
+      //  t = speed * Time.deltaTime; // calculate distance to move
+      //  if (moveToNewPos)//&& count != cameraPos.Count - 1)
+      //  {      
+      //      transform.position = Vector3.MoveTowards(transform.position, cameraPos[count + 1].transform.position, t);
+      //      print(count);
+      //  }
+      //  if (transform.position == nextPos)
+      //  {
+     //       moveToNewPos = false;
+     //   }
+        // else if (moveToNewTrans && count == cameraPos.Count - 1)
+      //  {
          //   count = 0;
          //   transform.position = Vector3.MoveTowards(transform.position, cameraPos[count].transform.position, t);
-        }
+       // }
         // when you press direction key 
         if (Input.GetKeyDown(KeyCode.A) | Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -47,15 +47,21 @@ public class FixedCam : MonoBehaviour
             if (count == cameraPos.Count - 1)
             {
                 // if it is resets the counter so it continues to next pos without having to go all the way back round manuelly
+                /*
                 nextPos = cameraPos[count].transform.position;
                 moveToNewPos = true;
+                */
+                transform.position = cameraPos[count].transform.position;
+              //  transform.rotation = cameraPos[count].transform.rotation;
                 count = 0;
             }
             else
             {
                 // changes the camera pos and rot to view the scene
-                nextPos = cameraPos[count + 1].transform.position;
-                moveToNewPos = true;
+                //nextPos = cameraPos[count + 1].transform.position;
+               // moveToNewPos = true;
+                transform.position = cameraPos[count].transform.position;
+               // transform.rotation = cameraPos[count].transform.rotation;
                 count += 1;
             }
          //   moveToNewTrans = false;
@@ -75,7 +81,7 @@ public class FixedCam : MonoBehaviour
             {
                 // changes the camera pos and rot to view the scene
                 transform.position = cameraPos[count - 1].transform.position;
-                //transform.rotation = cameraPos[count - 1].transform.rotation;
+            //    transform.rotation = cameraPos[count - 1].transform.rotation;
                 count -= 1;
             }
         }
