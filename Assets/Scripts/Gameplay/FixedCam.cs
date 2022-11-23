@@ -10,7 +10,7 @@ public class FixedCam : MonoBehaviour
     int count;
     public int speed;
     float t;
- public   bool moveToNewTrans;
+ public   bool moveToNewPos;
     public Transform center;
      public Vector3 nextPos;
 
@@ -27,14 +27,13 @@ public class FixedCam : MonoBehaviour
         print(count);
         transform.LookAt(center);
         t = speed * Time.deltaTime; // calculate distance to move
-        if (moveToNewTrans )//&& count != cameraPos.Count - 1)
+        if (moveToNewPos)//&& count != cameraPos.Count - 1)
         {      
             transform.position = Vector3.MoveTowards(transform.position, cameraPos[count + 1].transform.position, t);
             if (transform.position == nextPos)
             {
-                moveToNewTrans = false;
-            }
-           
+                moveToNewPos = false;
+            }       
         } 
        // else if (moveToNewTrans && count == cameraPos.Count - 1)
         {
@@ -49,14 +48,14 @@ public class FixedCam : MonoBehaviour
             {
                 // if it is resets the counter so it continues to next pos without having to go all the way back round manuelly
                 nextPos = cameraPos[count].transform.position;
-                moveToNewTrans = true;
+                moveToNewPos = true;
                 count = 0;
             }
             else
             {
                 // changes the camera pos and rot to view the scene
                 nextPos = cameraPos[count + 1].transform.position;
-                moveToNewTrans = true;
+                moveToNewPos = true;
                 count += 1;
             }
          //   moveToNewTrans = false;

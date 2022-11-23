@@ -69,7 +69,14 @@ public class ButtonInputs : MonoBehaviour
     public void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
 }
 /*
 // turns off all other buttons
