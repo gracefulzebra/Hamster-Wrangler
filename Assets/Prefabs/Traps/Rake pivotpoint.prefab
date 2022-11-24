@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3754862861141083068}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.497, y: 0.306, z: -3.669}
+  m_LocalPosition: {x: -1.497, y: 0.186, z: -3.669}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -42,11 +42,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3754862861141083068}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.010057896, z: 0.39049172}
-  m_Center: {x: 0, y: -0.02569203, z: -0.30475414}
+  m_Size: {x: 1, y: 0.46299756, z: 1.8974857}
+  m_Center: {x: 0, y: 0.20077777, z: -0.43952107}
 --- !u!114 &-4056471444544790434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,10 +64,7 @@ MonoBehaviour:
   buttonRef: {fileID: 0}
   placementGuide: {fileID: 1927441794722928374, guid: e00db6b2b1d15dd47863171448e0a107, type: 3}
   gameManagerObject: {fileID: 0}
-  gameManager: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 4
+  gameManager: {fileID: 0}
 --- !u!1 &7752955715020940297
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,8 +201,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.77617276, y: 0.33440825, z: 0.92814374}
+  m_Center: {x: -0.11191362, y: 0.03720279, z: 0.03592813}
 --- !u!114 &2242253294907583196
 MonoBehaviour:
   m_ObjectHideFlags: 0

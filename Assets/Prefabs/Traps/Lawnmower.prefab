@@ -250,6 +250,64 @@ Transform:
   m_Father: {fileID: 4347728205222001153}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4884602092791292241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3887471409692790683}
+  - component: {fileID: 2408628544351074483}
+  - component: {fileID: 7343734844710158814}
+  m_Layer: 0
+  m_Name: Hit Box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3887471409692790683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4884602092791292241}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.022679806, y: 0.13961983, z: 0.4488616}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6325065749299100965}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2408628544351074483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4884602092791292241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cee76f2e95866458f141d92ab347d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &7343734844710158814
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4884602092791292241}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5766156, y: 0.3863644, z: 0.12566185}
+  m_Center: {x: -0.022847056, y: 0.045084506, z: -0.03217411}
 --- !u!1 &6145368511639005143
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +383,6 @@ GameObject:
   - component: {fileID: 6325065749299100965}
   - component: {fileID: 5221205602948542857}
   - component: {fileID: 14855546021137807}
-  - component: {fileID: 3749526451819039680}
   m_Layer: 0
   m_Name: Lawnmower
   m_TagString: Unplaced Item
@@ -352,6 +409,7 @@ Transform:
   - {fileID: 374866366592658595}
   - {fileID: 2628785096402923753}
   - {fileID: 4347728205222001153}
+  - {fileID: 3887471409692790683}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -372,10 +430,7 @@ MonoBehaviour:
   buttonRef: {fileID: 0}
   placementGuide: {fileID: 1927441794722928374, guid: e00db6b2b1d15dd47863171448e0a107, type: 3}
   gameManagerObject: {fileID: 0}
-  gameManager: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 4
+  gameManager: {fileID: 0}
 --- !u!65 &14855546021137807
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -384,23 +439,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6668974962726283167}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.54338694, y: 0.18178952, z: 0.102276325}
-  m_Center: {x: 0.022679806, y: 0.13961977, z: 0.44886184}
---- !u!114 &3749526451819039680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6668974962726283167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90cee76f2e95866458f141d92ab347d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Size: {x: 0.54338694, y: 0.66200924, z: 0.9640837}
+  m_Center: {x: 0.022679806, y: 0.35660613, z: 0.017958164}
 --- !u!1 &7115548090558857981
 GameObject:
   m_ObjectHideFlags: 0

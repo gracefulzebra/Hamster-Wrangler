@@ -846,10 +846,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e64ef8eaf4c628469105ac8723dd15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridRefObject: {fileID: 0}
-  gridRef: {fileID: 0}
-  gameObject: {fileID: 0}
   hasItem: 0
+  confirmPlacement: 0
+  buttonRef: {fileID: 0}
+  placementGuide: {fileID: 0}
+  gameManagerObject: {fileID: 0}
+  gameManager: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1121626718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,6 +872,9 @@ MonoBehaviour:
   - {fileID: 794808227}
   - {fileID: 2022456678}
   - {fileID: 1777393793}
+  center: {fileID: 0}
+  speed: 0
+  cameraMovementDelay: 0
 --- !u!1 &1178238275 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ea315ceddad815b429f4e2341af3cae5, type: 3}

@@ -15,7 +15,6 @@ public class SnapToGrid : MonoBehaviour
     public GameObject placementGuide;
     [SerializeField] GameObject gameManagerObject;
     [SerializeField] GameManager gameManager;
-    [SerializeField] LayerMask layerMask;
 
     void Awake()
     {
@@ -41,7 +40,7 @@ public class SnapToGrid : MonoBehaviour
     {
         RaycastHit hit;
         Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(mousePos, out hit, ~layerMask))
+        if (Physics.Raycast(mousePos, out hit))
         {
             Node nodehit = gridRef.GetNodeFromWorldPoint(hit.point);
             if (nodehit.walkable)
@@ -80,17 +79,23 @@ public class SnapToGrid : MonoBehaviour
             // sets item as placed
             gameObject.tag = "Placed Item";
         }
+        if (Input.GetMouseButtonDown(1) && hasItem)
+        {
+            Destroy(gameObject);
+            hasItem = false;
+            // no longer holding item
+            gameManager.holdingItem = false;
+            //resets colour
+            buttonRef.gameObject.GetComponent<Image>().color = Color.white;
+        }
     }
 
     private void OnMouseDown()
     {
-        print("john");
-        confirmPlacement = true;
+        if (hasItem)
+        {
+            print("john");
+            confirmPlacement = true;
+        }     
     }
 }
-
-
- 
-
-
-

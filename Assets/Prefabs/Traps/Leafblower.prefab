@@ -600,6 +600,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4103923347380611907}
   - component: {fileID: 4575281151563343648}
+  - component: {fileID: -2135356015512987289}
   m_Layer: 0
   m_Name: Leafblower
   m_TagString: Unplaced Item
@@ -655,10 +656,20 @@ MonoBehaviour:
   buttonRef: {fileID: 0}
   placementGuide: {fileID: 1927441794722928374, guid: e00db6b2b1d15dd47863171448e0a107, type: 3}
   gameManagerObject: {fileID: 0}
-  gameManager: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 4
+  gameManager: {fileID: 0}
+--- !u!65 &-2135356015512987289
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3728910289697894905}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0529158, y: 1.3698332, z: 1.0472145}
+  m_Center: {x: -0.026457906, y: 0.120930076, z: 0.023607254}
 --- !u!1 &3732014459140191747
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,8 +839,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 2.0313559}
-  m_Center: {x: 0, y: 0, z: -0.5156779}
+  m_Size: {x: 0.81300324, y: 1.0704485, z: 2.0313559}
+  m_Center: {x: 0.09349838, y: 0.16537672, z: -0.5156779}
 --- !u!114 &666084401307898374
 MonoBehaviour:
   m_ObjectHideFlags: 0

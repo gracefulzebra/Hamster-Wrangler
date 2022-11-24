@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,13 +8,18 @@ public class GameManager : MonoBehaviour
 
     public bool holdingItem;
     [SerializeField] GameObject mainMenu;
+    [SerializeField] GameObject deathScreen;
     public bool mainMenuActive;
     public GameObject placementConfirmation;
+    float health;
+    float score;
+    float money;
+
 
     private void Update()
     {
         MainMenu();
-        
+       
         if(holdingItem)
         {
             GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");
@@ -46,4 +52,13 @@ public class GameManager : MonoBehaviour
             holdingItem = false;
         }
     }
+
+    void loseGame()
+    {
+        if(health <= 0)
+        {
+            deathScreen.SetActive(true);
+        }
+    }
+
 }
