@@ -1449,15 +1449,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1958378736026711672, guid: 32a722ee91381ba4a9e8d26bb37ca23f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.9086087
+      value: 0.88
       objectReference: {fileID: 0}
     - target: {fileID: 1958378736026711672, guid: 32a722ee91381ba4a9e8d26bb37ca23f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.14413668
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 1958378736026711672, guid: 32a722ee91381ba4a9e8d26bb37ca23f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.7567754
+      value: 3.75
       objectReference: {fileID: 0}
     - target: {fileID: 1958378736026711672, guid: 32a722ee91381ba4a9e8d26bb37ca23f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2920,8 +2920,8 @@ MonoBehaviour:
   lawnMower: {fileID: 9118557075730911328, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   leafBlower: {fileID: 0}
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
-  tar: {fileID: 1311498072736210763, guid: 4e1bc35fbf375f24da55c84648fd743a, type: 3}
-  lighter: {fileID: 8896836849501073524, guid: 1c02f59c3be47d045b4bf37b0878ed7b, type: 3}
+  tar: {fileID: 0}
+  lighter: {fileID: 0}
   hamster: {fileID: 0}
   objectToSnap: {fileID: -5688390605432094438, guid: 4e1bc35fbf375f24da55c84648fd743a, type: 3}
   gameManager: {fileID: 707300425}
@@ -3798,7 +3798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e25f837ee265a4c9774040d94f5c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cadaver: {fileID: 919132149155446097, guid: 0d7a5470db9158b479569ccddf9d1304, type: 3}
+  cadaver: {fileID: 0}
   onFire: 0
 --- !u!1 &534150465
 GameObject:
@@ -4292,9 +4292,9 @@ MonoBehaviour:
   lawnMower: {fileID: 9118557075730911328, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   leafBlower: {fileID: 0}
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
-  tar: {fileID: 1311498072736210763, guid: 4e1bc35fbf375f24da55c84648fd743a, type: 3}
-  lighter: {fileID: 8896836849501073524, guid: 1c02f59c3be47d045b4bf37b0878ed7b, type: 3}
-  hamster: {fileID: 1622791512648962765, guid: 907b88d61ec41bb49a69ff1e24ac0ce6, type: 3}
+  tar: {fileID: 0}
+  lighter: {fileID: 0}
+  hamster: {fileID: 0}
   objectToSnap: {fileID: 3841686972010369609, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   gameManager: {fileID: 707300425}
 --- !u!114 &591782652
@@ -6114,7 +6114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e25f837ee265a4c9774040d94f5c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cadaver: {fileID: 919132149155446097, guid: 0d7a5470db9158b479569ccddf9d1304, type: 3}
+  cadaver: {fileID: 0}
   onFire: 0
 --- !u!4 &792303823 stripped
 Transform:
@@ -6966,8 +6966,8 @@ MonoBehaviour:
   lawnMower: {fileID: 9118557075730911328, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   leafBlower: {fileID: 0}
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
-  tar: {fileID: 1311498072736210763, guid: 4e1bc35fbf375f24da55c84648fd743a, type: 3}
-  lighter: {fileID: 8896836849501073524, guid: 1c02f59c3be47d045b4bf37b0878ed7b, type: 3}
+  tar: {fileID: 0}
+  lighter: {fileID: 0}
   hamster: {fileID: 0}
   objectToSnap: {fileID: 3841686972010369609, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   gameManager: {fileID: 707300425}
@@ -7838,8 +7838,8 @@ MonoBehaviour:
   lawnMower: {fileID: 9118557075730911328, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   leafBlower: {fileID: 0}
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
-  tar: {fileID: 1311498072736210763, guid: 4e1bc35fbf375f24da55c84648fd743a, type: 3}
-  lighter: {fileID: 8896836849501073524, guid: 1c02f59c3be47d045b4bf37b0878ed7b, type: 3}
+  tar: {fileID: 0}
+  lighter: {fileID: 0}
   hamster: {fileID: 0}
   objectToSnap: {fileID: 3841686972010369609, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   gameManager: {fileID: 707300425}
@@ -8372,7 +8372,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040197994}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.0797071, y: 2.0797071, z: 2.0797071}
   m_ConstrainProportionsScale: 0
@@ -8383,7 +8383,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -766.4, y: 410}
+  m_AnchoredPosition: {x: -766.40015, y: 410.00012}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1040197996
@@ -8415,9 +8415,9 @@ MonoBehaviour:
   lawnMower: {fileID: 9118557075730911328, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   leafBlower: {fileID: 0}
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
-  tar: {fileID: 1311498072736210763, guid: 4e1bc35fbf375f24da55c84648fd743a, type: 3}
-  lighter: {fileID: 8896836849501073524, guid: 1c02f59c3be47d045b4bf37b0878ed7b, type: 3}
-  hamster: {fileID: 1622791512648962765, guid: 907b88d61ec41bb49a69ff1e24ac0ce6, type: 3}
+  tar: {fileID: 0}
+  lighter: {fileID: 0}
+  hamster: {fileID: 0}
   objectToSnap: {fileID: 3841686972010369609, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   gameManager: {fileID: 707300425}
 --- !u!114 &1040197998
@@ -8849,10 +8849,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lawnMower: {fileID: 9118557075730911328, guid: 5bff195b340548647a9e71e877e10744, type: 3}
-  leafBlower: {fileID: 3728910289697894905, guid: db76777b4290ec6418513f1d061e5f2c, type: 3}
+  leafBlower: {fileID: 0}
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
-  tar: {fileID: 1311498072736210763, guid: 4e1bc35fbf375f24da55c84648fd743a, type: 3}
-  lighter: {fileID: 8896836849501073524, guid: 1c02f59c3be47d045b4bf37b0878ed7b, type: 3}
+  tar: {fileID: 0}
+  lighter: {fileID: 0}
   hamster: {fileID: 0}
   objectToSnap: {fileID: 4575281151563343648, guid: db76777b4290ec6418513f1d061e5f2c, type: 3}
   gameManager: {fileID: 707300425}
@@ -10203,11 +10203,9 @@ MonoBehaviour:
   - {fileID: 1743946639}
   - {fileID: 1007017335}
   - {fileID: 173042469}
-  count: 0
-  speed: 10
-  moveToNewPos: 0
   center: {fileID: 2009288603}
-  nextPos: {x: 0, y: 0, z: 0}
+  speed: 14
+  inputCooldown: 0
 --- !u!4 &1245202414 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 60daf23ee39125c4590c4b0d11eb2b7a, type: 3}
@@ -10868,8 +10866,8 @@ MonoBehaviour:
   lawnMower: {fileID: 9118557075730911328, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   leafBlower: {fileID: 0}
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
-  tar: {fileID: 1311498072736210763, guid: 4e1bc35fbf375f24da55c84648fd743a, type: 3}
-  lighter: {fileID: 649621270774770506, guid: caef6139d36b0d348a69fd637ea1d53c, type: 3}
+  tar: {fileID: 0}
+  lighter: {fileID: 0}
   hamster: {fileID: 0}
   objectToSnap: {fileID: 2099565370963579048, guid: caef6139d36b0d348a69fd637ea1d53c, type: 3}
   gameManager: {fileID: 707300425}
@@ -13950,8 +13948,8 @@ MonoBehaviour:
   lawnMower: {fileID: 6668974962726283167, guid: 262c27e0ffabd064893416edf473875a, type: 3}
   leafBlower: {fileID: 0}
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
-  tar: {fileID: 1311498072736210763, guid: 4e1bc35fbf375f24da55c84648fd743a, type: 3}
-  lighter: {fileID: 8896836849501073524, guid: 1c02f59c3be47d045b4bf37b0878ed7b, type: 3}
+  tar: {fileID: 0}
+  lighter: {fileID: 0}
   hamster: {fileID: 0}
   objectToSnap: {fileID: 5221205602948542857, guid: 262c27e0ffabd064893416edf473875a, type: 3}
   gameManager: {fileID: 707300425}
