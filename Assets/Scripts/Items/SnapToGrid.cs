@@ -15,6 +15,7 @@ public class SnapToGrid : MonoBehaviour
     public GameObject placementGuide;
     [SerializeField] GameObject gameManagerObject;
     [SerializeField] GameManager gameManager;
+    [SerializeField] LayerMask layerMask;
 
     void Awake()
     {
@@ -40,7 +41,7 @@ public class SnapToGrid : MonoBehaviour
     {
         RaycastHit hit;
         Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(mousePos, out hit))
+        if (Physics.Raycast(mousePos, out hit, ~layerMask))
         {
             Node nodehit = gridRef.GetNodeFromWorldPoint(hit.point);
             if (nodehit.walkable)
@@ -59,7 +60,6 @@ public class SnapToGrid : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && hasItem)
         {
             nodeCheck();
-            confirmPlacement = true;  
         }
         // they can then rotate item to correct direction
         if (Input.GetKeyDown(KeyCode.R) && hasItem)
@@ -68,7 +68,7 @@ public class SnapToGrid : MonoBehaviour
             placementGuide.transform.Rotate(rotVector, Space.Self);
         }
         // and then they confrim placement
-        if (Input.GetMouseButtonDown(1) && confirmPlacement)
+        if (Input.GetMouseButtonDown(0) && confirmPlacement)
         {
             // need this bool so when you place item it doesnt place all previosu items aswell
             hasItem = false;
@@ -81,5 +81,16 @@ public class SnapToGrid : MonoBehaviour
             gameObject.tag = "Placed Item";
         }
     }
+
+    private void OnMouseDown()
+    {
+        print("john");
+        confirmPlacement = true;
+    }
 }
+
+
+ 
+
+
 

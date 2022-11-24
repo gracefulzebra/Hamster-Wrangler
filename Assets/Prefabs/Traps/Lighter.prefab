@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 164447039296451056}
   - component: {fileID: 6649807326451815635}
   - component: {fileID: 2099565370963579048}
+  - component: {fileID: -1167829590898299859}
   m_Layer: 0
   m_Name: Lighter
   m_TagString: Unplaced Item
@@ -160,6 +161,21 @@ MonoBehaviour:
   placementGuide: {fileID: 1927441794722928374, guid: e00db6b2b1d15dd47863171448e0a107, type: 3}
   gameManagerObject: {fileID: 0}
   gameManager: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4
+--- !u!114 &-1167829590898299859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649621270774770506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9453bb3664b56a48ab4e80119fc6c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &871656897541944136
 GameObject:
   m_ObjectHideFlags: 0
