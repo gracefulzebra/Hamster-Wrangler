@@ -10,17 +10,19 @@ public class Fan : MonoBehaviour
     Vector3 pushForce = new Vector3(-5f, 0f, -5f);
     bool turnedOn;
     float fanTimer;
-
+    [SerializeField] ParticleSystem windEffect;
 
     private void Update()
     {
         if (turnedOn)
         {
+            windEffect.Play();
             fanTimer += Time.deltaTime;
             if (fanTimer > 4)
             {
                 turnedOn = false;
                 fanTimer = 0;
+                windEffect.Stop();
             }
         }
     }

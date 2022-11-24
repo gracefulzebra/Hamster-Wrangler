@@ -8,8 +8,28 @@ public class GameManager : MonoBehaviour
     public bool holdingItem;
     [SerializeField] GameObject mainMenu;
     public bool mainMenuActive;
+    public GameObject placementConfirmation;
 
     private void Update()
+    {
+        MainMenu();
+        
+        if(holdingItem)
+        {
+            GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");
+
+            foreach (GameObject x in gameObjectArray)
+            {
+                placementConfirmation.transform.position = x.transform.position;
+            }
+        }
+        else
+        {
+            placementConfirmation.transform.position = new Vector3(0, 100, 0);
+        }
+    }
+
+    void MainMenu()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !mainMenuActive)
         {

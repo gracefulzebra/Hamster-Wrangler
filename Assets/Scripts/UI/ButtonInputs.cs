@@ -21,11 +21,10 @@ public class ButtonInputs : MonoBehaviour
         gameManager.holdingItem = false;
      }
 
-
     void SpawnItem(GameObject itemToSpawn)
     {
       if (!gameManager.holdingItem)
-        {
+      {
         // used for colour change
         objectToSnap.buttonRef = gameObject;
         gameObject.GetComponent<Image>().color = Color.yellow; 
@@ -33,7 +32,7 @@ public class ButtonInputs : MonoBehaviour
         Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
         objectToSnap.hasItem = true;
         gameManager.holdingItem = true;
-        }
+      }     
     }
 
     public void SpawnLawnMower()
@@ -76,7 +75,6 @@ public class ButtonInputs : MonoBehaviour
     {
         Application.Quit();
     }
-
 }
 /*
 // turns off all other buttons

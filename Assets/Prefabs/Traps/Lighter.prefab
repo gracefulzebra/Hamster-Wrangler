@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 2099565370963579048}
   m_Layer: 0
   m_Name: Lighter
-  m_TagString: Untagged
+  m_TagString: Unplaced Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,8 +157,9 @@ MonoBehaviour:
   hasItem: 1
   confirmPlacement: 0
   buttonRef: {fileID: 0}
-  gameManager: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
   placementGuide: {fileID: 1927441794722928374, guid: e00db6b2b1d15dd47863171448e0a107, type: 3}
+  gameManagerObject: {fileID: 0}
+  gameManager: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
 --- !u!1 &871656897541944136
 GameObject:
   m_ObjectHideFlags: 0

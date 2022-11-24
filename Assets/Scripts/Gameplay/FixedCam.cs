@@ -8,9 +8,10 @@ public class FixedCam : MonoBehaviour
     public List<Transform> cameraPos = new List<Transform>();
     [SerializeField] Transform center;
     [SerializeField] int speed;
+    [SerializeField] float cameraMovementDelay;
     int count;
     float timer;
-   public float inputCooldown;
+    float inputCooldown;
 
     void Start()
     {
@@ -27,7 +28,7 @@ public class FixedCam : MonoBehaviour
           timer = speed * Time.deltaTime; 
           transform.position = Vector3.MoveTowards(transform.position, cameraPos[count].transform.position, timer);
         // when you press direction key 
-        if (Input.GetKeyDown(KeyCode.A) | Input.GetKeyDown(KeyCode.LeftArrow) && inputCooldown > 1.2f)
+        if (Input.GetKeyDown(KeyCode.A) | Input.GetKeyDown(KeyCode.LeftArrow) && inputCooldown > cameraMovementDelay)
         {
             // checks if past bounds of list 
             if (count == cameraPos.Count - 1)
@@ -43,7 +44,7 @@ public class FixedCam : MonoBehaviour
             inputCooldown = 0f;
         }
         // when you press direction key 
-        if (Input.GetKeyDown(KeyCode.D) | Input.GetKeyDown(KeyCode.RightArrow) && inputCooldown > 1.2f)
+        if (Input.GetKeyDown(KeyCode.D) | Input.GetKeyDown(KeyCode.RightArrow) && inputCooldown > cameraMovementDelay)
         {
             // checks if past bounds of list 
             if (count == 0)

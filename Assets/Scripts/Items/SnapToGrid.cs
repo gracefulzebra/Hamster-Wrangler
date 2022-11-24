@@ -12,8 +12,9 @@ public class SnapToGrid : MonoBehaviour
     Vector3 rotVector = new Vector3(0f, 90f, 0f);
    // public bool holdingItem;
     public GameObject buttonRef;
-    public GameManager gameManager;
     public GameObject placementGuide;
+    [SerializeField] GameObject gameManagerObject;
+    [SerializeField] GameManager gameManager;
 
     void Awake()
     {
@@ -22,7 +23,9 @@ public class SnapToGrid : MonoBehaviour
         // inspector cause its prefab
         gridRefObject = GameObject.Find("OliverGriddy");
         gridRef = gridRefObject.GetComponent<GridGenerator>();
-       // holdingItem = false;
+        // holdingItem = false;
+        gameManagerObject = GameObject.Find("Game Manager");
+        gameManager = gameManagerObject.GetComponent<GameManager>();
     }
 
     private void Update()
@@ -56,10 +59,7 @@ public class SnapToGrid : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && hasItem)
         {
             nodeCheck();
-            Vector3 posVector = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
-            Instantiate(placementGuide, posVector, Quaternion.identity);
-            placementGuide = GameObject.Find("Placement Guide(Clone)"); ;
-            confirmPlacement = true;
+            confirmPlacement = true;  
         }
         // they can then rotate item to correct direction
         if (Input.GetKeyDown(KeyCode.R) && hasItem)
@@ -77,7 +77,8 @@ public class SnapToGrid : MonoBehaviour
             gameManager.holdingItem = false;
             //resets colour
             buttonRef.gameObject.GetComponent<Image>().color = Color.white;
-            DestroyImmediate(placementGuide, true);
+            // sets item as placed
+            gameObject.tag = "Placed Item";
         }
     }
 }
