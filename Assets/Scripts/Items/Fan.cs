@@ -40,6 +40,10 @@ public class Fan : MonoBehaviour
             var direction = col.transform.position - transform.position;
 
             col.gameObject.GetComponent<Rigidbody>().AddForce(direction * 35, ForceMode.Force);
+
+            //Communicates that item has interacted with the hamster and what type it is.
+            if (col.GetComponent<HamsterScore>() != null)
+                col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, "Fan");
         }
     }
 }

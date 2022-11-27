@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     public bool holdingItem;
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject deathScreen;
+    [SerializeField] GameObject scoreDisplay;
     public bool mainMenuActive;
     public GameObject placementConfirmation;
     float health;
@@ -59,6 +61,11 @@ public class GameManager : MonoBehaviour
         {
             deathScreen.SetActive(true);
         }
+    }
+
+    public void DisplayScore(int score)
+    {
+        scoreDisplay.GetComponent<TextMeshProUGUI>().text = "Score : " + score;
     }
 
 }
