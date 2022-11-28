@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         MainMenu();
-       
+
         if(holdingItem)
         {
             GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");

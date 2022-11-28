@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HamsterScore : MonoBehaviour
 {
-    ScoreManager scoreManager;
+    private ScoreManager scoreManager;
     private int blowerCount, tarCount, lighterCount, mowerCount, rakeCount;
 
     List<GameObject> interactedList = new List<GameObject>();
