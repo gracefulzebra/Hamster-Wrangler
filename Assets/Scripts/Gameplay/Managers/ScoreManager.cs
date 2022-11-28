@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static int currentScore = 0;
+    private static int currentScore = 0;
 
     [SerializeField] private int blowerScore, mowerScore, lighterScore, tarScore, rakeScore;
 

@@ -11,11 +11,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject deathScreen;
     [SerializeField] GameObject scoreDisplay;
+    [SerializeField] GameObject currencyDisplay;
     public bool mainMenuActive;
     public GameObject placementConfirmation;
     float health;
-    float score;
-    float money;
+    
 
 
     private void Update()
@@ -63,9 +63,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    //To be replaced with a UI manager
     public void DisplayScore(int score)
     {
         scoreDisplay.GetComponent<TextMeshProUGUI>().text = "Score : " + score;
+    }
+
+    public void DisplayCurrency(int currency)
+    {
+        currencyDisplay.GetComponent<TextMeshProUGUI>().text = "Currency : " + currency;
     }
 
 }
