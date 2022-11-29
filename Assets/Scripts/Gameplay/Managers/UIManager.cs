@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject deathScreen;
     [SerializeField] GameObject gameManager;
+    [SerializeField] private GameObject scoreDisplay;
+    [SerializeField] private GameObject currencyDisplay;
     public bool mainMenuActive;
 
     /*
@@ -43,4 +46,16 @@ public class UIManager : MonoBehaviour
     }
 
     */
+
+    public void DisplayScore(int score)
+    {
+        scoreDisplay.GetComponent<TextMeshProUGUI>().text = "Score : " + score;
+    }
+
+    public void DisplayCurrency(int currency)
+    {
+        currencyDisplay.GetComponent<TextMeshProUGUI>().text = "Currency : " + currency;
+    }
+
+
 }
