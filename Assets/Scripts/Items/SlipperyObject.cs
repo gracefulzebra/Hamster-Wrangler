@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SlipperyObject : MonoBehaviour
 {
+
+    
+
     private void OnTriggerEnter(Collider col)
     {
         col.gameObject.GetComponent<HamsterBase>().speed /= 2;

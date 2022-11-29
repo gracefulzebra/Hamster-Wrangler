@@ -66,25 +66,16 @@ public class SnapToGrid : MonoBehaviour
             gameObject.transform.Rotate(rotVector, Space.Self);
             placementGuide.transform.Rotate(rotVector, Space.Self);
         }
-        // and then they confrim placement
         if (Input.GetMouseButtonDown(0) && confirmPlacement)
         {
-            // need this bool so when you place item it doesnt place all previosu items aswell
             hasItem = false;
-            confirmPlacement = false;
-            // no longer holding item
-            gameManager.holdingItem = false;
-            //resets colour
             buttonRef.gameObject.GetComponent<Image>().color = Color.white;
-            // sets item as placed
             gameObject.tag = "Placed Item";
         }
-        if (Input.GetMouseButtonDown(1) && hasItem)
+            if (Input.GetMouseButtonDown(1) && hasItem)
         {
             Destroy(gameObject);
             hasItem = false;
-            // no longer holding item
-            gameManager.holdingItem = false;
             //resets colour
             buttonRef.gameObject.GetComponent<Image>().color = Color.white;
         }
@@ -93,8 +84,7 @@ public class SnapToGrid : MonoBehaviour
     private void OnMouseDown()
     {
         if (hasItem)
-        {
-            print("john");
+        { 
             confirmPlacement = true;
         }     
     }

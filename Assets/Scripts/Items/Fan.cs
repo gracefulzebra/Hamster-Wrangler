@@ -6,16 +6,22 @@ using UnityEngine;
 
 public class Fan : MonoBehaviour
 {
-
+    
     Vector3 pushForce = new Vector3(-5f, 0f, -5f);
     bool turnedOn;
     float fanTimer;
     [SerializeField] ParticleSystem windEffect;
+   // [SerializeField] GameObject gameManager;
+
 
     private void Update()
     {
+        
+        if (GetComponentInParent<SnapToGrid>().hasItem == true)
+            return;
         if (turnedOn)
         {
+            print("fan has turned on");
             windEffect.Play();
             fanTimer += Time.deltaTime;
             if (fanTimer > 4)
@@ -29,8 +35,13 @@ public class Fan : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(!turnedOn)
-        turnedOn = true;
+        if (GetComponentInParent<SnapToGrid>().hasItem == true)
+            return;
+        if (!turnedOn)
+        {
+            print("fan has been clicked on");
+            turnedOn = true;
+        }
     }
 
     private void OnTriggerStay(Collider col)

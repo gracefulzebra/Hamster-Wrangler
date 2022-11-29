@@ -106,7 +106,7 @@ public class HamsterBase : MonoBehaviour
     {
         Vector3 deathPoint = new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z);
         Instantiate(bloodAffect, deathPoint, Quaternion.identity);
-        GetComponent<HamsterScore>().SendScore();
+     //   GetComponent<HamsterScore>().SendScore();
         Destroy(gameObject);
     }
 }
