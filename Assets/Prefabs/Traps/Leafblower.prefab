@@ -668,8 +668,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0529158, y: 1.3698332, z: 1.0472145}
-  m_Center: {x: -0.026457906, y: 0.120930076, z: 0.023607254}
+  m_Size: {x: 0.87718326, y: 1.000011, z: 1.0472145}
+  m_Center: {x: -0.0035734475, y: 0.3058412, z: 0.023607254}
 --- !u!1 &3732014459140191747
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,6 +853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3859e321c023d5c40a092f984619eacf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemBroken: 0
   windEffect: {fileID: 6921343741179823484}
 --- !u!1 &4881893757124820369
 GameObject:

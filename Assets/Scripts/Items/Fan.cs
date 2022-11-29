@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class Fan : MonoBehaviour
+public class Fan : TrapBase
 {
     
     Vector3 pushForce = new Vector3(-5f, 0f, -5f);
@@ -53,8 +53,7 @@ public class Fan : MonoBehaviour
             col.gameObject.GetComponent<Rigidbody>().AddForce(direction * 35, ForceMode.Force);
 
             //Communicates that item has interacted with the hamster and what type it is.
-            if (col.GetComponent<HamsterScore>() != null)
-                col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, "Fan");
+            ItemInteract(col.gameObject);
         }
     }
 }

@@ -44,10 +44,10 @@ public class TrapBase : MonoBehaviour
        
     }
 
-    //"clean" nice
-    void ItemInteract(GameObject col)
-    {
+        //"clean" nice
+      public void ItemInteract(GameObject col)
+      {
         if (col.GetComponent<HamsterScore>() != null)
-            col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
-    }
+             col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
+      }
 }
