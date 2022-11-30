@@ -5,7 +5,9 @@ using UnityEngine;
 public class CurrencyManager : MonoBehaviour
 {
     private static int currency;
+    [SerializeField] private int hamsterCost = 100;
     [SerializeField] private int blowerCost, mowerCost, lighterCost, tarCost, rakeCost;
+    
     
 
     //To be attached to the game manager
@@ -56,6 +58,38 @@ public class CurrencyManager : MonoBehaviour
     private void PurchaseItem(int itemCost)
     {
         currency -= itemCost;
+        UpdateCurrencyDisplay();
+    }
+
+    public void UpdateCurrency(int blowerCount, int tarCount, int lighterCount, int mowerCount, int rakeCount)
+    {
+        int total = blowerCount + tarCount + lighterCount + mowerCount + rakeCount;
+        float currencyRewarded = 0;
+
+        switch (total)
+        {
+            case 1:
+                currencyRewarded = hamsterCost * 2;
+                break;
+
+            case 2:
+                currencyRewarded = hamsterCost * 2.75f;
+                break;
+
+            case 3:
+                currencyRewarded = hamsterCost * 3.25f;
+                break;
+
+            case 4:
+                currencyRewarded = hamsterCost * 3.5f;
+                break;
+
+            case >5:
+                currencyRewarded = (hamsterCost * 3.5f) + ((total - 5) * 0.25f);
+                break;
+        }
+
+        currency += (int)currencyRewarded;
         UpdateCurrencyDisplay();
     }
 

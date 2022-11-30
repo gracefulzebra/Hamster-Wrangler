@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6555404, g: 0.9651955, b: 0.89703953, a: 1}
+  m_IndirectSpecularColor: {r: 0.32765946, g: 0.48240083, b: 0.44695503, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4560,7 +4560,7 @@ GameObject:
   - component: {fileID: 579252007}
   m_Layer: 0
   m_Name: hamsterspawn (1)
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6089,7 +6089,7 @@ GameObject:
   - component: {fileID: 755651356}
   m_Layer: 0
   m_Name: hamsterspawn
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9117,6 +9117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24797d217951c674d989a713eddffdcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hamsterCost: 100
   blowerCost: 0
   mowerCost: 0
   lighterCost: 0
@@ -9137,6 +9138,8 @@ MonoBehaviour:
   mainMenu: {fileID: 0}
   deathScreen: {fileID: 0}
   gameManager: {fileID: 0}
+  scoreDisplay: {fileID: 0}
+  currencyDisplay: {fileID: 0}
   mainMenuActive: 0
 --- !u!114 &1058055517
 MonoBehaviour:
@@ -9150,7 +9153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e45f2eb13e70a41855a5299ed25c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hamsterPrefab: {fileID: 0}
+  hamsterPrefab: {fileID: 1622791512648962765, guid: 907b88d61ec41bb49a69ff1e24ac0ce6, type: 3}
+  hamstersPerWave: 5
+  spawnDelay: 3
 --- !u!1001 &1061086605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13569,6 +13574,7 @@ MonoBehaviour:
   speed: 40
   rotationSpeed: 0
   gridRef: {fileID: 0}
+  hamsterID: baseHamster
 --- !u!4 &1808617109 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1958378736026711672, guid: 32a722ee91381ba4a9e8d26bb37ca23f, type: 3}

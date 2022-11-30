@@ -16,6 +16,7 @@ public class HamsterBase : MonoBehaviour
     Quaternion lookRotation;
     public float rotationSpeed;
     [SerializeField] GridGenerator gridRef;
+    private WaveManager waveManager;
     // used to check if fit is a hamster enter colldiers
     // i imagien when we add in other types of hamsters that 
     // this can be reused for different effects
@@ -24,6 +25,7 @@ public class HamsterBase : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        waveManager = GetComponent<WaveManager>();
         target = GameObject.Find("Target").transform;
     }
 
@@ -110,7 +112,8 @@ public class HamsterBase : MonoBehaviour
     {
         Vector3 deathPoint = new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z);
         Instantiate(bloodAffect, deathPoint, Quaternion.identity);
-     //   GetComponent<HamsterScore>().SendScore();
+        waveManager.HamstersRemaining();
+     //   GetComponent<HamsterScore>().SendData();
         Destroy(gameObject);
     }
 }

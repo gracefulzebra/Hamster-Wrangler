@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class HamsterScore : MonoBehaviour
 {
-    private ScoreManager scoreManager;
+    private GameManager manager;
     private int blowerCount, tarCount, lighterCount, mowerCount, rakeCount;
 
     List<GameObject> interactedList = new List<GameObject>();
 
     private void Awake()
     {
-        scoreManager = GameObject.Find("Game Manager").GetComponent<ScoreManager>();
+        manager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     public void UpdateInteracts(GameObject item, string itemID)
@@ -45,9 +45,10 @@ public class HamsterScore : MonoBehaviour
         }  
     }
 
-    public void SendScore()
+    public void SendData()
     {
-        scoreManager.UpdateScore(blowerCount, tarCount, lighterCount, mowerCount, rakeCount);
+        manager.scoreManager.UpdateScore(blowerCount, tarCount, lighterCount, mowerCount, rakeCount);
+        manager.currencyManager.UpdateCurrency(blowerCount, tarCount, lighterCount, mowerCount, rakeCount);
     }
 
 

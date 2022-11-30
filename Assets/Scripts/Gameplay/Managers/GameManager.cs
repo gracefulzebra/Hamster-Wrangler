@@ -20,10 +20,13 @@ public class GameManager : MonoBehaviour
     public float health;
 
     //Manager references
-    ScoreManager scoreManager; //Not currently in use in GameManager
-    CurrencyManager currencyManager; //Not currently in use in GameManager
-    UIManager uiManager;
-    WaveManager waveManager; //Not currently in use in GameManager
+    public ScoreManager scoreManager { get; private set; } //Not currently in use in GameManager
+    public CurrencyManager currencyManager { get; private set; } //Not currently in use in GameManager
+    public UIManager uiManager { get; private set; }
+    public WaveManager waveManager { get; private set; }
+    
+     
+    
 
     private void Awake()
     {
@@ -40,19 +43,9 @@ public class GameManager : MonoBehaviour
 
     public void StartWave()
     {
-        //Called from UI button to start wave
+        StartCoroutine(waveManager.StartWave()); //To be hooked up to UI button. Fully functional and ready to be tweaked.
     }
 
-   
-    private void Update()
-    {
-        
-        //See if we can move this code - moved to funciton that is called when item is placed
-
-  
-    }
-
-    
     //UIManager communication
     public void DisplayScore(int score)
     {
