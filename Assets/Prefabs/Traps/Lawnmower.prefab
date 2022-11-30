@@ -308,8 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf24581301c460041bb58faf63889d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemHealth: 0
-  maxItemHealth: 2
+  maxItemHealth: 0
   itemBroken: 0
 --- !u!1 &6145368511639005143
 GameObject:
@@ -386,6 +385,8 @@ GameObject:
   - component: {fileID: 6325065749299100965}
   - component: {fileID: 5221205602948542857}
   - component: {fileID: 14855546021137807}
+  - component: {fileID: 2464596480456983300}
+  - component: {fileID: 4413478407654502741}
   m_Layer: 0
   m_Name: Lawnmower
   m_TagString: Unplaced Item
@@ -447,6 +448,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.57431316, y: 0.66200924, z: 0.9640837}
   m_Center: {x: 0.007216692, y: 0.35660613, z: 0.017958164}
+--- !u!135 &2464596480456983300
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6668974962726283167}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.7559793
+  m_Center: {x: 0, y: 0.2559793, z: 0}
+--- !u!114 &4413478407654502741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6668974962726283167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb293bd5708ce5d4e8caa7f16194feb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxItemHealth: 2
+  itemBroken: 0
 --- !u!1 &7115548090558857981
 GameObject:
   m_ObjectHideFlags: 0

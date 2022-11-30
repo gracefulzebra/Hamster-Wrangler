@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlipperyObject : MonoBehaviour
+public class Tar : MonoBehaviour
 {
 
     

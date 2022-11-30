@@ -15,7 +15,11 @@ public class HamsterBase : MonoBehaviour
     Vector3 direction;
     Quaternion lookRotation;
     public float rotationSpeed;
-    [SerializeField] GridGenerator gridRef; 
+    [SerializeField] GridGenerator gridRef;
+    // used to check if fit is a hamster enter colldiers
+    // i imagien when we add in other types of hamsters that 
+    // this can be reused for different effects
+    public string hamsterID = "baseHamster";
 
     private void Awake()
     {

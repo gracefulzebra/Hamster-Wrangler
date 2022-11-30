@@ -5,29 +5,26 @@ using UnityEngine;
 public class TrapBase : MonoBehaviour
 {
 
+    int maxItemHealth = 2;
     int itemHealth;
-    int maxItemHealth;
 
     float cooldown;
     string itemID;
-    public bool itemBroken;
+    protected bool itemBroken;
 
-    void Awake()
+    public void Awake()
     {
         itemHealth = maxItemHealth;
     }
 
-    private void Update()
-    {
-       
-    }
-
     public void Durability()
     {
-        itemHealth -= 1;
-
-        if (itemHealth < maxItemHealth / 2)
-            print("half health");
+        itemHealth--;
+        print(itemHealth);
+         if (itemHealth <= maxItemHealth / 2)
+         {
+           print("half health");
+         }
         if (itemHealth <= 0)
         {
             ItemBreak();
@@ -37,17 +34,32 @@ public class TrapBase : MonoBehaviour
     void ItemBreak()
     {
         itemBroken = true;
+        print(itemBroken);
     }
 
     void RepairItem()
     {
-       
+        print(itemBroken);
+        if (itemBroken)
+        {
+           // itemHealth = maxItemHealth;
+            //itemBroken = false;
+
+            print(itemHealth);
+            print(itemBroken);
+
+        }
     }
 
-        //"clean" nice
-      public void ItemInteract(GameObject col)
-      {
+    private void OnMouseDown()
+    {
+        RepairItem();
+    }
+
+    public void ItemInteract(GameObject col)
+    {
         if (col.GetComponent<HamsterScore>() != null)
-             col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
-      }
+            col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
+    }
 }
+

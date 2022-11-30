@@ -47,20 +47,9 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         
-        //See if we can move this code
+        //See if we can move this code - moved to funciton that is called when item is placed
 
-        // allows only one item to be placed down at once
-        GameObject unplacedItem = GameObject.FindGameObjectWithTag("Unplaced Item");
-            
-            if (unplacedItem != null)
-            {
-                holdingItem = true;
-                //  placementConfirmation.transform.position = x.transform.position;
-            }
-            else
-            { 
-                holdingItem = false;
-            }
+  
     }
 
     
@@ -75,5 +64,23 @@ public class GameManager : MonoBehaviour
         uiManager.DisplayCurrency(currency);
     }
 
-     
+    /// <summary>
+    /// checks if any objects with tag is in scene, if so they 
+    /// cannot use the shop until item no longer has tag
+    /// </summary>
+     public void CheckIfItemHeld()
+     {
+        // allows only one item to be placed down at once
+        GameObject unplacedItem = GameObject.FindGameObjectWithTag("Unplaced Item");
+
+        if (unplacedItem != null)
+        {
+            holdingItem = true;
+            //  placementConfirmation.transform.position = x.transform.position;
+        }
+        else
+        {
+            holdingItem = false;
+        }
+     }
 }

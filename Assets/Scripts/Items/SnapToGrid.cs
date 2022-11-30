@@ -50,6 +50,14 @@ public class SnapToGrid : MonoBehaviour
         }
     }
 
+    private void OnMouseDown()
+    {
+        if (hasItem)
+        {
+            confirmPlacement = true;
+        }
+    }
+
     /// <summary>
     /// Controls placement and rotation of objects 
     /// </summary>
@@ -66,27 +74,21 @@ public class SnapToGrid : MonoBehaviour
             gameObject.transform.Rotate(rotVector, Space.Self);
             placementGuide.transform.Rotate(rotVector, Space.Self);
         }
+        if (Input.GetMouseButtonDown(1) && hasItem)
+        {
+            Destroy(gameObject);
+            //resets colour
+            buttonRef.gameObject.GetComponent<Image>().color = Color.white;
+            gameObject.tag = "Placed Item";
+            gameManager.CheckIfItemHeld();
+        }
         if (Input.GetMouseButtonDown(0) && confirmPlacement)
         {
             hasItem = false;
             buttonRef.gameObject.GetComponent<Image>().color = Color.white;
-          //  DestroyImmediate(GetComponent<BoxCollider>());
             gameObject.tag = "Placed Item";
+            gameManager.CheckIfItemHeld();
+            DestroyImmediate(GetComponent<BoxCollider>());
         }
-        if (Input.GetMouseButtonDown(1) && hasItem)
-        {
-            Destroy(gameObject);
-            hasItem = false;
-            //resets colour
-            buttonRef.gameObject.GetComponent<Image>().color = Color.white;
-        }
-    }
-
-    private void OnMouseDown()
-    {
-        if (hasItem)
-        { 
-            confirmPlacement = true;
-        }     
     }
 }
