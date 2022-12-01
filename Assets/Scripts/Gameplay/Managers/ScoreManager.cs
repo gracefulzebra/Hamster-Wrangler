@@ -8,6 +8,12 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField] private int blowerScore, mowerScore, lighterScore, tarScore, rakeScore;
 
+    public void InitializeScore()
+    {
+        currentScore = 0;
+        UpdateScoreDisplay();
+    }
+
     void UpdateScoreDisplay()
     {
         GetComponent<GameManager>().DisplayScore(currentScore);

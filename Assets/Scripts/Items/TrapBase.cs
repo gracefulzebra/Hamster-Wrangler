@@ -9,7 +9,7 @@ public class TrapBase : MonoBehaviour
     int itemHealth;
 
     float cooldown;
-    string itemID;
+    public string itemID;
     protected bool itemBroken;
 
     public void Awake()
@@ -20,10 +20,10 @@ public class TrapBase : MonoBehaviour
     public void Durability()
     {
         itemHealth--;
-        print(itemHealth);
+        //print(itemHealth);
          if (itemHealth <= maxItemHealth / 2)
          {
-           print("half health");
+           //print("half health");
          }
         if (itemHealth <= 0)
         {
@@ -34,19 +34,19 @@ public class TrapBase : MonoBehaviour
     void ItemBreak()
     {
         itemBroken = true;
-        print(itemBroken);
+        //print(itemBroken);
     }
 
     void RepairItem()
     {
-        print(itemBroken);
+        //print(itemBroken);
         if (itemBroken)
         {
            // itemHealth = maxItemHealth;
             //itemBroken = false;
 
-            print(itemHealth);
-            print(itemBroken);
+            //print(itemHealth);
+            //print(itemBroken);
 
         }
     }

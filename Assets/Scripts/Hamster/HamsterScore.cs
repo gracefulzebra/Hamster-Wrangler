@@ -7,7 +7,7 @@ public class HamsterScore : MonoBehaviour
     private GameManager manager;
     private int blowerCount, tarCount, lighterCount, mowerCount, rakeCount;
 
-    List<GameObject> interactedList = new List<GameObject>();
+    private List<GameObject> interactedList = new List<GameObject>();
 
     private void Awake()
     {
@@ -16,8 +16,9 @@ public class HamsterScore : MonoBehaviour
 
     public void UpdateInteracts(GameObject item, string itemID)
     {
-        if (interactedList.Contains(item))
-        {
+        
+        if (!interactedList.Contains(item))
+        {           
             interactedList.Add(item);
 
             switch (itemID)
@@ -49,6 +50,7 @@ public class HamsterScore : MonoBehaviour
     {
         manager.scoreManager.UpdateScore(blowerCount, tarCount, lighterCount, mowerCount, rakeCount);
         manager.currencyManager.UpdateCurrency(blowerCount, tarCount, lighterCount, mowerCount, rakeCount);
+        manager.waveManager.HamstersRemaining();
     }
 
 

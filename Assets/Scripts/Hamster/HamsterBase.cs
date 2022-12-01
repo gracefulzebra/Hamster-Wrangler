@@ -85,7 +85,7 @@ public class HamsterBase : MonoBehaviour
             for(int i = targetIndex; i < path.Length; i++)
             {
                 Gizmos.color = Color.black;
-                Gizmos.DrawCube(path[i], Vector3.one);
+                Gizmos.DrawCube(path[i], new Vector3(1,1.5f,1));
 
                 if(i == targetIndex)
                 {
@@ -112,8 +112,7 @@ public class HamsterBase : MonoBehaviour
     {
         Vector3 deathPoint = new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z);
         Instantiate(bloodAffect, deathPoint, Quaternion.identity);
-        waveManager.HamstersRemaining();
-     //   GetComponent<HamsterScore>().SendData();
+        GetComponent<HamsterScore>().SendData();
         Destroy(gameObject);
     }
 }

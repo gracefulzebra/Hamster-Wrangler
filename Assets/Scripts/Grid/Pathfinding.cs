@@ -89,7 +89,7 @@ public class Pathfinding : MonoBehaviour
 
         Vector3[] waypoints;
         List<Vector3> temp = new List<Vector3>();
-        for(int i = 1; i < path.Count; i++)
+        for(int i = 0; i < path.Count; i++)
         {
             temp.Add(path[i].worldPosition);
         }

@@ -11,8 +11,7 @@ public class Fan : TrapBase
     bool turnedOn;
     float fanTimer;
     [SerializeField] ParticleSystem windEffect;
-   // [SerializeField] GameObject gameManager;
-
+    // [SerializeField] GameObject gameManager;
 
     private void Update()
     {
@@ -21,7 +20,7 @@ public class Fan : TrapBase
             return;
         if (turnedOn)
         {
-            print("fan has turned on");
+            //print("fan has turned on");
             windEffect.Play();
             fanTimer += Time.deltaTime;
             if (fanTimer > 4)
@@ -39,7 +38,7 @@ public class Fan : TrapBase
             return;
         if (!turnedOn)
         {
-            print("fan has been clicked on");
+            //print("fan has been clicked on");
             turnedOn = true;
         }
     }
@@ -48,11 +47,12 @@ public class Fan : TrapBase
     {
         if (turnedOn && fanTimer < 4)
         {
-            var direction = col.transform.position - transform.position;
+            Vector3 direction = transform.position - transform.parent.position;
 
             col.gameObject.GetComponent<Rigidbody>().AddForce(direction * 35, ForceMode.Force);
 
             //Communicates that item has interacted with the hamster and what type it is.
+            itemID = "LeafBlower";
             ItemInteract(col.gameObject);
         }
     }
