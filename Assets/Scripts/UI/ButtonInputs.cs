@@ -23,6 +23,8 @@ public class ButtonInputs : MonoBehaviour
     [SerializeField] GameObject tarInfo;
     [SerializeField] GameObject lighterInfo;
 
+    [Header("Main Menu")]
+    [SerializeField] GameObject HTPMenu;
 
     [Header("Open/Close Shop")]
     [SerializeField] GameObject openMenu;
@@ -66,6 +68,17 @@ public class ButtonInputs : MonoBehaviour
         }
     }
 
+    void SwitchSetActive(GameObject objectToSwitch)
+    {
+        if (objectToSwitch == true)
+        {
+            objectToSwitch.SetActive(false);
+        }
+        else if (objectToSwitch == false)
+        {
+            objectToSwitch.SetActive(true);
+        }
+    }
 
     public void SpawnLawnMower()
     {
@@ -132,6 +145,11 @@ public class ButtonInputs : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+     void HTPOpen()
+    {
+        SwitchSetActive(HTPMenu);
     }
 
     public void OpenShop()
