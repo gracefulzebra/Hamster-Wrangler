@@ -26,10 +26,13 @@ public class GameManager : MonoBehaviour
     public CurrencyManager currencyManager { get; private set; } //Not currently in use in GameManager
     public UIManager uiManager { get; private set; }
     public WaveManager waveManager { get; private set; }
-    
+    public AnimationManager animationManager { get; private set; }
+
+
     private void Awake()
     {
         InitialiseSystems();
+     //   holdingItem = false;
     }
 
     private void InitialiseSystems()
@@ -43,6 +46,8 @@ public class GameManager : MonoBehaviour
         currencyManager.InitializeCurrency(startingCurrency);
 
         waveManager = GetComponent<WaveManager>();
+
+        animationManager = GetComponent<AnimationManager>();
     }
 
     public void StartWave()

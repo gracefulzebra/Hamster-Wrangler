@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject currencyDisplay;
     public bool mainMenuActive;
 
-    /*
+    
     private void Update()
     {
         MainMenu();
@@ -26,26 +26,24 @@ public class UIManager : MonoBehaviour
             mainMenu.SetActive(true);
             mainMenuActive = true;
             Time.timeScale = 0;
-            gameManager.holdingItem = true;
+         //   gameManager.holdingItem = true;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && mainMenuActive)
         {
             mainMenu.SetActive(false);
             mainMenuActive = false;
             Time.timeScale = 1;
-            gameManager.holdingItem = false;
+          //  gameManager.holdingItem = false;
         }
    }
 
-    void loseGame()
+  /*  void loseGame()
     {
         if (gameManager.health <= 0)
         {
             deathScreen.SetActive(true);
         }
-    }
-
-    */
+    }*/
 
     public void DisplayScore(int score)
     {

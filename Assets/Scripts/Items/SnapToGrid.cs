@@ -78,14 +78,12 @@ public class SnapToGrid : MonoBehaviour
         {
             Destroy(gameObject);
             //resets colour
-            buttonRef.gameObject.GetComponent<Image>().color = Color.white;
             gameObject.tag = "Placed Item";
             gameManager.CheckIfItemHeld();
         }
         if (Input.GetMouseButtonDown(0) && confirmPlacement)
         {
             hasItem = false;
-            buttonRef.gameObject.GetComponent<Image>().color = Color.white;
             gameObject.tag = "Placed Item";
             gameManager.CheckIfItemHeld();
             DestroyImmediate(GetComponent<BoxCollider>());
