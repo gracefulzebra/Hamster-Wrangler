@@ -8,12 +8,11 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject deathScreen;
-    [SerializeField] GameObject gameManager;
     [SerializeField] private GameObject scoreDisplay;
     [SerializeField] private GameObject currencyDisplay;
     public bool mainMenuActive;
 
-    
+
     private void Update()
     {
         MainMenu();
@@ -26,24 +25,24 @@ public class UIManager : MonoBehaviour
             mainMenu.SetActive(true);
             mainMenuActive = true;
             Time.timeScale = 0;
-         //   gameManager.holdingItem = true;
+            GetComponent<GameManager>().holdingItem = true;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && mainMenuActive)
         {
             mainMenu.SetActive(false);
             mainMenuActive = false;
             Time.timeScale = 1;
-          //  gameManager.holdingItem = false;
+            GetComponent<GameManager>().holdingItem = false;
         }
    }
 
-  /*  void loseGame()
+    void loseGame()
     {
-        if (gameManager.health <= 0)
+        if (GetComponent<GameManager>().health <= 0)
         {
             deathScreen.SetActive(true);
         }
-    }*/
+    }
 
     public void DisplayScore(int score)
     {
@@ -54,6 +53,4 @@ public class UIManager : MonoBehaviour
     {
         currencyDisplay.GetComponent<TextMeshProUGUI>().text = "Currency : " + currency;
     }
-
-
 }
