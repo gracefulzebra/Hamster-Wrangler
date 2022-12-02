@@ -15,7 +15,6 @@ public class ItemEffects : MonoBehaviour
     ///</summary>
     public void OnFire()
     {
-        onFire = true;
         gameObject.GetComponentInChildren<Renderer>().material.color = new Color(0.91f, 0.3f, 0.21f);
         StartCoroutine(burnToDeath());
     }

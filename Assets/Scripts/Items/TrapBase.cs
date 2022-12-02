@@ -5,8 +5,8 @@ using UnityEngine;
 public class TrapBase : MonoBehaviour
 {
 
-    int maxItemHealth = 2;
-    int itemHealth;
+   // int maxItemHealth = 2;
+  //  int itemHealth;
 
     float cooldown;
     public string itemID;
@@ -14,17 +14,12 @@ public class TrapBase : MonoBehaviour
 
     public void Awake()
     {
-        itemHealth = maxItemHealth;
     }
 
-    public void Durability()
+    // read in items health
+    public void Durability(int itemHealth)
     {
         itemHealth--;
-        //print(itemHealth);
-         if (itemHealth <= maxItemHealth / 2)
-         {
-           //print("half health");
-         }
         if (itemHealth <= 0)
         {
             ItemBreak();
@@ -37,7 +32,8 @@ public class TrapBase : MonoBehaviour
         //print(itemBroken);
     }
 
-    void RepairItem()
+    // read in items maxhealth, the logic in this is flawed
+    void RepairItem(int maxHealth)
     {
         //print(itemBroken);
         if (itemBroken)
@@ -53,7 +49,7 @@ public class TrapBase : MonoBehaviour
 
     private void OnMouseDown()
     {
-        RepairItem();
+      //  RepairItem();
     }
 
     public void ItemInteract(GameObject col)

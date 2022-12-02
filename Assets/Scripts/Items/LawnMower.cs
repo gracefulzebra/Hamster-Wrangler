@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class LawnMower : TrapBase
 {
-    
+
+    int maxHealth;
+    int health = 2;
 
     private void OnTriggerStay(Collider collision)
     {
@@ -14,7 +16,7 @@ public class LawnMower : TrapBase
             return;
        if (itemBroken)
             return;
-        Durability();
+        Durability(health);
         ItemInteract(collision.gameObject);
         collision.gameObject.GetComponent<HamsterBase>().Kill();
     }
