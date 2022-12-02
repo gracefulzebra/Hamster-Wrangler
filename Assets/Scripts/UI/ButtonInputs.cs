@@ -24,13 +24,14 @@ public class ButtonInputs : MonoBehaviour
     [SerializeField] GameObject lighterInfo;
 
     [Header("Main Menu")]
+    [SerializeField] GameObject levelSelect;
     [SerializeField] GameObject HTPMenu;
+    [SerializeField] GameObject settings;
 
     [Header("Open/Close Shop")]
     [SerializeField] GameObject openMenu;
     [SerializeField] GameObject closeMenu;
 
-    public bool menuOpen;
 
 
      void Awake()
@@ -54,27 +55,25 @@ public class ButtonInputs : MonoBehaviour
 
     void HelpGuide(GameObject guideMenu)
     {
-        if (!menuOpen)
+        if (!guideMenu.activeSelf)
         {
             guideMenu.SetActive(true);
-            menuOpen = true;
             Time.timeScale = 0;
         }
         else 
         {
             guideMenu.SetActive(false);
-            menuOpen = false;
             Time.timeScale = 1;
         }
     }
 
     void SwitchSetActive(GameObject objectToSwitch)
     {
-        if (objectToSwitch == true)
+        if (objectToSwitch.activeSelf)
         {
             objectToSwitch.SetActive(false);
         }
-        else if (objectToSwitch == false)
+        else 
         {
             objectToSwitch.SetActive(true);
         }
@@ -147,9 +146,29 @@ public class ButtonInputs : MonoBehaviour
         Application.Quit();
     }
 
-     void HTPOpen()
+   public void LevelSelect()
+    {
+        SwitchSetActive(levelSelect);
+    }
+
+    public void HTP()
     {
         SwitchSetActive(HTPMenu);
+    }
+
+    public void Settings()
+    {
+        SwitchSetActive(settings);
+    }
+
+    public void ExitButton()
+    {
+        transform.parent.gameObject.SetActive(false);
+    }
+
+    public void Level1()
+    {
+        SceneManager.LoadScene("SampleScene 1");
     }
 
     public void OpenShop()
