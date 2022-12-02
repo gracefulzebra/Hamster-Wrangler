@@ -23,14 +23,15 @@ public class Rake : TrapBase
         void OnTriggerStay(Collider col)
         {
 
-        var direction = col.transform.position - transform.position;
+        //var direction = col.transform.position - transform.position;
+        Vector3 direction = transform.position - transform.parent.position;
 
-      //  col.gameObject.GetComponent<Rigidbody>().AddForce(direction * 35, ForceMode.Force);
+        //  col.gameObject.GetComponent<Rigidbody>().AddForce(direction * 35, ForceMode.Force);
 
         if (pressedRake)
             { 
                 col.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * force, ForceMode.Force);
-                col.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.forward * force / 4, ForceMode.Force);
+                col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force * 2, ForceMode.Force);
                 pressedRake = false;
               ItemInteract(col.gameObject);
              }

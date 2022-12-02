@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using static UnityEditor.Progress;
 using Unity.VisualScripting;
+using Microsoft.Unity.VisualStudio.Editor;
 
 public class ButtonInputs : MonoBehaviour
 {
@@ -50,6 +51,7 @@ public class ButtonInputs : MonoBehaviour
         Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
         objectToSnap.hasItem = true;
         gameManager.holdingItem = true;
+       // itemToSpawn.GetComponentInParent<Image>().
       }     
     }
 

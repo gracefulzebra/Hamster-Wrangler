@@ -9,7 +9,7 @@ public class TrapBase : MonoBehaviour
   //  int itemHealth;
 
     float cooldown;
-    public string itemID;
+    protected string itemID;
     protected bool itemBroken;
 
     public void Awake()
