@@ -13,6 +13,12 @@ public class PlacementUI : MonoBehaviour
 
     void MoveCanvas()
     {
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            gameObject.transform.Rotate(0f, 0f, 90f, Space.Self);
+        }
+
         if (Input.GetKeyDown(KeyCode.A) | Input.GetKeyDown(KeyCode.LeftArrow))
         {
             gameObject.transform.Rotate(0f, 0f, 90f, Space.Self);
@@ -21,6 +27,5 @@ public class PlacementUI : MonoBehaviour
             {
             gameObject.transform.Rotate(0f, 0f, -90f, Space.Self);
         }
-
     }
 }

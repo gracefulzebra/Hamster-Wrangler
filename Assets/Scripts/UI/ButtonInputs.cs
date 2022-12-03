@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using static UnityEditor.Progress;
 using Unity.VisualScripting;
-using Microsoft.Unity.VisualStudio.Editor;
+using UnityEngine.UI;
 
 public class ButtonInputs : MonoBehaviour
 {
@@ -33,9 +33,10 @@ public class ButtonInputs : MonoBehaviour
     [SerializeField] GameObject openMenu;
     [SerializeField] GameObject closeMenu;
 
+    [SerializeField] Sprite itemSelected;
 
 
-     void Awake()
+    void Awake()
      {
         if (gameManager != null)
         gameManager.holdingItem = false;
@@ -51,8 +52,12 @@ public class ButtonInputs : MonoBehaviour
         Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
         objectToSnap.hasItem = true;
         gameManager.holdingItem = true;
-       // itemToSpawn.GetComponentInParent<Image>().
       }     
+    }
+        
+    public void ItemSelected()
+    {
+        GetComponentInParent<Image>().sprite = itemSelected;
     }
 
     void HelpGuide(GameObject guideMenu)

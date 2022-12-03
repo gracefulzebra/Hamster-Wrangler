@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-       StartCoroutine(waveManager.StartWave());
+        StartWave();
     }
 
     //UIManager communication
