@@ -5,8 +5,22 @@ using UnityEngine;
 public class LawnMower : TrapBase
 {
 
-    int maxHealth;
-    int health = 2;
+    int maxHealth = 2;
+    int health;
+
+    private void Awake()
+    {
+        health = maxHealth;
+    }
+
+    private void Update()
+    {
+        if (repairItem)
+        {
+            health = maxHealth;
+        }
+       Durability(health);
+    }
 
     private void OnTriggerStay(Collider collision)
     {
@@ -14,9 +28,9 @@ public class LawnMower : TrapBase
         // if item is unplaced then dont run script
        if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
-       if (itemBroken)
-            return;
-        Durability(health);
+        if (itemBroken)
+            return;  
+        health--;
         ItemInteract(collision.gameObject);
         collision.gameObject.GetComponent<HamsterBase>().Kill();
     }

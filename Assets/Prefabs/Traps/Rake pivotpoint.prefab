@@ -46,8 +46,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9843761, y: 0.46873176, z: 1.8974857}
-  m_Center: {x: -0.0078119636, y: 0.20364487, z: -0.43952107}
+  m_Size: {x: 0.9843761, y: 0.46873176, z: 1.862001}
+  m_Center: {x: -0.0078119636, y: 0.20364487, z: -0.42177868}
 --- !u!114 &-4056471444544790434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab096cfe44a27a8459b847721cfd26f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 
+  cooldown: 0
   force: 400
 --- !u!4 &1820702344624429665 stripped
 Transform:

@@ -8,19 +8,31 @@ public class TrapBase : MonoBehaviour
    // int maxItemHealth = 2;
   //  int itemHealth;
 
-    float cooldown;
+    public float cooldown;
     protected string itemID;
     protected bool itemBroken;
+    protected bool repairItem;
 
-    public void Awake()
+    private void Awake()
     {
+        repairItem = false;
+    }
+
+    private void Update()
+    {
+        cooldown += Time.deltaTime;
+
+        if (cooldown > 10f)
+        {
+            RepairItem();
+            cooldown = 0f;
+        }
     }
 
     // read in items health
     public void Durability(int itemHealth)
     {
-        itemHealth--;
-        if (itemHealth <= 0)
+        if (itemHealth <= 0 && itemBroken == false)
         {
             ItemBreak();
         }
@@ -29,27 +41,26 @@ public class TrapBase : MonoBehaviour
     void ItemBreak()
     {
         itemBroken = true;
-        //print(itemBroken);
+        print(itemBroken);
     }
 
     // read in items maxhealth, the logic in this is flawed
-    void RepairItem(int maxHealth)
-    {
-        //print(itemBroken);
-        if (itemBroken)
-        {
-           // itemHealth = maxItemHealth;
-            //itemBroken = false;
-
-            //print(itemHealth);
-            //print(itemBroken);
-
-        }
+    public void RepairItem()
+    {   
+        // if (itemBroken)
+         // {
+            itemBroken = false;
+            print(itemBroken);
+            StartCoroutine(ItemRepair());
+       // }      
     }
 
-    private void OnMouseDown()
+    WaitForSeconds delay = new WaitForSeconds(.5f);
+    IEnumerator ItemRepair()
     {
-      //  RepairItem();
+        repairItem = true;
+        yield return delay;
+        repairItem = false;
     }
 
     public void ItemInteract(GameObject col)
