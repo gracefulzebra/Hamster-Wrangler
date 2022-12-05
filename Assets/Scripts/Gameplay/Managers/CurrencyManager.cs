@@ -48,10 +48,11 @@ public class CurrencyManager : MonoBehaviour
             case "Rake":
                 if (currency - rakeCost < 0) { return false; }
                 else { PurchaseItem(rakeCost); return true; }
+
+            default:
+                Debug.Log("Invalid itemID");
+                return false;
         }
-        //Only runs if itemID param passes without matching a preset itemID.
-        Debug.Log("ItemID not found"); 
-        return false;
     }
 
     private void PurchaseItem(int itemCost)
