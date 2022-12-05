@@ -58,7 +58,8 @@ public class HamsterBase : MonoBehaviour
 
         while (true)
         {
-            if(Distance(transform.position, currentWaypoint) < 0.25)
+            float distance = Distance(transform.position, currentWaypoint);
+            if (distance < 0.25)
             {
                 targetIndex++;
                 if(targetIndex >= path.Length)
@@ -66,6 +67,10 @@ public class HamsterBase : MonoBehaviour
                     yield break;
                 }
                 currentWaypoint = path[targetIndex];
+            }
+            if (distance > 2)
+            {
+                PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
             }
             yield return null;
         }
