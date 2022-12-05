@@ -22,6 +22,40 @@ public class CurrencyManager : MonoBehaviour
     /// </summary>
     /// <param name="itemID"></param>
     /// <returns> 
+    /// true : If item can be bought
+    /// false : If item cannot be bought
+    /// </returns>
+    public bool CheckPrice(string itemID)
+    {
+        switch (itemID)
+        {
+            case "LeafBlower":
+                return CheckValidPurcase(blowerCost);
+
+            case "Tar":
+                return CheckValidPurcase(tarCost);
+
+            case "Lighter":
+                return CheckValidPurcase(lighterCost);
+
+            case "LawnMower":
+                return CheckValidPurcase(mowerCost);
+
+            case "Rake":
+                return CheckValidPurcase(rakeCost);
+
+            default:
+                Debug.Log("Invalid itemID");
+                return false;
+        }
+    }
+
+    /// <summary>
+    /// Checks to see if item can be bought 
+    /// with current currency and then purchases it.
+    /// </summary>
+    /// <param name="itemID"></param>
+    /// <returns>
     /// true : If item can be bought then updates currency to show item has been purchased
     /// false : If item cannot be bought returns false and returns.
     /// </returns>
@@ -30,29 +64,34 @@ public class CurrencyManager : MonoBehaviour
         switch (itemID)
         {
             case "LeafBlower":
-                if (currency - blowerCost < 0) { return false; }
-                else { PurchaseItem(blowerCost); return true; }
+                if (CheckValidPurcase(blowerCost)) { PurchaseItem(blowerCost); return true; }
+                else { return false; }
 
             case "Tar":
-                if (currency - tarCost < 0) { return false; }
-                else { PurchaseItem(tarCost); return true; }
+                if (CheckValidPurcase(tarCost)) { PurchaseItem(tarCost); return true; }
+                else { return false; }
 
             case "Lighter":
-                if (currency - lighterCost < 0) { return false; }
-                else { PurchaseItem(lighterCost); return true; }
+                if (CheckValidPurcase(lighterCost)) { PurchaseItem(lighterCost); return true; }
+                else { return false; }
 
             case "LawnMower":
-                if (currency - mowerCost < 0) { return false; }
-                else { PurchaseItem(mowerCost); return true; }
+                if (CheckValidPurcase(mowerCost)) { PurchaseItem(mowerCost); return true; }
+                else { return false; }
 
             case "Rake":
-                if (currency - rakeCost < 0) { return false; }
-                else { PurchaseItem(rakeCost); return true; }
+                if (CheckValidPurcase(rakeCost)) { PurchaseItem(rakeCost); return true; }
+                else { return false; }
 
             default:
                 Debug.Log("Invalid itemID");
                 return false;
         }
+    }
+
+    private bool CheckValidPurcase(int cost)
+    {
+        return currency - cost >= 0;
     }
 
     private void PurchaseItem(int itemCost)
