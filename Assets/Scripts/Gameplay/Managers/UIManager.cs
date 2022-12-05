@@ -1,17 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-
+    private GameManager gameManager;
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject deathScreen;
     [SerializeField] private GameObject scoreDisplay;
     [SerializeField] private GameObject currencyDisplay;
+    [SerializeField] private Slider slider;
     public bool mainMenuActive;
 
+    private void Awake()
+    {
+        gameManager = GetComponent<GameManager>();
+    }
+    private void Start()
+    {
+        StartCoroutine(UpdateAudio());
+    }
 
     private void Update()
     {
@@ -35,6 +45,15 @@ public class UIManager : MonoBehaviour
             GetComponent<GameManager>().holdingItem = false;
         }
    }
+
+    IEnumerator UpdateAudio()
+    {
+        for(; ;)
+        {
+            gameManager.UpdateVolume(slider.value);
+            yield return new WaitForSeconds(.5f);
+        }
+    }
 
     void loseGame()
     {

@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public UIManager uiManager { get; private set; }
     public WaveManager waveManager { get; private set; }
     public AnimationManager animationManager { get; private set; }
+    public AudioManager audioManager { get; private set; }
 
 
     private void Awake()
@@ -48,16 +49,13 @@ public class GameManager : MonoBehaviour
         waveManager = GetComponent<WaveManager>();
 
         animationManager = GetComponent<AnimationManager>();
+
+        audioManager = GetComponent<AudioManager>();
     }
 
     public void StartWave()
     {
         StartCoroutine(waveManager.StartWave()); //To be hooked up to UI button. Fully functional and ready to be tweaked.
-    }
-
-    private void Start()
-    {
-      //  StartWave();
     }
 
     //UIManager communication
@@ -69,6 +67,11 @@ public class GameManager : MonoBehaviour
     public void DisplayCurrency(int currency)
     {
         uiManager.DisplayCurrency(currency);
+    }
+
+    public void UpdateVolume(float volume)
+    {
+        audioManager.SetVolume(volume);
     }
 
     /// <summary>

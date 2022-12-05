@@ -4,16 +4,47 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    //audio babay 
-    // Start is called before the first frame update
-    void Start()
+    private AudioSource audioSource;
+
+    public float volume;
+
+    [Header("Hamster Audio")]
+    [SerializeField] private AudioClip hamsterDeath1;
+    [SerializeField] private AudioClip hamsterDeath2;
+    [SerializeField] private AudioClip hamsterDeath3;
+    [SerializeField] private AudioClip hamsterDeath4;
+
+
+    private void Awake()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetVolume(float volumeLevel)
     {
-        
+        volume = volumeLevel / 5;
+        audioSource.volume = volume;
+    }
+
+    public void PlayHamsterDeathAudio()
+    {
+        switch(Random.Range(1, 5)) //Max exclusive
+        {
+            case 1:
+                audioSource.PlayOneShot(hamsterDeath1, volume);
+                break;
+
+            case 2:
+                audioSource.PlayOneShot(hamsterDeath2, volume);
+                break;
+
+            case 3:
+                audioSource.PlayOneShot(hamsterDeath3, volume);
+                break;
+
+            case 4:
+                audioSource.PlayOneShot(hamsterDeath4, volume);
+                break;
+        }
     }
 }
