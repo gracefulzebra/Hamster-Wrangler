@@ -1,16 +1,33 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Rake : TrapBase
 { 
+
         bool pressedRake = false;
         public float force;
 
+    private void Awake()
+    {
+        cooldownFinish = 7f;
+    }
 
-        void OnMouseDown()
+    private void Update()
+    {
+         cooldown += Time.deltaTime;
+
+        if (cooldown > cooldownFinish)
         {
-            pressedRake = true;
-          //  print(pressedRake);
+            finishedCooldown = true;
+            cooldown = 0;
         }
+    }
+
+    void OnMouseDown()
+    {
+        pressedRake = true;
+          //  print(pressedRake);
+    }
 
         ///<summary>
         ///Throws hamster in air if standing on it 
@@ -28,12 +45,14 @@ public class Rake : TrapBase
 
         //  col.gameObject.GetComponent<Rigidbody>().AddForce(direction * 35, ForceMode.Force);
 
-        if (pressedRake)
-            { 
+        if (pressedRake && finishedCooldown)
+        { 
                 col.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * force, ForceMode.Force);
                 col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force * 2, ForceMode.Force);
                 pressedRake = false;
+                finishedCooldown = false;
               ItemInteract(col.gameObject);
-             }
+
+        }
         }
 }

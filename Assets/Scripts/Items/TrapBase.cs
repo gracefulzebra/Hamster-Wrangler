@@ -9,6 +9,8 @@ public class TrapBase : MonoBehaviour
   //  int itemHealth;
 
     public float cooldown;
+    public float cooldownFinish;
+    public bool finishedCooldown;
     protected string itemID;
     protected bool itemBroken;
     protected bool repairItem;
@@ -24,7 +26,7 @@ public class TrapBase : MonoBehaviour
 
         if (cooldown > 10f)
         {
-            RepairItem();
+          //  RepairItem();
             cooldown = 0f;
         }
     }
