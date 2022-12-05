@@ -16,7 +16,7 @@ public class GroundCheck : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (!isGrounded && parentObject.GetComponent<SnapToGrid>().confirmPlacement)
+        if (!isGrounded )//&& parentObject.GetComponent<SnapToGrid>().confirmPlacement)
         {
             parentObject.gameObject.transform.Rotate(rotVector, Space.Self);
         }

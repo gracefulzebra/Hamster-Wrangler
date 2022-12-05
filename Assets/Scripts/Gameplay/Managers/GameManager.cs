@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        StartWave();
+      //  StartWave();
     }
 
     //UIManager communication

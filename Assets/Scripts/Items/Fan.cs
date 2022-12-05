@@ -11,13 +11,36 @@ public class Fan : TrapBase
     bool turnedOn;
     float fanTimer;
     [SerializeField] ParticleSystem windEffect;
+    [SerializeField] GameObject itemCooldown;
     // [SerializeField] GameObject gameManager;
+
+    private void Awake()
+    {
+        cooldownFinish = 7;
+    }
+
+    void VisualItemCooldown()
+    {
+        if (!turnedOn)
+        {
+            itemCooldown.SetActive(true);
+        } 
+        else
+            itemCooldown.SetActive(false);
+    }
+
+
 
     private void Update()
     {
         
         if (GetComponentInParent<SnapToGrid>().hasItem == true)
             return;
+
+        cooldown += Time.deltaTime;
+
+        VisualItemCooldown();
+
         if (turnedOn)
         {
             //print("fan has turned on");
@@ -36,10 +59,11 @@ public class Fan : TrapBase
     {
         if (GetComponentInParent<SnapToGrid>().hasItem == true)
             return;
-        if (!turnedOn)
+        if (!turnedOn && cooldown > cooldownFinish)
         {
             //print("fan has been clicked on");
             turnedOn = true;
+            cooldown = 0;
         }
     }
 

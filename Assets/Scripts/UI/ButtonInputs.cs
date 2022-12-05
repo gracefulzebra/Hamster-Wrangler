@@ -47,7 +47,6 @@ public class ButtonInputs : MonoBehaviour
       if (!gameManager.holdingItem)
       {
         // used for colour change
-        objectToSnap.buttonRef = gameObject;
         Vector3 spawnPos = new Vector3(0f, 100f, 0f);
         Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
         objectToSnap.hasItem = true;

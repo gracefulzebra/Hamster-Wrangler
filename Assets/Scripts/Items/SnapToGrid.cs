@@ -10,9 +10,6 @@ public class SnapToGrid : MonoBehaviour
     public bool hasItem;
     public bool confirmPlacement;
     Vector3 rotVector = new Vector3(0f, 90f, 0f);
-   // public bool holdingItem;
-    public GameObject buttonRef;
-    public GameObject placementGuide;
     [SerializeField] GameObject gameManagerObject;
     [SerializeField] GameManager gameManager;
 
@@ -72,7 +69,6 @@ public class SnapToGrid : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && hasItem)
         {
             gameObject.transform.Rotate(rotVector, Space.Self);
-            placementGuide.transform.Rotate(rotVector, Space.Self);
         }
         if (Input.GetMouseButtonDown(1) && hasItem)
         {
