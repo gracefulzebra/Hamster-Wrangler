@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +13,34 @@ public class SnapToGrid : MonoBehaviour
     Vector3 rotVector = new Vector3(0f, 90f, 0f);
     [SerializeField] GameObject gameManagerObject;
     [SerializeField] GameManager gameManager;
+    [SerializeField] GameObject confirmButton;
+    [SerializeField] GameObject cancelButton;
+    public string itemID;
 
     void Awake()
     {
+        if (gameObject.name == "LawnMower(Clone)")
+        {
+            itemID = "LawnMower";
+        }
+        if (gameObject.name == "Leafblower(Clone)")
+        {
+            itemID = "LeafBlower";
+        }
+        if (gameObject.name == "Lighter(Clone)")
+        {
+            itemID = "Lighter";
+        }
+        if (gameObject.name == "Rake(Clone)")
+        {
+            itemID = "Rake";
+        }
+        if (gameObject.name == "Tar(Clone)")
+        {
+            itemID = "Tar";
+        }  
+
+        hasItem = true;
         // finds the game object with gridgenerator script
         // then assigns the compentant, cant just drag
         // inspector cause its prefab
@@ -39,20 +65,30 @@ public class SnapToGrid : MonoBehaviour
         Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(mousePos, out hit))
         {
-            Node nodehit = gridRef.GetNodeFromWorldPoint(hit.point);
-            if (nodehit.walkable)
+             if (hit.transform.gameObject.tag == "Ground")
+             {
+                // if player clicks else where menu disappears
+                Node nodehit = gridRef.GetNodeFromWorldPoint(hit.point);
+                if (nodehit.walkable)
+                {
+                  gameObject.transform.position = new Vector3(nodehit.worldPosition.x, nodehit.worldPosition.y -0.5f, nodehit.worldPosition.z);
+                }       
+            }
+            if (!hasItem)
             {
-                gameObject.transform.position = new Vector3(nodehit.worldPosition.x, nodehit.worldPosition.y -0.5f, nodehit.worldPosition.z);
+                confirmButton.SetActive(false);
+                cancelButton.SetActive(false);
             }
         }
     }
 
     private void OnMouseDown()
     {
-        if (hasItem)
+        if (!hasItem) //&& hasDurability)
         {
-            confirmPlacement = true;
-        }
+            confirmButton.SetActive(true);
+            cancelButton.SetActive(true);
+        }     
     }
 
     /// <summary>
@@ -69,20 +105,37 @@ public class SnapToGrid : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && hasItem)
         {
             gameObject.transform.Rotate(rotVector, Space.Self);
-        }
-        if (Input.GetMouseButtonDown(1) && hasItem)
+        }  
+    }
+
+   public void ConfirmPlacement()
+    { 
+        if (gameObject.tag == "Unplaced Item")
         {
-            Destroy(gameObject);
-            //resets colour
-            gameObject.tag = "Placed Item";
-            gameManager.CheckIfItemHeld();
-        }
-        if (Input.GetMouseButtonDown(0) && confirmPlacement)
-        {
+            gameManager.currencyManager.TryBuy(itemID);
             hasItem = false;
             gameObject.tag = "Placed Item";
             gameManager.CheckIfItemHeld();
-            DestroyImmediate(GetComponent<BoxCollider>());
+            confirmButton.SetActive(false);
+            cancelButton.SetActive(false);
         }
+   }
+
+    public void CancelPlacement()
+    {
+        if (hasItem)
+        {
+        Destroy(gameObject);
+        gameManager.CheckIfItemHeld();
+        }
+    }
+
+    public void CancelRepair()
+    {
+        if (!hasItem)
+        {
+            confirmButton.SetActive(false);
+            cancelButton.SetActive(false);
+        }       
     }
 }

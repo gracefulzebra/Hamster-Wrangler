@@ -10,12 +10,13 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private int hamstersPerWave;
     [SerializeField] private float spawnDelay;
     private int hamstersKilled;
-    private bool waveCompleted = false;
+    public bool waveCompleted;
 
 
     private void Awake()
     {
         InitializeSpawns();
+        waveCompleted = true;
     }
 
     private void InitializeSpawns()
@@ -25,8 +26,9 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator StartWave()
     {
-        if(!waveCompleted) 
+        if(waveCompleted) 
         {
+            waveCompleted = false;
             for (int i = 1; i <= hamstersPerWave; i++)
             {
                 for (int j = 0; j < hamsterSpawners.Length; j++)

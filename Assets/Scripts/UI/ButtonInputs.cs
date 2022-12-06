@@ -15,7 +15,6 @@ public class ButtonInputs : MonoBehaviour
     [SerializeField] GameObject rake;
     [SerializeField] GameObject tar;
     [SerializeField] GameObject lighter;
-    [SerializeField] SnapToGrid objectToSnap;
 
     [Header("Trap Info")]
     [SerializeField] GameObject lawnMowerInfo;
@@ -35,21 +34,20 @@ public class ButtonInputs : MonoBehaviour
 
     [SerializeField] Sprite itemSelected;
 
-
     void Awake()
-     {
+    {
         if (gameManager != null)
         gameManager.holdingItem = false;
-     }
+    }
 
     void SpawnItem(GameObject itemToSpawn)
     {
+
       if (!gameManager.holdingItem)
       {
         // used for colour change
         Vector3 spawnPos = new Vector3(0f, 100f, 0f);
         Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
-        objectToSnap.hasItem = true;
         gameManager.holdingItem = true;
       }     
     }
@@ -88,32 +86,42 @@ public class ButtonInputs : MonoBehaviour
     public void SpawnLawnMower()
     {
         // this wont work because you cna unconfirm placement, if that happens mayeb have return currancy fucntion
-        if (gameManager.currencyManager.TryBuy("LawnMower") == true)
-         SpawnItem(lawnMower);
+        if (gameManager.currencyManager.CheckPrice("LawnMower") == true)
+        {
+            SpawnItem(lawnMower);
+        }     
     }
 
     public void SpawnLeafBlower()
     {
-        if (gameManager.currencyManager.TryBuy("LeafBlower") == true)
+        if (gameManager.currencyManager.CheckPrice("LeafBlower") == true)
+        {
             SpawnItem(leafBlower);
+        }
     }
 
     public void SpawnRake()
     {
-        if (gameManager.currencyManager.TryBuy("Rake") == true)
+        if (gameManager.currencyManager.CheckPrice("Rake") == true)
+        {
             SpawnItem(rake);
+        }
     }
 
     public void SpawnTar()
     {
-        if (gameManager.currencyManager.TryBuy("Tar") == true)
+        if (gameManager.currencyManager.CheckPrice("Tar") == true)
+        {
             SpawnItem(tar);
+        }
     }
 
     public void SpawnLighter()
     {
-        if (gameManager.currencyManager.TryBuy("Lighter") == true)
+        if (gameManager.currencyManager.CheckPrice("Lighter") == true)
+        {
             SpawnItem(lighter);
+        }
     }
 
     public void LawnmowerMenu()
@@ -174,7 +182,7 @@ public class ButtonInputs : MonoBehaviour
 
     public void Level1()
     {
-        SceneManager.LoadScene("SampleScene 1");
+        SceneManager.LoadScene("Playtesting");
     }
 
     public void OpenShop()

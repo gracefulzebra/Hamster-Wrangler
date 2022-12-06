@@ -8,11 +8,13 @@ TagManager:
   - Unplaced Item
   - Placed Item
   - Spawner
+  - ShopItem
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - HasDurability
   - Water
   - UI
   - Ground

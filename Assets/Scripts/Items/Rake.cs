@@ -4,55 +4,53 @@ using UnityEngine;
 public class Rake : TrapBase
 { 
 
-        bool pressedRake = false;
-        public float force;
+    public bool pressedRake;
+    public float force;
+    [SerializeField] GameObject itemBrokenEffect;
+
 
     private void Awake()
     {
         cooldownFinish = 7f;
+        pressedRake = false;
     }
 
     private void Update()
     {
-         cooldown += Time.deltaTime;
+
+        cooldown += Time.deltaTime;
 
         if (cooldown > cooldownFinish)
         {
-            finishedCooldown = true;
-            cooldown = 0;
+            itemBrokenEffect.SetActive(false);
+            finishedCooldown = true;  
         }
     }
 
-    void OnMouseDown()
+    public void UseRake()
     {
-        pressedRake = true;
-          //  print(pressedRake);
+        if (GetComponentInParent<SnapToGrid>().hasItem)
+            return;
+        if (cooldown > cooldownFinish)
+        {
+            pressedRake = true;
+        }
     }
 
-        ///<summary>
-        ///Throws hamster in air if standing on it 
-        ///</summary>
-        void ThrowObject()
-        {
+   void OnTriggerStay(Collider col)
+   {
 
-        }
-
-        void OnTriggerStay(Collider col)
-        {
-
-        //var direction = col.transform.position - transform.position;
-        Vector3 direction = transform.position - transform.parent.position;
-
-        //  col.gameObject.GetComponent<Rigidbody>().AddForce(direction * 35, ForceMode.Force);
+        Vector3 direction = transform.position - col.transform.position;
 
         if (pressedRake && finishedCooldown)
         { 
-                col.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * force, ForceMode.Force);
-                col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force * 2, ForceMode.Force);
-                pressedRake = false;
-                finishedCooldown = false;
-              ItemInteract(col.gameObject);
-
+            col.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * force, ForceMode.Force);
+            col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force / 2, ForceMode.Force);
+            pressedRake = false;
+            finishedCooldown = false;
+            cooldown = 0;
+            ItemInteract(col.gameObject);
+            itemBrokenEffect.SetActive(true);
         }
-        }
+   }
 }

@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         InitialiseSystems();
-     //   holdingItem = false;
+        //   holdingItem = false;
     }
 
     private void InitialiseSystems()
@@ -54,8 +54,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void StartWave()
-    {
-        StartCoroutine(waveManager.StartWave()); //To be hooked up to UI button. Fully functional and ready to be tweaked.
+    {    
+            StartCoroutine(waveManager.StartWave()); //To be hooked up to UI button. Fully functional and ready to be tweaked. 
     }
 
     //UIManager communication
@@ -82,11 +82,10 @@ public class GameManager : MonoBehaviour
      {
         // allows only one item to be placed down at once
         GameObject unplacedItem = GameObject.FindGameObjectWithTag("Unplaced Item");
-
+        
         if (unplacedItem != null)
         {
-            holdingItem = true;
-            //  placementConfirmation.transform.position = x.transform.position;
+            holdingItem = true; 
         }
         else
         {

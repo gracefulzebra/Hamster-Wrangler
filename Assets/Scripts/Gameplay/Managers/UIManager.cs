@@ -46,6 +46,15 @@ public class UIManager : MonoBehaviour
         }
    }
 
+  public void MainMenuButton()
+    {
+        mainMenu.SetActive(false);
+        mainMenuActive = false;
+        Time.timeScale = 1;
+        GetComponent<GameManager>().holdingItem = false;
+    }
+ 
+
     IEnumerator UpdateAudio()
     {
         for(; ;)
@@ -70,6 +79,6 @@ public class UIManager : MonoBehaviour
 
     public void DisplayCurrency(int currency)
     {
-        currencyDisplay.GetComponent<TextMeshProUGUI>().text = "Currency : " + currency;
+        currencyDisplay.GetComponent<TextMeshProUGUI>().text = "" + currency;
     }
 }

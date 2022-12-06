@@ -14,9 +14,14 @@ public class TrapBase : MonoBehaviour
     protected string itemID;
     protected bool itemBroken;
     protected bool repairItem;
+    [SerializeField] GameObject gameManagerObject;
+    [SerializeField] GameManager gameManager;
+
 
     private void Awake()
     {
+        gameManagerObject = GameObject.Find("Game Manager");
+        gameManager = gameManagerObject.GetComponent<GameManager>();
         repairItem = false;
     }
 
@@ -43,18 +48,17 @@ public class TrapBase : MonoBehaviour
     void ItemBreak()
     {
         itemBroken = true;
-        print(itemBroken);
     }
 
     // read in items maxhealth, the logic in this is flawed
     public void RepairItem()
-    {   
-        // if (itemBroken)
-         // {
+    {
+        // gameManager.currencyManager.RepairItemCost();
+         if (itemBroken)
+         {
             itemBroken = false;
-            print(itemBroken);
             StartCoroutine(ItemRepair());
-       // }      
+         }      
     }
 
     WaitForSeconds delay = new WaitForSeconds(.5f);

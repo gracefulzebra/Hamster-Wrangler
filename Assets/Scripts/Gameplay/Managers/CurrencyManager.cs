@@ -5,6 +5,7 @@ using UnityEngine;
 public class CurrencyManager : MonoBehaviour
 {
     private static int currency;
+    [SerializeField] private int repairCost = 40;
     [SerializeField] private int hamsterCost = 100;
     [SerializeField] private int blowerCost, mowerCost, lighterCost, tarCost, rakeCost;
 
@@ -88,6 +89,18 @@ public class CurrencyManager : MonoBehaviour
                 return false;
         }
     }
+/*
+    public bool RepairItemCost()
+    {
+        if (CheckValidPurcase(repairCost))
+        {
+            PurchaseItem(repairCost);
+            return true;
+        }
+        else
+            return false;
+    }
+*/
 
     private bool CheckValidPurcase(int cost)
     {

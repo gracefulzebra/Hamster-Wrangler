@@ -7,9 +7,12 @@ public class LawnMower : TrapBase
 
     int maxHealth = 2;
     int health;
+    [SerializeField] GameObject itemBrokenEffect;
+
 
     private void Awake()
     {
+        itemID = "LawnMower";
         health = maxHealth;
     }
 
@@ -20,11 +23,19 @@ public class LawnMower : TrapBase
             health = maxHealth;
         }
        Durability(health);
+        
+        if( health == 0)
+        {
+            itemBrokenEffect.SetActive(true);
+        }    
+        else
+        {
+            itemBrokenEffect.SetActive(false);
+        }
     }
 
     private void OnTriggerStay(Collider collision)
     {
-        itemID = "LawnMower";
         // if item is unplaced then dont run script
        if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
