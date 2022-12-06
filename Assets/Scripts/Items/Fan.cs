@@ -16,7 +16,7 @@ public class Fan : TrapBase
 
     private void Awake()
     {
-        cooldownFinish = 7;
+        cooldownFinish = 3.5f;
     }
 
     private void Update()

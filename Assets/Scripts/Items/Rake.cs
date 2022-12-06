@@ -11,7 +11,7 @@ public class Rake : TrapBase
 
     private void Awake()
     {
-        cooldownFinish = 7f;
+        cooldownFinish = 3.5f;
         pressedRake = false;
     }
 
