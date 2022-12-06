@@ -125,8 +125,9 @@ public class SnapToGrid : MonoBehaviour
     {
         if (hasItem)
         {
-        Destroy(gameObject);
+        gameObject.tag = "Placed Item";
         gameManager.CheckIfItemHeld();
+        Destroy(gameObject);
         }
     }
 
