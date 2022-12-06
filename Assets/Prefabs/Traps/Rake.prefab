@@ -61,6 +61,8 @@ MonoBehaviour:
   cooldown: 0
   cooldownFinish: 0
   finishedCooldown: 0
+  gameManagerObject: {fileID: 0}
+  gameManager: {fileID: 0}
   pressedRake: 0
   force: 400
   itemBrokenEffect: {fileID: 550789770128794551}
@@ -553,6 +555,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2345688940503874678}
         m_TargetAssemblyTypeName: SnapToGrid, Assembly-CSharp
         m_MethodName: CancelPlacement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2345688940503874678}
+        m_TargetAssemblyTypeName: SnapToGrid, Assembly-CSharp
+        m_MethodName: CancelRepair
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
