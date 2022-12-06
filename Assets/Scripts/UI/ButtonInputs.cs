@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using static UnityEditor.Progress;
-using Unity.VisualScripting;
 using UnityEngine.UI;
 
 public class ButtonInputs : MonoBehaviour

@@ -651,7 +651,7 @@ RectTransform:
   - {fileID: 1044460290}
   - {fileID: 1864283341}
   m_Father: {fileID: 840621282}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1091,7 +1091,7 @@ RectTransform:
   - {fileID: 1556016872}
   - {fileID: 1432910657}
   m_Father: {fileID: 840621282}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2029,11 +2029,11 @@ RectTransform:
   m_Children:
   - {fileID: 1768054166}
   - {fileID: 1257199512}
+  - {fileID: 1362582901}
+  - {fileID: 1986235222}
   - {fileID: 1000085496}
   - {fileID: 476301309}
   - {fileID: 122952287}
-  - {fileID: 1362582901}
-  - {fileID: 1986235222}
   m_Father: {fileID: 814230511}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2345,7 +2345,7 @@ RectTransform:
   - {fileID: 2589421}
   - {fileID: 812659487}
   m_Father: {fileID: 840621282}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3080,7 +3080,7 @@ RectTransform:
   - {fileID: 1375630412}
   - {fileID: 120162137}
   m_Father: {fileID: 840621282}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3522,7 +3522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 44, y: 48}
+  m_AnchoredPosition: {x: 44, y: 72.6}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1499643347
@@ -3545,7 +3545,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'HAMSTER TIME BABAY OH YEH I L:OVE HAMSTER WAAHOOO YIPPER '
+  m_text: Hamster Wrangler is about setting up convulted traps to kill hamsters to
+    stop them from getting to the cheese. Use yours wits, skills, and deadly weapons
+    to kill, burn, and throw your way to victory. Still a WIP but please enjoy!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b1ab64ee6d6eb3d4b95fe4b8ed5e32ab, type: 2}
   m_sharedMaterial: {fileID: 1539077350808063104, guid: b1ab64ee6d6eb3d4b95fe4b8ed5e32ab, type: 2}
@@ -3608,7 +3610,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -76.85558, y: 0, z: -73.41048, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5216,7 +5218,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 840621282}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
