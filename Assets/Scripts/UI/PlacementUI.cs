@@ -20,8 +20,10 @@ public class PlacementUI : MonoBehaviour
     void Update()
     {
 
-       Vector3 lookAt = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z);
+        transform.LookAt(transform.position + mainCamera.transform.rotation * Vector3.back);
 
-       transform.LookAt(lookAt);
+     //  Vector3 lookAt = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z);
+
+     // transform.LookAt(lookAt);
     }
 }

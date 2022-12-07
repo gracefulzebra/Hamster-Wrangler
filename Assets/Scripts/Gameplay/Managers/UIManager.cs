@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject scoreDisplay;
     [SerializeField] private GameObject currencyDisplay;
     [SerializeField] private Slider slider;
+    [SerializeField] private GameObject lmCost, lbCost, rakeCost, tarCost, lighterCost;
+
     public bool mainMenuActive;
 
     private void Awake()
@@ -21,6 +24,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(UpdateAudio());
+        UpdateItemCosts();
     }
 
     private void Update()
@@ -80,5 +84,15 @@ public class UIManager : MonoBehaviour
     public void DisplayCurrency(int currency)
     {
         currencyDisplay.GetComponent<TextMeshProUGUI>().text = "" + currency;
+    }
+
+
+   public void UpdateItemCosts()
+    {
+        lmCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.mowerCost;
+        lbCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.blowerCost;
+        rakeCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.rakeCost;
+        tarCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.tarCost;
+        lighterCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.lighterCost;
     }
 }

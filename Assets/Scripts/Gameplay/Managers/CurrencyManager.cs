@@ -7,7 +7,7 @@ public class CurrencyManager : MonoBehaviour
     private static int currency;
     [SerializeField] private int repairCost = 40;
     [SerializeField] private int hamsterCost = 100;
-    [SerializeField] private int blowerCost, mowerCost, lighterCost, tarCost, rakeCost;
+    [SerializeField] public int blowerCost, mowerCost, lighterCost, tarCost, rakeCost;
 
     //To be attached to the game manager
     //Updated at the start of every level

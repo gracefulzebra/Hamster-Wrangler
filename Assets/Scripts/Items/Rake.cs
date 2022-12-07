@@ -4,26 +4,34 @@ using UnityEngine;
 public class Rake : TrapBase
 { 
 
-    public bool pressedRake;
-    public float force;
-    [SerializeField] GameObject itemBrokenEffect;
-
-
-    private void Awake()
-    {
-        cooldownFinish = 3.5f;
-        pressedRake = false;
-    }
+    bool pressedRake;
+    float pressedRakeCooldown;
+    float pressedRakeCooldownMax;
 
     private void Update()
     {
+        if (GetComponentInParent<SnapToGrid>().hasItem)
+            return;
 
         cooldown += Time.deltaTime;
+        SliderUpdate();
 
-        if (cooldown > cooldownFinish)
+        if (cooldown > cooldownMax)
         {
-            itemBrokenEffect.SetActive(false);
             finishedCooldown = true;  
+        }
+
+        // if player pressed the userake button it would 
+        // automatically throw the hamster when they walked
+        // on it, this stops that
+        if (pressedRake)
+        {
+            pressedRakeCooldown += Time.deltaTime;
+            if (pressedRakeCooldown > 0.3f)
+            {
+                pressedRake = false;
+                pressedRakeCooldown = 0;
+            }
         }
     }
 
@@ -31,10 +39,10 @@ public class Rake : TrapBase
     {
         if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
-        if (cooldown > cooldownFinish)
-        {
+         if (cooldown > cooldownMax)
+         {
             pressedRake = true;
-        }
+         }
     }
 
    void OnTriggerStay(Collider col)
@@ -50,7 +58,6 @@ public class Rake : TrapBase
             finishedCooldown = false;
             cooldown = 0;
             ItemInteract(col.gameObject);
-            itemBrokenEffect.SetActive(true);
         }
    }
 }

@@ -11,8 +11,8 @@ public class SnapToGrid : MonoBehaviour
     public bool hasItem;
     public bool confirmPlacement;
     Vector3 rotVector = new Vector3(0f, 90f, 0f);
-    [SerializeField] GameObject gameManagerObject;
-    [SerializeField] GameManager gameManager;
+    GameObject gameManagerObject;
+    GameManager gameManager;
     [SerializeField] GameObject confirmButton;
     [SerializeField] GameObject cancelButton;
     public string itemID;
@@ -73,22 +73,8 @@ public class SnapToGrid : MonoBehaviour
                 {
                   gameObject.transform.position = new Vector3(nodehit.worldPosition.x, nodehit.worldPosition.y -0.5f, nodehit.worldPosition.z);
                 }       
-            }
-            if (!hasItem)
-            {
-                confirmButton.SetActive(false);
-                cancelButton.SetActive(false);
-            }
+             }
         }
-    }
-
-    private void OnMouseDown()
-    {
-        if (!hasItem) //&& hasDurability)
-        {
-            confirmButton.SetActive(true);
-            cancelButton.SetActive(true);
-        }     
     }
 
     /// <summary>
@@ -131,6 +117,7 @@ public class SnapToGrid : MonoBehaviour
         }
     }
 
+    /* from old ui input
     public void CancelRepair()
     {
         if (!hasItem)
@@ -139,4 +126,15 @@ public class SnapToGrid : MonoBehaviour
             cancelButton.SetActive(false);
         }       
     }
+
+    private void OnMouseDown()
+    {
+        if (!hasItem) //&& hasDurability)
+        {
+            confirmButton.SetActive(true);
+            cancelButton.SetActive(true);
+        }
+    }
+    */
+
 }

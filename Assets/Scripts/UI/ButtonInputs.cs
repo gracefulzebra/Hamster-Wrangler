@@ -31,6 +31,8 @@ public class ButtonInputs : MonoBehaviour
     [SerializeField] GameObject closeMenu;
 
     [SerializeField] Sprite itemSelected;
+    [SerializeField] Sprite itemUnselected;
+
 
     void Awake()
     {
@@ -38,21 +40,30 @@ public class ButtonInputs : MonoBehaviour
         gameManager.holdingItem = false;
     }
 
+    private void Update()
+    {
+        if (!gameManager.holdingItem)
+        {
+            GetComponent<Image>().sprite = itemUnselected;
+        }
+    }
+
     void SpawnItem(GameObject itemToSpawn)
     {
-
-      if (!gameManager.holdingItem)
-      {
+   //     ItemSelected();
+        if (!gameManager.holdingItem)
+        {
+        GetComponent<Image>().sprite = itemSelected;
         // used for colour change
         Vector3 spawnPos = new Vector3(0f, 100f, 0f);
         Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
         gameManager.holdingItem = true;
-      }     
+        }     
     }
         
     public void ItemSelected()
     {
-        GetComponentInParent<Image>().sprite = itemSelected;
+        GetComponent<Image>().sprite = itemSelected;
     }
 
     void HelpGuide(GameObject guideMenu)

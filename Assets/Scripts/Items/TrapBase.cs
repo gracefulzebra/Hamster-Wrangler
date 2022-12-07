@@ -1,38 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TrapBase : MonoBehaviour
 {
-
-   // int maxItemHealth = 2;
-  //  int itemHealth;
-
+    public float repairCooldown;
+    public float repairCooldownMax;
     public float cooldown;
-    public float cooldownFinish;
+    public float cooldownMax;
     public bool finishedCooldown;
     protected string itemID;
     protected bool itemBroken;
     protected bool repairItem;
-    [SerializeField] GameObject gameManagerObject;
-    [SerializeField] GameManager gameManager;
-
+    public float force;
+    GameObject gameManagerObject;
+    GameManager gameManager;
+    [SerializeField] Slider cooldownSlider;
 
     private void Awake()
     {
         gameManagerObject = GameObject.Find("Game Manager");
         gameManager = gameManagerObject.GetComponent<GameManager>();
         repairItem = false;
+        cooldownSlider.maxValue = cooldownMax;
     }
 
     private void Update()
     {
-        cooldown += Time.deltaTime;
+        repairCooldown += Time.deltaTime;
 
-        if (cooldown > 10f)
+        if (repairCooldown > 10f)
         {
-          //  RepairItem();
-            cooldown = 0f;
+            //  RepairItem();
+            repairCooldown = 0f;
         }
     }
 
@@ -59,6 +60,11 @@ public class TrapBase : MonoBehaviour
             itemBroken = false;
             StartCoroutine(ItemRepair());
          }      
+    }
+
+    public void SliderUpdate()
+    {
+        cooldownSlider.value = cooldown;
     }
 
     WaitForSeconds delay = new WaitForSeconds(.5f);
