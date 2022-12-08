@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6975680006452364069
+--- !u!1 &6275608050045011162
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7747678643065919903}
-  - component: {fileID: 6641282469504751162}
-  - component: {fileID: 8921178352217023216}
-  - component: {fileID: 6645546373918366054}
+  - component: {fileID: 6655371272038620768}
+  - component: {fileID: 7778696754982851013}
+  - component: {fileID: 5483005233463059727}
+  - component: {fileID: 6617504827869574939}
   m_Layer: 7
-  m_Name: blue flower bush
+  m_Name: purple flower bush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7747678643065919903
+--- !u!4 &6655371272038620768
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6975680006452364069}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -2.476, y: -0.12, z: 5.48}
+  m_GameObject: {fileID: 6275608050045011162}
+  m_LocalRotation: {x: -0.19599037, y: 0.64558274, z: 0.23986655, w: 0.6980507}
+  m_LocalPosition: {x: 0.504, y: 0.236, z: -3.579}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6641282469504751162
+--- !u!33 &7778696754982851013
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6975680006452364069}
-  m_Mesh: {fileID: 2858101379416298378, guid: dcce3cf2f8807ed4ab92aeae0b05bdba, type: 3}
---- !u!23 &8921178352217023216
+  m_GameObject: {fileID: 6275608050045011162}
+  m_Mesh: {fileID: 351144940459655238, guid: a0a77f91602d4ea42ad635a8727e1831, type: 3}
+--- !u!23 &5483005233463059727
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6975680006452364069}
+  m_GameObject: {fileID: 6275608050045011162}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -62,12 +62,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 248095952346832364, guid: dcce3cf2f8807ed4ab92aeae0b05bdba, type: 3}
-  - {fileID: -208801400927806661, guid: dcce3cf2f8807ed4ab92aeae0b05bdba, type: 3}
-  - {fileID: -3043319508471551541, guid: dcce3cf2f8807ed4ab92aeae0b05bdba, type: 3}
-  - {fileID: -7740164840096716778, guid: dcce3cf2f8807ed4ab92aeae0b05bdba, type: 3}
-  - {fileID: 7935732918343872492, guid: dcce3cf2f8807ed4ab92aeae0b05bdba, type: 3}
-  - {fileID: 8883391371553652947, guid: dcce3cf2f8807ed4ab92aeae0b05bdba, type: 3}
+  - {fileID: -208801400927806661, guid: a0a77f91602d4ea42ad635a8727e1831, type: 3}
+  - {fileID: -7740164840096716778, guid: a0a77f91602d4ea42ad635a8727e1831, type: 3}
+  - {fileID: -112640336370538545, guid: a0a77f91602d4ea42ad635a8727e1831, type: 3}
+  - {fileID: 248095952346832364, guid: a0a77f91602d4ea42ad635a8727e1831, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89,16 +87,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6645546373918366054
+--- !u!135 &6617504827869574939
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6975680006452364069}
+  m_GameObject: {fileID: 6275608050045011162}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.09903187
-  m_Center: {x: -0.0023003444, y: -0.011260204, z: 0.06840992}
+  m_Radius: 0.38188705
+  m_Center: {x: -0.000000014901159, y: 1.1310397e-15, z: -0.000000044703484}
