@@ -1,22 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
 public class Lighter : TrapBase
 {
 
-    // probs needs health or cooldown or soemthing
+    public bool lighterOn;
+    public float lighterCooldown;
+    [SerializeField] GameObject fireEffect;
 
-     void OnTriggerEnter(Collider col)
-     {
+    private void Awake()
+    {
+        lighterOn = false;
+    }
 
-        col.gameObject.GetComponent<HamsterBase>().speed /= 2;
-        col.gameObject.GetComponent<ItemEffects>().onFire = true;
-        if (col.gameObject.tag == "Flammable")
+    private void Update()
+    {
+        if (GetComponentInParent<SnapToGrid>().hasItem == true)
+            return;
+
+        // if lighter isnt on, starts timer to activate it 
+        if (!lighterOn)
         {
-            col.gameObject.GetComponent<ItemEffects>().OnFire();
-
+            timer += Time.deltaTime;
+            lighterCooldown = 0f;
+            fireEffect.SetActive(false);
         }
-     }
+        // if timer is on, timer strats till it turn off
+        else
+        {
+            fireEffect.SetActive(true);
+            lighterCooldown += Time.deltaTime;
+        }
+
+        if (timer > timerMax)
+        {
+            lighterOn = true;
+            timer = 0;
+        }
+
+        if (lighterCooldown > timerMax)
+        {
+            lighterOn = false;
+        }
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+         if (lighterOn)
+         {
+            if (lighterCooldown < timerMax)
+            {
+                if (col.gameObject.tag == "Flammable")
+                {
+                    col.gameObject.GetComponent<ItemEffects>().OnFire();
+                }
+            }
+         }
+    }
 }

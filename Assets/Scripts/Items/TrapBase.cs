@@ -7,8 +7,8 @@ public class TrapBase : MonoBehaviour
 {
     public float repairCooldown;
     public float repairCooldownMax;
-    public float cooldown;
-    public float cooldownMax;
+    public float timer;
+    public float timerMax;
     public bool finishedCooldown;
     protected string itemID;
     protected bool itemBroken;
@@ -23,7 +23,7 @@ public class TrapBase : MonoBehaviour
         gameManagerObject = GameObject.Find("Game Manager");
         gameManager = gameManagerObject.GetComponent<GameManager>();
         repairItem = false;
-        cooldownSlider.maxValue = cooldownMax;
+        cooldownSlider.maxValue = timerMax;
     }
 
     private void Update()
@@ -64,7 +64,7 @@ public class TrapBase : MonoBehaviour
 
     public void SliderUpdate()
     {
-        cooldownSlider.value = cooldown;
+        cooldownSlider.value = timer;
     }
 
     WaitForSeconds delay = new WaitForSeconds(.5f);

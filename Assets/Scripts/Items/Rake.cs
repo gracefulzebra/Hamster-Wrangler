@@ -6,17 +6,16 @@ public class Rake : TrapBase
 
     bool pressedRake;
     float pressedRakeCooldown;
-    float pressedRakeCooldownMax;
 
     private void Update()
     {
         if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
 
-        cooldown += Time.deltaTime;
+        timer += Time.deltaTime;
         SliderUpdate();
 
-        if (cooldown > cooldownMax)
+        if (timer > timerMax)
         {
             finishedCooldown = true;  
         }
@@ -39,7 +38,7 @@ public class Rake : TrapBase
     {
         if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
-         if (cooldown > cooldownMax)
+         if (timer > timerMax)
          {
             pressedRake = true;
          }
@@ -56,7 +55,7 @@ public class Rake : TrapBase
             col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force / 2, ForceMode.Force);
             pressedRake = false;
             finishedCooldown = false;
-            cooldown = 0;
+            timer = 0;
             ItemInteract(col.gameObject);
         }
    }

@@ -24,11 +24,11 @@ public class Fan : TrapBase
             fanTimer += Time.deltaTime;
         }
         else
-            cooldown += Time.deltaTime;
+            timer += Time.deltaTime;
 
         if (fanTimer > 3)
         {
-            cooldown = 0;
+            timer = 0;
             fanTimer = 0;
             turnedOn = false;
         }
@@ -38,7 +38,7 @@ public class Fan : TrapBase
     {
         if (GetComponentInParent<SnapToGrid>().hasItem == true)
             return;
-        if (!turnedOn && cooldown > cooldownMax)
+        if (!turnedOn && timer > timerMax)
         { 
             turnedOn = true;
         }
@@ -50,7 +50,7 @@ public class Fan : TrapBase
         {
             if (fanTimer < 3f)
             {
-                cooldown = 0;
+                timer = 0;
 
                 Vector3 direction = transform.position - transform.parent.position;
 
