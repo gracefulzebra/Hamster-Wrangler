@@ -41,6 +41,7 @@ public class Fan : TrapBase
         if (!turnedOn && timer > timerMax)
         { 
             turnedOn = true;
+            timer = 0;
         }
     }
 
@@ -50,8 +51,6 @@ public class Fan : TrapBase
         {
             if (fanTimer < 3f)
             {
-                timer = 0;
-
                 Vector3 direction = transform.position - transform.parent.position;
 
                 col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force, ForceMode.Force);

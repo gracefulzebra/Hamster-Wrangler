@@ -49,11 +49,16 @@ public class SnapToGrid : MonoBehaviour
         // holdingItem = false;
         gameManagerObject = GameObject.Find("Game Manager");
         gameManager = gameManagerObject.GetComponent<GameManager>();
+
     }
 
     private void Update()
     {
         PlacementConfirmtation();
+        if (hasItem)
+        {
+            nodeCheck();
+        }
     }
 
     /// <summary>
@@ -83,10 +88,12 @@ public class SnapToGrid : MonoBehaviour
     void PlacementConfirmtation()
     {
         // when player has item they choose grid square they want
-        if (Input.GetMouseButtonDown(0) && hasItem)
+       /* old placement
+        * if (Input.GetMouseButtonDown(0) && hasItem)
         {
             nodeCheck();
         }
+       */
         // they can then rotate item to correct direction
         if (Input.GetKeyDown(KeyCode.R) && hasItem)
         {

@@ -33,7 +33,6 @@ public class ButtonInputs : MonoBehaviour
     [SerializeField] Sprite itemSelected;
     [SerializeField] Sprite itemUnselected;
 
-
     void Awake()
     {
         if (gameManager != null)

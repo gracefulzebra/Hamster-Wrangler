@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7431012811805213396}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hamster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 1892701076170301686}
   - component: {fileID: 1892701076170301681}
   - component: {fileID: 6423248422091707386}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hamster 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,6 +119,7 @@ MonoBehaviour:
   speed: 40
   rotationSpeed: 2
   gridRef: {fileID: 0}
+  hamsterID: baseHamster
 --- !u!114 &1892701076170301681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4853484466891730988}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: transform2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +188,7 @@ GameObject:
   - component: {fileID: 3380910191215887800}
   - component: {fileID: 8407794895787473661}
   - component: {fileID: 6764688297754994075}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HamsterPlaceHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8362828041371506730}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: transform1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2414364287914844909}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: transform3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +335,7 @@ GameObject:
   - component: {fileID: 4053217170156069141}
   - component: {fileID: 715872047738289126}
   - component: {fileID: 5503426175196621540}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HamsterTest:Group7834_Original
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +416,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2206028617130299744}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HamsterPlaceHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +448,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4498187351692096678}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: pCube3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +480,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4059043392871969142}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: pCube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

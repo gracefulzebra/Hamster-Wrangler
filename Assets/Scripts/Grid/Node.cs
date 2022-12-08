@@ -1,9 +1,11 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Node : IHeapItem<Node>
 {
     public bool walkable;
+    public bool empty;
     public Vector3 worldPosition;
     public int gridX, gridY;
     

@@ -1,11 +1,14 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Rake : TrapBase
 { 
 
     bool pressedRake;
     float pressedRakeCooldown;
+    [SerializeField] Image activationButton;
+
 
     private void Update()
     {
@@ -17,8 +20,12 @@ public class Rake : TrapBase
 
         if (timer > timerMax)
         {
-            finishedCooldown = true;  
+            finishedCooldown = true;
+            activationButton.GetComponent<Image>().color = new Color(activationButton.color.r, activationButton.color.g, activationButton.color.b, 1f);
         }
+        else
+            activationButton.GetComponent<Image>().color = new Color(activationButton.color.r, activationButton.color.g, activationButton.color.b, 0f);
+
 
         // if player pressed the userake button it would 
         // automatically throw the hamster when they walked
@@ -41,6 +48,7 @@ public class Rake : TrapBase
          if (timer > timerMax)
          {
             pressedRake = true;
+            timer = 0;
          }
     }
 
@@ -55,7 +63,6 @@ public class Rake : TrapBase
             col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force / 2, ForceMode.Force);
             pressedRake = false;
             finishedCooldown = false;
-            timer = 0;
             ItemInteract(col.gameObject);
         }
    }
