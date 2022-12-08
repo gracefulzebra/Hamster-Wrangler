@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LawnMower : TrapBase
@@ -7,6 +8,7 @@ public class LawnMower : TrapBase
 
     int maxHealth = 2;
     int health;
+    bool onCooldown;
     [SerializeField] GameObject itemBrokenEffect;
 
 
@@ -14,19 +16,36 @@ public class LawnMower : TrapBase
     {
         itemID = "LawnMower";
         health = maxHealth;
+        gameManagerObject = GameObject.Find("Game Manager");
+        gameManager = gameManagerObject.GetComponent<GameManager>();
     }
 
     private void Update()
     {
+       if(onCooldown)
+       {
+         timer += Time.deltaTime;
+
+         if (timer > timerMax)
+         {
+             onCooldown = false;     
+         }
+       }
+
+        SliderUpdate();
+
         if (repairItem)
         {
             health = maxHealth;
+            timer = 0;
         }
-       Durability(health);
+
+        Durability(health);
         
         if( health == 0)
         {
             itemBrokenEffect.SetActive(true);
+            onCooldown = true;
         }    
         else
         {

@@ -9,7 +9,6 @@ public class Rake : TrapBase
     float pressedRakeCooldown;
     [SerializeField] Image activationButton;
 
-
     private void Update()
     {
         if (GetComponentInParent<SnapToGrid>().hasItem)

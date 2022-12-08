@@ -5,9 +5,8 @@ using UnityEngine;
 public class CurrencyManager : MonoBehaviour
 {
     private static int currency;
-    [SerializeField] private int repairCost = 40;
     [SerializeField] private int hamsterCost = 100;
-    [SerializeField] public int blowerCost, mowerCost, lighterCost, tarCost, rakeCost;
+    [SerializeField] public int blowerCost, mowerCost, lighterCost, tarCost, rakeCost, repairCost;
 
     //To be attached to the game manager
     //Updated at the start of every level
@@ -89,7 +88,8 @@ public class CurrencyManager : MonoBehaviour
                 return false;
         }
     }
-/*
+
+     
     public bool RepairItemCost()
     {
         if (CheckValidPurcase(repairCost))
@@ -100,7 +100,7 @@ public class CurrencyManager : MonoBehaviour
         else
             return false;
     }
-*/
+
 
     private bool CheckValidPurcase(int cost)
     {

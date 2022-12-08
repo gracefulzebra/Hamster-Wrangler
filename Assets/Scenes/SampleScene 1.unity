@@ -11348,13 +11348,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24797d217951c674d989a713eddffdcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repairCost: 0
   hamsterCost: 100
   blowerCost: 10
   mowerCost: 10
   lighterCost: 10
   tarCost: 10
   rakeCost: 10
+  repairCost: 30
 --- !u!114 &1058055516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16425,15 +16425,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1958378736026711672, guid: 32a722ee91381ba4a9e8d26bb37ca23f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.9546087
+      value: 0.97
       objectReference: {fileID: 0}
     - target: {fileID: 1958378736026711672, guid: 32a722ee91381ba4a9e8d26bb37ca23f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.16286331
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 1958378736026711672, guid: 32a722ee91381ba4a9e8d26bb37ca23f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.603775
+      value: 2.59
       objectReference: {fileID: 0}
     - target: {fileID: 1958378736026711672, guid: 32a722ee91381ba4a9e8d26bb37ca23f, type: 3}
       propertyPath: m_LocalRotation.w

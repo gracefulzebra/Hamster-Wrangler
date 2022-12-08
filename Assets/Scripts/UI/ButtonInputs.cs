@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
+using JetBrains.Annotations;
 
 public class ButtonInputs : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class ButtonInputs : MonoBehaviour
     [SerializeField] GameObject rake;
     [SerializeField] GameObject tar;
     [SerializeField] GameObject lighter;
+    GameObject[] temp;
 
     [Header("Trap Info")]
     [SerializeField] GameObject lawnMowerInfo;
@@ -49,20 +51,27 @@ public class ButtonInputs : MonoBehaviour
 
     void SpawnItem(GameObject itemToSpawn)
     {
-   //     ItemSelected();
         if (!gameManager.holdingItem)
         {
-        GetComponent<Image>().sprite = itemSelected;
-        // used for colour change
-        Vector3 spawnPos = new Vector3(0f, 100f, 0f);
-        Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
-        gameManager.holdingItem = true;
-        }     
+            ItemSpawn(itemToSpawn);
+            gameManager.holdingItem = true;
+        }
+        if (gameManager.holdingItem)
+        {
+            temp = GameObject.FindGameObjectsWithTag("Unplaced Item");
+            foreach (GameObject x in temp)
+            {
+                Destroy(x);
+            }
+            ItemSpawn(itemToSpawn);
+        }
     }
-        
-    public void ItemSelected()
+
+    void ItemSpawn(GameObject itemToSpawn)
     {
         GetComponent<Image>().sprite = itemSelected;
+        Vector3 spawnPos = new Vector3(0f, 100f, 0f);
+        Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
     }
 
     void HelpGuide(GameObject guideMenu)
@@ -93,7 +102,6 @@ public class ButtonInputs : MonoBehaviour
 
     public void SpawnLawnMower()
     {
-        // this wont work because you cna unconfirm placement, if that happens mayeb have return currancy fucntion
         if (gameManager.currencyManager.CheckPrice("LawnMower") == true)
         {
             SpawnItem(lawnMower);

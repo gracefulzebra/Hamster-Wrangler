@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Fan : TrapBase
 {
@@ -11,6 +8,7 @@ public class Fan : TrapBase
     bool turnedOn;
     float fanTimer;
     [SerializeField] ParticleSystem windEffect;
+    [SerializeField] Image activationButton;
 
     private void Update()
     {        
@@ -25,6 +23,16 @@ public class Fan : TrapBase
         }
         else
             timer += Time.deltaTime;
+
+        if (timer > timerMax)
+        {
+            activationButton.GetComponent<Image>().color = new Color(activationButton.color.r, activationButton.color.g, activationButton.color.b, 1f);
+        } 
+        else
+        {
+            activationButton.GetComponent<Image>().color = new Color(activationButton.color.r, activationButton.color.g, activationButton.color.b, 0f);
+
+        }
 
         if (fanTimer > 3)
         {

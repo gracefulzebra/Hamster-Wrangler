@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,14 +13,12 @@ public class TrapBase : MonoBehaviour
     protected bool itemBroken;
     protected bool repairItem;
     public float force;
-    GameObject gameManagerObject;
-    GameManager gameManager;
+    protected GameObject gameManagerObject;
+    protected GameManager gameManager;
     [SerializeField] Slider cooldownSlider;
 
-    private void Awake()
+    public void Awake()
     {
-        gameManagerObject = GameObject.Find("Game Manager");
-        gameManager = gameManagerObject.GetComponent<GameManager>();
         repairItem = false;
         cooldownSlider.maxValue = timerMax;
     }
@@ -54,12 +51,14 @@ public class TrapBase : MonoBehaviour
     // read in items maxhealth, the logic in this is flawed
     public void RepairItem()
     {
-        // gameManager.currencyManager.RepairItemCost();
-         if (itemBroken)
-         {
-            itemBroken = false;
-            StartCoroutine(ItemRepair());
-         }      
+        if (itemBroken)
+        {
+            if (gameManager.currencyManager.RepairItemCost() == true)
+            {
+                itemBroken = false;
+                StartCoroutine(ItemRepair());
+            }
+        }
     }
 
     public void SliderUpdate()
