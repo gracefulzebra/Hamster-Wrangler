@@ -25,6 +25,7 @@ public class ButtonInputs : MonoBehaviour
 
     [Header("Main Menu")]
     [SerializeField] GameObject levelSelect;
+    [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject HTPMenu;
     [SerializeField] GameObject settings;
 
@@ -43,9 +44,12 @@ public class ButtonInputs : MonoBehaviour
 
     private void Update()
     {
-        if (!gameManager.holdingItem)
+        if (gameManager != null)
         {
-            GetComponent<Image>().sprite = itemUnselected;
+            if (!gameManager.holdingItem)
+            {
+                GetComponent<Image>().sprite = itemUnselected;
+            }
         }
     }
 
@@ -93,10 +97,12 @@ public class ButtonInputs : MonoBehaviour
         if (objectToSwitch.activeSelf)
         {
             objectToSwitch.SetActive(false);
+            mainMenu.SetActive(true);
         }
         else 
         {
             objectToSwitch.SetActive(true);
+            mainMenu.SetActive(false);
         }
     }
 
@@ -194,11 +200,17 @@ public class ButtonInputs : MonoBehaviour
     public void ExitButton()
     {
         transform.parent.gameObject.SetActive(false);
+        mainMenu.SetActive(true);
     }
 
     public void Level1()
     {
         SceneManager.LoadScene("Playtesting");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void OpenShop()
