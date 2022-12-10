@@ -19,7 +19,7 @@ public class SnapToGrid : MonoBehaviour
 
     void Awake()
     {
-        if (gameObject.name == "LawnMower(Clone)")
+        if (gameObject.name == "Lawnmower(Clone)")
         {
             itemID = "LawnMower";
         }

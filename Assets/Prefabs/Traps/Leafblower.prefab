@@ -1032,7 +1032,6 @@ GameObject:
   - component: {fileID: 4103923347380611907}
   - component: {fileID: 4575281151563343648}
   - component: {fileID: -2135356015512987289}
-  - component: {fileID: 8471790871447989567}
   m_Layer: 0
   m_Name: Leafblower
   m_TagString: Unplaced Item
@@ -1103,19 +1102,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.87718326, y: 1.000011, z: 1.0472145}
   m_Center: {x: -0.0035734475, y: 0.3058412, z: 0.023607254}
---- !u!135 &8471790871447989567
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3728910289697894905}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3732014459140191747
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,7 +1290,7 @@ MonoBehaviour:
   timer: 0
   timerMax: 3.5
   finishedCooldown: 0
-  force: 15
+  force: 20
   cooldownSlider: {fileID: 369659900905261350}
   fanTimer: 0
   windEffect: {fileID: 6921343741179823486}
