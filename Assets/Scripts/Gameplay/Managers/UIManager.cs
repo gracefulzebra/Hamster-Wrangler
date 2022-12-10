@@ -1,19 +1,22 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.SocialPlatforms.Impl;
+using System.Collections.Generic;
 
 public class UIManager : MonoBehaviour
 {
     private GameManager gameManager;
     [SerializeField] GameObject mainMenu;
-    [SerializeField] GameObject deathScreen;
+    [SerializeField] GameObject gameOverScreen;
     [SerializeField] private GameObject scoreDisplay;
     [SerializeField] private GameObject currencyDisplay;
     [SerializeField] private Slider slider;
     [SerializeField] private GameObject lmCost, lbCost, rakeCost, tarCost, lighterCost;
+    // for ip3 we can use a slider thats fill is the yellow colour for the stars, so when you finish the level you can see how close to the 
+    // next star you are, right now im just hard coding it 
+    [SerializeField] private  List<GameObject> star1;
+    [SerializeField] private Sprite starSprite;
 
     public bool mainMenuActive;
 
@@ -51,12 +54,12 @@ public class UIManager : MonoBehaviour
    }
 
   public void MainMenuButton()
-    {
+  {
         mainMenu.SetActive(false);
         mainMenuActive = false;
         Time.timeScale = 1;
         GetComponent<GameManager>().holdingItem = false;
-    }
+  }
  
 
     IEnumerator UpdateAudio()
@@ -68,12 +71,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void loseGame()
+    public void GameOverScreen()
     {
-        if (GetComponent<GameManager>().health <= 0)
-        {
-            deathScreen.SetActive(true);
-        }
+            Stars();
+            gameOverScreen.SetActive(true);
     }
 
     public void DisplayScore(int score)
@@ -94,5 +95,21 @@ public class UIManager : MonoBehaviour
         rakeCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.rakeCost;
         tarCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.tarCost;
         lighterCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.lighterCost;
+   }
+
+    public void Stars()
+    {
+       if(gameManager.scoreManager.currentScore > gameManager.scoreFor3Star / 3)
+       {
+            star1[0].GetComponent<Image>().sprite = starSprite;
+       } 
+       if (gameManager.scoreManager.currentScore > (gameManager.scoreFor3Star / 3) * 2)
+       {
+            star1[1].GetComponent<Image>().sprite = starSprite;
+       }
+       if (gameManager.scoreManager.currentScore > gameManager.scoreFor3Star)
+       {
+            star1[2].GetComponent<Image>().sprite = starSprite;
+       }
     }
 }

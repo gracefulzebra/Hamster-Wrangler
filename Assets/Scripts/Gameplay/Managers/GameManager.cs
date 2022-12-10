@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
     public GameObject placementConfirmation;
     public float health;
 
+    public float scoreFor3Star;
+
+
     [SerializeField] private int startingCurrency;
 
     //Manager references
@@ -92,4 +95,13 @@ public class GameManager : MonoBehaviour
             holdingItem = false;
         }
      }
+
+    public void CheckIfLoseGame()
+    {
+        uiManager.GameOverScreen();
+
+        if (health <= 0)
+        {
+        }
+    }
 }

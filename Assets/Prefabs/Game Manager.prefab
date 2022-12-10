@@ -10,6 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1102496838878895824}
   - component: {fileID: 8219870486892685704}
+  - component: {fileID: 1058055521}
+  - component: {fileID: 1058055513}
+  - component: {fileID: 1058055514}
+  - component: {fileID: 1058055516}
+  - component: {fileID: 1058055517}
+  - component: {fileID: 1058055519}
+  - component: {fileID: 1058055520}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -24,7 +31,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8881886160524883247}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.61, y: 0.25, z: -3.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -45,3 +52,207 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdingItem: 0
+  placementConfirmation: {fileID: 0}
+  health: 0
+  startingCurrency: 800
+--- !u!82 &1058055521
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8881886160524883247}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.2
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1058055513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8881886160524883247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c44b2b3eb513240ae75a4e8e1c9dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blowerScore: 0
+  mowerScore: 0
+  lighterScore: 0
+  tarScore: 0
+  rakeScore: 0
+--- !u!114 &1058055514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8881886160524883247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24797d217951c674d989a713eddffdcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hamsterCost: 100
+  blowerCost: 10
+  mowerCost: 10
+  lighterCost: 10
+  tarCost: 10
+  rakeCost: 10
+  repairCost: 30
+--- !u!114 &1058055516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8881886160524883247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f667652eed53b340bebc7ab063106db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenu: {fileID: 0}
+  deathScreen: {fileID: 0}
+  scoreDisplay: {fileID: 0}
+  currencyDisplay: {fileID: 0}
+  slider: {fileID: 0}
+  lmCost: {fileID: 0}
+  lbCost: {fileID: 0}
+  rakeCost: {fileID: 0}
+  tarCost: {fileID: 0}
+  lighterCost: {fileID: 0}
+  mainMenuActive: 0
+--- !u!114 &1058055517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8881886160524883247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e45f2eb13e70a41855a5299ed25c5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hamsterPrefab: {fileID: 1622791512648962765, guid: 907b88d61ec41bb49a69ff1e24ac0ce6, type: 3}
+  hamstersPerWave: 5
+  spawnDelay: 3
+  waveCompleted: 0
+--- !u!114 &1058055519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8881886160524883247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4351b1488ac00458e7f4ae0ca269aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShopAni: {fileID: 0}
+--- !u!114 &1058055520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8881886160524883247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0398614367769a14db1a18ae9ea723f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: 0.25
+  hamsterDeath1: {fileID: 8300000, guid: ded550fa787e4fe40ad14172043db307, type: 3}
+  hamsterDeath2: {fileID: 8300000, guid: ad16e0718291e634db7c889019dff392, type: 3}
+  hamsterDeath3: {fileID: 8300000, guid: 6739775d24ee1284c965a21bd1ee043b, type: 3}
+  hamsterDeath4: {fileID: 8300000, guid: 864ca98630d877b4ea904a57b6680000, type: 3}
