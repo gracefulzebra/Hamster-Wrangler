@@ -7,23 +7,25 @@ public class Rake : TrapBase
 
     bool pressedRake;
     float pressedRakeCooldown;
-    [SerializeField] Image activationButton;
+    [SerializeField] GameObject activationButton;
 
     private void Update()
     {
+        SliderUpdate();
+
         if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
 
         timer += Time.deltaTime;
-        SliderUpdate();
 
         if (timer > timerMax)
         {
             finishedCooldown = true;
-            activationButton.GetComponent<Image>().color = new Color(activationButton.color.r, activationButton.color.g, activationButton.color.b, 1f);
+            activationButton.SetActive(true);
         }
         else
-            activationButton.GetComponent<Image>().color = new Color(activationButton.color.r, activationButton.color.g, activationButton.color.b, 0f);
+            activationButton.SetActive(false);
+    
 
 
         // if player pressed the userake button it would 
