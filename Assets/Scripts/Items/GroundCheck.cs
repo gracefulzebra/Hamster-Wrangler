@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking.Types;
 
 public class GroundCheck : MonoBehaviour
 {
@@ -11,6 +12,15 @@ public class GroundCheck : MonoBehaviour
     [SerializeField] LayerMask groundMask;
     [SerializeField] GameObject parentObject;
     Vector3 rotVector = new Vector3(0f, 90f, 0f);
+    Node nodehit;
+    GameObject gridRefObject;
+    GridGenerator gridRef;
+    // if gameobejct == holdignitem then button goes item
+    private void Awake()
+    {
+        gridRefObject = GameObject.Find("OliverGriddy");
+        gridRef = gridRefObject.GetComponent<GridGenerator>();
+    }
 
     public void Update()
     {
@@ -20,5 +30,10 @@ public class GroundCheck : MonoBehaviour
         {
             parentObject.gameObject.transform.Rotate(rotVector, Space.Self);
         }
+
+        nodehit = gridRef.GetNodeFromWorldPoint(groundCheck.position);
+        nodehit.placeable = false;
     }
+
+
 }

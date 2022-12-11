@@ -186,7 +186,7 @@ MonoBehaviour:
   force: 0
   cooldownSlider: {fileID: 7273631290238877483}
   repairItemEffect: {fileID: 7162779345956412091}
-  smokeEffect: {fileID: 147999949801493985, guid: 7308e6c9f70e9b341bb8c206a2c773aa, type: 3}
+  smokeEffect: {fileID: 5936391385877511823}
 --- !u!65 &794440212163466916
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -893,6 +893,11 @@ PrefabInstance:
 --- !u!4 &5936391385877511810 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 147999949801493996, guid: 7308e6c9f70e9b341bb8c206a2c773aa, type: 3}
+  m_PrefabInstance: {fileID: 5795993807365041006}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5936391385877511823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 147999949801493985, guid: 7308e6c9f70e9b341bb8c206a2c773aa, type: 3}
   m_PrefabInstance: {fileID: 5795993807365041006}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7241039251679085972

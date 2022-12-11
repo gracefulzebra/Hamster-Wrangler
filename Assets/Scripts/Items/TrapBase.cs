@@ -50,7 +50,6 @@ public class TrapBase : MonoBehaviour
         itemBroken = true;
     }
 
-    // read in items maxhealth, the logic in this is flawed
     public void RepairItem()
     {
         if (itemBroken)

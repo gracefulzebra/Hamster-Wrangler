@@ -17,6 +17,11 @@ public class UIManager : MonoBehaviour
     // next star you are, right now im just hard coding it 
     [SerializeField] private  List<GameObject> star1;
     [SerializeField] private Sprite starSprite;
+  
+    // for buttonInputs
+    [SerializeField] Sprite itemSelected;
+    [SerializeField] Sprite itemUnselected;
+    GameObject previousButton;
 
     public bool mainMenuActive;
 
@@ -132,5 +137,19 @@ public class UIManager : MonoBehaviour
             star1[2].GetComponent<Image>().sprite = starSprite;
        }
         */
+    }
+
+   public void RemoveShopOutline(GameObject theButton)
+   {
+        if (previousButton != null)
+        {
+            previousButton.GetComponent<Image>().sprite = itemUnselected;
+        }
+            previousButton = theButton;  
+   }
+
+    public void ShopButtonOutline(GameObject theButton)
+    {
+        theButton.GetComponent<Image>().sprite = itemSelected;
     }
 }

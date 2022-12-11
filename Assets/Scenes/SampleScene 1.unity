@@ -3189,7 +3189,6 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!1001 &265987741
 PrefabInstance:
@@ -3815,7 +3814,6 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!1001 &337444809
 PrefabInstance:
@@ -4005,6 +4003,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 773258329}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: itemSelected
+      value: 
+      objectReference: {fileID: 21300000, guid: 39dd8ec6af159034fb94b835d53261a9, type: 3}
+    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: scoreDisplay
       value: 
       objectReference: {fileID: 17923426}
@@ -4012,6 +4014,10 @@ PrefabInstance:
       propertyPath: gameOverScreen
       value: 
       objectReference: {fileID: 1275229117}
+    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: itemUnselected
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f0d084abe77447478f90fec5fa8b445, type: 3}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: currencyDisplay
       value: 
@@ -4107,6 +4113,10 @@ PrefabInstance:
     - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: scoreFor3Star
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: startingCurrency
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 8881886160524883247, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_Name
@@ -4277,7 +4287,6 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 30254930}
   closeMenu: {fileID: 229261292}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!1001 &368028621
 PrefabInstance:
@@ -4617,8 +4626,7 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: -1369037936, guid: be23eac909f0d5243aed02f8ffc43199, type: 3}
-  itemUnselected: {fileID: -2031721883, guid: be23eac909f0d5243aed02f8ffc43199, type: 3}
+  itemUnselected: {fileID: 21300000, guid: 1f0d084abe77447478f90fec5fa8b445, type: 3}
 --- !u!114 &396375069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5712,7 +5720,6 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!114 &474968908
 MonoBehaviour:
@@ -8801,7 +8808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -9445,8 +9452,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.523127, y: -2.5885391}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 11.718998, y: -2.5885386}
+  m_SizeDelta: {x: 100.4091, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &918362903
 MonoBehaviour:
@@ -9462,7 +9469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10484,7 +10491,6 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!114 &1007691550
 MonoBehaviour:
@@ -10978,8 +10984,7 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: -1369037936, guid: be23eac909f0d5243aed02f8ffc43199, type: 3}
-  itemUnselected: {fileID: -2031721883, guid: be23eac909f0d5243aed02f8ffc43199, type: 3}
+  itemUnselected: {fileID: 21300000, guid: 1f0d084abe77447478f90fec5fa8b445, type: 3}
 --- !u!114 &1039199348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11505,8 +11510,7 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: -1369037936, guid: be23eac909f0d5243aed02f8ffc43199, type: 3}
-  itemUnselected: {fileID: -2031721883, guid: be23eac909f0d5243aed02f8ffc43199, type: 3}
+  itemUnselected: {fileID: 21300000, guid: 1f0d084abe77447478f90fec5fa8b445, type: 3}
 --- !u!114 &1065095919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12468,7 +12472,6 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!1001 &1203840783
 PrefabInstance:
@@ -13040,7 +13043,6 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!4 &1252161880 stripped
 Transform:
@@ -14395,8 +14397,7 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 30254930}
   closeMenu: {fileID: 229261292}
-  itemSelected: {fileID: -1369037936, guid: be23eac909f0d5243aed02f8ffc43199, type: 3}
-  itemUnselected: {fileID: -2031721883, guid: be23eac909f0d5243aed02f8ffc43199, type: 3}
+  itemUnselected: {fileID: 21300000, guid: 1f0d084abe77447478f90fec5fa8b445, type: 3}
 --- !u!114 &1412128476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16458,7 +16459,6 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 30254930}
   closeMenu: {fileID: 229261292}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!114 &1645351840
 MonoBehaviour:
@@ -17938,7 +17938,6 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!114 &1821810779
 MonoBehaviour:
@@ -18413,7 +18412,6 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 30254930}
   closeMenu: {fileID: 229261292}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!1001 &1864820917
 PrefabInstance:
@@ -20079,8 +20077,7 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: -1369037936, guid: be23eac909f0d5243aed02f8ffc43199, type: 3}
-  itemUnselected: {fileID: -2031721883, guid: be23eac909f0d5243aed02f8ffc43199, type: 3}
+  itemUnselected: {fileID: 21300000, guid: 1f0d084abe77447478f90fec5fa8b445, type: 3}
 --- !u!1 &2024493106
 GameObject:
   m_ObjectHideFlags: 0

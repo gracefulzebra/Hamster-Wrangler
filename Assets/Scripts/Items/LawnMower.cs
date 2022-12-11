@@ -13,7 +13,7 @@ public class LawnMower : TrapBase
     [SerializeField] GameObject smokeEffect;
 
 
-    private void Awake()
+    private void Start()
     {
         itemID = "LawnMower";
         health = maxHealth;
@@ -24,13 +24,19 @@ public class LawnMower : TrapBase
 
         SliderUpdate();
 
-        Durability(health);
+        if (GetComponentInParent<SnapToGrid>().hasItem)
+            return;
+
+        if (health == 0)
+        {
+            onCooldown = true;
+        }
 
         if (onCooldown)
         {
             timer += Time.deltaTime;
             if (timer > timerMax)
-           {
+            {
                 onCooldown = false;
                 repairItemEffect.SetActive(true);
             }
@@ -41,21 +47,19 @@ public class LawnMower : TrapBase
             health = maxHealth;
             timer = 0;
             repairItemEffect.SetActive(false);
-
         }
 
-        if ( health == 0)
-        {
-            onCooldown = true;
-        }    
+        SmokeEffect();
+    }
 
+    void SmokeEffect()
+    {
         if (itemBroken)
             smokeEffect.SetActive(true);
         else
             smokeEffect.SetActive(false);
-
-
     }
+
 
     private void OnTriggerStay(Collider collision)
     {
@@ -65,6 +69,7 @@ public class LawnMower : TrapBase
         if (itemBroken)
             return;  
         health--;
+        Durability(health);
         ItemInteract(collision.gameObject);
         collision.gameObject.GetComponent<HamsterBase>().Kill();
     }

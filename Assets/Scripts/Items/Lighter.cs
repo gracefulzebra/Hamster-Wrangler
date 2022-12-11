@@ -11,7 +11,7 @@ public class Lighter : TrapBase
     public float lighterCooldown;
     [SerializeField] GameObject fireEffect;
 
-    private void Awake()
+    private void Start()
     {
         lighterOn = false;
     }
