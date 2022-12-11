@@ -16,6 +16,7 @@ public class SnapToGrid : MonoBehaviour
     [SerializeField] GameObject confirmButton;
     [SerializeField] GameObject cancelButton;
     public string itemID;
+    Node nodehit;
 
     void Awake()
     {
@@ -73,8 +74,8 @@ public class SnapToGrid : MonoBehaviour
              if (hit.transform.gameObject.tag == "Ground")
              {
                 // if player clicks else where menu disappears
-                Node nodehit = gridRef.GetNodeFromWorldPoint(hit.point);
-                if (nodehit.walkable)
+                nodehit = gridRef.GetNodeFromWorldPoint(hit.point);
+                if (nodehit.placeable)
                 {
                   gameObject.transform.position = new Vector3(nodehit.worldPosition.x, nodehit.worldPosition.y -0.5f, nodehit.worldPosition.z);
                 }       
@@ -106,6 +107,7 @@ public class SnapToGrid : MonoBehaviour
         if (gameObject.tag == "Unplaced Item")
         {
             gameManager.currencyManager.TryBuy(itemID);
+            nodehit.placeable = false;
             hasItem = false;
             gameObject.tag = "Placed Item";
             gameManager.CheckIfItemHeld();

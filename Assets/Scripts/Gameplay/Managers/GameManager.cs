@@ -17,16 +17,15 @@ public class GameManager : MonoBehaviour
 
     public bool holdingItem = false;
     public GameObject placementConfirmation;
-    public float health;
-
-    public float scoreFor3Star;
-
-
+    private int health;
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int damage;
     [SerializeField] private int startingCurrency;
+    public int scoreFor3Star;
 
     //Manager references
-    public ScoreManager scoreManager { get; private set; } //Not currently in use in GameManager
-    public CurrencyManager currencyManager { get; private set; } //Not currently in use in GameManager
+    public ScoreManager scoreManager { get; private set; }
+    public CurrencyManager currencyManager { get; private set; }
     public UIManager uiManager { get; private set; }
     public WaveManager waveManager { get; private set; }
     public AnimationManager animationManager { get; private set; }
@@ -41,6 +40,9 @@ public class GameManager : MonoBehaviour
 
     private void InitialiseSystems()
     {
+        health = maxHealth;
+        //Display health (has to happen after UImanager is assigned)
+
         uiManager = GetComponent<UIManager>();
 
         scoreManager = GetComponent<ScoreManager>();
@@ -58,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     public void StartWave()
     {    
-            StartCoroutine(waveManager.StartWave()); //To be hooked up to UI button. Fully functional and ready to be tweaked. 
+        StartCoroutine(waveManager.StartWave()); //To be hooked up to UI button. Fully functional and ready to be tweaked. 
     }
 
     //UIManager communication
@@ -96,12 +98,38 @@ public class GameManager : MonoBehaviour
         }
      }
 
+    public void LoseHealth()
+    {
+        health -= damage;
+        CheckIfLoseGame();
+        //Display Health
+    }
+
+    public void WinGame()
+    {
+        int finalScore = scoreManager.FinalizeScore(health, maxHealth);
+        int oneStar = (scoreFor3Star / 3);
+        int twoStar = ((scoreFor3Star / 3) * 2);
+
+        if(finalScore <= oneStar)
+        {
+            uiManager.Stars(1);
+        }
+        else if(finalScore > oneStar && finalScore <= twoStar)
+        {
+            uiManager.Stars(2);
+        }
+        else if(finalScore > twoStar)
+        {
+            uiManager.Stars(3);
+        }
+    }
+
     public void CheckIfLoseGame()
     {
-        uiManager.GameOverScreen();
-
         if (health <= 0)
         {
+            uiManager.GameOverScreen();
         }
     }
 }

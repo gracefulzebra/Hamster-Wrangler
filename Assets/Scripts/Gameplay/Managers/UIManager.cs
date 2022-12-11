@@ -73,7 +73,7 @@ public class UIManager : MonoBehaviour
 
     public void GameOverScreen()
     {
-            Stars();
+            Stars(0);
             gameOverScreen.SetActive(true);
     }
 
@@ -97,8 +97,28 @@ public class UIManager : MonoBehaviour
         lighterCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.lighterCost;
    }
 
-    public void Stars()
+    public void Stars(int starCount)
     {
+        switch (starCount)
+        {
+            case 1:
+                star1[0].GetComponent<Image>().sprite = starSprite;
+                break;
+            case 2:
+                star1[0].GetComponent<Image>().sprite = starSprite;
+                star1[1].GetComponent<Image>().sprite = starSprite;
+                break;
+            case 3:
+                star1[0].GetComponent<Image>().sprite = starSprite;
+                star1[1].GetComponent<Image>().sprite = starSprite;
+                star1[2].GetComponent<Image>().sprite = starSprite;
+                break;
+            default:
+                break;
+        }
+
+        //Calculation being handled in game manager. Can undo to reuse this if you want.
+        /*
        if(gameManager.scoreManager.currentScore > gameManager.scoreFor3Star / 3)
        {
             star1[0].GetComponent<Image>().sprite = starSprite;
@@ -111,5 +131,6 @@ public class UIManager : MonoBehaviour
        {
             star1[2].GetComponent<Image>().sprite = starSprite;
        }
+        */
     }
 }

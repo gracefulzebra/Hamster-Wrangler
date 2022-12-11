@@ -15,6 +15,7 @@ public class HamsterBase : MonoBehaviour
     Vector3 direction;
     Quaternion lookRotation;
     public float rotationSpeed;
+    bool pathRequested = false;
     [SerializeField] GridGenerator gridRef;
     private GameManager manager;
     // used to check if fit is a hamster enter colldiers
@@ -32,14 +33,18 @@ public class HamsterBase : MonoBehaviour
 
     private void Start()
     {
+        pathRequested = true;
         PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
     }
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
     {
+        pathRequested = false;
+
         if (pathSuccessful)
         {
             path = newPath;
+            
             StopCoroutine(FollowPath());
             StartCoroutine(FollowPath());
         }
@@ -56,11 +61,11 @@ public class HamsterBase : MonoBehaviour
     IEnumerator FollowPath()
     {
         currentWaypoint = path[0];
-
+        targetIndex = 0;
         while (true)
         {
             float distance = Distance(transform.position, currentWaypoint);
-            if (distance < 0.25f)
+            if (distance < 0.4f)
             {
                 targetIndex++;
                 if(targetIndex >= path.Length)
@@ -69,8 +74,9 @@ public class HamsterBase : MonoBehaviour
                 }
                 currentWaypoint = path[targetIndex];
             }
-            if (distance > 2f)
+            if (distance > 2f && !pathRequested)
             {
+                pathRequested = true;
                 PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
             }
             yield return null;
@@ -81,7 +87,8 @@ public class HamsterBase : MonoBehaviour
     {
         float a = targetPos.x - currentPos.x;
         float b = targetPos.z - currentPos.z;
-        return Mathf.Sqrt(a * a + b * b);
+        float c = targetPos.y - currentPos.y;
+        return Mathf.Sqrt(a * a + b * b + c * c);
     }
 
     private void OnDrawGizmos()
@@ -111,6 +118,13 @@ public class HamsterBase : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
 
+    /// <summary>
+    /// Destroys the current hamster without updating the score
+    /// </summary>
+    public void Despawn()
+    {
+
+    }
     ///<summary>
     ///Destroys the current Hamster with no delay
     ///</summary>

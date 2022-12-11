@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    private GameManager manager;
     private GameObject[] hamsterSpawners;
     [SerializeField] private GameObject hamsterPrefab;
-
-    [SerializeField] private int hamstersPerWave;
+    [SerializeField] private int[] hamstersPerWave;
     [SerializeField] private float spawnDelay;
     private int hamstersKilled;
-    public bool waveCompleted;
+    private bool waveCompleted;
+    private int wave;
+    private int maxWaves;
 
 
     private void Awake()
     {
+        manager = GetComponent<GameManager>();
         InitializeSpawns();
+
         waveCompleted = true;
+        maxWaves = hamstersPerWave.Length;
     }
 
     private void InitializeSpawns()
@@ -29,7 +34,7 @@ public class WaveManager : MonoBehaviour
         if(waveCompleted) 
         {
             waveCompleted = false;
-            for (int i = 1; i <= hamstersPerWave; i++)
+            for (int i = 1; i <= hamstersPerWave[wave]; i++)
             {
                 for (int j = 0; j < hamsterSpawners.Length; j++)
                 {
@@ -38,6 +43,8 @@ public class WaveManager : MonoBehaviour
                 yield return new WaitForSeconds(spawnDelay);
             } 
         }
+
+        StopCoroutine(StartWave());
     }
 
     private void SpawnHamster(GameObject hamsterSpawn)
@@ -48,9 +55,15 @@ public class WaveManager : MonoBehaviour
     public void HamstersRemaining() //Called in kill function of hamster.
     {
         hamstersKilled++;
-        if( hamstersKilled > hamstersPerWave)
+        if( hamstersKilled > hamstersPerWave[wave])
         {
+            if(wave == maxWaves)
+            {
+                manager.WinGame();
+            }
+
             waveCompleted = true;
+            wave++;
             hamstersKilled = 0;
         }
     }
