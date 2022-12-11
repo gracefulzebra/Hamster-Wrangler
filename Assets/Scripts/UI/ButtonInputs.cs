@@ -46,7 +46,7 @@ public class ButtonInputs : MonoBehaviour
         {
             if (!gameManager.holdingItem)
             {
-                GetComponent<Image>().sprite = itemUnselected;
+               GetComponent<Image>().sprite = itemUnselected;
             }
         }
     }
@@ -204,7 +204,7 @@ public class ButtonInputs : MonoBehaviour
 
     public void Level1()
     {
-        SceneManager.LoadScene("Playtesting");
+        SceneManager.LoadScene("SampleScene 1");
     }
 
     public void MainMenu()

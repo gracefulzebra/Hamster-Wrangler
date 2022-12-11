@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour
         animationManager = GetComponent<AnimationManager>();
 
         audioManager = GetComponent<AudioManager>();
+
+        DisplayHealth(health);
     }
 
     public void StartWave()
@@ -72,6 +74,11 @@ public class GameManager : MonoBehaviour
     public void DisplayCurrency(int currency)
     {
         uiManager.DisplayCurrency(currency);
+    }
+
+    public void DisplayHealth(int health)
+    {
+        uiManager.DisplayHealth(health);
     }
 
     public void UpdateVolume(float volume)
@@ -102,6 +109,7 @@ public class GameManager : MonoBehaviour
     {
         health -= damage;
         CheckIfLoseGame();
+        DisplayHealth(health);
         //Display Health
     }
 

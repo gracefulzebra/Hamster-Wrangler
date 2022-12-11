@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class LawnMower : TrapBase
@@ -8,6 +5,8 @@ public class LawnMower : TrapBase
 
     int maxHealth = 2;
     int health;
+    int breakCounter;
+    int repairCounter;
     bool onCooldown;
     [SerializeField] GameObject repairItemEffect;
     [SerializeField] GameObject smokeEffect;
@@ -29,7 +28,14 @@ public class LawnMower : TrapBase
 
         if (health == 0)
         {
+            repairCounter = 0;
             onCooldown = true;
+            if (breakCounter < 1)
+            {
+                breakCounter++;
+            
+                gameManager.audioManager.LawnMowerBreak();
+            }
         }
 
         if (onCooldown)
@@ -46,7 +52,13 @@ public class LawnMower : TrapBase
         {
             health = maxHealth;
             timer = 0;
+            breakCounter = 0;
             repairItemEffect.SetActive(false);
+            if (repairCounter < 1)
+            {
+                repairCounter++;
+                gameManager.audioManager.LawnMowerRepair();
+            }
         }
 
         SmokeEffect();

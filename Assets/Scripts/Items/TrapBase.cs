@@ -20,7 +20,10 @@ public class TrapBase : MonoBehaviour
     public void Awake()
     {
         repairItem = false;
-        cooldownSlider.maxValue = timerMax;
+        if (cooldownSlider != null)
+        {
+            cooldownSlider.maxValue = timerMax;
+        }
         gameManagerObject = GameObject.Find("Game Manager");
         gameManager = gameManagerObject.GetComponent<GameManager>();
     }

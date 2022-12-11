@@ -59,7 +59,8 @@ public class Rake : TrapBase
         Vector3 direction = transform.position - col.transform.position;
 
         if (pressedRake && finishedCooldown)
-        { 
+        {
+            gameManager.audioManager.PlayUsedRake();
             col.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * force, ForceMode.Force);
             col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force / 2, ForceMode.Force);
             pressedRake = false;

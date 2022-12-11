@@ -123,7 +123,7 @@ public class HamsterBase : MonoBehaviour
     /// </summary>
     public void Despawn()
     {
-
+       Destroy(gameObject);
     }
     ///<summary>
     ///Destroys the current Hamster with no delay

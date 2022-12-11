@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] private GameObject scoreDisplay;
     [SerializeField] private GameObject currencyDisplay;
+    [SerializeField] private GameObject healthDisplay;
     [SerializeField] private Slider slider;
     [SerializeField] private GameObject lmCost, lbCost, rakeCost, tarCost, lighterCost;
     // for ip3 we can use a slider thats fill is the yellow colour for the stars, so when you finish the level you can see how close to the 
@@ -47,14 +48,14 @@ public class UIManager : MonoBehaviour
             mainMenu.SetActive(true);
             mainMenuActive = true;
             Time.timeScale = 0;
-            GetComponent<GameManager>().holdingItem = true;
+            gameManager.holdingItem = true;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && mainMenuActive)
         {
             mainMenu.SetActive(false);
             mainMenuActive = false;
             Time.timeScale = 1;
-            GetComponent<GameManager>().holdingItem = false;
+            gameManager.holdingItem = false;
         }
    }
 
@@ -84,23 +85,33 @@ public class UIManager : MonoBehaviour
 
     public void DisplayScore(int score)
     {
+        if (scoreDisplay != null)
         scoreDisplay.GetComponent<TextMeshProUGUI>().text = "Score : " + score;
     }
 
     public void DisplayCurrency(int currency)
     {
-        currencyDisplay.GetComponent<TextMeshProUGUI>().text = "" + currency;
+        if (scoreDisplay != null)
+            currencyDisplay.GetComponent<TextMeshProUGUI>().text = "" + currency;
     }
 
-
-   public void UpdateItemCosts()
+    public void DisplayHealth(int health)
     {
-        lmCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.mowerCost;
-        lbCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.blowerCost;
-        rakeCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.rakeCost;
-        tarCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.tarCost;
-        lighterCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.lighterCost;
-   }
+        if (scoreDisplay != null)
+            healthDisplay.GetComponent<TextMeshProUGUI>().text = "" + health;
+    }
+
+    public void UpdateItemCosts()
+    {
+        if (lmCost != null)
+        {
+            lmCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.mowerCost;
+            lbCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.blowerCost;
+            rakeCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.rakeCost;
+            tarCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.tarCost;
+            lighterCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.lighterCost;
+        } 
+    }
 
     public void Stars(int starCount)
     {

@@ -32,8 +32,9 @@ public class GroundCheck : MonoBehaviour
         }
 
         nodehit = gridRef.GetNodeFromWorldPoint(groundCheck.position);
-        nodehit.placeable = false;
+        if (GetComponentInParent<SnapToGrid>().hasItem == false)
+        {
+            nodehit.placeable = false;
+        }
     }
-
-
 }
