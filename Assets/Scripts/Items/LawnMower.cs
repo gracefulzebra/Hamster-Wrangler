@@ -9,48 +9,52 @@ public class LawnMower : TrapBase
     int maxHealth = 2;
     int health;
     bool onCooldown;
-    [SerializeField] GameObject itemBrokenEffect;
+    [SerializeField] GameObject repairItemEffect;
+    [SerializeField] GameObject smokeEffect;
 
 
     private void Awake()
     {
         itemID = "LawnMower";
         health = maxHealth;
-        gameManagerObject = GameObject.Find("Game Manager");
-        gameManager = gameManagerObject.GetComponent<GameManager>();
     }
 
     private void Update()
     {
-       if(onCooldown)
-       {
-         timer += Time.deltaTime;
-
-         if (timer > timerMax)
-         {
-             onCooldown = false;     
-         }
-       }
 
         SliderUpdate();
+
+        Durability(health);
+
+        if (onCooldown)
+        {
+            timer += Time.deltaTime;
+            if (timer > timerMax)
+           {
+                onCooldown = false;
+                repairItemEffect.SetActive(true);
+            }
+        }
 
         if (repairItem)
         {
             health = maxHealth;
             timer = 0;
+            repairItemEffect.SetActive(false);
+
         }
 
-        Durability(health);
-        
-        if( health == 0)
+        if ( health == 0)
         {
-            itemBrokenEffect.SetActive(true);
             onCooldown = true;
         }    
+
+        if (itemBroken)
+            smokeEffect.SetActive(true);
         else
-        {
-            itemBrokenEffect.SetActive(false);
-        }
+            smokeEffect.SetActive(false);
+
+
     }
 
     private void OnTriggerStay(Collider collision)

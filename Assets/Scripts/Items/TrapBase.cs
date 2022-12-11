@@ -21,6 +21,8 @@ public class TrapBase : MonoBehaviour
     {
         repairItem = false;
         cooldownSlider.maxValue = timerMax;
+        gameManagerObject = GameObject.Find("Game Manager");
+        gameManager = gameManagerObject.GetComponent<GameManager>();
     }
 
     private void Update()
