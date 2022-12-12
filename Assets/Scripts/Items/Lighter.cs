@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -8,10 +9,11 @@ public class Lighter : TrapBase
 {
 
     public bool lighterOn;
+    int counter;
     public float lighterCooldown;
     [SerializeField] GameObject fireEffect;
 
-    private void Awake()
+    private void Start()
     {
         lighterOn = false;
     }
@@ -24,13 +26,19 @@ public class Lighter : TrapBase
         // if lighter isnt on, starts timer to activate it 
         if (!lighterOn)
         {
+            counter = 0;
             timer += Time.deltaTime;
             lighterCooldown = 0f;
             fireEffect.SetActive(false);
         }
-        // if timer is on, timer strats till it turn off
+        // if timer is on, timer starts till it turn off
         else
         {
+           if (counter < 1)
+           {
+                counter++;
+                gameManager.audioManager.LighterOn();
+           }
             fireEffect.SetActive(true);
             lighterCooldown += Time.deltaTime;
         }
@@ -47,7 +55,7 @@ public class Lighter : TrapBase
         }
     }
 
-    void OnTriggerEnter(Collider col)
+    void OnTriggerStay(Collider col)
     {
          if (lighterOn)
          {

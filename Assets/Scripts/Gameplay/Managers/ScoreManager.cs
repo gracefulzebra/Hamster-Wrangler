@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    // private static int currentScore;
-    public int currentScore = 0;
+    private int currentScore = 0;
 
     [SerializeField] private int blowerScore, mowerScore, lighterScore, tarScore, rakeScore;
 
@@ -23,7 +22,14 @@ public class ScoreManager : MonoBehaviour
     public void UpdateScore(int blowerCount, int tarCount, int lighterCount, int mowerCount, int rakeCount)
     {
         currentScore += (blowerCount * blowerScore) + (tarCount * tarScore) + (lighterCount * lighterScore) + (mowerCount * mowerScore) + (rakeCount * rakeScore); 
-        UpdateScoreDisplay();
+    }
+
+    public int FinalizeScore(int healthRemaining, int maxHealth)
+    {
+        int prcntHealth = (maxHealth / healthRemaining);
+        currentScore *= prcntHealth;
+
+        return currentScore;
     }
     
 }

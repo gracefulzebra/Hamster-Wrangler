@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
-using JetBrains.Annotations;
 
 public class ButtonInputs : MonoBehaviour
 {
@@ -33,7 +32,6 @@ public class ButtonInputs : MonoBehaviour
     [SerializeField] GameObject openMenu;
     [SerializeField] GameObject closeMenu;
 
-    [SerializeField] Sprite itemSelected;
     [SerializeField] Sprite itemUnselected;
 
     void Awake()
@@ -48,7 +46,7 @@ public class ButtonInputs : MonoBehaviour
         {
             if (!gameManager.holdingItem)
             {
-                GetComponent<Image>().sprite = itemUnselected;
+               GetComponent<Image>().sprite = itemUnselected;
             }
         }
     }
@@ -61,7 +59,7 @@ public class ButtonInputs : MonoBehaviour
             gameManager.holdingItem = true;
         }
         if (gameManager.holdingItem)
-        {
+        {        
             temp = GameObject.FindGameObjectsWithTag("Unplaced Item");
             foreach (GameObject x in temp)
             {
@@ -73,8 +71,9 @@ public class ButtonInputs : MonoBehaviour
 
     void ItemSpawn(GameObject itemToSpawn)
     {
-        GetComponent<Image>().sprite = itemSelected;
-        Vector3 spawnPos = new Vector3(0f, 100f, 0f);
+        gameManager.uiManager.RemoveShopOutline(gameObject);
+        gameManager.uiManager.ShopButtonOutline(gameObject);
+         Vector3 spawnPos = new Vector3(0f, 100f, 0f);
         Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
     }
 
@@ -183,9 +182,9 @@ public class ButtonInputs : MonoBehaviour
     }
 
    public void LevelSelect()
-    {
+   {
         SwitchSetActive(levelSelect);
-    }
+   }
 
     public void HTP()
     {
@@ -205,7 +204,8 @@ public class ButtonInputs : MonoBehaviour
 
     public void Level1()
     {
-        SceneManager.LoadScene("Playtesting");
+        SceneManager.LoadScene("SampleScene 1");
+        Time.timeScale = 1;
     }
 
     public void MainMenu()

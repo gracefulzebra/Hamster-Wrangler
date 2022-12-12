@@ -1,22 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    private GameManager manager;
     private GameObject[] hamsterSpawners;
     [SerializeField] private GameObject hamsterPrefab;
-
-    [SerializeField] private int hamstersPerWave;
+    [SerializeField] private int[] hamstersPerWave;
     [SerializeField] private float spawnDelay;
     private int hamstersKilled;
-    public bool waveCompleted;
+    private bool waveCompleted;
+    private int wave = 0;
+    private int maxWaves;
 
 
     private void Awake()
     {
+        manager = GetComponent<GameManager>();
         InitializeSpawns();
+
         waveCompleted = true;
+        maxWaves = hamstersPerWave.Length;
     }
 
     private void InitializeSpawns()
@@ -26,18 +30,25 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator StartWave()
     {
-        if(waveCompleted) 
+        if (waveCompleted && wave < hamstersPerWave.Length) 
         {
+            manager.DisplayWaves(wave + 1, maxWaves);
             waveCompleted = false;
-            for (int i = 1; i <= hamstersPerWave; i++)
+            for (int i = 0; i <= hamstersPerWave[wave] - 1; i++)
             {
+                if (i != 0)
+                    yield return new WaitForSeconds(spawnDelay);
+
                 for (int j = 0; j < hamsterSpawners.Length; j++)
                 {
                     SpawnHamster(hamsterSpawners[j]);
                 }
-                yield return new WaitForSeconds(spawnDelay);
+                
             } 
+            StopCoroutine(StartWave());
         }
+
+        
     }
 
     private void SpawnHamster(GameObject hamsterSpawn)
@@ -48,10 +59,20 @@ public class WaveManager : MonoBehaviour
     public void HamstersRemaining() //Called in kill function of hamster.
     {
         hamstersKilled++;
-        if( hamstersKilled > hamstersPerWave)
+        if ( hamstersKilled >= hamstersPerWave[wave] * 2)
         {
+            
+
             waveCompleted = true;
+            wave++;
             hamstersKilled = 0;
+
+            if (wave >= maxWaves)
+            {
+                manager.WinGame();
+            }
+
         }
+       // manager.DisplayWaves(wave + 1, maxWaves);
     }
 }

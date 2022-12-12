@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemEffects : MonoBehaviour
@@ -8,6 +7,7 @@ public class ItemEffects : MonoBehaviour
     [Header("Item Effects")]
     WaitForSeconds delay = new WaitForSeconds(3);
     [SerializeField] GameObject cadaver;
+    [SerializeField] GameObject fireEffect;
     public bool onFire = false;
 
     ///<summary>
@@ -16,6 +16,7 @@ public class ItemEffects : MonoBehaviour
     public void OnFire()
     {
         gameObject.GetComponentInChildren<Renderer>().material.color = new Color(0.91f, 0.3f, 0.21f);
+        fireEffect.SetActive(true);
         StartCoroutine(burnToDeath());
     }
 

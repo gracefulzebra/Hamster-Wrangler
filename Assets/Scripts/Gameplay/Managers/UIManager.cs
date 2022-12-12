@@ -3,20 +3,29 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     private GameManager gameManager;
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject gameOverScreen;
+    [SerializeField] private GameObject finalScoreDisplay;
     [SerializeField] private GameObject scoreDisplay;
     [SerializeField] private GameObject currencyDisplay;
+    [SerializeField] private GameObject healthDisplay;
+    [SerializeField] private GameObject wavesDisplay;
     [SerializeField] private Slider slider;
     [SerializeField] private GameObject lmCost, lbCost, rakeCost, tarCost, lighterCost;
     // for ip3 we can use a slider thats fill is the yellow colour for the stars, so when you finish the level you can see how close to the 
     // next star you are, right now im just hard coding it 
     [SerializeField] private  List<GameObject> star1;
     [SerializeField] private Sprite starSprite;
+  
+    // for buttonInputs
+    [SerializeField] Sprite itemSelected;
+    [SerializeField] Sprite itemUnselected;
+    GameObject previousButton;
 
     public bool mainMenuActive;
 
@@ -26,8 +35,12 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine(UpdateAudio());
-        UpdateItemCosts();
+        if (SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            StartCoroutine(UpdateAudio());
+            UpdateItemCosts();
+            wavesDisplay.GetComponent<TextMeshProUGUI>().text = "0 / 3";
+        }
     }
 
     private void Update()
@@ -42,14 +55,14 @@ public class UIManager : MonoBehaviour
             mainMenu.SetActive(true);
             mainMenuActive = true;
             Time.timeScale = 0;
-            GetComponent<GameManager>().holdingItem = true;
+            gameManager.holdingItem = true;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && mainMenuActive)
         {
             mainMenu.SetActive(false);
             mainMenuActive = false;
             Time.timeScale = 1;
-            GetComponent<GameManager>().holdingItem = false;
+            gameManager.holdingItem = false;
         }
    }
 
@@ -73,43 +86,124 @@ public class UIManager : MonoBehaviour
 
     public void GameOverScreen()
     {
-            Stars();
+            Stars(0);
             gameOverScreen.SetActive(true);
     }
 
     public void DisplayScore(int score)
     {
+        if (scoreDisplay != null)
         scoreDisplay.GetComponent<TextMeshProUGUI>().text = "Score : " + score;
     }
 
     public void DisplayCurrency(int currency)
     {
-        currencyDisplay.GetComponent<TextMeshProUGUI>().text = "" + currency;
+        if (scoreDisplay != null)
+            currencyDisplay.GetComponent<TextMeshProUGUI>().text = "" + currency;
     }
 
-
-   public void UpdateItemCosts()
+    public void DisplayHealth(int health)
     {
-        lmCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.mowerCost;
-        lbCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.blowerCost;
-        rakeCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.rakeCost;
-        tarCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.tarCost;
-        lighterCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.lighterCost;
+        if (scoreDisplay != null)
+            healthDisplay.GetComponent<TextMeshProUGUI>().text = "" + health;
+    }
+
+    public void DisplayWaves(int waves, int maxWaves)
+    {
+        if (scoreDisplay != null)
+            wavesDisplay.GetComponent<TextMeshProUGUI>().text = waves + " / " + maxWaves;
+    }
+
+    public void DisplayFinalScore(int finalScore)
+    {
+        finalScoreDisplay.GetComponent<TextMeshProUGUI>().text = "Score : " + finalScore;
+    }
+
+    public void UpdateItemCosts()
+    {
+        if (lmCost != null)
+        {
+            lmCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.mowerCost;
+            lbCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.blowerCost;
+            rakeCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.rakeCost;
+            tarCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.tarCost;
+            lighterCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.lighterCost;
+        } 
+    }
+
+    public void Stars(int starCount)
+    {
+        switch (starCount)
+        {
+            case 1:
+                star1[0].GetComponent<Image>().sprite = starSprite;
+                gameOverScreen.SetActive(true);
+                break;
+            case 2:
+                star1[0].GetComponent<Image>().sprite = starSprite;
+                star1[1].GetComponent<Image>().sprite = starSprite;
+                gameOverScreen.SetActive(true);
+                break;
+            case 3:
+                star1[0].GetComponent<Image>().sprite = starSprite;
+                star1[1].GetComponent<Image>().sprite = starSprite;
+                star1[2].GetComponent<Image>().sprite = starSprite;
+                gameOverScreen.SetActive(true);
+                break;
+            default:
+                gameOverScreen.SetActive(true);
+                break;
+        }
+
+
+            //Calculation being handled in game manager. Can undo to reuse this if you want.
+            /*
+           if(gameManager.scoreManager.currentScore > gameManager.scoreFor3Star / 3)
+           {
+                star1[0].GetComponent<Image>().sprite = starSprite;
+           } 
+           if (gameManager.scoreManager.currentScore > (gameManager.scoreFor3Star / 3) * 2)
+           {
+                star1[1].GetComponent<Image>().sprite = starSprite;
+           }
+           if (gameManager.scoreManager.currentScore > gameManager.scoreFor3Star)
+           {
+                star1[2].GetComponent<Image>().sprite = starSprite;
+           }
+            */
+     }
+
+
+   public void MenuStars(int starCount)
+    {
+        switch (starCount)
+        {
+            case 1:
+                star1[0].GetComponent<Image>().sprite = starSprite;
+                break;
+            case 2:
+                star1[0].GetComponent<Image>().sprite = starSprite;
+                star1[1].GetComponent<Image>().sprite = starSprite;
+                break;
+            case 3:
+                star1[0].GetComponent<Image>().sprite = starSprite;
+                star1[1].GetComponent<Image>().sprite = starSprite;
+                star1[2].GetComponent<Image>().sprite = starSprite;
+                break;
+        }
+    }
+
+    public void RemoveShopOutline(GameObject theButton)
+   {
+        if (previousButton != null)
+        {
+            previousButton.GetComponent<Image>().sprite = itemUnselected;
+        }
+            previousButton = theButton;  
    }
 
-    public void Stars()
+    public void ShopButtonOutline(GameObject theButton)
     {
-       if(gameManager.scoreManager.currentScore > gameManager.scoreFor3Star / 3)
-       {
-            star1[0].GetComponent<Image>().sprite = starSprite;
-       } 
-       if (gameManager.scoreManager.currentScore > (gameManager.scoreFor3Star / 3) * 2)
-       {
-            star1[1].GetComponent<Image>().sprite = starSprite;
-       }
-       if (gameManager.scoreManager.currentScore > gameManager.scoreFor3Star)
-       {
-            star1[2].GetComponent<Image>().sprite = starSprite;
-       }
+        theButton.GetComponent<Image>().sprite = itemSelected;
     }
 }

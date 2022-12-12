@@ -5,6 +5,7 @@ public class Fan : TrapBase
 {
     
     bool turnedOn;
+    int counter;
     public float fanTimer;
     [SerializeField] GameObject windEffect;
     [SerializeField] GameObject activationButton;
@@ -23,11 +24,17 @@ public class Fan : TrapBase
    
         if (turnedOn)
         {
+            if (counter < 1)
+            {
+                counter++;
+                gameManager.audioManager.LeafBlowerUse();
+            }
             windEffect.SetActive(true);
             fanTimer += Time.deltaTime;
         }
         else
         {
+            counter = 0;
             windEffect.SetActive(false);
             timer += Time.deltaTime;
         }

@@ -15,7 +15,9 @@ public class SnapToGrid : MonoBehaviour
     GameManager gameManager;
     [SerializeField] GameObject confirmButton;
     [SerializeField] GameObject cancelButton;
+    [SerializeField] GameObject rotateButton;
     public string itemID;
+    Node nodehit;
 
     void Awake()
     {
@@ -73,8 +75,8 @@ public class SnapToGrid : MonoBehaviour
              if (hit.transform.gameObject.tag == "Ground")
              {
                 // if player clicks else where menu disappears
-                Node nodehit = gridRef.GetNodeFromWorldPoint(hit.point);
-                if (nodehit.walkable)
+                nodehit = gridRef.GetNodeFromWorldPoint(hit.point);
+                if (nodehit.placeable)
                 {
                   gameObject.transform.position = new Vector3(nodehit.worldPosition.x, nodehit.worldPosition.y -0.5f, nodehit.worldPosition.z);
                 }       
@@ -87,18 +89,15 @@ public class SnapToGrid : MonoBehaviour
     /// </summary>
     void PlacementConfirmtation()
     {
-        // when player has item they choose grid square they want
-       /* old placement
-        * if (Input.GetMouseButtonDown(0) && hasItem)
-        {
-            nodeCheck();
-        }
-       */
-        // they can then rotate item to correct direction
         if (Input.GetKeyDown(KeyCode.R) && hasItem)
         {
             gameObject.transform.Rotate(rotVector, Space.Self);
         }  
+    }
+
+    public void RotateItem()
+    {
+        gameObject.transform.Rotate(rotVector, Space.Self);
     }
 
    public void ConfirmPlacement()
@@ -106,11 +105,14 @@ public class SnapToGrid : MonoBehaviour
         if (gameObject.tag == "Unplaced Item")
         {
             gameManager.currencyManager.TryBuy(itemID);
+            nodehit.placeable = false;
             hasItem = false;
             gameObject.tag = "Placed Item";
             gameManager.CheckIfItemHeld();
+            
             confirmButton.SetActive(false);
             cancelButton.SetActive(false);
+            rotateButton.SetActive(false);
         }
    }
 

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class LawnMower : TrapBase
@@ -8,50 +5,73 @@ public class LawnMower : TrapBase
 
     int maxHealth = 2;
     int health;
+    int breakCounter;
+    int repairCounter;
     bool onCooldown;
-    [SerializeField] GameObject itemBrokenEffect;
+    [SerializeField] GameObject repairItemEffect;
+    [SerializeField] GameObject smokeEffect;
 
 
-    private void Awake()
+    private void Start()
     {
         itemID = "LawnMower";
         health = maxHealth;
-        gameManagerObject = GameObject.Find("Game Manager");
-        gameManager = gameManagerObject.GetComponent<GameManager>();
     }
 
     private void Update()
     {
-       if(onCooldown)
-       {
-         timer += Time.deltaTime;
-
-         if (timer > timerMax)
-         {
-             onCooldown = false;     
-         }
-       }
 
         SliderUpdate();
+
+        if (GetComponentInParent<SnapToGrid>().hasItem)
+            return;
+
+        if (health == 0)
+        {
+            repairCounter = 0;
+            onCooldown = true;
+            if (breakCounter < 1)
+            {
+                breakCounter++;
+            
+                gameManager.audioManager.LawnMowerBreak();
+            }
+        }
+
+        if (onCooldown)
+        {
+            timer += Time.deltaTime;
+            if (timer > timerMax)
+            {
+                onCooldown = false;
+                repairItemEffect.SetActive(true);
+            }
+        }
 
         if (repairItem)
         {
             health = maxHealth;
             timer = 0;
+            breakCounter = 0;
+            repairItemEffect.SetActive(false);
+            if (repairCounter < 1)
+            {
+                repairCounter++;
+                gameManager.audioManager.LawnMowerRepair();
+            }
         }
 
-        Durability(health);
-        
-        if( health == 0)
-        {
-            itemBrokenEffect.SetActive(true);
-            onCooldown = true;
-        }    
-        else
-        {
-            itemBrokenEffect.SetActive(false);
-        }
+        SmokeEffect();
     }
+
+    void SmokeEffect()
+    {
+        if (itemBroken)
+            smokeEffect.SetActive(true);
+        else
+            smokeEffect.SetActive(false);
+    }
+
 
     private void OnTriggerStay(Collider collision)
     {
@@ -61,6 +81,7 @@ public class LawnMower : TrapBase
         if (itemBroken)
             return;  
         health--;
+        Durability(health);
         ItemInteract(collision.gameObject);
         collision.gameObject.GetComponent<HamsterBase>().Kill();
     }

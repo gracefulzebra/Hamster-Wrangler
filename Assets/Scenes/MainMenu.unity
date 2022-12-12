@@ -394,7 +394,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &119661654
 GameObject:
@@ -503,7 +503,6 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!114 &119661659
 MonoBehaviour:
@@ -1418,9 +1417,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: starSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a3a1969d6a401104d86fa10695702e5b, type: 3}
+    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: star1.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: star1.Array.data[0]
+      value: 
+      objectReference: {fileID: 1214911}
+    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: star1.Array.data[1]
+      value: 
+      objectReference: {fileID: 1766441385}
+    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: star1.Array.data[2]
+      value: 
+      objectReference: {fileID: 803483966}
     - target: {fileID: 1102496838878895824, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1102496838878895824, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1432,7 +1451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1102496838878895824, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.41
+      value: -3.4099998
       objectReference: {fileID: 0}
     - target: {fileID: 1102496838878895824, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1440,15 +1459,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1102496838878895824, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1102496838878895824, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1102496838878895824, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1102496838878895824, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1461,6 +1480,10 @@ PrefabInstance:
     - target: {fileID: 1102496838878895824, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: scoreFor3Star
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 8881886160524883247, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_Name
@@ -1807,7 +1830,6 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!114 &810937711
 MonoBehaviour:
@@ -1999,7 +2021,7 @@ RectTransform:
   - {fileID: 411572127}
   - {fileID: 280545117}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2170,7 +2192,6 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!1 &840621281
 GameObject:
@@ -2775,7 +2796,6 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!1 &1098076636
 GameObject:
@@ -4155,7 +4175,6 @@ MonoBehaviour:
   settings: {fileID: 840621281}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!1 &1652987178
 GameObject:
@@ -4451,7 +4470,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1822129181
 GameObject:
@@ -4695,7 +4714,6 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!1 &1864283340
 GameObject:
@@ -5037,7 +5055,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1986235221
 GameObject:
@@ -5146,7 +5164,6 @@ MonoBehaviour:
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
-  itemSelected: {fileID: 0}
   itemUnselected: {fileID: 0}
 --- !u!114 &1986235226
 MonoBehaviour:

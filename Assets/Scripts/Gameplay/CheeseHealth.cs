@@ -5,9 +5,12 @@ public class CheeseHealth : MonoBehaviour
     [SerializeField] GameManager gameManager;
 
     private void OnTriggerEnter(Collider col)
-    {     
-        gameManager.health -= 10;
-        print(gameManager.health); 
-        gameManager.CheckIfLoseGame();
+    {
+        if(col.GetComponent<HamsterBase>() != null)
+        {
+            col.GetComponent<HamsterBase>().Despawn();
+            gameManager.LoseHealth();
+        }
+        
     }
 }
