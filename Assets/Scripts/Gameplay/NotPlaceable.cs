@@ -21,7 +21,7 @@ public class NotPlaceable : MonoBehaviour
     {
 
         RaycastHit hit;
-        Ray mousePos = Vector3.down;
+        /* Ray mousePos = Vector3.down;
         if (Physics.Raycast(mousePos, out hit))
         {
             if (hit.transform.gameObject.tag == "Ground")
@@ -35,5 +35,6 @@ public class NotPlaceable : MonoBehaviour
                 nodehit.placeable = false;
             }
         }
+        */
     }
 }
