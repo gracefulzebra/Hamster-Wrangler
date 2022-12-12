@@ -182,9 +182,9 @@ public class ButtonInputs : MonoBehaviour
     }
 
    public void LevelSelect()
-    {
+   {
         SwitchSetActive(levelSelect);
-    }
+   }
 
     public void HTP()
     {
@@ -205,6 +205,7 @@ public class ButtonInputs : MonoBehaviour
     public void Level1()
     {
         SceneManager.LoadScene("SampleScene 1");
+        Time.timeScale = 1;
     }
 
     public void MainMenu()

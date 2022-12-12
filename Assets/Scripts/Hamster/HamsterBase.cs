@@ -87,8 +87,7 @@ public class HamsterBase : MonoBehaviour
     {
         float a = targetPos.x - currentPos.x;
         float b = targetPos.z - currentPos.z;
-        float c = targetPos.y - currentPos.y;
-        return Mathf.Sqrt(a * a + b * b + c * c);
+        return Mathf.Sqrt(a * a + b * b);
     }
 
     private void OnDrawGizmos()

@@ -6,6 +6,7 @@ public class Killbox : MonoBehaviour
 {
     private void OnTriggerEnter(Collider col)
     {
+        if (col.gameObject.GetComponent<HamsterBase>() != null)
         col.GetComponent<HamsterBase>().Kill();
     }
 }

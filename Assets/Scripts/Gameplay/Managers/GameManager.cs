@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private int startingCurrency;
     public int scoreFor3Star;
+    public static int finalScore;
 
     //Manager references
     public ScoreManager scoreManager { get; private set; }
@@ -59,6 +60,9 @@ public class GameManager : MonoBehaviour
         audioManager = GetComponent<AudioManager>();
 
         DisplayHealth(health);
+
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+            MainMenuStar();
     }
 
     public void StartWave()
@@ -115,7 +119,7 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-        int finalScore = scoreManager.FinalizeScore(health, maxHealth);
+        finalScore = scoreManager.FinalizeScore(health, maxHealth);
         int oneStar = (scoreFor3Star / 3);
         int twoStar = ((scoreFor3Star / 3) * 2);
 
@@ -137,6 +141,30 @@ public class GameManager : MonoBehaviour
         }
 
         uiManager.DisplayFinalScore(finalScore);
+    }
+
+    void MainMenuStar()
+    {
+
+        int oneStar = (scoreFor3Star / 3);
+        int twoStar = ((scoreFor3Star / 3) * 2);
+
+        if (finalScore == 0)
+        {
+            uiManager.Stars(0);
+        }
+        else if (finalScore >= 0 && finalScore <= oneStar)
+        {
+            uiManager.Stars(1);
+        }
+        else if (finalScore > oneStar && finalScore <= twoStar)
+        {
+            uiManager.Stars(2);
+        }
+        else if (finalScore > twoStar)
+        {
+            uiManager.Stars(3);
+        }
     }
 
     public void CheckIfLoseGame()
