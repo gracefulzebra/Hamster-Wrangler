@@ -34,7 +34,7 @@ public class HamsterBase : MonoBehaviour
     private void Start()
     {
         pathRequested = true;
-        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound, this.gameObject);
     }
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
@@ -60,7 +60,9 @@ public class HamsterBase : MonoBehaviour
 
     IEnumerator FollowPath()
     {
-        currentWaypoint = path[0];
+        if (path.Length > 0)
+            currentWaypoint = path[0];
+
         targetIndex = 0;
         while (true)
         {
@@ -77,7 +79,7 @@ public class HamsterBase : MonoBehaviour
             if (distance > 2f && !pathRequested)
             {
                 pathRequested = true;
-                PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+                PathRequestManager.RequestPath(transform.position, target.position, OnPathFound, this.gameObject);
             }
             yield return null;
         }
