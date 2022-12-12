@@ -15,6 +15,7 @@ public class SnapToGrid : MonoBehaviour
     GameManager gameManager;
     [SerializeField] GameObject confirmButton;
     [SerializeField] GameObject cancelButton;
+    [SerializeField] GameObject rotateButton;
     public string itemID;
     Node nodehit;
 
@@ -88,18 +89,15 @@ public class SnapToGrid : MonoBehaviour
     /// </summary>
     void PlacementConfirmtation()
     {
-        // when player has item they choose grid square they want
-       /* old placement
-        * if (Input.GetMouseButtonDown(0) && hasItem)
-        {
-            nodeCheck();
-        }
-       */
-        // they can then rotate item to correct direction
         if (Input.GetKeyDown(KeyCode.R) && hasItem)
         {
             gameObject.transform.Rotate(rotVector, Space.Self);
         }  
+    }
+
+    public void RotateItem()
+    {
+        gameObject.transform.Rotate(rotVector, Space.Self);
     }
 
    public void ConfirmPlacement()
@@ -111,8 +109,10 @@ public class SnapToGrid : MonoBehaviour
             hasItem = false;
             gameObject.tag = "Placed Item";
             gameManager.CheckIfItemHeld();
+            
             confirmButton.SetActive(false);
             cancelButton.SetActive(false);
+            rotateButton.SetActive(false);
         }
    }
 

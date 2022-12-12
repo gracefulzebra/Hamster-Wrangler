@@ -24,17 +24,22 @@ public class GroundCheck : MonoBehaviour
 
     public void Update()
     {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        if (!isGrounded )//&& parentObject.GetComponent<SnapToGrid>().confirmPlacement)
-        {
-            parentObject.gameObject.transform.Rotate(rotVector, Space.Self);
-        }
+       if (!GetComponentInParent<SnapToGrid>().hasItem)
+            return;
 
         nodehit = gridRef.GetNodeFromWorldPoint(groundCheck.position);
+
         if (GetComponentInParent<SnapToGrid>().hasItem == false)
         {
             nodehit.placeable = false;
+        }
+
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+
+        if (!isGrounded ||  !nodehit.walkable ||  !nodehit.placeable)//&& parentObject.GetComponent<SnapToGrid>().confirmPlacement)
+        {
+            parentObject.gameObject.transform.Rotate(rotVector, Space.Self);
         }
     }
 }
