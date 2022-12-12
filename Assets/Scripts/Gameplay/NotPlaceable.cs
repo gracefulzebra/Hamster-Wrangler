@@ -9,8 +9,6 @@ public class NotPlaceable : MonoBehaviour
     GameObject gridRefObject;
     GridGenerator gridRef;
 
-
-
     private void Awake()
     {
         gridRefObject = GameObject.Find("OliverGriddy");
@@ -19,22 +17,7 @@ public class NotPlaceable : MonoBehaviour
     // make unpalcebale; anmd give to hamster house
     private void Start()
     {
-
-        RaycastHit hit;
-        /* Ray mousePos = Vector3.down;
-        if (Physics.Raycast(mousePos, out hit))
-        {
-            if (hit.transform.gameObject.tag == "Ground")
-            {
-                // if player clicks else where menu disappears
-                nodehit = gridRef.GetNodeFromWorldPoint(hit.point);
-            }
-
-            if (GetComponentInParent<SnapToGrid>().hasItem == false)
-            {
-                nodehit.placeable = false;
-            }
-        }
-        */
+        nodehit = gridRef.GetNodeFromWorldPoint(gameObject.transform.position);
+        nodehit.placeable = false;
     }
 }
