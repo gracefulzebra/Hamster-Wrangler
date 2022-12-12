@@ -20,9 +20,9 @@ public class PathRequestManager : MonoBehaviour
         pathfinding = GetComponent<Pathfinding>();
     }
 
-    public static void RequestPath(Vector3 pathStart, Vector3 pathEnd, Action<Vector3[], bool> callback)
+    public static void RequestPath(Vector3 pathStart, Vector3 pathEnd, Action<Vector3[], bool> callback, GameObject caller)
     {
-        PathRequest newRequest = new PathRequest(pathStart, pathEnd, callback);  
+        PathRequest newRequest = new PathRequest(pathStart, pathEnd, callback, caller);  
         instance.pathRequestsQueue.Enqueue(newRequest);
         instance.TryProcessNext();
     }
@@ -39,7 +39,10 @@ public class PathRequestManager : MonoBehaviour
 
     public void FinishedProcessingPath(Vector3[] path, bool success)
     {
-        currentPathRequest.callback(path, success);
+        if (currentPathRequest.caller != null)
+        {
+            currentPathRequest.callback(path, success);
+        }
         isProcessingPath = false;
         TryProcessNext();
     }
@@ -49,12 +52,14 @@ public class PathRequestManager : MonoBehaviour
         public Vector3 pathStart;
         public Vector3 pathEnd;
         public Action<Vector3[], bool> callback;
+        public GameObject caller;
 
-        public PathRequest(Vector3 _start, Vector3 _end, Action<Vector3[], bool> _callback)
+        public PathRequest(Vector3 _start, Vector3 _end, Action<Vector3[], bool> _callback, GameObject _caller)
         {
             pathStart = _start;
             pathEnd = _end; 
             callback = _callback;
+            caller = _caller;
         }
     }
 }
