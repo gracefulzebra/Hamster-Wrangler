@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject scoreDisplay;
     [SerializeField] private GameObject currencyDisplay;
     [SerializeField] private GameObject healthDisplay;
+    [SerializeField] private GameObject wavesDisplay;
     [SerializeField] private Slider slider;
     [SerializeField] private GameObject lmCost, lbCost, rakeCost, tarCost, lighterCost;
     // for ip3 we can use a slider thats fill is the yellow colour for the stars, so when you finish the level you can see how close to the 
@@ -33,8 +35,12 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine(UpdateAudio());
-        UpdateItemCosts();
+        if (SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            StartCoroutine(UpdateAudio());
+            UpdateItemCosts();
+            wavesDisplay.GetComponent<TextMeshProUGUI>().text = "0 / 3";
+        }
     }
 
     private void Update()
@@ -102,6 +108,12 @@ public class UIManager : MonoBehaviour
             healthDisplay.GetComponent<TextMeshProUGUI>().text = "" + health;
     }
 
+    public void DisplayWaves(int waves, int maxWaves)
+    {
+        if (scoreDisplay != null)
+            wavesDisplay.GetComponent<TextMeshProUGUI>().text = waves + " / " + maxWaves;
+    }
+
     public void DisplayFinalScore(int finalScore)
     {
         finalScoreDisplay.GetComponent<TextMeshProUGUI>().text = "Score : " + finalScore;
@@ -143,24 +155,45 @@ public class UIManager : MonoBehaviour
                 break;
         }
 
-        //Calculation being handled in game manager. Can undo to reuse this if you want.
-        /*
-       if(gameManager.scoreManager.currentScore > gameManager.scoreFor3Star / 3)
-       {
-            star1[0].GetComponent<Image>().sprite = starSprite;
-       } 
-       if (gameManager.scoreManager.currentScore > (gameManager.scoreFor3Star / 3) * 2)
-       {
-            star1[1].GetComponent<Image>().sprite = starSprite;
-       }
-       if (gameManager.scoreManager.currentScore > gameManager.scoreFor3Star)
-       {
-            star1[2].GetComponent<Image>().sprite = starSprite;
-       }
-        */
+
+            //Calculation being handled in game manager. Can undo to reuse this if you want.
+            /*
+           if(gameManager.scoreManager.currentScore > gameManager.scoreFor3Star / 3)
+           {
+                star1[0].GetComponent<Image>().sprite = starSprite;
+           } 
+           if (gameManager.scoreManager.currentScore > (gameManager.scoreFor3Star / 3) * 2)
+           {
+                star1[1].GetComponent<Image>().sprite = starSprite;
+           }
+           if (gameManager.scoreManager.currentScore > gameManager.scoreFor3Star)
+           {
+                star1[2].GetComponent<Image>().sprite = starSprite;
+           }
+            */
+     }
+
+
+   public void MenuStars(int starCount)
+    {
+        switch (starCount)
+        {
+            case 1:
+                star1[0].GetComponent<Image>().sprite = starSprite;
+                break;
+            case 2:
+                star1[0].GetComponent<Image>().sprite = starSprite;
+                star1[1].GetComponent<Image>().sprite = starSprite;
+                break;
+            case 3:
+                star1[0].GetComponent<Image>().sprite = starSprite;
+                star1[1].GetComponent<Image>().sprite = starSprite;
+                star1[2].GetComponent<Image>().sprite = starSprite;
+                break;
+        }
     }
 
-   public void RemoveShopOutline(GameObject theButton)
+    public void RemoveShopOutline(GameObject theButton)
    {
         if (previousButton != null)
         {

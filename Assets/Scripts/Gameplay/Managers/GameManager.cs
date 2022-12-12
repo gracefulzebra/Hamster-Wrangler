@@ -86,6 +86,11 @@ public class GameManager : MonoBehaviour
         uiManager.DisplayHealth(health);
     }
 
+    public void DisplayWaves(int waves, int maxWaves)
+    {
+        uiManager.DisplayWaves(waves, maxWaves);
+    }
+
     public void UpdateVolume(float volume)
     {
         audioManager.SetVolume(volume);
@@ -145,25 +150,24 @@ public class GameManager : MonoBehaviour
 
     void MainMenuStar()
     {
-
         int oneStar = (scoreFor3Star / 3);
         int twoStar = ((scoreFor3Star / 3) * 2);
 
         if (finalScore == 0)
         {
-            uiManager.Stars(0);
+            uiManager.MenuStars(0);
         }
         else if (finalScore >= 0 && finalScore <= oneStar)
         {
-            uiManager.Stars(1);
+            uiManager.MenuStars(1);
         }
         else if (finalScore > oneStar && finalScore <= twoStar)
         {
-            uiManager.Stars(2);
+            uiManager.MenuStars(2);
         }
         else if (finalScore > twoStar)
         {
-            uiManager.Stars(3);
+            uiManager.MenuStars(3);
         }
     }
 

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -11,7 +10,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float spawnDelay;
     private int hamstersKilled;
     private bool waveCompleted;
-    private int wave;
+    private int wave = 0;
     private int maxWaves;
 
 
@@ -31,8 +30,9 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator StartWave()
     {
-        if(waveCompleted && wave < hamstersPerWave.Length) 
+        if (waveCompleted && wave < hamstersPerWave.Length) 
         {
+            manager.DisplayWaves(wave + 1, maxWaves);
             waveCompleted = false;
             for (int i = 0; i <= hamstersPerWave[wave] - 1; i++)
             {
@@ -73,5 +73,6 @@ public class WaveManager : MonoBehaviour
             }
 
         }
+       // manager.DisplayWaves(wave + 1, maxWaves);
     }
 }
