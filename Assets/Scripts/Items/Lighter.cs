@@ -16,6 +16,7 @@ public class Lighter : TrapBase
     private void Start()
     {
         lighterOn = false;
+        itemID = "Lighter";
     }
 
     private void Update()
@@ -64,6 +65,7 @@ public class Lighter : TrapBase
                 if (col.gameObject.tag == "Flammable")
                 {
                     col.gameObject.GetComponent<ItemEffects>().OnFire();
+                    ItemInteract(col.gameObject);
                 }
             }
          }

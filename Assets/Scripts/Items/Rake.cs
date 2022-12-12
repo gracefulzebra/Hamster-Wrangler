@@ -9,6 +9,10 @@ public class Rake : TrapBase
     float pressedRakeCooldown;
     [SerializeField] GameObject activationButton;
 
+    private void Start()
+    {
+        itemID = "Rake";
+    }
     private void Update()
     {
         SliderUpdate();
