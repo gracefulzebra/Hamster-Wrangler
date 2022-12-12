@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         //Display health (has to happen after UImanager is assigned)
 
         uiManager = GetComponent<UIManager>();
+        uiManager.DisplayHealth(health);
 
         scoreManager = GetComponent<ScoreManager>();
         scoreManager.InitializeScore();
@@ -110,7 +111,6 @@ public class GameManager : MonoBehaviour
         health -= damage;
         CheckIfLoseGame();
         DisplayHealth(health);
-        //Display Health
     }
 
     public void WinGame()
@@ -119,7 +119,11 @@ public class GameManager : MonoBehaviour
         int oneStar = (scoreFor3Star / 3);
         int twoStar = ((scoreFor3Star / 3) * 2);
 
-        if(finalScore <= oneStar)
+        if(finalScore == 0)
+        {
+            uiManager.Stars(0);
+        }
+        else if(finalScore >= 0 && finalScore <= oneStar)
         {
             uiManager.Stars(1);
         }
@@ -131,6 +135,8 @@ public class GameManager : MonoBehaviour
         {
             uiManager.Stars(3);
         }
+
+        uiManager.DisplayFinalScore(finalScore);
     }
 
     public void CheckIfLoseGame()

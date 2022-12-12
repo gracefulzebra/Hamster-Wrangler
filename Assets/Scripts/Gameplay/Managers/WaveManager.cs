@@ -31,20 +31,24 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator StartWave()
     {
-        if(waveCompleted) 
+        if(waveCompleted && wave < hamstersPerWave.Length) 
         {
             waveCompleted = false;
-            for (int i = 1; i <= hamstersPerWave[wave]; i++)
+            for (int i = 0; i <= hamstersPerWave[wave] - 1; i++)
             {
+                if (i != 0)
+                    yield return new WaitForSeconds(spawnDelay);
+
                 for (int j = 0; j < hamsterSpawners.Length; j++)
                 {
                     SpawnHamster(hamsterSpawners[j]);
                 }
-                yield return new WaitForSeconds(spawnDelay);
+                
             } 
+            StopCoroutine(StartWave());
         }
 
-        StopCoroutine(StartWave());
+        
     }
 
     private void SpawnHamster(GameObject hamsterSpawn)
@@ -55,16 +59,19 @@ public class WaveManager : MonoBehaviour
     public void HamstersRemaining() //Called in kill function of hamster.
     {
         hamstersKilled++;
-        if( hamstersKilled > hamstersPerWave[wave])
+        if ( hamstersKilled >= hamstersPerWave[wave] * 2)
         {
-            if(wave == maxWaves)
-            {
-                manager.WinGame();
-            }
+            
 
             waveCompleted = true;
             wave++;
             hamstersKilled = 0;
+
+            if (wave >= maxWaves)
+            {
+                manager.WinGame();
+            }
+
         }
     }
 }

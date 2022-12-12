@@ -53,5 +53,10 @@ public class HamsterScore : MonoBehaviour
         manager.waveManager.HamstersRemaining();
     }
 
+    public void UpdateWaveManager()
+    {
+        manager.waveManager.HamstersRemaining();
+    }
+
 
 }

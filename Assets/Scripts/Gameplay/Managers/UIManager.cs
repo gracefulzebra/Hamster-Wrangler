@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     private GameManager gameManager;
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject gameOverScreen;
+    [SerializeField] private GameObject finalScoreDisplay;
     [SerializeField] private GameObject scoreDisplay;
     [SerializeField] private GameObject currencyDisplay;
     [SerializeField] private GameObject healthDisplay;
@@ -101,6 +102,11 @@ public class UIManager : MonoBehaviour
             healthDisplay.GetComponent<TextMeshProUGUI>().text = "" + health;
     }
 
+    public void DisplayFinalScore(int finalScore)
+    {
+        finalScoreDisplay.GetComponent<TextMeshProUGUI>().text = "Score : " + finalScore;
+    }
+
     public void UpdateItemCosts()
     {
         if (lmCost != null)
@@ -119,17 +125,21 @@ public class UIManager : MonoBehaviour
         {
             case 1:
                 star1[0].GetComponent<Image>().sprite = starSprite;
+                gameOverScreen.SetActive(true);
                 break;
             case 2:
                 star1[0].GetComponent<Image>().sprite = starSprite;
                 star1[1].GetComponent<Image>().sprite = starSprite;
+                gameOverScreen.SetActive(true);
                 break;
             case 3:
                 star1[0].GetComponent<Image>().sprite = starSprite;
                 star1[1].GetComponent<Image>().sprite = starSprite;
                 star1[2].GetComponent<Image>().sprite = starSprite;
+                gameOverScreen.SetActive(true);
                 break;
             default:
+                gameOverScreen.SetActive(true);
                 break;
         }
 
