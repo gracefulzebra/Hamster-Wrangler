@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     // next star you are, right now im just hard coding it 
     [SerializeField] private  List<GameObject> star1;
     [SerializeField] private Sprite starSprite;
+
+    [SerializeField] private GameObject IngameHTP;
   
     // for buttonInputs
     [SerializeField] Sprite itemSelected;
@@ -45,6 +47,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        if (SceneManager.GetActiveScene().name != "MainMenu")
         MainMenu();
     }
 
@@ -56,6 +59,7 @@ public class UIManager : MonoBehaviour
             mainMenuActive = true;
             Time.timeScale = 0;
             gameManager.holdingItem = true;
+            IngameHTP.SetActive(false);
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && mainMenuActive)
         {
@@ -63,6 +67,7 @@ public class UIManager : MonoBehaviour
             mainMenuActive = false;
             Time.timeScale = 1;
             gameManager.holdingItem = false;
+            IngameHTP.SetActive(false);
         }
    }
 

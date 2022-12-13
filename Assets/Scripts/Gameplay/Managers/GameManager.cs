@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if (SceneManager.GetActiveScene().name != "MainMenu")
             audioManager.PlayMusic();
     }
 
@@ -75,9 +76,8 @@ public class GameManager : MonoBehaviour
         StartCoroutine(waveManager.StartWave()); //To be hooked up to UI button. Fully functional and ready to be tweaked. 
     }
 
-
-//UIManager communication
-public void DisplayScore(int score)
+    //UIManager communication
+    public void DisplayScore(int score)
     {
         uiManager.DisplayScore(score);
     }

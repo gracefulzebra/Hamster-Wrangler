@@ -1250,8 +1250,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.44400173, y: 0.4863342, z: 0.4548932}
-  m_Center: {x: 0.07711628, y: -0.49726427, z: 0.07053532}
+  m_Size: {x: 0.22673957, y: 0.4863342, z: 0.38291728}
+  m_Center: {x: 0.11110713, y: -0.49726427, z: 0.09688419}
 --- !u!114 &8893993068713357871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1267,12 +1267,13 @@ MonoBehaviour:
   repairCooldown: 0
   repairCooldownMax: 0
   timer: 0
-  timerMax: 4
+  timerMax: 8
   finishedCooldown: 0
   force: 0
   cooldownSlider: {fileID: 0}
   lighterOn: 0
   lighterCooldown: 0
+  lighterTimerMax: 4
   fireEffect: {fileID: 8930136499679575092}
 --- !u!1 &9150004749153911284
 GameObject:

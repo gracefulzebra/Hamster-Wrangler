@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlacementUI : MonoBehaviour
@@ -22,8 +19,5 @@ public class PlacementUI : MonoBehaviour
 
         transform.LookAt(transform.position + mainCamera.transform.rotation * Vector3.back);
 
-     //  Vector3 lookAt = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.transform.position.z);
-
-     // transform.LookAt(lookAt);
     }
 }

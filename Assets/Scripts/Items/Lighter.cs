@@ -11,6 +11,7 @@ public class Lighter : TrapBase
     public bool lighterOn;
     int counter;
     public float lighterCooldown;
+    public float lighterTimerMax;
     [SerializeField] GameObject fireEffect;
 
     private void Start()
@@ -50,7 +51,7 @@ public class Lighter : TrapBase
             timer = 0;
         }
 
-        if (lighterCooldown > timerMax)
+        if (lighterCooldown > lighterTimerMax)
         {
             lighterOn = false;
         }

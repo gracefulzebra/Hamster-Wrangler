@@ -15,18 +15,19 @@ public class ScoreManager : MonoBehaviour
     }
 
     void UpdateScoreDisplay()
-    {
+    {  
         GetComponent<GameManager>().DisplayScore(currentScore);
     }
 
     public void UpdateScore(int blowerCount, int tarCount, int lighterCount, int mowerCount, int rakeCount)
     {
+        print(currentScore);
         currentScore += (blowerCount * blowerScore) + (tarCount * tarScore) + (lighterCount * lighterScore) + (mowerCount * mowerScore) + (rakeCount * rakeScore); 
     }
 
     public int FinalizeScore(int healthRemaining, int maxHealth)
     {
-        int prcntHealth = (maxHealth / healthRemaining);
+        int prcntHealth = (healthRemaining / maxHealth);
         currentScore *= prcntHealth;
 
         return currentScore;
