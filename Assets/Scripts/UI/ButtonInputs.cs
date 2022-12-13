@@ -26,6 +26,7 @@ public class ButtonInputs : MonoBehaviour
     [SerializeField] GameObject levelSelect;
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject HTPMenu;
+    [SerializeField] GameObject HTPMenuIngame;
     [SerializeField] GameObject settings;
 
     [Header("Open/Close Shop")]
@@ -191,6 +192,11 @@ public class ButtonInputs : MonoBehaviour
         SwitchSetActive(HTPMenu);
     }
 
+    public void HTPIngame()
+    {
+        HTPMenuIngame.SetActive(true);
+    }
+
     public void Settings()
     {
         SwitchSetActive(settings);
@@ -199,6 +205,7 @@ public class ButtonInputs : MonoBehaviour
     public void ExitButton()
     {
         transform.parent.gameObject.SetActive(false);
+        if (mainMenu != null)
         mainMenu.SetActive(true);
     }
 

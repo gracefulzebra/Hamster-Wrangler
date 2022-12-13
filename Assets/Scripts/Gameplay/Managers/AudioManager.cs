@@ -29,6 +29,10 @@ public class AudioManager : MonoBehaviour
     [Header("LeafBlower")]
     [SerializeField] private AudioClip lfBlower;
 
+
+    [SerializeField] private AudioClip music;
+
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -98,5 +102,10 @@ public class AudioManager : MonoBehaviour
     public void LeafBlowerUse()
     {
         audioSource.PlayOneShot(lfBlower, volume / 2f);
+    }
+
+    public void PlayMusic()
+    {
+        audioSource.PlayOneShot(music, volume / 8);
     }
 }
