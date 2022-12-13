@@ -67,7 +67,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == "SampleScene 1")
             audioManager.PlayMusic();
     }
 
