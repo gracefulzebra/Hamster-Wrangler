@@ -6,6 +6,7 @@ public class ItemEffects : MonoBehaviour
 
     [Header("Item Effects")]
     WaitForSeconds delay = new WaitForSeconds(3);
+    WaitForSeconds lighterDelay = new WaitForSeconds(1);
     [SerializeField] GameObject cadaver;
     [SerializeField] GameObject fireEffect;
     public bool onFire = false;
@@ -38,7 +39,7 @@ public class ItemEffects : MonoBehaviour
 
     IEnumerator RemoveTar()
     {
-        yield return delay;
+        yield return lighterDelay;
         gameObject.tag = "Untagged";
     }
 
