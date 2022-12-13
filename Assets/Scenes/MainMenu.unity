@@ -500,6 +500,7 @@ MonoBehaviour:
   levelSelect: {fileID: 0}
   mainMenu: {fileID: 1246303662}
   HTPMenu: {fileID: 0}
+  HTPMenuIngame: {fileID: 0}
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
@@ -1827,6 +1828,7 @@ MonoBehaviour:
   levelSelect: {fileID: 0}
   mainMenu: {fileID: 1246303662}
   HTPMenu: {fileID: 0}
+  HTPMenuIngame: {fileID: 0}
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
@@ -2189,6 +2191,7 @@ MonoBehaviour:
   levelSelect: {fileID: 0}
   mainMenu: {fileID: 1246303662}
   HTPMenu: {fileID: 411572126}
+  HTPMenuIngame: {fileID: 0}
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
@@ -2793,6 +2796,7 @@ MonoBehaviour:
   levelSelect: {fileID: 0}
   mainMenu: {fileID: 0}
   HTPMenu: {fileID: 0}
+  HTPMenuIngame: {fileID: 0}
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
@@ -3510,9 +3514,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hamster Wrangler is about setting up convulted traps to kill hamsters to
-    stop them from getting to the cheese. Use yours wits, skills, and deadly weapons
-    to kill, burn, and throw your way to victory. Still a WIP but please enjoy!
+  m_text: 'In each level of Hamster Wrangler, you start with an buget, a selection
+    of traps, and a dream.  Cheese is bad for hamsters, so you must stop them from
+    reaching it by ANY. MEANS. NECESSARY.
+
+
+    Combine together as many of your
+    armaments as you can, the more traps used on a hamster to ki-  I mean stop them,
+    the more money it''ll get you.  Finish the level with some money left over and
+    it''ll go towards your score, netting you a higher star rating by the end!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b1ab64ee6d6eb3d4b95fe4b8ed5e32ab, type: 2}
   m_sharedMaterial: {fileID: 1539077350808063104, guid: b1ab64ee6d6eb3d4b95fe4b8ed5e32ab, type: 2}
@@ -3539,14 +3549,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 8
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -4172,6 +4182,7 @@ MonoBehaviour:
   levelSelect: {fileID: 0}
   mainMenu: {fileID: 1246303662}
   HTPMenu: {fileID: 0}
+  HTPMenuIngame: {fileID: 0}
   settings: {fileID: 840621281}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
@@ -4711,6 +4722,7 @@ MonoBehaviour:
   levelSelect: {fileID: 280545116}
   mainMenu: {fileID: 1246303662}
   HTPMenu: {fileID: 0}
+  HTPMenuIngame: {fileID: 0}
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}
@@ -5161,6 +5173,7 @@ MonoBehaviour:
   levelSelect: {fileID: 0}
   mainMenu: {fileID: 1246303662}
   HTPMenu: {fileID: 0}
+  HTPMenuIngame: {fileID: 0}
   settings: {fileID: 0}
   openMenu: {fileID: 0}
   closeMenu: {fileID: 0}

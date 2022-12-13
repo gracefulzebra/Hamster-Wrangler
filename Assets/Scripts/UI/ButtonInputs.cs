@@ -211,7 +211,7 @@ public class ButtonInputs : MonoBehaviour
 
     public void Level1()
     {
-        SceneManager.LoadScene("SampleScene 1");
+        SceneManager.LoadScene("OpenLevel");
         Time.timeScale = 1;
     }
 
