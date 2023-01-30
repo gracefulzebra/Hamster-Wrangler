@@ -30,19 +30,19 @@ public class CurrencyManager : MonoBehaviour
         switch (itemID)
         {
             case "LeafBlower":
-                return CheckValidPurcase(blowerCost);
+                return CheckValidPurchase(blowerCost);
 
             case "Tar":
-                return CheckValidPurcase(tarCost);
+                return CheckValidPurchase(tarCost);
 
             case "Lighter":
-                return CheckValidPurcase(lighterCost);
+                return CheckValidPurchase(lighterCost);
 
             case "LawnMower":
-                return CheckValidPurcase(mowerCost);
+                return CheckValidPurchase(mowerCost);
 
             case "Rake":
-                return CheckValidPurcase(rakeCost);
+                return CheckValidPurchase(rakeCost);
 
             default:
                 Debug.Log("Invalid itemID");
@@ -64,23 +64,23 @@ public class CurrencyManager : MonoBehaviour
         switch (itemID)
         {
             case "LeafBlower":
-                if (CheckValidPurcase(blowerCost)) { PurchaseItem(blowerCost); return true; }
+                if (CheckValidPurchase(blowerCost)) { PurchaseItem(blowerCost); return true; }
                 else { return false; }
 
             case "Tar":
-                if (CheckValidPurcase(tarCost)) { PurchaseItem(tarCost); return true; }
+                if (CheckValidPurchase(tarCost)) { PurchaseItem(tarCost); return true; }
                 else { return false; }
 
             case "Lighter":
-                if (CheckValidPurcase(lighterCost)) { PurchaseItem(lighterCost); return true; }
+                if (CheckValidPurchase(lighterCost)) { PurchaseItem(lighterCost); return true; }
                 else { return false; }
 
             case "LawnMower":
-                if (CheckValidPurcase(mowerCost)) { PurchaseItem(mowerCost); return true; }
+                if (CheckValidPurchase(mowerCost)) { PurchaseItem(mowerCost); return true; }
                 else { return false; }
 
             case "Rake":
-                if (CheckValidPurcase(rakeCost)) { PurchaseItem(rakeCost); return true; }
+                if (CheckValidPurchase(rakeCost)) { PurchaseItem(rakeCost); return true; }
                 else { return false; }
 
             default:
@@ -92,7 +92,7 @@ public class CurrencyManager : MonoBehaviour
      
     public bool RepairItemCost()
     {
-        if (CheckValidPurcase(repairCost))
+        if (CheckValidPurchase(repairCost))
         {
             PurchaseItem(repairCost);
             return true;
@@ -102,7 +102,7 @@ public class CurrencyManager : MonoBehaviour
     }
 
 
-    private bool CheckValidPurcase(int cost)
+    private bool CheckValidPurchase(int cost)
     {
         return currency - cost >= 0;
     }

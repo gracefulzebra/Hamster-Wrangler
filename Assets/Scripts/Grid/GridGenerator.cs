@@ -28,7 +28,7 @@ public class GridGenerator : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        /*Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
+        Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
 
         if(grid != null)
         {
@@ -37,7 +37,7 @@ public class GridGenerator : MonoBehaviour
                 Gizmos.color = (n.walkable) ? Color.white : Color.red;
                 Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter-.1f));
             }
-        }*/
+        }
     }
 
     public List<Node> GetNeighbours(Node node)
