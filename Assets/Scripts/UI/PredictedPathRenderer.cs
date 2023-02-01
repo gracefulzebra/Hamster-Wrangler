@@ -8,7 +8,7 @@ public class PredictedPathRenderer : MonoBehaviour
     Vector3[] path;
     GridGenerator grid;
 
-    LineRenderer[] pathLines;
+    LineRenderer pathLine;
     [SerializeField] LineRenderer linePrefab;
 
     Node oldPos;
@@ -46,15 +46,11 @@ public class PredictedPathRenderer : MonoBehaviour
     }
     private void RenderPath()
     {
-        pathLines = new LineRenderer[path.Length];
+        pathLine = new LineRenderer();
+        pathLine = Instantiate(linePrefab, this.transform);
 
-        for(int i = 1; i < path.Length; i++)
-        {
-            pathLines[i] = Instantiate(linePrefab);
-            pathLines[i].SetPosition(0, path[i - 1]);
-            pathLines[i].SetPosition(1, path[i]);
-            //pathLines[i].transform.SetParent(this.transform);
-        }
+        pathLine.positionCount = path.Length;
+        pathLine.SetPositions(path);        
     }
 
     IEnumerator UpdatePath()
@@ -64,14 +60,12 @@ public class PredictedPathRenderer : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             Node currentPos = grid.GetNodeFromWorldPoint(transform.position);
             
-            if (currentPos != oldPos)
+            if (currentPos != oldPos && currentPos.walkable)
             {
                 oldPos = currentPos;
-                foreach(LineRenderer line in pathLines)
-                {
-                    Destroy(line);
-                }
-
+                
+                Destroy(pathLine.gameObject);
+                
                 PathRequestManager.RequestPath(transform.position, target.position, OnPathFound, this.gameObject);
             }
         }
