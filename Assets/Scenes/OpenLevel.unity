@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 22410644}
   m_Layer: 5
   m_Name: Lighter Button
-  m_TagString: Untagged
+  m_TagString: Lighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -595,7 +595,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 22410646}
   m_OnClick:
     m_PersistentCalls:
@@ -4255,7 +4255,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 209070917}
   m_OnClick:
     m_PersistentCalls:
@@ -11184,7 +11184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &547062531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23871,7 +23871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: startingCurrency
-      value: 1200
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 8881886160524883247, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_Name
@@ -25794,7 +25794,7 @@ GameObject:
   - component: {fileID: 1288909867}
   m_Layer: 5
   m_Name: Tar Button
-  m_TagString: Untagged
+  m_TagString: Tar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25892,7 +25892,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1288909869}
   m_OnClick:
     m_PersistentCalls:
@@ -30215,7 +30215,7 @@ GameObject:
   - component: {fileID: 1527962493}
   m_Layer: 5
   m_Name: Item Shop
-  m_TagString: Untagged
+  m_TagString: Item Shop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34876,19 +34876,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.07999998, y: 0.010000003, z: 0.07999998}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1760040712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760040704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 594e78573ad5bcf4cb105c5485ada024, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lawnmower: {fileID: 4396709711384378787, guid: 5f8309f9f4377e347aede12402a21cb8, type: 3}
 --- !u!1001 &1761126358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38489,7 +38476,7 @@ GameObject:
   - component: {fileID: 1926682346}
   m_Layer: 5
   m_Name: Rake Button
-  m_TagString: Untagged
+  m_TagString: Rake
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38587,7 +38574,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1926682348}
   m_OnClick:
     m_PersistentCalls:

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -87,32 +88,54 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         }
     }
 
-    /*   public bool GroundCheck()
-       {
+      public bool GroundCheck()
+      {
            RaycastHit hit;
            Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
            if (Physics.Raycast(mousePos, out hit))
            {
-               if (hit.transform.gameObject.tag == "Ground")
-               {
-                   return true;
-               }
-               else print("in air");
+            if (hit.transform.gameObject)
+              {
+                return true;
+              }
+            else if (hit.transform.tag == "Item Shop")
+                return false;
            }
            return false;
-       }
-    */
-
-
-    public void OnPointerDown(PointerEventData eventData) { Debug.Log(this.gameObject + " Down"); }
+      }
+    
+    public void OnPointerDown(PointerEventData eventData) { }
 
     public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
 
     public void OnPointerUp(PointerEventData eventData) 
-    { 
-        Debug.Log(this.gameObject + " Up");
-        ConfirmPlacement();
-    }//
+    {
+        print("let go");
+        StartCoroutine(PlacementConfirmation());
+        nodehit.placeable = false;
+        hasItem = false;
+    }
+
+    void OnMouseDown()
+    {
+        if (gameObject.tag == "Unplaced item")
+        {
+            print("cancaled cour");
+            nodehit.placeable = true;
+            hasItem = true;
+            StopCoroutine(PlacementConfirmation());
+        }
+    }
+
+    IEnumerator PlacementConfirmation()
+    {
+        print("started cour");
+        yield return 2.0f;
+        print("inside cour");
+        gameManager.currencyManager.TryBuy(itemID);
+        gameObject.tag = "Placed Item";
+        gameManager.CheckIfItemHeld();
+    }
 
     /// <summary>
     /// Controls placement and rotation of objects 

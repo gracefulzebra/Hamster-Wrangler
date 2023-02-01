@@ -18,6 +18,5 @@ public class PlacementUI : MonoBehaviour
     {
 
         transform.LookAt(transform.position + mainCamera.transform.rotation * Vector3.back);
-
     }
 }

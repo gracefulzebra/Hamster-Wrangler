@@ -55,6 +55,18 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
         {
             itemToSpawn = leafBlower;
         }
+        if (gameObject.tag == "Rake")
+        {
+            itemToSpawn = rake;
+        }
+        if (gameObject.tag == "Tar")
+        {
+            itemToSpawn = tar;
+        }
+        if (gameObject.tag == "Lighter")
+        {
+            itemToSpawn = lighter;
+        }
     }
 
     private void Update()
@@ -70,38 +82,16 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        gameManager.uiManager.RemoveShopOutline(gameObject);
-        gameManager.uiManager.ShopButtonOutline(gameObject);
-        Vector3 spawnPos = new Vector3(0f, 100f, 0f);
-        Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
-    }
-
-    void SpawnItem(GameObject itemToSpawn)
-    {
-        if (!gameManager.holdingItem)
+        if (gameManager.currencyManager.CheckPrice(gameObject.tag) == true)
         {
-        //    ItemSpawn(itemToSpawn);
-            gameManager.holdingItem = true;
-        }
-        if (gameManager.holdingItem)
-        {        
-            temp = GameObject.FindGameObjectsWithTag("Unplaced Item");
-            foreach (GameObject x in temp)
-            {
-                Destroy(x);
-            }
-          //  ItemSpawn(itemToSpawn);
+            gameManager.uiManager.RemoveShopOutline(gameObject);
+            gameManager.uiManager.ShopButtonOutline(gameObject);
+            Vector3 spawnPos = new Vector3(0f, 100f, 0f);
+            Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
         }
     }
 
-  /*  void ItemSpawn(GameObject itemToSpawn)
-    {
-        gameManager.uiManager.RemoveShopOutline(gameObject);
-        gameManager.uiManager.ShopButtonOutline(gameObject);
-        Vector3 spawnPos = new Vector3(0f, 100f, 0f);
-        Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
-    }
-  */
+
     void HelpGuide(GameObject guideMenu)
     {
         if (!guideMenu.activeSelf)
@@ -129,7 +119,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
             mainMenu.SetActive(false);
         }
     }
-
+/*
     public void SpawnLawnMower()
     {
         if (gameManager.currencyManager.CheckPrice("LawnMower") == true)
@@ -169,6 +159,32 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
             SpawnItem(lighter);
         }
     }
+    void SpawnItem(GameObject itemToSpawn)
+    {
+        if (!gameManager.holdingItem)
+        {
+            //    ItemSpawn(itemToSpawn);
+            gameManager.holdingItem = true;
+        }
+        if (gameManager.holdingItem)
+        {
+            temp = GameObject.FindGameObjectsWithTag("Unplaced Item");
+            foreach (GameObject x in temp)
+            {
+                Destroy(x);
+            }
+            //  ItemSpawn(itemToSpawn);
+        }
+    }
+
+    /*  void ItemSpawn(GameObject itemToSpawn)
+      {
+          gameManager.uiManager.RemoveShopOutline(gameObject);
+          gameManager.uiManager.ShopButtonOutline(gameObject);
+          Vector3 spawnPos = new Vector3(0f, 100f, 0f);
+          Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
+      }
+    */
 
     public void LawnmowerMenu()
     {
