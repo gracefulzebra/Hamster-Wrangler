@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler
+public class ButtonInputs : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] GameManager gameManager;
 
@@ -68,27 +68,12 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         }
     }
 
-    public void OnPointerDown(PointerEventData data)
+    public void OnPointerDown(PointerEventData eventData)
     {
         gameManager.uiManager.RemoveShopOutline(gameObject);
         gameManager.uiManager.ShopButtonOutline(gameObject);
         Vector3 spawnPos = new Vector3(0f, 100f, 0f);
         Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
-    }
-
- //   public void OnPointerDown(PointerEventData eventData) 
- //   { 
-  //      Debug.Log(this.gameObject + " Down"); 
-  //  }
-
-    public void OnPointerEnter(PointerEventData eventData) 
-    { 
-        eventData.pointerPress = gameObject; 
-    }
-
-    public void OnPointerUp(PointerEventData eventData) 
-    { 
-        Debug.Log(this.gameObject + " Up"); 
     }
 
     void SpawnItem(GameObject itemToSpawn)

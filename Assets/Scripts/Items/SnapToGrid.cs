@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SnapToGrid : MonoBehaviour
+public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 {
     GameObject gridRefObject;
     GridGenerator gridRef;
@@ -103,13 +103,16 @@ public class SnapToGrid : MonoBehaviour
        }
     */
 
-    public void OnMouseUp()
-    {
-        if (hasItem == true)
-        {
-            Destroy(gameObject);
-        }
-    }
+
+    public void OnPointerDown(PointerEventData eventData) { Debug.Log(this.gameObject + " Down"); }
+
+    public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
+
+    public void OnPointerUp(PointerEventData eventData) 
+    { 
+        Debug.Log(this.gameObject + " Up");
+        ConfirmPlacement();
+    }//
 
     /// <summary>
     /// Controls placement and rotation of objects 
