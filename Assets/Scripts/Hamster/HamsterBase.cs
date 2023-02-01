@@ -18,6 +18,10 @@ public class HamsterBase : MonoBehaviour
     bool pathRequested = false;
     [SerializeField] GridGenerator gridRef;
     private GameManager manager;
+    [SerializeField] Transform[] checkPoints;
+    Transform currentTarget;
+    int checkPointIndex = 0;
+
     // used to check if fit is a hamster enter colldiers
     // i imagien when we add in other types of hamsters that 
     // this can be reused for different effects
@@ -27,14 +31,22 @@ public class HamsterBase : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         manager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-
         target = GameObject.Find("Target").transform;
+        
+        GameObject[] tempChckPnts = GameObject.FindGameObjectsWithTag("CheckPoint");
+        checkPoints = new Transform[tempChckPnts.Length];
+
+        for (int i = 0; i < tempChckPnts.Length; i++) 
+        { 
+            checkPoints[i] = tempChckPnts[i].transform;
+        }
     }
+    
 
     private void Start()
     {
         pathRequested = true;
-        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound, this.gameObject);
+        PathRequestManager.RequestPath(transform.position, currentTarget.position, OnPathFound, this.gameObject);
     }
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
@@ -55,6 +67,25 @@ public class HamsterBase : MonoBehaviour
         direction = (currentWaypoint - transform.position).normalized;
         _rb.AddForce(direction * speed * Time.deltaTime, ForceMode.Acceleration);
         GetRotation();
+
+        if (currentTarget != target)
+        {
+            if (Distance(transform.position, currentTarget.position) < 0.4f)
+            {
+                checkPointIndex++;
+
+                if(checkPointIndex == checkPoints.Length)
+                {
+                    currentTarget = target;
+                }
+                else
+                {
+                    currentTarget = checkPoints[checkPointIndex];
+                }
+
+                PathRequestManager.RequestPath(transform.position, currentTarget.position, OnPathFound, this.gameObject);
+            }
+        }
     }
 
 
@@ -79,7 +110,7 @@ public class HamsterBase : MonoBehaviour
             if (distance > 2f && !pathRequested)
             {
                 pathRequested = true;
-                PathRequestManager.RequestPath(transform.position, target.position, OnPathFound, this.gameObject);
+                PathRequestManager.RequestPath(transform.position, currentTarget.position, OnPathFound, this.gameObject);
             }
             yield return null;
         }

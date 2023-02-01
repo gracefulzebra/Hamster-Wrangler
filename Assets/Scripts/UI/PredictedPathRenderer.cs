@@ -8,6 +8,11 @@ public class PredictedPathRenderer : MonoBehaviour
     Vector3[] path;
     GridGenerator grid;
 
+    [SerializeField] Transform[] checkPoints;
+    Transform currentTarget;
+    Vector3 lastTarget;
+    int checkPointIndex = 0;
+
     LineRenderer pathLine;
     [SerializeField] LineRenderer linePrefab;
 
@@ -17,12 +22,20 @@ public class PredictedPathRenderer : MonoBehaviour
     {
         target = GameObject.Find("Target").transform;
         grid = GameObject.Find("OliverGriddy").transform.GetComponent<GridGenerator>();
+
+        GameObject[] tempChckPnts = GameObject.FindGameObjectsWithTag("CheckPoint");
+        checkPoints = new Transform[tempChckPnts.Length];
+
+        for (int i = 0; i < tempChckPnts.Length; i++)
+        {
+            checkPoints[i] = tempChckPnts[i].transform;
+        }
     }
 
     void Start()
     {
         oldPos = grid.GetNodeFromWorldPoint(this.transform.position);
-        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound, this.gameObject);
+        CalculatePath();
         StartCoroutine(UpdatePath());
     }
 
@@ -31,7 +44,7 @@ public class PredictedPathRenderer : MonoBehaviour
         if (pathSuccessful)
         {
             path = RepositionPath(newPath);
-            RenderPath();
+            DisplayPath();
         }
     }
 
@@ -44,13 +57,36 @@ public class PredictedPathRenderer : MonoBehaviour
 
         return _path;
     }
-    private void RenderPath()
+
+    private void InitializePath()
     {
         pathLine = new LineRenderer();
         pathLine = Instantiate(linePrefab, this.transform);
+        pathLine.positionCount = 0;
+        checkPointIndex = 0;
+        lastTarget = transform.position;
+    }
 
-        pathLine.positionCount = path.Length;
-        pathLine.SetPositions(path);        
+    private void CalculatePath()
+    {
+        InitializePath();
+
+        for (int i = 0; i < checkPoints.Length; i++)
+        {
+            PathRequestManager.RequestPath(lastTarget, checkPoints[i].position, OnPathFound, this.gameObject);
+            lastTarget = checkPoints[i].position;
+        }
+        PathRequestManager.RequestPath(lastTarget, target.position, OnPathFound, this.gameObject);
+    }
+
+    private void DisplayPath()
+    {
+        pathLine.positionCount += path.Length;
+        for (int i = 0; i < path.Length; i++)
+        {
+            pathLine.SetPosition(checkPointIndex, path[i]);
+            checkPointIndex++;
+        }
     }
 
     IEnumerator UpdatePath()
@@ -66,7 +102,7 @@ public class PredictedPathRenderer : MonoBehaviour
                 
                 Destroy(pathLine.gameObject);
                 
-                PathRequestManager.RequestPath(transform.position, target.position, OnPathFound, this.gameObject);
+                CalculatePath();
             }
         }
     }
