@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SnapToGrid : MonoBehaviour
@@ -21,6 +22,8 @@ public class SnapToGrid : MonoBehaviour
 
     void Awake()
     {
+ 
+
         if (gameObject.name == "Lawnmower(Clone)")
         {
             itemID = "LawnMower";
@@ -41,7 +44,7 @@ public class SnapToGrid : MonoBehaviour
         {
             itemID = "Tar";
         }  
-
+       
         hasItem = true;
         // finds the game object with gridgenerator script
         // then assigns the compentant, cant just drag
@@ -81,6 +84,30 @@ public class SnapToGrid : MonoBehaviour
                   gameObject.transform.position = new Vector3(nodehit.worldPosition.x, nodehit.worldPosition.y -0.5f, nodehit.worldPosition.z);
                 }       
              }
+        }
+    }
+
+    /*   public bool GroundCheck()
+       {
+           RaycastHit hit;
+           Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
+           if (Physics.Raycast(mousePos, out hit))
+           {
+               if (hit.transform.gameObject.tag == "Ground")
+               {
+                   return true;
+               }
+               else print("in air");
+           }
+           return false;
+       }
+    */
+
+    public void OnMouseUp()
+    {
+        if (hasItem == true)
+        {
+            Destroy(gameObject);
         }
     }
 

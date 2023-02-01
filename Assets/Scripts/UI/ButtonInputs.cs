@@ -2,8 +2,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class ButtonInputs : MonoBehaviour
+public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler
 {
     [SerializeField] GameManager gameManager;
 
@@ -21,6 +22,8 @@ public class ButtonInputs : MonoBehaviour
     [SerializeField] GameObject rakeInfo;
     [SerializeField] GameObject tarInfo;
     [SerializeField] GameObject lighterInfo;
+    [SerializeField] GameObject itemToSpawn;
+
 
     [Header("Main Menu")]
     [SerializeField] GameObject levelSelect;
@@ -34,11 +37,24 @@ public class ButtonInputs : MonoBehaviour
     [SerializeField] GameObject closeMenu;
 
     [SerializeField] Sprite itemUnselected;
+    [SerializeField] Sprite itemSelected;
+
 
     void Awake()
     {
         if (gameManager != null)
         gameManager.holdingItem = false;
+    }
+    void Start()
+    {
+        if(gameObject.tag == "LawnMower")
+        {
+            itemToSpawn = lawnMower;
+        }
+        if (gameObject.tag == "LeafBlower")
+        {
+            itemToSpawn = leafBlower;
+        }
     }
 
     private void Update()
@@ -52,11 +68,34 @@ public class ButtonInputs : MonoBehaviour
         }
     }
 
+    public void OnPointerDown(PointerEventData data)
+    {
+        gameManager.uiManager.RemoveShopOutline(gameObject);
+        gameManager.uiManager.ShopButtonOutline(gameObject);
+        Vector3 spawnPos = new Vector3(0f, 100f, 0f);
+        Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
+    }
+
+ //   public void OnPointerDown(PointerEventData eventData) 
+ //   { 
+  //      Debug.Log(this.gameObject + " Down"); 
+  //  }
+
+    public void OnPointerEnter(PointerEventData eventData) 
+    { 
+        eventData.pointerPress = gameObject; 
+    }
+
+    public void OnPointerUp(PointerEventData eventData) 
+    { 
+        Debug.Log(this.gameObject + " Up"); 
+    }
+
     void SpawnItem(GameObject itemToSpawn)
     {
         if (!gameManager.holdingItem)
         {
-            ItemSpawn(itemToSpawn);
+        //    ItemSpawn(itemToSpawn);
             gameManager.holdingItem = true;
         }
         if (gameManager.holdingItem)
@@ -66,18 +105,18 @@ public class ButtonInputs : MonoBehaviour
             {
                 Destroy(x);
             }
-            ItemSpawn(itemToSpawn);
+          //  ItemSpawn(itemToSpawn);
         }
     }
 
-    void ItemSpawn(GameObject itemToSpawn)
+  /*  void ItemSpawn(GameObject itemToSpawn)
     {
         gameManager.uiManager.RemoveShopOutline(gameObject);
         gameManager.uiManager.ShopButtonOutline(gameObject);
-         Vector3 spawnPos = new Vector3(0f, 100f, 0f);
+        Vector3 spawnPos = new Vector3(0f, 100f, 0f);
         Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
     }
-
+  */
     void HelpGuide(GameObject guideMenu)
     {
         if (!guideMenu.activeSelf)
