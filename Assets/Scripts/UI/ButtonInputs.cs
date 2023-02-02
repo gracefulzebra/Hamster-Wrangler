@@ -91,7 +91,16 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
         }
     }
 
+  /*  public void OnPointerUp(PointerEventData eventData)
+    {
+        GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");
 
+        foreach (GameObject go in gameObjectArray)
+        {
+            Destroy(go);
+        }
+    }
+  */
     void HelpGuide(GameObject guideMenu)
     {
         if (!guideMenu.activeSelf)

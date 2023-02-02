@@ -1,10 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 {
@@ -23,8 +19,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
     void Awake()
     {
- 
-
         if (gameObject.name == "Lawnmower(Clone)")
         {
             itemID = "LawnMower";
@@ -94,33 +88,46 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
            Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
            if (Physics.Raycast(mousePos, out hit))
            {
-            if (hit.transform.gameObject)
+            return true;
+            /*
+            if (hit.transform.gameObject.layer == )
               {
-                return true;
-              }
-            else if (hit.transform.tag == "Item Shop")
+                print(hit.transform.gameObject.layer);
                 return false;
+              }
+            else
+            {
+                print(hit.transform.gameObject.layer);
+                return true;
+            }      
+            */
            }
-           return false;
+        return false;
       }
-    
-    public void OnPointerDown(PointerEventData eventData) { }
+   
+   // public void OnPointerDown(PointerEventData eventData) { }
 
     public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
 
     public void OnPointerUp(PointerEventData eventData) 
     {
-        print("let go");
-        StartCoroutine(PlacementConfirmation());
-        nodehit.placeable = false;
-        hasItem = false;
+        GroundCheck();
+        if (GroundCheck())
+        {
+            StartCoroutine(PlacementConfirmation());
+            nodehit.placeable = false;
+            hasItem = false;
+        }
+        else if(GroundCheck() == false && hasItem == true)
+        {
+            Destroy(gameObject); 
+        }
     }
-
+  
     void OnMouseDown()
     {
         if (gameObject.tag == "Unplaced item")
         {
-            print("cancaled cour");
             nodehit.placeable = true;
             hasItem = true;
             StopCoroutine(PlacementConfirmation());
@@ -129,9 +136,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
     IEnumerator PlacementConfirmation()
     {
-        print("started cour");
         yield return 2.0f;
-        print("inside cour");
         gameManager.currencyManager.TryBuy(itemID);
         gameObject.tag = "Placed Item";
         gameManager.CheckIfItemHeld();
