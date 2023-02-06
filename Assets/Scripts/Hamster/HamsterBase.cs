@@ -40,6 +40,15 @@ public class HamsterBase : MonoBehaviour
         { 
             checkPoints[i] = tempChckPnts[i].transform;
         }
+
+        if(checkPoints.Length > 0)
+        {
+            currentTarget = checkPoints[0];
+        }
+        else
+        {
+            currentTarget = target;
+        }
     }
     
 
