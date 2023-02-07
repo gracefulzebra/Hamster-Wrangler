@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
     //placement working smoothing
     //durablity
     //menu / ui
+
+    public static GameManager instance;
 
     public bool holdingItem = false;
     public GameObject placementConfirmation;
@@ -35,6 +38,16 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+
         InitialiseSystems();
         //   holdingItem = false;
     }

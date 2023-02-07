@@ -54,6 +54,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
     private void Update()
     {
+        //place this in if 
         PlacementConfirmtation();
         if (hasItem)
         {
@@ -72,7 +73,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         {
              if (hit.transform.gameObject.tag == "Ground")
              {
-                // if player clicks else where menu disappears
                 nodehit = gridRef.GetNodeFromWorldPoint(hit.point);
                 if (nodehit.placeable)
                 {
@@ -111,34 +111,29 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
     public void OnPointerUp(PointerEventData eventData) 
     {
-        GroundCheck();
-        if (GroundCheck())
-        {
+     //   GroundCheck();
+    //    if (GroundCheck())
+    //    {
             StartCoroutine(PlacementConfirmation());
             nodehit.placeable = false;
             hasItem = false;
-        }
-        else if(GroundCheck() == false && hasItem == true)
-        {
-            Destroy(gameObject); 
-        }
-    }
-  
-    void OnMouseDown()
-    {
-        if (gameObject.tag == "Unplaced item")
-        {
-            nodehit.placeable = true;
-            hasItem = true;
-            StopCoroutine(PlacementConfirmation());
-        }
+        gameObject.tag = "Placed Item";
+
+        //  }
+        // else if(GroundCheck() == false && hasItem == true)
+        // {
+        //     Destroy(gameObject); 
+        //  }
+
     }
 
     IEnumerator PlacementConfirmation()
     {
-        yield return 2.0f;
+        yield return new WaitForSeconds(2.0f);
+        print("full placed");
         gameManager.currencyManager.TryBuy(itemID);
-        gameObject.tag = "Placed Item";
+        //  gameObject.tag = "Placed Item";
+
         gameManager.CheckIfItemHeld();
     }
 
@@ -168,9 +163,9 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             gameObject.tag = "Placed Item";
             gameManager.CheckIfItemHeld();
             
-            confirmButton.SetActive(false);
-            cancelButton.SetActive(false);
-            rotateButton.SetActive(false);
+         //  confirmButton.SetActive(false);
+          //  cancelButton.SetActive(false);
+          //  rotateButton.SetActive(false);
         }
    }
 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
@@ -39,6 +40,8 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     [SerializeField] Sprite itemUnselected;
     [SerializeField] Sprite itemSelected;
 
+    public bool notHolding;
+
 
     void Awake()
     {
@@ -75,32 +78,55 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
         {
             if (!gameManager.holdingItem)
             {
-               GetComponent<Image>().sprite = itemUnselected;
+                GetComponent<Image>().sprite = itemUnselected;
             }
         }
+         
+     if (Input.GetMouseButtonUp(0))
+       {
+            GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");
+
+            foreach (GameObject go in gameObjectArray)
+            {
+                Destroy(go);
+            }
+            notHolding = false;
+       }
+     else
+        {
+            notHolding = true;
+        }
+
+     if (notHolding)
+        {
+          
+        }
+      
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (gameManager.currencyManager.CheckPrice(gameObject.tag) == true)
         {
-            gameManager.uiManager.RemoveShopOutline(gameObject);
-            gameManager.uiManager.ShopButtonOutline(gameObject);
+            print("john");
+            //   gameManager.uiManager.RemoveShopOutline(gameObject);
+            //   gameManager.uiManager.ShopButtonOutline(gameObject);
             Vector3 spawnPos = new Vector3(0f, 100f, 0f);
             Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
         }
     }
 
-  /*  public void OnPointerUp(PointerEventData eventData)
+    public void BuyItem()
     {
-        GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");
-
-        foreach (GameObject go in gameObjectArray)
+        if (gameManager.currencyManager.CheckPrice(gameObject.tag) == true)
         {
-            Destroy(go);
+         //   gameManager.uiManager.RemoveShopOutline(gameObject);
+         //   gameManager.uiManager.ShopButtonOutline(gameObject);
+            Vector3 spawnPos = new Vector3(0f, 100f, 0f);
+            Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
         }
     }
-  */
+
     void HelpGuide(GameObject guideMenu)
     {
         if (!guideMenu.activeSelf)
