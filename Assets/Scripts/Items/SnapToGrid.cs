@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 
 public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 {
+
     GameObject gridRefObject;
     GridGenerator gridRef;
     public bool hasItem;
@@ -14,8 +15,12 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     [SerializeField] GameObject confirmButton;
     [SerializeField] GameObject cancelButton;
     [SerializeField] GameObject rotateButton;
+    [SerializeField] ParticleSystem placementEffect;
     public string itemID;
     Node nodehit;
+
+    bool fullyPlaced;
+    Coroutine lastroutine;
 
     void Awake()
     {
@@ -82,59 +87,33 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         }
     }
 
-      public bool GroundCheck()
-      {
-           RaycastHit hit;
-           Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
-           if (Physics.Raycast(mousePos, out hit))
-           {
-            return true;
-            /*
-            if (hit.transform.gameObject.layer == )
-              {
-                print(hit.transform.gameObject.layer);
-                return false;
-              }
-            else
-            {
-                print(hit.transform.gameObject.layer);
-                return true;
-            }      
-            */
-           }
-        return false;
-      }
-   
-   // public void OnPointerDown(PointerEventData eventData) { }
-
     public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
 
     public void OnPointerUp(PointerEventData eventData) 
     {
-     //   GroundCheck();
-    //    if (GroundCheck())
-    //    {
-            StartCoroutine(PlacementConfirmation());
-            nodehit.placeable = false;
-            hasItem = false;
+        lastroutine = StartCoroutine(PlacementConfirmation());
+        nodehit.placeable = false;
+        hasItem = false;
         gameObject.tag = "Placed Item";
-
-        //  }
-        // else if(GroundCheck() == false && hasItem == true)
-        // {
-        //     Destroy(gameObject); 
-        //  }
-
+        placementEffect.Play();
     }
 
     IEnumerator PlacementConfirmation()
     {
         yield return new WaitForSeconds(2.0f);
-        print("full placed");
+        fullyPlaced = true;
         gameManager.currencyManager.TryBuy(itemID);
-        //  gameObject.tag = "Placed Item";
-
         gameManager.CheckIfItemHeld();
+    }
+
+    void OnMouseDown()
+    {
+        if (!fullyPlaced)
+        {
+            StopCoroutine(lastroutine);
+            nodehit.placeable = true;
+            hasItem = true;
+        }
     }
 
     /// <summary>

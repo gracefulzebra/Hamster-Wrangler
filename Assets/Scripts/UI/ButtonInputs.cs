@@ -40,9 +40,6 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     [SerializeField] Sprite itemUnselected;
     [SerializeField] Sprite itemSelected;
 
-    public bool notHolding;
-
-
     void Awake()
     {
         if (gameManager != null)
@@ -90,25 +87,13 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
             {
                 Destroy(go);
             }
-            notHolding = false;
-       }
-     else
-        {
-            notHolding = true;
-        }
-
-     if (notHolding)
-        {
-          
-        }
-      
+       } 
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (gameManager.currencyManager.CheckPrice(gameObject.tag) == true)
         {
-            print("john");
             //   gameManager.uiManager.RemoveShopOutline(gameObject);
             //   gameManager.uiManager.ShopButtonOutline(gameObject);
             Vector3 spawnPos = new Vector3(0f, 100f, 0f);
