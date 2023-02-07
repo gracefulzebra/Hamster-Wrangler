@@ -21,6 +21,11 @@ public class LawnMower : TrapBase
     private void Update()
     {
 
+        if (Input.GetMouseButtonDown(1))
+        {
+            MoveForward();
+        }
+
         SliderUpdate();
 
         if (GetComponentInParent<SnapToGrid>().hasItem)
@@ -84,5 +89,10 @@ public class LawnMower : TrapBase
         Durability(health);
         ItemInteract(collision.gameObject);
         collision.gameObject.GetComponent<HamsterBase>().Kill();
+    }
+
+    void MoveForward()
+    {
+        transform.position += transform.position + new Vector3(3f * Time.deltaTime, 0, 0);
     }
 }

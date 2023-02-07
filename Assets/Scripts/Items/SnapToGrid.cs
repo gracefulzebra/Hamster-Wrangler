@@ -87,15 +87,12 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         }
     }
 
+
     public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
 
     public void OnPointerUp(PointerEventData eventData) 
     {
-        lastroutine = StartCoroutine(PlacementConfirmation());
-        nodehit.placeable = false;
-        hasItem = false;
-        gameObject.tag = "Placed Item";
-        placementEffect.Play();
+        TrapPalcement();
     }
 
     IEnumerator PlacementConfirmation()
@@ -108,12 +105,22 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
     void OnMouseDown()
     {
-        if (!fullyPlaced)
-        {
+            if (!fullyPlaced)
+            {
+          //  gameObject.tag = "Unplaced Item";
             StopCoroutine(lastroutine);
-            nodehit.placeable = true;
-            hasItem = true;
-        }
+                nodehit.placeable = true;
+                hasItem = true;
+            }
+    }
+
+    void TrapPalcement()
+    {
+        lastroutine = StartCoroutine(PlacementConfirmation());
+        nodehit.placeable = false;
+        hasItem = false;
+        gameObject.tag = "Placed Item";
+        placementEffect.Play();
     }
 
     /// <summary>
