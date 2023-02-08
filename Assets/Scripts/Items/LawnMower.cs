@@ -76,7 +76,7 @@ public class LawnMower : TrapBase
     IEnumerator DestroyLawnmower()
     {
         yield return new WaitForSeconds(lawnmowerDestroyDelay);
-        Destroy(gameObject.transform.parent);
+        Destroy(gameObject.transform.parent.gameObject);
     }
 
     void SmokeEffect()
