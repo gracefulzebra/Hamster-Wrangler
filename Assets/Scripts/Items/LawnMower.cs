@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class LawnMower : TrapBase
@@ -10,7 +11,8 @@ public class LawnMower : TrapBase
     bool onCooldown;
     [SerializeField] GameObject repairItemEffect;
     [SerializeField] GameObject smokeEffect;
-
+    [SerializeField] float lawnmowerDestroyDelay;
+    [SerializeField] bool activateLawnmower;
 
     private void Start()
     {
@@ -21,10 +23,6 @@ public class LawnMower : TrapBase
     private void Update()
     {
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            MoveForward();
-        }
 
         SliderUpdate();
 
@@ -67,6 +65,18 @@ public class LawnMower : TrapBase
         }
 
         SmokeEffect();
+
+        if (activateLawnmower)
+        {
+            MoveForward();
+            StartCoroutine(DestroyLawnmower());
+        }
+    }
+
+    IEnumerator DestroyLawnmower()
+    {
+        yield return new WaitForSeconds(lawnmowerDestroyDelay);
+        Destroy(gameObject.transform.parent);
     }
 
     void SmokeEffect()
@@ -89,10 +99,16 @@ public class LawnMower : TrapBase
         Durability(health);
         ItemInteract(collision.gameObject);
         collision.gameObject.GetComponent<HamsterBase>().Kill();
+
+        if (activateLawnmower && collision.gameObject.GetComponent<TrapBase>().itemID == "Rake")
+        {
+            Destroy(gameObject.transform.parent);
+            //do explosion
+        }
     }
 
     void MoveForward()
     {
-        transform.position += transform.position + new Vector3(3f * Time.deltaTime, 0, 0);
+        transform.parent.Translate(Vector3.forward * 5 * Time.deltaTime);
     }
 }

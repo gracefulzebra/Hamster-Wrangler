@@ -9,7 +9,7 @@ public class TrapBase : MonoBehaviour
     public float timer;
     public float timerMax;
     public bool finishedCooldown;
-    protected string itemID;
+    public string itemID;
     protected bool itemBroken;
     protected bool repairItem;
     public float force;
