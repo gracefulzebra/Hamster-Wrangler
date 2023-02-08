@@ -32,16 +32,13 @@ public class HamsterBase : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         manager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         target = GameObject.Find("Target").transform;
-        
-        GameObject[] tempChckPnts = GameObject.FindGameObjectsWithTag("CheckPoint");
-        checkPoints = new Transform[tempChckPnts.Length];
+    }
 
-        for (int i = 0; i < tempChckPnts.Length; i++) 
-        { 
-            checkPoints[i] = tempChckPnts[i].transform;
-        }
+    public void SetCheckPoints(Transform[] _checkPoints)
+    {
+        checkPoints = _checkPoints;
 
-        if(checkPoints.Length > 0)
+        if (checkPoints.Length > 0)
         {
             currentTarget = checkPoints[0];
         }
@@ -51,7 +48,6 @@ public class HamsterBase : MonoBehaviour
         }
     }
     
-
     private void Start()
     {
         pathRequested = true;

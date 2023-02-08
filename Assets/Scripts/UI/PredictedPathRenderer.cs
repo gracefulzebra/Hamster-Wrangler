@@ -23,13 +23,10 @@ public class PredictedPathRenderer : MonoBehaviour
         target = GameObject.Find("Target").transform;
         grid = GameObject.Find("OliverGriddy").transform.GetComponent<GridGenerator>();
 
-        GameObject[] tempChckPnts = GameObject.FindGameObjectsWithTag("CheckPoint");
-        checkPoints = new Transform[tempChckPnts.Length];
-
-        for (int i = 0; i < tempChckPnts.Length; i++)
-        {
-            checkPoints[i] = tempChckPnts[i].transform;
-        }
+        if(checkPoints.Length > 0)
+          currentTarget = checkPoints[0];
+        else
+            currentTarget = target;
     }
 
     void Start()

@@ -53,7 +53,7 @@ public class WaveManager : MonoBehaviour
 
     private void SpawnHamster(GameObject hamsterSpawn)
     {
-        Instantiate(hamsterPrefab, hamsterSpawn.transform.position, hamsterSpawn.transform.rotation);
+        hamsterSpawn.GetComponent<HamsterSpawner>().SpawnHamster(hamsterPrefab);
     }
 
     public void HamstersRemaining() //Called in kill function of hamster.

@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class HamsterSpawner : MonoBehaviour
 {
-    public GameObject hamster;
-    public Transform spawnPoint;
-    
-
-    // Start is called before the first frame update
-   public void SpawnHamster()
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Transform[] checkPoints;
+        
+    public void SpawnHamster(GameObject hamsterPrefab)
     {
-        Instantiate(hamster, spawnPoint.position, Quaternion.identity);
+        GameObject hamsterInstance = Instantiate(hamsterPrefab, spawnPoint.position, Quaternion.identity);
+        hamsterInstance.GetComponent<HamsterBase>().SetCheckPoints(checkPoints);
     }
 }
