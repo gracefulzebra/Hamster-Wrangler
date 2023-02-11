@@ -65,6 +65,20 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         {
             nodeCheck();
         }
+/*
+        if (fullyPlaced == false)
+        {
+            if (Input.GetMouseButtonUp(0))
+            {
+                GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");
+
+                foreach (GameObject go in gameObjectArray)
+                {
+                    Destroy(go);
+                }
+            }
+        }
+*/
     }
 
     /// <summary>
@@ -92,7 +106,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
     public void OnPointerUp(PointerEventData eventData) 
     {
-        TrapPalcement();
+        TrapPlacement();
     }
 
     IEnumerator PlacementConfirmation()
@@ -107,18 +121,41 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     {
             if (!fullyPlaced)
             {
+            StartCoroutine(StillHoldingItem());
           //  gameObject.tag = "Unplaced Item";
             StopCoroutine(lastroutine);
-                nodehit.placeable = true;
-                hasItem = true;
+            nodehit.placeable = true;
+            hasItem = true;
             }
     }
+    IEnumerator StillHoldingItem()
+    {
+        yield return new WaitForSeconds(0.1f);
+        if (Input.GetMouseButtonUp(0))
+        {
+     //       print("up - true");
+        }
+        else
+        {
+       //     print("up - false");
 
-    void TrapPalcement()
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+        //    print("down - true");
+        }
+        else
+        {
+        //    print("down - false");
+        }
+    }
+
+    void TrapPlacement()
     {
         lastroutine = StartCoroutine(PlacementConfirmation());
         nodehit.placeable = false;
         hasItem = false;
+        // need this sa if you let go the if statemnt in button inputs will destroy it 
         gameObject.tag = "Placed Item";
         placementEffect.Play();
     }

@@ -187,8 +187,8 @@ MonoBehaviour:
   force: 0
   cooldownSlider: {fileID: 7273631290238877483}
   repairItemEffect: {fileID: 7162779345956412091}
-  smokeEffect: {fileID: 5936391385877511823}
-  lawnmowerDestroyDelay: 2.01
+  smokeEffect: {fileID: 5936391385877511809}
+  lawnmowerDestroyDelay: 5
   activateLawnmower: 0
 --- !u!65 &794440212163466916
 BoxCollider:
@@ -1266,7 +1266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 147999949801493985, guid: 7308e6c9f70e9b341bb8c206a2c773aa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 147999949801493996, guid: 7308e6c9f70e9b341bb8c206a2c773aa, type: 3}
       propertyPath: m_RootOrder
@@ -1324,16 +1324,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 147999949801493999, guid: 7308e6c9f70e9b341bb8c206a2c773aa, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7308e6c9f70e9b341bb8c206a2c773aa, type: 3}
+--- !u!198 &5936391385877511809 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 147999949801493999, guid: 7308e6c9f70e9b341bb8c206a2c773aa, type: 3}
+  m_PrefabInstance: {fileID: 5795993807365041006}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5936391385877511810 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 147999949801493996, guid: 7308e6c9f70e9b341bb8c206a2c773aa, type: 3}
-  m_PrefabInstance: {fileID: 5795993807365041006}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5936391385877511823 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 147999949801493985, guid: 7308e6c9f70e9b341bb8c206a2c773aa, type: 3}
   m_PrefabInstance: {fileID: 5795993807365041006}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7241039251679085972
