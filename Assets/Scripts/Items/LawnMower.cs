@@ -7,7 +7,8 @@ public class LawnMower : TrapBase
     [SerializeField] GameObject repairItemEffect;
     [SerializeField] ParticleSystem smokeEffect;
     [SerializeField] float lawnmowerDestroyDelay;
-    [SerializeField] bool activateLawnmower;
+    [SerializeField] float lawnmowerSpd;
+    bool activateLawnmower;
 
     private void Start()
     {
@@ -16,28 +17,29 @@ public class LawnMower : TrapBase
 
     private void Update()
     {
-        SliderUpdate();
-
-        if (GetComponentInParent<SnapToGrid>().hasItem)
-            return;
-
         if (activateLawnmower)
         {
-            smokeEffect.Play();
             MoveForward();
-            StartCoroutine(DestroyLawnmower());
         }
     }
 
     void MoveForward()
     {
-        transform.parent.Translate(Vector3.forward * 5 * Time.deltaTime);
+        transform.parent.Translate(Vector3.forward * lawnmowerSpd * Time.deltaTime);
     }
 
     IEnumerator DestroyLawnmower()
     {
         yield return new WaitForSeconds(lawnmowerDestroyDelay);
         Destroy(gameObject.transform.parent.gameObject);
+    }
+
+   public void ActivateLawnmower()
+    {
+        repairItemEffect.SetActive(false);
+        smokeEffect.Play();
+        StartCoroutine(DestroyLawnmower());
+        activateLawnmower = true;
     }
 
     private void OnTriggerStay(Collider collision)

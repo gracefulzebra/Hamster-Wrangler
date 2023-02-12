@@ -285,6 +285,7 @@ MonoBehaviour:
   confirmButton: {fileID: 1159834810840454927}
   cancelButton: {fileID: 6656841124647985356}
   rotateButton: {fileID: 292623977759320302}
+  placementEffect: {fileID: 0}
   itemID: 
 --- !u!1 &871656897541944136
 GameObject:
@@ -1232,7 +1233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8857287031567911961}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09357998, y: 0.7480878, z: -0.11880207}
+  m_LocalPosition: {x: -0.09357998, y: 0.7480878, z: -0.129}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1269,6 +1270,7 @@ MonoBehaviour:
   timer: 0
   timerMax: 8
   finishedCooldown: 0
+  itemID: 
   force: 0
   cooldownSlider: {fileID: 0}
   lighterOn: 0

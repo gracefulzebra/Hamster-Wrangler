@@ -83,5 +83,12 @@ public class TrapBase : MonoBehaviour
         if (col.GetComponent<HamsterScore>() != null)
             col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
     }
+
+
+    void UseFuel()
+    {
+
+    }
+
 }
 

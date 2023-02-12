@@ -128,9 +128,10 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             hasItem = true;
             }
     }
+
     IEnumerator StillHoldingItem()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
         if (Input.GetMouseButtonUp(0))
         {
      //       print("up - true");
