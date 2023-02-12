@@ -4,8 +4,11 @@ using UnityEngine.UI;
 
 public class TrapBase : MonoBehaviour
 {
-    public float repairCooldown;
-    public float repairCooldownMax;
+
+    public float fuelUsage;
+    public float currentFuel;
+    public float maxFuel;
+    public bool hasFuel;
     public float timer;
     public float timerMax;
     public bool finishedCooldown;
@@ -30,13 +33,6 @@ public class TrapBase : MonoBehaviour
 
     private void Update()
     {
-        repairCooldown += Time.deltaTime;
-
-        if (repairCooldown > 10f)
-        {
-            //  RepairItem();
-            repairCooldown = 0f;
-        }
     }
 
     // read in items health
@@ -87,8 +83,30 @@ public class TrapBase : MonoBehaviour
 
     void UseFuel()
     {
+       if (hasFuel)
+       {
 
+            if (currentFuel <= 0)
+            {
+                hasFuel = false;
+            }
+        timer += Time.deltaTime;
+
+        if (timer > 1f)
+        {
+            currentFuel -= fuelUsage;
+            timer = 0;
+        }
+       }
     }
 
+    void RefillFuel()
+    {
+        if (gameManager.currencyManager.RepairItemCost() == true)
+        {
+            hasFuel = false;
+            StartCoroutine(ItemRepair());
+        }
+    }
 }
 
