@@ -1,77 +1,48 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class TrapBase : MonoBehaviour
 {
 
     public float fuelUsage;
-    public float currentFuel;
+    float currentFuel;
     public float maxFuel;
     public bool hasFuel;
-    public float timer;
-    public float timerMax;
-    public bool finishedCooldown;
+    float timer;
     public string itemID;
-    protected bool itemBroken;
-    protected bool repairItem;
-    public float force;
-    protected GameObject gameManagerObject;
-    protected GameManager gameManager;
-    [SerializeField] Slider cooldownSlider;
+    [SerializeField] Slider fuelSlider;
+    [SerializeField] GameObject refuelSymbol;
+    [SerializeField] GameObject useItemSymbol;
+    public bool activateTrap;
 
     public void Awake()
     {
-        repairItem = false;
-        if (cooldownSlider != null)
+        if (fuelSlider != null)
         {
-            cooldownSlider.maxValue = timerMax;
+            fuelSlider.maxValue = maxFuel;
         }
-        gameManagerObject = GameObject.Find("Game Manager");
-        gameManager = gameManagerObject.GetComponent<GameManager>();
+        currentFuel = maxFuel;
+        hasFuel = true;
+        SliderUpdate();
     }
 
-    private void Update()
+    public void RefuelTrap()
     {
-    }
-
-    // read in items health
-    public void Durability(int itemHealth)
-    {
-        if (itemHealth <= 0 && itemBroken == false)
+        if (GameManager.instance.currencyManager.RepairItemCost() == true)
         {
-            ItemBreak();
-        }
-    }
-
-    void ItemBreak()
-    {
-        itemBroken = true;
-    }
-
-    public void RepairItem()
-    {
-        if (itemBroken)
-        {
-            if (gameManager.currencyManager.RepairItemCost() == true)
-            {
-                itemBroken = false;
-                StartCoroutine(ItemRepair());
-            }
+            currentFuel = maxFuel;
+            hasFuel = true;
         }
     }
 
     public void SliderUpdate()
     {
-        cooldownSlider.value = timer;
-    }
-
-    WaitForSeconds delay = new WaitForSeconds(.5f);
-    IEnumerator ItemRepair()
-    {
-        repairItem = true;
-        yield return delay;
-        repairItem = false;
+        if (fuelSlider != null)
+        {
+            fuelSlider.value = currentFuel;
+        }
     }
 
     public void ItemInteract(GameObject col)
@@ -80,32 +51,43 @@ public class TrapBase : MonoBehaviour
             col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
     }
 
-
-    void UseFuel()
+    public void ActivateTrap()
     {
-       if (hasFuel)
-       {
+        if (activateTrap == false)
+        {
+            activateTrap = true;
+        }
+        else
+        {
+            activateTrap = false;
+        }   
+    }
 
+   public void UseFuel()
+    {
+        print(currentFuel);
+        if (hasFuel)
+        {
             if (currentFuel <= 0)
             {
                 hasFuel = false;
             }
-        timer += Time.deltaTime;
+            timer += Time.deltaTime;
 
-        if (timer > 1f)
-        {
-            currentFuel -= fuelUsage;
+            if (timer > 0.5f)
+            {
+            currentFuel -= fuelUsage/2;
             timer = 0;
+            }
         }
-       }
     }
 
     void RefillFuel()
     {
-        if (gameManager.currencyManager.RepairItemCost() == true)
+        if (GameManager.instance.currencyManager.RepairItemCost() == true)
         {
-            hasFuel = false;
-            StartCoroutine(ItemRepair());
+            hasFuel = true;
+            RefuelTrap();
         }
     }
 }

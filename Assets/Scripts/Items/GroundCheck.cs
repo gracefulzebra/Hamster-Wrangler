@@ -12,7 +12,7 @@ public class GroundCheck : MonoBehaviour
     [SerializeField] LayerMask groundMask;
     [SerializeField] GameObject parentObject;
     Vector3 rotVector = new Vector3(0f, 90f, 0f);
-    Node nodehit;
+    Node nodeHit;
     GameObject gridRefObject;
     GridGenerator gridRef;
     // if gameobejct == holdignitem then button goes item
@@ -27,16 +27,16 @@ public class GroundCheck : MonoBehaviour
        if (!GetComponentInParent<SnapToGrid>().hasItem)
             return;
 
-        nodehit = gridRef.GetNodeFromWorldPoint(groundCheck.position);
+        nodeHit = gridRef.GetNodeFromWorldPoint(groundCheck.position);
 
         if (GetComponentInParent<SnapToGrid>().hasItem == false)
         {
-            nodehit.placeable = false;
+            nodeHit.placeable = false;
         }
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (!isGrounded) //||  !nodehit.placeable)//&& parentObject.GetComponent<SnapToGrid>().confirmPlacement)
+        if (!isGrounded) //||  !nodeHit.placeable)//&& parentObject.GetComponent<SnapToGrid>().confirmPlacement)
         {
             parentObject.gameObject.transform.Rotate(rotVector, Space.Self);
         }

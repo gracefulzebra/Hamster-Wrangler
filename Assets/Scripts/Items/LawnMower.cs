@@ -1,25 +1,41 @@
 using System.Collections;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class LawnMower : TrapBase
 {
 
-    [SerializeField] GameObject repairItemEffect;
-    [SerializeField] ParticleSystem smokeEffect;
+    [SerializeField] GameObject smokeEffect;
     [SerializeField] float lawnmowerDestroyDelay;
     [SerializeField] float lawnmowerSpd;
-    bool activateLawnmower;
+    [SerializeField] GameObject explosion;
+    GameObject gridRefObject;
+    GridGenerator gridRef;
+
+    Node nodeHit;
+
+    int counter;
 
     private void Start()
     {
+        gridRefObject = GameObject.Find("OliverGriddy");
+        gridRef = gridRefObject.GetComponent<GridGenerator>();
         itemID = "LawnMower";
     }
 
     private void Update()
     {
-        if (activateLawnmower)
+        if (activateTrap)
         {
+            if (counter < 1)
+            {
+                // finds the cloest node for the player and makes it placeable
+                nodeHit = gridRef.GetNodeFromWorldPoint(transform.position);
+                nodeHit.placeable = true;
+                counter++;
+            }
             MoveForward();
+            StartCoroutine(DestroyLawnmower());
         }
     }
 
@@ -35,28 +51,42 @@ public class LawnMower : TrapBase
     }
 
    public void ActivateLawnmower()
-    {
-        repairItemEffect.SetActive(false);
-        smokeEffect.Play();
+   {
+        smokeEffect.SetActive(true);
         StartCoroutine(DestroyLawnmower());
-        activateLawnmower = true;
+        activateTrap = true;
+   }
+
+    void LawnmowerExplode(float explodeDistance)
+    {
+        Vector3 explosionPos = transform.position;
+        Instantiate(explosion, explosionPos, Quaternion.identity);
     }
 
-    private void OnTriggerStay(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
         // if item is unplaced then dont run script
-       if (GetComponentInParent<SnapToGrid>().hasItem)
+        if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
-        if (!activateLawnmower)
+        if (!activateTrap)
             return;
-        ItemInteract(collision.gameObject);
-        collision.gameObject.GetComponent<HamsterBase>().Kill();
-      /*  if (activateLawnmower && collision.gameObject.GetComponent<TrapBase>().itemID == "Rake")
+
+        if (collision.gameObject.layer == 7)
         {
-            Destroy(gameObject.transform.parent);
-            //do explosion
+            Destroy(gameObject.transform.parent.gameObject);
         }
-      */
+
+        if (collision.gameObject.name == "Hamster 1(Clone)")
+        {
+            ItemInteract(collision.gameObject);
+            collision.gameObject.GetComponent<HamsterBase>().Kill();
+        }
+
+     /*   if (activateTrap && collision.gameObject.GetComponent<TrapBase>().itemID == "Rake")
+        {
+              Destroy(gameObject.transform.parent.gameObject);
+              //do explosion
+        }   */ 
     }
 }
 

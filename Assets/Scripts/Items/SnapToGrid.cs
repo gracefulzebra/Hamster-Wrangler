@@ -17,10 +17,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     [SerializeField] GameObject rotateButton;
     [SerializeField] ParticleSystem placementEffect;
     public string itemID;
-    Node nodehit;
-
-    bool fullyPlaced;
-    Coroutine lastroutine;
+    Node nodeHit;
 
     void Awake()
     {
@@ -51,10 +48,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         // inspector cause its prefab
         gridRefObject = GameObject.Find("OliverGriddy");
         gridRef = gridRefObject.GetComponent<GridGenerator>();
-        // holdingItem = false;
-        gameManagerObject = GameObject.Find("Game Manager");
-        gameManager = gameManagerObject.GetComponent<GameManager>();
-
     }
 
     private void Update()
@@ -92,69 +85,37 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         {
              if (hit.transform.gameObject.tag == "Ground")
              {
-                nodehit = gridRef.GetNodeFromWorldPoint(hit.point);
-                if (nodehit.placeable)
+                nodeHit = gridRef.GetNodeFromWorldPoint(hit.point);
+                if (nodeHit.placeable)
                 {
-                  gameObject.transform.position = new Vector3(nodehit.worldPosition.x, nodehit.worldPosition.y -0.5f, nodehit.worldPosition.z);
+                  gameObject.transform.position = new Vector3(nodeHit.worldPosition.x, nodeHit.worldPosition.y -0.5f, nodeHit.worldPosition.z);
                 }       
              }
         }
     }
 
-
     public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
 
     public void OnPointerUp(PointerEventData eventData) 
     {
-        TrapPlacement();
-    }
-
-    IEnumerator PlacementConfirmation()
-    {
-        yield return new WaitForSeconds(2.0f);
-        fullyPlaced = true;
-        gameManager.currencyManager.TryBuy(itemID);
-        gameManager.CheckIfItemHeld();
+        if (hasItem)
+        {
+            TrapPlacement();
+        }
     }
 
     void OnMouseDown()
     {
-            if (!fullyPlaced)
-            {
-            StartCoroutine(StillHoldingItem());
-          //  gameObject.tag = "Unplaced Item";
-            StopCoroutine(lastroutine);
-            nodehit.placeable = true;
-            hasItem = true;
-            }
-    }
-
-    IEnumerator StillHoldingItem()
-    {
-        yield return new WaitForSeconds(0.3f);
-        if (Input.GetMouseButtonUp(0))
+        if(hasItem == false)
         {
-     //       print("up - true");
-        }
-        else
-        {
-       //     print("up - false");
-
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-        //    print("down - true");
-        }
-        else
-        {
-        //    print("down - false");
+            GetComponentInChildren<TrapBase>().ActivateTrap();
         }
     }
 
     void TrapPlacement()
     {
-        lastroutine = StartCoroutine(PlacementConfirmation());
-        nodehit.placeable = false;
+        GetComponentInChildren<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        nodeHit.placeable = false;
         hasItem = false;
         // need this sa if you let go the if statemnt in button inputs will destroy it 
         gameObject.tag = "Placed Item";
@@ -182,7 +143,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         if (gameObject.tag == "Unplaced Item")
         {
             gameManager.currencyManager.TryBuy(itemID);
-            nodehit.placeable = false;
+            nodeHit.placeable = false;
             hasItem = false;
             gameObject.tag = "Placed Item";
             gameManager.CheckIfItemHeld();
@@ -202,25 +163,55 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         Destroy(gameObject);
         }
     }
+}
 
-    /* from old ui input
-    public void CancelRepair()
+/*  IEnumerator PlacementConfirmation()
     {
-        if (!hasItem)
-        {
-            confirmButton.SetActive(false);
-            cancelButton.SetActive(false);
-        }       
+        yield return new WaitForSeconds(2.0f);
+        gameManager.currencyManager.TryBuy(itemID);
+        gameManager.CheckIfItemHeld();
+    }
+    void OnMouseDown()
+    {
+            if (!fullyPlaced)
+            {
+                StartCoroutine(StillHoldingItem());
+                //  gameObject.tag = "Unplaced Item";
+                StopCoroutine(lastroutine);
+                nodeHit.placeable = true;
+                hasItem = true;
+            }
     }
 
-    private void OnMouseDown()
+    IEnumerator StillHoldingItem()
     {
-        if (!hasItem) //&& hasDurability)
+        yield return new WaitForSeconds(0.3f);
+        if (Input.GetMouseButton(0))
         {
-            confirmButton.SetActive(true);
-            cancelButton.SetActive(true);
+            print("true");
+        }
+        else
+        {
+            print("false");
         }
     }
     */
-
+/* from old ui input
+public void CancelRepair()
+{
+    if (!hasItem)
+    {
+        confirmButton.SetActive(false);
+        cancelButton.SetActive(false);
+    }       
 }
+
+private void OnMouseDown()
+{
+    if (!hasItem) //&& hasDurability)
+    {
+        confirmButton.SetActive(true);
+        cancelButton.SetActive(true);
+    }
+}
+*/

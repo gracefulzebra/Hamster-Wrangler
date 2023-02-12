@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Rake : TrapBase
 { 
-
+    /*
     bool pressedRake;
     float pressedRakeCooldown;
     [SerializeField] GameObject activationButton;
@@ -17,7 +17,7 @@ public class Rake : TrapBase
     {
         SliderUpdate();
 
-        if (GetComponentInParent<SnapToGrid>().hasItem)
+  /*      if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
 
         timer += Time.deltaTime;
@@ -44,17 +44,19 @@ public class Rake : TrapBase
                 pressedRakeCooldown = 0;
             }
         }
+
     }
 
     public void UseRake()
     {
         if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
-         if (timer > timerMax)
+      /*   if (timer > timerMax)
          {
             pressedRake = true;
             timer = 0;
          }
+   
     }
 
    void OnTriggerStay(Collider col)
@@ -64,7 +66,7 @@ public class Rake : TrapBase
 
         if (pressedRake && finishedCooldown)
         {
-            gameManager.audioManager.PlayUsedRake();
+            GameManager.instance.audioManager.PlayUsedRake();
             col.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * force, ForceMode.Force);
             col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force / 2, ForceMode.Force);
             pressedRake = false;
@@ -72,4 +74,6 @@ public class Rake : TrapBase
             ItemInteract(col.gameObject);
         }
    }
+*/
 }
+ 

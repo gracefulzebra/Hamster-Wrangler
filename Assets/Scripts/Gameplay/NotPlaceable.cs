@@ -5,7 +5,7 @@ using UnityEngine;
 public class NotPlaceable : MonoBehaviour
 {
 
-    Node nodehit;
+    Node nodeHit;
     GameObject gridRefObject;
     GridGenerator gridRef;
 
@@ -17,7 +17,7 @@ public class NotPlaceable : MonoBehaviour
     // make unpalcebale; anmd give to hamster house
     private void Start()
     {
-        nodehit = gridRef.GetNodeFromWorldPoint(gameObject.transform.position);
-        nodehit.placeable = false;
+        nodeHit = gridRef.GetNodeFromWorldPoint(gameObject.transform.position);
+        nodeHit.placeable = false;
     }
 }

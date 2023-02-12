@@ -21,7 +21,6 @@ public class ScoreManager : MonoBehaviour
 
     public void UpdateScore(int blowerCount, int tarCount, int lighterCount, int mowerCount, int rakeCount)
     {
-        print(currentScore);
         currentScore += (blowerCount * blowerScore) + (tarCount * tarScore) + (lighterCount * lighterScore) + (mowerCount * mowerScore) + (rakeCount * rakeScore); 
     }
 
