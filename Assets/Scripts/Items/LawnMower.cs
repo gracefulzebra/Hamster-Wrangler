@@ -86,7 +86,6 @@ public class LawnMower : TrapBase
         if (collision.gameObject.name == "Rake(Clone)")
         {
                 Destroy(gameObject.transform.parent.gameObject);
-                print("john");
                 LawnmowerExplode();
                 //do explosion
         }
