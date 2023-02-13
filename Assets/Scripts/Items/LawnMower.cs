@@ -70,7 +70,6 @@ public class LawnMower : TrapBase
             return;
         if (!activateTrap)
             return;
-
         if (collision.gameObject.layer == 7)
         {
             Destroy(gameObject.transform.parent.gameObject);

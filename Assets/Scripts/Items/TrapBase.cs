@@ -9,31 +9,22 @@ public class TrapBase : MonoBehaviour
     public float fuelUsage;
     float currentFuel;
     public float maxFuel;
-    public bool hasFuel;
+    protected bool hasFuel;
     float timer;
-    public string itemID;
+    protected string itemID;
+    protected bool activateTrap;
     [SerializeField] Slider fuelSlider;
-    [SerializeField] GameObject refuelSymbol;
+    [SerializeField] protected GameObject refuelSymbol;
     [SerializeField] GameObject useItemSymbol;
-    public bool activateTrap;
 
     public void Awake()
     {
         if (fuelSlider != null)
         {
             fuelSlider.maxValue = maxFuel;
-        }
-        currentFuel = maxFuel;
-        hasFuel = true;
-        SliderUpdate();
-    }
-
-    public void RefuelTrap()
-    {
-        if (GameManager.instance.currencyManager.RepairItemCost() == true)
-        {
             currentFuel = maxFuel;
             hasFuel = true;
+            SliderUpdate();
         }
     }
 
@@ -82,12 +73,13 @@ public class TrapBase : MonoBehaviour
         }
     }
 
-    void RefillFuel()
+    public void RefuelTrap()
     {
         if (GameManager.instance.currencyManager.RepairItemCost() == true)
         {
+            currentFuel = maxFuel;
             hasFuel = true;
-            RefuelTrap();
+            refuelSymbol.SetActive(false);
         }
     }
 }

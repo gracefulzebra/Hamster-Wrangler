@@ -14,6 +14,11 @@ public class Fan : TrapBase
             windEffect.Play();
             SliderUpdate();
         }
+
+        if (hasFuel == false)
+        {
+            refuelSymbol.SetActive(true);
+        }
     }
 
     private void OnTriggerStay(Collider col)

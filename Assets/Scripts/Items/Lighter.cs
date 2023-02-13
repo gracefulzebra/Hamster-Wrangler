@@ -18,6 +18,11 @@ public class Lighter : TrapBase
            // fireEffect.Play();
             SliderUpdate();
         }
+
+        if (hasFuel == false)
+        {
+            refuelSymbol.SetActive(true);
+        }
     }
 
     void OnTriggerStay(Collider col)
