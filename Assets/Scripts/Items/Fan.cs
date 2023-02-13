@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class Fan : TrapBase
 {
-    [SerializeField] ParticleSystem windEffect;
-    [SerializeField] ParticleSystem flameThrowerEffect;
+    [SerializeField] GameObject windEffect;
+    [SerializeField] GameObject flameThrowerEffect;
     public float force;
     public bool flameThrower;
 
@@ -12,25 +12,32 @@ public class Fan : TrapBase
     {
         itemID = "LeafBlower";
     }
-
+   
     private void Update()
     {
         if (activateTrap && !flameThrowerEffect)
         {
             UseFuel();
-            windEffect.Play();
+            windEffect.SetActive(true);
             SliderUpdate();
         }
         else if (activateTrap && flameThrowerEffect)
         {
             UseFuel();
-           // flameThrowerEffect.Play();
+            flameThrowerEffect.SetActive(true);
             SliderUpdate();
+        }
+
+        if (activateTrap == false)
+        {
+            windEffect.SetActive(false);
+            flameThrowerEffect.SetActive(false);
         }
 
         if (hasFuel == false)
         {
             refuelSymbol.SetActive(true);
+            activateTrap = false;
         }
     }
 
@@ -70,6 +77,7 @@ public class Fan : TrapBase
                 }
                 else
                 {
+                    // turn off flamethrower in update so it doesnt hav ean extra burn effect
                     flameThrower = false;
                 }
             }

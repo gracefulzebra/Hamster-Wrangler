@@ -22,6 +22,7 @@ public class Lighter : TrapBase
         if (hasFuel == false)
         {
             refuelSymbol.SetActive(true);
+            activateTrap = false;
         }
     }
 

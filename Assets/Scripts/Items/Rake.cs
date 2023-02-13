@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Rake : TrapBase
 { 
-    /*
+  
     bool pressedRake;
     float pressedRakeCooldown;
     [SerializeField] GameObject activationButton;
@@ -13,67 +13,68 @@ public class Rake : TrapBase
     {
         itemID = "Rake";
     }
-    private void Update()
-    {
-        SliderUpdate();
+    /*
+  private void Update()
+  {
+      SliderUpdate();
 
-  /*      if (GetComponentInParent<SnapToGrid>().hasItem)
-            return;
+/*      if (GetComponentInParent<SnapToGrid>().hasItem)
+          return;
 
-        timer += Time.deltaTime;
+      timer += Time.deltaTime;
 
-        if (timer > timerMax)
-        {
-            finishedCooldown = true;
-            activationButton.SetActive(true);
-        }
-        else
-            activationButton.SetActive(false);
-    
+      if (timer > timerMax)
+      {
+          finishedCooldown = true;
+          activationButton.SetActive(true);
+      }
+      else
+          activationButton.SetActive(false);
 
 
-        // if player pressed the userake button it would 
-        // automatically throw the hamster when they walked
-        // on it, this stops that
-        if (pressedRake)
-        {
-            pressedRakeCooldown += Time.deltaTime;
-            if (pressedRakeCooldown > 0.3f)
-            {
-                pressedRake = false;
-                pressedRakeCooldown = 0;
-            }
-        }
 
-    }
+      // if player pressed the userake button it would 
+      // automatically throw the hamster when they walked
+      // on it, this stops that
+      if (pressedRake)
+      {
+          pressedRakeCooldown += Time.deltaTime;
+          if (pressedRakeCooldown > 0.3f)
+          {
+              pressedRake = false;
+              pressedRakeCooldown = 0;
+          }
+      }
 
-    public void UseRake()
-    {
-        if (GetComponentInParent<SnapToGrid>().hasItem)
-            return;
-      /*   if (timer > timerMax)
-         {
-            pressedRake = true;
-            timer = 0;
-         }
-   
-    }
+  }
 
-   void OnTriggerStay(Collider col)
-   {
+  public void UseRake()
+  {
+      if (GetComponentInParent<SnapToGrid>().hasItem)
+          return;
+    /*   if (timer > timerMax)
+       {
+          pressedRake = true;
+          timer = 0;
+       }
 
-        Vector3 direction = transform.position - col.transform.position;
+  }
 
-        if (pressedRake && finishedCooldown)
-        {
-            GameManager.instance.audioManager.PlayUsedRake();
-            col.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * force, ForceMode.Force);
-            col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force / 2, ForceMode.Force);
-            pressedRake = false;
-            finishedCooldown = false;
-            ItemInteract(col.gameObject);
-        }
-   }
+ void OnTriggerStay(Collider col)
+ {
+
+      Vector3 direction = transform.position - col.transform.position;
+
+      if (pressedRake && finishedCooldown)
+      {
+          GameManager.instance.audioManager.PlayUsedRake();
+          col.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * force, ForceMode.Force);
+          col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force / 2, ForceMode.Force);
+          pressedRake = false;
+          finishedCooldown = false;
+          ItemInteract(col.gameObject);
+      }
+ }
 */
 }
- 
+

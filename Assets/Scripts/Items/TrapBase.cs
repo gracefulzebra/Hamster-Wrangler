@@ -1,7 +1,5 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public class TrapBase : MonoBehaviour
 {
@@ -51,12 +49,11 @@ public class TrapBase : MonoBehaviour
         else
         {
             activateTrap = false;
-        }   
+        }
     }
 
    public void UseFuel()
     {
-       // print(currentFuel);
         if (hasFuel)
         {
             if (currentFuel <= 0)
@@ -80,6 +77,7 @@ public class TrapBase : MonoBehaviour
             currentFuel = maxFuel;
             hasFuel = true;
             refuelSymbol.SetActive(false);
+            SliderUpdate();
         }
     }
 }

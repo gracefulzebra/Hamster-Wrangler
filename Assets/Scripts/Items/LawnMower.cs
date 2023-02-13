@@ -57,9 +57,10 @@ public class LawnMower : TrapBase
         activateTrap = true;
    }
 
-    void LawnmowerExplode(float explodeDistance)
+    void LawnmowerExplode()
     {
-        Vector3 explosionPos = transform.position;
+        nodeHit = gridRef.GetNodeFromWorldPoint(transform.position);
+        Vector3 explosionPos = new Vector3(nodeHit.worldPosition.x, nodeHit.worldPosition.y - 0.5f, nodeHit.worldPosition.z); ;
         Instantiate(explosion, explosionPos, Quaternion.identity);
     }
 
@@ -70,7 +71,8 @@ public class LawnMower : TrapBase
             return;
         if (!activateTrap)
             return;
-        if (collision.gameObject.layer == 7)
+
+        if (collision.gameObject.layer == 7) //|| collision.gameObject.tag == "Placed Item")
         {
             Destroy(gameObject.transform.parent.gameObject);
         }
@@ -81,11 +83,13 @@ public class LawnMower : TrapBase
             collision.gameObject.GetComponent<HamsterBase>().Kill();
         }
 
-     /*   if (activateTrap && collision.gameObject.GetComponent<TrapBase>().itemID == "Rake")
+        if (collision.gameObject.name == "Rake(Clone)")
         {
-              Destroy(gameObject.transform.parent.gameObject);
-              //do explosion
-        }   */ 
+                Destroy(gameObject.transform.parent.gameObject);
+                print("john");
+                LawnmowerExplode();
+                //do explosion
+        }
     }
 }
 
