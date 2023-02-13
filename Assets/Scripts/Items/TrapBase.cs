@@ -11,8 +11,8 @@ public class TrapBase : MonoBehaviour
     public float maxFuel;
     protected bool hasFuel;
     float timer;
-    protected string itemID;
-    protected bool activateTrap;
+    public string itemID;
+    public bool activateTrap;
     [SerializeField] Slider fuelSlider;
     [SerializeField] protected GameObject refuelSymbol;
     [SerializeField] GameObject useItemSymbol;
@@ -56,7 +56,7 @@ public class TrapBase : MonoBehaviour
 
    public void UseFuel()
     {
-        print(currentFuel);
+       // print(currentFuel);
         if (hasFuel)
         {
             if (currentFuel <= 0)

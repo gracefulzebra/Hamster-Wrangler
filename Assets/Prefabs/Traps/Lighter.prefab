@@ -331,8 +331,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1559861, y: 0.43009633, z: 0.9041847}
-  m_Center: {x: -0.018045545, y: 0.37900588, z: -0.06866866}
+  m_Size: {x: 0.7030039, y: 0.5490492, z: 0.74844503}
+  m_Center: {x: 0.027868092, y: 0.31952944, z: 0.009201169}
 --- !u!114 &2099565370963579048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1487,7 +1487,8 @@ GameObject:
   - component: {fileID: 3863913200056156595}
   - component: {fileID: 939467194056315201}
   - component: {fileID: 8893993068713357871}
-  m_Layer: 0
+  - component: {fileID: 3723529268007822331}
+  m_Layer: 2
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1502,7 +1503,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8857287031567911961}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09357998, y: 0.7480878, z: -0.129}
+  m_LocalPosition: {x: -0.09357998, y: 0.024, z: 0.068}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1520,8 +1521,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.22673957, y: 0.4863342, z: 0.38291728}
-  m_Center: {x: 0.11110713, y: -0.49726427, z: 0.09688419}
+  m_Size: {x: 0.5548159, y: 0.5679831, z: 0.52292097}
+  m_Center: {x: 0.0850693, y: 0.28194872, z: 0.567007}
 --- !u!114 &8893993068713357871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1536,10 +1537,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fuelUsage: 5
   maxFuel: 100
+  itemID: 
+  activateTrap: 0
   fuelSlider: {fileID: 4452971103105130324}
   refuelSymbol: {fileID: 2707198488005372136}
   useItemSymbol: {fileID: 0}
   fireEffect: {fileID: 8930136499679575082}
+--- !u!54 &3723529268007822331
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8857287031567911961}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &9150004749153911284
 GameObject:
   m_ObjectHideFlags: 0

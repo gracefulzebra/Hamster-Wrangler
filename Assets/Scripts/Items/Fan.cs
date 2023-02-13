@@ -4,14 +4,27 @@ using UnityEngine.UI;
 public class Fan : TrapBase
 {
     [SerializeField] ParticleSystem windEffect;
+    [SerializeField] ParticleSystem flameThrowerEffect;
     public float force;
+    public bool flameThrower;
+
+    private void Start()
+    {
+        itemID = "LeafBlower";
+    }
 
     private void Update()
     {
-        if (activateTrap)
+        if (activateTrap && !flameThrowerEffect)
         {
             UseFuel();
             windEffect.Play();
+            SliderUpdate();
+        }
+        else if (activateTrap && flameThrowerEffect)
+        {
+            UseFuel();
+           // flameThrowerEffect.Play();
             SliderUpdate();
         }
 
@@ -25,16 +38,40 @@ public class Fan : TrapBase
     {
         if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
-        if (activateTrap)
-        {
-                Vector3 direction = transform.position - transform.parent.position;
 
-                col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force, ForceMode.Force);
+        // if the item is active
+       if (activateTrap)
+       {
 
-                //Communicates that item has interacted with the hamster and what type it is.
-                itemID = "LeafBlower";
-                ItemInteract(col.gameObject);         
-        }
+        // inside this if is effects that shoudl only effect the hamster
+         if (col.gameObject.name == "Hamster 1(Clone)")
+         {
+           if (activateTrap && !flameThrower )
+           {
+            Vector3 direction = transform.position - transform.parent.position;
+
+            col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force, ForceMode.Force);
+
+            //Communicates that item has interacted with the hamster and what type it is.
+            ItemInteract(col.gameObject);
+           }
+           else if (activateTrap && flameThrower )
+           {
+            col.gameObject.GetComponent<ItemEffects>().OnFire();
+            ItemInteract(col.gameObject);
+           }
+         }
+
+      // outside is for trap interacts 
+          if (col.gameObject.GetComponent<TrapBase>().itemID == "Lighter" && col.gameObject.GetComponent<Lighter>().activateTrap)
+          {
+            flameThrower = true;
+          }
+          else
+          {
+            flameThrower = false;
+          }
+       }
     }
 }
 
