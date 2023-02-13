@@ -61,16 +61,18 @@ public class Fan : TrapBase
             ItemInteract(col.gameObject);
            }
          }
-
-      // outside is for trap interacts 
-          if (col.gameObject.GetComponent<TrapBase>().itemID == "Lighter" && col.gameObject.GetComponent<Lighter>().activateTrap)
-          {
-            flameThrower = true;
-          }
-          else
-          {
-            flameThrower = false;
-          }
+            else
+            {
+                // for leafblower + lighter interaction
+                if (col.gameObject.GetComponent<TrapBase>().itemID == "Lighter" && col.gameObject.GetComponent<Lighter>().activateTrap)
+                {
+                    flameThrower = true;
+                }
+                else
+                {
+                    flameThrower = false;
+                }
+            }
        }
     }
 }
