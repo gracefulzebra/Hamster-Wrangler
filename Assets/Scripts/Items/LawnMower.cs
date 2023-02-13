@@ -9,6 +9,8 @@ public class LawnMower : TrapBase
     [SerializeField] float lawnmowerDestroyDelay;
     [SerializeField] float lawnmowerSpd;
     [SerializeField] GameObject explosion;
+    [SerializeField] float lawnmowerExplodeDelay;
+
     GameObject gridRefObject;
     GridGenerator gridRef;
 
@@ -64,31 +66,48 @@ public class LawnMower : TrapBase
         Instantiate(explosion, explosionPos, Quaternion.identity);
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerStay(Collider col)
     {
         // if item is unplaced then dont run script
         if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
-        if (!activateTrap)
+      
+         if (col.gameObject.transform.parent.name == "Lighter(Clone)")
+         {
+            if (col.gameObject.GetComponent<TrapBase>().activateTrap)
+            {
+                    activateTrap = true;
+                    StartCoroutine(DelayLawnMowerExplode());
+                    //do explosion    
+            }
+         }
+    
+        if(!activateTrap)
             return;
-
-        if (collision.gameObject.layer == 7) //|| collision.gameObject.tag == "Placed Item")
+        
+        if (col.gameObject.layer == 7) //|| collision.gameObject.tag == "Placed Item")
         {
             Destroy(gameObject.transform.parent.gameObject);
         }
 
-        if (collision.gameObject.name == "Hamster 1(Clone)")
+        if (col.gameObject.name == "Hamster 1(Clone)")
         {
-            ItemInteract(collision.gameObject);
-            collision.gameObject.GetComponent<HamsterBase>().Kill();
+            ItemInteract(col.gameObject);
+            col.gameObject.GetComponent<HamsterBase>().Kill();
         }
 
-        if (collision.gameObject.name == "Rake(Clone)")
+        if (col.gameObject.name == "Rake(Clone)")
         {
                 Destroy(gameObject.transform.parent.gameObject);
                 LawnmowerExplode();
-                //do explosion
-        }
+               //do explosion
+        }   
+    }
+
+    IEnumerator DelayLawnMowerExplode()
+    {
+        yield return new WaitForSeconds(lawnmowerExplodeDelay);
+        LawnmowerExplode();
     }
 }
 

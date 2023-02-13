@@ -5,7 +5,7 @@ public class Explosion : MonoBehaviour
 {
 
     public float delay;
-    bool hasExploded;
+    bool hasExploded = false;
     bool decreaseSize;
     float timer;
     Vector3 startLerp;
@@ -13,7 +13,7 @@ public class Explosion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startLerp = new Vector3(-0.01f, -0.01f, -0.01f); ;
+       // startLerp = new Vector3(-0.01f, -0.01f, -0.01f); ;
         //particle
         //audio
         StartCoroutine(ExplosionOver());
@@ -33,6 +33,7 @@ public class Explosion : MonoBehaviour
     IEnumerator ExplosionOver()
     {
         yield return new WaitForSeconds(0.5f);
+        print("hit hamster and he dead :skull: :100:");
         hasExploded = true;
     }
 
@@ -40,6 +41,7 @@ public class Explosion : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         decreaseSize = true;
+        Destroy(gameObject);
         // change scale so it fades overtime
     }
 
@@ -51,9 +53,9 @@ public class Explosion : MonoBehaviour
         }
         else
         {
-            if (col.gameObject.name == "Hamster1(Clone)")
-            {
-                GetComponent<ItemEffects>().OnFire();
+            if (col.gameObject.name == "Hamster 1(Clone)")
+            { 
+                col.gameObject.GetComponent<ItemEffects>().InExplosionRadius();
             }
         }
     }

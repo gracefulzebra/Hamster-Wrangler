@@ -190,6 +190,7 @@ MonoBehaviour:
   lawnmowerDestroyDelay: 1.6
   lawnmowerSpd: 5
   explosion: {fileID: 294653886677383835, guid: 9299834040719374db4880798af5c369, type: 3}
+  lawnmowerExplodeDelay: 1.6
 --- !u!65 &794440212163466916
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -211,7 +212,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804117018870882866}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.0000001
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0

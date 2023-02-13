@@ -21,6 +21,12 @@ public class ItemEffects : MonoBehaviour
         StartCoroutine(burnToDeath());
     }
 
+    public void InExplosionRadius()
+    {
+        print("doing explosion");
+        gameObject.GetComponent<HamsterBase>().Kill();
+    }
+
     IEnumerator burnToDeath()
     {
         yield return delay;
