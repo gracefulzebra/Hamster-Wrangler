@@ -8,6 +8,8 @@ public class Fan : TrapBase
     public float force;
     public bool flameThrower;
 
+    float timeActive;
+
     private void Start()
     {
         itemID = "LeafBlower";
@@ -54,7 +56,7 @@ public class Fan : TrapBase
         // inside this if is effects that shoudl only effect the hamster
          if (col.gameObject.name == "Hamster 1(Clone)")
          {
-           if (activateTrap && !flameThrower )
+           if (activateTrap)
            {
             Vector3 direction = transform.position - transform.parent.position;
 
@@ -62,12 +64,14 @@ public class Fan : TrapBase
 
             //Communicates that item has interacted with the hamster and what type it is.
             ItemInteract(col.gameObject);
+
+               if (flameThrower)
+               {
+                   col.gameObject.GetComponent<ItemEffects>().OnFire();
+                   ItemInteract(col.gameObject);
+               } 
            }
-           else if (activateTrap && flameThrower )
-           {
-            col.gameObject.GetComponent<ItemEffects>().OnFire();
-            ItemInteract(col.gameObject);
-           }
+ 
          }
             else
             {
