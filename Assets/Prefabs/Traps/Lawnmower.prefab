@@ -186,7 +186,8 @@ MonoBehaviour:
   fuelSlider: {fileID: 0}
   refuelSymbol: {fileID: 0}
   useItemSymbol: {fileID: 0}
-  damage: 10
+  damage: 20
+  trapInUse: 0
   smokeEffect: {fileID: 5936391385877511823}
   lawnmowerDestroyDelay: 1.6
   lawnmowerSpd: 5
@@ -203,8 +204,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.58184814, y: 0.3649292, z: 0.7733165}
-  m_Center: {x: 0.012237549, y: 0.23782349, z: 0.0063313395}
+  m_Size: {x: 0.6055693, y: 0.3649292, z: 0.7733165}
+  m_Center: {x: 0.0005207956, y: 0.23782349, z: 0.006331344}
 --- !u!54 &2161727835342131569
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,8 +8,10 @@ public class Fan : TrapBase
     [SerializeField] GameObject flameThrowerEffect;
     public float force;
     public bool flameThrower;
+    float leafblowerTimer;
+    [SerializeField] float leafblowerDuration;
+    bool leafblowerInUse;
 
-    float timeActive;
 
     private void Start()
     {
@@ -17,17 +20,24 @@ public class Fan : TrapBase
    
     private void Update()
     {
-        if (activateTrap && !flameThrowerEffect)
+        if (activateTrap)
         {
-            UseFuel();
+            trapInUse = true;
+            leafblowerTimer += Time.deltaTime;
             windEffect.SetActive(true);
+            // inherited funcitons
             SliderUpdate();
-        }
-        else if (activateTrap && flameThrowerEffect)
-        {
             UseFuel();
-            flameThrowerEffect.SetActive(true);
-            SliderUpdate();
+            if (leafblowerTimer > leafblowerDuration)
+            {
+                trapInUse = false;
+                activateTrap = false;
+                leafblowerTimer = 0f;
+            }
+            if (flameThrower)
+            {
+                flameThrowerEffect.SetActive(true);
+            }
         }
 
         if (activateTrap == false)
@@ -52,7 +62,6 @@ public class Fan : TrapBase
         // if the item is active
        if (activateTrap)
        {
-
         // inside this if is effects that shoudl only effect the hamster
          if (col.gameObject.name == "Hamster 1(Clone)")
          {

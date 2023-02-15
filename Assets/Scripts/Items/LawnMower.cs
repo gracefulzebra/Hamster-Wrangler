@@ -71,37 +71,35 @@ public class LawnMower : TrapBase
         // if item is unplaced then dont run script
         if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
-      
-         /*if (col.gameObject.transform.parent.name == "Lighter(Clone)")
-         {
-            if (col.gameObject.GetComponent<TrapBase>().activateTrap)
-            {
-                    activateTrap = true;
-                    StartCoroutine(DelayLawnMowerExplode());
-                    //do explosion    
-            }
-         }*/
-    
-        //if(!activateTrap)
-           // return;
-        
-        if (col.gameObject.layer == 7) //|| collision.gameObject.tag == "Placed Item")
+
+        if (col.gameObject.GetComponent<TrapBase>() == true && col.gameObject.GetComponent<TrapBase>().itemID == "Lighter"
+            && col.gameObject.GetComponent<TrapBase>().activateTrap)
         {
-            Destroy(gameObject.transform.parent.gameObject);
+                activateTrap = true;
+                StartCoroutine(DelayLawnMowerExplode());
+                //do explosion    
         }
+        
+        if (!activateTrap)
+            return;
 
         if (col.gameObject.name == "Hamster 1(Clone)")
         {
-            ItemInteract(col.gameObject);
-            col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
+                ItemInteract(col.gameObject);
+                col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
+        }
+
+        if (col.gameObject.layer == 7) //|| collision.gameObject.tag == "Placed Item")
+        {
+                Destroy(gameObject.transform.parent.gameObject);
         }
 
         if (col.gameObject.name == "Rake(Clone)")
         {
                 Destroy(gameObject.transform.parent.gameObject);
                 LawnmowerExplode();
-               //do explosion
-        }   
+                //do explosion
+        }     
     }
 
     IEnumerator DelayLawnMowerExplode()

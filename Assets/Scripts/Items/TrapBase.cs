@@ -15,6 +15,7 @@ public class TrapBase : MonoBehaviour
     [SerializeField] protected GameObject refuelSymbol;
     [SerializeField] GameObject useItemSymbol;
     [SerializeField] protected int damage = 10;
+    public bool trapInUse;
 
     public void Awake()
     {
@@ -41,16 +42,20 @@ public class TrapBase : MonoBehaviour
             col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
     }
 
+    // this fucntion is called in snaptogrid 
     public void ActivateTrap()
     {
-        if (activateTrap == false)
+        if(!trapInUse)
         {
-            activateTrap = true;
-        }
-        else
-        {
-            activateTrap = false;
-        }
+            if (activateTrap == false)
+            {
+                activateTrap = true;
+            }
+            else
+            {
+                activateTrap = false;
+            }
+        }      
     }
 
    public void UseFuel()
