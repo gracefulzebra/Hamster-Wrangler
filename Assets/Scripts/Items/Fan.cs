@@ -38,10 +38,6 @@ public class Fan : TrapBase
             {
                 flameThrowerEffect.SetActive(true);
             }
-            else
-            {
-                flameThrowerEffect.SetActive(false);
-            }
         }
 
         if (activateTrap == false)
@@ -49,6 +45,7 @@ public class Fan : TrapBase
             windEffect.SetActive(false);
             // when trap is decativated it ensures it doesnt wake up as lawnmower
             flameThrower = false;
+            flameThrowerEffect.SetActive(false);
         }
 
         if (hasFuel == false)
