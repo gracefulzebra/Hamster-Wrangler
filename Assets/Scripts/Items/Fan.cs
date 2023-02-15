@@ -4,13 +4,14 @@ using UnityEngine.UI;
 
 public class Fan : TrapBase
 {
+
     [SerializeField] GameObject windEffect;
     [SerializeField] GameObject flameThrowerEffect;
-    public float force;
-    public bool flameThrower;
-    float leafblowerTimer;
+
+    [SerializeField] float force;
     [SerializeField] float leafblowerDuration;
-    bool leafblowerInUse;
+    bool flameThrower;
+    float leafblowerTimer;
 
 
     private void Start()
@@ -22,22 +23,25 @@ public class Fan : TrapBase
     {
         if (activateTrap)
         {
+            // used so lawnmower cannot be activated 
             trapInUse = true;
             leafblowerTimer += Time.deltaTime;
-            windEffect.SetActive(true);
-            // inherited funcitons
+
             SliderUpdate();
             UseFuel();
+            windEffect.SetActive(true);
+
             if (leafblowerTimer > leafblowerDuration)
             {
                 trapInUse = false;
                 activateTrap = false;
                 leafblowerTimer = 0f;
             }
+
             if (flameThrower)
             {
                 flameThrowerEffect.SetActive(true);
-            }
+            }  
         }
 
         if (activateTrap == false)
