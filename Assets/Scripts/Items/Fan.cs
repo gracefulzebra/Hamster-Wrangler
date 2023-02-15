@@ -38,6 +38,10 @@ public class Fan : TrapBase
             {
                 flameThrowerEffect.SetActive(true);
             }
+            else
+            {
+                flameThrowerEffect.SetActive(false);
+            }
         }
 
         if (activateTrap == false)
@@ -49,8 +53,9 @@ public class Fan : TrapBase
 
         if (hasFuel == false)
         {
-            refuelSymbol.SetActive(true);
+            trapInUse = false;
             activateTrap = false;
+            refuelSymbol.SetActive(true);
         }
     }
 

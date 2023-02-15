@@ -5,17 +5,16 @@ public class ItemEffects : MonoBehaviour
 {
 
     [Header("Item Effects")]
-    WaitForSeconds delay = new WaitForSeconds(3);
-    WaitForSeconds lighterDelay = new WaitForSeconds(1);
+    float lighterDelay = 1;
     [SerializeField] GameObject cadaver;
     [SerializeField] GameObject fireEffect;
     private bool onFire = false;
 
-    public void InExplosionRadius()
+    public void InExplosionRadius(int explosionDamage)
     {
-        print("doing explosion");
-        gameObject.GetComponent<HamsterBase>().Kill();
+        GetComponent<HamsterBase>().TakeDamage(explosionDamage);
     }
+
     public void OnFire(int burnDamage, float burnDuration, int burnAmount)
     {
         gameObject.GetComponentInChildren<Renderer>().material.color = new Color(0.91f, 0.3f, 0.21f);
@@ -53,7 +52,7 @@ public class ItemEffects : MonoBehaviour
 
     IEnumerator RemoveTar()
     {
-        yield return lighterDelay;
+        yield return new WaitForSeconds(lighterDelay);
         gameObject.tag = "Untagged";
     }
 

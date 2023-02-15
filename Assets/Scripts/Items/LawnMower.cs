@@ -1,10 +1,12 @@
 using System.Collections;
+using System.Runtime.InteropServices;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class LawnMower : TrapBase
 {
 
+    [SerializeField] GameObject fireEffect;
     [SerializeField] GameObject smokeEffect;
     [SerializeField] float lawnmowerDestroyDelay;
     [SerializeField] float lawnmowerSpd;
@@ -71,15 +73,6 @@ public class LawnMower : TrapBase
         // if item is unplaced then dont run script
         if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
-
-        if (col.gameObject.GetComponent<TrapBase>() == true && col.gameObject.GetComponent<TrapBase>().itemID == "Lighter"
-            && col.gameObject.GetComponent<TrapBase>().activateTrap)
-        {
-                activateTrap = true;
-                StartCoroutine(DelayLawnMowerExplode());
-                //do explosion    
-        }
-        
         if (!activateTrap)
             return;
 
@@ -100,6 +93,22 @@ public class LawnMower : TrapBase
                 LawnmowerExplode();
                 //do explosion
         }     
+    }
+
+    private void OnTriggerStay(Collider col)
+    {
+        // if item is unplaced then dont run script
+        if (GetComponentInParent<SnapToGrid>().hasItem)
+            return;
+        if (col.gameObject.name == "Lighter Hitbox")
+        {
+            if (col.gameObject.GetComponent<TrapBase>().activateTrap)
+            {
+                activateTrap = true;
+                StartCoroutine(DelayLawnMowerExplode());
+                fireEffect.gameObject.SetActive(true);
+            }
+        }
     }
 
     IEnumerator DelayLawnMowerExplode()

@@ -1574,7 +1574,7 @@ GameObject:
   - component: {fileID: 8893993068713357871}
   - component: {fileID: 3723529268007822331}
   m_Layer: 2
-  m_Name: Hitbox
+  m_Name: Lighter Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1606,8 +1606,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5548159, y: 0.5679831, z: 0.52292097}
-  m_Center: {x: 0.0850693, y: 0.28194872, z: 0.567007}
+  m_Size: {x: 0.5548159, y: 0.5679831, z: 0.65653753}
+  m_Center: {x: 0.0850693, y: 0.28194872, z: 0.6338153}
 --- !u!114 &8893993068713357871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1627,6 +1627,8 @@ MonoBehaviour:
   fuelSlider: {fileID: 669974202616155166}
   refuelSymbol: {fileID: 2707198488005372136}
   useItemSymbol: {fileID: 0}
+  damage: 10
+  trapInUse: 0
   fireEffect: {fileID: 8930136499679575082}
 --- !u!54 &3723529268007822331
 Rigidbody:
