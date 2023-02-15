@@ -14,6 +14,7 @@ public class TrapBase : MonoBehaviour
     [SerializeField] Slider fuelSlider;
     [SerializeField] protected GameObject refuelSymbol;
     [SerializeField] GameObject useItemSymbol;
+    [SerializeField] protected int damage = 10;
 
     public void Awake()
     {

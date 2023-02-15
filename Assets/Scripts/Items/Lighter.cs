@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class Lighter : TrapBase
 {
-
     [SerializeField] ParticleSystem fireEffect;
+    private float burnDuration = 2f; //Time between instances of burn damage
+    private int burnAmount = 5; //Amount of instances of burn damage
 
     private void Start()
     {
@@ -34,7 +35,7 @@ public class Lighter : TrapBase
          {
             if (col.gameObject.tag == "Flammable")
             {
-                col.gameObject.GetComponent<ItemEffects>().OnFire();
+                col.gameObject.GetComponent<ItemEffects>().OnFire(damage, burnDuration, burnAmount);
                 ItemInteract(col.gameObject);
             }
          }

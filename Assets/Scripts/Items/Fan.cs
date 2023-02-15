@@ -67,7 +67,7 @@ public class Fan : TrapBase
 
                if (flameThrower)
                {
-                   col.gameObject.GetComponent<ItemEffects>().OnFire();
+                   //col.gameObject.GetComponent<ItemEffects>().OnFire();
                    ItemInteract(col.gameObject);
                } 
            }

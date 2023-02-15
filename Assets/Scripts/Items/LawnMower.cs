@@ -10,7 +10,7 @@ public class LawnMower : TrapBase
     [SerializeField] float lawnmowerSpd;
     [SerializeField] GameObject explosion;
     [SerializeField] float lawnmowerExplodeDelay;
-
+   
     GameObject gridRefObject;
     GridGenerator gridRef;
 
@@ -66,13 +66,13 @@ public class LawnMower : TrapBase
         Instantiate(explosion, explosionPos, Quaternion.identity);
     }
 
-    private void OnTriggerStay(Collider col)
+    private void OnTriggerEnter(Collider col)
     {
         // if item is unplaced then dont run script
         if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
       
-         if (col.gameObject.transform.parent.name == "Lighter(Clone)")
+         /*if (col.gameObject.transform.parent.name == "Lighter(Clone)")
          {
             if (col.gameObject.GetComponent<TrapBase>().activateTrap)
             {
@@ -80,10 +80,10 @@ public class LawnMower : TrapBase
                     StartCoroutine(DelayLawnMowerExplode());
                     //do explosion    
             }
-         }
+         }*/
     
-        if(!activateTrap)
-            return;
+        //if(!activateTrap)
+           // return;
         
         if (col.gameObject.layer == 7) //|| collision.gameObject.tag == "Placed Item")
         {
@@ -93,7 +93,7 @@ public class LawnMower : TrapBase
         if (col.gameObject.name == "Hamster 1(Clone)")
         {
             ItemInteract(col.gameObject);
-            col.gameObject.GetComponent<HamsterBase>().Kill();
+            col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
         }
 
         if (col.gameObject.name == "Rake(Clone)")

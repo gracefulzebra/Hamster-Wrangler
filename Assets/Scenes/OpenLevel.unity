@@ -36321,12 +36321,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cede1edf5c292c4dbc16ef44bb6cb2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodAffect: {fileID: 0}
-  target: {fileID: 0}
+  currentHealth: 0
+  maxHamsterHealth: 0
   speed: 40
   rotationSpeed: 0
-  gridRef: {fileID: 0}
   checkPoints: []
+  bloodAffect: {fileID: 0}
   hamsterID: baseHamster
 --- !u!1 &1805269358
 GameObject:

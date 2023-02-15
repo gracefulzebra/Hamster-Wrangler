@@ -5,26 +5,32 @@ using UnityEngine.Networking.Types;
 
 public class HamsterBase : MonoBehaviour
 {
-    public ParticleSystem bloodAffect;
-    public Transform target;
-    public float speed = 40;
-    Vector3[] path;
-    int targetIndex;
-    Rigidbody _rb;
-    Vector3 currentWaypoint;
-    Vector3 direction;
-    Quaternion lookRotation;
-    public float rotationSpeed;
-    bool pathRequested = false;
-    [SerializeField] GridGenerator gridRef;
-    private GameManager manager;
-    [SerializeField] Transform[] checkPoints;
-    Transform currentTarget;
-    int checkPointIndex = 0;
+    [Header("Hamster Health")]
+    [SerializeField] private int currentHealth;
+    [SerializeField] private int maxHamsterHealth;
 
-    // used to check if fit is a hamster enter colldiers
-    // i imagien when we add in other types of hamsters that 
-    // this can be reused for different effects
+    [Header("Hamster Movement")]
+    private Rigidbody _rb;
+    public float speed = 40;
+    private Vector3 direction;
+    private Quaternion lookRotation;
+    private Transform currentTarget;
+    private Vector3 currentWaypoint;
+    [SerializeField] private float rotationSpeed;
+    
+    [Header("Pathfinding")]
+    [SerializeField] private Transform[] checkPoints;
+    private Transform target;
+    private Vector3[] path;
+    private int targetIndex;
+    private bool pathRequested = true;
+    private int checkPointIndex = 0;
+
+    [Header("Misc.")]
+    [SerializeField] private ParticleSystem bloodAffect;
+    private GameManager manager;
+
+    [HideInInspector]
     public string hamsterID = "baseHamster";
 
     private void Awake()
@@ -32,6 +38,51 @@ public class HamsterBase : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         manager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         target = GameObject.Find("Target").transform;
+        currentHealth = maxHamsterHealth;
+    }
+
+    private void Start()
+    {
+        PathRequestManager.RequestPath(transform.position, currentTarget.position, OnPathFound, this.gameObject);
+    }
+
+    private void Update()
+    {
+        MoveToTarget();
+        UpdateCheckPoints();
+    }
+
+    private void MoveToTarget()
+    {
+        //Move toward
+        direction = (currentWaypoint - transform.position).normalized;
+        _rb.AddForce(direction * speed * Time.deltaTime, ForceMode.Acceleration);
+
+        //Turn toward
+        lookRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed); 
+    }
+
+    private void UpdateCheckPoints()
+    {
+        if (currentTarget == target)
+            return;
+
+        if (Distance(transform.position, currentTarget.position) < 0.4f)
+        {
+            checkPointIndex++;
+
+            if (checkPointIndex == checkPoints.Length)
+            {
+                currentTarget = target;
+            }
+            else
+            {
+                currentTarget = checkPoints[checkPointIndex];
+            }
+
+            PathRequestManager.RequestPath(transform.position, currentTarget.position, OnPathFound, this.gameObject);
+        }
     }
 
     public void SetCheckPoints(Transform[] _checkPoints)
@@ -47,12 +98,6 @@ public class HamsterBase : MonoBehaviour
             currentTarget = target;
         }
     }
-    
-    private void Start()
-    {
-        pathRequested = true;
-        PathRequestManager.RequestPath(transform.position, currentTarget.position, OnPathFound, this.gameObject);
-    }
 
     public void OnPathFound(Vector3[] newPath, bool pathSuccessful)
     {
@@ -61,38 +106,11 @@ public class HamsterBase : MonoBehaviour
         if (pathSuccessful)
         {
             path = newPath;
-            
+
             StopCoroutine(FollowPath());
             StartCoroutine(FollowPath());
         }
     }
-
-    private void Update()
-    {
-        direction = (currentWaypoint - transform.position).normalized;
-        _rb.AddForce(direction * speed * Time.deltaTime, ForceMode.Acceleration);
-        GetRotation();
-
-        if (currentTarget != target)
-        {
-            if (Distance(transform.position, currentTarget.position) < 0.4f)
-            {
-                checkPointIndex++;
-
-                if(checkPointIndex == checkPoints.Length)
-                {
-                    currentTarget = target;
-                }
-                else
-                {
-                    currentTarget = checkPoints[checkPointIndex];
-                }
-
-                PathRequestManager.RequestPath(transform.position, currentTarget.position, OnPathFound, this.gameObject);
-            }
-        }
-    }
-
 
     IEnumerator FollowPath()
     {
@@ -121,6 +139,12 @@ public class HamsterBase : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Calculates Euclidean Dist.
+    /// </summary>
+    /// <param name="currentPos"></param>
+    /// <param name="targetPos"></param>
+    /// <returns></returns>
     float Distance(Vector3 currentPos, Vector3 targetPos)
     {
         float a = targetPos.x - currentPos.x;
@@ -128,41 +152,29 @@ public class HamsterBase : MonoBehaviour
         return Mathf.Sqrt(a * a + b * b);
     }
 
-    private void OnDrawGizmos()
+    /// <summary>
+    /// Reduces hamster health by a value and checks to see if the health is below 0 for kill condition.
+    /// </summary>
+    public void TakeDamage(int damage)
     {
-        if(path != null)
+        currentHealth -= damage;
+
+        if(currentHealth <= 0)
         {
-            for(int i = targetIndex; i < path.Length; i++)
-            {
-                Gizmos.color = Color.black;
-                Gizmos.DrawCube(path[i], new Vector3(1,1.5f,1));
-
-                if(i == targetIndex)
-                {
-                    Gizmos.DrawLine(transform.position, path[i]);
-                }
-                else
-                {
-                    Gizmos.DrawLine(path[i - 1], path[i]);
-                }
-            }
+            Kill();
         }
-    }
-
-    void GetRotation()
-    {
-        lookRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
 
     /// <summary>
     /// Destroys the current hamster without updating the score
+    /// Used For Cheese
     /// </summary>
     public void Despawn()
     {
         GetComponent<HamsterScore>().UpdateWaveManager();
         Destroy(gameObject);
     }
+
     ///<summary>
     ///Destroys the current Hamster with no delay
     ///</summary>

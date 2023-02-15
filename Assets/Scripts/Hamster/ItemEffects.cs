@@ -9,30 +9,38 @@ public class ItemEffects : MonoBehaviour
     WaitForSeconds lighterDelay = new WaitForSeconds(1);
     [SerializeField] GameObject cadaver;
     [SerializeField] GameObject fireEffect;
-    public bool onFire = false;
-
-    ///<summary>
-    ///Starts courtine that will kill hamster in 2 seconds 
-    ///</summary>
-    public void OnFire()
-    {
-        gameObject.GetComponentInChildren<Renderer>().material.color = new Color(0.91f, 0.3f, 0.21f);
-        fireEffect.SetActive(true);
-        StartCoroutine(burnToDeath());
-    }
+    private bool onFire = false;
 
     public void InExplosionRadius()
     {
         print("doing explosion");
         gameObject.GetComponent<HamsterBase>().Kill();
     }
-
-    IEnumerator burnToDeath()
+    public void OnFire(int burnDamage, float burnDuration, int burnAmount)
     {
-        yield return delay;
-        Vector3 offset = new Vector3(transform.position.x, transform.position.y-0.15f, transform.position.z);
-        Instantiate(cadaver, offset, Quaternion.identity);
-        gameObject.GetComponent<HamsterBase>().Kill();
+        gameObject.GetComponentInChildren<Renderer>().material.color = new Color(0.91f, 0.3f, 0.21f);
+        fireEffect.SetActive(true);
+
+        if (onFire)
+        {
+            StopCoroutine(burnToDeath(burnDamage, burnDuration, burnAmount));
+            StartCoroutine(burnToDeath(burnDamage, burnDuration, burnAmount));
+        }
+        else
+        {
+            StartCoroutine(burnToDeath(burnDamage, burnDuration, burnAmount));
+        }
+    }
+
+    IEnumerator burnToDeath(int burnDamage, float burnDuration, int burnAmount)
+    {
+        onFire = true;
+        for (int i=0; i < burnAmount; i++)
+        {
+            GetComponent<HamsterBase>().TakeDamage(burnDamage);
+            yield return new WaitForSeconds(burnDuration);
+        }
+        onFire = false;
     }
 
     ///<summary>
@@ -54,7 +62,7 @@ public class ItemEffects : MonoBehaviour
         // if a hamster is onfire he can set other hamster on fire
         if (col.gameObject.tag == "Flammable" && onFire)
         {
-            col.gameObject.GetComponent<ItemEffects>().OnFire();
+            //col.gameObject.GetComponent<ItemEffects>().OnFire();
         }
     }
 }
