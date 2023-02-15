@@ -12,13 +12,14 @@ public class LawnMower : TrapBase
     [SerializeField] float lawnmowerSpd;
     [SerializeField] GameObject explosion;
     [SerializeField] float lawnmowerExplodeDelay;
-   
+
+    bool willExplode;
     GameObject gridRefObject;
     GridGenerator gridRef;
 
     Node nodeHit;
 
-    int counter;
+    int counter = 0;
 
     private void Start()
     {
@@ -54,12 +55,12 @@ public class LawnMower : TrapBase
         Destroy(gameObject.transform.parent.gameObject);
     }
 
-   public void ActivateLawnmower()
-   {
+    public void ActivateLawnmower()
+    {
         smokeEffect.SetActive(true);
         StartCoroutine(DestroyLawnmower());
         activateTrap = true;
-   }
+    }
 
     void LawnmowerExplode()
     {
@@ -84,7 +85,15 @@ public class LawnMower : TrapBase
 
         if (col.gameObject.layer == 7) //|| collision.gameObject.tag == "Placed Item")
         {
+            if (willExplode)
+            {
+                LawnmowerExplode();
                 Destroy(gameObject.transform.parent.gameObject);
+            }
+            else
+            {
+                Destroy(gameObject.transform.parent.gameObject);
+            }
         }
 
         if (col.gameObject.name == "Rake(Clone)")
@@ -104,6 +113,7 @@ public class LawnMower : TrapBase
         {
             if (col.gameObject.GetComponent<TrapBase>().activateTrap)
             {
+                willExplode = true;
                 activateTrap = true;
                 StartCoroutine(DelayLawnMowerExplode());
                 fireEffect.gameObject.SetActive(true);
