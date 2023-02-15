@@ -13,7 +13,6 @@ public class Fan : TrapBase
     bool flameThrower;
     float leafblowerTimer;
 
-
     private void Start()
     {
         itemID = "LeafBlower";
