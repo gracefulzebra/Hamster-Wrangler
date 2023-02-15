@@ -89,7 +89,6 @@ public class CurrencyManager : MonoBehaviour
         }
     }
 
-     
     public bool RepairItemCost()
     {
         if (CheckValidPurchase(repairCost))
@@ -100,7 +99,6 @@ public class CurrencyManager : MonoBehaviour
         else
             return false;
     }
-
 
     private bool CheckValidPurchase(int cost)
     {

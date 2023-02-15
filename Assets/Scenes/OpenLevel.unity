@@ -7410,6 +7410,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6070808648065720734, guid: 8f96c72b3140f90488abab92280cb925, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070808648065720734, guid: 8f96c72b3140f90488abab92280cb925, type: 3}
       propertyPath: m_TagString
       value: Spawner
       objectReference: {fileID: 0}
@@ -11402,7 +11406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f439cc1518d2c4b81ae6aadae38648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkPoints: []
   linePrefab: {fileID: 6943972270826131500, guid: 81c54e22f07c49c47a018f742e6e1b5a, type: 3}
 --- !u!65 &547062532
 BoxCollider:
@@ -13699,8 +13702,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f439cc1518d2c4b81ae6aadae38648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkPoints:
-  - {fileID: 734932848}
   linePrefab: {fileID: 6943972270826131500, guid: 81c54e22f07c49c47a018f742e6e1b5a, type: 3}
 --- !u!4 &674177963 stripped
 Transform:
@@ -27048,8 +27049,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f439cc1518d2c4b81ae6aadae38648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkPoints:
-  - {fileID: 1692793717}
   linePrefab: {fileID: 6943972270826131500, guid: 81c54e22f07c49c47a018f742e6e1b5a, type: 3}
 --- !u!4 &1319139017 stripped
 Transform:

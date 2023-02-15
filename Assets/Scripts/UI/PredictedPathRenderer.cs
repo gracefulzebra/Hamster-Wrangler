@@ -8,7 +8,7 @@ public class PredictedPathRenderer : MonoBehaviour
     Vector3[] path;
     GridGenerator grid;
 
-    [SerializeField] Transform[] checkPoints;
+    private Transform[] checkPoints;
     Transform currentTarget;
     Vector3 lastTarget;
     int checkPointIndex = 0;
@@ -23,14 +23,17 @@ public class PredictedPathRenderer : MonoBehaviour
         target = GameObject.Find("Target").transform;
         grid = GameObject.Find("OliverGriddy").transform.GetComponent<GridGenerator>();
 
-        if(checkPoints.Length > 0)
-          currentTarget = checkPoints[0];
-        else
-            currentTarget = target;
+        if (GetComponent<HamsterSpawner>() != null)
+            checkPoints = GetComponent<HamsterSpawner>().checkPoints;
     }
 
     void Start()
     {
+        if (checkPoints.Length > 0)
+            currentTarget = checkPoints[0];
+        else
+            currentTarget = target;
+
         oldPos = grid.GetNodeFromWorldPoint(this.transform.position);
         CalculatePath();
         StartCoroutine(UpdatePath());

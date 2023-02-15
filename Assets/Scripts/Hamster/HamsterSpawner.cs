@@ -5,7 +5,8 @@ using UnityEngine;
 public class HamsterSpawner : MonoBehaviour
 {
     [SerializeField] private Transform spawnPoint;
-    [SerializeField] private Transform[] checkPoints;
+    
+    public Transform[] checkPoints;
         
     public void SpawnHamster(GameObject hamsterPrefab)
     {

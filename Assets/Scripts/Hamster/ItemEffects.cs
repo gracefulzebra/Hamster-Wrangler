@@ -9,6 +9,7 @@ public class ItemEffects : MonoBehaviour
     [SerializeField] GameObject cadaver;
     [SerializeField] GameObject fireEffect;
     private bool onFire = false;
+    private int burnIndex = 0;
 
     public void InExplosionRadius(int explosionDamage)
     {
@@ -22,8 +23,7 @@ public class ItemEffects : MonoBehaviour
 
         if (onFire)
         {
-            StopCoroutine(burnToDeath(burnDamage, burnDuration, burnAmount));
-            StartCoroutine(burnToDeath(burnDamage, burnDuration, burnAmount));
+            burnIndex = 0;
         }
         else
         {
@@ -34,10 +34,10 @@ public class ItemEffects : MonoBehaviour
     IEnumerator burnToDeath(int burnDamage, float burnDuration, int burnAmount)
     {
         onFire = true;
-        for (int i=0; i < burnAmount; i++)
+        for (burnIndex = 0; burnIndex < burnAmount; burnIndex++)
         {
-            GetComponent<HamsterBase>().TakeDamage(burnDamage);
             yield return new WaitForSeconds(burnDuration);
+            GetComponent<HamsterBase>().TakeDamage(burnDamage);
         }
         onFire = false;
     }
