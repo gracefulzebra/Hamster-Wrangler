@@ -13,6 +13,9 @@ public class Fan : TrapBase
     bool flameThrower;
     float leafblowerTimer;
 
+    private float burnDuration = 2f; //Time between instances of burn damage
+    private int burnAmount = 5; //Amount of instances of burn damage
+
     private void Start()
     {
         itemID = "LeafBlower";
@@ -81,7 +84,7 @@ public class Fan : TrapBase
 
                if (flameThrower)
                {
-                   //col.gameObject.GetComponent<ItemEffects>().OnFire();
+                   col.gameObject.GetComponent<ItemEffects>().OnFire(damage, burnDuration, burnAmount);
                    ItemInteract(col.gameObject);
                } 
            }
