@@ -11,7 +11,8 @@ public class HamsterBase : MonoBehaviour
 
     [Header("Hamster Movement")]
     private Rigidbody _rb;
-    public float speed = 40;
+    public float speed;
+    public float maxSpeed;
     private Vector3 direction;
     private Quaternion lookRotation;
     private Transform currentTarget;
@@ -39,6 +40,7 @@ public class HamsterBase : MonoBehaviour
         manager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         target = GameObject.Find("Target").transform;
         currentHealth = maxHamsterHealth;
+        speed = maxSpeed;
     }
 
     private void Start()

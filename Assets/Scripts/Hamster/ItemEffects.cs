@@ -16,6 +16,9 @@ public class ItemEffects : MonoBehaviour
         GetComponent<HamsterBase>().TakeDamage(explosionDamage);
     }
 
+    ///<summary>
+    /// called when hamster interacts with fire 
+    ///</summary>
     public void OnFire(int burnDamage, float burnDuration, int burnAmount)
     {
         gameObject.GetComponentInChildren<Renderer>().material.color = new Color(0.91f, 0.3f, 0.21f);
@@ -31,6 +34,9 @@ public class ItemEffects : MonoBehaviour
         }
     }
 
+    ///<summary>
+    /// called when player is on fire to damage hamster
+    ///</summary>
     IEnumerator burnToDeath(int burnDamage, float burnDuration, int burnAmount)
     {
         onFire = true;
@@ -40,6 +46,26 @@ public class ItemEffects : MonoBehaviour
             GetComponent<HamsterBase>().TakeDamage(burnDamage);
         }
         onFire = false;
+    }
+
+    ///<summary>
+    /// called when hamster has been hit by bugzapper
+    ///</summary>
+    public void BeenElectrocuted(int electricDmg)
+    {
+        GetComponent<HamsterBase>().speed = 0;
+        GetComponent<HamsterBase>().TakeDamage(electricDmg);
+        //play animation;
+        StartCoroutine(ResetSpeed());
+    }
+
+    ///<summary>
+    /// called once hamster has been electrocuted and values need to be reset
+    ///</summary>
+    IEnumerator ResetSpeed()
+    {
+        yield return new WaitForSeconds(1f);
+        GetComponent<HamsterBase>().speed = GetComponent<HamsterBase>().maxSpeed;
     }
 
     ///<summary>

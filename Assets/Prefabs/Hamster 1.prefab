@@ -115,13 +115,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cede1edf5c292c4dbc16ef44bb6cb2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodAffect: {fileID: 5721086318571805125, guid: 064c91c30d1466c4e89f3de2e3918ae1, type: 3}
-  target: {fileID: 0}
-  speed: 60
-  rotationSpeed: 2
-  gridRef: {fileID: 0}
-  checkPoints: []
+  currentHealth: 0
   maxHamsterHealth: 20
+  speed: 0
+  maxSpeed: 60
+  rotationSpeed: 2
+  checkPoints: []
+  bloodAffect: {fileID: 5721086318571805125, guid: 064c91c30d1466c4e89f3de2e3918ae1, type: 3}
   hamsterID: baseHamster
 --- !u!114 &1892701076170301681
 MonoBehaviour:
@@ -137,7 +137,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cadaver: {fileID: 919132149155446097, guid: 0d7a5470db9158b479569ccddf9d1304, type: 3}
   fireEffect: {fileID: 2683341241448998353}
-  onFire: 0
 --- !u!114 &6423248422091707386
 MonoBehaviour:
   m_ObjectHideFlags: 0

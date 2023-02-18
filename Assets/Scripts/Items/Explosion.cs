@@ -5,7 +5,6 @@ public class Explosion : MonoBehaviour
 {
 
     public float delay;
-    bool hasExploded = false;
     bool decreaseSize;
     float timer;
     Vector3 startLerp;
@@ -34,7 +33,6 @@ public class Explosion : MonoBehaviour
     IEnumerator ExplosionOver()
     {
         yield return new WaitForSeconds(0.8f);
-        hasExploded = true;
     }
 
     IEnumerator DestroyExplosion()
