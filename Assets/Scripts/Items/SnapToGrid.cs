@@ -146,11 +146,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             nodeHit.placeable = false;
             hasItem = false;
             gameObject.tag = "Placed Item";
-            gameManager.CheckIfItemHeld();
-            
-         //  confirmButton.SetActive(false);
-          //  cancelButton.SetActive(false);
-          //  rotateButton.SetActive(false);
+            gameManager.CheckIfItemHeld();           
         }
    }
 

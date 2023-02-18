@@ -1,6 +1,4 @@
-using System.Threading;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Fan : TrapBase
 {
@@ -12,7 +10,6 @@ public class Fan : TrapBase
     [SerializeField] float force;
     [SerializeField] float leafblowerDuration;
     bool trapInUse;
-
 
     [Header("Flamethrower")]
     bool flameThrower;

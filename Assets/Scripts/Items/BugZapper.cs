@@ -1,9 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BugZapper : TrapBase
 {
+
+    float distance;
+    public GameObject[] hamsterNo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +16,13 @@ public class BugZapper : TrapBase
     void Update()
     {
 
+// call this in item effects and tick a bool to enable 
+        distance = (transform.position - hamsterNo[0].transform.position).magnitude;
+
+        if (distance < 5)
+        {
+            print("within distanc eof deadly cube");
+        }
     }
 
     private void OnTriggerStay(Collider col)
