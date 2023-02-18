@@ -1,10 +1,12 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BugZapper : TrapBase
 {
 
     float distance;
-    public GameObject[] hamsterNo;
+    public List<GameObject> hamsterNo = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +18,11 @@ public class BugZapper : TrapBase
     void Update()
     {
 
-// call this in item effects and tick a bool to enable 
+     //   GameObject hamster = GameObject.Find("Hamster 1(Clone)");
+     //   hamsterNo.Add(hamster);
+
+
+        // call this in item effects and tick a bool to enable 
         distance = (transform.position - hamsterNo[0].transform.position).magnitude;
 
         if (distance < 5)
