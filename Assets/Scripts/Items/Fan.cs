@@ -4,15 +4,19 @@ using UnityEngine.UI;
 
 public class Fan : TrapBase
 {
-
+    [Header("Particle Effects")]
     [SerializeField] GameObject windEffect;
     [SerializeField] GameObject flameThrowerEffect;
 
+    [Header("Generic Values")]
     [SerializeField] float force;
     [SerializeField] float leafblowerDuration;
+    bool trapInUse;
+
+
+    [Header("Flamethrower")]
     bool flameThrower;
     float leafblowerTimer;
-
     private float burnDuration = 2f; //Time between instances of burn damage
     private int burnAmount = 5; //Amount of instances of burn damage
 
@@ -23,29 +27,36 @@ public class Fan : TrapBase
    
     private void Update()
     {
-        if (activateTrap)
+        if (trapInUse)
         {
-            // used so lawnmower cannot be activated 
-            trapInUse = true;
-            leafblowerTimer += Time.deltaTime;
-
-            SliderUpdate();
-            UseFuel();
-            windEffect.SetActive(true);
-
-            if (leafblowerTimer > leafblowerDuration)
-            {
-                trapInUse = false;
-                activateTrap = false;
-                leafblowerTimer = 0f;
-            }
-
-            if (flameThrower)
-            {
-                flameThrowerEffect.SetActive(true);
-            }  
+            activateTrap = false;
         }
+        else
+        {
+            if (activateTrap)
+            {
+                // used so lawnmower cannot be activated 
+                trapInUse = true;
+                leafblowerTimer += Time.deltaTime;
 
+                SliderUpdate();
+                UseFuel();
+                windEffect.SetActive(true);
+
+                if (leafblowerTimer > leafblowerDuration)
+                {
+                    trapInUse = false;
+                    activateTrap = false;
+                    leafblowerTimer = 0f;
+                }
+
+                if (flameThrower)
+                {
+                    flameThrowerEffect.SetActive(true);
+                }
+            }
+        }
+    
         if (activateTrap == false)
         {
             windEffect.SetActive(false);

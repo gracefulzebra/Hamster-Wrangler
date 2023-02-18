@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class Lighter : TrapBase
 {
+
+    [Header("Particle Effects")]
     [SerializeField] GameObject fireEffect;
+
+    [Header("Generic Values")]
     private float burnDuration = 2f; //Time between instances of burn damage
     private int burnAmount = 5; //Amount of instances of burn damage
 

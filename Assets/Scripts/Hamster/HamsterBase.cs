@@ -29,7 +29,6 @@ public class HamsterBase : MonoBehaviour
 
     [Header("Misc.")]
     [SerializeField] private ParticleSystem bloodAffect;
-    private GameManager manager;
 
     [HideInInspector]
     public string hamsterID = "baseHamster";
@@ -37,7 +36,6 @@ public class HamsterBase : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        manager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         target = GameObject.Find("Target").transform;
         currentHealth = maxHamsterHealth;
         speed = maxSpeed;
@@ -183,7 +181,7 @@ public class HamsterBase : MonoBehaviour
     public void Kill()
     {
         Vector3 deathPoint = new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z);
-        manager.audioManager.PlayHamsterDeathAudio();
+        GameManager.instance.audioManager.PlayHamsterDeathAudio();
         Instantiate(bloodAffect, deathPoint, Quaternion.identity);
         GetComponent<HamsterScore>().SendData();
         Destroy(gameObject);

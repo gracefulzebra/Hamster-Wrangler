@@ -6,7 +6,6 @@ public class ItemEffects : MonoBehaviour
 
     [Header("Item Effects")]
     float lighterDelay = 1;
-    [SerializeField] GameObject cadaver;
     [SerializeField] GameObject fireEffect;
     private bool onFire = false;
     private int burnIndex = 0;
@@ -64,7 +63,7 @@ public class ItemEffects : MonoBehaviour
     ///</summary>
     IEnumerator ResetSpeed()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         GetComponent<HamsterBase>().speed = GetComponent<HamsterBase>().maxSpeed;
     }
 

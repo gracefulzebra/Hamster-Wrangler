@@ -13,11 +13,10 @@ public class BugZapper : TrapBase
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-
-    private void OnCollisionStay(Collision col)
+    private void OnTriggerStay(Collider col)
     {
         if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
@@ -29,6 +28,7 @@ public class BugZapper : TrapBase
             {
                 col.gameObject.GetComponent<ItemEffects>().BeenElectrocuted(damage);
             }
+            activateTrap = false;
         }
     }
 }

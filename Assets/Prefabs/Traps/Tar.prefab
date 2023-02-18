@@ -263,8 +263,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8997316157776341917}
-  - component: {fileID: 1770098252425233288}
   - component: {fileID: 7639416826714197822}
+  - component: {fileID: 2260019920519848350}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -287,28 +287,6 @@ Transform:
   m_Father: {fileID: 2498448106699368201}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1770098252425233288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3081544520838063990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc4e42e57106b045a99a80edc7dbbf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fuelUsage: 0
-  maxFuel: 0
-  itemID: 
-  activateTrap: 0
-  fuelSlider: {fileID: 0}
-  refuelSymbol: {fileID: 0}
-  useItemSymbol: {fileID: 0}
-  damage: 10
-  trapInUse: 0
-  slowSpeed: 3
 --- !u!65 &7639416826714197822
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -322,6 +300,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7940674, y: 0.11352539, z: 0.81591797}
   m_Center: {x: 0.016052246, y: -0.026123047, z: 0.025634766}
+--- !u!114 &2260019920519848350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3081544520838063990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0753e9949b20014fa3dcc287d8ab34d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuelUsage: 0
+  maxFuel: 0
+  itemID: 
+  activateTrap: 0
+  fuelSlider: {fileID: 0}
+  refuelSymbol: {fileID: 0}
+  useItemSymbol: {fileID: 0}
+  damage: 10
+  trapInUse: 0
 --- !u!1 &4486797815997811292
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,25 +1,26 @@
 using System.Collections;
-using System.Runtime.InteropServices;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class LawnMower : TrapBase
 {
 
+    [Header("Particle Effects")]
     [SerializeField] GameObject fireEffect;
     [SerializeField] GameObject smokeEffect;
+
+    [Header("Generic Values")]
     [SerializeField] float lawnmowerDestroyDelay;
     [SerializeField] float lawnmowerSpd;
-    [SerializeField] GameObject explosion;
     [SerializeField] float lawnmowerExplodeDelay;
-
+    int counter = 0;
     bool willExplode;
+
+    [Header("References")]
     GameObject gridRefObject;
     GridGenerator gridRef;
-
+    [SerializeField] GameObject explosion;
     Node nodeHit;
 
-    int counter = 0;
 
     private void Start()
     {

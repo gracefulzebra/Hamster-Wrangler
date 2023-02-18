@@ -3,19 +3,21 @@ using UnityEngine.UI;
 
 public class TrapBase : MonoBehaviour
 {
-
+    [Header("Fuel System")]
     public float fuelUsage;
     float currentFuel;
     public float maxFuel;
     protected bool hasFuel;
-    float timer;
-    public string itemID;
-    public bool activateTrap;
     [SerializeField] Slider fuelSlider;
     [SerializeField] protected GameObject refuelSymbol;
-    [SerializeField] GameObject useItemSymbol;
+
+    [Header("Generic Values")]
+    public string itemID;
     [SerializeField] protected int damage = 10;
-    public bool trapInUse;
+    float timer;
+
+    [Header("Trap Activation")]
+    public bool activateTrap;
 
     public void Awake()
     {
@@ -45,8 +47,6 @@ public class TrapBase : MonoBehaviour
     // this fucntion is called in snaptogrid 
     public void ActivateTrap()
     {
-        if(!trapInUse)
-        {
             if (activateTrap == false)
             {
                 activateTrap = true;
@@ -54,8 +54,7 @@ public class TrapBase : MonoBehaviour
             else
             {
                 activateTrap = false;
-            }
-        }      
+            }     
     }
 
    public void UseFuel()
