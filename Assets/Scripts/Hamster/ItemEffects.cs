@@ -52,7 +52,9 @@ public class ItemEffects : MonoBehaviour
     ///</summary>
     public void BeenElectrocuted(int electricDmg)
     {
+        GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
         GetComponent<HamsterBase>().speed = 0;
+        print("been shocked");
         GetComponent<HamsterBase>().TakeDamage(electricDmg);
         //play animation;
         StartCoroutine(ResetSpeed());
@@ -63,7 +65,7 @@ public class ItemEffects : MonoBehaviour
     ///</summary>
     IEnumerator ResetSpeed()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         GetComponent<HamsterBase>().speed = GetComponent<HamsterBase>().maxSpeed;
     }
 

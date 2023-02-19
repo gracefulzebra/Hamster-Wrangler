@@ -180,20 +180,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuelUsage: 0
+  currentFuel: 0
   maxFuel: 0
-  itemID: 
-  activateTrap: 0
   fuelSlider: {fileID: 0}
   refuelSymbol: {fileID: 0}
-  useItemSymbol: {fileID: 0}
+  itemID: 
   damage: 20
-  trapInUse: 0
+  activateTrap: 0
   fireEffect: {fileID: 4118219549432098300}
   smokeEffect: {fileID: 5936391385877511823}
   lawnmowerDestroyDelay: 1.6
   lawnmowerSpd: 5
-  explosion: {fileID: 294653886677383835, guid: 9299834040719374db4880798af5c369, type: 3}
   lawnmowerExplodeDelay: 1.6
+  explosion: {fileID: 294653886677383835, guid: 9299834040719374db4880798af5c369, type: 3}
 --- !u!65 &794440212163466916
 BoxCollider:
   m_ObjectHideFlags: 0

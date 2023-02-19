@@ -9,7 +9,6 @@ public class Fan : TrapBase
     [Header("Generic Values")]
     [SerializeField] float force;
     [SerializeField] float leafblowerDuration;
-    bool trapInUse;
 
     [Header("Flamethrower")]
     bool flameThrower;
@@ -24,49 +23,48 @@ public class Fan : TrapBase
    
     private void Update()
     {
-        if (trapInUse)
+        LeafblowerActivation();
+
+        if (hasFuel == false)
         {
+            canUseTrap = false;
             activateTrap = false;
+            refuelSymbol.SetActive(true);
+            // resets timer
+            leafblowerTimer = 0f;
         }
-        else
+    }
+
+    void LeafblowerActivation()
+    {
+        if (activateTrap)
         {
-            if (activateTrap)
+            // used so leafblower cannot be activated if already on
+            canUseTrap = true;
+            leafblowerTimer += Time.deltaTime;
+
+            SliderUpdate();
+            UseFuel();
+            windEffect.SetActive(true);
+
+            if (leafblowerTimer > leafblowerDuration)
             {
-                // used so lawnmower cannot be activated 
-                trapInUse = true;
-                leafblowerTimer += Time.deltaTime;
+                canUseTrap = false;
+                activateTrap = false;
+                leafblowerTimer = 0f;
+            }
 
-                SliderUpdate();
-                UseFuel();
-                windEffect.SetActive(true);
-
-                if (leafblowerTimer > leafblowerDuration)
-                {
-                    trapInUse = false;
-                    activateTrap = false;
-                    leafblowerTimer = 0f;
-                }
-
-                if (flameThrower)
-                {
-                    flameThrowerEffect.SetActive(true);
-                }
+            if (flameThrower)
+            {
+                flameThrowerEffect.SetActive(true);
             }
         }
-    
-        if (activateTrap == false)
+        else
         {
             windEffect.SetActive(false);
             // when trap is decativated it ensures it doesnt wake up as lawnmower
             flameThrower = false;
             flameThrowerEffect.SetActive(false);
-        }
-
-        if (hasFuel == false)
-        {
-            trapInUse = false;
-            activateTrap = false;
-            refuelSymbol.SetActive(true);
         }
     }
 
@@ -78,11 +76,9 @@ public class Fan : TrapBase
         // if the item is active
        if (activateTrap)
        {
-        // inside this if is effects that shoudl only effect the hamster
+        // for hamster collisions
          if (col.gameObject.name == "Hamster 1(Clone)")
          {
-           if (activateTrap)
-           {
             Vector3 direction = transform.position - transform.parent.position;
 
             col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force, ForceMode.Force);
@@ -93,11 +89,10 @@ public class Fan : TrapBase
                if (flameThrower)
                {
                    col.gameObject.GetComponent<ItemEffects>().OnFire(damage, burnDuration, burnAmount);
-                   ItemInteract(col.gameObject);
+                  // ItemInteract(col.gameObject);
                } 
-           }
- 
          }
+            // for none hamster collision
             else
             {
                 // for leafblower + lighter interaction
@@ -113,48 +108,4 @@ public class Fan : TrapBase
        }
     }
 }
-
-    /*       if (GetComponentInParent<SnapToGrid>().hasItem == true)
-       {
-           windEffect.SetActive(false);
-       }
-
-      SliderUpdate();
-
-       if (GetComponentInParent<SnapToGrid>().hasItem == true)
-           return;  
-
-       if (turnedOn)
-       {
-           if (counter < 1)
-           {
-               counter++;
-               GameManager.instance.audioManager.LeafBlowerUse();
-           }
-           windEffect.SetActive(true);
-           fanTimer += Time.deltaTime;
-       }
-       else
-       {
-           counter = 0;
-           windEffect.SetActive(false);
-           timer += Time.deltaTime;
-       }
-
-       if (timer > timerMax)
-       {
-           activationButton.SetActive(true);
-       } 
-       else
-       {
-           activationButton.SetActive(false);
-       }
-
-       if (fanTimer > 3)
-       {
-           timer = 0;
-           fanTimer = 0;
-           turnedOn = false;
-       }
-*/
 

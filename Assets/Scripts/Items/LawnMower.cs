@@ -40,27 +40,21 @@ public class LawnMower : TrapBase
                 nodeHit.placeable = true;
                 counter++;
             }
-            MoveForward();
-            StartCoroutine(DestroyLawnmower());
+            ActivateLawnmower();
         }
     }
 
-    void MoveForward()
-    {
-        transform.parent.Translate(Vector3.forward * lawnmowerSpd * Time.deltaTime);
-    }
-
-    IEnumerator DestroyLawnmower()
+ /*   IEnumerator DestroyLawnmower()
     {
         yield return new WaitForSeconds(lawnmowerDestroyDelay);
         Destroy(gameObject.transform.parent.gameObject);
-    }
+    }*/
 
     public void ActivateLawnmower()
     {
         smokeEffect.SetActive(true);
-        StartCoroutine(DestroyLawnmower());
         activateTrap = true;
+        transform.parent.Translate(Vector3.forward * lawnmowerSpd * Time.deltaTime);
     }
 
     void LawnmowerExplode()

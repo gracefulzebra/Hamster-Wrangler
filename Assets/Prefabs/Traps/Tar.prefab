@@ -121,9 +121,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5671296581848168111}
-        m_TargetAssemblyTypeName: SnapToGrid, Assembly-CSharp
-        m_MethodName: ConfirmPlacement
+      - m_Target: {fileID: 2260019920519848350}
+        m_TargetAssemblyTypeName: BugZapper, Assembly-CSharp
+        m_MethodName: ReactiveTrap
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -313,14 +313,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuelUsage: 0
+  currentFuel: 0
   maxFuel: 0
-  itemID: 
-  activateTrap: 0
   fuelSlider: {fileID: 0}
-  refuelSymbol: {fileID: 0}
-  useItemSymbol: {fileID: 0}
+  refuelSymbol: {fileID: 1887583068903967042}
+  itemID: 
   damage: 10
-  trapInUse: 0
+  activateTrap: 0
+  chargeCount: 2
+  hamsterNo: []
+  cooldownTimer: 0
+  cooldownTimerMax: 2
 --- !u!1 &4486797815997811292
 GameObject:
   m_ObjectHideFlags: 0

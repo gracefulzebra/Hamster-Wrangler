@@ -5,7 +5,7 @@ public class TrapBase : MonoBehaviour
 {
     [Header("Fuel System")]
     public float fuelUsage;
-    float currentFuel;
+    public float currentFuel;
     public float maxFuel;
     protected bool hasFuel;
     [SerializeField] Slider fuelSlider;
@@ -15,6 +15,7 @@ public class TrapBase : MonoBehaviour
     public string itemID;
     [SerializeField] protected int damage = 10;
     float timer;
+    protected bool canUseTrap;
 
     [Header("Trap Activation")]
     public bool activateTrap;
@@ -47,6 +48,8 @@ public class TrapBase : MonoBehaviour
     // this fucntion is called in snaptogrid 
     public void ActivateTrap()
     {
+       if (!canUseTrap)
+       {
             if (activateTrap == false)
             {
                 activateTrap = true;
@@ -54,11 +57,12 @@ public class TrapBase : MonoBehaviour
             else
             {
                 activateTrap = false;
-            }     
+            }
+       }    
     }
 
    public void UseFuel()
-    {
+   {
         if (hasFuel)
         {
             if (currentFuel <= 0)
@@ -73,7 +77,7 @@ public class TrapBase : MonoBehaviour
             timer = 0;
             }
         }
-    }
+   }
 
     public void RefuelTrap()
     {
