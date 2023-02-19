@@ -25,9 +25,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32850286632658426}
-  m_LocalRotation: {x: -0, y: -0, z: -0.000000021073426, w: 1}
-  m_LocalPosition: {x: 0.65460587, y: 0.7522948, z: -0.362}
-  m_LocalScale: {x: 1, y: 1.0000001, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.159}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2345688940503874681}
@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8285279, y: 0.19366395, z: 0.5495267}
-  m_Center: {x: -0.61727595, y: -0.7332948, z: -0.74588084}
+  m_Size: {x: 0.8285279, y: 0.026293963, z: 1.8548198}
+  m_Center: {x: 0, y: 0.016314998, z: 0.6297691}
 --- !u!114 &5188533459897304580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,14 +60,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fuelUsage: 0
   maxFuel: 0
-  itemID: 
-  activateTrap: 0
   fuelSlider: {fileID: 0}
   refuelSymbol: {fileID: 0}
-  useItemSymbol: {fileID: 0}
+  itemID: 
   damage: 10
-  trapInUse: 0
+  activateTrap: 0
   activationButton: {fileID: 4922725229534491279}
+  target: {fileID: 1947474798769253397}
+  height: 8
+  gravity: -9.81
+  rakeTimer: 0
+  counter: 0
+  rakeTimerMax: 2
+  rakeActivationCounter: 3
+--- !u!1 &1498730757752478655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1947474798769253397}
+  m_Layer: 0
+  m_Name: LandingZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1947474798769253397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498730757752478655}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2345688940503874681}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2244965023078525798
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +259,7 @@ Transform:
   - {fileID: 9149113492266687629}
   - {fileID: 2523155059804167196}
   - {fileID: 8560701325009060738}
+  - {fileID: 1947474798769253397}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -256,8 +293,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.20140421, z: 1.7584882}
-  m_Center: {x: 0, y: -0.003993809, z: -0.38407922}
+  m_Size: {x: 1, y: 0.42967618, z: 1.878243}
+  m_Center: {x: 0, y: 0.11014217, z: -0.4439566}
 --- !u!1 &3629080598621640411
 GameObject:
   m_ObjectHideFlags: 0

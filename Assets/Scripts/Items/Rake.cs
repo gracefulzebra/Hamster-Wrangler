@@ -1,80 +1,79 @@
 using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Rake : TrapBase
 { 
-  
-    bool pressedRake;
-    float pressedRakeCooldown;
-    [SerializeField] GameObject activationButton;
+   [SerializeField] GameObject activationButton;
+
+    public Transform target;
+
+    public float height;
+    public float gravity;
+
+    [SerializeField] private int rakeActivationCounter;
+    [SerializeField] private float rakeActivationDuration = 0.25f;
+    [SerializeField] private float rakeFlingDelay = 2;
+    bool inProgress = false;
+
+    private bool rakeEnabled = false;
 
     private void Start()
     {
         itemID = "Rake";
     }
-    /*
-  private void Update()
-  {
-      SliderUpdate();
+    private void Update()
+    {
+        if (activateTrap && !inProgress)
+        {
+            activateTrap = false;
+            StartCoroutine(Fling());
+        }
+    }
 
-/*      if (GetComponentInParent<SnapToGrid>().hasItem)
-          return;
+    IEnumerator Fling()
+    {
+        inProgress = true;
+        for(int counter = 0; counter < rakeActivationCounter; counter++)
+        {
+            rakeEnabled = true;
+           
+            yield return new WaitForSeconds(rakeActivationDuration);
+            rakeEnabled = false;
 
-      timer += Time.deltaTime;
+            yield return new WaitForSeconds(rakeFlingDelay);
+        }
+        inProgress = false;
+        
+    } 
 
-      if (timer > timerMax)
-      {
-          finishedCooldown = true;
-          activationButton.SetActive(true);
-      }
-      else
-          activationButton.SetActive(false);
+    private Vector3 CalculateVel(Transform currentPos)
+    {
+        float displacementY = target.position.y - currentPos.position.y;
+        Vector3 displacementXZ = new Vector3(target.position.x - currentPos.position.x, 0, target.position.z - currentPos.position.z);
 
+        Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * height);
+        Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * height / gravity) + Mathf.Sqrt(2 * (displacementY - height) / gravity));
 
+        return 2 * velocityXZ + velocityY * -Mathf.Sign(gravity);
+    }
 
-      // if player pressed the userake button it would 
-      // automatically throw the hamster when they walked
-      // on it, this stops that
-      if (pressedRake)
-      {
-          pressedRakeCooldown += Time.deltaTime;
-          if (pressedRakeCooldown > 0.3f)
-          {
-              pressedRake = false;
-              pressedRakeCooldown = 0;
-          }
-      }
+    private void OnTriggerStay(Collider col)
+    {
+        if (GetComponentInParent<SnapToGrid>().hasItem)
+            return;
 
-  }
-
-  public void UseRake()
-  {
-      if (GetComponentInParent<SnapToGrid>().hasItem)
-          return;
-    /*   if (timer > timerMax)
-       {
-          pressedRake = true;
-          timer = 0;
-       }
-
-  }
-
- void OnTriggerStay(Collider col)
- {
-
-      Vector3 direction = transform.position - col.transform.position;
-
-      if (pressedRake && finishedCooldown)
-      {
-          GameManager.instance.audioManager.PlayUsedRake();
-          col.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * force, ForceMode.Force);
-          col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force / 2, ForceMode.Force);
-          pressedRake = false;
-          finishedCooldown = false;
-          ItemInteract(col.gameObject);
-      }
- }
-*/
+        if (rakeEnabled)
+        {           
+            if (col.gameObject.name == "Hamster 1(Clone)")
+            {
+                Rigidbody hamsterRB = col.GetComponent<Rigidbody>();
+                
+                hamsterRB.velocity = CalculateVel(col.transform);
+            }
+        }
+        
+    }
 }
 
