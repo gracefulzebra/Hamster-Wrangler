@@ -48,7 +48,8 @@ public class HamsterBase : MonoBehaviour
 
     private void Update()
     {
-        MoveToTarget();
+        if(transform.position.y < 0.3f)
+            MoveToTarget();
         UpdateCheckPoints();
     }
 
