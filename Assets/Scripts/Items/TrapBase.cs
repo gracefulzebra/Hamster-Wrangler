@@ -29,6 +29,7 @@ public class TrapBase : MonoBehaviour
             hasFuel = true;
             SliderUpdate();
         }
+        canUseTrap = true;
     }
 
     public void SliderUpdate()
@@ -48,7 +49,7 @@ public class TrapBase : MonoBehaviour
     // this fucntion is called in snaptogrid 
     public void ActivateTrap()
     {
-       if (!canUseTrap)
+       if (canUseTrap)
        {
             if (activateTrap == false)
             {

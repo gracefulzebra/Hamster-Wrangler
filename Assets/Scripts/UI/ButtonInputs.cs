@@ -15,7 +15,8 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     [SerializeField] GameObject rake;
     [SerializeField] GameObject tar;
     [SerializeField] GameObject lighter;
-    GameObject[] temp;
+
+    [SerializeField] GameObject itemToSpawn;
 
     [Header("Trap Info")]
     [SerializeField] GameObject lawnMowerInfo;
@@ -23,8 +24,6 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     [SerializeField] GameObject rakeInfo;
     [SerializeField] GameObject tarInfo;
     [SerializeField] GameObject lighterInfo;
-    [SerializeField] GameObject itemToSpawn;
-
 
     [Header("Main Menu")]
     [SerializeField] GameObject levelSelect;
@@ -47,25 +46,23 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     }
     void Start()
     {
-        if(gameObject.tag == "LawnMower")
+       switch (gameObject.tag)
         {
-            itemToSpawn = lawnMower;
-        }
-        if (gameObject.tag == "LeafBlower")
-        {
-            itemToSpawn = leafBlower;
-        }
-        if (gameObject.tag == "Rake")
-        {
-            itemToSpawn = rake;
-        }
-        if (gameObject.tag == "Tar")
-        {
-            itemToSpawn = tar;
-        }
-        if (gameObject.tag == "Lighter")
-        {
-            itemToSpawn = lighter;
+            case "LawnMower":
+                itemToSpawn = lawnMower;
+                break;
+            case "LeafBlower":
+                itemToSpawn = leafBlower;
+                break;
+            case "Rake":
+                itemToSpawn = rake;
+                break;
+            case "Tar":
+                itemToSpawn = tar;
+                break;
+            case "Lighter":
+                itemToSpawn = lighter;
+                break;
         }
     }
 

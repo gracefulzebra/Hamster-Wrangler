@@ -9,6 +9,7 @@ public class BugZapper : TrapBase
     public List<GameObject> hamsterNo = new List<GameObject>();
     [SerializeField] float cooldownTimer;
     [SerializeField] float cooldownTimerMax;
+    bool startCooldown;
 
 
 
@@ -26,20 +27,29 @@ public class BugZapper : TrapBase
             canUseTrap = false;
             chargeCount--;
             activateTrap = false;
+            startCooldown = true;
         }
 
-        if (cooldownTimer > cooldownTimerMax)
+        if (startCooldown)
         {
-            canUseTrap = true;
-            activateTrap = false;
-            cooldownTimer = 0;
+            cooldownTimer += Time.deltaTime;
+            if (cooldownTimer > cooldownTimerMax)
+            {
+                canUseTrap = true;
+                activateTrap = false;
+                startCooldown = false;
+                cooldownTimer = 0;
+                if (chargeCount ==0)
+                {
+                    refuelSymbol.SetActive(true);
+                }
+            }
         }
 
         if (chargeCount == 0)
         {
-            canUseTrap = true;
+            canUseTrap = false;
             activateTrap = false;
-            refuelSymbol.SetActive(true);     
         }
     }
 
@@ -47,7 +57,7 @@ public class BugZapper : TrapBase
     {
         if (GameManager.instance.currencyManager.RepairItemCost() == true)
         {
-            canUseTrap = false;
+            canUseTrap = true;
             chargeCount = 2;
             refuelSymbol.SetActive(false);
         }

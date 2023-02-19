@@ -27,7 +27,7 @@ public class Fan : TrapBase
 
         if (hasFuel == false)
         {
-            canUseTrap = false;
+            canUseTrap = true;
             activateTrap = false;
             refuelSymbol.SetActive(true);
             // resets timer
@@ -40,7 +40,7 @@ public class Fan : TrapBase
         if (activateTrap)
         {
             // used so leafblower cannot be activated if already on
-            canUseTrap = true;
+            canUseTrap = false;
             leafblowerTimer += Time.deltaTime;
 
             SliderUpdate();
@@ -49,7 +49,7 @@ public class Fan : TrapBase
 
             if (leafblowerTimer > leafblowerDuration)
             {
-                canUseTrap = false;
+                canUseTrap = true;
                 activateTrap = false;
                 leafblowerTimer = 0f;
             }
