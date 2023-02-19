@@ -1,16 +1,14 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BugZapper : TrapBase
 {
 
-    float distance;
     [SerializeField] int chargeCount;
-    public List<GameObject> hamsterNo = new List<GameObject>();
     [SerializeField] float cooldownTimer;
     [SerializeField] float cooldownTimerMax;
     bool startCooldown;
-
 
 
     // Start is called before the first frame update
@@ -19,15 +17,16 @@ public class BugZapper : TrapBase
         
     }
 
+    // THIS ALL NEEDS TO BE REWORKED AS IF YOU CLICK THE BUTTON IT AUTO CLICKS OFF AND THE TRAP DOESNT ORK 
     // Update is called once per frame
     void Update()
     {
         if(activateTrap)
         {
             canUseTrap = false;
+            startCooldown = true;
             chargeCount--;
             activateTrap = false;
-            startCooldown = true;
         }
 
         if (startCooldown)
@@ -41,7 +40,7 @@ public class BugZapper : TrapBase
                 cooldownTimer = 0;
                 if (chargeCount ==0)
                 {
-                    refuelSymbol.SetActive(true);
+                    refuelSymbol.SetActive(true);   
                 }
             }
         }
@@ -71,11 +70,12 @@ public class BugZapper : TrapBase
         // if the item is active
         if (activateTrap && chargeCount !=0)
         {
-            if (col.gameObject.name == "Hamster 1(Clone)")
+            print("ja");
+            if (col.CompareTag("Hamster"))
             {
                 col.gameObject.GetComponent<ItemEffects>().BeenElectrocuted(damage);
+                col.gameObject.GetComponent<ItemEffects>().BugZapperDistance();
             }
-            activateTrap = false;
         }
     }
 }
@@ -86,9 +86,3 @@ public class BugZapper : TrapBase
 
 
 // call this in item effects and tick a bool to enable 
-//  distance = (transform.position - hamsterNo[0].transform.position).magnitude;
-
-// if (distance < 5)
-// {
-//    print("within distanc eof deadly cube");
-//// }

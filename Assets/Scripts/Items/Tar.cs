@@ -19,6 +19,6 @@ public class Tar : TrapBase
     private void OnTriggerExit(Collider col)
     {
         col.gameObject.GetComponent<HamsterBase>().speed *= slowSpeed;
-        col.gameObject.GetComponent<ItemEffects>().LeftTarArea();
+  //      col.gameObject.GetComponent<ItemEffects>().LeftTarArea();
     }
 }

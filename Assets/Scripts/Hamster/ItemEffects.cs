@@ -1,18 +1,44 @@
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemEffects : MonoBehaviour
 {
 
     [Header("Item Effects")]
-    float lighterDelay = 1;
     [SerializeField] GameObject fireEffect;
     private bool onFire = false;
     private int burnIndex = 0;
+    public List<GameObject> hamsterNo = new List<GameObject>();
+    float prevDist = 100;
+    public float distance;
 
     public void InExplosionRadius(int explosionDamage)
     {
         GetComponent<HamsterBase>().TakeDamage(explosionDamage);
+    }
+
+    public void BugZapperDistance()
+    {
+        hamsterNo.Clear();
+
+        GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Hamster");
+
+        foreach (GameObject hamster in gameObjectArray)
+        {
+            hamsterNo.Add(hamster);
+            distance = (transform.position - hamster.transform.position).magnitude;
+            if (distance < prevDist)
+            {
+                prevDist = distance;
+            }
+        }
+        if (prevDist < 4)
+        {
+            print("shocked");
+        }
+
     }
 
     ///<summary>
@@ -52,7 +78,7 @@ public class ItemEffects : MonoBehaviour
     ///</summary>
     public void BeenElectrocuted(int electricDmg)
     {
-        GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
+        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         GetComponent<HamsterBase>().speed = 0;
         print("been shocked");
         GetComponent<HamsterBase>().TakeDamage(electricDmg);
@@ -67,28 +93,5 @@ public class ItemEffects : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         GetComponent<HamsterBase>().speed = GetComponent<HamsterBase>().maxSpeed;
-    }
-
-    ///<summary>
-    /// when player is no longer in tar the flammablke affect will wear off 
-    ///</summary>
-    public void LeftTarArea()
-    {
-        StartCoroutine(RemoveTar());
-    }
-
-    IEnumerator RemoveTar()
-    {
-        yield return new WaitForSeconds(lighterDelay);
-        gameObject.tag = "Untagged";
-    }
-
-    void OnCollisionEnter(Collision col)
-    {
-        // if a hamster is onfire he can set other hamster on fire
-        if (col.gameObject.tag == "Flammable" && onFire)
-        {
-            //col.gameObject.GetComponent<ItemEffects>().OnFire();
-        }
     }
 }
