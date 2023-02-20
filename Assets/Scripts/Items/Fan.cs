@@ -16,6 +16,8 @@ public class Fan : TrapBase
     [SerializeField] private float burnDuration; //Time between instances of burn damage
     [SerializeField] private int burnAmount; //Amount of instances of burn damage
 
+    bool audioOn = false;
+
     private void Start()
     {
         itemID = "LeafBlower";
@@ -31,6 +33,12 @@ public class Fan : TrapBase
     {
         if (activateTrap)
         {
+            if (!audioOn)
+            {
+                GameManager.instance.audioManager.LeafBlowerUse();
+                audioOn = true;
+            }
+
             // used so leafblower cannot be activated if already on
             canUseTrap = false;
             leafblowerTimer += Time.deltaTime;
@@ -38,11 +46,13 @@ public class Fan : TrapBase
             SliderUpdate();
             UseFuel();
             windEffect.SetActive(true);
+            
 
             if (leafblowerTimer > leafblowerDuration)
             {
                 canUseTrap = true;
                 activateTrap = false;
+                audioOn = false;
                 leafblowerTimer = 0f;
             }
 

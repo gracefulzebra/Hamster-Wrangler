@@ -535,7 +535,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1388456701}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -2341,7 +2340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1388456701}
   lawnMower: {fileID: 4396709711384378787, guid: 5f8309f9f4377e347aede12402a21cb8, type: 3}
   leafBlower: {fileID: 0}
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
@@ -4299,7 +4297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1388456701}
   lawnMower: {fileID: 9118557075730911328, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   leafBlower: {fileID: 3728910289697894905, guid: db76777b4290ec6418513f1d061e5f2c, type: 3}
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
@@ -6153,7 +6150,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1330035586}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 6
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
@@ -12432,7 +12429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1388456701}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -13192,7 +13188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -15443,7 +15438,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -16117,7 +16111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1388456701}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -16674,7 +16667,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -23752,6 +23744,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1527962493}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: lmRun
+      value: 
+      objectReference: {fileID: 8300000, guid: 39175123f094c40449a093ae65815934, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: music
       value: 
       objectReference: {fileID: 8300000, guid: 805fa1fd17ed3764999e07a1ce629a87, type: 3}
@@ -23768,6 +23764,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 0c75adb291f60d045ae1c82dc1e1f0e8, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: volume
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lmBreak
       value: 
       objectReference: {fileID: 8300000, guid: 9821dc6a101530845a1669289344c989, type: 3}
@@ -23782,13 +23782,25 @@ PrefabInstance:
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lighterOn
       value: 
-      objectReference: {fileID: 8300000, guid: 260b750ba7cb81342839500582229d73, type: 3}
+      objectReference: {fileID: 8300000, guid: 44eb9037fc90891498131aedf1ad3f18, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: lmExplode
+      value: 
+      objectReference: {fileID: 8300000, guid: 38c025d297fffe14dbbf252878d9b766, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: leafBlower
       value: 
       objectReference: {fileID: 8300000, guid: 46ca1753959a97547bb7c63bebec1f0e, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: trapPlaced
+      value: 
+      objectReference: {fileID: 8300000, guid: c8d16313287759e46a368932c121e8c9, type: 3}
     - target: {fileID: 1058055521, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055521, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: m_Volume
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1102496838878895824, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
@@ -25631,7 +25643,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -25987,7 +25998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1388456701}
   lawnMower: {fileID: 9118557075730911328, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   leafBlower: {fileID: 0}
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
@@ -27008,7 +27018,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -30894,7 +30903,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -31714,7 +31722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -32206,7 +32213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -37296,7 +37302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 9118557075730911328, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   leafBlower: {fileID: 0}
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
@@ -39137,7 +39142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1388456701}
   lawnMower: {fileID: 9118557075730911328, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   leafBlower: {fileID: 0}
   rake: {fileID: 2345688940503874677, guid: d0cd76c8fbbc0054abed0f7525a169d5, type: 3}
@@ -40552,7 +40556,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}

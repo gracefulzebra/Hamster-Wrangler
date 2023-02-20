@@ -41,6 +41,7 @@ public class Rake : TrapBase
         for(int counter = 0; counter < rakeActivationCounter; counter++)
         {
             rakeEnabled = true;
+            GameManager.instance.audioManager.PlayUsedRake();
             StartCoroutine(PlayAnimation());
             yield return new WaitForSeconds(rakeActivationDuration);
             rakeEnabled = false;

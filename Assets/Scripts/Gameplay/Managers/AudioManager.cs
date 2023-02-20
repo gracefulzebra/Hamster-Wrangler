@@ -18,8 +18,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip lighterOn;
 
     [Header("LawnMower")]
-    [SerializeField] private AudioClip lmBreak;
-    [SerializeField] private AudioClip lmRepair;
+    [SerializeField] private AudioClip lmRun;
+    [SerializeField] private AudioClip lmExplode;
 
     [Header("Rake")]
     [SerializeField] private AudioClip rake1;
@@ -29,8 +29,11 @@ public class AudioManager : MonoBehaviour
     [Header("LeafBlower")]
     [SerializeField] private AudioClip lfBlower;
 
+    [SerializeField] private AudioClip trapPlaced;
 
     [SerializeField] private AudioClip music;
+
+
 
 
     private void Awake()
@@ -86,17 +89,23 @@ public class AudioManager : MonoBehaviour
 
     public void LighterOn()
     {
-        audioSource.PlayOneShot(lighterOn, volume * 2);
+        //audioSource.PlayOneShot(lighterOn, volume * 2);
+        
     }
 
-    public void LawnMowerBreak()
+    public void ItemPlacedAudio()
     {
-        audioSource.PlayOneShot(lmBreak, volume / 2f);
+        audioSource.PlayOneShot(trapPlaced, volume / 1.5f);
     }
 
-    public void LawnMowerRepair()
+    public void LawnMowerRunAudio()
     {
-        audioSource.PlayOneShot(lmRepair, volume / 1.5f);
+        //audioSource.PlayOneShot(lmRun, volume / 2f);
+    }
+
+    public void LawnMowerExplodeAudio()
+    {
+        audioSource.PlayOneShot(lmExplode, volume / 1.5f);
     }
 
     public void LeafBlowerUse()

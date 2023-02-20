@@ -21,6 +21,8 @@ public class LawnMower : TrapBase
     [SerializeField] GameObject explosion;
     Node nodeHit;
 
+    bool audioOn = false;
+
 
     private void Start()
     {
@@ -52,6 +54,12 @@ public class LawnMower : TrapBase
 
     public void ActivateLawnmower()
     {
+        if (!audioOn)
+        {
+            GameManager.instance.audioManager.LawnMowerRunAudio();
+            audioOn = true;
+        }
+
         smokeEffect.SetActive(true);
         activateTrap = true;
         transform.parent.Translate(Vector3.forward * lawnmowerSpd * Time.deltaTime);
@@ -59,6 +67,8 @@ public class LawnMower : TrapBase
 
     void LawnmowerExplode()
     {
+        GameManager.instance.audioManager.LawnMowerExplodeAudio();
+
         nodeHit = gridRef.GetNodeFromWorldPoint(transform.position);
         Vector3 explosionPos = new Vector3(nodeHit.worldPosition.x, nodeHit.worldPosition.y - 0.5f, nodeHit.worldPosition.z); ;
         Instantiate(explosion, explosionPos, Quaternion.identity);
