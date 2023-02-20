@@ -15,7 +15,7 @@ public class ItemEffects : MonoBehaviour
     float prevDist = 100;
     float distance;
     GameObject nearHamster;
-    bool hasBeenShocked;
+   public  bool hasBeenShocked;
 
     ///<summary>
     /// called when hamster interacts with fire 
@@ -60,25 +60,14 @@ public class ItemEffects : MonoBehaviour
             BugZapperDistance(electricDmg, hamsterShockRadius);
             GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             GetComponent<HamsterBase>().speed = 0;
-            print("been shocked");
             GetComponent<HamsterBase>().TakeDamage(electricDmg);
             //play animation;
             StartCoroutine(ResetSpeed());
         }
     }
 
-    ///<summary>
-    /// called once hamster has been electrocuted and values need to be reset
-    ///</summary>
-    IEnumerator ResetSpeed()
-    {
-        yield return new WaitForSeconds(1f);
-        GetComponent<HamsterBase>().speed = GetComponent<HamsterBase>().maxSpeed;
-    }
-
     public void BugZapperDistance(int electricDmg, float hamsterShockRadius)
     {
-
         GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Hamster");
 
         foreach (GameObject hamster in gameObjectArray)
@@ -91,9 +80,25 @@ public class ItemEffects : MonoBehaviour
             }
         }
         if (prevDist < hamsterShockRadius)
-        {
-            BeenElectrocuted(electricDmg, hamsterShockRadius);
+        {       
+            nearHamster.GetComponent<ItemEffects>().BeenElectrocuted(electricDmg, hamsterShockRadius);
+            StartCoroutine(CanBeShocked());
         }
+    }
+
+    IEnumerator CanBeShocked()
+    {
+        yield return new WaitForSeconds(1f);
+        hasBeenShocked = false;
+    }
+
+    ///<summary>
+    /// called once hamster has been electrocuted and values need to be reset
+    ///</summary>
+    IEnumerator ResetSpeed()
+    {
+        yield return new WaitForSeconds(1f);
+        GetComponent<HamsterBase>().speed = GetComponent<HamsterBase>().maxSpeed;
     }
 
     public void InExplosionRadius(int explosionDamage)
