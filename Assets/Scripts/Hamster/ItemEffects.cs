@@ -6,40 +6,16 @@ using UnityEngine;
 public class ItemEffects : MonoBehaviour
 {
 
-    [Header("Item Effects")]
+    [Header("Blow Torch")]
     [SerializeField] GameObject fireEffect;
     private bool onFire = false;
     private int burnIndex = 0;
-    public List<GameObject> hamsterNo = new List<GameObject>();
+
+    [Header("Bug Zapper")]
     float prevDist = 100;
-    public float distance;
-
-    public void InExplosionRadius(int explosionDamage)
-    {
-        GetComponent<HamsterBase>().TakeDamage(explosionDamage);
-    }
-
-    public void BugZapperDistance()
-    {
-        hamsterNo.Clear();
-
-        GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Hamster");
-
-        foreach (GameObject hamster in gameObjectArray)
-        {
-            hamsterNo.Add(hamster);
-            distance = (transform.position - hamster.transform.position).magnitude;
-            if (distance < prevDist)
-            {
-                prevDist = distance;
-            }
-        }
-        if (prevDist < 4)
-        {
-            print("shocked");
-        }
-
-    }
+    float distance;
+    GameObject nearHamster;
+    bool hasBeenShocked;
 
     ///<summary>
     /// called when hamster interacts with fire 
@@ -76,14 +52,19 @@ public class ItemEffects : MonoBehaviour
     ///<summary>
     /// called when hamster has been hit by bugzapper
     ///</summary>
-    public void BeenElectrocuted(int electricDmg)
+    public void BeenElectrocuted(int electricDmg, float hamsterShockRadius)
     {
-        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        GetComponent<HamsterBase>().speed = 0;
-        print("been shocked");
-        GetComponent<HamsterBase>().TakeDamage(electricDmg);
-        //play animation;
-        StartCoroutine(ResetSpeed());
+        if (!hasBeenShocked)
+        {
+            hasBeenShocked = true;
+            BugZapperDistance(electricDmg, hamsterShockRadius);
+            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            GetComponent<HamsterBase>().speed = 0;
+            print("been shocked");
+            GetComponent<HamsterBase>().TakeDamage(electricDmg);
+            //play animation;
+            StartCoroutine(ResetSpeed());
+        }
     }
 
     ///<summary>
@@ -93,5 +74,30 @@ public class ItemEffects : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         GetComponent<HamsterBase>().speed = GetComponent<HamsterBase>().maxSpeed;
+    }
+
+    public void BugZapperDistance(int electricDmg, float hamsterShockRadius)
+    {
+
+        GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Hamster");
+
+        foreach (GameObject hamster in gameObjectArray)
+        {
+            distance = (transform.position - hamster.transform.position).magnitude;
+            if (prevDist > distance && distance != 0)
+            {
+                prevDist = distance;
+                nearHamster = hamster;
+            }
+        }
+        if (prevDist < hamsterShockRadius)
+        {
+            BeenElectrocuted(electricDmg, hamsterShockRadius);
+        }
+    }
+
+    public void InExplosionRadius(int explosionDamage)
+    {
+        GetComponent<HamsterBase>().TakeDamage(explosionDamage);
     }
 }

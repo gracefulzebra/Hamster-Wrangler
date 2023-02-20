@@ -24,15 +24,7 @@ public class Fan : TrapBase
     private void Update()
     {
         LeafblowerActivation();
-
-        if (hasFuel == false)
-        {
-            canUseTrap = true;
-            activateTrap = false;
-            refuelSymbol.SetActive(true);
-            // resets timer
-            leafblowerTimer = 0f;
-        }
+        OutOfFuel();
     }
 
     void LeafblowerActivation()
@@ -65,6 +57,18 @@ public class Fan : TrapBase
             // when trap is decativated it ensures it doesnt wake up as lawnmower
             flameThrower = false;
             flameThrowerEffect.SetActive(false);
+        }
+    }
+
+    void OutOfFuel()
+    {
+        if (hasFuel == false)
+        {
+            canUseTrap = true;
+            activateTrap = false;
+            refuelSymbol.SetActive(true);
+            // resets timer
+            leafblowerTimer = 0f;
         }
     }
 

@@ -323,6 +323,7 @@ MonoBehaviour:
   chargeCount: 2
   cooldownTimer: 0
   cooldownTimerMax: 2
+  hamsterShockRadius: 4
 --- !u!1 &4486797815997811292
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +798,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 862581769478008362, guid: ac364d08aba71b143808b4e9b202f947, type: 3}
+    - {fileID: 2443559038958368845, guid: ac364d08aba71b143808b4e9b202f947, type: 3}
+    - {fileID: 2071992410888102615, guid: ac364d08aba71b143808b4e9b202f947, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ac364d08aba71b143808b4e9b202f947, type: 3}
 --- !u!4 &2918319572580105484 stripped
 Transform:

@@ -1,6 +1,5 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class BugZapper : TrapBase
 {
@@ -8,14 +7,8 @@ public class BugZapper : TrapBase
     [SerializeField] int chargeCount;
     [SerializeField] float cooldownTimer;
     [SerializeField] float cooldownTimerMax;
+    [SerializeField] float hamsterShockRadius;
     bool startCooldown;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // THIS ALL NEEDS TO BE REWORKED AS IF YOU CLICK THE BUTTON IT AUTO CLICKS OFF AND THE TRAP DOESNT ORK 
     // Update is called once per frame
@@ -24,9 +17,7 @@ public class BugZapper : TrapBase
         if(activateTrap)
         {
             canUseTrap = false;
-            startCooldown = true;
-            chargeCount--;
-            activateTrap = false;
+            startCooldown = true;      
         }
 
         if (startCooldown)
@@ -35,9 +26,9 @@ public class BugZapper : TrapBase
             if (cooldownTimer > cooldownTimerMax)
             {
                 canUseTrap = true;
-                activateTrap = false;
                 startCooldown = false;
                 cooldownTimer = 0;
+                chargeCount--;
                 if (chargeCount ==0)
                 {
                     refuelSymbol.SetActive(true);   
@@ -70,19 +61,11 @@ public class BugZapper : TrapBase
         // if the item is active
         if (activateTrap && chargeCount !=0)
         {
-            print("ja");
             if (col.CompareTag("Hamster"))
             {
-                col.gameObject.GetComponent<ItemEffects>().BeenElectrocuted(damage);
-                col.gameObject.GetComponent<ItemEffects>().BugZapperDistance();
+                col.gameObject.GetComponent<ItemEffects>().BeenElectrocuted(damage, hamsterShockRadius);
+                activateTrap = false;
             }
         }
     }
 }
-
-
-//   GameObject hamster = GameObject.Find("Hamster 1(Clone)");
-//   hamsterNo.Add(hamster);
-
-
-// call this in item effects and tick a bool to enable 
