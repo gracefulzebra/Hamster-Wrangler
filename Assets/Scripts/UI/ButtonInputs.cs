@@ -65,7 +65,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
 
     private void Update()
     {
-        if (!GameManager.instance.holdingItem)
+        if (!GameManager.instance.holdingItem && GetComponent<Image>().sprite.name == "Selected Trapbox")
         {
             GetComponent<Image>().sprite = GameManager.instance.uiManager.itemUnselected;
         }
@@ -92,7 +92,6 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
         {
             GameManager.instance.holdingItem = true;
             GameManager.instance.uiManager.ShopButtonOutline(gameObject);
-            GameManager.instance.uiManager.RemoveShopOutline(gameObject);
             Vector3 spawnPos = new Vector3(0f, 100f, 0f);
             Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
         }

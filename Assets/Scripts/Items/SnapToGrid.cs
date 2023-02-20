@@ -101,6 +101,8 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         if (hasItem)
         {
             TrapPlacement();
+            GameManager.instance.uiManager.RemoveShopOutline(gameObject);
+
         }
     }
 

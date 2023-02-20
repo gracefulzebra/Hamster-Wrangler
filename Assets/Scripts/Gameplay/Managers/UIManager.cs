@@ -202,14 +202,14 @@ public class UIManager : MonoBehaviour
     {
         if (previousButton != null)
         {
-            previousButton.GetComponent<Image>().sprite = itemUnselected;
-        }
-            previousButton = theButton;  
+           // previousButton.GetComponent<Image>().sprite = itemUnselected;
 
-        if (previousButton == theButton)
-        {
-            theButton.GetComponent<Image>().sprite = itemSelected;
+            if (previousButton == theButton)
+            {
+         //       theButton.GetComponent<Image>().sprite = itemSelected;
+            }
         }
+            previousButton = theButton;       
     }
 
     public void ShopButtonOutline(GameObject theButton)

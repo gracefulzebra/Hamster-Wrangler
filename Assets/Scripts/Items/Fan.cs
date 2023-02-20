@@ -11,7 +11,7 @@ public class Fan : TrapBase
     [SerializeField] float leafblowerDuration;
 
     [Header("Flamethrower")]
-    bool flameThrower;
+   public bool flameThrower;
     float leafblowerTimer;
     [SerializeField] private float burnDuration; //Time between instances of burn damage
     [SerializeField] private int burnAmount; //Amount of instances of burn damage
@@ -49,6 +49,10 @@ public class Fan : TrapBase
             if (flameThrower)
             {
                 flameThrowerEffect.SetActive(true);
+            }
+            else
+            {
+                flameThrowerEffect.SetActive(false);
             }
         }
         else
