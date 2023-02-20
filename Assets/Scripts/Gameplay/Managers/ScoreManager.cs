@@ -26,8 +26,12 @@ public class ScoreManager : MonoBehaviour
 
     public int FinalizeScore(int healthRemaining, int maxHealth)
     {
-        int prcntHealth = (healthRemaining / maxHealth);
-        currentScore *= prcntHealth;
+        float prcntHealth = (float)healthRemaining / (float)maxHealth;
+        float tempScore = currentScore;
+        
+        tempScore *= prcntHealth;
+        
+        currentScore = (int)tempScore;
 
         return currentScore;
     }
