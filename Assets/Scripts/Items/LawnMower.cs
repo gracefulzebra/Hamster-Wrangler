@@ -44,11 +44,11 @@ public class LawnMower : TrapBase
         }
     }
 
- /*   IEnumerator DestroyLawnmower()
+    IEnumerator DestroyLawnmower()
     {
         yield return new WaitForSeconds(lawnmowerDestroyDelay);
         Destroy(gameObject.transform.parent.gameObject);
-    }*/
+    }
 
     public void ActivateLawnmower()
     {
@@ -62,6 +62,7 @@ public class LawnMower : TrapBase
         nodeHit = gridRef.GetNodeFromWorldPoint(transform.position);
         Vector3 explosionPos = new Vector3(nodeHit.worldPosition.x, nodeHit.worldPosition.y - 0.5f, nodeHit.worldPosition.z); ;
         Instantiate(explosion, explosionPos, Quaternion.identity);
+        Destroy(gameObject.transform.parent.gameObject);
     }
 
     private void OnTriggerEnter(Collider col)

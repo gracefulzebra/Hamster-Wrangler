@@ -9,6 +9,8 @@ public class Explosion : MonoBehaviour
     float timer;
     Vector3 startLerp;
     [SerializeField] int damage;
+    bool explosionOver;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,8 @@ public class Explosion : MonoBehaviour
 
     IEnumerator ExplosionOver()
     {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.5f);
+        explosionOver = true;
     }
 
     IEnumerator DestroyExplosion()
@@ -43,11 +46,14 @@ public class Explosion : MonoBehaviour
         // change scale so it fades overtime
     }
 
-    private void OnTriggerEnter(Collider col)
+    private void OnTriggerStay(Collider col)
     {
+        if(!explosionOver)
+        {
             if (col.gameObject.name == "Hamster 1(Clone)")
-            { 
+            {
                 col.gameObject.GetComponent<ItemEffects>().InExplosionRadius(damage);
             }
+        }
     }
 }

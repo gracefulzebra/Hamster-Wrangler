@@ -7,8 +7,8 @@ public class Lighter : TrapBase
     [SerializeField] GameObject fireEffect;
 
     [Header("Generic Values")]
-    private float burnDuration = 2f; //Time between instances of burn damage
-    private int burnAmount = 5; //Amount of instances of burn damage
+    [SerializeField] private float burnDuration; //Time between instances of burn damage
+    [SerializeField] private int burnAmount; //Amount of instances of burn damage
 
     private void Start()
     {

@@ -1000,14 +1000,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuelUsage: 5
+  currentFuel: 0
   maxFuel: 100
-  itemID: 
-  activateTrap: 0
   fuelSlider: {fileID: 669974202616155166}
   refuelSymbol: {fileID: 2707198488005372136}
-  useItemSymbol: {fileID: 0}
+  itemID: 
   damage: 1
-  trapInUse: 0
+  activateTrap: 0
   fireEffect: {fileID: 3136080220528460937}
 --- !u!54 &3723529268007822331
 Rigidbody:
@@ -1085,12 +1084,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2559710116341514263, guid: f60ed4071ad8e6948b14ce087739db09, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.37473857
+      objectReference: {fileID: 0}
+    - target: {fileID: 2559710116341514263, guid: f60ed4071ad8e6948b14ce087739db09, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.37473857
+      objectReference: {fileID: 0}
+    - target: {fileID: 2559710116341514263, guid: f60ed4071ad8e6948b14ce087739db09, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.37473857
+      objectReference: {fileID: 0}
+    - target: {fileID: 2559710116341514263, guid: f60ed4071ad8e6948b14ce087739db09, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.003
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2559710116341514263, guid: f60ed4071ad8e6948b14ce087739db09, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.009
+      value: -0.046
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f60ed4071ad8e6948b14ce087739db09, type: 3}
