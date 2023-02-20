@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
   
     // for buttonInputs
     [SerializeField] Sprite itemSelected;
-    [SerializeField] Sprite itemUnselected;
+    [SerializeField] public Sprite itemUnselected;
     GameObject previousButton;
 
     public bool mainMenuActive;
@@ -199,13 +199,18 @@ public class UIManager : MonoBehaviour
     }
 
     public void RemoveShopOutline(GameObject theButton)
-   {
+    {
         if (previousButton != null)
         {
             previousButton.GetComponent<Image>().sprite = itemUnselected;
         }
             previousButton = theButton;  
-   }
+
+        if (previousButton == theButton)
+        {
+            theButton.GetComponent<Image>().sprite = itemSelected;
+        }
+    }
 
     public void ShopButtonOutline(GameObject theButton)
     {
