@@ -5291,7 +5291,7 @@ RectTransform:
   m_GameObject: {fileID: 139007341}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.9308326, y: 0.32766032, z: 0.7502619}
+  m_LocalScale: {x: 0.80657166, y: 0.17657411, z: 0.7502619}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1083839659}
@@ -5299,7 +5299,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.718998, y: -2.5885386}
+  m_AnchoredPosition: {x: 7, y: -1}
   m_SizeDelta: {x: 100.4091, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &139007343
@@ -5322,7 +5322,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 334a62d73045f91488a714d008c6ebd5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce24eeceb1aa45748a7a7e8d8d941534, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -42371,11 +42371,11 @@ PrefabInstance:
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lbCost
       value: 
-      objectReference: {fileID: 1882712285}
+      objectReference: {fileID: 875817484}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lmCost
       value: 
-      objectReference: {fileID: 745688748}
+      objectReference: {fileID: 357813147}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: slider
       value: 
@@ -42383,7 +42383,7 @@ PrefabInstance:
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: tarCost
       value: 
-      objectReference: {fileID: 1821753167}
+      objectReference: {fileID: 664723633}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: mainMenu
       value: 
@@ -42391,7 +42391,7 @@ PrefabInstance:
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: rakeCost
       value: 
-      objectReference: {fileID: 317245214}
+      objectReference: {fileID: 1583346348}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: IngameHTP
       value: 
@@ -42403,7 +42403,7 @@ PrefabInstance:
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lighterCost
       value: 
-      objectReference: {fileID: 313881739}
+      objectReference: {fileID: 1765323405}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: itemSelected
       value: 
@@ -42415,11 +42415,11 @@ PrefabInstance:
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: wavesDisplay
       value: 
-      objectReference: {fileID: 698426516}
+      objectReference: {fileID: 957426659}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: healthDisplay
       value: 
-      objectReference: {fileID: 1917621084}
+      objectReference: {fileID: 352267292}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: gameOverScreen
       value: 
@@ -42431,7 +42431,7 @@ PrefabInstance:
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: currencyDisplay
       value: 
-      objectReference: {fileID: 434678336}
+      objectReference: {fileID: 1559548227}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: star1.Array.size
       value: 3
@@ -46622,7 +46622,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318254437}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03f439cc1518d2c4b81ae6aadae38648, type: 3}
   m_Name: 
