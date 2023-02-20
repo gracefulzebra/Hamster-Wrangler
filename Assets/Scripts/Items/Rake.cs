@@ -1,11 +1,14 @@
 using Unity.VisualScripting;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Rake : TrapBase
 { 
    [SerializeField] GameObject activationButton;
+   [SerializeField] GameObject rakeObject;
+   [SerializeField] GameObject pivotPoint;
 
     public Transform target;
 
@@ -38,7 +41,7 @@ public class Rake : TrapBase
         for(int counter = 0; counter < rakeActivationCounter; counter++)
         {
             rakeEnabled = true;
-           
+            StartCoroutine(PlayAnimation());
             yield return new WaitForSeconds(rakeActivationDuration);
             rakeEnabled = false;
 
@@ -74,6 +77,29 @@ public class Rake : TrapBase
             }
         }
         
+    }
+
+    private IEnumerator PlayAnimation()
+    {
+        int temp = 0;
+
+        for (int i = 0; i < 90; i++)
+        {
+            float angle;
+            angle = i * 0.01745329251f;
+            rakeObject.transform.RotateAround(pivotPoint.transform.position, transform.right, angle);
+            yield return new WaitForSeconds(0.00025f);
+
+            temp = i;
+        }
+        for (int j = temp; j >= 0; j--)
+        {
+            float angle;
+            angle = j * 0.01745329251f;
+            rakeObject.transform.RotateAround(pivotPoint.transform.position, transform.right, -angle);
+            yield return new WaitForSeconds(0.005f);
+        }
+
     }
 }
 
