@@ -118,19 +118,23 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
 
     void HelpGuide(GameObject guideMenu)
     {
+        if (desOpen)
+        {
+            desOpen = false;
+            return;
+        } 
         if (!guideMenu.activeSelf)
         {
             guideMenu.SetActive(true);
             Time.timeScale = 0;
             desOpen = true;
         }
-        else
+        else 
         {
             guideMenu.SetActive(false);
             Time.timeScale = 1;
             desOpen = false;
-
-        }
+        }    
     }
 
     void SwitchSetActive(GameObject objectToSwitch)
