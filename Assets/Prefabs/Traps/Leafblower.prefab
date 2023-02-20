@@ -533,7 +533,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3728910289697894905}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0.9994561, z: -0, w: 0.032977346}
   m_LocalPosition: {x: 1.078321, y: 1, z: -5.2581882}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -546,7 +546,7 @@ Transform:
   - {fileID: 7188233950849581770}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -176.22, z: 0}
 --- !u!114 &4575281151563343648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,6 +649,9 @@ MonoBehaviour:
   flameThrowerEffect: {fileID: 7188233951893530877}
   force: 5
   leafblowerDuration: 5
+  flameThrower: 0
+  burnDuration: 0
+  burnAmount: 0
 --- !u!1 &5647858454904730758
 GameObject:
   m_ObjectHideFlags: 0

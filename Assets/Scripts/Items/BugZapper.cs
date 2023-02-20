@@ -11,7 +11,7 @@ public class BugZapper : TrapBase
     [SerializeField] float cooldownTimerMax;
     [SerializeField] float hamsterShockRadius;
     [SerializeField] Slider rechargeSlider;
-
+    int trapActivatrionCounter;
 
     bool startCooldown;
 
@@ -28,7 +28,12 @@ public class BugZapper : TrapBase
         {
             canUseTrap = false;
             startCooldown = true;
-          //  activationEffect.SetActive(true);
+            if (trapActivatrionCounter == 0)
+            {
+                trapActivatrionCounter++;
+                activationEffect.SetActive(true);
+                StartCoroutine(Unactivate());
+            }
         }
 
         if (startCooldown)
@@ -43,9 +48,10 @@ public class BugZapper : TrapBase
                 cooldownTimer = 0;
                 activateTrap = false;
                 chargeCount--;
+                rechargeSlider.gameObject.SetActive(false);
+                trapActivatrionCounter = 0;
                 if (chargeCount ==0)
                 {
-                    rechargeSlider.gameObject.SetActive(false);
                     refuelSymbol.SetActive(true);   
                 }
             }
@@ -56,6 +62,12 @@ public class BugZapper : TrapBase
             canUseTrap = false;
             activateTrap = false;
         }
+    }
+
+    IEnumerator Unactivate()
+    {
+        yield return new WaitForSeconds(0.2f);
+        activationEffect.SetActive(false);
     }
 
     public void ReactiveTrap()
