@@ -7,8 +7,7 @@ using UnityEngine.EventSystems;
 
 public class ButtonInputs : MonoBehaviour, IPointerDownHandler
 {
-    [SerializeField] GameManager gameManager;
-
+   
     [Header("Shop Items")]
     [SerializeField] GameObject lawnMower;
     [SerializeField] GameObject leafBlower;
@@ -38,9 +37,9 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
 
     void Awake()
     {
-        if (gameManager != null)
-            gameManager.holdingItem = false;
+
     }
+
     void Start()
     {
         switch (gameObject.tag)
@@ -88,7 +87,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
 
     public void BuyItem()
     {
-        if (gameManager.currencyManager.CheckPrice(gameObject.tag) == true)
+        if (GameManager.instance.currencyManager.CheckPrice(gameObject.tag) == true)
         {
             GameManager.instance.holdingItem = true;
             GameManager.instance.uiManager.ShopButtonOutline(gameObject);
@@ -268,14 +267,14 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     public void OpenShop()
     {
         openMenu.SetActive(true);
-        gameManager.animationManager.OpenShopAnimation();
+        GameManager.instance.animationManager.OpenShopAnimation();
         closeMenu.SetActive(false);
     }
 
     public void CollapseShop()
     {
         closeMenu.SetActive(true);
-        gameManager.animationManager.CloseShopAnimation();
+        GameManager.instance.animationManager.CloseShopAnimation();
         StartCoroutine(CloseMenu());
     }
     WaitForSeconds delay = new WaitForSeconds(0.19f);
