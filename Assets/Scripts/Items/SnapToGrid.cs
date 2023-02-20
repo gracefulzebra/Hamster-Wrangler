@@ -102,7 +102,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         {
             TrapPlacement();
             GameManager.instance.uiManager.RemoveShopOutline(gameObject);
-
         }
     }
 
@@ -116,7 +115,10 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
     void TrapPlacement()
     {
+
         GameManager.instance.audioManager.ItemPlacedAudio();
+        GameManager.instance.currencyManager.TryBuy(itemID);
+
         nodeHit.placeable = false;
         hasItem = false;
         // need this sa if you let go the if statemnt in button inputs will destroy it 

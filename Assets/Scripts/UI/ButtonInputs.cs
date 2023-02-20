@@ -123,73 +123,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
             mainMenu.SetActive(false);
         }
     }
-    /*
-        public void SpawnLawnMower()
-        {
-            if (gameManager.currencyManager.CheckPrice("LawnMower") == true)
-            {
-                SpawnItem(lawnMower);
-            }     
-        }
-
-        public void SpawnLeafBlower()
-        {
-            if (gameManager.currencyManager.CheckPrice("LeafBlower") == true)
-            {
-                SpawnItem(leafBlower);
-            }
-        }
-
-        public void SpawnRake()
-        {
-            if (gameManager.currencyManager.CheckPrice("Rake") == true)
-            {
-                SpawnItem(rake);
-            }
-        }
-
-        public void SpawnTar()
-        {
-            if (gameManager.currencyManager.CheckPrice("Tar") == true)
-            {
-                SpawnItem(tar);
-            }
-        }
-
-        public void SpawnLighter()
-        {
-            if (gameManager.currencyManager.CheckPrice("Lighter") == true)
-            {
-                SpawnItem(lighter);
-            }
-        }
-        void SpawnItem(GameObject itemToSpawn)
-        {
-            if (!gameManager.holdingItem)
-            {
-                //    ItemSpawn(itemToSpawn);
-                gameManager.holdingItem = true;
-            }
-            if (gameManager.holdingItem)
-            {
-                temp = GameObject.FindGameObjectsWithTag("Unplaced Item");
-                foreach (GameObject x in temp)
-                {
-                    Destroy(x);
-                }
-                //  ItemSpawn(itemToSpawn);
-            }
-        }
-
-        /*  void ItemSpawn(GameObject itemToSpawn)
-          {
-              gameManager.uiManager.RemoveShopOutline(gameObject);
-              gameManager.uiManager.ShopButtonOutline(gameObject);
-              Vector3 spawnPos = new Vector3(0f, 100f, 0f);
-              Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
-          }
-        */
-
+   
     public void LawnmowerMenu()
     {
         HelpGuide(lawnMowerInfo);
