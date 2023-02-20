@@ -59,7 +59,7 @@ public class WaveManager : MonoBehaviour
     public void HamstersRemaining() //Called in kill function of hamster.
     {
         hamstersKilled++;
-        if ( hamstersKilled >= hamstersPerWave[wave] * 2)
+        if ( hamstersKilled >= hamstersPerWave[wave] * hamsterSpawners.Length)
         {
             
 

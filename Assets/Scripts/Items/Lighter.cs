@@ -49,11 +49,11 @@ public class Lighter : TrapBase
             return;
         if (activateTrap)
          {
-            if (col.gameObject.tag == "Flammable")
-            {
+            
+            
                 col.gameObject.GetComponent<ItemEffects>().OnFire(damage, burnDuration, burnAmount);
                 ItemInteract(col.gameObject);
-            }
+            
          }
     }
 }
