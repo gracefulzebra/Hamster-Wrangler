@@ -535,7 +535,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1388456701}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -2341,7 +2340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1388456701}
   lawnMower: {fileID: 4396709711384378787, guid: 5f8309f9f4377e347aede12402a21cb8, type: 3}
   leafBlower: {fileID: 0}
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
@@ -3425,7 +3423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.5999596, y: 12.700008}
+  m_AnchoredPosition: {x: 0.1, y: 15}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &175156100
@@ -3448,7 +3446,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Tar is a tough, yet flamable substance.  Used to slow things down.
+  m_text: 'Bug Zapper will deal a spark of damage and stall hamsters. It will chain
+    to the nearest target. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4299,7 +4298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1388456701}
   lawnMower: {fileID: 9118557075730911328, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   leafBlower: {fileID: 3728910289697894905, guid: db76777b4290ec6418513f1d061e5f2c, type: 3}
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
@@ -6101,11 +6099,11 @@ RectTransform:
   - {fileID: 921516628}
   - {fileID: 300786529}
   m_Father: {fileID: 1449165356}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38, y: 19.7}
+  m_AnchoredPosition: {x: 38, y: -3.4}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &303864720
@@ -11315,7 +11313,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.5999594, y: 12.700036}
+  m_AnchoredPosition: {x: -0, y: 12.700036}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &541388587
@@ -11338,7 +11336,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Lawn Mower will shred any Hamster dumb enough to walk into it.
+  m_text: Lawnmower will lurch forward and kill any hamster in its path. Click to
+    activate.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12432,7 +12431,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1388456701}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -13192,7 +13190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -15443,7 +15440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -16117,7 +16113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1388456701}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -16595,7 +16590,7 @@ RectTransform:
   m_GameObject: {fileID: 838229037}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.69058204, y: 0.69058204, z: 0.69058204}
+  m_LocalScale: {x: 0.7028053, y: 0.7028053, z: 0.7028053}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1449165356}
@@ -16603,7 +16598,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 42, y: -170}
+  m_AnchoredPosition: {x: 42, y: -168}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &838229039
@@ -16674,7 +16669,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -16713,7 +16707,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dcb5d4c9134266f49a1cd8b72b42d86a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d490032453c962e4e8a2f279a545f883, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18504,7 +18498,7 @@ RectTransform:
   - {fileID: 1251118318}
   - {fileID: 1291281753}
   m_Father: {fileID: 1449165356}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20171,7 +20165,7 @@ GameObject:
   - component: {fileID: 1047690402}
   m_Layer: 5
   m_Name: TarMenu
-  m_TagString: Untagged
+  m_TagString: Item Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20925,7 +20919,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.9, y: 12.700034}
+  m_AnchoredPosition: {x: 0.9, y: 16}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1069105370
@@ -20948,8 +20942,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Using the leaf Blower will send hamsters flying horizontally across the
-    level.
+  m_text: Leafblower will blow away hamsters, it has 3 uses so don't waste them!
+    Click to activate.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -22168,7 +22162,7 @@ GameObject:
   - component: {fileID: 1161392269}
   m_Layer: 5
   m_Name: LeafblowerMenu
-  m_TagString: Untagged
+  m_TagString: Item Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24906,7 +24900,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 70, y: -21.9}
+  m_AnchoredPosition: {x: 70, y: -45.4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1254899951
@@ -25631,7 +25625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -25987,7 +25980,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1388456701}
   lawnMower: {fileID: 9118557075730911328, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   leafBlower: {fileID: 0}
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
@@ -27008,7 +27000,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -28146,7 +28137,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Lighter sets flamable Hamsters on fire. Try to cover them with Tar.
+  m_text: Lighter deals burn damage overtime on contact. Click to activate.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -29615,11 +29606,12 @@ RectTransform:
   - {fileID: 301380180}
   - {fileID: 838229038}
   - {fileID: 1855380495}
+  - {fileID: 1570162379}
   - {fileID: 303864719}
   - {fileID: 946656370}
   - {fileID: 2122339737}
-  - {fileID: 1570162379}
   - {fileID: 1447021411}
+  - {fileID: 1701396714}
   m_Father: {fileID: 1599262802}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30894,7 +30886,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -31714,7 +31705,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -32182,16 +32172,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570162378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5}
   m_LocalScale: {x: 0.69196135, y: 0.69196135, z: 0.69196135}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1449165356}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -114, y: -170}
+  m_AnchoredPosition: {x: -101, y: -163}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1570162380
@@ -32206,7 +32196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -32301,7 +32290,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e42444573112d764ab6685d1bc0b9e40, type: 3}
+  m_Sprite: {fileID: -1019077090, guid: 510a913f922b6cf4f988c61d710ba361, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -32478,7 +32467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.5999594, y: 12.7000065}
+  m_AnchoredPosition: {x: 0.7, y: 17}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1580483001
@@ -32501,7 +32490,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The Rake functions as a catapult and throws Hamsters into the air.
+  m_text: 'Rake autolaunches multiple times on activation. Reposition hamsters at
+    will! '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -33825,7 +33815,7 @@ RectTransform:
   m_GameObject: {fileID: 1642716097}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.9308326, y: 0.32766032, z: 0.7502619}
+  m_LocalScale: {x: 0.8855217, y: 0.17890823, z: 0.40965602}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1288909866}
@@ -33833,7 +33823,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.718998, y: -2.5885386}
+  m_AnchoredPosition: {x: 2.2, y: -1.8}
   m_SizeDelta: {x: 100.4091, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1642716099
@@ -33856,7 +33846,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 334a62d73045f91488a714d008c6ebd5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce24eeceb1aa45748a7a7e8d8d941534, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -34574,6 +34564,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1700723778}
+  m_CullTransparentMesh: 1
+--- !u!1 &1701396713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1701396714}
+  - component: {fileID: 1701396716}
+  - component: {fileID: 1701396715}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1701396714
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701396713}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3.6227353, y: 2.6351, z: 2.6351}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1449165356}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 47, y: 151}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1701396715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701396713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: ce96be8f8c09ff24791ca01f9a8e0ae1, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1701396716
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701396713}
   m_CullTransparentMesh: 1
 --- !u!4 &1703003540 stripped
 Transform:
@@ -37273,7 +37339,7 @@ RectTransform:
   m_GameObject: {fileID: 1855380494}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4250336, y: 2.2383873, z: 2.1566503}
+  m_LocalScale: {x: 0.52730614, y: 2.7769933, z: 2.6755884}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1449165356}
@@ -37281,7 +37347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 199, y: -170}
+  m_AnchoredPosition: {x: 187.29987, y: -163}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1855380496
@@ -37296,7 +37362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 9118557075730911328, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   leafBlower: {fileID: 0}
   rake: {fileID: 4790341353780296956, guid: 17b019d1ddd90cb41a1f9705d88e6563, type: 3}
@@ -37391,7 +37456,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4b51b72d287489f40b91dae2acbcc1ef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 428d6360eb2d11148ab96359d44366f0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -39137,7 +39202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1388456701}
   lawnMower: {fileID: 9118557075730911328, guid: 5bff195b340548647a9e71e877e10744, type: 3}
   leafBlower: {fileID: 0}
   rake: {fileID: 2345688940503874677, guid: d0cd76c8fbbc0054abed0f7525a169d5, type: 3}
@@ -39869,7 +39933,7 @@ GameObject:
   - component: {fileID: 1963551936}
   m_Layer: 5
   m_Name: RakeMenu
-  m_TagString: Untagged
+  m_TagString: Item Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40552,7 +40616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c9e08ffa863aa43ac0e734d0275566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   lawnMower: {fileID: 0}
   leafBlower: {fileID: 0}
   rake: {fileID: 0}
@@ -41280,7 +41343,7 @@ GameObject:
   - component: {fileID: 2025173906}
   m_Layer: 5
   m_Name: LawnMowerMenu
-  m_TagString: Untagged
+  m_TagString: Item Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43041,7 +43104,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c1b7633ccffdd39499bf19ead67e34b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea06a414162845943b31ae8e85a9e81d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -43072,7 +43135,7 @@ GameObject:
   - component: {fileID: 2118071839}
   m_Layer: 5
   m_Name: LighterMenu
-  m_TagString: Untagged
+  m_TagString: Item Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43169,7 +43232,7 @@ RectTransform:
   - {fileID: 1466980368}
   - {fileID: 343397604}
   m_Father: {fileID: 1449165356}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

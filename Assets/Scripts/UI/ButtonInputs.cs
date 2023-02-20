@@ -35,6 +35,9 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     [SerializeField] GameObject openMenu;
     [SerializeField] GameObject closeMenu;
 
+
+    bool desOpen;
+
     void Awake()
     {
 
@@ -71,11 +74,28 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
 
         if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem)
         {
+
+            if (GetComponent<Image>().sprite.name == "Selected Trapbox")
+            {
+                GetComponent<Image>().sprite = GameManager.instance.uiManager.itemUnselected;
+            }
+
             GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");
 
             foreach (GameObject go in gameObjectArray)
             {
                 Destroy(go);
+            }
+        }
+
+        if (Input.GetMouseButton(0) && desOpen == true)
+        {
+            GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Item Menu");
+            Time.timeScale = 1;
+
+            foreach (GameObject go in gameObjectArray)
+            {
+                go.SetActive(false);
             }
         }
     }
@@ -102,11 +122,14 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
         {
             guideMenu.SetActive(true);
             Time.timeScale = 0;
+            desOpen = true;
         }
         else
         {
             guideMenu.SetActive(false);
             Time.timeScale = 1;
+            desOpen = false;
+
         }
     }
 
@@ -189,7 +212,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
 
     public void Level1()
     {
-        SceneManager.LoadScene("OpenLevel");
+        SceneManager.LoadScene("FinnLevel");
         Time.timeScale = 1;
     }
 
