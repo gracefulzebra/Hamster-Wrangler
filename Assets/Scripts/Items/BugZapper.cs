@@ -1,36 +1,51 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class BugZapper : TrapBase
 {
 
+    [SerializeField] GameObject activationEffect;
     [SerializeField] int chargeCount;
     [SerializeField] float cooldownTimer;
     [SerializeField] float cooldownTimerMax;
     [SerializeField] float hamsterShockRadius;
+    [SerializeField] Slider rechargeSlider;
+
+
     bool startCooldown;
 
-    // THIS ALL NEEDS TO BE REWORKED AS IF YOU CLICK THE BUTTON IT AUTO CLICKS OFF AND THE TRAP DOESNT ORK 
+    private void Start()
+    {
+        rechargeSlider.maxValue = cooldownTimerMax;
+        rechargeSlider.gameObject.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
         if(activateTrap)
         {
             canUseTrap = false;
-            startCooldown = true;      
+            startCooldown = true;
+          //  activationEffect.SetActive(true);
         }
 
         if (startCooldown)
         {
+            rechargeSlider.gameObject.SetActive(true);
+            rechargeSlider.value = cooldownTimer;
             cooldownTimer += Time.deltaTime;
             if (cooldownTimer > cooldownTimerMax)
             {
                 canUseTrap = true;
                 startCooldown = false;
                 cooldownTimer = 0;
+                activateTrap = false;
                 chargeCount--;
                 if (chargeCount ==0)
                 {
+                    rechargeSlider.gameObject.SetActive(false);
                     refuelSymbol.SetActive(true);   
                 }
             }
