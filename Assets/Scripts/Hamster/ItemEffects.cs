@@ -47,6 +47,7 @@ public class ItemEffects : MonoBehaviour
             GetComponent<HamsterBase>().TakeDamage(burnDamage);
         }
         onFire = false;
+        fireEffect.SetActive(false);
     }
 
     ///<summary>
