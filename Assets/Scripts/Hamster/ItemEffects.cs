@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class ItemEffects : MonoBehaviour
 {
@@ -64,6 +65,7 @@ public class ItemEffects : MonoBehaviour
             GetComponent<HamsterBase>().TakeDamage(electricDmg);
             //play animation;
             StartCoroutine(ResetSpeed());
+            GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, "Tar"); ;
         }
     }
 
