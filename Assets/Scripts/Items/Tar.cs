@@ -8,7 +8,7 @@ public class Tar : TrapBase
 
     private void Start()
     {
-        itemID = "Tar";
+      //  itemID = "Tar";
     }
     private void OnTriggerEnter(Collider col)
     {

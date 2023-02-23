@@ -37,7 +37,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         {
             itemID = "Rake";
         }
-        if (gameObject.name == "Tar(Clone)")
+        if (gameObject.name == "BugZapper(Clone)")
         {
             itemID = "Tar";
         }  

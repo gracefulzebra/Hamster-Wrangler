@@ -17,6 +17,7 @@ public class BugZapper : TrapBase
 
     private void Start()
     {
+        itemID = "Tar";
         rechargeSlider.maxValue = cooldownTimerMax;
         rechargeSlider.gameObject.SetActive(false);
     }
@@ -90,7 +91,7 @@ public class BugZapper : TrapBase
         {
             if (col.CompareTag("Hamster"))
             {
-                col.gameObject.GetComponent<ItemEffects>().BeenElectrocuted(damage, hamsterShockRadius);
+                col.gameObject.GetComponent<ItemEffects>().BeenElectrocuted();
                 activateTrap = false;
             }
         }

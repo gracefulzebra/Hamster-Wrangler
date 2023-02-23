@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class ItemEffects : MonoBehaviour
 {
@@ -17,6 +14,8 @@ public class ItemEffects : MonoBehaviour
     float distance;
     GameObject nearHamster;
    public  bool hasBeenShocked;
+    int electricDmg = 5;
+    float hamsterShockRadius = 50;
 
     ///<summary>
     /// called when hamster interacts with fire 
@@ -54,12 +53,12 @@ public class ItemEffects : MonoBehaviour
     ///<summary>
     /// called when hamster has been hit by bugzapper
     ///</summary>
-    public void BeenElectrocuted(int electricDmg, float hamsterShockRadius)
+    public void BeenElectrocuted()
     {
         if (!hasBeenShocked)
         {
             hasBeenShocked = true;
-            BugZapperDistance(electricDmg, hamsterShockRadius);
+            BugZapperDistance();
             GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             GetComponent<HamsterBase>().speed = 0;
             GetComponent<HamsterBase>().TakeDamage(electricDmg);
@@ -69,8 +68,10 @@ public class ItemEffects : MonoBehaviour
         }
     }
 
-    public void BugZapperDistance(int electricDmg, float hamsterShockRadius)
+    public void BugZapperDistance()
     {
+        nearHamster = null;
+
         GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Hamster");
 
         foreach (GameObject hamster in gameObjectArray)
@@ -82,17 +83,14 @@ public class ItemEffects : MonoBehaviour
                 nearHamster = hamster;
             }
         }
+        hasBeenShocked = false;
         if (prevDist < hamsterShockRadius)
         {       
-            nearHamster.GetComponent<ItemEffects>().BeenElectrocuted(electricDmg, hamsterShockRadius);
-            StartCoroutine(CanBeShocked());
+            if (nearHamster != null)
+            {
+                nearHamster.GetComponent<ItemEffects>().BeenElectrocuted();   
+            }
         }
-    }
-
-    IEnumerator CanBeShocked()
-    {
-        yield return new WaitForSeconds(1f);
-        hasBeenShocked = false;
     }
 
     ///<summary>
