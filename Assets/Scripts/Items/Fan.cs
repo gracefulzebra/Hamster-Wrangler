@@ -107,7 +107,7 @@ public class Fan : TrapBase
                if (flameThrower)
                {
                    col.gameObject.GetComponent<ItemEffects>().OnFire(damage, burnDuration, burnAmount);
-                  // ItemInteract(col.gameObject);
+                   ItemInteract(col.gameObject);
                } 
          }
             // for none hamster collision

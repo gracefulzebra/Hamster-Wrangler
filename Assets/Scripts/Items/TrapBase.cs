@@ -46,7 +46,13 @@ public class TrapBase : MonoBehaviour
             col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
     }
 
-    // this fucntion is called in snaptogrid 
+    public void ComboInteract(GameObject col)
+    {
+        if (col.GetComponent<HamsterScore>() != null)
+            col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
+    }
+
+        // this fucntion is called in snaptogrid 
     public void ActivateTrap()
     {
        if (canUseTrap)
