@@ -69,7 +69,6 @@ public class WaveManager : MonoBehaviour
 
             if (wave >= maxWaves)
             {
-                print("doign job");
                 GameManager.instance.WinGame();
             }
 

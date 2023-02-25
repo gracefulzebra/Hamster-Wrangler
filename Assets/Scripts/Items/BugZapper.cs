@@ -7,7 +7,7 @@ public class BugZapper : TrapBase
 
     [SerializeField] GameObject activationEffect;
     [SerializeField] int chargeCount;
-    [SerializeField] float cooldownTimer;
+    float cooldownTimer;
     [SerializeField] float cooldownTimerMax;
     [SerializeField] float hamsterShockRadius;
     [SerializeField] Slider rechargeSlider;
@@ -29,6 +29,8 @@ public class BugZapper : TrapBase
         {
             canUseTrap = false;
             startCooldown = true;
+            // for weird zap effect
+
             if (trapActivatrionCounter == 0)
             {
                 trapActivatrionCounter++;
@@ -36,25 +38,31 @@ public class BugZapper : TrapBase
                 StartCoroutine(Unactivate());
             }
         }
+        CooldownTimer();
+    }
+
+    void CooldownTimer()
+    {
 
         if (startCooldown)
         {
+
             rechargeSlider.gameObject.SetActive(true);
             rechargeSlider.value = cooldownTimer;
             cooldownTimer += Time.deltaTime;
+
             if (cooldownTimer > cooldownTimerMax)
             {
+
                 canUseTrap = true;
                 startCooldown = false;
-                cooldownTimer = 0;
                 activateTrap = false;
+
+                cooldownTimer = 0;
+                trapActivatrionCounter = 0;
+
                 chargeCount--;
                 rechargeSlider.gameObject.SetActive(false);
-                trapActivatrionCounter = 0;
-                if (chargeCount ==0)
-                {
-                    refuelSymbol.SetActive(true);   
-                }
             }
         }
 
@@ -62,15 +70,18 @@ public class BugZapper : TrapBase
         {
             canUseTrap = false;
             activateTrap = false;
+            refuelSymbol.SetActive(true);
         }
     }
 
+    // for zap effecr
     IEnumerator Unactivate()
     {
         yield return new WaitForSeconds(0.2f);
         activationEffect.SetActive(false);
     }
 
+    // for refueling
     public void ReactiveTrap()
     {
         if (GameManager.instance.currencyManager.RepairItemCost() == true)
