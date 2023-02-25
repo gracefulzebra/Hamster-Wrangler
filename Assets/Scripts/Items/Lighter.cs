@@ -48,10 +48,13 @@ public class Lighter : TrapBase
         if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
         if (activateTrap)
-         {                    
+        {        
+            if (CompareTag("Hamster"))
+            {
                 col.gameObject.GetComponent<ItemEffects>().OnFire(damage, burnDuration, burnAmount);
-                ItemInteract(col.gameObject);         
-         }
+                ItemInteract(col.gameObject);
+            }  
+        }
     }
 }
 /*
