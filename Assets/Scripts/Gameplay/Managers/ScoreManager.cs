@@ -30,7 +30,7 @@ public class ScoreManager : MonoBehaviour
         float tempScore = currentScore;
         
         tempScore *= prcntHealth;
-        
+
         currentScore = (int)tempScore;
 
         return currentScore;

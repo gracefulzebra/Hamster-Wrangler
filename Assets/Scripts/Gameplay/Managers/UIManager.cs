@@ -26,8 +26,10 @@ public class UIManager : MonoBehaviour
   
     // for buttonInputs
     [SerializeField] Sprite itemSelected;
-    [SerializeField] public Sprite itemUnselected;
+    [SerializeField] Sprite itemUnselected;
+    [SerializeField] Sprite itemCantBuy;
     GameObject previousButton;
+    public GameObject highLightedButton;
 
     public bool mainMenuActive;
 
@@ -131,7 +133,7 @@ public class UIManager : MonoBehaviour
             lmCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.mowerCost;
             lbCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.blowerCost;
             rakeCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.rakeCost;
-            tarCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.tarCost;
+            tarCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.zapperCost;
             lighterCost.GetComponent<TextMeshProUGUI>().text = "" + gameManager.currencyManager.lighterCost;
         } 
     }
@@ -198,22 +200,20 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void RemoveShopOutline(GameObject theButton)
+    public void RemoveShopOutline()
     {
-        if (previousButton != null)
-        {
-           // previousButton.GetComponent<Image>().sprite = itemUnselected;
+        highLightedButton.GetComponent<Image>().sprite = itemUnselected;
 
-            if (previousButton == theButton)
-            {
-         //       theButton.GetComponent<Image>().sprite = itemSelected;
-            }
-        }
-            previousButton = theButton;       
+        highLightedButton = null;
     }
 
     public void ShopButtonOutline(GameObject theButton)
     {
         theButton.GetComponent<Image>().sprite = itemSelected;
+    }
+
+    public void ShopButtonCantBuy(GameObject theButton)
+    {
+        theButton.GetComponent<Image>().sprite = itemCantBuy;
     }
 }

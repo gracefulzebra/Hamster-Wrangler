@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CurrencyManager : MonoBehaviour
 {
     private static int currency;
     [SerializeField] private int hamsterCost = 100;
-    [SerializeField] public int blowerCost, mowerCost, lighterCost, tarCost, rakeCost, repairCost;
+    [SerializeField] public int blowerCost, mowerCost, lighterCost, zapperCost, rakeCost, repairCost;
 
     //To be attached to the game manager
     //Updated at the start of every level
@@ -32,8 +33,8 @@ public class CurrencyManager : MonoBehaviour
             case "LeafBlower":
                 return CheckValidPurchase(blowerCost);
 
-            case "Tar":
-                return CheckValidPurchase(tarCost);
+            case "BugZapper":
+                return CheckValidPurchase(zapperCost);
 
             case "Lighter":
                 return CheckValidPurchase(lighterCost);
@@ -67,8 +68,8 @@ public class CurrencyManager : MonoBehaviour
                 if (CheckValidPurchase(blowerCost)) { PurchaseItem(blowerCost); return true; }
                 else { return false; }
 
-            case "Tar":
-                if (CheckValidPurchase(tarCost)) { PurchaseItem(tarCost); return true; }
+            case "BugZapper":
+                if (CheckValidPurchase(zapperCost)) { PurchaseItem(zapperCost); return true; }
                 else { return false; }
 
             case "Lighter":
@@ -87,6 +88,9 @@ public class CurrencyManager : MonoBehaviour
                 Debug.Log("Invalid itemID");
                 return false;
         }
+
+        // call function that checks price and sees if you can afford items and chanegs ui to not buyable
+
     }
 
     public bool RepairItemCost()
@@ -111,9 +115,9 @@ public class CurrencyManager : MonoBehaviour
         UpdateCurrencyDisplay();
     }
 
-    public void UpdateCurrency(int blowerCount, int tarCount, int lighterCount, int mowerCount, int rakeCount)
+    public void UpdateCurrency(int blowerCount, int zapperCost, int lighterCount, int mowerCount, int rakeCount)
     {
-        int total = (blowerCount + tarCount + lighterCount + mowerCount + rakeCount) - 1;
+        int total = (blowerCount + zapperCost + lighterCount + mowerCount + rakeCount) - 1;
         float currencyRewarded = 0;
 
         switch (total)
@@ -151,5 +155,10 @@ public class CurrencyManager : MonoBehaviour
     {
         GetComponent<GameManager>().DisplayCurrency(currency);
     }
-    
+
+// not used testign for cannotbuyshopoutline
+    public bool CheckPrice(int itemPrice)
+    {
+        return (itemPrice >= currency);
+    }
 }

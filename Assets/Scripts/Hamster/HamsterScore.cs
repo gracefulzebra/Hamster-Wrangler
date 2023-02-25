@@ -39,7 +39,7 @@ public class HamsterScore : MonoBehaviour
                     mowerCount++;
                     break;
 
-                case "Rake":
+                case "BugZapper":
                     rakeCount++;
                     break;
             }

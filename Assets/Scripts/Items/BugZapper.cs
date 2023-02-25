@@ -17,7 +17,7 @@ public class BugZapper : TrapBase
 
     private void Start()
     {
-        itemID = "Tar";
+        itemID = "BugZapper";
         rechargeSlider.maxValue = cooldownTimerMax;
         rechargeSlider.gameObject.SetActive(false);
     }

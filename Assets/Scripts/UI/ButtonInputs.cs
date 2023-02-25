@@ -12,7 +12,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     [SerializeField] GameObject lawnMower;
     [SerializeField] GameObject leafBlower;
     [SerializeField] GameObject rake;
-    [SerializeField] GameObject tar;
+    [SerializeField] GameObject bugZapper;
     [SerializeField] GameObject lighter;
 
     [SerializeField] GameObject itemToSpawn;
@@ -35,7 +35,6 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     [SerializeField] GameObject openMenu;
     [SerializeField] GameObject closeMenu;
 
-
     bool desOpen;
 
     void Awake()
@@ -56,8 +55,8 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
             case "Rake":
                 itemToSpawn = rake;
                 break;
-            case "Tar":
-                itemToSpawn = tar;
+            case "BugZapper":
+                itemToSpawn = bugZapper;
                 break;
             case "Lighter":
                 itemToSpawn = lighter;
@@ -67,19 +66,10 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
 
     private void Update()
     {
-        if (!GameManager.instance.holdingItem && GetComponent<Image>().sprite.name == "Selected Trapbox")
-        {
-            GetComponent<Image>().sprite = GameManager.instance.uiManager.itemUnselected;
-        }
-
+      
         if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem)
         {
-
-            if (GetComponent<Image>().sprite.name == "Selected Trapbox")
-            {
-                GetComponent<Image>().sprite = GameManager.instance.uiManager.itemUnselected;
-            }
-
+            // do this else where 
             GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");
 
             foreach (GameObject go in gameObjectArray)
@@ -103,6 +93,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         BuyItem();
+        GameManager.instance.uiManager.highLightedButton = gameObject;
     }
 
     public void BuyItem()

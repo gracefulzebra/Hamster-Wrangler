@@ -8,10 +8,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     GameObject gridRefObject;
     GridGenerator gridRef;
     public bool hasItem;
-    public bool confirmPlacement;
     Vector3 rotVector = new Vector3(0f, 90f, 0f);
-    GameObject gameManagerObject;
-    GameManager gameManager;
     [SerializeField] GameObject confirmButton;
     [SerializeField] GameObject cancelButton;
     [SerializeField] GameObject rotateButton;
@@ -39,7 +36,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         }
         if (gameObject.name == "BugZapper(Clone)")
         {
-            itemID = "Tar";
+            itemID = "BugZapper";
         }  
        
         hasItem = true;
@@ -58,20 +55,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         {
             nodeCheck();
         }
-/*
-        if (fullyPlaced == false)
-        {
-            if (Input.GetMouseButtonUp(0))
-            {
-                GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");
-
-                foreach (GameObject go in gameObjectArray)
-                {
-                    Destroy(go);
-                }
-            }
-        }
-*/
     }
 
     /// <summary>
@@ -101,7 +84,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         if (hasItem)
         {
             TrapPlacement();
-            GameManager.instance.uiManager.RemoveShopOutline(gameObject);
+            GameManager.instance.uiManager.RemoveShopOutline();
         }
     }
 
@@ -116,6 +99,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     void TrapPlacement()
     {
 
+        GameManager.instance.holdingItem = false;
         GameManager.instance.audioManager.ItemPlacedAudio();
         GameManager.instance.currencyManager.TryBuy(itemID);
 
@@ -124,7 +108,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         // need this sa if you let go the if statemnt in button inputs will destroy it 
         gameObject.tag = "Placed Item";
         placementEffect.Play();
-        GameManager.instance.holdingItem = false;
     }
 
     /// <summary>
@@ -136,33 +119,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         {
             gameObject.transform.Rotate(rotVector, Space.Self);
         }  
-    }
-
-    public void RotateItem()
-    {
-        gameObject.transform.Rotate(rotVector, Space.Self);
-    }
-
-   public void ConfirmPlacement()
-    { 
-        if (gameObject.tag == "Unplaced Item")
-        {
-            gameManager.currencyManager.TryBuy(itemID);
-            nodeHit.placeable = false;
-            hasItem = false;
-            gameObject.tag = "Placed Item";
-            gameManager.CheckIfItemHeld();           
-        }
-   }
-
-    public void CancelPlacement()
-    {
-        if (hasItem)
-        {
-        gameObject.tag = "Placed Item";
-        gameManager.CheckIfItemHeld();
-        Destroy(gameObject);
-        }
     }
 }
 
