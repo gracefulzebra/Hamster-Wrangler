@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43784687, g: 0.6225135, b: 0.56783754, a: 1}
+  m_IndirectSpecularColor: {r: 0.43789536, g: 0.62254053, b: 0.5679034, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -76911,3 +76911,60 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143974264}
   m_Mesh: {fileID: -8990423669726771287, guid: 00cffbd7f2b82f24c8077058e4eea884, type: 3}
+--- !u!1001 &8377689933970867580
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8377689933310425112, guid: 53f068d9bb733764593ce6a37545ded6, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377689933310425112, guid: 53f068d9bb733764593ce6a37545ded6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377689933310425112, guid: 53f068d9bb733764593ce6a37545ded6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377689933310425112, guid: 53f068d9bb733764593ce6a37545ded6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377689933310425112, guid: 53f068d9bb733764593ce6a37545ded6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377689933310425112, guid: 53f068d9bb733764593ce6a37545ded6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377689933310425112, guid: 53f068d9bb733764593ce6a37545ded6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377689933310425112, guid: 53f068d9bb733764593ce6a37545ded6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377689933310425112, guid: 53f068d9bb733764593ce6a37545ded6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377689933310425112, guid: 53f068d9bb733764593ce6a37545ded6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377689933310425112, guid: 53f068d9bb733764593ce6a37545ded6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377689933310425119, guid: 53f068d9bb733764593ce6a37545ded6, type: 3}
+      propertyPath: m_Name
+      value: Tutorial grid
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 53f068d9bb733764593ce6a37545ded6, type: 3}
