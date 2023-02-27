@@ -70,7 +70,7 @@ public class Rake : TrapBase
 
         if (rakeEnabled)
         {           
-            if (col.gameObject.name == "Hamster 1(Clone)")
+            if (col.gameObject.name == "Hamster 1(Clone)" || col.gameObject.name == "Lawnmower(Clone)")
             {
                 Rigidbody hamsterRB = col.GetComponent<Rigidbody>();
                 
