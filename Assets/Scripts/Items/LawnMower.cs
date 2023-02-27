@@ -9,7 +9,7 @@ public class LawnMower : TrapBase
     [SerializeField] GameObject smokeEffect;
 
     [Header("Generic Values")]
-    [SerializeField] float lawnmowerDestroyDelay;
+    float lawnmowerDestroyDelay;
     [SerializeField] float lawnmowerSpd;
     [SerializeField] float lawnmowerExplodeDelay;
     int counter = 0;
@@ -37,19 +37,17 @@ public class LawnMower : TrapBase
         {
             if (counter < 1)
             {
+                // this is weird! need to turn gravity off for placement but need it for lawnmower launch
+                if (GetComponentInParent<SnapToGrid>().hasItem == false)
+                {
+                    GetComponentInParent<Rigidbody>().useGravity = true;
+                }
                 // finds the cloest node for the player and makes it placeable
-                nodeHit = gridRef.GetNodeFromWorldPoint(transform.position);
-                nodeHit.placeable = true;
-                counter++;
+                    nodeHit = gridRef.GetNodeFromWorldPoint(transform.position);
+                    nodeHit.placeable = true;
+                    counter++;
             }
-            ActivateLawnmower();
         }
-    }
-
-    IEnumerator DestroyLawnmower()
-    {
-        yield return new WaitForSeconds(lawnmowerDestroyDelay);
-        Destroy(gameObject.transform.parent.gameObject);
     }
 
     public void ActivateLawnmower()
@@ -61,7 +59,6 @@ public class LawnMower : TrapBase
         }
 
         smokeEffect.SetActive(true);
-        activateTrap = true;
         transform.parent.Translate(Vector3.forward * lawnmowerSpd * Time.deltaTime);
     }
 
@@ -69,11 +66,18 @@ public class LawnMower : TrapBase
     {
         GameManager.instance.audioManager.LawnMowerExplodeAudio();
 
-        nodeHit = gridRef.GetNodeFromWorldPoint(transform.position);
-        Vector3 explosionPos = new Vector3(nodeHit.worldPosition.x, nodeHit.worldPosition.y - 0.5f, nodeHit.worldPosition.z); ;
+        // for spawning explosion
+        Vector3 explosionPos = new Vector3(transform.position.x, transform.position.y, transform.position.z); ;
         Instantiate(explosion, explosionPos, Quaternion.identity);
         Destroy(gameObject.transform.parent.gameObject);
     }
+
+    IEnumerator DelayLawnMowerExplode()
+    {
+        yield return new WaitForSeconds(lawnmowerExplodeDelay);
+        LawnmowerExplode();
+    }
+
 
     private void OnTriggerEnter(Collider col)
     {
@@ -89,7 +93,7 @@ public class LawnMower : TrapBase
                 col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
         }
 
-        if (col.gameObject.layer == 7) //|| collision.gameObject.tag == "Placed Item")
+        if (col.gameObject.layer == 7)
         {
             if (willExplode)
             {
@@ -101,13 +105,6 @@ public class LawnMower : TrapBase
                 Destroy(gameObject.transform.parent.gameObject);
             }
         }
-
-        if (col.gameObject.name == "Rake(Clone)")
-        {
-              //  Destroy(gameObject.transform.parent.gameObject);
-             //   LawnmowerExplode();
-                //do explosion
-        }     
     }
 
     private void OnTriggerStay(Collider col)
@@ -115,22 +112,21 @@ public class LawnMower : TrapBase
         // if item is unplaced then dont run script
         if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
+        // checks if lighter is on
         if (col.gameObject.name == "Lighter Hitbox")
         {
             if (col.gameObject.GetComponent<TrapBase>().activateTrap)
             {
                 willExplode = true;
                 activateTrap = true;
-                StartCoroutine(DelayLawnMowerExplode());
-                fireEffect.gameObject.SetActive(true);
+                StartCoroutine(DelayLawnMowerExplode());            
             }
         }
-    }
 
-    IEnumerator DelayLawnMowerExplode()
-    {
-        yield return new WaitForSeconds(lawnmowerExplodeDelay);
-        LawnmowerExplode();
+        if (col.CompareTag("Ground") && activateTrap)
+        {
+            ActivateLawnmower();
+        }
     }
 }
 
