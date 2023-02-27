@@ -104,8 +104,8 @@ public class LawnMower : TrapBase
 
         if (col.gameObject.name == "Rake(Clone)")
         {
-                Destroy(gameObject.transform.parent.gameObject);
-                LawnmowerExplode();
+              //  Destroy(gameObject.transform.parent.gameObject);
+             //   LawnmowerExplode();
                 //do explosion
         }     
     }
