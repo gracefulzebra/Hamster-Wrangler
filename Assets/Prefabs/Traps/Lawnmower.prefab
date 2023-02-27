@@ -191,7 +191,7 @@ MonoBehaviour:
   smokeEffect: {fileID: 5936391385877511823}
   lawnmowerDestroyDelay: 1.6
   lawnmowerSpd: 5
-  lawnmowerExplodeDelay: 1.6
+  lawnmowerExplodeDelay: 0.5
   explosion: {fileID: 294653886677383835, guid: 9299834040719374db4880798af5c369, type: 3}
 --- !u!65 &794440212163466916
 BoxCollider:
@@ -483,7 +483,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasItem: 1
-  confirmPlacement: 0
   confirmButton: {fileID: 600684248198673557}
   cancelButton: {fileID: 5334835682308246971}
   rotateButton: {fileID: 3156509640021978979}
