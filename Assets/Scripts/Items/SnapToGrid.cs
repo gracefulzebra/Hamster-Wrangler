@@ -84,7 +84,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         if (hasItem)
         {
             TrapPlacement();
-            GameManager.instance.uiManager.RemoveShopOutline();
         }
     }
 
@@ -100,6 +99,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     {
 
         GameManager.instance.holdingItem = false;
+        GameManager.instance.uiManager.RemoveShopOutline();
         GameManager.instance.audioManager.ItemPlacedAudio();
         GameManager.instance.currencyManager.TryBuy(itemID);
 

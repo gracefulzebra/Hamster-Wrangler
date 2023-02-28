@@ -23,6 +23,7 @@ public class LawnMower : TrapBase
 
     bool audioOn = false;
 
+    bool placementGravity;
 
     private void Start()
     {
@@ -33,17 +34,19 @@ public class LawnMower : TrapBase
 
     private void Update()
     {
+        // this is weird! need to turn gravity off for placement but need it for lawnmower launch
+        if (GetComponentInParent<SnapToGrid>().hasItem == false && !placementGravity)
+        {
+            placementGravity = true;
+            GetComponentInParent<Rigidbody>().useGravity = true;
+        }
+
         if (activateTrap)
         {
             if (counter < 1)
-            {
-                // this is weird! need to turn gravity off for placement but need it for lawnmower launch
-                if (GetComponentInParent<SnapToGrid>().hasItem == false)
-                {
-                    GetComponentInParent<Rigidbody>().useGravity = true;
-                }
-                // finds the cloest node for the player and makes it placeable
-                    nodeHit = gridRef.GetNodeFromWorldPoint(transform.position);
+            {     
+               // finds the cloest node for the player and makes it placeable
+                nodeHit = gridRef.GetNodeFromWorldPoint(transform.position);
                     nodeHit.placeable = true;
                     counter++;
             }

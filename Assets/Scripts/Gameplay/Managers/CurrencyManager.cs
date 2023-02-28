@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class CurrencyManager : MonoBehaviour
@@ -65,7 +66,7 @@ public class CurrencyManager : MonoBehaviour
         switch (itemID)
         {
             case "LeafBlower":
-                if (CheckValidPurchase(blowerCost)) { PurchaseItem(blowerCost); return true; }
+                if (CheckValidPurchase(blowerCost)) {PurchaseItem(blowerCost); return true; }
                 else { return false; }
 
             case "BugZapper":
@@ -88,10 +89,39 @@ public class CurrencyManager : MonoBehaviour
                 Debug.Log("Invalid itemID");
                 return false;
         }
-
-        // call function that checks price and sees if you can afford items and chanegs ui to not buyable
-
+       
     }
+
+    // FIX THIS FUCKER!!! THIS IS JUST 5 IF STATEMENTS IF THEY FIN DOUT ABOUT HIS YOU ARE TOAST
+    public void UIOutline()
+    {
+
+         if (!CheckValidPurchase(blowerCost)) 
+         { 
+            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("LeafBlower")); 
+         }
+          
+         if (!CheckValidPurchase(zapperCost)) 
+         {
+            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("BugZapper")); 
+         }
+                 
+         if (!CheckValidPurchase(lighterCost)) 
+         {
+            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("Lighter")); 
+         }
+
+         if (!CheckValidPurchase(mowerCost)) 
+         { 
+            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("LawnMower")); 
+         }
+
+         if (!CheckValidPurchase(rakeCost))
+         {
+            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("Rake"));
+         }   
+    }
+
 
     public bool RepairItemCost()
     {
@@ -113,6 +143,7 @@ public class CurrencyManager : MonoBehaviour
     {
         currency -= itemCost;
         UpdateCurrencyDisplay();
+        UIOutline();
     }
 
     public void UpdateCurrency(int blowerCount, int zapperCost, int lighterCount, int mowerCount, int rakeCount)

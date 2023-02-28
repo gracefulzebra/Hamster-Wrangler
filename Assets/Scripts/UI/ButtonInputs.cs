@@ -72,6 +72,8 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
             // do this else where 
             GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");
 
+            GameManager.instance.uiManager.RemoveShopOutline();
+
             foreach (GameObject go in gameObjectArray)
             {
                 Destroy(go);
@@ -82,7 +84,6 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
         {
             GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Item Menu");
             Time.timeScale = 1;
-
             foreach (GameObject go in gameObjectArray)
             {
                 go.SetActive(false);
@@ -93,6 +94,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         BuyItem();
+        // for removing shop outline
         GameManager.instance.uiManager.highLightedButton = gameObject;
     }
 
