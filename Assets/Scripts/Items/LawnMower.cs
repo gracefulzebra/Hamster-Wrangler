@@ -44,11 +44,11 @@ public class LawnMower : TrapBase
         if (activateTrap)
         {
             if (counter < 1)
-            {     
-               // finds the cloest node for the player and makes it placeable
+            {
+                // finds the cloest node for the player and makes it placeable
                 nodeHit = gridRef.GetNodeFromWorldPoint(transform.position);
-                    nodeHit.placeable = true;
-                    counter++;
+                nodeHit.placeable = true;
+                counter++;
             }
         }
     }
@@ -87,13 +87,22 @@ public class LawnMower : TrapBase
         // if item is unplaced then dont run script
         if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
+
+    }
+
+    private void OnTriggerStay(Collider col)
+    {
+        // if item is unplaced then dont run script
+        if (GetComponentInParent<SnapToGrid>().hasItem)
+            return;
+        // checks if lighter is on
         if (!activateTrap)
             return;
 
         if (col.gameObject.name == "Hamster 1(Clone)")
         {
-                ItemInteract(col.gameObject);
-                col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
+            ItemInteract(col.gameObject);
+            col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
         }
 
         if (col.gameObject.layer == 7)
@@ -108,21 +117,14 @@ public class LawnMower : TrapBase
                 Destroy(gameObject.transform.parent.gameObject);
             }
         }
-    }
 
-    private void OnTriggerStay(Collider col)
-    {
-        // if item is unplaced then dont run script
-        if (GetComponentInParent<SnapToGrid>().hasItem)
-            return;
-        // checks if lighter is on
         if (col.gameObject.name == "Lighter Hitbox")
         {
             if (col.gameObject.GetComponent<TrapBase>().activateTrap)
             {
                 willExplode = true;
                 activateTrap = true;
-                StartCoroutine(DelayLawnMowerExplode());            
+                StartCoroutine(DelayLawnMowerExplode());
             }
         }
 

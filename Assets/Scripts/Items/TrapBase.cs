@@ -5,7 +5,7 @@ public class TrapBase : MonoBehaviour
 {
     [Header("Fuel System")]
     public float fuelUsage;
-    public float currentFuel;
+    protected float currentFuel;
     public float maxFuel;
     protected bool hasFuel;
     [SerializeField] Slider fuelSlider;
@@ -15,13 +15,28 @@ public class TrapBase : MonoBehaviour
     public string itemID;
     [SerializeField] protected int damage = 10;
     float timer;
-    protected bool canUseTrap;
+
+    [Header("Trap ID")]
+    protected string rakeID;
+    protected string lighterID;
+    protected string zapperID;
+    protected string mowerID;
+    protected string blowerID;
 
     [Header("Trap Activation")]
     public bool activateTrap;
+    protected bool canUseTrap;
+
 
     public void Awake()
     {
+
+        rakeID = "Rake";
+        lighterID = "Lighter";
+        zapperID = "BugZapper";
+        mowerID = "LawnMower";
+        blowerID = "LeafBlower";
+
         if (fuelSlider != null)
         {
             fuelSlider.maxValue = maxFuel;
@@ -41,12 +56,6 @@ public class TrapBase : MonoBehaviour
     }
 
     public void ItemInteract(GameObject col)
-    {
-        if (col.GetComponent<HamsterScore>() != null)
-            col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
-    }
-
-    public void ComboInteract(GameObject col)
     {
         if (col.GetComponent<HamsterScore>() != null)
             col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);

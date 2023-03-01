@@ -13,7 +13,7 @@ public class ItemEffects : MonoBehaviour
     float prevDist = 100;
     float distance;
     GameObject nearHamster;
-   public  bool hasBeenShocked;
+    public bool hasBeenShocked;
     int electricDmg = 5;
     float hamsterShockRadius = 50;
 
@@ -50,6 +50,13 @@ public class ItemEffects : MonoBehaviour
         fireEffect.SetActive(false);
     }
 
+    public void ElectricDamage()
+    {
+        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        GetComponent<HamsterBase>().speed = 0;
+        GetComponent<HamsterBase>().TakeDamage(electricDmg);
+    }
+
     ///<summary>
     /// called when hamster has been hit by bugzapper
     ///</summary>
@@ -59,9 +66,9 @@ public class ItemEffects : MonoBehaviour
         {
             hasBeenShocked = true;
             BugZapperDistance();
-            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-            GetComponent<HamsterBase>().speed = 0;
-            GetComponent<HamsterBase>().TakeDamage(electricDmg);
+
+            ElectricDamage();
+
             //play animation;
             StartCoroutine(ResetSpeed());
             GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, "Tar"); ;
