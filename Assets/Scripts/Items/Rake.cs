@@ -76,8 +76,15 @@ public class Rake : TrapBase
                 
                 hamsterRB.velocity = CalculateVel(col.transform);
             }
-        }
-        
+
+            if (col.gameObject.name == "Hamster 1(Clone)" && inProgress)
+            {
+                if (col.GetComponent<ItemEffects>().hasBeenShocked)
+                {
+                    col.GetComponent<ItemEffects>().LightingAOE();
+                }
+            }
+        }     
     }
 
     private IEnumerator PlayAnimation()

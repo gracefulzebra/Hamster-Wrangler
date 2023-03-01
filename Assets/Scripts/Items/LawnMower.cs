@@ -65,6 +65,12 @@ public class LawnMower : TrapBase
         transform.parent.Translate(Vector3.forward * lawnmowerSpd * Time.deltaTime);
     }
 
+    IEnumerator DelayLawnMowerExplode()
+    {
+        yield return new WaitForSeconds(lawnmowerExplodeDelay);
+        LawnmowerExplode();
+    }
+
     void LawnmowerExplode()
     {
         GameManager.instance.audioManager.LawnMowerExplodeAudio();
@@ -74,14 +80,6 @@ public class LawnMower : TrapBase
         Instantiate(explosion, explosionPos, Quaternion.identity);
         Destroy(gameObject.transform.parent.gameObject);
     }
-
-    IEnumerator DelayLawnMowerExplode()
-    {
-        yield return new WaitForSeconds(lawnmowerExplodeDelay);
-        LawnmowerExplode();
-    }
-
-
     private void OnTriggerEnter(Collider col)
     {
         // if item is unplaced then dont run script

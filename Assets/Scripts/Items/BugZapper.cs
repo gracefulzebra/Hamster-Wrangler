@@ -13,7 +13,10 @@ public class BugZapper : TrapBase
     [SerializeField] Slider rechargeSlider;
     int trapActivatrionCounter;
 
+
     bool startCooldown;
+
+    [SerializeField] float shockDuration;
 
     private void Start()
     {
@@ -102,8 +105,9 @@ public class BugZapper : TrapBase
         {
             if (col.CompareTag("Hamster"))
             {
-                col.gameObject.GetComponent<ItemEffects>().BeenElectrocuted();
+                col.gameObject.GetComponent<ItemEffects>().BeenElectrocuted(shockDuration, damage, hamsterShockRadius);
                 activateTrap = false;
+                ItemInteract(col.gameObject);
             }
         }
     }

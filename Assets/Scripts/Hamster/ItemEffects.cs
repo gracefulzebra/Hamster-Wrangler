@@ -14,8 +14,13 @@ public class ItemEffects : MonoBehaviour
     float distance;
     GameObject nearHamster;
     public bool hasBeenShocked;
-    int electricDmg = 5;
-    float hamsterShockRadius = 50;
+
+    int electricDamage;
+    float shockDur;
+    float hamsterShockRad;
+
+
+    bool canLightingAOE;
 
     ///<summary>
     /// called when hamster interacts with fire 
@@ -50,29 +55,34 @@ public class ItemEffects : MonoBehaviour
         fireEffect.SetActive(false);
     }
 
-    public void ElectricDamage()
-    {
-        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        GetComponent<HamsterBase>().speed = 0;
-        GetComponent<HamsterBase>().TakeDamage(electricDmg);
-    }
+
 
     ///<summary>
     /// called when hamster has been hit by bugzapper
     ///</summary>
-    public void BeenElectrocuted()
+    public void BeenElectrocuted(float shockDuration, int electricDmg, float hamsterShockRadius)
     {
+        shockDur = shockDuration;
+        electricDamage = electricDmg;
+        hamsterShockRad = hamsterShockRadius;
+
         if (!hasBeenShocked)
         {
             hasBeenShocked = true;
-            BugZapperDistance();
 
             ElectricDamage();
+            BugZapperDistance();
 
             //play animation;
             StartCoroutine(ResetSpeed());
-            GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, "Tar"); ;
         }
+    }
+
+    public void ElectricDamage()
+    {
+        GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        GetComponent<HamsterBase>().speed = 0;
+        GetComponent<HamsterBase>().TakeDamage(electricDamage);
     }
 
     public void BugZapperDistance()
@@ -90,14 +100,19 @@ public class ItemEffects : MonoBehaviour
                 nearHamster = hamster;
             }
         }
-        hasBeenShocked = false;
-        if (prevDist < hamsterShockRadius)
+
+        if (prevDist < hamsterShockRad)
         {       
             if (nearHamster != null)
             {
-                nearHamster.GetComponent<ItemEffects>().BeenElectrocuted();   
+                nearHamster.GetComponent<ItemEffects>().BeenElectrocuted(shockDur, electricDamage, hamsterShockRad);   
             }
         }
+    }
+
+    public void LightingAOE()
+    {
+        canLightingAOE = true;
     }
 
     ///<summary>
@@ -105,7 +120,8 @@ public class ItemEffects : MonoBehaviour
     ///</summary>
     IEnumerator ResetSpeed()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(shockDur);
+        hasBeenShocked = false;
         GetComponent<HamsterBase>().speed = GetComponent<HamsterBase>().maxSpeed;
     }
 
@@ -113,4 +129,15 @@ public class ItemEffects : MonoBehaviour
     {
         GetComponent<HamsterBase>().TakeDamage(explosionDamage);
     }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Ground" && canLightingAOE)
+        {
+            print("taking damage");
+            ElectricDamage();
+            canLightingAOE = false;
+        }
+    }
+
 }

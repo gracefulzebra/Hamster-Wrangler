@@ -473,7 +473,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuelUsage: 0
-  currentFuel: 0
   maxFuel: 0
   fuelSlider: {fileID: 0}
   refuelSymbol: {fileID: 1887583068903967042}
@@ -482,10 +481,10 @@ MonoBehaviour:
   activateTrap: 0
   activationEffect: {fileID: 7159478665949626749}
   chargeCount: 2
-  cooldownTimer: 0
   cooldownTimerMax: 2
   hamsterShockRadius: 50
   rechargeSlider: {fileID: 1316960864581322798}
+  shockDuration: 5.36
 --- !u!1 &4486797815997811292
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,7 +968,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasItem: 1
-  confirmPlacement: 0
   confirmButton: {fileID: 1887583068903967042}
   cancelButton: {fileID: 6389479468842635226}
   rotateButton: {fileID: 2501667108329596171}
