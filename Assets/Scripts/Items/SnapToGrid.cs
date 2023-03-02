@@ -61,8 +61,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
             foreach (GameObject go in gameObjectArray)
             {
-                go.GetComponent<SnapToGrid>().TrapPlacement();
-                print("jhon");
+                go.GetComponent<SnapToGrid>().TrapPlacement();              
             }
         }
         //place this in if 
