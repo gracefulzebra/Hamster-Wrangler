@@ -67,22 +67,6 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     private void Update()
     {
       
-        if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem)
-        {
-            // do this else where 
-            GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");
-
-            if (GameManager.instance.uiManager.highLightedButton != null)
-            {
-                GameManager.instance.uiManager.RemoveShopOutline();
-            }
-
-            foreach (GameObject go in gameObjectArray)
-            {
-                Destroy(go);
-            }
-        }
-
         // CHANGE THIS 
         if (Input.GetMouseButton(0) && desOpen == true)
         {
@@ -99,7 +83,6 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         BuyItem();
-        // for removing shop outline
     }
 
     public void BuyItem()
@@ -107,6 +90,8 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
         if (GameManager.instance.currencyManager.CheckPrice(gameObject.tag) == true)
         {
             GameManager.instance.uiManager.ShopButtonOutline(gameObject);
+            GameManager.instance.uiManager.highLightedButton = gameObject;
+
             GameManager.instance.holdingItem = true;
 
             Vector3 spawnPos = new Vector3(0f, 100f, 0f);

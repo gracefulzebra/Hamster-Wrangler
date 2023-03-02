@@ -49,6 +49,22 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
     private void Update()
     {
+        if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem)
+        {
+            // do this else where 
+            GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");
+
+            if (GameManager.instance.uiManager.highLightedButton != null)
+            {
+               // GameManager.instance.uiManager.RemoveShopOutline();
+            }
+
+            foreach (GameObject go in gameObjectArray)
+            {
+                go.GetComponent<SnapToGrid>().TrapPlacement();
+                print("jhon");
+            }
+        }
         //place this in if 
         PlacementConfirmtation();
         if (hasItem)
