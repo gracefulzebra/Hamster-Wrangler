@@ -49,7 +49,7 @@ public class Lighter : TrapBase
             return;
         if (activateTrap)
         {        
-            if (CompareTag("Hamster"))
+            if (col.CompareTag("Hamster"))
             {
                 col.gameObject.GetComponent<ItemEffects>().OnFire(damage, burnDuration, burnAmount);
                 ItemInteract(col.gameObject);
