@@ -45,6 +45,7 @@ public class LawnMower : TrapBase
         {
             if (counter < 1)
             {
+                canUseTrap = false;
                 // finds the cloest node for the player and makes it placeable
                 nodeHit = gridRef.GetNodeFromWorldPoint(transform.position);
                 nodeHit.placeable = true;
@@ -79,13 +80,6 @@ public class LawnMower : TrapBase
         Vector3 explosionPos = new Vector3(transform.position.x, transform.position.y, transform.position.z); ;
         Instantiate(explosion, explosionPos, Quaternion.identity);
         Destroy(gameObject.transform.parent.gameObject);
-    }
-    private void OnTriggerEnter(Collider col)
-    {
-        // if item is unplaced then dont run script
-        if (GetComponentInParent<SnapToGrid>().hasItem)
-            return;
-
     }
 
     private void OnTriggerStay(Collider col)

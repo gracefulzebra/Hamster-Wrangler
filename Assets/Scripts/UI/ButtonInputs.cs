@@ -72,7 +72,10 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
             // do this else where 
             GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");
 
-            GameManager.instance.uiManager.RemoveShopOutline();
+            if (GameManager.instance.uiManager.highLightedButton != null)
+            {
+                GameManager.instance.uiManager.RemoveShopOutline();
+            }
 
             foreach (GameObject go in gameObjectArray)
             {
@@ -97,15 +100,15 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     {
         BuyItem();
         // for removing shop outline
-        GameManager.instance.uiManager.highLightedButton = gameObject;
     }
 
     public void BuyItem()
     {
         if (GameManager.instance.currencyManager.CheckPrice(gameObject.tag) == true)
         {
-            GameManager.instance.holdingItem = true;
             GameManager.instance.uiManager.ShopButtonOutline(gameObject);
+            GameManager.instance.holdingItem = true;
+
             Vector3 spawnPos = new Vector3(0f, 100f, 0f);
             Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
         }
