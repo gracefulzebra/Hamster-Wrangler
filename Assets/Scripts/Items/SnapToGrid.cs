@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -15,6 +16,8 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     [SerializeField] ParticleSystem placementEffect;
     public string itemID;
     Node nodeHit;
+
+  public  bool hittignNothing;
 
     void Awake()
     {
@@ -37,8 +40,8 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         if (gameObject.name == "BugZapper(Clone)")
         {
             itemID = "BugZapper";
-        }  
-       
+        }
+
         hasItem = true;
         // finds the game object with gridgenerator script
         // then assigns the compentant, cant just drag
@@ -50,92 +53,108 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     private void Update()
     {
         //place this in if 
-        PlacementConfirmtation();
         if (hasItem)
         {
+            PlacementConfirmtation();
             nodeCheck();
 
+            // used for if user clicks on ui or if placements messes up on grid
             if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem)
             {
-                // do this else where 
-                GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");
-
+              // if user presses ui button deletes object
+                if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem && hittignNothing)
+                {
+                    GameManager.instance.holdingItem = false;
+                    Destroy(gameObject);
+                }
+                // if glitches on gird trap is placed
+                else if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem && !hittignNothing)
+                {
+                    GetComponent<SnapToGrid>().TrapPlacement();
+                }
+                // resets ui
                 if (GameManager.instance.uiManager.highLightedButton != null)
                 {
-                    // GameManager.instance.uiManager.RemoveShopOutline();
+                    GameManager.instance.uiManager.RemoveShopOutline();
                 }
+            }
+        }
 
-                foreach (GameObject go in gameObjectArray)
+        /// <summary>
+        /// Shoots a ray from mouse position then finds cloest walkable node
+        /// </summary>
+        void nodeCheck()
+        {
+            RaycastHit hit;
+            Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(mousePos, out hit))
+            {
+                // used for placeemnt bug detailed in update
+                if (hit.transform.gameObject.layer == 8)
                 {
-                    go.GetComponent<SnapToGrid>().TrapPlacement();
+                    hittignNothing = true;
+                }
+                else
+                {
+                    hittignNothing = false;
+                }
+                if (hit.transform.gameObject.tag == "Ground" || hit.transform.gameObject.tag == "OutsideGrid")
+                {        
+                    nodeHit = gridRef.GetNodeFromWorldPoint(hit.point);
+                    if (nodeHit.placeable)
+                    {
+                        gameObject.transform.position = new Vector3(nodeHit.worldPosition.x, nodeHit.worldPosition.y - 0.5f, nodeHit.worldPosition.z);
+                    }
+                
                 }
             }
         }
     }
 
-    /// <summary>
-    /// Shoots a ray from mouse position then finds cloest walkable node
-    /// </summary>
-    void nodeCheck()
-    {
-        RaycastHit hit;
-        Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(mousePos, out hit))
+        public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
+
+        public void OnPointerUp(PointerEventData eventData)
         {
-             if (hit.transform.gameObject.tag == "Ground")
-             {
-                nodeHit = gridRef.GetNodeFromWorldPoint(hit.point);
-                if (nodeHit.placeable)
-                {
-                  gameObject.transform.position = new Vector3(nodeHit.worldPosition.x, nodeHit.worldPosition.y -0.5f, nodeHit.worldPosition.z);
-                }       
-             }
+            if (hasItem)
+            {
+                TrapPlacement();
+            }
         }
-    }
 
-    public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
-
-    public void OnPointerUp(PointerEventData eventData) 
-    {
-        if (hasItem)
+        void OnMouseDown()
         {
-            TrapPlacement();
+            if (hasItem == false)
+            {
+                GetComponentInChildren<TrapBase>().ActivateTrap();
+            }
         }
-    }
 
-    void OnMouseDown()
-    {
-        if(hasItem == false)
+        void TrapPlacement()
         {
-            GetComponentInChildren<TrapBase>().ActivateTrap();
+
+            GameManager.instance.holdingItem = false;
+            GameManager.instance.uiManager.RemoveShopOutline();
+            GameManager.instance.audioManager.ItemPlacedAudio();
+            GameManager.instance.currencyManager.TryBuy(itemID);
+
+            nodeHit.placeable = false;
+            hasItem = false;
+            // need this sa if you let go the if statemnt in button inputs will destroy it 
+            gameObject.tag = "Placed Item";
+            placementEffect.Play();
         }
-    }
 
-    void TrapPlacement()
-    {
-
-        GameManager.instance.holdingItem = false;
-        GameManager.instance.uiManager.RemoveShopOutline();
-        GameManager.instance.audioManager.ItemPlacedAudio();
-        GameManager.instance.currencyManager.TryBuy(itemID);
-
-        nodeHit.placeable = false;
-        hasItem = false;
-        // need this sa if you let go the if statemnt in button inputs will destroy it 
-        gameObject.tag = "Placed Item";
-        placementEffect.Play();
-    }
-
-    /// <summary>
-    /// Controls placement and rotation of objects 
-    /// </summary>
-    void PlacementConfirmtation()
-    {
-        if (Input.GetKeyDown(KeyCode.R) && hasItem)
+        /// <summary>
+        /// Controls placement and rotation of objects 
+        /// </summary>
+        void PlacementConfirmtation()
         {
-            gameObject.transform.Rotate(rotVector, Space.Self);
-        }  
-    }
+            if (Input.GetKeyDown(KeyCode.R) && hasItem)
+            {
+                gameObject.transform.Rotate(rotVector, Space.Self);
+            }
+        }
+    
 }
 
 /*  IEnumerator PlacementConfirmation()
