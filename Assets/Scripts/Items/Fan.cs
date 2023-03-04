@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Fan : TrapBase
@@ -11,15 +12,19 @@ public class Fan : TrapBase
     [SerializeField] float leafblowerDuration;
 
     [Header("Flamethrower")]
-   public bool flameThrower;
+    public bool flameThrower;
     float leafblowerTimer;
     [SerializeField] private float burnDuration; //Time between instances of burn damage
     [SerializeField] private int burnAmount; //Amount of instances of burn damage
 
     bool audioOn = false;
 
+    bool overCharge;
+    float maxForce;
+
     private void Start()
     {
+        maxForce = force;
         itemID = "LeafBlower";
     }
    
@@ -77,6 +82,16 @@ public class Fan : TrapBase
             flameThrower = false;
             flameThrowerEffect.SetActive(false);
         }
+
+        if (overCharge)
+        {
+            force *= 2;
+        }
+    }
+
+    IEnumerator StopOverCharge()
+    {
+        yield return new WaitForSeconds(4f);
     }
 
     void OutOfFuel()
