@@ -20,7 +20,7 @@ public class ItemEffects : MonoBehaviour
     float hamsterShockRad;
 
 
-    bool canLightingAOE;
+   public bool canLightingAOE;
 
     ///<summary>
     /// called when hamster interacts with fire 
@@ -82,7 +82,7 @@ public class ItemEffects : MonoBehaviour
     {
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         GetComponent<HamsterBase>().speed = 0;
-        GetComponent<HamsterBase>().TakeDamage(electricDamage);
+      //  GetComponent<HamsterBase>().TakeDamage(electricDamage);
     }
 
     public void BugZapperDistance()
@@ -110,9 +110,33 @@ public class ItemEffects : MonoBehaviour
         }
     }
 
-    public void LightingAOE()
+    public void StartLightingAOE()
     {
         canLightingAOE = true;
+    }
+
+    void FinishLightningAOE()
+    {
+
+
+        float sphere = 1000;
+
+        RaycastHit hit;
+     //   if (Physics.SphereCast(gameObject.transform.position, sphere / 2, gameObject.transform.position, out hit, 10))
+      //  {
+            if (Physics.SphereCast(transform.position, 10, -transform.up, out hit, 1000))
+            {
+   
+            Debug.Log(hit.transform.tag);
+            //  if (hit.transform.CompareTag("Hamster"))
+            if (hit.transform.GetComponent<ItemEffects>() != null)
+            {
+                hit.transform.GetComponent<ItemEffects>().ElectricDamage();
+
+            }
+           
+        }
+
     }
 
     ///<summary>
@@ -130,14 +154,18 @@ public class ItemEffects : MonoBehaviour
         GetComponent<HamsterBase>().TakeDamage(explosionDamage);
     }
 
+
+
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Ground" && canLightingAOE)
+        //col.transform.CompareTag("Ground") &&
+        if (canLightingAOE)
         {
-            print("taking damage");
-            ElectricDamage();
+
+            //  ElectricDamage();
+            FinishLightningAOE();
             canLightingAOE = false;
+        
         }
     }
-
 }

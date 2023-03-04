@@ -84,7 +84,8 @@ public class Rake : TrapBase
             {
                 if (col.GetComponent<ItemEffects>().hasBeenShocked)
                 {
-                    col.GetComponent<ItemEffects>().LightingAOE();
+                    // need to turn off can be shocked for if they dont get launched 
+                    col.GetComponent<ItemEffects>().StartLightingAOE();
                 }
             }
         }     

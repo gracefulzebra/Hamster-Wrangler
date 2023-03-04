@@ -62,13 +62,13 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem)
             {
               // if user presses ui button deletes object
-                if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem && onGrid)
+                if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem && !onGrid)
                 {
                     GameManager.instance.holdingItem = false;
                     Destroy(gameObject);
                 }
                 // if glitches on gird trap is placed
-                else if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem && !onGrid)
+                else if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem && onGrid)
                 {
                     GetComponent<SnapToGrid>().TrapPlacement();
                 }
@@ -90,7 +90,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             if (Physics.Raycast(mousePos, out hit))
             {
                 // used for placeemnt bug detailed in update
-                if (hit.transform.gameObject.layer == 8)
+                if (hit.transform.gameObject.tag == "Ground")
                 {
                     onGrid = true;
                 }
@@ -111,7 +111,8 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         }
     }
 
-        public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
+
+    public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
 
         public void OnPointerUp(PointerEventData eventData)
         {

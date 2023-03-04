@@ -4,8 +4,9 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
-public class ButtonInputs : MonoBehaviour, IPointerDownHandler
+public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerExitHandler
 {
    
     [Header("Shop Items")]
@@ -78,6 +79,26 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
             }
             desOpen = false;
         }
+
+ 
+
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+     /*
+        GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");
+
+        if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem)
+        {
+            print("john");
+
+            foreach (GameObject trap in gameObjectArray)
+            {
+                Destroy(trap.gameObject);
+                GameManager.instance.holdingItem = false;
+            }
+        }*/
     }
 
     public void OnPointerDown(PointerEventData eventData)
