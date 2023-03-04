@@ -88,27 +88,28 @@ public class LawnMower : TrapBase
         // if item is unplaced then dont run script
         if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
-
-        if (col.gameObject.name == "Lighter Hitbox")
+        if (col.GetComponent<TrapBase>() != null)
         {
-            if (col.gameObject.GetComponent<TrapBase>().activateTrap)
+            
+            if (col.gameObject.GetComponent<TrapBase>().itemID == "Lighter" && col.gameObject.GetComponent<TrapBase>().activateTrap)
             {
                 willExplode = true;
                 activateTrap = true;
                 StartCoroutine(DelayLawnMowerExplode());
             }
+        
         }
-
-        // checks if lighter is on
-        if (!activateTrap)
+            // checks if lighter is on
+            if (!activateTrap)
             return;
 
-        if (col.gameObject.name == "Hamster 1(Clone)")
+        if (col.CompareTag("Hamster"))
         {
             ItemInteract(col.gameObject);
             col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
         }
 
+        // obstacle
         if (col.gameObject.layer == 7)
         {
             if (willExplode)
@@ -122,6 +123,7 @@ public class LawnMower : TrapBase
             }
         }
 
+        // on ground
         if (col.gameObject.layer == 6 && activateTrap)
         {
             ActivateLawnmower();

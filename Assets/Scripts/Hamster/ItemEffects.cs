@@ -14,6 +14,7 @@ public class ItemEffects : MonoBehaviour
     float distance;
     GameObject nearHamster;
     public bool hasBeenShocked;
+    [SerializeField] float LightningAOEDistance;
 
     int electricDamage;
     float shockDur;
@@ -55,8 +56,6 @@ public class ItemEffects : MonoBehaviour
         fireEffect.SetActive(false);
     }
 
-
-
     ///<summary>
     /// called when hamster has been hit by bugzapper
     ///</summary>
@@ -74,7 +73,6 @@ public class ItemEffects : MonoBehaviour
             BugZapperDistance();
 
             //play animation;
-            StartCoroutine(ResetSpeed());
         }
     }
 
@@ -82,7 +80,8 @@ public class ItemEffects : MonoBehaviour
     {
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         GetComponent<HamsterBase>().speed = 0;
-      //  GetComponent<HamsterBase>().TakeDamage(electricDamage);
+        GetComponent<HamsterBase>().TakeDamage(electricDamage);
+        StartCoroutine(ResetSpeed());
     }
 
     public void BugZapperDistance()
@@ -118,25 +117,16 @@ public class ItemEffects : MonoBehaviour
     void FinishLightningAOE()
     {
 
+        GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Hamster");
 
-        float sphere = 1000;
-
-        RaycastHit hit;
-     //   if (Physics.SphereCast(gameObject.transform.position, sphere / 2, gameObject.transform.position, out hit, 10))
-      //  {
-            if (Physics.SphereCast(transform.position, 10, -transform.up, out hit, 1000))
+        foreach (GameObject hamster in gameObjectArray)
+        {
+            distance = (transform.position - hamster.transform.position).magnitude;
+            if (distance < 10)
             {
-   
-            Debug.Log(hit.transform.tag);
-            //  if (hit.transform.CompareTag("Hamster"))
-            if (hit.transform.GetComponent<ItemEffects>() != null)
-            {
-                hit.transform.GetComponent<ItemEffects>().ElectricDamage();
-
+                hamster.GetComponent<ItemEffects>().ElectricDamage();
             }
-           
         }
-
     }
 
     ///<summary>
@@ -154,18 +144,15 @@ public class ItemEffects : MonoBehaviour
         GetComponent<HamsterBase>().TakeDamage(explosionDamage);
     }
 
-
-
     private void OnCollisionEnter(Collision col)
     {
-        //col.transform.CompareTag("Ground") &&
         if (canLightingAOE)
         {
-
-            //  ElectricDamage();
             FinishLightningAOE();
-            canLightingAOE = false;
-        
+            canLightingAOE = false;         
         }
     }
 }
+
+
+

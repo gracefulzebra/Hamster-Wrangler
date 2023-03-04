@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -35,6 +36,12 @@ public class GameManager : MonoBehaviour
     public AnimationManager animationManager { get; private set; }
     public AudioManager audioManager { get; private set; }
 
+    [Header("Traps Active")]
+    [SerializeField] bool lawnMower;
+    [SerializeField] bool leafBlower;
+    [SerializeField] bool bugZapper;
+    [SerializeField] bool lighter;
+    [SerializeField] bool rake;
 
     private void Awake()
     {
@@ -82,6 +89,7 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name != "MainMenu")
             audioManager.PlayMusic();
+
     }
 
     public void StartWave()

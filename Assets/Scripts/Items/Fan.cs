@@ -73,7 +73,7 @@ public class Fan : TrapBase
         else
         {
             windEffect.SetActive(false);
-            // when trap is decativated it ensures it doesnt wake up as lawnmower
+            // when trap is decativated it ensures it doesnt wake up as flamethrower
             flameThrower = false;
             flameThrowerEffect.SetActive(false);
         }
@@ -100,7 +100,7 @@ public class Fan : TrapBase
        if (activateTrap)
        {
         // for hamster collisions
-         if (col.gameObject.name == "Hamster 1(Clone)")
+         if (col.transform.CompareTag("Hamster"))
          {
             Vector3 direction = transform.position - transform.parent.position;
 
@@ -119,7 +119,9 @@ public class Fan : TrapBase
             else
             {
                 // for leafblower + lighter interaction
-                if (col.gameObject.GetComponent<TrapBase>().itemID == "Lighter" && col.gameObject.GetComponent<Lighter>().activateTrap)
+              if (col.GetComponent<TrapBase>() != null)
+              {
+                if (col.gameObject.GetComponent<TrapBase>().itemID == "Lighter" && col.gameObject.GetComponent<TrapBase>().activateTrap)
                 {
                     flameThrower = true;
                 }
@@ -127,6 +129,8 @@ public class Fan : TrapBase
                 {
                     flameThrower = false;
                 }
+              }
+          
             }
        }
     }
