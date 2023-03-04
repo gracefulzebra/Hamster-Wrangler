@@ -519,6 +519,8 @@ GameObject:
   - component: {fileID: 4103923347380611907}
   - component: {fileID: 4575281151563343648}
   - component: {fileID: -2135356015512987289}
+  - component: {fileID: 6502539723297909010}
+  - component: {fileID: 8146802114018465544}
   m_Layer: 0
   m_Name: Leafblower
   m_TagString: Unplaced Item
@@ -560,7 +562,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasItem: 1
-  confirmPlacement: 0
   confirmButton: {fileID: 2627660743058041798}
   cancelButton: {fileID: 365204355280381969}
   rotateButton: {fileID: 6519617044692145886}
@@ -577,8 +578,37 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.87718326, y: 0.83377993, z: 1.0389714}
-  m_Center: {x: -0.0035734475, y: 0.33859736, z: 0.019485712}
+  m_Size: {x: 0.87718326, y: 0.82900566, z: 1.0389714}
+  m_Center: {x: -0.0035734475, y: 0.3409845, z: 0.019485714}
+--- !u!54 &6502539723297909010
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3728910289697894905}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &8146802114018465544
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3728910289697894905}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5603798, y: 0.013979811, z: 0.9492621}
+  m_Center: {x: 0.14842963, y: 0.019837927, z: -0.0002155905}
 --- !u!1 &4575281151827313406
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,7 +668,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuelUsage: 7
-  currentFuel: 0
   maxFuel: 100
   fuelSlider: {fileID: 6085266683099542287}
   refuelSymbol: {fileID: 2627660743058041798}

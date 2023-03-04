@@ -19,6 +19,11 @@ public class Lighter : TrapBase
 
     private void Update()
     {
+        if (GetComponentInParent<SnapToGrid>().hasItem == false && !onPlacement)
+        {
+            onPlacement = true;
+            GetComponentInParent<Rigidbody>().useGravity = true;
+        }
         if (activateTrap)
         {
             if (!audioOn)

@@ -23,7 +23,7 @@ public class LawnMower : TrapBase
 
     bool audioOn = false;
 
-    bool placementGravity;
+    
 
     private void Start()
     {
@@ -35,9 +35,9 @@ public class LawnMower : TrapBase
     private void Update()
     {
         // this is weird! need to turn gravity off for placement but need it for lawnmower launch
-        if (GetComponentInParent<SnapToGrid>().hasItem == false && !placementGravity)
+        if (GetComponentInParent<SnapToGrid>().hasItem == false && !onPlacement)
         {
-            placementGravity = true;
+            onPlacement = true;
             GetComponentInParent<Rigidbody>().useGravity = true;
         }
 
@@ -60,8 +60,9 @@ public class LawnMower : TrapBase
         {
             GameManager.instance.audioManager.LawnMowerRunAudio();
             audioOn = true;
-        }
+        }   
 
+        transform.parent.gameObject.layer = 2;
         smokeEffect.SetActive(true);
         transform.parent.Translate(Vector3.forward * lawnmowerSpd * Time.deltaTime);
     }
@@ -121,8 +122,7 @@ public class LawnMower : TrapBase
             }
         }
 
-
-        if (col.CompareTag("Ground") && activateTrap)
+        if (col.gameObject.layer == 6 && activateTrap)
         {
             ActivateLawnmower();
         }

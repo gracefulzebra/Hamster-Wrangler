@@ -15,6 +15,7 @@ public class TrapBase : MonoBehaviour
     public string itemID;
     [SerializeField] protected int damage = 10;
     float timer;
+    protected bool onPlacement;
 
     [Header("Trap ID")]
     protected string rakeID;

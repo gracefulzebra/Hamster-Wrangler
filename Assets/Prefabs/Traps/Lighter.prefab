@@ -208,6 +208,8 @@ GameObject:
   - component: {fileID: 164447039296451056}
   - component: {fileID: 6649807326451815635}
   - component: {fileID: 2099565370963579048}
+  - component: {fileID: 7578543152914011619}
+  - component: {fileID: 1058470734245778528}
   m_Layer: 0
   m_Name: Lighter
   m_TagString: Unplaced Item
@@ -223,7 +225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649621270774770506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.353, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -261,12 +263,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasItem: 1
-  confirmPlacement: 0
   confirmButton: {fileID: 0}
   cancelButton: {fileID: 6656841124647985356}
   rotateButton: {fileID: 292623977759320302}
   placementEffect: {fileID: 1108336735695170685}
   itemID: 
+--- !u!65 &7578543152914011619
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649621270774770506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.30121666, y: 0.02682525, z: 0.39112526}
+  m_Center: {x: 0.007927477, y: 0.065127164, z: 0.002448082}
+--- !u!54 &1058470734245778528
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649621270774770506}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &2432302094884925447
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,7 +801,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.29}
+  m_AnchoredPosition: {x: 0, y: 0.334}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5765673914409991838
@@ -951,7 +981,6 @@ GameObject:
   - component: {fileID: 3863913200056156595}
   - component: {fileID: 939467194056315201}
   - component: {fileID: 8893993068713357871}
-  - component: {fileID: 3723529268007822331}
   m_Layer: 2
   m_Name: Lighter Hitbox
   m_TagString: Untagged
@@ -967,7 +996,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8857287031567911961}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09357998, y: 0.024, z: 0.252}
+  m_LocalPosition: {x: -0.09357998, y: -0.014000017, z: 0.252}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1000,7 +1029,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fuelUsage: 5
-  currentFuel: 0
   maxFuel: 100
   fuelSlider: {fileID: 669974202616155166}
   refuelSymbol: {fileID: 2707198488005372136}
@@ -1010,22 +1038,6 @@ MonoBehaviour:
   fireEffect: {fileID: 3136080220528460937}
   burnDuration: 2
   burnAmount: 5
---- !u!54 &3723529268007822331
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8857287031567911961}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1001 &576586723643240105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1051,7 +1063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2559710115314559523, guid: f60ed4071ad8e6948b14ce087739db09, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.73
+      value: 0.638
       objectReference: {fileID: 0}
     - target: {fileID: 2559710115314559523, guid: f60ed4071ad8e6948b14ce087739db09, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1138,7 +1150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5beeaf847e30c174e9785852dcd8e21e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.425
+      value: 0.362
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5beeaf847e30c174e9785852dcd8e21e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1208,7 +1220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3736183778571429871, guid: bbc289d3cf4ad2c46a8c695d0f8f4b97, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.147
+      value: -0.043000016
       objectReference: {fileID: 0}
     - target: {fileID: 3736183778571429871, guid: bbc289d3cf4ad2c46a8c695d0f8f4b97, type: 3}
       propertyPath: m_LocalPosition.z

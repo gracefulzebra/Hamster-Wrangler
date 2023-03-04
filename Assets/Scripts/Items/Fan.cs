@@ -25,6 +25,11 @@ public class Fan : TrapBase
    
     private void Update()
     {
+        if (GetComponentInParent<SnapToGrid>().hasItem == false && !onPlacement)
+        {
+            onPlacement = true;
+            GetComponentInParent<Rigidbody>().useGravity = true;
+        }
         LeafblowerActivation();
         OutOfFuel();
     }

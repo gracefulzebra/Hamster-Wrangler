@@ -28,7 +28,12 @@ public class BugZapper : TrapBase
     // Update is called once per frame
     void Update()
     {
-        if(activateTrap)
+        if (GetComponentInParent<SnapToGrid>().hasItem == false && !onPlacement)
+        {
+            onPlacement = true;
+            GetComponentInParent<Rigidbody>().useGravity = true;
+        }
+        if (activateTrap)
         {
             canUseTrap = false;
             startCooldown = true;

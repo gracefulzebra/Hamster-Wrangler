@@ -17,7 +17,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     public string itemID;
     Node nodeHit;
 
-  public  bool hittignNothing;
+    bool onGrid;
 
     void Awake()
     {
@@ -62,13 +62,13 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem)
             {
               // if user presses ui button deletes object
-                if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem && hittignNothing)
+                if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem && onGrid)
                 {
                     GameManager.instance.holdingItem = false;
                     Destroy(gameObject);
                 }
                 // if glitches on gird trap is placed
-                else if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem && !hittignNothing)
+                else if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem && !onGrid)
                 {
                     GetComponent<SnapToGrid>().TrapPlacement();
                 }
@@ -92,20 +92,20 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
                 // used for placeemnt bug detailed in update
                 if (hit.transform.gameObject.layer == 8)
                 {
-                    hittignNothing = true;
+                    onGrid = true;
                 }
                 else
                 {
-                    hittignNothing = false;
+                    onGrid = false;
                 }
                 if (hit.transform.gameObject.tag == "Ground" || hit.transform.gameObject.tag == "OutsideGrid")
-                {        
+                {
                     nodeHit = gridRef.GetNodeFromWorldPoint(hit.point);
+            
                     if (nodeHit.placeable)
                     {
                         gameObject.transform.position = new Vector3(nodeHit.worldPosition.x, nodeHit.worldPosition.y - 0.5f, nodeHit.worldPosition.z);
-                    }
-                
+                    }             
                 }
             }
         }

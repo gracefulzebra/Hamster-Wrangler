@@ -1,8 +1,5 @@
-using Unity.VisualScripting;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Rake : TrapBase
 { 
@@ -28,6 +25,13 @@ public class Rake : TrapBase
     }
     private void Update()
     {
+        if (GetComponentInParent<SnapToGrid>().hasItem == false && !onPlacement)
+        {
+            onPlacement = true;
+            gameObject.layer = 0;
+            GetComponentInParent<Rigidbody>().useGravity = true;
+        }
+
         if (activateTrap && !inProgress)
         {
             activateTrap = false;
@@ -49,8 +53,7 @@ public class Rake : TrapBase
             yield return new WaitForSeconds(rakeFlingDelay);
         }
         inProgress = false;
-        
-    } 
+    }
 
     private Vector3 CalculateVel(Transform currentPos)
     {
@@ -70,7 +73,7 @@ public class Rake : TrapBase
 
         if (rakeEnabled)
         {           
-            if (col.gameObject.name == "Hamster 1(Clone)" || col.gameObject.name == "Lawnmower(Clone)")
+            if (col.gameObject.name == "Hamster 1(Clone)" || col.gameObject.name == "Lawnmower(Clone)" && !col.GetComponent<SnapToGrid>().hasItem)
             {
                 Rigidbody hamsterRB = col.GetComponent<Rigidbody>();
                 
