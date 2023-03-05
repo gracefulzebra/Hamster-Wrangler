@@ -10,8 +10,8 @@ public class ItemEffects : MonoBehaviour
     private int burnIndex = 0;
 
     [Header("Bug Zapper")]
-    float prevDist = 100;
-    float distance;
+    float closestHamster = 100;
+    float hamsterDistance;
     GameObject nearHamster;
     public bool hasBeenShocked;
     [SerializeField] float LightningAOEDistance;
@@ -67,7 +67,6 @@ public class ItemEffects : MonoBehaviour
 
         if (!hasBeenShocked)
         {
-            hasBeenShocked = true;
 
             ElectricDamage();
             BugZapperDistance();
@@ -78,6 +77,7 @@ public class ItemEffects : MonoBehaviour
 
     public void ElectricDamage()
     {
+        hasBeenShocked = true;
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         GetComponent<HamsterBase>().speed = 0;
         GetComponent<HamsterBase>().TakeDamage(electricDamage);
@@ -92,19 +92,24 @@ public class ItemEffects : MonoBehaviour
 
         foreach (GameObject hamster in gameObjectArray)
         {
-            distance = (transform.position - hamster.transform.position).magnitude;
-            if (prevDist > distance && distance != 0)
+            // get distance from hamster
+            hamsterDistance = (transform.position - hamster.transform.position).magnitude;
+            // compares the distance of the last hamster to the newest hamster to see which is smaller
+            if (hamsterDistance < closestHamster && hamsterDistance != 0 && !hamster.GetComponent<ItemEffects>().hasBeenShocked)
             {
-                prevDist = distance;
+                print("hamy distance" + hamsterDistance);
+                print("cloest hammy" + closestHamster);
+                closestHamster = hamsterDistance;
+                print("new cloest hammy" + closestHamster);
                 nearHamster = hamster;
             }
         }
 
-        if (prevDist < hamsterShockRad)
+        if (closestHamster < hamsterShockRad)
         {       
             if (nearHamster != null)
             {
-                nearHamster.GetComponent<ItemEffects>().BeenElectrocuted(shockDur, electricDamage, hamsterShockRad);   
+                nearHamster.GetComponent<ItemEffects>().BeenElectrocuted(shockDur, electricDamage, hamsterShockRad);
             }
         }
     }
@@ -121,8 +126,8 @@ public class ItemEffects : MonoBehaviour
 
         foreach (GameObject hamster in gameObjectArray)
         {
-            distance = (transform.position - hamster.transform.position).magnitude;
-            if (distance < 10)
+            hamsterDistance = (transform.position - hamster.transform.position).magnitude;
+            if (hamsterDistance < 10)
             {
                 hamster.GetComponent<ItemEffects>().ElectricDamage();
             }
