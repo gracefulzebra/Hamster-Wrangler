@@ -75,7 +75,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
                 // resets ui
                 if (GameManager.instance.uiManager.highLightedButton != null)
                 {
-                    GameManager.instance.uiManager.RemoveShopOutline();
+                   GameManager.instance.uiManager.RemoveShopOutline();
                 }
             }
         }
@@ -90,15 +90,15 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             if (Physics.Raycast(mousePos, out hit))
             {
                 // used for placeemnt bug detailed in update
-                if (hit.transform.gameObject.tag == "Ground")
-                {
-                    onGrid = true;
-                }
-                else
+                if (hit.transform.gameObject.tag != "Ground")
                 {
                     onGrid = false;
                 }
-                if (hit.transform.gameObject.tag == "Ground" || hit.transform.gameObject.tag == "OutsideGrid")
+                else
+                {
+                    onGrid = true;
+                }
+                if (hit.transform.gameObject.tag != "Unplaced Item")//hit.transform.gameObject.tag == "Ground" || hit.transform.gameObject.tag == "OutsideGrid")
                 {
                     nodeHit = gridRef.GetNodeFromWorldPoint(hit.point);
             
