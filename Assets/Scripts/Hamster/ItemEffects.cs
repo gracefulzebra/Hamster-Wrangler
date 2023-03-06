@@ -139,9 +139,17 @@ public class ItemEffects : MonoBehaviour
             // make public bool somewhere, will need to be read in from bugzapper for contiuinity probs
             if (hamsterDistance < 10)
             {
+                print("working");
                 hamster.GetComponent<ItemEffects>().ElectricDamage();
             }
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawCube(gameObject.transform.position, Vector3.one * hamsterShockRad);
     }
 
     ///<summary>
@@ -156,9 +164,15 @@ public class ItemEffects : MonoBehaviour
 
     #endregion BugZapper
 
+    bool dmgCounter;
     public void InExplosionRadius(int explosionDamage)
     {
-        GetComponent<HamsterBase>().TakeDamage(explosionDamage);
+        if (dmgCounter)
+        {
+            dmgCounter = false;
+            GetComponent<HamsterBase>().TakeDamage(explosionDamage);
+            print("john");
+        }
     }
 
 

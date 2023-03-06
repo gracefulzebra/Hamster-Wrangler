@@ -11,6 +11,7 @@ public class Explosion : MonoBehaviour
     [SerializeField] int damage;
     bool explosionOver;
 
+    bool counter;
 
     // Start is called before the first frame update
     void Start()
