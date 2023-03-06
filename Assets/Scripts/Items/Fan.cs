@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Fan : TrapBase
@@ -19,7 +20,9 @@ public class Fan : TrapBase
 
     bool audioOn = false;
 
-    bool overCharge;
+   public bool overCharge;
+    [SerializeField] float overChargeForceMultiplication;
+
     float maxForce;
 
     private void Start()
@@ -52,7 +55,7 @@ public class Fan : TrapBase
             // used so leafblower cannot be activated if already on
             canUseTrap = false;
             leafblowerTimer += Time.deltaTime;
-
+            
             SliderUpdate();
             UseFuel();
             windEffect.SetActive(true);
@@ -74,6 +77,11 @@ public class Fan : TrapBase
             {
                 flameThrowerEffect.SetActive(false);
             }
+
+            if (overCharge)
+            {
+                StartCoroutine(StopOverCharge());
+            }
         }
         else
         {
@@ -82,16 +90,12 @@ public class Fan : TrapBase
             flameThrower = false;
             flameThrowerEffect.SetActive(false);
         }
-
-        if (overCharge)
-        {
-            force *= 2;
-        }
     }
 
     IEnumerator StopOverCharge()
     {
         yield return new WaitForSeconds(4f);
+        overCharge = false;
     }
 
     void OutOfFuel()
@@ -118,11 +122,19 @@ public class Fan : TrapBase
          if (col.transform.CompareTag("Hamster"))
          {
             Vector3 direction = transform.position - transform.parent.position;
+       
+                if (overCharge)
+                {
+                    col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force * overChargeForceMultiplication, ForceMode.Force);
+                    //ItemInteract(col.gameObject);
+                }
+                else
+                {
+                    col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force , ForceMode.Force);
+                }
 
-            col.gameObject.GetComponent<Rigidbody>().AddForce(direction * force, ForceMode.Force);
-
-            //Communicates that item has interacted with the hamster and what type it is.
-            ItemInteract(col.gameObject);
+                //Communicates that item has interacted with the hamster and what type it is.
+                ItemInteract(col.gameObject);
 
                if (flameThrower)
                {
@@ -144,8 +156,7 @@ public class Fan : TrapBase
                 {
                     flameThrower = false;
                 }
-              }
-          
+              }          
             }
        }
     }

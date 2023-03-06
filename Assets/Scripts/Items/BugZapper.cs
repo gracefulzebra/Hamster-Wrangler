@@ -86,6 +86,7 @@ public class BugZapper : TrapBase
     IEnumerator Unactivate()
     {
         yield return new WaitForSeconds(0.2f);
+        activateTrap = false;
         activationEffect.SetActive(false);
     }
 
@@ -106,13 +107,20 @@ public class BugZapper : TrapBase
             return;
 
         // if the item is active
-        if (activateTrap && chargeCount !=0)
+        if (activateTrap && chargeCount != 0)
         {
             if (col.CompareTag("Hamster"))
             {
                 col.gameObject.GetComponent<ItemEffects>().BeenElectrocuted(shockDuration, damage, hamsterShockRadius);
-                activateTrap = false;
                 ItemInteract(col.gameObject);
+            }
+            else
+            {
+                if (col.gameObject.name == "Leafblower(Clone)")
+                {
+                    print("OVERCAHRGE BABY");
+                    col.GetComponentInChildren<Fan>().overCharge = true;
+                }
             }
         }
     }

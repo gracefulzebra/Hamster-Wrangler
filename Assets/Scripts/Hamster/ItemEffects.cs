@@ -15,13 +15,18 @@ public class ItemEffects : MonoBehaviour
     GameObject nearHamster;
     public bool hasBeenShocked;
     [SerializeField] float LightningAOEDistance;
-
     int electricDamage;
     float shockDur;
     float hamsterShockRad;
+    bool canLightingAOE;
 
+    [SerializeField] LineRenderer lineRenderer;
 
-   public bool canLightingAOE;
+    private void Start()
+    {
+    }
+
+    #region Fire
 
     ///<summary>
     /// called when hamster interacts with fire 
@@ -55,6 +60,10 @@ public class ItemEffects : MonoBehaviour
         onFire = false;
         fireEffect.SetActive(false);
     }
+
+    #endregion Fire
+
+    #region BugZapper
 
     ///<summary>
     /// called when hamster has been hit by bugzapper
@@ -97,10 +106,7 @@ public class ItemEffects : MonoBehaviour
             // compares the distance of the last hamster to the newest hamster to see which is smaller
             if (hamsterDistance < closestHamster && hamsterDistance != 0 && !hamster.GetComponent<ItemEffects>().hasBeenShocked)
             {
-                print("hamy distance" + hamsterDistance);
-                print("cloest hammy" + closestHamster);
                 closestHamster = hamsterDistance;
-                print("new cloest hammy" + closestHamster);
                 nearHamster = hamster;
             }
         }
@@ -110,23 +116,27 @@ public class ItemEffects : MonoBehaviour
             if (nearHamster != null)
             {
                 nearHamster.GetComponent<ItemEffects>().BeenElectrocuted(shockDur, electricDamage, hamsterShockRad);
+              //  lineRenderer.SetPosition(0, transform.localPosition);
+                //lineRenderer.SetPosition(1, nearHamster.transform.localPosition);
             }
         }
     }
 
     public void StartLightingAOE()
     {
+        // next time hamster collides with object itll call FinishLightningAOE()
         canLightingAOE = true;
     }
 
+    // finds hamster in radius and shocks them
     void FinishLightningAOE()
     {
-
         GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Hamster");
 
         foreach (GameObject hamster in gameObjectArray)
         {
             hamsterDistance = (transform.position - hamster.transform.position).magnitude;
+            // make public bool somewhere, will need to be read in from bugzapper for contiuinity probs
             if (hamsterDistance < 10)
             {
                 hamster.GetComponent<ItemEffects>().ElectricDamage();
@@ -144,17 +154,21 @@ public class ItemEffects : MonoBehaviour
         GetComponent<HamsterBase>().speed = GetComponent<HamsterBase>().maxSpeed;
     }
 
+    #endregion BugZapper
+
     public void InExplosionRadius(int explosionDamage)
     {
         GetComponent<HamsterBase>().TakeDamage(explosionDamage);
     }
 
+
     private void OnCollisionEnter(Collision col)
     {
+        // when coliddes with anythign finds hamster in radius 
         if (canLightingAOE)
         {
             FinishLightningAOE();
-            canLightingAOE = false;         
+            canLightingAOE = false;
         }
     }
 }
