@@ -112,6 +112,7 @@ public class BugZapper : TrapBase
             if (col.CompareTag("Hamster"))
             {
                 col.gameObject.GetComponent<ItemEffects>().BeenElectrocuted(shockDuration, damage, hamsterShockRadius);
+                col.gameObject.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
                 ItemInteract(col.gameObject);
             }
             else

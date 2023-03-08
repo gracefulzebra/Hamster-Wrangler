@@ -5,7 +5,7 @@ using UnityEngine;
 public class HamsterScore : MonoBehaviour
 {
     private GameManager manager;
-    private int blowerCount, tarCount, lighterCount, mowerCount, rakeCount;
+    private int blowerCount, zapperCount, lighterCount, mowerCount, rakeCount;
 
     private List<GameObject> interactedList = new List<GameObject>();
 
@@ -27,8 +27,8 @@ public class HamsterScore : MonoBehaviour
                     blowerCount++;
                     break;
 
-                case "Tar":
-                    tarCount++;
+                case "BugZapper":
+                    zapperCount++;
                     break;
 
                 case "Lighter":
@@ -39,7 +39,7 @@ public class HamsterScore : MonoBehaviour
                     mowerCount++;
                     break;
 
-                case "BugZapper":
+                case "Rake":
                     rakeCount++;
                     break;
             }
@@ -48,8 +48,8 @@ public class HamsterScore : MonoBehaviour
 
     public void SendData()
     {
-        manager.scoreManager.UpdateScore(blowerCount, tarCount, lighterCount, mowerCount, rakeCount);
-        manager.currencyManager.UpdateCurrency(blowerCount, tarCount, lighterCount, mowerCount, rakeCount);
+        manager.scoreManager.UpdateScore(blowerCount, zapperCount, lighterCount, mowerCount, rakeCount);
+        manager.currencyManager.UpdateCurrency(blowerCount, zapperCount, lighterCount, mowerCount, rakeCount);
         manager.waveManager.HamstersRemaining();
     }
 

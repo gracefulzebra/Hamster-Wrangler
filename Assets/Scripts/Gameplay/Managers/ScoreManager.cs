@@ -6,7 +6,7 @@ public class ScoreManager : MonoBehaviour
 {
     private int currentScore = 0;
 
-    [SerializeField] private int blowerScore, mowerScore, lighterScore, tarScore, rakeScore;
+    [SerializeField] private int blowerScore, mowerScore, lighterScore, zapperScore, rakeScore;
 
     public void InitializeScore()
     {
@@ -19,20 +19,22 @@ public class ScoreManager : MonoBehaviour
         GetComponent<GameManager>().DisplayScore(currentScore);
     }
 
-    public void UpdateScore(int blowerCount, int tarCount, int lighterCount, int mowerCount, int rakeCount)
+    public void UpdateScore(int blowerCount, int zapperCount, int lighterCount, int mowerCount, int rakeCount)
     {
-        currentScore += (blowerCount * blowerScore) + (tarCount * tarScore) + (lighterCount * lighterScore) + (mowerCount * mowerScore) + (rakeCount * rakeScore); 
+        currentScore += (blowerCount * blowerScore) + (zapperCount * zapperScore) + (lighterCount * lighterScore) + (mowerCount * mowerScore) + (rakeCount * rakeScore); 
     }
 
     public int FinalizeScore(int healthRemaining, int maxHealth)
     {
-        float prcntHealth = (float)healthRemaining / (float)maxHealth;
+        float m_healthRemaining = healthRemaining;
+        float m_maxHealth = maxHealth;
+
+        float prcntHealth = m_healthRemaining / m_maxHealth;
         float tempScore = currentScore;
-        
+
         tempScore *= prcntHealth;
-
         currentScore = (int)tempScore;
-
+        
         return currentScore;
     }
     

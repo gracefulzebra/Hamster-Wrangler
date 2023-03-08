@@ -76,6 +76,7 @@ public class Rake : TrapBase
             if (col.gameObject.name == "Hamster 1(Clone)" || col.gameObject.name == "Lawnmower(Clone)" && !col.GetComponent<SnapToGrid>().hasItem)
             {
                 Rigidbody hamsterRB = col.GetComponent<Rigidbody>();
+                col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
                 
                 hamsterRB.velocity = CalculateVel(col.transform);
             }
