@@ -83,7 +83,7 @@ public class ItemEffects : MonoBehaviour
             //play animation;
         }
     }
-
+   
     public void ElectricDamage()
     {
         hasBeenShocked = true;
