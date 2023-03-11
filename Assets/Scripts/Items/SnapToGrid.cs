@@ -121,7 +121,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             }
             else
             {
-            TrapPlacement();
+               TrapPlacement();
             }
         }
 
@@ -145,7 +145,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         /// </summary>
         void PlacementConfirmtation()
         {
-            if (Input.GetKeyDown(KeyCode.R) && hasItem)
+            if (Input.GetKeyDown(KeyCode.R) | Input.GetMouseButtonDown(1) && hasItem)
             {
                 gameObject.transform.Rotate(rotVector, Space.Self);
             }
