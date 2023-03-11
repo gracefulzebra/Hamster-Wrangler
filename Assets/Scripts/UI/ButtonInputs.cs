@@ -79,9 +79,6 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerExitHand
             }
             desOpen = false;
         }
-
- 
-
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -122,11 +119,13 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerExitHand
 
     void HelpGuide(GameObject guideMenu)
     {
-        if (desOpen)
+        if (desOpen == true)
         {
-            desOpen = false;
+            guideMenu.SetActive(false);
+            Time.timeScale = 1;
             return;
-        } 
+        }
+
         if (!guideMenu.activeSelf)
         {
             guideMenu.SetActive(true);

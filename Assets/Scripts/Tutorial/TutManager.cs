@@ -5,6 +5,8 @@ using UnityEngine;
 public class TutManager : MonoBehaviour
 {
     public int posCounter;
+    int tempCounter;
+
     public static TutManager tutInstance;
 
     private void Awake()
@@ -25,5 +27,10 @@ public class TutManager : MonoBehaviour
         GetComponent<TriggerDialogue>().DialogueTrigger();
     }
 
+    public void NextStep()
+    {
+            posCounter++;
+
+    }
 
 }
