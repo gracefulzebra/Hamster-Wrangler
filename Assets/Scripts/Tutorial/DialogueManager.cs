@@ -28,12 +28,13 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence ()
     {
+  
+        TutManager.tutInstance.posCounter++;
         if (sentences.Count == 0)
         {
             EndDialogue();
             return;
         }
-
         string sentence = sentences.Dequeue();
         dialogueText.text = sentence;
     }

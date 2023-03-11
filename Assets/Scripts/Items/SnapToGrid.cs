@@ -58,27 +58,26 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             PlacementConfirmtation();
             nodeCheck();
 
-            // used for if user clicks on ui or if placements messes up on grid
-            if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem)
+               // used for if user clicks on ui or if placements messes up on grid
+               if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem)
+               {
+                 // if user presses ui button deletes object
+                   if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem)
+                   {
+                       GameManager.instance.holdingItem = false;
+                     //  Destroy(gameObject);
+                   }
+            
+            // resets ui
+         /*   if (GameManager.instance.uiManager.highLightedButton != null)
             {
-              // if user presses ui button deletes object
-                if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem && !onGrid)
-                {
-                    GameManager.instance.holdingItem = false;
-                    Destroy(gameObject);
-                }
-                // if glitches on gird trap is placed
-                else if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem && onGrid)
-                {
-                    GetComponent<SnapToGrid>().TrapPlacement();
-                }
-                // resets ui
-                if (GameManager.instance.uiManager.highLightedButton != null)
-                {
-                   GameManager.instance.uiManager.RemoveShopOutline();
-                }
+                GameManager.instance.uiManager.RemoveShopOutline();
             }
+         */
+           }
+
         }
+    }
 
         /// <summary>
         /// Shoots a ray from mouse position then finds cloest walkable node
@@ -89,16 +88,8 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(mousePos, out hit))
             {
-                // used for placeemnt bug detailed in update
-                if (hit.transform.gameObject.tag != "Ground")
-                {
-                    onGrid = false;
-                }
-                else
-                {
-                    onGrid = true;
-                }
-                if (hit.transform.gameObject.tag != "Unplaced Item")//hit.transform.gameObject.tag == "Ground" || hit.transform.gameObject.tag == "OutsideGrid")
+
+                if (hit.transform.gameObject.tag == "Ground" || hit.transform.gameObject.tag != "Unplaced Item")
                 {
                     nodeHit = gridRef.GetNodeFromWorldPoint(hit.point);
             
@@ -109,7 +100,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
                 }
             }
         }
-    }
+    
 
 
     public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
@@ -127,6 +118,10 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             if (hasItem == false)
             {
                 GetComponentInChildren<TrapBase>().ActivateTrap();
+            }
+            else
+            {
+            TrapPlacement();
             }
         }
 
