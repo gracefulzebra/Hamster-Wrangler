@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+
 
 public class DialogueManager : MonoBehaviour
 {
+    public TextMeshProUGUI dialogueText;
 
     private Queue<string> sentences;
 
@@ -10,14 +13,6 @@ public class DialogueManager : MonoBehaviour
     void Awake()
     {
         sentences = new Queue<string>();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            DisplayNextSentence();
-        }
     }
 
     public void StartDialogue(Dialouge dialogue)
@@ -28,6 +23,7 @@ public class DialogueManager : MonoBehaviour
         {
             sentences.Enqueue(sentence);
         }
+        DisplayNextSentence();
     }
 
     public void DisplayNextSentence ()
@@ -39,9 +35,8 @@ public class DialogueManager : MonoBehaviour
         }
 
         string sentence = sentences.Dequeue();
-        print(sentence);
+        dialogueText.text = sentence;
     }
-
 
     void EndDialogue()
     {

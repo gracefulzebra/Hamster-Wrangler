@@ -92,7 +92,7 @@ public class CurrencyManager : MonoBehaviour
        
     }
 
-    // FIX THIS FUCKER!!! THIS IS JUST 5 IF STATEMENTS IF THEY FIN DOUT ABOUT HIS YOU ARE TOAST
+    // FIX THIS FUCKER!!! THIS IS JUST 5 IF STATEMENTS IF THEY FIND OUT ABOUT THIS YOU ARE TOAST
     public void UIOutline()
     {
 
@@ -100,26 +100,46 @@ public class CurrencyManager : MonoBehaviour
          { 
             GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("LeafBlower")); 
          }
+         else
+         {
+            GameManager.instance.uiManager.DefaultShopOutline(GameObject.FindGameObjectWithTag("LeafBlower"));
+         }
           
          if (!CheckValidPurchase(zapperCost)) 
          {
             GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("BugZapper")); 
          }
-                 
-         if (!CheckValidPurchase(lighterCost)) 
-         {
-            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("Lighter")); 
-         }
+        else
+        {
+            GameManager.instance.uiManager.DefaultShopOutline(GameObject.FindGameObjectWithTag("BugZapper"));
+        }
 
-         if (!CheckValidPurchase(mowerCost)) 
+        if (!CheckValidPurchase(lighterCost)) 
+        {
+            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("Lighter")); 
+        }
+        else
+        {
+            GameManager.instance.uiManager.DefaultShopOutline(GameObject.FindGameObjectWithTag("Lighter"));
+        }
+
+        if (!CheckValidPurchase(mowerCost)) 
          { 
             GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("LawnMower")); 
          }
+        else
+        {
+            GameManager.instance.uiManager.DefaultShopOutline(GameObject.FindGameObjectWithTag("LawnMower"));
+        }
 
-         if (!CheckValidPurchase(rakeCost))
+        if (!CheckValidPurchase(rakeCost))
          {
             GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("Rake"));
-         }   
+         }
+        else
+        {
+            GameManager.instance.uiManager.DefaultShopOutline(GameObject.FindGameObjectWithTag("Rake"));
+        }
     }
 
 

@@ -207,6 +207,11 @@ public class UIManager : MonoBehaviour
         highLightedButton = null;
     }
 
+    public void DefaultShopOutline(GameObject theButton)
+    {
+        theButton.GetComponent<Image>().sprite = itemUnselected;
+    }
+ 
     public void ShopButtonOutline(GameObject theButton)
     {
         theButton.GetComponent<Image>().sprite = itemSelected;
