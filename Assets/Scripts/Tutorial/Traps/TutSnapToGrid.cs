@@ -101,14 +101,17 @@ public class TutSnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHand
         {
             tutCanPlace = true;       
         }
-        else
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.transform.gameObject.tag == "Tut Placement")
         {
-           tutCanPlace = false;
+            tutCanPlace = false;
         }
     }
 
-
-        public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
+    public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
 
     public void OnPointerUp(PointerEventData eventData)
     {
