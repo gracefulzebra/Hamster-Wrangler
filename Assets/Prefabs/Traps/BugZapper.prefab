@@ -482,8 +482,13 @@ MonoBehaviour:
   activationEffect: {fileID: 7159478665949626749}
   chargeCount: 2
   cooldownTimerMax: 2
-  hamsterShockRadius: 3
   rechargeSlider: {fileID: 1316960864581322798}
+  scannableMask:
+    serializedVersion: 2
+    m_Bits: 512
+  hamsterShockRadius: 3
+  maxObjectsShocked: 6
+  lrPrefab: {fileID: 6943972270826131500, guid: 81c54e22f07c49c47a018f742e6e1b5a, type: 3}
   shockDuration: 5.36
 --- !u!1 &4486797815997811292
 GameObject:

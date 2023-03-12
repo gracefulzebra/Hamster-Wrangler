@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BugZapper : TrapBase
 {
@@ -9,9 +10,18 @@ public class BugZapper : TrapBase
     [SerializeField] int chargeCount;
     float cooldownTimer;
     [SerializeField] float cooldownTimerMax;
-    [SerializeField] float hamsterShockRadius;
+    
     [SerializeField] Slider rechargeSlider;
     int trapActivatrionCounter;
+
+    [SerializeField] private LayerMask scannableMask;
+    [SerializeField] private float hamsterShockRadius;
+    private int objectsShockedCounter = 0;
+    [SerializeField] private int maxObjectsShocked;
+    private List<GameObject> shockedObjects;
+
+    private LineRenderer lR;
+    [SerializeField] LineRenderer lrPrefab;
 
 
     bool startCooldown;
@@ -23,6 +33,9 @@ public class BugZapper : TrapBase
         itemID = "BugZapper";
         rechargeSlider.maxValue = cooldownTimerMax;
         rechargeSlider.gameObject.SetActive(false);
+        
+        shockedObjects = new List<GameObject>();
+        hamsterShockRadius += 0.5f;
     }
 
     // Update is called once per frame
@@ -35,15 +48,20 @@ public class BugZapper : TrapBase
         }
         if (activateTrap)
         {
-            canUseTrap = false;
-            startCooldown = true;
-            // for weird zap effect
-
-            if (trapActivatrionCounter == 0)
+            if (!GetComponentInParent<SnapToGrid>().hasItem && chargeCount != 0)
             {
-                trapActivatrionCounter++;
-                activationEffect.SetActive(true);
-                StartCoroutine(Unactivate());
+                canUseTrap = false;
+                startCooldown = true;
+
+                ScanForFirstTarget();
+                // for weird zap effect
+
+                if (trapActivatrionCounter == 0)
+                {
+                    trapActivatrionCounter++;
+                    activationEffect.SetActive(true);
+                    StartCoroutine(Unactivate());
+                }
             }
         }
         CooldownTimer();
@@ -101,28 +119,126 @@ public class BugZapper : TrapBase
         }
     }
 
-    private void OnTriggerStay(Collider col)
+    private void ScanForFirstTarget()
     {
-        if (GetComponentInParent<SnapToGrid>().hasItem)
-            return;
+        shockedObjects.Clear();
 
-        // if the item is active
-        if (activateTrap && chargeCount != 0)
+        activateTrap = false;
+        objectsShockedCounter = 0;
+
+        initializeLineRenderer();
+
+        Vector3 currentPos = transform.position;
+
+        //Find all objects in a radius with the scannable layerMask
+        RaycastHit[] nearbyObjects = Physics.SphereCastAll(currentPos, hamsterShockRadius, Vector3.up, hamsterShockRadius, scannableMask);
+
+        if(nearbyObjects.Length > 0)
         {
-            if (col.CompareTag("Hamster"))
+            objectsShockedCounter++;
+
+            RaycastHit closestObject;
+
+            closestObject = nearbyObjects[0];
+
+            for(int i = 0; i < nearbyObjects.Length; i++)
             {
-                col.gameObject.GetComponent<ItemEffects>().BeenElectrocuted(shockDuration, damage, hamsterShockRadius);
-                col.gameObject.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
-                ItemInteract(col.gameObject);
-            }
-            else
-            {
-                if (col.gameObject.name == "Leafblower(Clone)")
+                if (nearbyObjects[i].distance < closestObject.distance)
                 {
-                    print("OVERCAHRGE BABY");
-                    col.GetComponentInChildren<Fan>().overCharge = true;
+                   closestObject = nearbyObjects[i];
                 }
             }
+        
+            shockedObjects.Add(closestObject.transform.gameObject);
+            PerformZapEffect(closestObject.transform.gameObject); //Perform necessary effects for object type
+            ScanForNextTarget(closestObject.transform.position); //Scan for nextObject
         }
+        StartCoroutine(shockVisual());
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, hamsterShockRadius);
+    }
+    private void ScanForNextTarget(Vector3 scanningPos)
+    {
+        if (objectsShockedCounter >= maxObjectsShocked)
+            return;
+        
+        objectsShockedCounter++;
+
+        //Find all objects in a radius with the scannable layerMask
+        RaycastHit[] nearbyObjects = Physics.SphereCastAll(scanningPos, hamsterShockRadius, Vector3.up, hamsterShockRadius, scannableMask);
+
+        //If there are objects scanned : Find closest
+        if (nearbyObjects.Length > 0)
+        {
+            RaycastHit closestObject;
+
+            closestObject = nearbyObjects[0];
+
+            for (int i = 0; i < nearbyObjects.Length; i++)
+            {
+                if (!shockedObjects.Contains(nearbyObjects[i].transform.gameObject)) //Check 
+                {
+                    if (nearbyObjects[i].distance < closestObject.distance)
+                    {
+                        closestObject = nearbyObjects[i];
+                    }
+                }                          
+            }
+
+            if (shockedObjects.Contains(closestObject.transform.gameObject))
+            {
+                return;
+            }
+
+            shockedObjects.Add(closestObject.transform.gameObject);
+            PerformZapEffect(closestObject.transform.gameObject);
+            ScanForNextTarget(closestObject.transform.position);
+        }
+    }
+
+    private void PerformZapEffect(GameObject targetObject)
+    {
+        if(targetObject.CompareTag("Hamster"))
+        {
+            targetObject.GetComponent<ItemEffects>().BeenElectrocuted(shockDuration, damage, hamsterShockRadius);
+            targetObject.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
+            print("ZAPEPREPRPERPEPR");
+        }
+        else if(targetObject.name == "Leafblower(Clone)")
+        {
+            print("hitblower");
+            targetObject.GetComponentInChildren<Fan>().overCharge = true;
+        }
+    }
+
+    private void initializeLineRenderer()
+    {
+        lR = new LineRenderer();
+        lR = Instantiate(lrPrefab, this.transform);
+        lR.positionCount = 0;
+    }
+
+    private IEnumerator shockVisual()
+    {
+        Vector3[] linePoints;
+
+        linePoints = new Vector3[shockedObjects.Count + 1];
+        linePoints[0] = transform.position;
+        for(int i = 0; i < shockedObjects.Count; i++)
+        {
+
+            linePoints[i + 1] = shockedObjects[i].transform.position; 
+        }
+        lR.positionCount = linePoints.Length;
+        lR.SetPositions(linePoints);
+
+        yield return new WaitForSeconds(2f);
+
+        Destroy(lR);
+
+     
     }
 }

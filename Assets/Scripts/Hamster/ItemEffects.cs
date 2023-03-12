@@ -74,14 +74,7 @@ public class ItemEffects : MonoBehaviour
         electricDamage = electricDmg;
         hamsterShockRad = hamsterShockRadius;
 
-        if (!hasBeenShocked)
-        {
-
-            ElectricDamage();
-            BugZapperDistance();
-
-            //play animation;
-        }
+        ElectricDamage();
     }
    
     public void ElectricDamage()
@@ -91,35 +84,6 @@ public class ItemEffects : MonoBehaviour
         GetComponent<HamsterBase>().speed = 0;
         GetComponent<HamsterBase>().TakeDamage(electricDamage);
         StartCoroutine(ResetSpeed());
-    }
-
-    public void BugZapperDistance()
-    {
-        nearHamster = null;
-
-        GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Hamster");
-
-        foreach (GameObject hamster in gameObjectArray)
-        {
-            // get distance from hamster
-            hamsterDistance = (transform.position - hamster.transform.position).magnitude;
-            // compares the distance of the last hamster to the newest hamster to see which is smaller
-            if (hamsterDistance < closestHamster && hamsterDistance != 0 && !hamster.GetComponent<ItemEffects>().hasBeenShocked)
-            {
-                closestHamster = hamsterDistance;
-                nearHamster = hamster;
-            }
-        }
-
-        if (closestHamster < hamsterShockRad)
-        {       
-            if (nearHamster != null)
-            {
-                nearHamster.GetComponent<ItemEffects>().BeenElectrocuted(shockDur, electricDamage, hamsterShockRad);
-              //  lineRenderer.SetPosition(0, transform.localPosition);
-                //lineRenderer.SetPosition(1, nearHamster.transform.localPosition);
-            }
-        }
     }
 
     public void StartLightingAOE()
