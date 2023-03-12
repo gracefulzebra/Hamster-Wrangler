@@ -51,10 +51,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eba0e9730e0b054a854445605c9d1a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdingItem: 0
+  holdingItem: 1
   placementConfirmation: {fileID: 0}
-  health: 0
-  startingCurrency: 800
+  maxHealth: 5
+  damage: 1
+  startingCurrency: 1000
+  scoreFor3Star: 8000
+  lawnMower: 0
+  leafBlower: 0
+  bugZapper: 0
+  lighter: 0
+  rake: 0
 --- !u!82 &1058055521
 AudioSource:
   m_ObjectHideFlags: 0
@@ -163,11 +170,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c44b2b3eb513240ae75a4e8e1c9dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blowerScore: 0
-  mowerScore: 0
-  lighterScore: 0
-  tarScore: 0
-  rakeScore: 0
+  blowerScore: 250
+  mowerScore: 400
+  lighterScore: 100
+  zapperScore: 0
+  rakeScore: 200
 --- !u!114 &1058055514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,12 +188,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hamsterCost: 100
-  blowerCost: 10
-  mowerCost: 10
-  lighterCost: 10
-  tarCost: 10
-  rakeCost: 10
-  repairCost: 30
+  blowerCost: 250
+  mowerCost: 400
+  lighterCost: 200
+  zapperCost: 200
+  rakeCost: 200
+  repairCost: 150
 --- !u!114 &1058055516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,15 +207,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 0}
-  deathScreen: {fileID: 0}
+  gameOverScreen: {fileID: 0}
+  finalScoreDisplay: {fileID: 0}
   scoreDisplay: {fileID: 0}
   currencyDisplay: {fileID: 0}
+  healthDisplay: {fileID: 0}
+  wavesDisplay: {fileID: 0}
   slider: {fileID: 0}
   lmCost: {fileID: 0}
   lbCost: {fileID: 0}
   rakeCost: {fileID: 0}
   tarCost: {fileID: 0}
   lighterCost: {fileID: 0}
+  star1:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  starSprite: {fileID: 21300000, guid: a3a1969d6a401104d86fa10695702e5b, type: 3}
+  IngameHTP: {fileID: 0}
+  itemSelected: {fileID: 21300000, guid: f7031b9790ee8d348b9a0c98834d2e6b, type: 3}
+  itemUnselected: {fileID: 21300000, guid: 82a727aec22988e47894b68932eb5e0e, type: 3}
+  itemCantBuy: {fileID: 21300000, guid: 82996b416a4ffad4b9cf33581b303074, type: 3}
+  highLightedButton: {fileID: 0}
   mainMenuActive: 0
 --- !u!114 &1058055517
 MonoBehaviour:
@@ -223,9 +243,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hamsterPrefab: {fileID: 1622791512648962765, guid: 907b88d61ec41bb49a69ff1e24ac0ce6, type: 3}
-  hamstersPerWave: 5
+  hamstersPerWave: 030000000300000005000000
   spawnDelay: 3
-  waveCompleted: 0
 --- !u!114 &1058055519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,3 +275,12 @@ MonoBehaviour:
   hamsterDeath2: {fileID: 8300000, guid: ad16e0718291e634db7c889019dff392, type: 3}
   hamsterDeath3: {fileID: 8300000, guid: 6739775d24ee1284c965a21bd1ee043b, type: 3}
   hamsterDeath4: {fileID: 8300000, guid: 864ca98630d877b4ea904a57b6680000, type: 3}
+  lighterOn: {fileID: 8300000, guid: 260b750ba7cb81342839500582229d73, type: 3}
+  lmRun: {fileID: 0}
+  lmExplode: {fileID: 0}
+  rake1: {fileID: 8300000, guid: d4fcd9109acef4d448a970cc8159c613, type: 3}
+  rake2: {fileID: 8300000, guid: eacf96dff8b6c1b468ca17d0f98afb5a, type: 3}
+  rake3: {fileID: 8300000, guid: 0c75adb291f60d045ae1c82dc1e1f0e8, type: 3}
+  lfBlower: {fileID: 8300000, guid: 46ca1753959a97547bb7c63bebec1f0e, type: 3}
+  trapPlaced: {fileID: 0}
+  music: {fileID: 8300000, guid: 805fa1fd17ed3764999e07a1ce629a87, type: 3}

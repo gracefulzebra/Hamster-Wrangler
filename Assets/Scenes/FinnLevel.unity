@@ -42989,54 +42989,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1058055513, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: tarScore
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 1058055513, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: rakeScore
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1058055513, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: mowerScore
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 1058055513, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: blowerScore
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 1058055513, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: lighterScore
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1058055514, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: tarCost
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 1058055514, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: rakeCost
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1058055514, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: mowerCost
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 1058055514, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: blowerCost
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 1058055514, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: repairCost
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 1058055514, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: zapperCost
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1058055514, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: lighterCost
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lbCost
       value: 
@@ -43066,21 +43018,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1447021410}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: starSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a3a1969d6a401104d86fa10695702e5b, type: 3}
-    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: itemCantBuy
-      value: 
-      objectReference: {fileID: 21300000, guid: 82996b416a4ffad4b9cf33581b303074, type: 3}
-    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lighterCost
       value: 
       objectReference: {fileID: 1765323405}
-    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: itemSelected
-      value: 
-      objectReference: {fileID: 21300000, guid: f7031b9790ee8d348b9a0c98834d2e6b, type: 3}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: scoreDisplay
       value: 
@@ -43098,17 +43038,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1035527225}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: itemUnselected
-      value: 
-      objectReference: {fileID: 21300000, guid: 82a727aec22988e47894b68932eb5e0e, type: 3}
-    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: currencyDisplay
       value: 
       objectReference: {fileID: 1559548227}
-    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: star1.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: finalScoreDisplay
       value: 
@@ -43125,74 +43057,10 @@ PrefabInstance:
       propertyPath: star1.Array.data[2]
       value: 
       objectReference: {fileID: 1816693212}
-    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: hamstersPerWave
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: hamstersPerWave.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: hamstersPerWave.Array.data[0]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: hamstersPerWave.Array.data[1]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: hamstersPerWave.Array.data[2]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: hamstersPerWave.Array.data[3]
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 1058055519, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: ShopAni
       value: 
       objectReference: {fileID: 1527962493}
-    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: music
-      value: 
-      objectReference: {fileID: 8300000, guid: 805fa1fd17ed3764999e07a1ce629a87, type: 3}
-    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: rake1
-      value: 
-      objectReference: {fileID: 8300000, guid: d4fcd9109acef4d448a970cc8159c613, type: 3}
-    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: rake2
-      value: 
-      objectReference: {fileID: 8300000, guid: eacf96dff8b6c1b468ca17d0f98afb5a, type: 3}
-    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: rake3
-      value: 
-      objectReference: {fileID: 8300000, guid: 0c75adb291f60d045ae1c82dc1e1f0e8, type: 3}
-    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: lmBreak
-      value: 
-      objectReference: {fileID: 8300000, guid: 9821dc6a101530845a1669289344c989, type: 3}
-    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: lfBlower
-      value: 
-      objectReference: {fileID: 8300000, guid: 46ca1753959a97547bb7c63bebec1f0e, type: 3}
-    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: lmRepair
-      value: 
-      objectReference: {fileID: 8300000, guid: 03545a01ae4af5048bbef1fbe819f309, type: 3}
-    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: lighterOn
-      value: 
-      objectReference: {fileID: 8300000, guid: 260b750ba7cb81342839500582229d73, type: 3}
-    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: leafBlower
-      value: 
-      objectReference: {fileID: 8300000, guid: 46ca1753959a97547bb7c63bebec1f0e, type: 3}
-    - target: {fileID: 1058055521, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: Mute
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1102496838878895824, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -43236,42 +43104,6 @@ PrefabInstance:
     - target: {fileID: 1102496838878895824, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: damage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: health
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: bugZapper
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: lawnMower
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: maxHealth
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: leafBlower
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: holdingItem
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: scoreFor3Star
-      value: 8000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
-      propertyPath: startingCurrency
-      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 8881886160524883247, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_Name
