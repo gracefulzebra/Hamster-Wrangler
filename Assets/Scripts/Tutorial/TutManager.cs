@@ -1,6 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class TutManager : MonoBehaviour
 {
@@ -8,6 +9,11 @@ public class TutManager : MonoBehaviour
     int tempCounter;
 
     public static TutManager tutInstance;
+
+    [SerializeField] Button waveStartButton;
+    [SerializeField] GameObject lawnMowerButton;
+
+
 
     private void Awake()
     {
@@ -26,11 +32,30 @@ public class TutManager : MonoBehaviour
     {
         GetComponent<TriggerDialogue>().DialogueTrigger();
     }
-
+    
     public void NextStep()
     {
             posCounter++;
+    }
 
+    private void Update()
+    {
+
+        switch(posCounter)
+        {
+            case 4:
+                lawnMowerButton.GetComponent<TutButtons>().enabled = true;
+                break;
+            case 6:
+                waveStartButton.GetComponent<Button>().enabled = true;
+                break;
+            case 7:
+               
+
+                break;
+
+
+        }
     }
 
 }

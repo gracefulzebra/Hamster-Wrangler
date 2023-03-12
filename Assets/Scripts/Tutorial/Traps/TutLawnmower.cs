@@ -1,0 +1,133 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TutLawnmower : TrapBase
+{
+
+    [Header("Particle Effects")]
+    [SerializeField] GameObject fireEffect;
+    [SerializeField] GameObject smokeEffect;
+
+    [Header("Generic Values")]
+    float lawnmowerDestroyDelay;
+    [SerializeField] float lawnmowerSpd;
+    [SerializeField] float lawnmowerExplodeDelay;
+    int counter = 0;
+    bool willExplode;
+
+    [Header("References")]
+    GameObject gridRefObject;
+    GridGenerator gridRef;
+    [SerializeField] GameObject explosion;
+    Node nodeHit;
+
+    bool audioOn = false;
+
+    private void Start()
+    {
+        gridRefObject = GameObject.Find("OliverGriddy");
+        gridRef = gridRefObject.GetComponent<GridGenerator>();
+        itemID = "LawnMower";
+    }
+
+    private void Update()
+    {
+        // this is weird! need to turn gravity off for placement but need it for lawnmower launch
+        if (GetComponentInParent<TutSnapToGrid>().hasItem == false && !onPlacement)
+        {
+            transform.parent.gameObject.layer = 0;
+            onPlacement = true;
+            GetComponentInParent<Rigidbody>().useGravity = true;
+        }
+
+        if (activateTrap)
+        {
+            if (counter < 1)
+            {
+                canUseTrap = false;
+                // finds the cloest node for the player and makes it placeable
+                nodeHit = gridRef.GetNodeFromWorldPoint(transform.position);
+                nodeHit.placeable = true;
+                counter++;
+            }
+        }
+    }
+
+    public void ActivateLawnmower()
+    {
+        if (!audioOn)
+        {
+            GameManager.instance.audioManager.LawnMowerRunAudio();
+            audioOn = true;
+        }
+
+        transform.parent.gameObject.layer = 2;
+        smokeEffect.SetActive(true);
+        transform.parent.Translate(Vector3.forward * lawnmowerSpd * Time.deltaTime);
+    }
+
+    IEnumerator DelayLawnMowerExplode()
+    {
+        yield return new WaitForSeconds(lawnmowerExplodeDelay);
+        LawnmowerExplode();
+    }
+
+    void LawnmowerExplode()
+    {
+        GameManager.instance.audioManager.LawnMowerExplodeAudio();
+
+        // for spawning explosion
+        Vector3 explosionPos = new Vector3(transform.position.x, transform.position.y, transform.position.z); ;
+        Instantiate(explosion, explosionPos, Quaternion.identity);
+        Destroy(gameObject.transform.parent.gameObject);
+    }
+
+    private void OnTriggerStay(Collider col)
+    {
+        // if item is unplaced then dont run script
+        if (GetComponentInParent<TutSnapToGrid>().hasItem)
+            return;
+        if (col.GetComponent<TrapBase>() != null)
+        {
+
+            if (col.gameObject.GetComponent<TrapBase>().itemID == "Lighter" && col.gameObject.GetComponent<TrapBase>().activateTrap)
+            {
+                willExplode = true;
+                activateTrap = true;
+                StartCoroutine(DelayLawnMowerExplode());
+            }
+
+        }
+        // checks if lighter is on
+        if (!activateTrap)
+            return;
+
+        if (col.CompareTag("Hamster"))
+        {
+            ItemInteract(col.gameObject);
+            col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
+        }
+
+        // obstacle
+        if (col.gameObject.layer == 7)
+        {
+            if (willExplode)
+            {
+                LawnmowerExplode();
+                Destroy(gameObject.transform.parent.gameObject);
+            }
+            else
+            {
+                Destroy(gameObject.transform.parent.gameObject);
+            }
+        }
+
+        // on ground
+        if (col.gameObject.layer == 6 && activateTrap)
+        {
+            ActivateLawnmower();
+        }
+    }
+}
+

@@ -142,8 +142,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7246211791190221495}
-  - component: {fileID: 2893338099749302312}
   - component: {fileID: 794440212163466916}
+  - component: {fileID: 2128212654784676221}
   m_Layer: 2
   m_Name: Hitbox
   m_TagString: Untagged
@@ -166,7 +166,20 @@ Transform:
   m_Father: {fileID: 132374030631317105}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2893338099749302312
+--- !u!65 &794440212163466916
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804117018870882866}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6055693, y: 0.6007546, z: 1.8192171}
+  m_Center: {x: 0.0005207956, y: 0.11991077, z: 0.080446705}
+--- !u!114 &2128212654784676221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,7 +188,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 804117018870882866}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf24581301c460041bb58faf63889d81, type: 3}
+  m_Script: {fileID: 11500000, guid: 62407bfc8e157d24881507982a2508f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fuelUsage: 0
@@ -190,19 +203,6 @@ MonoBehaviour:
   lawnmowerSpd: 5
   lawnmowerExplodeDelay: 0.5
   explosion: {fileID: 294653886677383835, guid: 9299834040719374db4880798af5c369, type: 3}
---- !u!65 &794440212163466916
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 804117018870882866}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6055693, y: 0.6007546, z: 1.8192171}
-  m_Center: {x: 0.0005207956, y: 0.11991077, z: 0.080446705}
 --- !u!1 &2891822492899386897
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,9 +424,9 @@ GameObject:
   - component: {fileID: 6003155728989090500}
   - component: {fileID: 2791308195870778196}
   - component: {fileID: 4663592697988712322}
-  - component: {fileID: 396920081678611727}
+  - component: {fileID: 7723206857410464323}
   m_Layer: 0
-  m_Name: Lawnmower
+  m_Name: TutLawnmower
   m_TagString: Unplaced Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -495,7 +495,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.67283344, y: 0.020317772, z: 0.6961135}
   m_Center: {x: 0.040777802, y: 0.028811406, z: -0.06655577}
---- !u!114 &396920081678611727
+--- !u!114 &7723206857410464323
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -504,15 +504,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4396709711384378787}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e64ef8eaf4c628469105ac8723dd15f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2871947d990658442b231021f716c56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hasItem: 0
-  confirmButton: {fileID: 0}
-  cancelButton: {fileID: 0}
-  rotateButton: {fileID: 0}
   placementEffect: {fileID: 2466632521393769144}
   itemID: 
+  tutCorrectRotation: 0
+  tutCanPlace: 0
 --- !u!1 &4761188882436680822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,7 +1068,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2893338099749302312}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: LawnMower, Assembly-CSharp
         m_MethodName: ActivateLawnmower
         m_Mode: 1
