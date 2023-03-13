@@ -47,7 +47,7 @@ public class TutButtons : MonoBehaviour, IPointerDownHandler
         {
             GameManager.instance.uiManager.ShopButtonOutline(gameObject);
             GameManager.instance.uiManager.highLightedButton = gameObject;
-
+            
             GameManager.instance.holdingItem = true;
 
             Vector3 spawnPos = new Vector3(0f, 100f, 0f);

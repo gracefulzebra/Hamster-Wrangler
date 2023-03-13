@@ -101,7 +101,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     
 
 
-    public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
+        public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
 
         public void OnPointerUp(PointerEventData eventData)
         {
@@ -115,7 +115,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         {
             if (hasItem == false)
             {
-                GetComponentInChildren<TrapBase>().ActivateTrap();
+              GetComponentInChildren<TrapBase>().ActivateTrap();
             }
             else
             {

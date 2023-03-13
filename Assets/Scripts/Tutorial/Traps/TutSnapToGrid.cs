@@ -40,7 +40,6 @@ public class TutSnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHand
             CheckForHouse();
             PlacementConfirmtation();
             nodeCheck();
-            CheckDown();
         }
     }
 
@@ -82,19 +81,6 @@ public class TutSnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHand
         }
     }
 
-    void CheckDown()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), out hit, 100))
-        {
-            if (hit.transform.gameObject.tag == "Tut Placement")
-            {
-                //tutCanPlace = true;
-            }
-               // tutCanPlace = false;
-        }
-    }
-
     void OnTriggerStay(Collider col)
     {
         if (col.transform.gameObject.tag == "Tut Placement")
@@ -125,7 +111,8 @@ public class TutSnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHand
     {
         if (hasItem == false)
         {
-            GetComponentInChildren<TrapBase>().ActivateTrap();
+            if (TutManager.tutInstance.tutCanUse)
+               GetComponentInChildren<TrapBase>().ActivateTrap();
         }
         else
         {
