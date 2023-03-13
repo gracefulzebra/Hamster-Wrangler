@@ -173,9 +173,9 @@ public class BugZapper : TrapBase
         //If there are objects scanned : Find closest
         if (nearbyObjects.Length > 0)
         {
-            RaycastHit closestObject;
+            RaycastHit closestObject = new RaycastHit();
 
-            closestObject = nearbyObjects[0];
+            closestObject.distance = 1000;
 
             for (int i = 0; i < nearbyObjects.Length; i++)
             {
@@ -188,10 +188,12 @@ public class BugZapper : TrapBase
                 }                          
             }
 
-            if (shockedObjects.Contains(closestObject.transform.gameObject))
-            {
+            if (closestObject.distance == 1000)
                 return;
-            }
+
+            if (shockedObjects.Contains(closestObject.transform.gameObject))
+                return;
+            
 
             shockedObjects.Add(closestObject.transform.gameObject);
             PerformZapEffect(closestObject.transform.gameObject);
@@ -205,11 +207,9 @@ public class BugZapper : TrapBase
         {
             targetObject.GetComponent<ItemEffects>().BeenElectrocuted(shockDuration, damage, hamsterShockRadius);
             targetObject.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
-            print("ZAPEPREPRPERPEPR");
         }
         else if(targetObject.name == "Leafblower(Clone)")
         {
-            print("hitblower");
             targetObject.GetComponentInChildren<Fan>().overCharge = true;
         }
     }
@@ -227,15 +227,17 @@ public class BugZapper : TrapBase
 
         linePoints = new Vector3[shockedObjects.Count + 1];
         linePoints[0] = transform.position;
+        
         for(int i = 0; i < shockedObjects.Count; i++)
         {
 
             linePoints[i + 1] = shockedObjects[i].transform.position; 
         }
+        
         lR.positionCount = linePoints.Length;
         lR.SetPositions(linePoints);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.2f);
 
         Destroy(lR);
 
