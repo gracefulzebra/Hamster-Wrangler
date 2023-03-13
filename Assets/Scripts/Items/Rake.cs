@@ -53,6 +53,8 @@ public class Rake : TrapBase
             yield return new WaitForSeconds(rakeFlingDelay);
         }
         inProgress = false;
+        Destroy(gameObject.transform.parent.gameObject);
+
     }
 
     private Vector3 CalculateVel(Transform currentPos)

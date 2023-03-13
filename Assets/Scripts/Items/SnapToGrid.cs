@@ -55,25 +55,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         {
             PlacementConfirmtation();
             nodeCheck();
-
-               // used for if user clicks on ui or if placements messes up on grid
-               if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem)
-               {
-                 // if user presses ui button deletes object
-                   if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem)
-                   {
-                       GameManager.instance.holdingItem = false;
-                     //  Destroy(gameObject);
-                   }
-            
-            // resets ui
-         /*   if (GameManager.instance.uiManager.highLightedButton != null)
-            {
-                GameManager.instance.uiManager.RemoveShopOutline();
-            }
-         */
-           }
-
         }
     }
 
@@ -99,8 +80,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             }
         }
     
-
-
         public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
 
         public void OnPointerUp(PointerEventData eventData)
@@ -147,57 +126,5 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             {
                 gameObject.transform.Rotate(rotVector, Space.Self);
             }
-        }
-    
+        }    
 }
-
-/*  IEnumerator PlacementConfirmation()
-    {
-        yield return new WaitForSeconds(2.0f);
-        gameManager.currencyManager.TryBuy(itemID);
-        gameManager.CheckIfItemHeld();
-    }
-    void OnMouseDown()
-    {
-            if (!fullyPlaced)
-            {
-                StartCoroutine(StillHoldingItem());
-                //  gameObject.tag = "Unplaced Item";
-                StopCoroutine(lastroutine);
-                nodeHit.placeable = true;
-                hasItem = true;
-            }
-    }
-
-    IEnumerator StillHoldingItem()
-    {
-        yield return new WaitForSeconds(0.3f);
-        if (Input.GetMouseButton(0))
-        {
-            print("true");
-        }
-        else
-        {
-            print("false");
-        }
-    }
-    */
-/* from old ui input
-public void CancelRepair()
-{
-    if (!hasItem)
-    {
-        confirmButton.SetActive(false);
-        cancelButton.SetActive(false);
-    }       
-}
-
-private void OnMouseDown()
-{
-    if (!hasItem) //&& hasDurability)
-    {
-        confirmButton.SetActive(true);
-        cancelButton.SetActive(true);
-    }
-}
-*/

@@ -10,7 +10,6 @@ public class TutLawnmower : TrapBase
     [SerializeField] GameObject smokeEffect;
 
     [Header("Generic Values")]
-    float lawnmowerDestroyDelay;
     [SerializeField] float lawnmowerSpd;
     [SerializeField] float lawnmowerExplodeDelay;
     int counter = 0;
@@ -34,7 +33,7 @@ public class TutLawnmower : TrapBase
     private void Update()
     {
         // this is weird! need to turn gravity off for placement but need it for lawnmower launch
-        if (GetComponentInParent<TutSnapToGrid>().hasItem == false && !onPlacement)
+        if (GetComponentInParent<BaseSnapToGrid>().hasItem == false && !onPlacement)
         {
             transform.parent.gameObject.layer = 0;
             onPlacement = true;
@@ -52,6 +51,20 @@ public class TutLawnmower : TrapBase
                 counter++;
             }
         }
+
+
+        // step 10ish
+        GameObject hamster = GameObject.FindGameObjectWithTag("Hamster");
+       
+        if (hamster != null)
+        {
+            float hamsterDistance = (transform.position - hamster.transform.position).magnitude;
+            // make public bool somewhere, will need to be read in from bugzapper for contiuinity probs
+            if (hamsterDistance < 5)
+            {
+                TutManager.tutInstance.LerpTimeDown();
+            }
+        }         
     }
 
     public void ActivateLawnmower()
@@ -86,7 +99,7 @@ public class TutLawnmower : TrapBase
     private void OnTriggerStay(Collider col)
     {
         // if item is unplaced then dont run script
-        if (GetComponentInParent<TutSnapToGrid>().hasItem)
+        if (GetComponentInParent<BaseSnapToGrid>().hasItem)
             return;
         if (col.GetComponent<TrapBase>() != null)
         {
@@ -107,6 +120,7 @@ public class TutLawnmower : TrapBase
         {
             ItemInteract(col.gameObject);
             col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
+            TutManager.tutInstance.tutCanUse = false;
         }
 
         // obstacle
