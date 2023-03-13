@@ -24,6 +24,8 @@ public class TutLawnmower : TrapBase
 
     bool audioOn = false;
 
+
+    float timer;
     private void Start()
     {
         gridRefObject = GameObject.Find("OliverGriddy");
@@ -52,6 +54,18 @@ public class TutLawnmower : TrapBase
                 counter++;
             }
         }
+
+
+        // step 10ish
+        GameObject hamster = GameObject.FindGameObjectWithTag("Hamster");
+       
+        float hamsterDistance = (transform.position - hamster.transform.position).magnitude;
+        // make public bool somewhere, will need to be read in from bugzapper for contiuinity probs
+        if (hamsterDistance < 5)
+        {
+            timer += Time.deltaTime;
+            Time.timeScale = Mathf.Lerp(1, 0, timer / 1f);        
+        }         
     }
 
     public void ActivateLawnmower()
@@ -107,6 +121,7 @@ public class TutLawnmower : TrapBase
         {
             ItemInteract(col.gameObject);
             col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
+            TutManager.tutInstance.tutCanUse = false;
         }
 
         // obstacle

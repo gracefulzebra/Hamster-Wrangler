@@ -47,8 +47,9 @@ public class TutManager : MonoBehaviour
        
         switch (posCounter)
         {
-            case 4:          
-                break;
+            // do all dialouge
+
+            // player can buy item
             case 5:
                 placementGridSquare.GetComponent<Renderer>().material.color = Color.white;
                 lawnMowerButton.GetComponent<TutButtons>().enabled = true;
@@ -61,24 +62,32 @@ public class TutManager : MonoBehaviour
                //     NextStep();
                 }
                 break;*/
+          // more dialogue after trap is placed
             case 7:
                 lawnMowerButton.GetComponent<TutButtons>().enabled = false;
 
                 contineDialouge.GetComponent<Button>().enabled = true;
+
                 placementGridSquare.GetComponent<Renderer>().material.color = Color.green;
-                waveStartButton.GetComponent<Button>().enabled = true;
                 break;
-            case 8:
+                // more dialouge
+
+                // player starts wave
+            case 10:
                 waveStartButton.GetComponent<Button>().enabled = true;
 
-                timer += Time.deltaTime;
-                Time.timeScale = Mathf.Lerp(1, 0, timer / 1f);
                 break;
-            case 9:
-                tutCanUse = true;
+            // go to tutlawnmower script for time slowing
 
-                timer += Time.deltaTime;
-                Time.timeScale = Mathf.Lerp(0, 1, timer / 1f);
+                // when time is zero lawnmower is useable
+            case 11:
+                if (Time.timeScale == 0)
+                {
+                    tutCanUse = true;
+                }
+                break;
+            // after trap is used go to tut snap to grid and respeed up time.
+            case 12:
                 break;
 
 
