@@ -63,8 +63,7 @@ public class TutLawnmower : TrapBase
         // make public bool somewhere, will need to be read in from bugzapper for contiuinity probs
         if (hamsterDistance < 5)
         {
-            timer += Time.deltaTime;
-            Time.timeScale = Mathf.Lerp(1, 0, timer / 1f);        
+            TutManager.tutInstance.LerpTimeDown();         
         }         
     }
 

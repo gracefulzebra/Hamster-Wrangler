@@ -18326,8 +18326,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 72
+  m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -18393,7 +18393,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 62}
+  m_AnchoredPosition: {x: -912, y: -100}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &657491843
@@ -25347,7 +25347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -741, y: -300}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &904598050
@@ -34354,11 +34354,19 @@ PrefabInstance:
       objectReference: {fileID: 1816693212}
     - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: hamstersPerWave.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: hamstersPerWave.Array.data[0]
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: hamstersPerWave.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: hamstersPerWave.Array.data[2]
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1058055519, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: ShopAni
@@ -43700,6 +43708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posCounter: 0
   tutCanUse: 0
+  unfreezeTime: 0
   contineDialouge: {fileID: 904598051}
   waveStartButton: {fileID: 1475410182}
   lawnMowerButton: {fileID: 1561253754}
@@ -43727,6 +43736,8 @@ MonoBehaviour:
     - 'you can move camera '
     - press start wave
     - time has slowed, press the lawnmower to launch
+    - Each kill gets you money, more traps you use to kill a hamster will get you
+      more score
 --- !u!1001 &1504516791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45231,19 +45242,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1561253758}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1501101657}
-        m_TargetAssemblyTypeName: TutManager, Assembly-CSharp
-        m_MethodName: NextStep
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1561253758
 MonoBehaviour:
   m_ObjectHideFlags: 0

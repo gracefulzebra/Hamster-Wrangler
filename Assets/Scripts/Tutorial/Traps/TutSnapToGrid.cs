@@ -112,7 +112,11 @@ public class TutSnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHand
         if (hasItem == false)
         {
             if (TutManager.tutInstance.tutCanUse)
+            {
                GetComponentInChildren<TrapBase>().ActivateTrap();
+               TutManager.tutInstance.NextStep();
+               TutManager.tutInstance.tutCanUse = false;
+            }
         }
         else
         {
