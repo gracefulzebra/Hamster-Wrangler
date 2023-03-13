@@ -20,7 +20,7 @@ public class TutBlowTorch : TrapBase
 
     private void Update()
     {
-        if (GetComponentInParent<SnapToGrid>().hasItem == false && !onPlacement)
+        if (GetComponentInParent<BaseSnapToGrid>().hasItem == false && !onPlacement)
         {
             onPlacement = true;
             GetComponentInParent<Rigidbody>().useGravity = true;
@@ -51,7 +51,7 @@ public class TutBlowTorch : TrapBase
 
     void OnTriggerStay(Collider col)
     {
-        if (GetComponentInParent<SnapToGrid>().hasItem)
+        if (GetComponentInParent<BaseSnapToGrid>().hasItem)
             return;
         if (activateTrap)
         {
