@@ -4,11 +4,8 @@ public class TutLMPlacement : BaseSnapToGrid
 {
 
     void Start()
-    {
-        if (gameObject.name == "Lawnmower(Clone)")
-        {
-            itemID = "LawnMower";
-        }
+    {    
+        itemID = "LawnMower";   
         hasItem = true;
         gridRefObject = GameObject.Find("OliverGriddy");
         gridRef = gridRefObject.GetComponent<GridGenerator>();

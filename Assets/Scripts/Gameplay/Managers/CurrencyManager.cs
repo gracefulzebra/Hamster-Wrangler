@@ -52,6 +52,20 @@ public class CurrencyManager : MonoBehaviour
         }
     }
 
+    public void ChangeCurrencyTut(string itemID)
+    {
+        switch (itemID)
+        {
+            case "LawnMower":
+                currency -= mowerCost;
+                break;
+            case "Lighter":
+                currency -= lighterCost;
+                break;
+        }
+        UpdateCurrencyDisplay();
+    }
+
     /// <summary>
     /// Checks to see if item can be bought 
     /// with current currency and then purchases it.

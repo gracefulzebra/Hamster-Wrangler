@@ -10,10 +10,7 @@ public class TutBTPlacement : BaseSnapToGrid
 
     void Start()
     {
-        if (gameObject.name == "Lighter(Clone)")
-        {
-            itemID = "Lighter";
-        }
+        itemID = "Lighter";        
         hasItem = true;
         gridRefObject = GameObject.Find("OliverGriddy");
         gridRef = gridRefObject.GetComponent<GridGenerator>();
@@ -63,14 +60,21 @@ public class TutBTPlacement : BaseSnapToGrid
     {
         if (hasItem == false)
         {
+            if (TutManager.tutInstance.tutEnd)
+            {
+                GetComponentInChildren<TrapBase>().ActivateTrap();
+                TutManager.tutInstance.NextStep();
+            }
+
             if (TutManager.tutInstance.tutCanUseBT)
             {
                 GetComponentInChildren<TrapBase>().ActivateTrap();
                 TutManager.tutInstance.NextStep();
+                TutManager.tutInstance.tutCanUseBT = false;
                 if (!singleUseCourtine)
                 {
                     StartCoroutine(SyenrgyDialouge());
-                }
+                }        
             }
         }
         else

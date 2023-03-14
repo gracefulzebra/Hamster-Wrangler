@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,16 +13,23 @@ public class TutManager : MonoBehaviour
     [SerializeField] Material darkTile;
     [SerializeField] Material lightTile;
 
-    [SerializeField] Button contineDialouge;
-    [SerializeField] Button waveStartButton;
-    [SerializeField] GameObject lawnMowerButton;
-    [SerializeField] GameObject blowTorchButton;
-
     [SerializeField] GameObject placementGridSquareLM;
     [SerializeField] GameObject placementGridSquareBT;
 
+    [SerializeField] Button contineDialouge;
+    [SerializeField] Button waveStartButton;
+
+    [SerializeField] GameObject lawnMowerButton;
+    [SerializeField] GameObject blowTorchButton;
+    [SerializeField] GameObject leafBlowerButton;
+    [SerializeField] GameObject bugZapperButton;
+    [SerializeField] GameObject rakeButton;
+
+    public bool tutEnd;
+
     public bool tutCanUseLM;
     public bool tutCanUseBT;
+
 
     private void Awake()
     {
@@ -47,7 +55,9 @@ public class TutManager : MonoBehaviour
     }
 
     private void Update()
-    {    
+    {
+        if (tutEnd)
+            return;
         switch (posCounter)
         {
             // do all dialouge
@@ -141,12 +151,46 @@ public class TutManager : MonoBehaviour
                     tutCanUseBT = true;
                 }
                 break;
+                // time is reset 
             case 19:
                 timer = 0;
-
                 Time.timeScale = 1;
-                break;
 
+                break;
+                // dialouge 
+            case 20:
+                contineDialouge.GetComponent<Button>().enabled = true;
+
+                break;
+                // go into menu
+            case 21:
+                contineDialouge.GetComponent<Button>().enabled = false;
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    NextStep();
+                    FindObjectOfType<DialogueManager>().DisplayNextSentence();
+                }
+                break;
+                // last dialouge 
+            case 23:
+                contineDialouge.GetComponent<Button>().enabled = true;
+                break;
+                // game is normal now 
+            case 24:
+                lawnMowerButton.GetComponent<TutButtons>().enabled = false;
+                blowTorchButton.GetComponent<TutButtons>().enabled = false;
+
+                lawnMowerButton.GetComponent<ButtonInputs>().enabled = true;
+                blowTorchButton.GetComponent<ButtonInputs>().enabled = true;
+                leafBlowerButton.GetComponent<ButtonInputs>().enabled = true;
+                bugZapperButton.GetComponent<ButtonInputs>().enabled = true;
+                rakeButton.GetComponent<ButtonInputs>().enabled = true;
+
+                GameManager.instance.currencyManager.UIOutline();
+                waveStartButton.GetComponent<Button>().enabled = true;
+                tutEnd = true;
+                Destroy(contineDialouge.transform.parent.gameObject);
+                break;
         }
     }
 

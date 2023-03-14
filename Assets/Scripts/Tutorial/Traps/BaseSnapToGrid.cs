@@ -27,7 +27,7 @@ public class BaseSnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHan
 
         if (Physics.Raycast(mousePos, out hit))
         {
-            if (hit.transform.gameObject.tag == "Ground" || hit.transform.gameObject.tag != "Unplaced Item")
+            if (!hit.transform.CompareTag("Unplaced Item"))
             {
                 nodeHit = gridRef.GetNodeFromWorldPoint(hit.point);
 
@@ -38,9 +38,6 @@ public class BaseSnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHan
             }
         }
     }
-
-
-
 
     public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
 
@@ -62,7 +59,7 @@ public class BaseSnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHan
             GameManager.instance.holdingItem = false;
             GameManager.instance.uiManager.RemoveShopOutline();
             GameManager.instance.audioManager.ItemPlacedAudio();
-            GameManager.instance.currencyManager.TryBuy(itemID);
+            GameManager.instance.currencyManager.ChangeCurrencyTut(itemID);
 
             nodeHit.placeable = false;
             hasItem = false;
