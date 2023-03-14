@@ -54,14 +54,16 @@ public class TutManager : MonoBehaviour
 
             // player can buy item
             case 5:
-
                 placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
                 lawnMowerButton.GetComponent<TutButtons>().enabled = true;
+                GameManager.instance.uiManager.DefaultShopOutline(lawnMowerButton);
+
                 contineDialouge.GetComponent<Button>().enabled = false;
                 break;
           // more dialogue after trap is placed
             case 7:
                 lawnMowerButton.GetComponent<TutButtons>().enabled = false;
+                GameManager.instance.uiManager.ShopButtonCantBuy(lawnMowerButton);
 
                 contineDialouge.GetComponent<Button>().enabled = true;
 
@@ -73,7 +75,6 @@ public class TutManager : MonoBehaviour
             // player starts wave
             case 9:
                 contineDialouge.GetComponent<Button>().enabled = false;
-
 
                 waveStartButton.GetComponent<Button>().enabled = true;
                 break;
@@ -105,19 +106,18 @@ public class TutManager : MonoBehaviour
                 tutCanUseLM = false;
                 contineDialouge.GetComponent<Button>().enabled = false;
 
+                GameManager.instance.uiManager.DefaultShopOutline(lawnMowerButton);
                 lawnMowerButton.GetComponent<TutButtons>().enabled = true;
                 placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
                 break;
-                // start next wave
-            case 14:
-                lawnMowerButton.GetComponent<TutButtons>().enabled = false;
 
-                blowTorchButton.GetComponent<TutButtons>().enabled = true;
-                break;  
-                // can kill hamster now
+                // can use blow torch
             case 15:
                 placementGridSquareLM.GetComponent<Renderer>().material = darkTile;
+                lawnMowerButton.GetComponent<TutButtons>().enabled = false;
+                GameManager.instance.uiManager.ShopButtonCantBuy(lawnMowerButton);
 
+                GameManager.instance.uiManager.DefaultShopOutline(blowTorchButton);
                 blowTorchButton.GetComponent<TutButtons>().enabled = true;
                 placementGridSquareBT.GetComponent<Renderer>().material.color = Color.black;
                 break;
@@ -125,6 +125,7 @@ public class TutManager : MonoBehaviour
 
                 // can start wave
             case 17:
+                GameManager.instance.uiManager.ShopButtonCantBuy(blowTorchButton);
                 blowTorchButton.GetComponent<TutButtons>().enabled = false;
                 placementGridSquareBT.GetComponent<Renderer>().material = lightTile;
 
