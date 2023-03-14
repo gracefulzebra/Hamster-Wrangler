@@ -30,6 +30,7 @@ public class TutManager : MonoBehaviour
     public bool tutCanUseLM;
     public bool tutCanUseBT;
 
+    bool cantIncreasePC;
 
     private void Awake()
     {
@@ -51,6 +52,7 @@ public class TutManager : MonoBehaviour
     
     public void NextStep()
     {
+        if (!cantIncreasePC)
             posCounter++;
     }
 
@@ -78,14 +80,20 @@ public class TutManager : MonoBehaviour
                 contineDialouge.GetComponent<Button>().enabled = true;
 
                 placementGridSquareLM.GetComponent<Renderer>().material = darkTile;
-                break;
 
+                DialougeWithNoPC();
+
+                break;
+                case 8:
+                cantIncreasePC = false;
+                contineDialouge.GetComponent<Button>().enabled = true;
+
+                break;
             // more dialouge
 
             // player starts wave
             case 9:
                 contineDialouge.GetComponent<Button>().enabled = false;
-
                 waveStartButton.GetComponent<Button>().enabled = true;
                 break;
             // go to tutlawnmower script for time slowing
@@ -191,6 +199,16 @@ public class TutManager : MonoBehaviour
                 tutEnd = true;
                 Destroy(contineDialouge.transform.parent.gameObject);
                 break;
+        }
+    }
+
+
+    void DialougeWithNoPC()
+    {
+        if (!cantIncreasePC)
+        {
+            FindObjectOfType<DialogueManager>().DisplayNextSentence();
+            cantIncreasePC = true;
         }
     }
 
