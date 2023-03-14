@@ -20,7 +20,6 @@ public class TutManager : MonoBehaviour
     [SerializeField] GameObject placementGridSquareLM;
     [SerializeField] GameObject placementGridSquareBT;
 
-
     public bool tutCanUseLM;
     public bool tutCanUseBT;
 
@@ -48,18 +47,16 @@ public class TutManager : MonoBehaviour
     }
 
     private void Update()
-    {
-
-       
+    {    
         switch (posCounter)
         {
             // do all dialouge
 
             // player can buy item
             case 5:
+
                 placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
                 lawnMowerButton.GetComponent<TutButtons>().enabled = true;
-
                 contineDialouge.GetComponent<Button>().enabled = false;
                 break;
           // more dialogue after trap is placed
