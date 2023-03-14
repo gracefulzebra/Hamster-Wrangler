@@ -59,11 +59,11 @@ public class TutLMPlacement : BaseSnapToGrid
     {
         if (hasItem == false)
         {
-            if (TutManager.tutInstance.tutCanUse)
+            if (TutManager.tutInstance.tutCanUseLM)
             {
                GetComponentInChildren<TrapBase>().ActivateTrap();
                TutManager.tutInstance.NextStep();
-               TutManager.tutInstance.tutCanUse = false;
+               TutManager.tutInstance.tutCanUseLM = false;
             }
         }
         else

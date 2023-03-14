@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 6649807326451815635}
   - component: {fileID: 7578543152914011619}
   - component: {fileID: 1058470734245778528}
-  - component: {fileID: 5006221517106170354}
+  - component: {fileID: 6702830175854599882}
   m_Layer: 0
   m_Name: TutBlowtorch
   m_TagString: Unplaced Item
@@ -279,7 +279,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &5006221517106170354
+--- !u!114 &6702830175854599882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -288,10 +288,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 649621270774770506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2871947d990658442b231021f716c56d, type: 3}
+  m_Script: {fileID: 11500000, guid: 77a96a57fe3fe824482ae0129867d033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasItem: 1
+  hasItem: 0
   placementEffect: {fileID: 1108336735695170685}
   itemID: 
   tutCorrectRotation: 0
@@ -501,7 +501,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3150191825580001233}
         m_TargetAssemblyTypeName: TrapBase, Assembly-CSharp
         m_MethodName: RefuelTrap
         m_Mode: 1

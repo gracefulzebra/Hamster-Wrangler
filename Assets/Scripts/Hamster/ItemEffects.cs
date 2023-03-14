@@ -131,11 +131,10 @@ public class ItemEffects : MonoBehaviour
     bool dmgCounter;
     public void InExplosionRadius(int explosionDamage)
     {
-        if (dmgCounter)
+        if (!dmgCounter)
         {
-            dmgCounter = false;
+            dmgCounter = true;
             GetComponent<HamsterBase>().TakeDamage(explosionDamage);
-            print("john");
         }
     }
 

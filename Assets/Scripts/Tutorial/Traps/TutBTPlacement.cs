@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class TutBTPlacement : BaseSnapToGrid
 {
+
+    bool singleUseCourtine;
+
     void Start()
     {
         if (gameObject.name == "Lighter(Clone)")
@@ -31,7 +34,6 @@ public class TutBTPlacement : BaseSnapToGrid
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, 100))
         {
-            print(hit.transform.gameObject.tag);
             if (hit.transform.CompareTag("Placed Item"))
             {
                 tutCorrectRotation = true;
@@ -43,7 +45,7 @@ public class TutBTPlacement : BaseSnapToGrid
 
     void OnTriggerStay(Collider col)
     {
-        if (col.transform.gameObject.tag == "TutBT")
+        if (col.transform.CompareTag("TutBT"))
         {
             tutCanPlace = true;
         }
@@ -51,7 +53,7 @@ public class TutBTPlacement : BaseSnapToGrid
 
     void OnTriggerExit(Collider col)
     {
-        if (col.transform.gameObject.tag == "TutBT")
+        if (col.transform.CompareTag("TutBT"))
         {
             tutCanPlace = false;
         }
@@ -61,11 +63,14 @@ public class TutBTPlacement : BaseSnapToGrid
     {
         if (hasItem == false)
         {
-            if (TutManager.tutInstance.tutCanUse)
+            if (TutManager.tutInstance.tutCanUseBT)
             {
                 GetComponentInChildren<TrapBase>().ActivateTrap();
                 TutManager.tutInstance.NextStep();
-                TutManager.tutInstance.tutCanUse = false;
+                if (!singleUseCourtine)
+                {
+                    StartCoroutine(SyenrgyDialouge());
+                }
             }
         }
         else
@@ -73,4 +78,12 @@ public class TutBTPlacement : BaseSnapToGrid
             TrapPlacement();
         }
     }
+
+    IEnumerator SyenrgyDialouge()
+    {
+        yield return new WaitForSeconds(1f);
+        singleUseCourtine = true;
+        FindObjectOfType<DialogueManager>().DisplayNextSentence();
+    }
+
 }

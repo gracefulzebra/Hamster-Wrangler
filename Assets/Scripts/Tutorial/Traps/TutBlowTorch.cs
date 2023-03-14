@@ -13,6 +13,8 @@ public class TutBlowTorch : TrapBase
 
     bool audioOn = false;
 
+    GameObject hamster;
+
     private void Start()
     {
         itemID = "Lighter";
@@ -47,6 +49,22 @@ public class TutBlowTorch : TrapBase
             refuelSymbol.SetActive(true);
             activateTrap = false;
         }
+
+        // step 18ish
+        if (hamster == null)
+        {
+            hamster = GameObject.FindGameObjectWithTag("Hamster");
+
+        } else if (hamster != null && TutManager.tutInstance.posCounter == 18)
+        {
+            float hamsterDistance = (transform.position - hamster.transform.position).magnitude;
+            // make public bool somewhere, will need to be read in from bugzapper for contiuinity probs
+            if (hamsterDistance < 2.5f)
+            {
+                // only works for poscounter18
+                TutManager.tutInstance.LerpTimeDown();
+            }
+        }    
     }
 
     void OnTriggerStay(Collider col)

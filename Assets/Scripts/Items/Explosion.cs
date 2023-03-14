@@ -4,54 +4,35 @@ using UnityEngine;
 public class Explosion : MonoBehaviour
 {
 
-    public float delay;
-    bool decreaseSize;
-    float timer;
-    Vector3 startLerp;
+    public float particleEffectRemovealDelay;
     [SerializeField] int damage;
     bool explosionOver;
-
-    bool counter;
 
     // Start is called before the first frame update
     void Start()
     {
-       // startLerp = new Vector3(-0.01f, -0.01f, -0.01f); ;
-        //particle
-        //audio
+
         StartCoroutine(ExplosionOver());
         StartCoroutine(DestroyExplosion());
     }
 
-    private void Update()
-    {
-        timer += Time.deltaTime;
-
-        if (decreaseSize)
-        {
-          //  GetComponentInChildren<Transform>().localScale += startLerp;
-        }
-    }
-
     IEnumerator ExplosionOver()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         explosionOver = true;
     }
 
     IEnumerator DestroyExplosion()
     {
-        yield return new WaitForSeconds(delay);
-        decreaseSize = true;
+        yield return new WaitForSeconds(particleEffectRemovealDelay);
         Destroy(gameObject);
-        // change scale so it fades overtime
     }
 
     private void OnTriggerStay(Collider col)
     {
         if(!explosionOver)
         {
-            if (col.gameObject.name == "Hamster 1(Clone)")
+            if (col.gameObject.transform.CompareTag("Hamster"))
             {
                 col.gameObject.GetComponent<ItemEffects>().InExplosionRadius(damage);
             }

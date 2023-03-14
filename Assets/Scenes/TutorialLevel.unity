@@ -6010,8 +6010,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.99999976, y: 1.3557287, z: 0.99999976}
-  m_Center: {x: 0, y: 0.17786449, z: 0}
+  m_Size: {x: 0.99999976, y: 1.0180621, z: 0.99999976}
+  m_Center: {x: 0, y: 0.009031147, z: 0}
 --- !u!4 &224030278 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 85aa12af0a4674a48890aeb1998575bb, type: 3}
@@ -11030,8 +11030,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.99999976, y: 1.3978618, z: 0.99999976}
-  m_Center: {x: 0, y: 0.19893092, z: 0}
+  m_Size: {x: 0.99999976, y: 1.121013, z: 0.99999976}
+  m_Center: {x: 0, y: 0.060506538, z: 0}
 --- !u!1001 &393470288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25381,7 +25381,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialouge:
-    name: 
     sentences:
     - 
 --- !u!114 &904598051
@@ -43701,13 +43700,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posCounter: 0
-  tutCanUse: 0
   unfreezeTime: 0
+  darkTile: {fileID: 2100000, guid: 748c8fdcfb4d3ee4ba45cfd8e3bbb258, type: 2}
+  lightTile: {fileID: 2100000, guid: 926b91b18519d7a43bf5efe3235e2593, type: 2}
   contineDialouge: {fileID: 904598051}
   waveStartButton: {fileID: 1475410182}
   lawnMowerButton: {fileID: 1561253754}
   blowTorchButton: {fileID: 1246955036}
-  placementGridSquare: {fileID: 222234789}
+  placementGridSquareLM: {fileID: 222234789}
+  placementGridSquareBT: {fileID: 391802828}
+  tutCanUseLM: 0
+  tutCanUseBT: 0
 --- !u!114 &1501101658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43721,7 +43724,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialouge:
-    name: 1st Dialouge
     sentences:
     - Welcome to hamster wrnagler.
     - 'Top left is currency, you use currency in the menu. Press the information
@@ -43734,6 +43736,7 @@ MonoBehaviour:
     - Each kill gets you money, more traps you use to kill a hamster will get you
       more score
     - now repeat again but this time place a blowtorch onto the adjestent tile
+    - synergies extra money
 --- !u!1001 &1504516791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45290,7 +45293,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialouge:
-    name: Sam
     sentences:
     - hello hello
     - 2
@@ -45302,7 +45304,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561253754}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4679da789f56627429641050417e351d, type: 3}
   m_Name: 
@@ -60608,7 +60610,7 @@ PrefabInstance:
     - target: {fileID: 7170325693747254585, guid: 53f068d9bb733764593ce6a37545ded6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2127b47e46e94544f959b26cf9bf59b0, type: 2}
+      objectReference: {fileID: 2100000, guid: 748c8fdcfb4d3ee4ba45cfd8e3bbb258, type: 2}
     - target: {fileID: 8343254652211867222, guid: 53f068d9bb733764593ce6a37545ded6, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.006
