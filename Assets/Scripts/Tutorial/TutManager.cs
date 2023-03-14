@@ -32,6 +32,8 @@ public class TutManager : MonoBehaviour
 
     bool cantIncreasePC;
 
+    bool callOnce;
+
     private void Awake()
     {
         if (tutInstance == null)
@@ -84,32 +86,46 @@ public class TutManager : MonoBehaviour
                 DialougeWithNoPC();
 
                 break;
+
+                // can play 
                 case 8:
                 cantIncreasePC = false;
-                contineDialouge.GetComponent<Button>().enabled = true;
+                contineDialouge.GetComponent<Button>().enabled = false;
 
+                waveStartButton.GetComponent<Button>().enabled = true;
                 break;
             // more dialouge
 
-            // player starts wave
-            case 9:
-                contineDialouge.GetComponent<Button>().enabled = false;
-                waveStartButton.GetComponent<Button>().enabled = true;
-                break;
+          
             // go to tutlawnmower script for time slowing
 
                 // when time is zero lawnmower is useable
-            case 10:
+            case 9:
                 waveStartButton.GetComponent<Button>().enabled = false;
 
                 // this has a fucntion that will need to be changed if poscounter changes
                 if (Time.timeScale < 0.1)
                 {
+                    if (!callOnce)
+                    {
+                        DialougeWithNoPC();
+                        callOnce = true;
+                    }
                     tutCanUseLM = true;              
+                }
+                break;
+            case 10:
+                cantIncreasePC = false;
+
+                // this has a fucntion that will need to be changed if poscounter changes
+                if (Time.timeScale < 0.1)
+                {
+                    tutCanUseLM = true;
                 }
                 break;
             // trap is activated
             case 11:
+                callOnce = false;
                 timer = 0;
                 tutCanUseLM = true;
 
@@ -179,11 +195,15 @@ public class TutManager : MonoBehaviour
                     FindObjectOfType<DialogueManager>().DisplayNextSentence();
                 }
                 break;
-                // last dialouge 
+
             case 23:
-                contineDialouge.GetComponent<Button>().enabled = true;
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    NextStep();
+                    FindObjectOfType<DialogueManager>().DisplayNextSentence();
+                }
                 break;
-                // game is normal now 
+                // game done
             case 24:
                 lawnMowerButton.GetComponent<TutButtons>().enabled = false;
                 blowTorchButton.GetComponent<TutButtons>().enabled = false;
@@ -199,6 +219,8 @@ public class TutManager : MonoBehaviour
                 tutEnd = true;
                 Destroy(contineDialouge.transform.parent.gameObject);
                 break;
+
+
         }
     }
 
@@ -214,7 +236,7 @@ public class TutManager : MonoBehaviour
 
     public void LerpTimeDown()
     {
-        if (posCounter == 10 || posCounter == 18)
+        if (posCounter == 9 || posCounter == 10 || posCounter == 18)
         {
             timer += Time.deltaTime;
             Time.timeScale = Mathf.Lerp(1, 0, timer / 1f);
