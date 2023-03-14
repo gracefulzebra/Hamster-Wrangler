@@ -19,9 +19,12 @@ public class Rake : TrapBase
 
     private bool rakeEnabled = false;
 
+    private GridGenerator gridRef;
+
     private void Start()
     {
         itemID = "Rake";
+        gridRef = GameObject.Find("OliverGriddy").GetComponent<GridGenerator>();
     }
     private void Update()
     {
@@ -54,7 +57,8 @@ public class Rake : TrapBase
         }
         inProgress = false;
         Destroy(gameObject.transform.parent.gameObject);
-
+        gridRef.GetNodeFromWorldPoint(transform.parent.transform.position).placeable = true;
+        
     }
 
     private Vector3 CalculateVel(Transform currentPos)
