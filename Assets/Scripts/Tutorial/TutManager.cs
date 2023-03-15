@@ -6,7 +6,8 @@ public class TutManager : MonoBehaviour
 {
     public int posCounter;
     float timer;
-    public bool unfreezeTime;
+
+    public float textDelay;
 
     public static TutManager tutInstance;
 
@@ -26,12 +27,10 @@ public class TutManager : MonoBehaviour
     [SerializeField] GameObject rakeButton;
 
     public bool tutEnd;
-
     public bool tutCanUseLM;
     public bool tutCanUseBT;
 
     bool cantIncreasePC;
-
     bool callOnce;
 
     private void Awake()
@@ -195,7 +194,6 @@ public class TutManager : MonoBehaviour
                     FindObjectOfType<DialogueManager>().DisplayNextSentence();
                 }
                 break;
-
             case 23:
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {

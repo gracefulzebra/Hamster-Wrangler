@@ -53,8 +53,12 @@ public class TutButtons : MonoBehaviour, IPointerDownHandler
             Vector3 spawnPos = new Vector3(0f, 100f, 0f);
             Instantiate(itemToSpawn, spawnPos, Quaternion.identity);
 
-
             TutManager.tutInstance.NextStep();
+
+            if (TutManager.tutInstance.posCounter == 3)
+            {
+                FindObjectOfType<DialogueManager>().DisplayNextSentence();
+            }
         }
     }
 }

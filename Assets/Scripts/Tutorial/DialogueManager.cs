@@ -1,11 +1,15 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 
 public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
+
+   public bool sentencePrinting;
 
     private Queue<string> sentences;
 
@@ -28,15 +32,30 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence ()
     {
-         
-        if (sentences.Count == 0)
+        if (!sentencePrinting)
         {
-            EndDialogue();
-            return;
+            if (sentences.Count == 0)
+            {
+                EndDialogue();
+                return;
+            }
+            string sentence = sentences.Dequeue();
+            TutManager.tutInstance.NextStep();
+            StartCoroutine(TypeSentence(sentence));
+            sentencePrinting = true;
+
         }
-        string sentence = sentences.Dequeue();
-        TutManager.tutInstance.NextStep();
-        dialogueText.text = sentence;
+    }
+
+    IEnumerator TypeSentence(string sentence)
+    {
+        dialogueText.text = "";   
+        foreach (char letter in sentence.ToCharArray())
+        {
+             dialogueText.text += letter;
+             yield return new WaitForSecondsRealtime(TutManager.tutInstance.textDelay);
+        }
+        sentencePrinting = false;
     }
 
     void EndDialogue()
