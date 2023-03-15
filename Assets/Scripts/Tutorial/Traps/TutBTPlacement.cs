@@ -24,6 +24,16 @@ public class TutBTPlacement : BaseSnapToGrid
             CheckForTrap();
             PlacementConfirmtation();
             nodeCheck();
+
+            if (tutCorrectRotation && tutCanPlace)
+            {
+                TutManager.tutInstance.btPlaceable = true;
+            }
+            else
+            {
+                TutManager.tutInstance.btPlaceable = false;
+            }
+
         }
     }
 

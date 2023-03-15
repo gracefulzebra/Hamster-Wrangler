@@ -19,6 +19,15 @@ public class TutLMPlacement : BaseSnapToGrid
             CheckForHouse();
             PlacementConfirmtation();
             nodeCheck();
+
+            if (tutCorrectRotation && tutCanPlace)
+            {
+                TutManager.tutInstance.lmPlaceable = true;
+            }
+            else
+            {
+                TutManager.tutInstance.lmPlaceable = false;
+            }
         }
     } 
 

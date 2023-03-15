@@ -56,7 +56,7 @@ public class TutLawnmower : TrapBase
         // step 10ish
         GameObject hamster = GameObject.FindGameObjectWithTag("Hamster");
        
-        if (hamster != null && TutManager.tutInstance.posCounter == 9| TutManager.tutInstance.posCounter == 10)
+        if (hamster != null && TutManager.tutInstance.posCounter == 8| TutManager.tutInstance.posCounter == 9)
         {
             float hamsterDistance = (transform.position - hamster.transform.position).magnitude;
             // make public bool somewhere, will need to be read in from bugzapper for contiuinity probs
@@ -121,6 +121,15 @@ public class TutLawnmower : TrapBase
         {
             ItemInteract(col.gameObject);
             col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
+
+            if(TutManager.tutInstance.posCounter == 10)
+            {
+                FindObjectOfType<DialogueManager>().DisplayNextSentence();
+            }
+            if (TutManager.tutInstance.posCounter == 18)
+            {
+                FindObjectOfType<DialogueManager>().DisplayNextSentence();
+            }
         }
 
         // obstacle

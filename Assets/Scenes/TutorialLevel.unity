@@ -43824,6 +43824,8 @@ MonoBehaviour:
   tutEnd: 0
   tutCanUseLM: 0
   tutCanUseBT: 0
+  lmPlaceable: 0
+  btPlaceable: 0
 --- !u!114 &1501101658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43841,14 +43843,15 @@ MonoBehaviour:
     - Welcome to hamster wrnagler.
     - "Top left is currency, you use currency in the menu. \nPress the information
       buttons "
-    - 'buy trap '
-    - rotate and place
-    - 'you can move camera '
+    - "buy trap \t"
+    - 'rotate and place, you can move camera '
     - press start wave
     - time has slowed, press the lawnmower to launch
     - "Each kill gets you money, more traps you use \nto kill a hamster will get
       you more score"
     - "now repeat again but this time place a blowtorch \nonto the adjestent tile"
+    - press start wave
+    - 'now activate the blowtorch to use it '
     - synergies extra money
     - 'now press is esc '
     - "here are the buttons, quit and beign your \nadventure or unpause and keep
@@ -47115,7 +47118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1596893535
 RectTransform:
   m_ObjectHideFlags: 0

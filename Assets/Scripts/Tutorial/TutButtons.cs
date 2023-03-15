@@ -55,7 +55,7 @@ public class TutButtons : MonoBehaviour, IPointerDownHandler
 
             TutManager.tutInstance.NextStep();
 
-            if (TutManager.tutInstance.posCounter == 3)
+            if (TutManager.tutInstance.posCounter == 4)
             {
                 FindObjectOfType<DialogueManager>().DisplayNextSentence();
             }

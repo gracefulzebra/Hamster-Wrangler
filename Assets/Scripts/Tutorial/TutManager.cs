@@ -30,6 +30,10 @@ public class TutManager : MonoBehaviour
     public bool tutCanUseLM;
     public bool tutCanUseBT;
 
+    public bool lmPlaceable;
+    public bool btPlaceable;
+
+
     bool cantIncreasePC;
     bool callOnce;
 
@@ -63,43 +67,51 @@ public class TutManager : MonoBehaviour
             return;
         switch (posCounter)
         {
-            // do all dialouge
 
-            // player can buy item
-            case 5:
+            case 1:
+                // when game starts 
+                break;
+            case 2:
+                // pressed continue button
+                break;
+            case 3:
+                // prompted to buy trap
                 placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
                 lawnMowerButton.GetComponent<TutButtons>().enabled = true;
                 GameManager.instance.uiManager.DefaultShopOutline(lawnMowerButton);
 
                 contineDialouge.GetComponent<Button>().enabled = false;
                 break;
-          // more dialogue after trap is placed
-            case 7:
+            case 5:
+                // changes highlight of grid square
+                if (lmPlaceable)
+                {
+                    placementGridSquareLM.GetComponent<Renderer>().material.color = Color.red;
+                }
+                else
+                {
+                    placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
+                }
+                break;
+            case 6:
                 lawnMowerButton.GetComponent<TutButtons>().enabled = false;
                 GameManager.instance.uiManager.ShopButtonCantBuy(lawnMowerButton);
-
-                contineDialouge.GetComponent<Button>().enabled = true;
 
                 placementGridSquareLM.GetComponent<Renderer>().material = darkTile;
 
                 DialougeWithNoPC();
-
                 break;
 
-                // can play 
-                case 8:
+            case 7:
+                // dialouge activated 
                 cantIncreasePC = false;
                 contineDialouge.GetComponent<Button>().enabled = false;
 
                 waveStartButton.GetComponent<Button>().enabled = true;
                 break;
-            // more dialouge
 
-          
-            // go to tutlawnmower script for time slowing
-
-                // when time is zero lawnmower is useable
-            case 9:
+                // start wave button pressed   
+                case 8:
                 waveStartButton.GetComponent<Button>().enabled = false;
 
                 // this has a fucntion that will need to be changed if poscounter changes
@@ -110,11 +122,18 @@ public class TutManager : MonoBehaviour
                         DialougeWithNoPC();
                         callOnce = true;
                     }
-                    tutCanUseLM = true;              
+                    tutCanUseLM = true;
                 }
                 break;
-            case 10:
+            // more dialouge
+
+          
+            // go to tutlawnmower script for time slowing
+
+                // when time is zero lawnmower is useable
+            case 9:
                 cantIncreasePC = false;
+                callOnce = false;
 
                 // this has a fucntion that will need to be changed if poscounter changes
                 if (Time.timeScale < 0.1)
@@ -122,30 +141,41 @@ public class TutManager : MonoBehaviour
                     tutCanUseLM = true;
                 }
                 break;
-            // trap is activated
-            case 11:
-                callOnce = false;
+                // lawnmower is pressed
+            case 10:
                 timer = 0;
                 tutCanUseLM = true;
 
                 Time.timeScale = 1;
                 contineDialouge.GetComponent<Button>().enabled = true;
                 break;
-
-            //dialouge
-
-            // allows lawnmoer and stuff to be palced
-            case 13:
+            case 11:
+                // when lawnmower hits hammy
                 tutCanUseLM = false;
+                break;
+            case 12:
+                // continue button
                 contineDialouge.GetComponent<Button>().enabled = false;
 
                 GameManager.instance.uiManager.DefaultShopOutline(lawnMowerButton);
                 lawnMowerButton.GetComponent<TutButtons>().enabled = true;
                 placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
                 break;
+            case 13:
+                // lawnmower button is pressed
 
-                // can use blow torch
-            case 15:
+                // changes highlight of grid square
+                if (lmPlaceable)
+                {
+                    placementGridSquareLM.GetComponent<Renderer>().material.color = Color.red;
+                }
+                else
+                {
+                    placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
+                }
+                break;
+                // place it
+            case 14:
                 placementGridSquareLM.GetComponent<Renderer>().material = darkTile;
                 lawnMowerButton.GetComponent<TutButtons>().enabled = false;
                 GameManager.instance.uiManager.ShopButtonCantBuy(lawnMowerButton);
@@ -153,47 +183,76 @@ public class TutManager : MonoBehaviour
                 GameManager.instance.uiManager.DefaultShopOutline(blowTorchButton);
                 blowTorchButton.GetComponent<TutButtons>().enabled = true;
                 placementGridSquareBT.GetComponent<Renderer>().material.color = Color.black;
+
                 break;
-                // starts dialouge after blowtorch has been activated  
+            case 15:
+                // blowtorch button is pressed
+
+                // changes highlight of grid square
+                if (btPlaceable)
+                {
+                    placementGridSquareBT.GetComponent<Renderer>().material.color = Color.red;
+                }
+                else
+                {
+                    placementGridSquareBT.GetComponent<Renderer>().material.color = Color.black;
+                }
+                break;
 
                 // can start wave
-            case 17:
+            case 16:
                 GameManager.instance.uiManager.ShopButtonCantBuy(blowTorchButton);
                 blowTorchButton.GetComponent<TutButtons>().enabled = false;
                 placementGridSquareBT.GetComponent<Renderer>().material = lightTile;
 
-                waveStartButton.GetComponent<Button>().enabled = true;
+                DialougeWithNoPC();
                 break;
 
-                // slows time and allows activation
+            case 17:
+                cantIncreasePC = false;
+
+                waveStartButton.GetComponent<Button>().enabled = true; 
+                break;
+            // slows time and allows activation
             case 18:
                 waveStartButton.GetComponent<Button>().enabled = false;
-                // in blowtorch
-                if (Time.timeScale < 0.1)
+
+                if (Time.timeScale > 0.1)
                 {
+                    cantIncreasePC = false;
+                }
+                else 
+                {
+                    if (!callOnce)
+                    {
+                        DialougeWithNoPC();
+                        callOnce = true;
+                    }
                     tutCanUseBT = true;
                 }
                 break;
-                // time is reset 
             case 19:
+                cantIncreasePC = false;
+                callOnce = false;
+                break;
+            case 20:
+                // dialouge called
                 timer = 0;
                 Time.timeScale = 1;
-
+                break;
+                // time is reset 
+            case 21:
+                contineDialouge.GetComponent<Button>().enabled = true;
                 break;
                 // dialouge 
-            case 20:
-                contineDialouge.GetComponent<Button>().enabled = true;
-
-                break;
-                // go into menu
-            case 21:
+            case 22:
                 contineDialouge.GetComponent<Button>().enabled = false;
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    NextStep();
                     FindObjectOfType<DialogueManager>().DisplayNextSentence();
                 }
                 break;
+                // go into menu
             case 23:
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
@@ -201,7 +260,6 @@ public class TutManager : MonoBehaviour
                     FindObjectOfType<DialogueManager>().DisplayNextSentence();
                 }
                 break;
-                // game done
             case 24:
                 lawnMowerButton.GetComponent<TutButtons>().enabled = false;
                 blowTorchButton.GetComponent<TutButtons>().enabled = false;
@@ -217,6 +275,8 @@ public class TutManager : MonoBehaviour
                 tutEnd = true;
                 Destroy(contineDialouge.transform.parent.gameObject);
                 break;
+                // game done
+
 
 
         }
@@ -234,7 +294,7 @@ public class TutManager : MonoBehaviour
 
     public void LerpTimeDown()
     {
-        if (posCounter == 9 || posCounter == 10 || posCounter == 18)
+        if (posCounter == 8 || posCounter == 9 || posCounter == 18 || posCounter == 19 || posCounter == 20)
         {
             timer += Time.deltaTime;
             Time.timeScale = Mathf.Lerp(1, 0, timer / 1f);
