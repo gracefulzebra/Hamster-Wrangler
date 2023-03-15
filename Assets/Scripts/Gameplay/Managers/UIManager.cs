@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
         {
             StartCoroutine(UpdateAudio());
             UpdateItemCosts();
-            wavesDisplay.GetComponent<TextMeshProUGUI>().text = "0 / 3";
+            wavesDisplay.GetComponent<TextMeshProUGUI>().text = "0/3";
         }
     }
 
@@ -118,7 +118,7 @@ public class UIManager : MonoBehaviour
     public void DisplayWaves(int waves, int maxWaves)
     {
         if (scoreDisplay != null)
-            wavesDisplay.GetComponent<TextMeshProUGUI>().text = waves + " / " + maxWaves;
+            wavesDisplay.GetComponent<TextMeshProUGUI>().text = waves + "/" + maxWaves;
     }
 
     public void DisplayFinalScore(int finalScore)
