@@ -86,7 +86,7 @@ public class TutManager : MonoBehaviour
                 // changes highlight of grid square
                 if (lmPlaceable)
                 {
-                    placementGridSquareLM.GetComponent<Renderer>().material.color = Color.red;
+                    placementGridSquareLM.GetComponent<Renderer>().material.color = Color.yellow;
                 }
                 else
                 {
@@ -167,7 +167,7 @@ public class TutManager : MonoBehaviour
                 // changes highlight of grid square
                 if (lmPlaceable)
                 {
-                    placementGridSquareLM.GetComponent<Renderer>().material.color = Color.red;
+                    placementGridSquareLM.GetComponent<Renderer>().material.color = Color.yellow;
                 }
                 else
                 {
@@ -191,7 +191,7 @@ public class TutManager : MonoBehaviour
                 // changes highlight of grid square
                 if (btPlaceable)
                 {
-                    placementGridSquareBT.GetComponent<Renderer>().material.color = Color.red;
+                    placementGridSquareBT.GetComponent<Renderer>().material.color = Color.yellow;
                 }
                 else
                 {
@@ -294,10 +294,7 @@ public class TutManager : MonoBehaviour
 
     public void LerpTimeDown()
     {
-        if (posCounter == 8 || posCounter == 9 || posCounter == 18 || posCounter == 19 || posCounter == 20)
-        {
             timer += Time.deltaTime;
             Time.timeScale = Mathf.Lerp(1, 0, timer / 1f);
-        }
     }
 }

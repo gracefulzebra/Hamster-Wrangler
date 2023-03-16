@@ -59,7 +59,7 @@ public class TutBlowTorch : TrapBase
         {
             float hamsterDistance = (transform.position - hamster.transform.position).magnitude;
             // make public bool somewhere, will need to be read in from bugzapper for contiuinity probs
-            if (hamsterDistance < 2.5f)
+            if (hamsterDistance < 3.5f)
             {
                 // only works for poscounter18
                 TutManager.tutInstance.LerpTimeDown();
