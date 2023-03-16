@@ -59,6 +59,8 @@ public class HamsterBase : MonoBehaviour
         direction = (currentWaypoint - transform.position).normalized;
         _rb.AddForce(direction * speed * Time.deltaTime, ForceMode.Acceleration);
 
+        direction.y = this.transform.position.y;
+
         //Turn toward
         lookRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed); 
