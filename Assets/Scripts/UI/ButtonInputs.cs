@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 
-public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerExitHandler
+public class ButtonInputs : MonoBehaviour, IPointerDownHandler
 {
    
     [Header("Shop Items")]
@@ -25,23 +25,9 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerExitHand
     [SerializeField] GameObject tarInfo;
     [SerializeField] GameObject lighterInfo;
 
-    [Header("Main Menu")]
-    [SerializeField] GameObject levelSelect;
-    [SerializeField] GameObject mainMenu;
-    [SerializeField] GameObject HTPMenu;
     [SerializeField] GameObject HTPMenuIngame;
-    [SerializeField] GameObject settings;
-
-    [Header("Open/Close Shop")]
-    [SerializeField] GameObject openMenu;
-    [SerializeField] GameObject closeMenu;
 
     bool desOpen;
-
-    void Awake()
-    {
-
-    }
 
     void Start()
     {
@@ -79,23 +65,6 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerExitHand
             }
             desOpen = false;
         }
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-     /*
-        GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Unplaced Item");
-
-        if (Input.GetMouseButtonUp(0) && GameManager.instance.holdingItem)
-        {
-            print("john");
-
-            foreach (GameObject trap in gameObjectArray)
-            {
-                Destroy(trap.gameObject);
-                GameManager.instance.holdingItem = false;
-            }
-        }*/
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -139,21 +108,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerExitHand
             desOpen = false;
         }    
     }
-
-    void SwitchSetActive(GameObject objectToSwitch)
-    {
-        if (objectToSwitch.activeSelf)
-        {
-            objectToSwitch.SetActive(false);
-            mainMenu.SetActive(true);
-        }
-        else
-        {
-            objectToSwitch.SetActive(true);
-            mainMenu.SetActive(false);
-        }
-    }
-   
+ 
     public void LawnmowerMenu()
     {
         HelpGuide(lawnMowerInfo);
@@ -185,42 +140,14 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         Time.timeScale = 1;
     }
 
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
-
-    public void LevelSelect()
-    {
-        SwitchSetActive(levelSelect);
-    }
-
-    public void HTP()
-    {
-        SwitchSetActive(HTPMenu);
-    }
-
     public void HTPIngame()
     {
         HTPMenuIngame.SetActive(true);
     }
 
-    public void Settings()
+    public void QuitGame()
     {
-        SwitchSetActive(settings);
-    }
-
-    public void ExitButton()
-    {
-        transform.parent.gameObject.SetActive(false);
-        if (mainMenu != null)
-            mainMenu.SetActive(true);
-    }
-
-    public void Level1()
-    {
-        SceneManager.LoadScene("FinnLevel");
-        Time.timeScale = 1;
+        Application.Quit();
     }
 
     public void MainMenu()
@@ -228,31 +155,4 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerExitHand
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void OpenShop()
-    {
-        openMenu.SetActive(true);
-        GameManager.instance.animationManager.OpenShopAnimation();
-        closeMenu.SetActive(false);
-    }
-
-    public void CollapseShop()
-    {
-        closeMenu.SetActive(true);
-        GameManager.instance.animationManager.CloseShopAnimation();
-        StartCoroutine(CloseMenu());
-    }
-    WaitForSeconds delay = new WaitForSeconds(0.19f);
-    IEnumerator CloseMenu()
-    {
-        yield return delay;
-        openMenu.SetActive(false);
-    }
 }
-/*
-// turns off all other buttons
-GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("ShopItem");
-
-foreach (GameObject go in gameObjectArray)
-{
-    go.GetComponent<Button>().enabled = false;
-}*/
