@@ -150,6 +150,7 @@ public class Fan : TrapBase
               {
                 if (col.gameObject.GetComponent<TrapBase>().itemID == "Lighter" && col.gameObject.GetComponent<TrapBase>().activateTrap)
                 {
+                    IncrementTrapInteracts(col.gameObject);
                     flameThrower = true;
                 }
                 else

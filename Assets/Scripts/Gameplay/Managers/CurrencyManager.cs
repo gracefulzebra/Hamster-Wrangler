@@ -56,7 +56,7 @@ public class CurrencyManager : MonoBehaviour
                 return CheckValidPurchase(rakeCost);
 
             default:
-                Debug.Log("Invalid itemID");
+                //Debug.Log("Invalid itemID");
                 return false;
         }
     }

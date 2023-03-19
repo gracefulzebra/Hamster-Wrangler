@@ -10,9 +10,8 @@ public class HamsterScore : MonoBehaviour
 
     private List<GameObject> interactedList = new List<GameObject>();
 
-    public void UpdateInteracts(GameObject item, string itemID)
+    public void UpdateInteracts(GameObject item, string itemID, int trapInteractCounter)
     {
-        
         if (!interactedList.Contains(item))
         {           
             interactedList.Add(item);
@@ -39,12 +38,18 @@ public class HamsterScore : MonoBehaviour
                     rakeCount++;
                     break;
             }
-        }  
+
+            if (trapInteractCounter > 0)
+            {
+                UpdateComboScore(trapInteractCounter);
+            }
+        } 
     }
 
     public void UpdateComboScore(int trapInteractCounter)
     {
-        
+        int comboScoreMultiplier = GameManager.instance.scoreManager.comboScore;
+        comboBonusScore += comboScoreMultiplier * trapInteractCounter;
     }
 
     public void SendData()
@@ -58,6 +63,4 @@ public class HamsterScore : MonoBehaviour
     {
         GameManager.instance.waveManager.HamstersRemaining();
     }
-
-
 }

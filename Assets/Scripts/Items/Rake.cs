@@ -87,6 +87,9 @@ public class Rake : TrapBase
                 hamsterRB.velocity = CalculateVel(col.transform);
             }
 
+            if (col.gameObject.name == "Lawnmower(Clone)")
+                col.GetComponentInChildren<LawnMower>().IncrementTrapInteracts(this.gameObject);
+
             if (col.gameObject.name == "Hamster 1(Clone)" && inProgress)
             {
                 if (col.GetComponent<ItemEffects>().hasBeenShocked)

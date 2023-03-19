@@ -125,6 +125,7 @@ public class BugZapper : TrapBase
 
         activateTrap = false;
         objectsShockedCounter = 0;
+        ResetInteracts();
 
         initializeLineRenderer();
 
@@ -206,10 +207,12 @@ public class BugZapper : TrapBase
         if(targetObject.CompareTag("Hamster"))
         {
             targetObject.GetComponent<ItemEffects>().BeenElectrocuted(shockDuration, damage, hamsterShockRadius);
-            targetObject.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
+            targetObject.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID, trapActivatrionCounter);
         }
         else if(targetObject.name == "Leafblower(Clone)")
         {
+            IncrementTrapInteracts(targetObject);
+            targetObject.GetComponentInChildren<Fan>().IncrementTrapInteracts(this.gameObject);
             targetObject.GetComponentInChildren<Fan>().overCharge = true;
         }
     }

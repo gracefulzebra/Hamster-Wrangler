@@ -89,10 +89,17 @@ public class LawnMower : TrapBase
         if (GetComponentInParent<SnapToGrid>().hasItem)
             return;
         if (col.GetComponent<TrapBase>() != null)
-        {
-            
+        { 
             if (col.gameObject.GetComponent<TrapBase>().itemID == "Lighter" && col.gameObject.GetComponent<TrapBase>().activateTrap)
             {
+                IncrementTrapInteracts(col.gameObject);
+                willExplode = true;
+                activateTrap = true;
+                StartCoroutine(DelayLawnMowerExplode());
+            }
+            if(col.gameObject.GetComponent<TrapBase>().itemID == "LeafBlower" && col.gameObject.GetComponent<TrapBase>().activateTrap && col.gameObject.GetComponentInChildren<Fan>().flameThrower)
+            {
+                IncrementTrapInteracts(col.gameObject);
                 willExplode = true;
                 activateTrap = true;
                 StartCoroutine(DelayLawnMowerExplode());
