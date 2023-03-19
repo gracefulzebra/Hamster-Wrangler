@@ -28,7 +28,10 @@ public class HamsterBase : MonoBehaviour
     private int checkPointIndex = 0;
 
     [Header("Misc.")]
-    [SerializeField] private ParticleSystem bloodAffect;
+    [SerializeField] private GameObject bloodEffect;
+    [SerializeField] private float maxDecalDistance = 5f;
+    [SerializeField] private float decalOffsetDistance = 0.5f;
+    [SerializeField] private float decalDuration = 1f;
 
     [HideInInspector]
     public string hamsterID = "baseHamster";
@@ -185,8 +188,32 @@ public class HamsterBase : MonoBehaviour
     {
         Vector3 deathPoint = new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z);
         GameManager.instance.audioManager.PlayHamsterDeathAudio();
-        Instantiate(bloodAffect, deathPoint, Quaternion.identity);
+        //Instantiate(bloodAffect, deathPoint, Quaternion.identity);
+        CreateDecalEffects(); 
         GetComponent<HamsterScore>().SendData();
         Destroy(gameObject);
+    }
+
+    private Ray GenerateRandomAngleRay()
+    {
+        Vector3 rayDirection = new Vector3(Random.Range(-10, 10), Random.Range(-40, -10), Random.Range(-10, 10));
+                
+        Ray newRay = new Ray(this.transform.position, rayDirection);
+
+        return newRay;
+    }
+
+    void CreateDecalEffects()
+    {
+        RaycastHit hitData;
+        Ray randomRay = GenerateRandomAngleRay();
+
+        Physics.Raycast(randomRay, out hitData, maxDecalDistance);
+
+        Vector3 decalPosition = hitData.point + (randomRay.direction.normalized * decalOffsetDistance);
+
+        print(hitData.transform.name);
+
+        GameObject decalInstance = Instantiate(bloodEffect, decalPosition, Quaternion.LookRotation(hitData.normal));
     }
 }

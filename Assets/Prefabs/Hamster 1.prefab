@@ -121,7 +121,10 @@ MonoBehaviour:
   maxSpeed: 50
   rotationSpeed: 2
   checkPoints: []
-  bloodAffect: {fileID: 5721086318571805125, guid: 064c91c30d1466c4e89f3de2e3918ae1, type: 3}
+  bloodEffect: {fileID: 4372629551938734169, guid: 59768248bb48dc543ba50750b190a4b9, type: 3}
+  maxDecalDistance: 15
+  decalOffsetDistance: 1
+  decalDuration: 5
   hamsterID: baseHamster
 --- !u!114 &1892701076170301681
 MonoBehaviour:
