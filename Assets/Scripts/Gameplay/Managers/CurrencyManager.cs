@@ -115,9 +115,9 @@ public class CurrencyManager : MonoBehaviour
     }
 
     /// <summary>
-    /// called to change outlien based on price when item is bought
+    /// called to change outline based on currency when item is bought
     /// </summary>
-    public void CheckPriceUIBoughtItem()
+    public void UpdateUIOnPurchase()
     {
         for (int i = 0; i < shopItems.Length; i++)
         {
@@ -129,9 +129,9 @@ public class CurrencyManager : MonoBehaviour
     }
 
     /// <summary>
-    /// called to change outline based on price when hamster is called
+    /// called to change outline based on currency when hamster is killed
     /// </summary>
-    public void CheckPriceUIKilledHamster()
+    public void UpdateUIOnHamsterDeath()
     {
         for (int i = 0; i < shopItems.Length; i++)
         {
@@ -141,7 +141,6 @@ public class CurrencyManager : MonoBehaviour
             }
         }
     }
-
 
     public bool RepairItemCost()
     {
@@ -163,7 +162,7 @@ public class CurrencyManager : MonoBehaviour
     {
         currency -= itemCost;
         UpdateCurrencyDisplay();
-        CheckPriceUIBoughtItem();
+        UpdateUIOnPurchase();
     }
 
     public void UpdateCurrency(int blowerCount, int zapperCost, int lighterCount, int mowerCount, int rakeCount)
