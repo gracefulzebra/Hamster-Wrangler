@@ -70,7 +70,7 @@ public class TutBTPlacement : BaseSnapToGrid
     {
         if (hasItem == false)
         {
-            if (TutManager.tutInstance.tutEnd)
+            if (TutManager.tutInstance.posCounter == 21)
             {
                 GetComponentInChildren<TrapBase>().ActivateTrap();
                 TutManager.tutInstance.NextStep();

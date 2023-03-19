@@ -270,7 +270,7 @@ public class TutManager : MonoBehaviour
                 bugZapperButton.GetComponent<ButtonInputs>().enabled = true;
                 rakeButton.GetComponent<ButtonInputs>().enabled = true;
 
-            //    GameManager.instance.currencyManager.UIOutline();
+                GameManager.instance.currencyManager.UpdateUIOnPurchase();
                 waveStartButton.GetComponent<Button>().enabled = true;
                 tutEnd = true;
                 Destroy(contineDialouge.transform.parent.gameObject);

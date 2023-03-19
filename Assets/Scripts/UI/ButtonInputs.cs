@@ -1,12 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using Unity.VisualScripting;
+using System.Collections;
 
-public class ButtonInputs : MonoBehaviour, IPointerDownHandler
+public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
    
     [Header("Shop Items")]
@@ -22,10 +19,16 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     [SerializeField] GameObject lawnMowerInfo;
     [SerializeField] GameObject leafBlowerInfo;
     [SerializeField] GameObject rakeInfo;
-    [SerializeField] GameObject tarInfo;
+    [SerializeField] GameObject zapperInfo;
     [SerializeField] GameObject lighterInfo;
 
+    [SerializeField] GameObject menuToOpen;
+
     [SerializeField] GameObject HTPMenuIngame;
+
+
+    IEnumerator stopTrapGuide;
+
 
     bool desOpen;
 
@@ -35,26 +38,31 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
         {
             case "LawnMower":
                 itemToSpawn = lawnMower;
+                menuToOpen = lawnMowerInfo;
                 break;
             case "LeafBlower":
                 itemToSpawn = leafBlower;
+                menuToOpen = leafBlowerInfo;
                 break;
             case "Rake":
                 itemToSpawn = rake;
+                menuToOpen = rakeInfo;
                 break;
             case "BugZapper":
                 itemToSpawn = bugZapper;
+                menuToOpen = zapperInfo;
                 break;
             case "Lighter":
                 itemToSpawn = lighter;
+                menuToOpen = lighterInfo;
                 break;
         }
     }
 
     private void Update()
     {
-      
-        // CHANGE THIS 
+
+            // CHANGE THIS 
         if (Input.GetMouseButton(0) && desOpen == true)
         {
             GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Item Menu");
@@ -70,6 +78,42 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         BuyItem();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        stopTrapGuide = ActivateInformationTab();
+        StartCoroutine(stopTrapGuide);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        StopCoroutine(stopTrapGuide);
+    }
+
+    IEnumerator ActivateInformationTab()
+    {   
+        yield return new WaitForSeconds(2f);
+        if (gameObject == GameObject.FindGameObjectWithTag("LawnMower"))
+        {
+            LawnmowerMenu();
+        }
+        if (gameObject == GameObject.FindGameObjectWithTag("LeafBlower"))
+        {
+            LeafblowerMenu();
+        }
+        if (gameObject == GameObject.FindGameObjectWithTag("Rake"))
+        {
+            RakeMenu();
+        }
+        if (gameObject == GameObject.FindGameObjectWithTag("BugZapper"))
+        {
+            ZapperMenu();
+        }
+        if (gameObject == GameObject.FindGameObjectWithTag("Lighter"))
+        {
+            LighterMenu();
+        }
     }
 
     public void BuyItem()
@@ -124,9 +168,9 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
         HelpGuide(rakeInfo);
     }
 
-    public void TarMenu()
+    public void ZapperMenu()
     {
-        HelpGuide(tarInfo);
+        HelpGuide(zapperInfo);
     }
 
     public void LighterMenu()
