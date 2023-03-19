@@ -10,6 +10,15 @@ public class CurrencyManager : MonoBehaviour
     [SerializeField] private int hamsterCost = 100;
     [SerializeField] public int blowerCost, mowerCost, lighterCost, zapperCost, rakeCost, repairCost;
 
+    string[] shopItems;
+    int[] itemCosts;
+
+    private void Start()
+    {
+        shopItems = new string[] { "LeafBlower", "BugZapper", "Lighter", "LawnMower", "Rake"};
+        itemCosts = new int[] { blowerCost, zapperCost, lighterCost, mowerCost, rakeCost};
+    }
+
     //To be attached to the game manager
     //Updated at the start of every level
     public void InitializeCurrency(int startingCurrency)
@@ -102,57 +111,34 @@ public class CurrencyManager : MonoBehaviour
             default:
                 Debug.Log("Invalid itemID");
                 return false;
-        }
-       
+        }    
     }
 
-    // FIX THIS FUCKER!!! THIS IS JUST 5 IF STATEMENTS IF THEY FIND OUT ABOUT THIS YOU ARE TOAST
-    public void UIOutline()
+    /// <summary>
+    /// called to change outlien based on price when item is bought
+    /// </summary>
+    public void CheckPriceUIBoughtItem()
     {
-
-         if (!CheckValidPurchase(blowerCost)) 
-         { 
-            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("LeafBlower")); 
-         }
-         else
-         {
-            GameManager.instance.uiManager.DefaultShopOutline(GameObject.FindGameObjectWithTag("LeafBlower"));
-         }
-          
-         if (!CheckValidPurchase(zapperCost)) 
-         {
-            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("BugZapper")); 
-         }
-        else
+        for (int i = 0; i < shopItems.Length; i++)
         {
-            GameManager.instance.uiManager.DefaultShopOutline(GameObject.FindGameObjectWithTag("BugZapper"));
+            if (!CheckValidPurchase(itemCosts[i]))
+            {
+                GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag(shopItems[i]));
+            }
         }
+    }
 
-        if (!CheckValidPurchase(lighterCost)) 
+    /// <summary>
+    /// called to change outline based on price when hamster is called
+    /// </summary>
+    public void CheckPriceUIKilledHamster()
+    {
+        for (int i = 0; i < shopItems.Length; i++)
         {
-            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("Lighter")); 
-        }
-        else
-        {
-            GameManager.instance.uiManager.DefaultShopOutline(GameObject.FindGameObjectWithTag("Lighter"));
-        }
-
-        if (!CheckValidPurchase(mowerCost)) 
-         { 
-            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("LawnMower")); 
-         }
-        else
-        {
-            GameManager.instance.uiManager.DefaultShopOutline(GameObject.FindGameObjectWithTag("LawnMower"));
-        }
-
-        if (!CheckValidPurchase(rakeCost))
-         {
-            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("Rake"));
-         }
-        else
-        {
-            GameManager.instance.uiManager.DefaultShopOutline(GameObject.FindGameObjectWithTag("Rake"));
+            if (!CheckValidPurchase(itemCosts[i]))
+            {
+                GameManager.instance.uiManager.DefaultShopOutline(GameObject.FindGameObjectWithTag(shopItems[i]));
+            }
         }
     }
 
@@ -177,7 +163,7 @@ public class CurrencyManager : MonoBehaviour
     {
         currency -= itemCost;
         UpdateCurrencyDisplay();
-        UIOutline();
+        CheckPriceUIBoughtItem();
     }
 
     public void UpdateCurrency(int blowerCount, int zapperCost, int lighterCount, int mowerCount, int rakeCount)
@@ -227,3 +213,29 @@ public class CurrencyManager : MonoBehaviour
         return (itemPrice >= currency);
     }
 }
+/*
+         if (!CheckValidPurchase(blowerCost)) 
+         { 
+            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("LeafBlower")); 
+         }
+          
+         if (!CheckValidPurchase(zapperCost)) 
+         {
+            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("BugZapper")); 
+         }
+
+        if (!CheckValidPurchase(lighterCost)) 
+        {
+            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("Lighter")); 
+        }
+
+        if (!CheckValidPurchase(mowerCost)) 
+        { 
+            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("LawnMower")); 
+        }
+
+        if (!CheckValidPurchase(rakeCost))
+        {
+            GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag("Rake"));
+        }
+  */
