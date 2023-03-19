@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class HamsterScore : MonoBehaviour
 {
-    private GameManager manager;
     private int blowerCount, zapperCount, lighterCount, mowerCount, rakeCount;
 
-    private List<GameObject> interactedList = new List<GameObject>();
+    private int comboBonusScore;
 
-    private void Awake()
-    {
-        manager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-    }
+    private List<GameObject> interactedList = new List<GameObject>();
 
     public void UpdateInteracts(GameObject item, string itemID)
     {
@@ -46,16 +42,21 @@ public class HamsterScore : MonoBehaviour
         }  
     }
 
+    public void UpdateComboScore(int trapInteractCounter)
+    {
+        
+    }
+
     public void SendData()
     {
-        manager.scoreManager.UpdateScore(blowerCount, zapperCount, lighterCount, mowerCount, rakeCount);
-        manager.currencyManager.UpdateCurrency(blowerCount, zapperCount, lighterCount, mowerCount, rakeCount);
-        manager.waveManager.HamstersRemaining();
+        GameManager.instance.scoreManager.UpdateScore(blowerCount, zapperCount, lighterCount, mowerCount, rakeCount, comboBonusScore);
+        GameManager.instance.currencyManager.UpdateCurrency(blowerCount, zapperCount, lighterCount, mowerCount, rakeCount);
+        GameManager.instance.waveManager.HamstersRemaining();
     }
 
     public void UpdateWaveManager()
     {
-        manager.waveManager.HamstersRemaining();
+        GameManager.instance.waveManager.HamstersRemaining();
     }
 
 

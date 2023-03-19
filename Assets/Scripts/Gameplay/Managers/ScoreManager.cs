@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     private int currentScore = 0;
-
+    [SerializeField] private int comboScore;
     [SerializeField] private int blowerScore, mowerScore, lighterScore, zapperScore, rakeScore;
 
     public void InitializeScore()
@@ -13,15 +13,16 @@ public class ScoreManager : MonoBehaviour
         currentScore = 0;
         UpdateScoreDisplay();
     }
-
+   
     void UpdateScoreDisplay()
     {  
         GetComponent<GameManager>().DisplayScore(currentScore);
     }
 
-    public void UpdateScore(int blowerCount, int zapperCount, int lighterCount, int mowerCount, int rakeCount)
+    public void UpdateScore(int blowerCount, int zapperCount, int lighterCount, int mowerCount, int rakeCount, int comboBonusScore)
     {
-        currentScore += (blowerCount * blowerScore) + (zapperCount * zapperScore) + (lighterCount * lighterScore) + (mowerCount * mowerScore) + (rakeCount * rakeScore); 
+        currentScore += (blowerCount * blowerScore) + (zapperCount * zapperScore) + (lighterCount * lighterScore) + (mowerCount * mowerScore) + (rakeCount * rakeScore);
+        currentScore += comboBonusScore;
     }
 
     public int FinalizeScore(int healthRemaining, int maxHealth)

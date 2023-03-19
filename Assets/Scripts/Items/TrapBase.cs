@@ -28,6 +28,7 @@ public class TrapBase : MonoBehaviour
     public bool activateTrap;
     protected bool canUseTrap;
 
+    private int trapInteractCounter = 0;
 
     public void Awake()
     {
@@ -105,6 +106,11 @@ public class TrapBase : MonoBehaviour
             refuelSymbol.SetActive(false);
             SliderUpdate();
         }
+    }
+
+    public void IncrementTrapInteracts()
+    {
+        trapInteractCounter++;
     }
 }
 
