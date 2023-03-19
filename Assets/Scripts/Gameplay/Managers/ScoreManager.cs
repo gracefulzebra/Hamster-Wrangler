@@ -5,9 +5,9 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     private int currentScore = 0;
-    [SerializeField] private int comboScore;
     [SerializeField] private int blowerScore, mowerScore, lighterScore, zapperScore, rakeScore;
-
+    public int comboScore;
+   
     public void InitializeScore()
     {
         currentScore = 0;

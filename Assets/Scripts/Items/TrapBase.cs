@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -60,7 +61,9 @@ public class TrapBase : MonoBehaviour
     public void ItemInteract(GameObject col)
     {
         if (col.GetComponent<HamsterScore>() != null)
-            col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
+        {
+            col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID, trapInteractCounter);
+        }      
     }
 
         // this fucntion is called in snaptogrid 
@@ -108,9 +111,20 @@ public class TrapBase : MonoBehaviour
         }
     }
 
-    public void IncrementTrapInteracts()
+    private List<GameObject> interactedList = new List<GameObject>();
+    public void IncrementTrapInteracts(GameObject interactingObject)
     {
-        trapInteractCounter++;
+        if (!interactedList.Contains(interactingObject))
+        {
+            interactedList.Add(interactingObject);
+            //print("interacts incremented");
+            trapInteractCounter++;
+        }    
+    }
+
+    protected void ResetInteracts()
+    {
+        trapInteractCounter = 0;
     }
 }
 
