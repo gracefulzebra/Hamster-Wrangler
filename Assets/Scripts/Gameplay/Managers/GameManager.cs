@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] bool lighter;
     [SerializeField] bool rake;
 
+    public Quaternion globalRotation;
+
     private void Awake()
     {
 

@@ -11,6 +11,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     [SerializeField] ParticleSystem placementEffect;
     public string itemID;
     Node nodeHit;
+  
 
     void Awake()
     {
@@ -40,7 +41,10 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         // then assigns the compentant, cant just drag
         // inspector cause its prefab
         gridRefObject = GameObject.Find("OliverGriddy");
-        gridRef = gridRefObject.GetComponent<GridGenerator>();
+        gridRef = gridRefObject.GetComponent<GridGenerator>();   
+        
+        
+
     }
 
     private void Update()
