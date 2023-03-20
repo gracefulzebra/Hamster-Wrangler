@@ -41,10 +41,9 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         // then assigns the compentant, cant just drag
         // inspector cause its prefab
         gridRefObject = GameObject.Find("OliverGriddy");
-        gridRef = gridRefObject.GetComponent<GridGenerator>();   
-        
-        
+        gridRef = gridRefObject.GetComponent<GridGenerator>();
 
+        gameObject.transform.Rotate(GameManager.instance.globalTrapRotation, Space.Self);
     }
 
     private void Update()
@@ -124,6 +123,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             if (Input.GetKeyDown(KeyCode.R) | Input.GetMouseButtonDown(1) && hasItem)
             {
                 gameObject.transform.Rotate(rotVector, Space.Self);
+                GameManager.instance.globalTrapRotation = gameObject.transform.eulerAngles;
             }
         }    
 }

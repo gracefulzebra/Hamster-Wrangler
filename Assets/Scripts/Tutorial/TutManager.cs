@@ -290,7 +290,7 @@ public class TutManager : MonoBehaviour
                 bugZapperButton.GetComponent<ButtonInputs>().enabled = true;
                 rakeButton.GetComponent<ButtonInputs>().enabled = true;
 
-                GameManager.instance.currencyManager.UpdateUIOnHamsterDeath();
+                GameManager.instance.uiManager.UpdateUIOnHamsterDeath();
                 waveStartButton.GetComponent<Button>().enabled = true;
                 tutEnd = true;
                 Destroy(contineDialouge.transform.parent.gameObject);
