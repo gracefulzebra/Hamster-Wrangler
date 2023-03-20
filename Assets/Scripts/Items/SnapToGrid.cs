@@ -8,14 +8,9 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     GridGenerator gridRef;
     public bool hasItem;
     Vector3 rotVector = new Vector3(0f, 90f, 0f);
-    [SerializeField] GameObject confirmButton;
-    [SerializeField] GameObject cancelButton;
-    [SerializeField] GameObject rotateButton;
     [SerializeField] ParticleSystem placementEffect;
     public string itemID;
     Node nodeHit;
-
-    bool onGrid;
 
     void Awake()
     {

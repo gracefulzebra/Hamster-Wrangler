@@ -135,7 +135,7 @@ public class CurrencyManager : MonoBehaviour
     {
         for (int i = 0; i < shopItems.Length; i++)
         {
-            if (!CheckValidPurchase(itemCosts[i]))
+            if (CheckValidPurchase(itemCosts[i]))
             {
                 GameManager.instance.uiManager.DefaultShopOutline(GameObject.FindGameObjectWithTag(shopItems[i]));
             }

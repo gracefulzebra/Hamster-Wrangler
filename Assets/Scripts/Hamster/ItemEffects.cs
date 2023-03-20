@@ -19,6 +19,9 @@ public class ItemEffects : MonoBehaviour
     float shockDur;
     float hamsterShockRad;
     bool canLightingAOE;
+    [SerializeField] GameObject lightningEffect;
+    [SerializeField] ParticleSystem lightningStrikeEffect;
+
 
     [SerializeField] LineRenderer lineRenderer;
 
@@ -79,11 +82,13 @@ public class ItemEffects : MonoBehaviour
    
     public void ElectricDamage()
     {
+
         hasBeenShocked = true;
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         GetComponent<HamsterBase>().speed = 0;
         GetComponent<HamsterBase>().TakeDamage(electricDamage);
-        StartCoroutine(ResetSpeed());
+        lightningEffect.SetActive(true);
+        StartCoroutine(TurnOffShock());
     }
 
     public void StartLightingAOE()
@@ -97,13 +102,14 @@ public class ItemEffects : MonoBehaviour
     {
         GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Hamster");
 
+        lightningStrikeEffect.Play();
+
         foreach (GameObject hamster in gameObjectArray)
         {
             hamsterDistance = (transform.position - hamster.transform.position).magnitude;
             // make public bool somewhere, will need to be read in from bugzapper for contiuinity probs
             if (hamsterDistance < 10)
             {
-                print("working");
                 hamster.GetComponent<ItemEffects>().ElectricDamage();
             }
         }
@@ -119,10 +125,11 @@ public class ItemEffects : MonoBehaviour
     ///<summary>
     /// called once hamster has been electrocuted and values need to be reset
     ///</summary>
-    IEnumerator ResetSpeed()
+    IEnumerator TurnOffShock()
     {
         yield return new WaitForSeconds(shockDur);
         hasBeenShocked = false;
+        lightningEffect.SetActive(false);
         GetComponent<HamsterBase>().speed = GetComponent<HamsterBase>().maxSpeed;
     }
 

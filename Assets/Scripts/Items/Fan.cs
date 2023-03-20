@@ -11,6 +11,8 @@ public class Fan : TrapBase
     [Header("Generic Values")]
     [SerializeField] float force;
     [SerializeField] float leafblowerDuration;
+    float maxForce;
+    bool audioOn = false;
 
     [Header("Flamethrower")]
     public bool flameThrower;
@@ -18,12 +20,11 @@ public class Fan : TrapBase
     [SerializeField] private float burnDuration; //Time between instances of burn damage
     [SerializeField] private int burnAmount; //Amount of instances of burn damage
 
-    bool audioOn = false;
-
-   public bool overCharge;
+    [Header("Overcharge")]
+    public bool overCharge;
     [SerializeField] float overChargeForceMultiplication;
+    [SerializeField] GameObject lightningEffect;
 
-    float maxForce;
 
     private void Start()
     {
@@ -81,6 +82,7 @@ public class Fan : TrapBase
             if (overCharge)
             {
                 StartCoroutine(StopOverCharge());
+                lightningEffect.SetActive(true);
             }
         }
         else
@@ -90,12 +92,18 @@ public class Fan : TrapBase
             flameThrower = false;
             flameThrowerEffect.SetActive(false);
         }
+
+        if (overCharge)
+        {
+            lightningEffect.SetActive(true);
+        }
     }
 
     IEnumerator StopOverCharge()
     {
         yield return new WaitForSeconds(4f);
         overCharge = false;
+        lightningEffect.SetActive(false);
     }
 
     void OutOfFuel()
