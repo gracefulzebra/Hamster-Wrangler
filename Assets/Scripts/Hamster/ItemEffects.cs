@@ -21,7 +21,7 @@ public class ItemEffects : MonoBehaviour
     bool canLightingAOE;
     [SerializeField] GameObject lightningEffect;
     [SerializeField] ParticleSystem lightningStrikeEffect;
-
+    float hamsterLightningAOERange;
 
     [SerializeField] LineRenderer lineRenderer;
 
@@ -71,11 +71,12 @@ public class ItemEffects : MonoBehaviour
     ///<summary>
     /// called when hamster has been hit by bugzapper
     ///</summary>
-    public void BeenElectrocuted(float shockDuration, int electricDmg, float hamsterShockRadius)
+    public void BeenElectrocuted(float shockDuration, int electricDmg, float hamsterShockRadius, float lightningAOERange)
     {
         shockDur = shockDuration;
         electricDamage = electricDmg;
         hamsterShockRad = hamsterShockRadius;
+        hamsterLightningAOERange = lightningAOERange;
 
         ElectricDamage();
     }
@@ -100,15 +101,16 @@ public class ItemEffects : MonoBehaviour
     // finds hamster in radius and shocks them
     void FinishLightningAOE()
     {
-        GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Hamster");
+       
+       lightningStrikeEffect.Play();
 
-        lightningStrikeEffect.Play();
+        GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Hamster");
 
         foreach (GameObject hamster in gameObjectArray)
         {
             hamsterDistance = (transform.position - hamster.transform.position).magnitude;
             // make public bool somewhere, will need to be read in from bugzapper for contiuinity probs
-            if (hamsterDistance < 10)
+            if (hamsterDistance < hamsterLightningAOERange)
             {
                 hamster.GetComponent<ItemEffects>().ElectricDamage();
             }
@@ -144,7 +146,6 @@ public class ItemEffects : MonoBehaviour
             GetComponent<HamsterBase>().TakeDamage(explosionDamage);
         }
     }
-
 
     private void OnCollisionEnter(Collision col)
     {

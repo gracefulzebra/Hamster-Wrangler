@@ -65,6 +65,9 @@ public class TutManager : MonoBehaviour
     {
         if (tutEnd)
             return;
+
+
+
         switch (posCounter)
         {
 
@@ -152,6 +155,12 @@ public class TutManager : MonoBehaviour
             case 11:
                 // when lawnmower hits hammy
                 tutCanUseLM = false;
+
+                GameManager.instance.uiManager.ShopButtonCantBuy(lawnMowerButton);
+                GameManager.instance.uiManager.ShopButtonCantBuy(blowTorchButton);
+                GameManager.instance.uiManager.ShopButtonCantBuy(leafBlowerButton);
+                GameManager.instance.uiManager.ShopButtonCantBuy(bugZapperButton);
+                GameManager.instance.uiManager.ShopButtonCantBuy(rakeButton);
                 break;
             case 12:
                 // continue button
@@ -239,10 +248,21 @@ public class TutManager : MonoBehaviour
                 // dialouge called
                 timer = 0;
                 Time.timeScale = 1;
+                GameManager.instance.uiManager.ShopButtonCantBuy(lawnMowerButton);
+                GameManager.instance.uiManager.ShopButtonCantBuy(blowTorchButton);
+                GameManager.instance.uiManager.ShopButtonCantBuy(leafBlowerButton);
+                GameManager.instance.uiManager.ShopButtonCantBuy(bugZapperButton);
+                GameManager.instance.uiManager.ShopButtonCantBuy(rakeButton);
                 break;
                 // time is reset 
             case 21:
                 contineDialouge.GetComponent<Button>().enabled = true;
+
+                GameManager.instance.uiManager.ShopButtonCantBuy(lawnMowerButton);
+                GameManager.instance.uiManager.ShopButtonCantBuy(blowTorchButton);
+                GameManager.instance.uiManager.ShopButtonCantBuy(leafBlowerButton);
+                GameManager.instance.uiManager.ShopButtonCantBuy(bugZapperButton);
+                GameManager.instance.uiManager.ShopButtonCantBuy(rakeButton);
                 break;
                 // dialouge 
             case 22:
@@ -270,7 +290,7 @@ public class TutManager : MonoBehaviour
                 bugZapperButton.GetComponent<ButtonInputs>().enabled = true;
                 rakeButton.GetComponent<ButtonInputs>().enabled = true;
 
-                GameManager.instance.currencyManager.UpdateUIOnPurchase();
+                GameManager.instance.currencyManager.UpdateUIOnHamsterDeath();
                 waveStartButton.GetComponent<Button>().enabled = true;
                 tutEnd = true;
                 Destroy(contineDialouge.transform.parent.gameObject);

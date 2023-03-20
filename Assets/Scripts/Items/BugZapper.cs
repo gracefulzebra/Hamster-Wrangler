@@ -6,26 +6,29 @@ using System.Collections.Generic;
 public class BugZapper : TrapBase
 {
 
+    [Header("Misc")]
     [SerializeField] GameObject activationEffect;
+    [SerializeField] Slider rechargeSlider;
+
+    [Header("Activation")]
+    int trapActivatrionCounter;
     [SerializeField] int chargeCount;
     float cooldownTimer;
     [SerializeField] float cooldownTimerMax;
-    
-    [SerializeField] Slider rechargeSlider;
-    int trapActivatrionCounter;
 
+    [Header("Line Renderer")]
     [SerializeField] private LayerMask scannableMask;
-    [SerializeField] private float hamsterShockRadius;
     private int objectsShockedCounter = 0;
     [SerializeField] private int maxObjectsShocked;
     private List<GameObject> shockedObjects;
-
     private LineRenderer lR;
     [SerializeField] LineRenderer lrPrefab;
 
-
     bool startCooldown;
 
+    [Header("Adjustable Value")]
+    [SerializeField] private float hamsterShockRadius;
+    [SerializeField] float lightingAOERange;
     [SerializeField] float shockDuration;
 
     private void Start()
@@ -206,7 +209,7 @@ public class BugZapper : TrapBase
     {
         if(targetObject.CompareTag("Hamster"))
         {
-            targetObject.GetComponent<ItemEffects>().BeenElectrocuted(shockDuration, damage, hamsterShockRadius);
+            targetObject.GetComponent<ItemEffects>().BeenElectrocuted(shockDuration, damage, hamsterShockRadius, lightingAOERange);
             targetObject.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID, trapActivatrionCounter);
         }
         else if(targetObject.name == "Leafblower(Clone)")
