@@ -10,8 +10,8 @@ public class CurrencyManager : MonoBehaviour
     [SerializeField] private int hamsterCost = 100;
     [SerializeField] public int blowerCost, mowerCost, lighterCost, zapperCost, rakeCost, repairCost;
 
-    string[] shopItems;
-    int[] itemCosts;
+    public string[] shopItems;
+    public int[] itemCosts;
 
     private void Start()
     {
@@ -114,34 +114,6 @@ public class CurrencyManager : MonoBehaviour
         }    
     }
 
-    /// <summary>
-    /// called to change outline based on currency when item is bought
-    /// </summary>
-    public void UpdateUIOnPurchase()
-    {
-        for (int i = 0; i < shopItems.Length; i++)
-        {
-            if (!CheckValidPurchase(itemCosts[i]))
-            {
-                GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag(shopItems[i]));
-            }
-        }
-    }
-
-    /// <summary>
-    /// called to change outline based on currency when hamster is killed
-    /// </summary>
-    public void UpdateUIOnHamsterDeath()
-    {
-        for (int i = 0; i < shopItems.Length; i++)
-        {
-            if (CheckValidPurchase(itemCosts[i]))
-            {
-                GameManager.instance.uiManager.DefaultShopOutline(GameObject.FindGameObjectWithTag(shopItems[i]));
-            }
-        }
-    }
-
     public bool RepairItemCost()
     {
         if (CheckValidPurchase(repairCost))
@@ -153,7 +125,7 @@ public class CurrencyManager : MonoBehaviour
             return false;
     }
 
-    private bool CheckValidPurchase(int cost)
+    public bool CheckValidPurchase(int cost)
     {
         return currency - cost >= 0;
     }
@@ -162,7 +134,7 @@ public class CurrencyManager : MonoBehaviour
     {
         currency -= itemCost;
         UpdateCurrencyDisplay();
-        UpdateUIOnPurchase();
+        GameManager.instance.uiManager.UpdateUIOnPurchase();
     }
 
     public void UpdateCurrency(int blowerCount, int zapperCost, int lighterCount, int mowerCount, int rakeCount)

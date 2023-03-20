@@ -19,7 +19,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject lmCost, lbCost, rakeCost, tarCost, lighterCost;
     // for ip3 we can use a slider thats fill is the yellow colour for the stars, so when you finish the level you can see how close to the 
     // next star you are, right now im just hard coding it 
-    [SerializeField] private  List<GameObject> star1;
+    [SerializeField] private  List<GameObject> starsInGame;
+    [SerializeField] private List<GameObject> starsLevel1;
+    [SerializeField] private List<GameObject> starsLevel2;
+    [SerializeField] private List<GameObject> starsLevel3;
     [SerializeField] private Sprite starSprite;
 
     [SerializeField] private GameObject IngameHTP;
@@ -80,7 +83,34 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         GetComponent<GameManager>().holdingItem = false;
   }
- 
+
+    /// <summary>
+    /// called to change outline based on currency when item is bought
+    /// </summary>
+    public void UpdateUIOnPurchase()
+    {
+        for (int i = 0; i < GameManager.instance.currencyManager.shopItems.Length; i++)
+        {
+            if (!GameManager.instance.currencyManager.CheckValidPurchase(GameManager.instance.currencyManager.itemCosts[i]))
+            {
+                GameManager.instance.uiManager.ShopButtonCantBuy(GameObject.FindGameObjectWithTag(GameManager.instance.currencyManager.shopItems[i]));
+            }
+        }
+    }
+
+    /// <summary>
+    /// called to change outline based on currency when hamster is killed
+    /// </summary>
+    public void UpdateUIOnHamsterDeath()
+    {
+        for (int i = 0; i < GameManager.instance.currencyManager.shopItems.Length; i++)
+        {
+            if (GameManager.instance.currencyManager.CheckValidPurchase(GameManager.instance.currencyManager.itemCosts[i]))
+            {
+                GameManager.instance.uiManager.DefaultShopOutline(GameObject.FindGameObjectWithTag(GameManager.instance.currencyManager.shopItems[i]));
+            }
+        }
+    }
 
     IEnumerator UpdateAudio()
     {
@@ -143,62 +173,60 @@ public class UIManager : MonoBehaviour
         switch (starCount)
         {
             case 1:
-                star1[0].GetComponent<Image>().sprite = starSprite;
+                starsInGame[0].GetComponent<Image>().sprite = starSprite;
                 gameOverScreen.SetActive(true);
                 break;
             case 2:
-                star1[0].GetComponent<Image>().sprite = starSprite;
-                star1[1].GetComponent<Image>().sprite = starSprite;
+                starsInGame[0].GetComponent<Image>().sprite = starSprite;
+                starsInGame[1].GetComponent<Image>().sprite = starSprite;
                 gameOverScreen.SetActive(true);
                 break;
             case 3:
-                star1[0].GetComponent<Image>().sprite = starSprite;
-                star1[1].GetComponent<Image>().sprite = starSprite;
-                star1[2].GetComponent<Image>().sprite = starSprite;
+                starsInGame[0].GetComponent<Image>().sprite = starSprite;
+                starsInGame[1].GetComponent<Image>().sprite = starSprite;
+                starsInGame[2].GetComponent<Image>().sprite = starSprite;
                 gameOverScreen.SetActive(true);
                 break;
             default:
                 gameOverScreen.SetActive(true);
                 break;
         }
-
-
-            //Calculation being handled in game manager. Can undo to reuse this if you want.
-            /*
-           if(gameManager.scoreManager.currentScore > gameManager.scoreFor3Star / 3)
-           {
-                star1[0].GetComponent<Image>().sprite = starSprite;
-           } 
-           if (gameManager.scoreManager.currentScore > (gameManager.scoreFor3Star / 3) * 2)
-           {
-                star1[1].GetComponent<Image>().sprite = starSprite;
-           }
-           if (gameManager.scoreManager.currentScore > gameManager.scoreFor3Star)
-           {
-                star1[2].GetComponent<Image>().sprite = starSprite;
-           }
-            */
-     }
-
+    }
 
    public void MenuStars(int starCount)
-    {
+   {
+        List<GameObject> menuStars = null;
+        switch (GameManager.instance.level)
+            {
+            case (1):
+                menuStars = starsLevel1;
+                break;
+                    case (2):
+                menuStars = starsLevel1;
+                break;
+            case (3):
+                menuStars = starsLevel1;
+                break;
+            case (4):
+                menuStars = starsLevel1;
+                break;
+        }    
         switch (starCount)
         {
             case 1:
-                star1[0].GetComponent<Image>().sprite = starSprite;
+                menuStars[0].GetComponent<Image>().sprite = starSprite;
                 break;
             case 2:
-                star1[0].GetComponent<Image>().sprite = starSprite;
-                star1[1].GetComponent<Image>().sprite = starSprite;
+                menuStars[0].GetComponent<Image>().sprite = starSprite;
+                menuStars[1].GetComponent<Image>().sprite = starSprite;
                 break;
             case 3:
-                star1[0].GetComponent<Image>().sprite = starSprite;
-                star1[1].GetComponent<Image>().sprite = starSprite;
-                star1[2].GetComponent<Image>().sprite = starSprite;
+                menuStars[0].GetComponent<Image>().sprite = starSprite;
+                menuStars[1].GetComponent<Image>().sprite = starSprite;
+                menuStars[2].GetComponent<Image>().sprite = starSprite;
                 break;
         }
-    }
+   }
 
     public void RemoveShopOutline()
     {

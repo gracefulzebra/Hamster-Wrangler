@@ -191,7 +191,7 @@ public class HamsterBase : MonoBehaviour
         //Instantiate(bloodAffect, deathPoint, Quaternion.identity);
         CreateDecalEffects(); 
         GetComponent<HamsterScore>().SendData();
-        GameManager.instance.currencyManager.UpdateUIOnHamsterDeath();
+        GameManager.instance.uiManager.UpdateUIOnHamsterDeath();
         Destroy(gameObject);
     }
 
