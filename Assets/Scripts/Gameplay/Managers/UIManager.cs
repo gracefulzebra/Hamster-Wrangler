@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name != "MainMenu")
         {
-            StartCoroutine(UpdateAudio());
+            //StartCoroutine(UpdateAudio());
             UpdateItemCosts();
             wavesDisplay.GetComponent<TextMeshProUGUI>().text = "0/3";
         }

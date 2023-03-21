@@ -13,6 +13,8 @@ public class WaveManager : MonoBehaviour
     private int wave = 0;
     private int maxWaves;
 
+    [SerializeField] private int endOfRoundCashBonus;
+
 
     private void Awake()
     {
@@ -59,9 +61,10 @@ public class WaveManager : MonoBehaviour
     public void HamstersRemaining() //Called in kill function of hamster.
     {
         hamstersKilled++;
+
         if ( hamstersKilled >= hamstersPerWave[wave] * hamsterSpawners.Length)
         {
-            
+            GameManager.instance.currencyManager.IncrementCurrency(endOfRoundCashBonus);
 
             waveCompleted = true;
             wave++;

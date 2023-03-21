@@ -19,6 +19,16 @@ public class CurrencyManager : MonoBehaviour
         itemCosts = new int[] { blowerCost, zapperCost, lighterCost, mowerCost, rakeCost};
     }
 
+    /// <summary>
+    /// Increments currency by a value, can pass negative values to reduce it
+    /// </summary>
+    /// <param name="amount"></param>
+    public void IncrementCurrency(int amount)
+    {
+        currency += amount;
+        UpdateCurrencyDisplay();
+    }
+
     //To be attached to the game manager
     //Updated at the start of every level
     public void InitializeCurrency(int startingCurrency)
