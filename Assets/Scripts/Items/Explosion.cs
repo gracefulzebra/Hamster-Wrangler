@@ -30,7 +30,6 @@ public class Explosion : MonoBehaviour
 
     private void OnTriggerStay(Collider col)
     {
-        print("name");
         if (!explosionOver)
         {
             if (col.gameObject.transform.CompareTag("Hamster"))

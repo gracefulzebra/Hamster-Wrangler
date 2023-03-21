@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,7 @@ public class TutManager : MonoBehaviour
     [SerializeField] GameObject placementGridSquareLM;
     [SerializeField] GameObject placementGridSquareBT;
 
-    [SerializeField] Button contineDialouge;
+    [SerializeField] GameObject contineDialouge;
     [SerializeField] Button waveStartButton;
 
     [SerializeField] GameObject lawnMowerButton;
@@ -25,6 +26,8 @@ public class TutManager : MonoBehaviour
     [SerializeField] GameObject leafBlowerButton;
     [SerializeField] GameObject bugZapperButton;
     [SerializeField] GameObject rakeButton;
+
+    [SerializeField] List<GameObject> uiHighlights;
 
     public bool tutEnd;
     public bool tutCanUseLM;
@@ -95,7 +98,7 @@ public class TutManager : MonoBehaviour
                     lawnMowerButton.GetComponent<TutButtons>().enabled = true;
                     GameManager.instance.uiManager.DefaultShopOutline(lawnMowerButton);
 
-                    contineDialouge.GetComponent<Button>().enabled = false;
+                    contineDialouge.SetActive(false);
                     break;
                 case 6:
                     // changes highlight of grid square
@@ -121,7 +124,6 @@ public class TutManager : MonoBehaviour
                 // poscounter +2 when placed, then dialouge plays
                 case 8:
                     cantIncreasePC = false;
-                    contineDialouge.GetComponent<Button>().enabled = false;
 
                     waveStartButton.GetComponent<Button>().enabled = true;
                     break;
@@ -154,13 +156,13 @@ public class TutManager : MonoBehaviour
                     tutCanUseLM = false;
                     break;
                     // on contact with hammy
-                case 12:      
-                    contineDialouge.GetComponent<Button>().enabled = true;
+                case 12:
+                    contineDialouge.SetActive(true);
   
                     break;
                     // presses dialouge button
                 case 13:
-                    contineDialouge.GetComponent<Button>().enabled = false;
+                    contineDialouge.SetActive(false);
 
                     GameManager.instance.uiManager.DefaultShopOutline(lawnMowerButton);
                     lawnMowerButton.GetComponent<TutButtons>().enabled = true;
@@ -245,11 +247,11 @@ public class TutManager : MonoBehaviour
                     break;
                     // dilaouge continues
                 case 22:
-                    contineDialouge.GetComponent<Button>().enabled = true;
+                    contineDialouge.SetActive(true);
 
                     break;
                 case 23:
-                    contineDialouge.GetComponent<Button>().enabled = false;
+                    contineDialouge.SetActive(false);
 
                     if (Input.GetKeyDown(KeyCode.Escape))
                     {
