@@ -9,7 +9,7 @@ public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
 
-   public bool sentencePrinting;
+    public bool sentencePrinting;
 
     private Queue<string> sentences;
 

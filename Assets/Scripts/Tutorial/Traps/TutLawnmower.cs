@@ -60,7 +60,7 @@ public class TutLawnmower : TrapBase
         {
             float hamsterDistance = (transform.position - hamster.transform.position).magnitude;
             // make public bool somewhere, will need to be read in from bugzapper for contiuinity probs
-            if (hamsterDistance < 5)
+            if (hamsterDistance < 4)
             {
                 // only works for poscounter10
                 TutManager.tutInstance.LerpTimeDown();
