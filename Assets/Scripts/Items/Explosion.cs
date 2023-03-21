@@ -30,10 +30,12 @@ public class Explosion : MonoBehaviour
 
     private void OnTriggerStay(Collider col)
     {
-        if(!explosionOver)
+        print("name");
+        if (!explosionOver)
         {
             if (col.gameObject.transform.CompareTag("Hamster"))
             {
+     
                 col.gameObject.GetComponent<ItemEffects>().InExplosionRadius(damage);
             }
         }

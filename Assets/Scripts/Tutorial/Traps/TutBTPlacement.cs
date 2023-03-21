@@ -70,7 +70,7 @@ public class TutBTPlacement : BaseSnapToGrid
     {
         if (hasItem == false)
         {
-            if (TutManager.tutInstance.posCounter == 21 || TutManager.tutInstance.tutEnd)
+            if (TutManager.tutInstance.posCounter == 22 || TutManager.tutInstance.tutEnd)
             {
                 GetComponentInChildren<TrapBase>().ActivateTrap();
             }
@@ -82,7 +82,7 @@ public class TutBTPlacement : BaseSnapToGrid
                 TutManager.tutInstance.tutCanUseBT = false;
                 if (!singleUseCourtine)
                 {
-                    StartCoroutine(SyenrgyDialouge());
+                    StartCoroutine(SynergyDialouge());
                 }        
             }
         }
@@ -92,7 +92,7 @@ public class TutBTPlacement : BaseSnapToGrid
         }
     }
 
-    IEnumerator SyenrgyDialouge()
+    IEnumerator SynergyDialouge()
     {
         yield return new WaitForSeconds(1f);
         singleUseCourtine = true;

@@ -55,7 +55,7 @@ public class TutBlowTorch : TrapBase
         {
             hamster = GameObject.FindGameObjectWithTag("Hamster");
 
-        } else if (hamster != null && TutManager.tutInstance.posCounter == 18 | TutManager.tutInstance.posCounter == 19 | TutManager.tutInstance.posCounter == 20)
+        } else if (hamster != null && TutManager.tutInstance.posCounter == 19 || TutManager.tutInstance.posCounter == 20)
         {
             float hamsterDistance = (transform.position - hamster.transform.position).magnitude;
             // make public bool somewhere, will need to be read in from bugzapper for contiuinity probs
