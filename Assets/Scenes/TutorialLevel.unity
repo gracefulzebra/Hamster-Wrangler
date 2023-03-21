@@ -24717,6 +24717,80 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9967dfd5df81a134db9d597eb3cf0692, type: 3}
+--- !u!1001 &961472260
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1264106542}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.021567099
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.021567099
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.021567099
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.82210064
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3800001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.37
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_Name
+      value: Bush_Ber (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+--- !u!4 &961472261 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+  m_PrefabInstance: {fileID: 961472260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &965359977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24800,7 +24874,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 38cd8ef19473f984c8fccf413829b099, type: 3}
       propertyPath: m_RootOrder
-      value: 64
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38cd8ef19473f984c8fccf413829b099, type: 3}
       propertyPath: m_LocalScale.x
@@ -33067,6 +33141,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9967dfd5df81a134db9d597eb3cf0692, type: 3}
+--- !u!1 &1264106541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1264106542}
+  m_Layer: 7
+  m_Name: Bushes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1264106542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264106541}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1560474165}
+  - {fileID: 961472261}
+  m_Father: {fileID: 1471124206}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1265151870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39077,6 +39184,7 @@ Transform:
   - {fileID: 1752491153}
   - {fileID: 426537738}
   - {fileID: 966763143}
+  - {fileID: 1264106542}
   m_Father: {fileID: 1958281844}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -39664,9 +39772,9 @@ MonoBehaviour:
       \nheres a quick runthrough of the basics."
     - "In Hamster Wrangler, your goal is \nto prevent the Hamsters from eating \nyour
       beloved cheese. You can see \nyour cheese health in the top left side\n of
-      the screen, as well as your currency \nfor purchasing traps. Traps for purchase\n
-      can be found on the right side of your \nscreen. Try pressing the information
-      \nbutton for the Lawnmower Trap."
+      the screen, as well as your currency \nfor purchasing traps. Traps for purchase\ncan
+      be found on the right side of your \nscreen. Try pressing the information \nbutton
+      for the Lawnmower Trap."
     - Now the fun begins! Purchase a lawnmower by dragging it from the traps menu
       whilst holding down the left mouse button. Be aware of the hamster crate, these
       are where the hamsters will attack from and will influence where traps should
@@ -40909,6 +41017,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559548227}
   m_CullTransparentMesh: 1
+--- !u!1001 &1560474164
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1264106542}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.021567099
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.021567099
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.021567099
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.82210064
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3800001
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.288
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+      propertyPath: m_Name
+      value: Bush_Ber
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+--- !u!4 &1560474165 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+  m_PrefabInstance: {fileID: 1560474164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1560872450
 PrefabInstance:
   m_ObjectHideFlags: 0
