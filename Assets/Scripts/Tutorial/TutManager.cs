@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +29,7 @@ public class TutManager : MonoBehaviour
     [SerializeField] GameObject rakeButton;
 
     [SerializeField] List<GameObject> uiHighlights;
+    [SerializeField] List<GameObject> inputGuides;
 
     public bool tutEnd;
     public bool tutCanUseLM;
@@ -88,20 +90,37 @@ public class TutManager : MonoBehaviour
                     break;
                 case 2:
                     // pressed continue button
+                    uiHighlights[0].SetActive(true);
+
                     break;
                 case 3:
                     // pressed continue button
+                    uiHighlights[0].SetActive(false);
+
+                    uiHighlights[1].SetActive(true);
                     break;
                 case 4:
                     // prompted to buy trap
+                    uiHighlights[1].SetActive(false);
+
+                    inputGuides[0].SetActive(true);
+                    uiHighlights[2].SetActive(true);
                     placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
                     lawnMowerButton.GetComponent<TutButtons>().enabled = true;
                     GameManager.instance.uiManager.DefaultShopOutline(lawnMowerButton);
 
                     contineDialouge.SetActive(false);
                     break;
+                case 5:
+
+                    uiHighlights[2].SetActive(true);
+                    break; 
                 case 6:
-                    // changes highlight of grid square
+                    inputGuides[0].SetActive(false);
+                    uiHighlights[2].SetActive(false);
+
+
+                    inputGuides[1].SetActive(true);
                     if (lmPlaceable)
                     {
                         placementGridSquareLM.GetComponent<Renderer>().material.color = Color.yellow;
@@ -113,28 +132,34 @@ public class TutManager : MonoBehaviour
                     break;
                     // poscounter +2 when buy trap, tutbuttons always increase, then dialouge 
                 case 7:
+                    inputGuides[1].SetActive(false);
+
                     lawnMowerButton.GetComponent<TutButtons>().enabled = false;
                     GameManager.instance.uiManager.ShopButtonCantBuy(lawnMowerButton);
 
                     placementGridSquareLM.GetComponent<Renderer>().material = darkTile;
-
                     DialougeWithNoPC();
                     break;
                     
                 // poscounter +2 when placed, then dialouge plays
                 case 8:
                     cantIncreasePC = false;
-
+                    
+                    inputGuides[2].SetActive(true);
+                    uiHighlights[3].SetActive(true);
                     waveStartButton.GetComponent<Button>().enabled = true;
                     break;
 
                 // start wave button pressed   
                 case 9:
+                    inputGuides[2].SetActive(false);
+                    uiHighlights[3].SetActive(false);
                     waveStartButton.GetComponent<Button>().enabled = false;
 
                     // this has a fucntion that will need to be changed if poscounter changes
                     if (Time.timeScale < 0.1)
                     {
+                        inputGuides[3].SetActive(true);
                         if (!callOnce)
                         {
                             DialougeWithNoPC();
@@ -151,6 +176,7 @@ public class TutManager : MonoBehaviour
                     break;
                     // diague 
                 case 11:
+                    inputGuides[3].SetActive(false);
                     timer = 0;
                     Time.timeScale = 1;
                     tutCanUseLM = false;
@@ -164,6 +190,7 @@ public class TutManager : MonoBehaviour
                 case 13:
                     contineDialouge.SetActive(false);
 
+                    uiHighlights[2].SetActive(true);
                     GameManager.instance.uiManager.DefaultShopOutline(lawnMowerButton);
                     lawnMowerButton.GetComponent<TutButtons>().enabled = true;
                     placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
@@ -171,6 +198,8 @@ public class TutManager : MonoBehaviour
                     // pressed buy item
                 case 14:
                     // changes highlight of grid square
+                    uiHighlights[2].SetActive(false);
+
                     if (lmPlaceable)
                     {
                         placementGridSquareLM.GetComponent<Renderer>().material.color = Color.yellow;
@@ -186,6 +215,7 @@ public class TutManager : MonoBehaviour
                     lawnMowerButton.GetComponent<TutButtons>().enabled = false;
                     GameManager.instance.uiManager.ShopButtonCantBuy(lawnMowerButton);
 
+                    uiHighlights[4].SetActive(true);
                     GameManager.instance.uiManager.DefaultShopOutline(blowTorchButton);
                     blowTorchButton.GetComponent<TutButtons>().enabled = true;
                     placementGridSquareBT.GetComponent<Renderer>().material.color = Color.black;
@@ -193,6 +223,8 @@ public class TutManager : MonoBehaviour
                 // pressed buy item
                 case 16:
                     // changes highlight of grid square
+                    uiHighlights[4].SetActive(false);
+
                     if (btPlaceable)
                     {
                         placementGridSquareBT.GetComponent<Renderer>().material.color = Color.yellow;
@@ -214,10 +246,12 @@ public class TutManager : MonoBehaviour
                 case 18:
                     cantIncreasePC = false;
 
+                    uiHighlights[3].SetActive(true);
                     waveStartButton.GetComponent<Button>().enabled = true;
                     break;
                 // slows time and allows activation
                 case 19:
+                    uiHighlights[3].SetActive(false);
                     waveStartButton.GetComponent<Button>().enabled = false;
 
                     if (Time.timeScale > 0.1)
@@ -252,6 +286,7 @@ public class TutManager : MonoBehaviour
                     break;
                 case 23:
                     contineDialouge.SetActive(false);
+                    inputGuides[4].SetActive(true);
 
                     if (Input.GetKeyDown(KeyCode.Escape))
                     {
@@ -268,6 +303,7 @@ public class TutManager : MonoBehaviour
                 case 25:
                     lawnMowerButton.GetComponent<TutButtons>().enabled = false;
                     blowTorchButton.GetComponent<TutButtons>().enabled = false;
+                    inputGuides[4].SetActive(false);
 
                     lawnMowerButton.GetComponent<ButtonInputs>().enabled = true;
                     blowTorchButton.GetComponent<ButtonInputs>().enabled = true;
