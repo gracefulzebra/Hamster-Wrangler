@@ -477,20 +477,20 @@ MonoBehaviour:
   fuelSlider: {fileID: 0}
   refuelSymbol: {fileID: 1887583068903967042}
   itemID: 
-  damage: 5
+  damage: 7
   activateTrap: 0
   activationEffect: {fileID: 7159478665949626749}
-  chargeCount: 2
-  cooldownTimerMax: 2
   rechargeSlider: {fileID: 1316960864581322798}
+  chargeCount: 2
+  cooldownTimerMax: 10
   scannableMask:
     serializedVersion: 2
     m_Bits: 512
   maxObjectsShocked: 6
   lrPrefab: {fileID: 6943972270826131500, guid: 2b87b65e7c5824d49bee7fc6db721f0e, type: 3}
-  hamsterShockRadius: 3
+  hamsterShockRadius: 1.5
   lightingAOERange: 3
-  shockDuration: 5.36
+  shockDuration: 1
 --- !u!1 &4486797815997811292
 GameObject:
   m_ObjectHideFlags: 0
