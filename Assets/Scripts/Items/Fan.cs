@@ -31,7 +31,7 @@ public class Fan : TrapBase
         maxForce = force;
         itemID = "LeafBlower";
 
-        Physics.IgnoreLayerCollision(0, 9);
+        //Physics.IgnoreLayerCollision(0, 9);
     }
    
     private void Update()

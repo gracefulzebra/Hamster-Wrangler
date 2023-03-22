@@ -79,7 +79,7 @@ public class Rake : TrapBase
 
         if (rakeEnabled)
         {           
-            if (col.gameObject.name == "Hamster 1(Clone)" || col.gameObject.name == "Lawnmower(Clone)" && !col.GetComponent<SnapToGrid>().hasItem)
+            if (col.gameObject.name == "Hamster 1(Clone)")
             {
                 Rigidbody hamsterRB = col.GetComponent<Rigidbody>();
                 col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID, trapInteractCounter);
@@ -87,8 +87,13 @@ public class Rake : TrapBase
                 hamsterRB.velocity = CalculateVel(col.transform);
             }
 
-            if (col.gameObject.name == "Lawnmower(Clone)")
+            if (col.gameObject.name == "Lawnmower(Clone)" && !col.GetComponent<SnapToGrid>().hasItem)
+            {
+                Rigidbody rb = col.GetComponent<Rigidbody>();
+                rb.velocity = CalculateVel(col.transform);
                 col.GetComponentInChildren<LawnMower>().IncrementTrapInteracts(this.gameObject);
+            }
+                
 
             if (col.gameObject.name == "Hamster 1(Clone)" && inProgress)
             {

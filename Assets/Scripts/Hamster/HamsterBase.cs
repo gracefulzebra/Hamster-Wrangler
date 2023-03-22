@@ -212,9 +212,7 @@ public class HamsterBase : MonoBehaviour
         Physics.Raycast(randomRay, out hitData, maxDecalDistance);
 
         Vector3 decalPosition = hitData.point + (randomRay.direction.normalized * decalOffsetDistance);
-
-        print(hitData.transform.name);
-
+                
         GameObject decalInstance = Instantiate(bloodEffect, decalPosition, Quaternion.LookRotation(hitData.normal));
     }
 }

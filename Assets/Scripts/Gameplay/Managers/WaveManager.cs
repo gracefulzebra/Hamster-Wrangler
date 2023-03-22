@@ -71,10 +71,10 @@ public class WaveManager : MonoBehaviour
 
             if (wave >= maxWaves)
             {
-                //GameManager.instance.WinGame();
+                GameManager.instance.WinGame();
             }
 
         }
-       // manager.DisplayWaves(wave + 1, maxWaves);
+        manager.DisplayWaves(wave + 1, maxWaves);
     }
 }

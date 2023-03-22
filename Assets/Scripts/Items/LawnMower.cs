@@ -32,7 +32,7 @@ public class LawnMower : TrapBase
         gridRef = gridRefObject.GetComponent<GridGenerator>();
         itemID = "LawnMower";
 
-        Physics.IgnoreLayerCollision(0, 9);
+        //Physics.IgnoreLayerCollision(0, 9);
     }
 
     private void Update()
@@ -64,7 +64,7 @@ public class LawnMower : TrapBase
             GameManager.instance.audioManager.LawnMowerRunAudio();
             audioOn = true;
         }   
-
+        //sets lawn mower to ignore raycast
         transform.parent.gameObject.layer = 2;
         smokeEffect.SetActive(true);
         transform.parent.Translate(Vector3.forward * lawnmowerSpd * Time.deltaTime);

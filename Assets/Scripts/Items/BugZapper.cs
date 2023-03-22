@@ -40,7 +40,7 @@ public class BugZapper : TrapBase
         shockedObjects = new List<GameObject>();
         hamsterShockRadius += 0.5f;
 
-        Physics.IgnoreLayerCollision(0, 9);
+        //Physics.IgnoreLayerCollision(0, 9);
     }
 
     // Update is called once per frame
