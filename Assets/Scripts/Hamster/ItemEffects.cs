@@ -20,7 +20,7 @@ public class ItemEffects : MonoBehaviour
     float hamsterShockRad;
     bool canLightingAOE;
     [SerializeField] GameObject lightningEffect;
-    [SerializeField] ParticleSystem lightningStrikeEffect;
+    [SerializeField] GameObject lightningStrikeEffect;
     float hamsterLightningAOERange;
 
     [SerializeField] LineRenderer lineRenderer;
@@ -101,8 +101,8 @@ public class ItemEffects : MonoBehaviour
     // finds hamster in radius and shocks them
     void FinishLightningAOE()
     {
-       
-       lightningStrikeEffect.Play();
+
+        Instantiate(lightningStrikeEffect, transform.position, Quaternion.identity);
 
         GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Hamster");
 
