@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6643802000401737232
+--- !u!1 &596659245607847031
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3531869354508716619}
-  - component: {fileID: 4584226143746944168}
+  - component: {fileID: 5383841643800927923}
+  - component: {fileID: 236217079061420029}
   m_Layer: 7
-  m_Name: Berry_Bush 1 1
+  m_Name: Normal_Bush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3531869354508716619
+--- !u!4 &5383841643800927923
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6643802000401737232}
+  m_GameObject: {fileID: 596659245607847031}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.9659, y: 0.266, z: 1.742}
   m_LocalScale: {x: 0.014420892, y: 0.014420892, z: 0.014420892}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3280107329812519216}
+  - {fileID: 2778789328125988306}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &4584226143746944168
+--- !u!135 &236217079061420029
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6643802000401737232}
+  m_GameObject: {fileID: 596659245607847031}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 17.498146
-  m_Center: {x: -81.19141, y: -10.914632, z: 113.50722}
---- !u!1 &7503288672801462073
+  m_Radius: 19.784662
+  m_Center: {x: 5.527776, y: -8.163174, z: 112.23098}
+--- !u!1 &1524565017645291662
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,46 +54,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3280107329812519216}
-  - component: {fileID: 4697067504304012053}
-  - component: {fileID: 1898284070206128730}
+  - component: {fileID: 2778789328125988306}
+  - component: {fileID: 76139347495849405}
+  - component: {fileID: 7515102557278651862}
   m_Layer: 7
-  m_Name: Bush_Berries1
+  m_Name: Bush_Normal1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3280107329812519216
+--- !u!4 &2778789328125988306
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7503288672801462073}
+  m_GameObject: {fileID: 1524565017645291662}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.8, y: 0, z: 3.4}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3531869354508716619}
+  m_Father: {fileID: 5383841643800927923}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4697067504304012053
+--- !u!33 &76139347495849405
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7503288672801462073}
-  m_Mesh: {fileID: -4489966225845457196, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
---- !u!23 &1898284070206128730
+  m_GameObject: {fileID: 1524565017645291662}
+  m_Mesh: {fileID: -6645634710490150993, guid: 4c8c143e1b9b7ec4e85808c7bb64a8b6, type: 3}
+--- !u!23 &7515102557278651862
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7503288672801462073}
+  m_GameObject: {fileID: 1524565017645291662}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -107,7 +107,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b2a96058dc3bb414fba385aac7183ece, type: 2}
+  - {fileID: 2100000, guid: ee87e8c31f8e1a74485f5485880539d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
