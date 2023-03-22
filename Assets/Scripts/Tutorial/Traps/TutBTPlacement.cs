@@ -45,8 +45,10 @@ public class TutBTPlacement : BaseSnapToGrid
             {
                 tutCorrectRotation = true;
             }
-            else
-                tutCorrectRotation = false;
+            else if (!hit.transform.CompareTag("Placed Item"))
+            {
+               tutCorrectRotation = false;
+            }             
         }
     }
 
