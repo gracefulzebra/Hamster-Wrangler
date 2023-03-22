@@ -83,7 +83,8 @@ public class Rake : TrapBase
             {
                 Rigidbody hamsterRB = col.GetComponent<Rigidbody>();
              //   col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
-                
+        print(col.transform.name);
+
                 hamsterRB.velocity = CalculateVel(col.transform);
             }
 
