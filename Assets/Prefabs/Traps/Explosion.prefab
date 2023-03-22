@@ -69,8 +69,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73712f253db50f49a04b66d29462f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleEffectRemovealDelay: 3
+  fuelUsage: 0
+  maxFuel: 0
+  fuelSlider: {fileID: 0}
+  refuelSymbol: {fileID: 0}
+  itemID: 
   damage: 20
+  activateTrap: 0
+  particleEffectRemovealDelay: 3
 --- !u!1001 &224339472276363398
 PrefabInstance:
   m_ObjectHideFlags: 0

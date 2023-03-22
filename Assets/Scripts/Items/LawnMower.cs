@@ -3,11 +3,10 @@ using UnityEngine;
 
 public class LawnMower : TrapBase
 {
-
     [Header("Particle Effects")]
     [SerializeField] GameObject fireEffect;
     [SerializeField] GameObject smokeEffect;
-
+    
     [Header("Generic Values")]
     float lawnmowerDestroyDelay;
     [SerializeField] float lawnmowerSpd;
@@ -74,9 +73,9 @@ public class LawnMower : TrapBase
     IEnumerator DelayLawnMowerExplode()
     {
         yield return new WaitForSeconds(lawnmowerExplodeDelay);
-      //  LawnmowerExplode();
+        LawnmowerExplode();
     }
-/*
+
     void LawnmowerExplode()
     {
         GameManager.instance.audioManager.LawnMowerExplodeAudio();
@@ -90,22 +89,24 @@ public class LawnMower : TrapBase
                 Explosion(nearbyObjects[i].transform.gameObject);
             }
         }
+
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(gameObject.transform.parent.gameObject);
+        
     }
 
-    void Explosion(GameObject[] targetObject)
+    void Explosion(GameObject targetObject)
     {
-        for (int i = 0; i < targetObject.Length; i++)       
-            if (targetObject[i].transform.CompareTag("Hamster"))
-            {
-                ItemInteract(targetObject);
-                targetObject.GetComponent<ItemEffects>().InExplosionRadius(damage);
-                print("john");
-            }
+        if (targetObject.transform.CompareTag("Hamster"))
+        {
+            ItemInteract(targetObject);
+            targetObject.GetComponent<ItemEffects>().InExplosionRadius(damage);
+        }
             
     }
-           */  
+             
 
-private void OnTriggerStay(Collider col)
+    private void OnTriggerStay(Collider col)
     {
         // if item is unplaced then dont run script
         if (GetComponentInParent<SnapToGrid>().hasItem)
