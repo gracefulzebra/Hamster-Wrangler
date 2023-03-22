@@ -185,10 +185,9 @@ public class HamsterBase : MonoBehaviour
     ///Destroys the current Hamster with no delay
     ///</summary>
     public void Kill()
-    {
-        Vector3 deathPoint = new Vector3(transform.position.x, transform.position.y - 0.1f, transform.position.z);
+    {       
         GameManager.instance.audioManager.PlayHamsterDeathAudio();
-        //Instantiate(bloodAffect, deathPoint, Quaternion.identity);
+        GameManager.instance.hamsterAnimationManager.LawnmowerDeathAnimation(transform);
         CreateDecalEffects(); 
         GetComponent<HamsterScore>().SendData();
         GameManager.instance.uiManager.UpdateUIOnHamsterDeath();

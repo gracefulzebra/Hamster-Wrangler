@@ -18,9 +18,9 @@ public class HamsterAnimationManager : MonoBehaviour
        animator = GetComponent<Animator>();
     }
 
-    public void LawnmowerDeathAnimation()
+    public void LawnmowerDeathAnimation(Transform hamsterPos)
     {
-        spawnLimb();
+        SpawnLimb(hamsterPos);
     }
 
     public void RakeLaunchAnimation()
@@ -29,7 +29,7 @@ public class HamsterAnimationManager : MonoBehaviour
     }
 
 
-    private void spawnLimb()
+    private void SpawnLimb(Transform hamsterPos)
     {
         GameObject obj;
         for (int i = 0; i < 2; i++)
@@ -38,19 +38,19 @@ public class HamsterAnimationManager : MonoBehaviour
             switch (j)
             {
                 case 1:
-                    obj = Instantiate(limb1, new Vector3(gameObject.transform.position.x + Random.Range(-1f, 1f), 0.5f, gameObject.transform.position.z + Random.Range(-1f, 1f)), Quaternion.identity);
+                    obj = Instantiate(limb1, new Vector3(hamsterPos.position.x + Random.Range(-1f, 1f), 0.1f, hamsterPos.position.z + Random.Range(-1f, 1f)), Quaternion.identity);
                     break;
                 case 2:
-                    obj = Instantiate(limb2, new Vector3(gameObject.transform.position.x + Random.Range(-1f, 1f), 0.5f, gameObject.transform.position.z + Random.Range(-1f, 1f)), Quaternion.identity);
+                    obj = Instantiate(limb2, new Vector3(hamsterPos.position.x + Random.Range(-1f, 1f), 0.1f, hamsterPos.position.z + Random.Range(-1f, 1f)), Quaternion.identity);
                     break;
                 case 3:
-                    obj = Instantiate(limb3, new Vector3(gameObject.transform.position.x + Random.Range(-1f, 1f), 0.5f, gameObject.transform.position.z + Random.Range(-1f, 1f)), Quaternion.identity);
+                    obj = Instantiate(limb3, new Vector3(hamsterPos.position.x + Random.Range(-1f, 1f), 0.1f, hamsterPos.position.z + Random.Range(-1f, 1f)), Quaternion.identity);
                     break;
                 case 4:
-                    obj = Instantiate(limb4, new Vector3(gameObject.transform.position.x + Random.Range(-1f, 1f), 0.5f, gameObject.transform.position.z + Random.Range(-1f, 1f)), Quaternion.identity);
+                    obj = Instantiate(limb4, new Vector3(hamsterPos.position.x + Random.Range(-1f, 1f), 0.1f, hamsterPos.position.z + Random.Range(-1f, 1f)), Quaternion.identity);
                     break;
                 case 5:
-                    obj = Instantiate(limb5, new Vector3(gameObject.transform.position.x + Random.Range(-1f, 1f), 0.5f, gameObject.transform.position.z + Random.Range(-1f, 1f)), Quaternion.identity);
+                    obj = Instantiate(limb5, new Vector3(hamsterPos.position.x + Random.Range(-1f, 1f), 0.1f, hamsterPos.position.z + Random.Range(-1f, 1f)), Quaternion.identity);
                     break;
             }
         }
