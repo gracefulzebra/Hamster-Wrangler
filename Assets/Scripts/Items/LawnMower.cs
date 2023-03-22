@@ -74,7 +74,7 @@ public class LawnMower : TrapBase
     IEnumerator DelayLawnMowerExplode()
     {
         yield return new WaitForSeconds(lawnmowerExplodeDelay);
-        LawnmowerExplode();
+      //  LawnmowerExplode();
     }
 /*
     void LawnmowerExplode()
@@ -143,7 +143,7 @@ private void OnTriggerStay(Collider col)
         {
             if (willExplode)
             {
-                LawnmowerExplode();
+                //LawnmowerExplode();
                 Destroy(gameObject.transform.parent.gameObject);
             }
             else
