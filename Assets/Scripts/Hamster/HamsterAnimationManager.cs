@@ -12,7 +12,7 @@ public class HamsterAnimationManager : MonoBehaviour
     public GameObject limb4;
     public GameObject limb5;
 
-    private void Start()
+    private void Awake()
     {
        hamsterScript = GetComponentInParent<HamsterBase>();
        animator = GetComponent<Animator>();
@@ -26,8 +26,7 @@ public class HamsterAnimationManager : MonoBehaviour
     public void RakeLaunchAnimation()
     {
         animator.SetTrigger("RakeAnimationTrigger");
-
-        animator.ResetTrigger("RakeAnimationTrigger");
+        //animator.ResetTrigger("RakeAnimationTrigger");
     }
 
     private void SpawnLimb(Transform hamsterPos)

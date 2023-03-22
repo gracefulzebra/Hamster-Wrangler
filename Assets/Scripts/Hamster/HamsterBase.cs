@@ -65,18 +65,17 @@ public class HamsterBase : MonoBehaviour
 
         isGrounded = Physics.CheckSphere(transform.position, groundDistance, groundMask);
 
-        if (isGrounded && !playOnce)
+        if (!isGrounded && !playOnce)
         {
             playOnce = true;
-            print("insdie");
+            
             GetComponentInChildren<HamsterAnimationManager>().RakeLaunchAnimation();
         }
-        else if (!isGrounded)
+        else if (isGrounded)
         {
             playOnce = false;
         }
     }
-
 
     private void MoveToTarget()
     {
