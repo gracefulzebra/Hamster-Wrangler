@@ -38651,6 +38651,22 @@ PrefabInstance:
       propertyPath: star1.Array.data[2]
       value: 
       objectReference: {fileID: 852656541}
+    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: starsInGame.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: starsInGame.Array.data[0]
+      value: 
+      objectReference: {fileID: 1439326939}
+    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: starsInGame.Array.data[1]
+      value: 
+      objectReference: {fileID: 688239896}
+    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: starsInGame.Array.data[2]
+      value: 
+      objectReference: {fileID: 852656541}
     - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: endOfRoundCashBonus
       value: 0
@@ -39255,7 +39271,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 471
+    m_Bits: 5079
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
