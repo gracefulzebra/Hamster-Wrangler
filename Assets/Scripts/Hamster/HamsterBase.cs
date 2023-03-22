@@ -68,8 +68,13 @@ public class HamsterBase : MonoBehaviour
         if (!isGrounded && !playOnce)
         {
             playOnce = true;
+<<<<<<< Updated upstream
             
             GetComponent<HamsterAnimation>().RakeLaunchAnimation();
+=======
+            print("insdie");
+            //GetComponentInChildren<VFXManager>().RakeLaunchAnimation();
+>>>>>>> Stashed changes
         }
         else if (isGrounded)
         {
@@ -208,7 +213,7 @@ public class HamsterBase : MonoBehaviour
     public void Kill()
     {       
         GameManager.instance.audioManager.PlayHamsterDeathAudio();
-        GameManager.instance.hamsterAnimationManager.LawnmowerDeathAnimation(transform);
+        GameManager.instance.vfxManager.HamsterDeathLimbSpawn(transform);
         CreateDecalEffects(); 
         GetComponent<HamsterScore>().SendData();
         GameManager.instance.uiManager.UpdateUIOnHamsterDeath();

@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     public WaveManager waveManager { get; private set; }
     public AnimationManager animationManager { get; private set; }
     public AudioManager audioManager { get; private set; }
-    public HamsterAnimationManager hamsterAnimationManager { get; private set; }
+    public VFXManager vfxManager { get; private set; }
 
 
     public int level;
@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
 
         audioManager = GetComponent<AudioManager>();
 
-        hamsterAnimationManager = GetComponent<HamsterAnimationManager>();
+        vfxManager = GetComponent<VFXManager>();
 
         DisplayHealth(health);
 

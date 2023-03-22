@@ -60543,11 +60543,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b20a8be64dfbb4a9a3e557a54259ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limb1: {fileID: 1619460721427501345, guid: f869334b3a4114944a9d66fa2fb05397, type: 3}
-  limb2: {fileID: 7746780440822545596, guid: d5511004d149b47419925917b0a8483c, type: 3}
-  limb3: {fileID: 1306345967661564035, guid: 5fa182de3cdc0f542b1f131ed9ddea11, type: 3}
-  limb4: {fileID: 6287720211741435018, guid: 12a3af8e9b835984fa7b9d4ad2e5d759, type: 3}
-  limb5: {fileID: 6080267410220036596, guid: 9aabad4f1beb9b841a9e4be80d6f2425, type: 3}
+  limbs:
+  - {fileID: 6080267410220036596, guid: 9aabad4f1beb9b841a9e4be80d6f2425, type: 3}
+  - {fileID: 1619460721427501345, guid: f869334b3a4114944a9d66fa2fb05397, type: 3}
+  - {fileID: 1306345967661564035, guid: 5fa182de3cdc0f542b1f131ed9ddea11, type: 3}
+  - {fileID: 7746780440822545596, guid: d5511004d149b47419925917b0a8483c, type: 3}
+  - {fileID: 6287720211741435018, guid: 12a3af8e9b835984fa7b9d4ad2e5d759, type: 3}
+  spawnRadius: 0.067
+  spawnHeight: 0
+  limbProjectionForce: 15
+  limbQuantity: 5
+  limbDestroyDuration: 4.86
 --- !u!1001 &1835774934
 PrefabInstance:
   m_ObjectHideFlags: 0
