@@ -11,7 +11,6 @@ public class TutLawnmower : TrapBase
 
     [Header("Generic Values")]
     [SerializeField] float lawnmowerSpd;
-    [SerializeField] float lawnmowerExplodeDelay;
     int counter = 0;
     bool willExplode;
 
@@ -20,6 +19,11 @@ public class TutLawnmower : TrapBase
     GridGenerator gridRef;
     [SerializeField] GameObject explosion;
     Node nodeHit;
+
+    [Header("Explosion")]
+    [SerializeField] float explosionRange;
+    [SerializeField] private LayerMask scannableMask;
+    [SerializeField] float lawnmowerExplodeDelay;
 
     bool audioOn = false;
 
@@ -91,10 +95,26 @@ public class TutLawnmower : TrapBase
     {
         GameManager.instance.audioManager.LawnMowerExplodeAudio();
 
-        // for spawning explosion
-        Vector3 explosionPos = new Vector3(transform.position.x, transform.position.y, transform.position.z); ;
-        Instantiate(explosion, explosionPos, Quaternion.identity);
+        RaycastHit[] nearbyObjects = Physics.SphereCastAll(transform.position, explosionRange, Vector3.up, explosionRange, scannableMask);
+
+        if (nearbyObjects.Length > 0)
+        {
+            for (int i = 0; i < nearbyObjects.Length; i++)
+            {
+                Explosion(nearbyObjects[i].transform.gameObject);
+            }
+        }
+        Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject.transform.parent.gameObject);
+    }
+
+    void Explosion(GameObject targetObject)
+    {
+        if (targetObject.transform.CompareTag("Hamster"))
+        {
+            ItemInteract(targetObject);
+            targetObject.GetComponent<ItemEffects>().InExplosionRadius(damage);
+        }
     }
 
     private void OnTriggerStay(Collider col)
