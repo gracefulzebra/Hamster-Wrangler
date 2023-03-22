@@ -15,6 +15,8 @@ public class Lighter : TrapBase
     private void Start()
     {
         itemID = "Lighter";
+
+        Physics.IgnoreLayerCollision(0, 9);
     }
 
     private void Update()

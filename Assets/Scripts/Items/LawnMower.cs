@@ -11,7 +11,6 @@ public class LawnMower : TrapBase
     [Header("Generic Values")]
     float lawnmowerDestroyDelay;
     [SerializeField] float lawnmowerSpd;
-    [SerializeField] float lawnmowerExplodeDelay;
     int counter = 0;
     bool willExplode;
 
@@ -21,15 +20,20 @@ public class LawnMower : TrapBase
     [SerializeField] GameObject explosion;
     Node nodeHit;
 
-    bool audioOn = false;
+    [Header("Explosion")]
+    [SerializeField] float explosionRange;
+    [SerializeField] private LayerMask scannableMask;
+    [SerializeField] float lawnmowerExplodeDelay;
 
-    
+    bool audioOn = false;
 
     private void Start()
     {
         gridRefObject = GameObject.Find("OliverGriddy");
         gridRef = gridRefObject.GetComponent<GridGenerator>();
         itemID = "LawnMower";
+
+        Physics.IgnoreLayerCollision(0, 9);
     }
 
     private void Update()
@@ -72,18 +76,36 @@ public class LawnMower : TrapBase
         yield return new WaitForSeconds(lawnmowerExplodeDelay);
         LawnmowerExplode();
     }
-
+/*
     void LawnmowerExplode()
     {
         GameManager.instance.audioManager.LawnMowerExplodeAudio();
 
-        // for spawning explosion
-        Vector3 explosionPos = new Vector3(transform.position.x, transform.position.y, transform.position.z); ;
-        Instantiate(explosion, explosionPos, Quaternion.identity);
-        Destroy(gameObject.transform.parent.gameObject);
+        RaycastHit[] nearbyObjects = Physics.SphereCastAll(transform.position, explosionRange, Vector3.up, explosionRange, scannableMask);
+
+        if (nearbyObjects.Length > 0)
+        {
+            for (int i = 0; i < nearbyObjects.Length; i++)
+            {
+                Explosion(nearbyObjects[i].transform.gameObject);
+            }
+        }
     }
 
-    private void OnTriggerStay(Collider col)
+    void Explosion(GameObject[] targetObject)
+    {
+        for (int i = 0; i < targetObject.Length; i++)       
+            if (targetObject[i].transform.CompareTag("Hamster"))
+            {
+                ItemInteract(targetObject);
+                targetObject.GetComponent<ItemEffects>().InExplosionRadius(damage);
+                print("john");
+            }
+            
+    }
+           */  
+
+private void OnTriggerStay(Collider col)
     {
         // if item is unplaced then dont run script
         if (GetComponentInParent<SnapToGrid>().hasItem)

@@ -1,23 +1,24 @@
 using System.Collections;
 using UnityEngine;
 
-public class Explosion : MonoBehaviour
+public class Explosion : TrapBase
 {
 
     public float particleEffectRemovealDelay;
-    [SerializeField] int damage;
     bool explosionOver;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        trapInteractCounter = 2;
+        itemID = "LawnMower";
         StartCoroutine(ExplosionOver());
         StartCoroutine(DestroyExplosion());
     }
 
     IEnumerator ExplosionOver()
     {
+        print(trapInteractCounter);
         yield return new WaitForSeconds(0.2f);
         explosionOver = true;
     }
@@ -34,7 +35,7 @@ public class Explosion : MonoBehaviour
         {
             if (col.gameObject.transform.CompareTag("Hamster"))
             {
-     
+                ItemInteract(col.gameObject);
                 col.gameObject.GetComponent<ItemEffects>().InExplosionRadius(damage);
             }
         }

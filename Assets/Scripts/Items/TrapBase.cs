@@ -18,27 +18,14 @@ public class TrapBase : MonoBehaviour
     float timer;
     protected bool onPlacement;
 
-    [Header("Trap ID")]
-    protected string rakeID;
-    protected string lighterID;
-    protected string zapperID;
-    protected string mowerID;
-    protected string blowerID;
-
     [Header("Trap Activation")]
     public bool activateTrap;
     protected bool canUseTrap;
 
-    private int trapInteractCounter = 0;
+    protected int trapInteractCounter = 0;
 
     public void Awake()
     {
-
-        rakeID = "Rake";
-        lighterID = "Lighter";
-        zapperID = "BugZapper";
-        mowerID = "LawnMower";
-        blowerID = "LeafBlower";
 
         if (fuelSlider != null)
         {

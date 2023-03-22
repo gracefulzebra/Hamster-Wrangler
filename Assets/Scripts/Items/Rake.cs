@@ -32,7 +32,7 @@ public class Rake : TrapBase
         {
             onPlacement = true;
             gameObject.layer = 0;
-            GetComponentInParent<Rigidbody>().useGravity = true;
+          //  GetComponentInParent<Rigidbody>().useGravity = true;
         }
 
         if (activateTrap && !inProgress)
@@ -83,7 +83,6 @@ public class Rake : TrapBase
             {
                 Rigidbody hamsterRB = col.GetComponent<Rigidbody>();
              //   col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID);
-        print(col.transform.name);
 
                 hamsterRB.velocity = CalculateVel(col.transform);
             }
