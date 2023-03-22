@@ -91,8 +91,7 @@ public class LawnMower : TrapBase
         }
 
         Instantiate(explosion, transform.position, Quaternion.identity);
-        Destroy(gameObject.transform.parent.gameObject);
-        
+        Destroy(gameObject.transform.parent.gameObject);       
     }
 
     void Explosion(GameObject targetObject)
@@ -101,8 +100,7 @@ public class LawnMower : TrapBase
         {
             ItemInteract(targetObject);
             targetObject.GetComponent<ItemEffects>().InExplosionRadius(damage);
-        }
-            
+        }           
     }
              
 
@@ -144,7 +142,7 @@ public class LawnMower : TrapBase
         {
             if (willExplode)
             {
-                //LawnmowerExplode();
+                LawnmowerExplode();
                 Destroy(gameObject.transform.parent.gameObject);
             }
             else
