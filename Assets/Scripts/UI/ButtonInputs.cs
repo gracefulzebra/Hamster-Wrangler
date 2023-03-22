@@ -29,9 +29,6 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
 
     IEnumerator stopTrapGuide;
 
-
-    bool desOpen;
-
     void Start()
     {
         switch (gameObject.tag)
@@ -61,17 +58,16 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
 
     private void Update()
     {
-
             // CHANGE THIS 
-        if (Input.GetMouseButton(0) && desOpen == true)
+        if (Input.GetMouseButtonDown(0) && GameManager.instance.uiManager.itemDescriptionOpen == true)
         {
             GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Item Menu");
             Time.timeScale = 1;
             foreach (GameObject go in gameObjectArray)
             {
+                GameManager.instance.uiManager.itemDescriptionOpen = false;
                 go.SetActive(false);
             }
-            desOpen = false;
         }
     }
 
@@ -82,13 +78,13 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        stopTrapGuide = ActivateInformationTab();
-        StartCoroutine(stopTrapGuide);
+     //   stopTrapGuide = ActivateInformationTab();
+      //  StartCoroutine(stopTrapGuide);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        StopCoroutine(stopTrapGuide);
+      //  StopCoroutine(stopTrapGuide);
     }
 
     IEnumerator ActivateInformationTab()
@@ -132,25 +128,21 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
 
     void HelpGuide(GameObject guideMenu)
     {
-        if (desOpen == true)
-        {
-            guideMenu.SetActive(false);
-            Time.timeScale = 1;
+        if (GameManager.instance.uiManager.itemDescriptionOpen)
             return;
-        }
 
         if (!guideMenu.activeSelf)
         {
             guideMenu.SetActive(true);
             Time.timeScale = 0;
-            desOpen = true;
+            GameManager.instance.uiManager.itemDescriptionOpen = true;
         }
-        else 
+       /* else 
         {
             guideMenu.SetActive(false);
             Time.timeScale = 1;
-            desOpen = false;
-        }    
+            GameManager.instance.uiManager.itemDescriptionOpen = false;
+        } */   
     }
  
     public void LawnmowerMenu()

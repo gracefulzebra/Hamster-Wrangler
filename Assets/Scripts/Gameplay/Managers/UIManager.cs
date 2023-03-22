@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
     public GameObject highLightedButton;
 
     public bool mainMenuActive;
+    public bool itemDescriptionOpen;
 
     private void Awake()
     {

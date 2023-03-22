@@ -15,7 +15,6 @@ public class WaveManager : MonoBehaviour
 
     [SerializeField] private int endOfRoundCashBonus;
 
-
     private void Awake()
     {
         manager = GetComponent<GameManager>();
