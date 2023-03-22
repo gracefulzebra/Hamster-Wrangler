@@ -33,6 +33,11 @@ public class HamsterBase : MonoBehaviour
     [SerializeField] private float decalOffsetDistance = 0.5f;
     [SerializeField] private float decalDuration = 1f;
 
+    [Header("Ground Check")]
+    [SerializeField] float groundDistance;
+    [SerializeField] LayerMask groundMask;
+    public bool isGrounded;
+
     [HideInInspector]
     public string hamsterID = "baseHamster";
 
@@ -49,12 +54,29 @@ public class HamsterBase : MonoBehaviour
         PathRequestManager.RequestPath(transform.position, currentTarget.position, OnPathFound, this.gameObject);
     }
 
+    bool playOnce;
     private void Update()
     {
-        if(transform.position.y < 0.3f)
+        //StartCoroutine(CheckIfGround());
+
+        if (transform.position.y < 0.3f)
             MoveToTarget();
         UpdateCheckPoints();
+
+        isGrounded = Physics.CheckSphere(transform.position, groundDistance, groundMask);
+
+        if (isGrounded && !playOnce)
+        {
+            playOnce = true;
+            print("insdie");
+            GetComponentInChildren<HamsterAnimationManager>().RakeLaunchAnimation();
+        }
+        else if (!isGrounded)
+        {
+            playOnce = false;
+        }
     }
+
 
     private void MoveToTarget()
     {
@@ -214,4 +236,8 @@ public class HamsterBase : MonoBehaviour
                 
         GameObject decalInstance = Instantiate(bloodEffect, decalPosition, Quaternion.LookRotation(hitData.normal));
     }
+
+
+
+
 }

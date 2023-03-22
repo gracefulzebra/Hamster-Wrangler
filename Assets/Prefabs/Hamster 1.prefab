@@ -127,6 +127,11 @@ MonoBehaviour:
   maxDecalDistance: 15
   decalOffsetDistance: 1
   decalDuration: 5
+  groundDistance: 0.3
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  isGrounded: 0
   hamsterID: baseHamster
 --- !u!114 &1892701076170301681
 MonoBehaviour:
@@ -904,6 +909,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a73b9bfbd6da1c4bac6cfbb61fd1213, type: 3}
+--- !u!1 &4647738096226869914 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1134218507716506736, guid: 0a73b9bfbd6da1c4bac6cfbb61fd1213, type: 3}
+  m_PrefabInstance: {fileID: 5709887669513393898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2518026181148130205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647738096226869914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71b20a8be64dfbb4a9a3e557a54259ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  limb1: {fileID: 0}
+  limb2: {fileID: 0}
+  limb3: {fileID: 0}
+  limb4: {fileID: 0}
+  limb5: {fileID: 0}
 --- !u!4 &5255803665792096974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 562322145770818596, guid: 0a73b9bfbd6da1c4bac6cfbb61fd1213, type: 3}

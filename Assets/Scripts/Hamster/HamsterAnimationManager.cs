@@ -26,8 +26,9 @@ public class HamsterAnimationManager : MonoBehaviour
     public void RakeLaunchAnimation()
     {
         animator.SetTrigger("RakeAnimationTrigger");
-    }
 
+        animator.ResetTrigger("RakeAnimationTrigger");
+    }
 
     private void SpawnLimb(Transform hamsterPos)
     {
