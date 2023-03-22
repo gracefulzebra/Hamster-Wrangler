@@ -124,7 +124,11 @@ MonoBehaviour:
   maxSpeed: 50
   rotationSpeed: 2
   checkPoints: []
-  bloodEffect: {fileID: 4372629551938734169, guid: 59768248bb48dc543ba50750b190a4b9, type: 3}
+  bloodEffect:
+  - {fileID: 4372629551938734169, guid: 59768248bb48dc543ba50750b190a4b9, type: 3}
+  - {fileID: 415006699402951179, guid: f8076ee69ed7d0748a5bd55c0cc3f889, type: 3}
+  - {fileID: 6278698954856477285, guid: d6ebdf59193610748813740a1baca6f4, type: 3}
+  - {fileID: 3398302189412015487, guid: 5e35d5c02b1c0ab4ca248c3e27877c9d, type: 3}
   maxDecalDistance: 15
   decalOffsetDistance: 1
   decalDuration: 5

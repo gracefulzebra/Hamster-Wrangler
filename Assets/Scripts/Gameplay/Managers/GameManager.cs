@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     public VFXManager vfxManager { get; private set; }
 
 
-    public int level;
+    public static int level;
 
     private void Awake()
     {
@@ -87,9 +87,6 @@ public class GameManager : MonoBehaviour
             level = 2;
         if (SceneManager.GetActiveScene().name == "MainMenu")
             MainMenuStar();
-
-
-
     }
 
     private void Start()

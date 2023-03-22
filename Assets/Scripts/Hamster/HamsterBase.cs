@@ -18,7 +18,7 @@ public class HamsterBase : MonoBehaviour
     private Transform currentTarget;
     private Vector3 currentWaypoint;
     [SerializeField] private float rotationSpeed;
-    
+
     [Header("Pathfinding")]
     [SerializeField] private Transform[] checkPoints;
     private Transform target;
@@ -28,7 +28,7 @@ public class HamsterBase : MonoBehaviour
     private int checkPointIndex = 0;
 
     [Header("Misc.")]
-    [SerializeField] private GameObject bloodEffect;
+    [SerializeField] private GameObject[] bloodEffect;
     [SerializeField] private float maxDecalDistance = 5f;
     [SerializeField] private float decalOffsetDistance = 0.5f;
     [SerializeField] private float decalDuration = 1f;
@@ -231,11 +231,9 @@ public class HamsterBase : MonoBehaviour
         Physics.Raycast(randomRay, out hitData, maxDecalDistance);
 
         Vector3 decalPosition = hitData.point + (randomRay.direction.normalized * decalOffsetDistance);
-                
-        GameObject decalInstance = Instantiate(bloodEffect, decalPosition, Quaternion.LookRotation(hitData.normal));
+
+         int randBlood = Random.Range(0, 4);
+
+        GameObject decalInstance = Instantiate(bloodEffect[randBlood], decalPosition, Quaternion.LookRotation(hitData.normal));
     }
-
-
-
-
 }

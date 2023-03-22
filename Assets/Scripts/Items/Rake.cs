@@ -32,7 +32,7 @@ public class Rake : TrapBase
         {
             onPlacement = true;
             gameObject.layer = 0;
-          //  GetComponentInParent<Rigidbody>().useGravity = true;
+            GetComponentInParent<Rigidbody>().useGravity = true;
         }
 
         if (activateTrap && !inProgress)

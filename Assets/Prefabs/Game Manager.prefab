@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1058055517}
   - component: {fileID: 1058055519}
   - component: {fileID: 1058055520}
+  - component: {fileID: 1834955338}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -57,11 +58,8 @@ MonoBehaviour:
   damage: 1
   startingCurrency: 1000
   scoreFor3Star: 8000
-  lawnMower: 0
-  leafBlower: 0
-  bugZapper: 0
-  lighter: 0
-  rake: 0
+  globalTrapRotation: {x: 0, y: 0, z: 0}
+  level: 0
 --- !u!82 &1058055521
 AudioSource:
   m_ObjectHideFlags: 0
@@ -173,8 +171,9 @@ MonoBehaviour:
   blowerScore: 250
   mowerScore: 400
   lighterScore: 100
-  zapperScore: 0
+  zapperScore: 200
   rakeScore: 200
+  comboScore: 200
 --- !u!114 &1058055514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +193,8 @@ MonoBehaviour:
   zapperCost: 200
   rakeCost: 200
   repairCost: 150
+  shopItems: []
+  itemCosts: 
 --- !u!114 &1058055516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,10 +220,13 @@ MonoBehaviour:
   rakeCost: {fileID: 0}
   tarCost: {fileID: 0}
   lighterCost: {fileID: 0}
-  star1:
+  starsInGame:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  starsLevel1: []
+  starsLevel2: []
+  starsLevel3: []
   starSprite: {fileID: 21300000, guid: a3a1969d6a401104d86fa10695702e5b, type: 3}
   IngameHTP: {fileID: 0}
   itemSelected: {fileID: 21300000, guid: f7031b9790ee8d348b9a0c98834d2e6b, type: 3}
@@ -230,6 +234,7 @@ MonoBehaviour:
   itemCantBuy: {fileID: 21300000, guid: 82996b416a4ffad4b9cf33581b303074, type: 3}
   highLightedButton: {fileID: 0}
   mainMenuActive: 0
+  itemDescriptionOpen: 0
 --- !u!114 &1058055517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +250,7 @@ MonoBehaviour:
   hamsterPrefab: {fileID: 1622791512648962765, guid: 907b88d61ec41bb49a69ff1e24ac0ce6, type: 3}
   hamstersPerWave: 030000000300000005000000
   spawnDelay: 3
+  endOfRoundCashBonus: 0
 --- !u!114 &1058055519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,3 +290,26 @@ MonoBehaviour:
   lfBlower: {fileID: 8300000, guid: 46ca1753959a97547bb7c63bebec1f0e, type: 3}
   trapPlaced: {fileID: 0}
   music: {fileID: 8300000, guid: 805fa1fd17ed3764999e07a1ce629a87, type: 3}
+--- !u!114 &1834955338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8881886160524883247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71b20a8be64dfbb4a9a3e557a54259ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  limbs:
+  - {fileID: 6080267410220036596, guid: 9aabad4f1beb9b841a9e4be80d6f2425, type: 3}
+  - {fileID: 1619460721427501345, guid: f869334b3a4114944a9d66fa2fb05397, type: 3}
+  - {fileID: 1306345967661564035, guid: 5fa182de3cdc0f542b1f131ed9ddea11, type: 3}
+  - {fileID: 7746780440822545596, guid: d5511004d149b47419925917b0a8483c, type: 3}
+  - {fileID: 6287720211741435018, guid: 12a3af8e9b835984fa7b9d4ad2e5d759, type: 3}
+  spawnRadius: 0.067
+  spawnHeight: 0
+  limbProjectionForce: 15
+  limbQuantity: 5
+  limbDestroyDuration: 4.86

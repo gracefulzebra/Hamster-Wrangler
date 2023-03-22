@@ -22,7 +22,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private  List<GameObject> starsInGame;
     [SerializeField] private List<GameObject> starsLevel1;
     [SerializeField] private List<GameObject> starsLevel2;
-    [SerializeField] private List<GameObject> starsLevel3;
     [SerializeField] private Sprite starSprite;
 
     [SerializeField] private GameObject IngameHTP;
@@ -196,22 +195,18 @@ public class UIManager : MonoBehaviour
 
    public void MenuStars(int starCount)
    {
+        print(GameManager.level);
+
         List<GameObject> menuStars = null;
-        switch (GameManager.instance.level)
+        switch (GameManager.level)
             {
             case (1):
                 menuStars = starsLevel1;
                 break;
                     case (2):
-                menuStars = starsLevel1;
+                menuStars = starsLevel2;
                 break;
-            case (3):
-                menuStars = starsLevel1;
-                break;
-            case (4):
-                menuStars = starsLevel1;
-                break;
-        }    
+        }
         switch (starCount)
         {
             case 1:
