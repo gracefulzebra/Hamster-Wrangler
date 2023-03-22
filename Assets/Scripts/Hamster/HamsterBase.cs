@@ -69,7 +69,7 @@ public class HamsterBase : MonoBehaviour
         {
             playOnce = true;
             
-            GetComponentInChildren<HamsterAnimationManager>().RakeLaunchAnimation();
+            GetComponent<HamsterAnimation>().RakeLaunchAnimation();
         }
         else if (isGrounded)
         {
