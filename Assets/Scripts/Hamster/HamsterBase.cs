@@ -67,14 +67,8 @@ public class HamsterBase : MonoBehaviour
 
         if (!isGrounded && !playOnce)
         {
-            playOnce = true;
-<<<<<<< Updated upstream
-            
+            playOnce = true;          
             GetComponent<HamsterAnimation>().RakeLaunchAnimation();
-=======
-            print("insdie");
-            //GetComponentInChildren<VFXManager>().RakeLaunchAnimation();
->>>>>>> Stashed changes
         }
         else if (isGrounded)
         {
