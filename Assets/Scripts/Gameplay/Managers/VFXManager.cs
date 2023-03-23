@@ -22,7 +22,6 @@ public class VFXManager : MonoBehaviour
     public void HamsterDeathLimbSpawn(Transform hamsterPos)
     {
         limbRestrictionList.Clear();
-
         for(int i = 0; i < limbQuantity; i++)
         { SpawnLimb(ChooseLimb(), hamsterPos); }
     }
