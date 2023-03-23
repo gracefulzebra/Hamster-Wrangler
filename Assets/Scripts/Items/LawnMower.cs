@@ -20,6 +20,7 @@ public class LawnMower : TrapBase
     Node nodeHit;
 
     [Header("Explosion")]
+    [SerializeField] int explosiondamage;
     [SerializeField] float explosionRange;
     [SerializeField] private LayerMask scannableMask;
     [SerializeField] float lawnmowerExplodeDelay;
@@ -99,7 +100,7 @@ public class LawnMower : TrapBase
         if (targetObject.transform.CompareTag("Hamster"))
         {
             ItemInteract(targetObject);
-            targetObject.GetComponent<ItemEffects>().InExplosionRadius(damage);
+            targetObject.GetComponent<ItemEffects>().InExplosionRadius(explosiondamage);
         }           
     }
              
