@@ -265,13 +265,13 @@ public class TutManager : MonoBehaviour
                             DialougeWithNoPC();
                             callOnce = true;
                         }
-                        tutCanUseBT = true;
                     }
                     break;
                     //hammy death
                 case 20:
                     cantIncreasePC = false;
                     callOnce = false;
+                    tutCanUseBT = true;
                     break;
                     //dialouge
                 case 21:
