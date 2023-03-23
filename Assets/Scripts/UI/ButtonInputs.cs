@@ -114,7 +114,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
 
     public void BuyItem()
     {
-        if (GameManager.instance.currencyManager.CheckPrice(gameObject.tag) == true)
+        if (GameManager.instance.currencyManager.CheckPrice(gameObject.tag) == true && !GameManager.instance.holdingItem)
         {
             GameManager.instance.uiManager.ShopButtonOutline(gameObject);
             GameManager.instance.uiManager.highLightedButton = gameObject;
