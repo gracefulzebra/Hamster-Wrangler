@@ -32973,6 +32973,34 @@ PrefabInstance:
       propertyPath: ShopAni
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1834955338, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: spawnHeight
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834955338, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: limbs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834955338, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: limbs.Array.data[0]
+      value: 
+      objectReference: {fileID: 6080267410220036596, guid: 9aabad4f1beb9b841a9e4be80d6f2425, type: 3}
+    - target: {fileID: 1834955338, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: limbs.Array.data[1]
+      value: 
+      objectReference: {fileID: 1619460721427501345, guid: f869334b3a4114944a9d66fa2fb05397, type: 3}
+    - target: {fileID: 1834955338, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: limbs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1306345967661564035, guid: 5fa182de3cdc0f542b1f131ed9ddea11, type: 3}
+    - target: {fileID: 1834955338, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: limbs.Array.data[3]
+      value: 
+      objectReference: {fileID: 7746780440822545596, guid: d5511004d149b47419925917b0a8483c, type: 3}
+    - target: {fileID: 1834955338, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: limbs.Array.data[4]
+      value: 
+      objectReference: {fileID: 6287720211741435018, guid: 12a3af8e9b835984fa7b9d4ad2e5d759, type: 3}
     - target: {fileID: 1102496838878895824, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -33583,7 +33611,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2519
+    m_Bits: 6615
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
