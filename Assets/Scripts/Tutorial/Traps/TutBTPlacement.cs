@@ -40,7 +40,7 @@ public class TutBTPlacement : BaseSnapToGrid
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, 100))
         {
-            print(hit.transform.tag);
+            
             if (hit.transform.CompareTag("Placed Item"))
             {
                 tutCorrectRotation = true;
