@@ -11,7 +11,8 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     [SerializeField] ParticleSystem placementEffect;
     public string itemID;
     Node nodeHit;
-  
+
+    [SerializeField] LayerMask layerMask;
 
     void Awake()
     {
@@ -63,7 +64,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         {
             RaycastHit hit;
             Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(mousePos, out hit))
+            if (Physics.Raycast(mousePos, out hit, layerMask))
             {
 
                 if (hit.transform.gameObject.tag == "Ground" || hit.transform.gameObject.tag != "Unplaced Item")

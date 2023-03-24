@@ -31,6 +31,8 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator StartWave()
     {
+        manager.DisplayWaves(wave + 1, maxWaves);
+
         if (waveCompleted && wave < hamstersPerWave.Length) 
         {
             manager.DisplayWaves(wave + 1, maxWaves);
@@ -75,6 +77,5 @@ public class WaveManager : MonoBehaviour
             }
 
         }
-        manager.DisplayWaves(wave + 1, maxWaves);
     }
 }

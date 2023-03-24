@@ -10724,7 +10724,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 341700009}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.39109498, y: 0.358433, z: 0.04646}
@@ -14912,7 +14912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &519929444
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21269,7 +21269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &735732581
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33899,7 +33899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1090597718
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38504,11 +38504,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 852656541}
     - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: spawnDelay
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: endOfRoundCashBonus
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: hamstersPerWave.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: hamstersPerWave.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: hamstersPerWave.Array.data[1]
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
@@ -38558,6 +38570,14 @@ PrefabInstance:
     - target: {fileID: 1102496838878895824, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: holdingItem
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: startingCurrency
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 8881886160524883247, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_Name
@@ -42828,7 +42848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1333513894
 RectTransform:
   m_ObjectHideFlags: 0
@@ -43205,7 +43225,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341492691}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.39109498, y: 0.358433, z: 0.04646}
@@ -50281,7 +50301,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557372185}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.39109498, y: 0.358433, z: 0.04646}
@@ -58342,7 +58362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2182906908268309926, guid: 60acc8005cc4a004f8d4dc5f264be1cb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.098679066
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 2182906908268309926, guid: 60acc8005cc4a004f8d4dc5f264be1cb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -58350,7 +58370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2182906908268309926, guid: 60acc8005cc4a004f8d4dc5f264be1cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.628336
+      value: -7.55
       objectReference: {fileID: 0}
     - target: {fileID: 2182906908268309926, guid: 60acc8005cc4a004f8d4dc5f264be1cb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -60456,7 +60476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1832468167
 RectTransform:
   m_ObjectHideFlags: 0
@@ -68307,6 +68327,10 @@ PrefabInstance:
       propertyPath: checkPoints.Array.data[6]
       value: 
       objectReference: {fileID: 74366607}
+    - target: {fileID: 4709637732169614661, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5102938939397385189, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: m_RootOrder
       value: 5

@@ -150,7 +150,7 @@ public class ItemEffects : MonoBehaviour
     private void OnCollisionEnter(Collision col)
     {
         // when coliddes with anythign finds hamster in radius 
-        if (canLightingAOE)
+        if (canLightingAOE && !col.transform.CompareTag("Hamster"))
         {
             FinishLightningAOE();
             canLightingAOE = false;
