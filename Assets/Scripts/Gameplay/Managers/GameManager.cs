@@ -93,7 +93,6 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name != "MainMenu")
             audioManager.PlayMusic();
-
     }
 
     public void StartWave()
