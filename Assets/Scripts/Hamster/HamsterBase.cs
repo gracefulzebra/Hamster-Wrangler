@@ -57,8 +57,6 @@ public class HamsterBase : MonoBehaviour
     bool playOnce;
     private void Update()
     {
-        //StartCoroutine(CheckIfGround());
-
         if (transform.position.y < 0.3f)
             MoveToTarget();
         UpdateCheckPoints();
@@ -67,7 +65,7 @@ public class HamsterBase : MonoBehaviour
 
         if (!isGrounded && !playOnce)
         {
-            playOnce = true;          
+            playOnce = true;      
             GetComponent<HamsterAnimation>().RakeLaunchAnimation();
         }
         else if (isGrounded)

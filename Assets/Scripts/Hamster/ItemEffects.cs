@@ -25,10 +25,6 @@ public class ItemEffects : MonoBehaviour
 
     [SerializeField] LineRenderer lineRenderer;
 
-    private void Start()
-    {
-    }
-
     #region Fire
 
     ///<summary>
