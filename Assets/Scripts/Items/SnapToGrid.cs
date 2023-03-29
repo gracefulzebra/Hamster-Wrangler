@@ -14,6 +14,8 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
     [SerializeField] LayerMask layerMask;
 
+    bool canBePlaced;
+
     void Awake()
     {
         if (gameObject.name == "Lawnmower(Clone)")
@@ -62,20 +64,27 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         /// </summary>
         void nodeCheck()
         {
+        
             RaycastHit hit;
             Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(mousePos, out hit, layerMask))
             {
 
-                if (hit.transform.gameObject.tag == "Ground" || hit.transform.gameObject.tag != "Unplaced Item")
-                {
+               if (hit.transform.gameObject.tag != "Unplaced Item")//hit.transform.gameObject.tag == "Ground")
+               {
                     nodeHit = gridRef.GetNodeFromWorldPoint(hit.point);
-            
+
+                    gameObject.transform.position = new Vector3(nodeHit.worldPosition.x, nodeHit.worldPosition.y - 0.5f, nodeHit.worldPosition.z);
+
                     if (nodeHit.placeable)
                     {
-                        gameObject.transform.position = new Vector3(nodeHit.worldPosition.x, nodeHit.worldPosition.y - 0.5f, nodeHit.worldPosition.z);
-                    }             
-                }
+                       canBePlaced = true;
+                    }  
+                    else
+                    {
+                    canBePlaced = false;
+                    }
+               }
             }
         }
     
@@ -103,6 +112,8 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
         void TrapPlacement()
         {
+        if (!canBePlaced)
+            return;
 
             GameManager.instance.holdingItem = false;
             GameManager.instance.uiManager.RemoveShopOutline();
