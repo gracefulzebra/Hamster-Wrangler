@@ -92,7 +92,7 @@ public class HamsterBase : MonoBehaviour
         if (currentTarget == target)
             return;
 
-        if (Distance(transform.position, currentTarget.position) < 0.4f)
+        if (Distance(transform.position, currentTarget.position) < 0.3f)
         {
             checkPointIndex++;
 
@@ -145,7 +145,7 @@ public class HamsterBase : MonoBehaviour
         while (true)
         {
             float distance = Distance(transform.position, currentWaypoint);
-            if (distance < 0.4f)
+            if (distance < 0.45f)
             {
                 targetIndex++;
                 if(targetIndex >= path.Length)
@@ -154,7 +154,7 @@ public class HamsterBase : MonoBehaviour
                 }
                 currentWaypoint = path[targetIndex];
             }
-            if (distance > 2f && !pathRequested)
+            if (distance > 1.5f && !pathRequested)
             {
                 pathRequested = true;
                 PathRequestManager.RequestPath(transform.position, currentTarget.position, OnPathFound, this.gameObject);

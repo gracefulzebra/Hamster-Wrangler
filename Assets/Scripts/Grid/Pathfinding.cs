@@ -86,6 +86,7 @@ public class Pathfinding : MonoBehaviour
             path.Add(currentNode);
             currentNode = currentNode.parent;
         }
+        
 
         Vector3[] waypoints;
         List<Vector3> temp = new List<Vector3>();
@@ -96,8 +97,6 @@ public class Pathfinding : MonoBehaviour
         waypoints = temp.ToArray();
         Array.Reverse(waypoints);
         return waypoints;
-        
-        
     }
 
     Vector3[] SimplifyPath(List<Node> path)
