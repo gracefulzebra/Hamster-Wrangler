@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking.Types;
 
+
+
+
 public class HamsterBase : MonoBehaviour
 {
     [Header("Hamster Health")]
@@ -40,6 +43,16 @@ public class HamsterBase : MonoBehaviour
 
     [HideInInspector]
     public string hamsterID = "baseHamster";
+
+    enum DeathTypes
+    {
+        Fire,
+        Explosion,
+        LawnMower,
+        BugZapper
+    };
+
+    DeathTypes deathType;
 
     private void Awake()
     {
@@ -208,9 +221,29 @@ public class HamsterBase : MonoBehaviour
         GameManager.instance.vfxManager.HamsterDeathLimbSpawn(transform);
         CreateDecalEffects(); 
         GetComponent<HamsterScore>().SendData();
-        GameManager.instance.uiManager.UpdateUIOnHamsterDeath();
         Destroy(gameObject);
     }
+
+    // play in kill, for different death aimation depending on death 
+    void HamsterDeathEffect()
+    {
+        switch (deathType)
+        {
+            case (DeathTypes.Explosion):
+                GetComponent<HamsterAnimation>().ExplosionDeathAnimation();
+                break;
+            case (DeathTypes.LawnMower):
+                GameManager.instance.vfxManager.HamsterDeathLimbSpawn(transform);
+                break;
+            case (DeathTypes.Fire):
+                GameManager.instance.vfxManager.HamsterDeathLimbSpawn(transform);
+                break;
+            case (DeathTypes.BugZapper):
+                GameManager.instance.vfxManager.HamsterDeathLimbSpawn(transform);
+                break;
+        }
+    }
+
 
     private Ray GenerateRandomAngleRay()
     {

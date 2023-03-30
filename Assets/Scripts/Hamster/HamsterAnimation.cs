@@ -14,4 +14,9 @@ public class HamsterAnimation : MonoBehaviour
     {
         animator.SetTrigger("RakeAnimationTrigger");
     }
+
+    public void ExplosionDeathAnimation()
+    {
+        animator.SetTrigger("Blam");
+    }
 }

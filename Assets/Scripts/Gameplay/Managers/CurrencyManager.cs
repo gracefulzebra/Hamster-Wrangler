@@ -181,6 +181,7 @@ public class CurrencyManager : MonoBehaviour
 
         currency += (int)currencyRewarded;
         UpdateCurrencyDisplay();
+        GameManager.instance.uiManager.UpdateUIOnHamsterDeath();
     }
 
     private void UpdateCurrencyDisplay()
