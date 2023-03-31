@@ -1,3 +1,4 @@
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -53,11 +54,11 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
     private void Update()
     {
-        nodeCheck();
-
+      
         //place this in if 
         if (hasItem)
         {
+            nodeCheck();
             PlacementConfirmtation();
         }
     }
@@ -70,9 +71,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         RaycastHit hit;
         Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(mousePos, out hit, Mathf.Infinity, layerMask))
-        {
-            if (hasItem)
-            {
+        {        
                 // for regular placement 
                 if (hit.transform.gameObject.tag != "Unplaced Item")//hit.transform.gameObject.tag == "Ground")
                 {
@@ -92,22 +91,34 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
                         canBePlaced = false;
                         colour.GetComponent<Renderer>().material.color = Color.red;
                     }
-                }
-                // for clicking trap to place
-                else if (hit.transform.gameObject.tag == "Unplaced Item")
+                }           
+        }
+    }
+
+    void NewPlacement()
+    {
+       
+    }
+
+    void OnMouseDown()
+    {
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(mousePos, out hit, Mathf.Infinity, layerMask))
+            {
+                if (hasItem)
                 {
-                    if (Input.GetMouseButtonDown(0))
+                    if (hit.transform.gameObject.tag == "Unplaced Item")
                     {
                         TrapPlacement();
                     }
                 }
-            }
-            // for activating trap
-            else
-            {
-                if (hit.transform.gameObject.tag == "Placed Item")
+                else
                 {
-                    if (Input.GetMouseButtonDown(0))
+                    if (hit.transform.gameObject.tag == "Placed Item")
                     {
                         GetComponentInChildren<TrapBase>().ActivateTrap();
                     }
@@ -115,7 +126,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             }
         }
     }
-
 
     public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
 
