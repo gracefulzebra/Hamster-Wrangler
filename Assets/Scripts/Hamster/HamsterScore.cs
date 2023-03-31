@@ -6,7 +6,10 @@ public class HamsterScore : MonoBehaviour
 {
     private int blowerCount, zapperCount, lighterCount, mowerCount, rakeCount;
 
+    private int comboCounter = 0;
     private int comboBonusScore;
+
+    [SerializeField] private GameObject comboDisplayPrefab;
 
     private List<GameObject> interactedList = new List<GameObject>();
 
@@ -38,6 +41,12 @@ public class HamsterScore : MonoBehaviour
                     rakeCount++;
                     break;
             }
+
+            comboCounter += trapInteractCounter + 1;
+
+            print("squnf");
+            GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
+            temp.GetComponent<ComboDisplay>().SetComboText(comboCounter);
 
             if (trapInteractCounter > 0)
             {
