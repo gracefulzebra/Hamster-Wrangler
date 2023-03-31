@@ -53,12 +53,11 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     }
 
     private void Update()
-    {
-      
+    {    
         //place this in if 
         if (hasItem)
         {
-            nodeCheck();
+            NodeCheck();
             PlacementConfirmtation();
         }
     }
@@ -66,7 +65,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     /// <summary>
     /// Shoots a ray from mouse position then finds cloest walkable node
     /// </summary>
-    void nodeCheck()
+    void NodeCheck()
     {
         RaycastHit hit;
         Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
