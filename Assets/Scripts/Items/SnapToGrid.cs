@@ -16,6 +16,8 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
     bool canBePlaced;
 
+    [SerializeField] GameObject colour;
+
     void Awake()
     {
         if (gameObject.name == "Lawnmower(Clone)")
@@ -51,44 +53,73 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
     private void Update()
     {
+        nodeCheck();
+
         //place this in if 
         if (hasItem)
         {
             PlacementConfirmtation();
-            nodeCheck();
         }
     }
 
-        /// <summary>
-        /// Shoots a ray from mouse position then finds cloest walkable node
-        /// </summary>
-        void nodeCheck()
-        {
-        
-            RaycastHit hit;
-            Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(mousePos, out hit, layerMask))
-            {
+    /// <summary>
+    /// Shoots a ray from mouse position then finds cloest walkable node
+    /// </summary>
+    void nodeCheck()
+    {
 
-               if (hit.transform.gameObject.tag != "Unplaced Item")//hit.transform.gameObject.tag == "Ground")
-               {
+        RaycastHit hit;
+        Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(mousePos, out hit, Mathf.Infinity, layerMask))
+        {
+            if (hasItem)
+            {
+                if (hit.transform.gameObject.tag != "Unplaced Item")//hit.transform.gameObject.tag == "Ground")
+                {
                     nodeHit = gridRef.GetNodeFromWorldPoint(hit.point);
 
                     gameObject.transform.position = new Vector3(nodeHit.worldPosition.x, nodeHit.worldPosition.y - 0.5f, nodeHit.worldPosition.z);
 
                     if (nodeHit.placeable)
                     {
-                       canBePlaced = true;
-                    }  
+                        Color customColor = new Color(0f, 0f, 0f, 0.1f);
+                        canBePlaced = true;
+                        colour.GetComponent<Renderer>().material.color = Color.yellow;
+                    }
                     else
                     {
-                    canBePlaced = false;
+                        canBePlaced = false;
+                        colour.GetComponent<Renderer>().material.color = Color.red;
                     }
-               }
+                }
+                else if (hit.transform.gameObject.tag == "Unplaced Item")//hit.transform.gameObject.tag == "Ground")
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        TrapPlacement();
+                    }
+                }
+            }
+            else
+            {
+                if (hit.transform.gameObject.tag == "Placed Item")
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        GetComponentInChildren<TrapBase>().ActivateTrap();
+                    }
+                }
             }
         }
-    
-        public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
+    }
+
+
+
+    void OnMouseDown()
+    {
+
+    }
+    public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
 
         public void OnPointerUp(PointerEventData eventData)
         {
@@ -98,24 +129,15 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             }
         }
 
-        void OnMouseDown()
-        {
-            if (hasItem == false)
-            {
-              GetComponentInChildren<TrapBase>().ActivateTrap();
-            }
-            else
-            {
-               TrapPlacement();
-            }
-        }
+   
 
         void TrapPlacement()
         {
         if (!canBePlaced)
             return;
 
-            GameManager.instance.holdingItem = false;
+          colour.GetComponent<Renderer>().material.color = Color.white;
+           GameManager.instance.holdingItem = false;
             GameManager.instance.uiManager.RemoveShopOutline();
             GameManager.instance.audioManager.ItemPlacedAudio();
             GameManager.instance.currencyManager.TryBuy(itemID);

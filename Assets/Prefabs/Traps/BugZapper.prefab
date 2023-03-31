@@ -983,6 +983,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 7679
+  colour: {fileID: 7471812481785531498}
 --- !u!54 &2186741406954826895
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1385,6 +1386,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5825af4d5100bc40979b79fa0e425e5, type: 3}
+--- !u!1 &7471812481785531498 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e5825af4d5100bc40979b79fa0e425e5, type: 3}
+  m_PrefabInstance: {fileID: 7741788968225943867}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7852841178056120016 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e5825af4d5100bc40979b79fa0e425e5, type: 3}

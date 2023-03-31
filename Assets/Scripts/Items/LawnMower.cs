@@ -10,6 +10,7 @@ public class LawnMower : TrapBase
     [Header("Generic Values")]
     float lawnmowerDestroyDelay;
     [SerializeField] float lawnmowerSpd;
+    [SerializeField] int dmgReductionPerHit;
     int counter = 0;
     bool willExplode;
 
@@ -103,7 +104,8 @@ public class LawnMower : TrapBase
             targetObject.GetComponent<ItemEffects>().InExplosionRadius(explosiondamage);
         }           
     }
-             
+
+    GameObject interactedHamster = null;
 
     private void OnTriggerStay(Collider col)
     {
@@ -128,7 +130,7 @@ public class LawnMower : TrapBase
             }
         
         }
-            // checks if lighter is on
+
             if (!activateTrap)
             return;
 
@@ -136,6 +138,13 @@ public class LawnMower : TrapBase
         {
             ItemInteract(col.gameObject);
             col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
+       
+            // reduces damage of hamster per hit
+            if (interactedHamster != col.gameObject)
+            {
+                damage -= dmgReductionPerHit;
+                interactedHamster = col.gameObject;
+            }
         }
 
         // obstacle

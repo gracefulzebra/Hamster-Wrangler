@@ -567,7 +567,8 @@ MonoBehaviour:
   itemID: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 7679
+    m_Bits: 7423
+  colour: {fileID: 5186974287285736849}
 --- !u!65 &-2135356015512987289
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1142,6 +1143,11 @@ PrefabInstance:
 --- !u!4 &170103932795736764 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 61db4ad7062303043b6d4625639f2172, type: 3}
+  m_PrefabInstance: {fileID: 420785150118507863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5186974287285736849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4454842348029681466, guid: 61db4ad7062303043b6d4625639f2172, type: 3}
   m_PrefabInstance: {fileID: 420785150118507863}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2702556742224830496

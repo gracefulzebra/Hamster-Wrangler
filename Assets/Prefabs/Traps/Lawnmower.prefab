@@ -188,6 +188,7 @@ MonoBehaviour:
   fireEffect: {fileID: 4118219549432098300}
   smokeEffect: {fileID: 5936391385877511823}
   lawnmowerSpd: 5
+  dmgReductionPerHit: 5
   explosion: {fileID: 294653886677383835, guid: 9299834040719374db4880798af5c369, type: 3}
   explosiondamage: 20
   explosionRange: 2
@@ -518,6 +519,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 7679
+  colour: {fileID: 5441425382075299937}
 --- !u!1 &4761188882436680822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,6 +1474,11 @@ PrefabInstance:
 --- !u!4 &4100431033216669637 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
+  m_PrefabInstance: {fileID: 4570328102330396718}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5441425382075299937 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8425886082142767183, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
   m_PrefabInstance: {fileID: 4570328102330396718}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5795993807365041006
