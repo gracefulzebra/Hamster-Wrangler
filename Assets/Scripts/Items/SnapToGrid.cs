@@ -67,19 +67,20 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     /// </summary>
     void nodeCheck()
     {
-
         RaycastHit hit;
         Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(mousePos, out hit, Mathf.Infinity, layerMask))
         {
             if (hasItem)
             {
+                // for regular placement 
                 if (hit.transform.gameObject.tag != "Unplaced Item")//hit.transform.gameObject.tag == "Ground")
                 {
                     nodeHit = gridRef.GetNodeFromWorldPoint(hit.point);
 
                     gameObject.transform.position = new Vector3(nodeHit.worldPosition.x, nodeHit.worldPosition.y - 0.5f, nodeHit.worldPosition.z);
 
+                    // for colour changing
                     if (nodeHit.placeable)
                     {
                         Color customColor = new Color(0f, 0f, 0f, 0.1f);
@@ -92,7 +93,8 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
                         colour.GetComponent<Renderer>().material.color = Color.red;
                     }
                 }
-                else if (hit.transform.gameObject.tag == "Unplaced Item")//hit.transform.gameObject.tag == "Ground")
+                // for clicking trap to place
+                else if (hit.transform.gameObject.tag == "Unplaced Item")
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
@@ -100,6 +102,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
                     }
                 }
             }
+            // for activating trap
             else
             {
                 if (hit.transform.gameObject.tag == "Placed Item")
@@ -114,11 +117,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     }
 
 
-
-    void OnMouseDown()
-    {
-
-    }
     public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
 
         public void OnPointerUp(PointerEventData eventData)
@@ -128,8 +126,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
                 TrapPlacement();
             }
         }
-
-   
 
         void TrapPlacement()
         {
