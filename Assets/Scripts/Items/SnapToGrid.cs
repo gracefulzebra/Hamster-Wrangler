@@ -93,12 +93,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
                 }           
         }
     }
-
-    void NewPlacement()
-    {
-       
-    }
-
     void OnMouseDown()
     {
 
