@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
             level = 1;
         if (SceneManager.GetActiveScene().name == "FinnLevel")
             level = 2;
+
         if (SceneManager.GetActiveScene().name == "MainMenu")
             MainMenuStar();
     }

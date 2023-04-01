@@ -135,13 +135,12 @@ public class LawnMower : TrapBase
             return;
 
         if (col.CompareTag("Hamster"))
-        {
-            ItemInteract(col.gameObject);
-            col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
-       
+        {   
             // reduces damage of hamster per hit
             if (interactedHamster != col.gameObject)
             {
+                ItemInteract(col.gameObject);
+                col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
                 damage -= dmgReductionPerHit;
                 interactedHamster = col.gameObject;
             }

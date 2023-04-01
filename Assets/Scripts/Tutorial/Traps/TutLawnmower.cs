@@ -11,6 +11,7 @@ public class TutLawnmower : TrapBase
 
     [Header("Generic Values")]
     [SerializeField] float lawnmowerSpd;
+    [SerializeField] int dmgReductionPerHit;
     int counter = 0;
     bool willExplode;
 
@@ -117,6 +118,8 @@ public class TutLawnmower : TrapBase
         }
     }
 
+    GameObject interactedHamster = null;
+
     private void OnTriggerStay(Collider col)
     {
         // if item is unplaced then dont run script
@@ -139,10 +142,17 @@ public class TutLawnmower : TrapBase
 
         if (col.CompareTag("Hamster"))
         {
-            ItemInteract(col.gameObject);
-            col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
+            // reduces damage of hamster per hit
+            if (interactedHamster != col.gameObject)
+            {
+                ItemInteract(col.gameObject);
+                col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
+                damage -= dmgReductionPerHit;
+                interactedHamster = col.gameObject;
+            }
+        
 
-            if(TutManager.tutInstance.posCounter == 11)
+        if (TutManager.tutInstance.posCounter == 11)
             {
                 FindObjectOfType<DialogueManager>().DisplayNextSentence();
             }

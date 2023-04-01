@@ -195,8 +195,6 @@ public class UIManager : MonoBehaviour
 
    public void MenuStars(int starCount)
    {
-        print(GameManager.level);
-
         List<GameObject> menuStars = null;
         switch (GameManager.level)
             {
@@ -209,18 +207,25 @@ public class UIManager : MonoBehaviour
         }
         switch (starCount)
         {
+                         
             case 1:
                 menuStars[0].GetComponent<Image>().sprite = starSprite;
+                DontDestroyOnLoad(menuStars[0]);
                 break;
             case 2:
                 menuStars[0].GetComponent<Image>().sprite = starSprite;
                 menuStars[1].GetComponent<Image>().sprite = starSprite;
+                DontDestroyOnLoad(menuStars[0]);
+                DontDestroyOnLoad(menuStars[1]);
                 break;
             case 3:
                 menuStars[0].GetComponent<Image>().sprite = starSprite;
                 menuStars[1].GetComponent<Image>().sprite = starSprite;
                 menuStars[2].GetComponent<Image>().sprite = starSprite;
+                DontDestroyOnLoad(menuStars[0]); DontDestroyOnLoad(menuStars[1]); DontDestroyOnLoad(menuStars[2]);
                 break;
+
+ 
         }
    }
 

@@ -44,7 +44,6 @@ public class HamsterScore : MonoBehaviour
 
             comboCounter += trapInteractCounter + 1;
 
-            print("squnf");
             GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
             temp.GetComponent<ComboDisplay>().SetComboText(comboCounter);
 
