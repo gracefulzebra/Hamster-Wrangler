@@ -12,11 +12,11 @@ public class FixedCam : MonoBehaviour
     int count;
     float timer;
     float inputCooldown;
-    public LayerMask scannable;
+    public LayerMask layerMask;
 
     void Start()
     {
-        Camera.main.eventMask = scannable;
+        Camera.main.eventMask = layerMask;
         // spawns camera at first camera position
         transform.position = cameraPos[0].transform.position;
     }
