@@ -141,7 +141,10 @@ public class LawnMower : TrapBase
             {
                 ItemInteract(col.gameObject);
                 col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
-                damage -= dmgReductionPerHit;
+                if (damage > 0)
+                {
+                    damage -= dmgReductionPerHit;
+                }
                 interactedHamster = col.gameObject;
             }
         }
