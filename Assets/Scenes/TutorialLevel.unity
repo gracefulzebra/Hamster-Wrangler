@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 437f83882592b2b4b94119d70f42b30d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 805eac152b797294cb3d0fcf4a6bd179, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3758,8 +3758,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &134667212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13333,8 +13331,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &429054282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15625,8 +15621,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 906164291}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &519929446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18618,8 +18612,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 906164291}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &608054520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20560,7 +20552,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 437f83882592b2b4b94119d70f42b30d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 805eac152b797294cb3d0fcf4a6bd179, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21806,8 +21798,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 1230470812}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &735732583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25144,8 +25134,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &825955211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25728,7 +25716,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cd1f42ceeb0cb1945b5d90b995755047, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 589662b4e9474ba4b8a574e52137983f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -32704,7 +32692,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 88cd3a04c7c297f448845d794d59afb6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc95bb247b35ed64f90b7cf260efdd92, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -33497,8 +33485,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &1083839661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33788,8 +33774,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 1568056928}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &1090597720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37247,8 +37231,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &1205941422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37891,7 +37873,7 @@ PrefabInstance:
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: healthDisplay
       value: 
-      objectReference: {fileID: 1766470339}
+      objectReference: {fileID: 823943194}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: gameOverScreen
       value: 
@@ -37903,7 +37885,7 @@ PrefabInstance:
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: currencyDisplay
       value: 
-      objectReference: {fileID: 345396585}
+      objectReference: {fileID: 1419855580}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: finalScoreDisplay
       value: 
@@ -38675,7 +38657,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 6615
+    m_Bits: 7127
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -39258,8 +39240,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!4 &1250361402 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4a00e889cd58a8249a53209fdf6c433e, type: 3}
@@ -39656,7 +39636,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 55a5cdf5a3e0f39498c28a93a8550969, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 54207b35cdb0d5c449bff0274feca5ad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -42102,7 +42082,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 437f83882592b2b4b94119d70f42b30d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 805eac152b797294cb3d0fcf4a6bd179, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -42250,8 +42230,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &1333513896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43203,8 +43181,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 541811062}
 --- !u!114 &1357148156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47412,7 +47388,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5fd0a05c7d9bcd845bfe1afd3d847f66, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9615e24c04d93014bade4cf4303a9472, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -48805,7 +48781,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 88cd3a04c7c297f448845d794d59afb6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc95bb247b35ed64f90b7cf260efdd92, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -49499,8 +49475,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!1001 &1561796640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50027,8 +50001,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &1582897966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58223,8 +58195,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 906164291}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 1230470812}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &1832468169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58583,7 +58553,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 88cd3a04c7c297f448845d794d59afb6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e30ff55c347e3243bea72da79235479, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -60579,7 +60549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d98c5d1caf3e7b3448945c963b151151, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8841d0d2ed8effe4f94275dffb54e717, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -63198,7 +63168,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 437f83882592b2b4b94119d70f42b30d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 805eac152b797294cb3d0fcf4a6bd179, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -65186,7 +65156,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 437f83882592b2b4b94119d70f42b30d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 805eac152b797294cb3d0fcf4a6bd179, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
