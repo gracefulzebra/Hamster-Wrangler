@@ -4249,8 +4249,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &131135295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4609,8 +4607,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &134667212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13071,8 +13067,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &429054282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14877,8 +14871,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 906164291}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &519929446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17812,8 +17804,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 906164291}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &608054520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21229,8 +21219,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 1230470812}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &735732583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24034,8 +24022,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &825955211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33475,8 +33461,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 1568056928}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &1083839661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33771,8 +33755,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &1090597720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37452,8 +37434,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &1205941422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38233,7 +38213,7 @@ PrefabInstance:
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: itemSelected
       value: 
-      objectReference: {fileID: 21300000, guid: 5c54fc1c07b8d8045b981adb7e305993, type: 3}
+      objectReference: {fileID: 21300000, guid: ee762a4f2a71bee4d894298b1621d952, type: 3}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: scoreDisplay
       value: 
@@ -38932,6 +38912,9 @@ MonoBehaviour:
   center: {fileID: 2009288603}
   speed: 26
   cameraMovementDelay: 0.9
+  scannable:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &1234109503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39543,8 +39526,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 1230470812}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &1246955039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42725,8 +42706,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &1333513896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43684,8 +43663,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 541811062}
 --- !u!114 &1357148156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50268,8 +50245,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &1561253757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51077,8 +51052,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &1582897966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60060,8 +60033,6 @@ MonoBehaviour:
   rakeInfo: {fileID: 906164291}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 1230470812}
-  menuToOpen: {fileID: 0}
-  HTPMenuIngame: {fileID: 0}
 --- !u!114 &1832468169
 MonoBehaviour:
   m_ObjectHideFlags: 0
