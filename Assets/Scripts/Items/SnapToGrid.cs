@@ -95,23 +95,21 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     }
     void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(0))
+
+        if (hasItem)
         {
-                if (hasItem)
-                {
-                    if (CompareTag("Unplaced Item"))
-                    {
-                        TrapPlacement();
-                    }
-                }
-                else
-                {
-                    if (CompareTag("Unplaced Item"))
-                    {
-                        GetComponentInChildren<TrapBase>().ActivateTrap();
-                    }
-                }
+            if (CompareTag("Unplaced Item"))
+            {
+                TrapPlacement();
+            }
         }
+        else
+        {
+            if (CompareTag("Placed Item"))
+            {
+                GetComponentInChildren<TrapBase>().ActivateTrap();
+            }
+        }       
     }
 
     public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
