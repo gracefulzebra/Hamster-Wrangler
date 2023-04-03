@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     private GameManager gameManager;
-    [SerializeField] GameObject mainMenu;
+    [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] private GameObject finalScoreDisplay;
     [SerializeField] private GameObject scoreDisplay;
@@ -53,14 +53,14 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         if (SceneManager.GetActiveScene().name != "MainMenu")
-        MainMenu();
+        PauseGame();
     }
 
-   void MainMenu()
+   void PauseGame()
    {
         if (Input.GetKeyDown(KeyCode.Escape) && !mainMenuActive)
         {
-            mainMenu.SetActive(true);
+            pauseMenu.SetActive(true);
             mainMenuActive = true;
             Time.timeScale = 0;
             gameManager.holdingItem = true;
@@ -68,7 +68,7 @@ public class UIManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && mainMenuActive)
         {
-            mainMenu.SetActive(false);
+            pauseMenu.SetActive(false);
             mainMenuActive = false;
             Time.timeScale = 1;
             gameManager.holdingItem = false;
@@ -76,9 +76,9 @@ public class UIManager : MonoBehaviour
         }
    }
 
-  public void MainMenuButton()
+  public void UnpauseGame()
   {
-        mainMenu.SetActive(false);
+        pauseMenu.SetActive(false);
         mainMenuActive = false;
         Time.timeScale = 1;
         GetComponent<GameManager>().holdingItem = false;

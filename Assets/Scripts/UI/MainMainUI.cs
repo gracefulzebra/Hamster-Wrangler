@@ -11,6 +11,7 @@ public class MainMainUI : MonoBehaviour
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject HTPMenu;
     [SerializeField] GameObject settings;
+    [SerializeField] GameObject confirmQuitGame;
 
     void SwitchSetActive(GameObject objectToSwitch)
     {
@@ -26,31 +27,40 @@ public class MainMainUI : MonoBehaviour
         }
     }
 
+    void CloseCurrentUI(GameObject objectToClose)
+    {
+        objectToClose.SetActive(false);
+    }
+
+    public void ConfirmQuitGame()
+    {
+        confirmQuitGame.SetActive(true);
+    }
+
+    public void CloseConfirmQuitGame()
+    {
+        CloseCurrentUI(confirmQuitGame);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void LevelSelect()
     {
         SwitchSetActive(levelSelect);
-    }
-
-    public void HTP()
-    {
-        SwitchSetActive(HTPMenu);
     }
 
     public void Settings()
     {
         SwitchSetActive(settings);
     }
-
+    
     public void ExitButton()
     {
         transform.parent.gameObject.SetActive(false);
-        if (mainMenu != null)
-            mainMenu.SetActive(true);
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
+        mainMenu.SetActive(true);
     }
 
     public void Level1()

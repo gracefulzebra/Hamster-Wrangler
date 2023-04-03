@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+public class ButtonInputs : MonoBehaviour, IPointerDownHandler
 {
    
     [Header("Shop Items")]
@@ -22,12 +22,6 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
     [SerializeField] GameObject zapperInfo;
     [SerializeField] GameObject lighterInfo;
 
-    [SerializeField] GameObject menuToOpen;
-
-    [SerializeField] GameObject HTPMenuIngame;
-
-
-    IEnumerator stopTrapGuide;
 
     void Start()
     {
@@ -35,23 +29,18 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
         {
             case "LawnMower":
                 itemToSpawn = lawnMower;
-                menuToOpen = lawnMowerInfo;
                 break;
             case "LeafBlower":
                 itemToSpawn = leafBlower;
-                menuToOpen = leafBlowerInfo;
                 break;
             case "Rake":
                 itemToSpawn = rake;
-                menuToOpen = rakeInfo;
                 break;
             case "BugZapper":
                 itemToSpawn = bugZapper;
-                menuToOpen = zapperInfo;
                 break;
             case "Lighter":
                 itemToSpawn = lighter;
-                menuToOpen = lighterInfo;
                 break;
         }
     }
@@ -74,42 +63,6 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
     public void OnPointerDown(PointerEventData eventData)
     {
         BuyItem();
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-     //   stopTrapGuide = ActivateInformationTab();
-      //  StartCoroutine(stopTrapGuide);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-      //  StopCoroutine(stopTrapGuide);
-    }
-
-    IEnumerator ActivateInformationTab()
-    {   
-        yield return new WaitForSeconds(2f);
-        if (gameObject == GameObject.FindGameObjectWithTag("LawnMower"))
-        {
-            LawnmowerMenu();
-        }
-        if (gameObject == GameObject.FindGameObjectWithTag("LeafBlower"))
-        {
-            LeafblowerMenu();
-        }
-        if (gameObject == GameObject.FindGameObjectWithTag("Rake"))
-        {
-            RakeMenu();
-        }
-        if (gameObject == GameObject.FindGameObjectWithTag("BugZapper"))
-        {
-            ZapperMenu();
-        }
-        if (gameObject == GameObject.FindGameObjectWithTag("Lighter"))
-        {
-            LighterMenu();
-        }
     }
 
     public void BuyItem()
@@ -137,12 +90,6 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
             Time.timeScale = 0;
             GameManager.instance.uiManager.itemDescriptionOpen = true;
         }
-       /* else 
-        {
-            guideMenu.SetActive(false);
-            Time.timeScale = 1;
-            GameManager.instance.uiManager.itemDescriptionOpen = false;
-        } */   
     }
  
     public void LawnmowerMenu()
@@ -174,11 +121,6 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerEnterHan
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
-    }
-
-    public void HTPIngame()
-    {
-        HTPMenuIngame.SetActive(true);
     }
 
     public void QuitGame()
