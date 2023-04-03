@@ -72,7 +72,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         if (Physics.Raycast(mousePos, out hit, Mathf.Infinity, layerMask))
         {        
                 // for regular placement 
-                if (hit.transform.gameObject.tag != "Unplaced Item")//hit.transform.gameObject.tag == "Ground")
+                if (!hit.transform.CompareTag("Unplaced Item"))//hit.transform.gameObject.tag == "Ground")
                 {
                     nodeHit = gridRef.GetNodeFromWorldPoint(hit.point);
 
@@ -95,28 +95,22 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     }
     void OnMouseDown()
     {
-
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hit;
-            Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(mousePos, out hit, Mathf.Infinity, layerMask))
-            {
                 if (hasItem)
                 {
-                    if (hit.transform.gameObject.tag == "Unplaced Item")
+                    if (CompareTag("Unplaced Item"))
                     {
                         TrapPlacement();
                     }
                 }
                 else
                 {
-                    if (hit.transform.gameObject.tag == "Placed Item")
+                    if (CompareTag("Unplaced Item"))
                     {
                         GetComponentInChildren<TrapBase>().ActivateTrap();
                     }
                 }
-            }
         }
     }
 
@@ -136,7 +130,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             return;
 
           colour.GetComponent<Renderer>().material.color = Color.white;
-           GameManager.instance.holdingItem = false;
+            GameManager.instance.holdingItem = false;
             GameManager.instance.uiManager.RemoveShopOutline();
             GameManager.instance.audioManager.ItemPlacedAudio();
             GameManager.instance.currencyManager.TryBuy(itemID);

@@ -38203,6 +38203,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 541811062}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1293587657}
+    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: itemCantBuy
       value: 
       objectReference: {fileID: 21300000, guid: 9ba362bac05dfb346adc0e27a2e4f7af, type: 3}
@@ -38912,9 +38916,9 @@ MonoBehaviour:
   center: {fileID: 2009288603}
   speed: 26
   cameraMovementDelay: 0.9
-  scannable:
+  layerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 7423
 --- !u!114 &1234109503
 MonoBehaviour:
   m_ObjectHideFlags: 0
