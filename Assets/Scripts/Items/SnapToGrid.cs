@@ -81,9 +81,9 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
                     // for colour changing
                     if (nodeHit.placeable)
                     {
-                        Color customColor = new Color(0f, 0f, 0f, 0.1f);
+                        Color customColor = new Color(0.9f, 0.9f, 0.9f, 1f);
                         canBePlaced = true;
-                        colour.GetComponent<Renderer>().material.color = Color.yellow;
+                        colour.GetComponent<Renderer>().material.color = customColor;
                     }
                     else
                     {
