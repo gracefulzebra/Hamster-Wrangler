@@ -43,6 +43,7 @@ public class HamsterBase : MonoBehaviour
 
     [HideInInspector]
     public string hamsterID = "baseHamster";
+    HamsterAnimation animatorController;
 
     enum DeathTypes
     {
@@ -60,6 +61,7 @@ public class HamsterBase : MonoBehaviour
         target = GameObject.Find("Target").transform;
         currentHealth = maxHamsterHealth;
         speed = maxSpeed;
+        animatorController = GetComponent<HamsterAnimation>();
     }
 
     private void Start()
@@ -75,16 +77,7 @@ public class HamsterBase : MonoBehaviour
         UpdateCheckPoints();
 
         isGrounded = Physics.CheckSphere(transform.position, groundDistance, groundMask);
-
-        if (!isGrounded && !playOnce)
-        {
-            playOnce = true;      
-            GetComponent<HamsterAnimation>().RakeLaunchAnimation();
-        }
-        else if (isGrounded)
-        {
-            playOnce = false;
-        }
+        animatorController.SetInAirBool(!isGrounded);
     }
 
     private void MoveToTarget()

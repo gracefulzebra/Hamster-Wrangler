@@ -22,8 +22,14 @@ public class ItemEffects : MonoBehaviour
     [SerializeField] GameObject lightningEffect;
     [SerializeField] GameObject lightningStrikeEffect;
     float hamsterLightningAOERange;
+    HamsterAnimation animationController;
 
     [SerializeField] LineRenderer lineRenderer;
+
+    private void Awake()
+    {
+        animationController = GetComponent<HamsterAnimation>();
+    }
 
     #region Fire
 
@@ -125,6 +131,7 @@ public class ItemEffects : MonoBehaviour
     ///</summary>
     IEnumerator TurnOffShock()
     {
+        animationController.SetShockedTrigger();
         yield return new WaitForSeconds(shockDur);
         hasBeenShocked = false;
         lightningEffect.SetActive(false);
