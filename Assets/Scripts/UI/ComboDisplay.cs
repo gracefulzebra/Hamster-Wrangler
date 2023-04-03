@@ -18,12 +18,12 @@ public class ComboDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.LookAt(2 * transform.position - Camera.main.transform.position);
+        transform.LookAt(transform.position - Camera.main.transform.position);
 
-        //float direction = -Random.rotation.eulerAngles.z;
+        Vector3 direction = Camera.main.transform.right;
         iniPos = transform.position;
         float dist = Random.Range(minDist, maxDist);
-        targetPos = -2f * transform.position;
+        targetPos = iniPos + direction * dist;
         transform.localScale = Vector3.zero;
     }
 
@@ -32,19 +32,17 @@ public class ComboDisplay : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        float fraction = duration / 2;
+        float fraction = lifetime / 2f;
 
-        if (timer > duration) 
-            Destroy(gameObject);
-        else if (timer > fraction) 
-            text.color = Color.Lerp(text.color, Color.clear, (timer - fraction) / (duration - fraction));
+        if (timer > duration) Destroy(gameObject);
+        else if (timer > fraction) text.color = Color.Lerp(text.color, Color.clear, (timer - fraction) / (lifetime - fraction));
 
-        transform.position = Vector3.Lerp(iniPos, targetPos, timer / lifetime);
-        transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, timer / lifetime);
+        transform.position = Vector3.Lerp(iniPos, targetPos, Mathf.Sin(timer / lifetime));
+        transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, Mathf.Sin(timer / lifetime));
     }
 
-    public void SetComboText(int comboSize)
+    public void SetComboText(int comboVal)
     {
-        text.text = comboSize.ToString();
+        text.text = comboVal.ToString();
     }
 }
