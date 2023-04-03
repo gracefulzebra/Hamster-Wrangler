@@ -6,6 +6,7 @@ public class GridGenerator : MonoBehaviour
 {
     public Transform player;
     public LayerMask unwalkableMask;
+    public LayerMask noPlacementMask;
     public Vector2 gridWorldSize;
     public float nodeRadius;
     Node[,] grid;
@@ -35,7 +36,8 @@ public class GridGenerator : MonoBehaviour
             foreach(Node n in grid)
             {
                 Gizmos.color = (n.walkable) ? Color.white : Color.red;
-                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter-.1f));
+                if (n.walkable && !n.placeable) Gizmos.color = Color.blue;
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter -.1f));
             }
         }
     }
@@ -98,7 +100,8 @@ public class GridGenerator : MonoBehaviour
             {
                 Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
                 bool walkable = !Physics.CheckSphere(worldPoint, nodeRadius, unwalkableMask);
-                grid[x, y] = new Node(walkable, worldPoint, x, y);
+                bool placeable = !Physics.CheckSphere(worldPoint, nodeRadius, noPlacementMask);
+                grid[x, y] = new Node(walkable, worldPoint, x, y, placeable);
             }
         }
     }

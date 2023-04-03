@@ -13,13 +13,14 @@ public class Node : IHeapItem<Node>
     public Node parent;
     int heapIndex;
 
-    public Node(bool _walkable, Vector3 _worldPosition, int _gridX, int _gridY)
+    public Node(bool _walkable, Vector3 _worldPosition, int _gridX, int _gridY, bool _placeable)
     {
         walkable = _walkable;
         placeable = _walkable;
         worldPosition = _worldPosition;
         gridX = _gridX;
         gridY = _gridY;
+        placeable = _placeable;
     }
 
     public int fCost
