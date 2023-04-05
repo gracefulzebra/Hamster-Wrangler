@@ -1,40 +1,47 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GnomeKing : MonoBehaviour
 {
     [SerializeField] Animator animator;
 
-    bool activateTrap;
+    bool canUseTrap;
 
     private void Start()
     {
+        canUseTrap = true;
     }
 
     private void Update()
     {
-    //    if (level has ended || already used) return;
-
-        RaycastHit hit;
-        Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if(Input.GetMouseButtonDown(0))
+        if (GameManager.instance.waveManager.waveCompleted)
         {
-            if (Physics.Raycast(mousePos, out hit, Mathf.Infinity))
-            {
-                if (hit.transform.name == "Gnome King")
-                {
-                    animator.SetTrigger("Rotation");
-                }
-            }
+            canUseTrap = true;
         }
     }
 
+    private void OnMouseDown()
+    {
+        if (!canUseTrap)
+            return;
+        animator.SetTrigger("Rotation");
+        GetComponent<SphereCollider>().enabled = true;
+        canUseTrap = false;
+    }
+
+    // this is called in animation
+    public void TurnOffCollider()
+    {
+        GetComponent<SphereCollider>().enabled = false;
+    }
+   
     private void OnTriggerEnter(Collider col)
     {
         if (col.GetType() == typeof(SphereCollider))
         {
             if (col.CompareTag("Hamster"))
             {
-                col.transform.GetComponent<HamsterBase>().Kill();
+                col.transform.GetComponent<HamsterBase>().Kill();               
             }
         }     
     }
