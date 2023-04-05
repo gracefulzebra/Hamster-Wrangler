@@ -45,4 +45,9 @@ public class ComboDisplay : MonoBehaviour
     {
         text.text = comboVal.ToString();
     }
+
+    public void SamComboTest(string textToDisplay)
+    {
+        text.text = textToDisplay.ToString();
+    }
 }
