@@ -38705,6 +38705,9 @@ MonoBehaviour:
   center: {fileID: 2009288603}
   speed: 26
   cameraMovementDelay: 0.9
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 7423
 --- !u!114 &1234109503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61993,6 +61996,9 @@ MonoBehaviour:
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 128
+  noPlacementMask:
+    serializedVersion: 2
+    m_Bits: 0
   gridWorldSize: {x: 7, y: 16}
   nodeRadius: 0.5
 --- !u!4 &2009701583

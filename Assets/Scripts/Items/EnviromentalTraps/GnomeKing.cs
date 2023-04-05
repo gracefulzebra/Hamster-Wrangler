@@ -1,45 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class GnomeKing : TrapBase
+public class GnomeKing : MonoBehaviour
 {
+    [SerializeField] Animator animator;
 
-    Vector3 john;
+    bool activateTrap;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        john =new Vector3( 0, 90,0);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+    //    if (level has ended || already used) return;
 
-       // if round over use canusetrap
-
-       if (activateTrap)
-       {
-            canUseTrap = false;
-       }
-    }
-
-     IEnumerator GnomeSpin()
-     {
-        
-        yield return gameObject.transform.eulerAngles = john;
-
-     }
-
-    private void OnTriggerStay(Collider col)
-    {
-        if (!activateTrap)
-            return;
-        if (col.CompareTag("Hamster"))
+        RaycastHit hit;
+        Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if(Input.GetMouseButtonDown(0))
         {
-            col.GetComponent<HamsterBase>().Kill();
+            if (Physics.Raycast(mousePos, out hit, Mathf.Infinity))
+            {
+                if (hit.transform.name == "Gnome King")
+                {
+                    animator.SetTrigger("Rotation");
+                }
+            }
         }
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.GetType() == typeof(SphereCollider))
+        {
+            if (col.CompareTag("Hamster"))
+            {
+                col.transform.GetComponent<HamsterBase>().Kill();
+            }
+        }     
     }
 }
