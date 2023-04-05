@@ -56,6 +56,7 @@ public class TrapBase : MonoBehaviour
         // this fucntion is called in snaptogrid 
     public void ActivateTrap()
     {
+        print("john");
        if (canUseTrap)
        {
             if (activateTrap == false)

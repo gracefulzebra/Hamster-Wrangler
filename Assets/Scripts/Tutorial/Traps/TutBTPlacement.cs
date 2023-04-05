@@ -68,31 +68,35 @@ public class TutBTPlacement : BaseSnapToGrid
         }
     }
 
-    void OnMouseDown()
-    {
-        if (hasItem == false)
+        void OnMouseDown()
         {
-            if (TutManager.tutInstance.posCounter == 22 || TutManager.tutInstance.tutEnd)
+            if (hasItem)
             {
-                GetComponentInChildren<TrapBase>().ActivateTrap();
-            }
-
-            if (TutManager.tutInstance.tutCanUseBT)
-            {
-                GetComponentInChildren<TrapBase>().ActivateTrap();
-                TutManager.tutInstance.NextStep();
-                TutManager.tutInstance.tutCanUseBT = false;
-                if (!singleUseCourtine)
+                if (CompareTag("Unplaced Item"))
                 {
-                    StartCoroutine(SynergyDialouge());
-                }        
+                    TrapPlacement();
+                }
+            }
+            else
+            {
+                if (CompareTag("Placed Item") && (TutManager.tutInstance.posCounter == 22 || TutManager.tutInstance.tutEnd))
+                {
+                    GetComponentInChildren<TrapBase>().ActivateTrap();
+                }
+
+                if (TutManager.tutInstance.tutCanUseBT)
+                {
+                    GetComponentInChildren<TrapBase>().ActivateTrap();
+                    TutManager.tutInstance.NextStep();
+                    TutManager.tutInstance.tutCanUseBT = false;
+                    if (!singleUseCourtine)
+                    {
+                        StartCoroutine(SynergyDialouge());
+                    }
+                }
             }
         }
-        else
-        {
-            TrapPlacement();
-        }
-    }
+    
 
     IEnumerator SynergyDialouge()
     {
