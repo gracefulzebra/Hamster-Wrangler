@@ -1,45 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class GnomeKing : TrapBase
+public class GnomeKing : MonoBehaviour
 {
+    [SerializeField] Animator animator;
 
-    Vector3 john;
+    bool canUseTrap;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        john =new Vector3( 0, 90,0);
+        canUseTrap = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
-       // if round over use canusetrap
-
-       if (activateTrap)
-       {
-            canUseTrap = false;
-       }
-    }
-
-     IEnumerator GnomeSpin()
-     {
-        
-        yield return gameObject.transform.eulerAngles = john;
-
-     }
-
-    private void OnTriggerStay(Collider col)
-    {
-        if (!activateTrap)
-            return;
-        if (col.CompareTag("Hamster"))
+        if (GameManager.instance.waveManager.waveCompleted)
         {
-            col.GetComponent<HamsterBase>().Kill();
+            canUseTrap = true;
         }
+    }
+
+    private void OnMouseDown()
+    {
+        if (!canUseTrap)
+            return;
+        animator.SetTrigger("Rotation");
+        GetComponent<SphereCollider>().enabled = true;
+        canUseTrap = false;
+    }
+
+    // this is called in animation
+    public void TurnOffCollider()
+    {
+        GetComponent<SphereCollider>().enabled = false;
+    }
+   
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.GetType() == typeof(SphereCollider))
+        {
+            if (col.CompareTag("Hamster"))
+            {
+                col.transform.GetComponent<HamsterBase>().Kill();               
+            }
+        }     
     }
 }

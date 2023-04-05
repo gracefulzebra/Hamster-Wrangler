@@ -63,19 +63,23 @@ public class TutLMPlacement : BaseSnapToGrid
 
     void OnMouseDown()
     {
-        if (hasItem == false)
+
+        if (hasItem)
         {
-            if (TutManager.tutInstance.tutCanUseLM)
+            if (CompareTag("Unplaced Item"))
             {
-               GetComponentInChildren<TrapBase>().ActivateTrap();
-               TutManager.tutInstance.NextStep();
-               TutManager.tutInstance.tutCanUseLM = false;
+                TrapPlacement();
             }
         }
         else
         {
-            TrapPlacement();
+            if (CompareTag("Placed Item") &&  TutManager.tutInstance.tutCanUseLM)
+            {          
+                    GetComponentInChildren<TrapBase>().ActivateTrap();
+                    TutManager.tutInstance.NextStep();
+                    TutManager.tutInstance.tutCanUseLM = false;
+            }
         }
-    }
+    }     
 }
 

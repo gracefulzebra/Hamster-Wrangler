@@ -70,7 +70,6 @@ public class WaveManager : MonoBehaviour
             waveCompleted = true;
             wave++;
             hamstersKilled = 0;
-
             if (wave >= maxWaves)
             {
                 GameManager.instance.WinGame();
