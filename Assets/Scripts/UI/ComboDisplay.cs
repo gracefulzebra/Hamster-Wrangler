@@ -41,12 +41,7 @@ public class ComboDisplay : MonoBehaviour
         transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, Mathf.Sin(timer / lifetime));
     }
 
-    public void SetComboText(int comboVal)
-    {
-        text.text = comboVal.ToString();
-    }
-
-    public void SamComboTest(string textToDisplay)
+    public void SetComboText(string textToDisplay)
     {
         text.text = textToDisplay.ToString();
     }

@@ -9,6 +9,7 @@ public class SpawnFlagSpear : MonoBehaviour
     [SerializeField] Vector3 spawnPoint;
 
     bool activate;
+    int currentWave;
 
     private void Start()
     {
@@ -16,15 +17,28 @@ public class SpawnFlagSpear : MonoBehaviour
         spawnPoint = new Vector3(transform.position.x, transform.position.y + 40f, transform.position.z);
     }
 
+    private void Update()
+    {
+        if (GameManager.instance.waveManager.waveCompleted)
+        {
+            ResetFlagSpear();
+        }
+    }
+
+    public void ResetFlagSpear()
+    {
+       GameObject flagSpear = GameObject.FindGameObjectWithTag("Environmental Trap");
+       Destroy(flagSpear);
+
+       activate = true;
+    }
+
     private void OnTriggerEnter(Collider col)
     {
         if (!activate)
             return;
-        if (col.CompareTag("Hamster"))
-        {
-            Instantiate(flagSpear, spawnPoint, Quaternion.identity);
-            activate = false;
-        }
+        Instantiate(flagSpear, spawnPoint, Quaternion.identity);
+        activate = false;
     }
 }
 

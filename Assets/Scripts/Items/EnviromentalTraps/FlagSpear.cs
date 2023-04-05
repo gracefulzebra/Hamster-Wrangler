@@ -13,16 +13,14 @@ public class FlagSpear : MonoBehaviour
 
     bool landed;
 
-
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision col)
     {
-        if (landed)
+        if (!landed)
         {
             CheckForHamster();
+            landed = true;
         }
     }
-
     void CheckForHamster()
     {
 
@@ -33,19 +31,10 @@ public class FlagSpear : MonoBehaviour
             for (int i = 0; i < nearbyObjects.Length; i++)
             {
                 nearbyObjects[i].transform.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
-                //   ItemInteract(targetObject);
+                GameManager.instance.scoreManager.currentScore += scorePerKill;
             }
             GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
-            temp.GetComponent<ComboDisplay>().SamComboTest("EPIC KILL x " + nearbyObjects.Length);
-        }
-    }
-
-    private void OnCollisionEnter(Collision col)
-    {
-        landed = true;
-        if (col.transform.GetComponent<HamsterBase>() != null)
-        {
-            col.transform.GetComponent<HamsterBase>().Kill();
+            temp.GetComponent<ComboDisplay>().SetComboText("EPIC KILL x " + nearbyObjects.Length);
         }
     }
 }

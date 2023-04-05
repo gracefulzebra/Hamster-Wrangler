@@ -9,7 +9,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private int[] hamstersPerWave;
     [SerializeField] private float spawnDelay;
     private int hamstersKilled;
-    private bool waveCompleted;
+    public bool waveCompleted;
     private int wave = 0;
     private int maxWaves;
 
