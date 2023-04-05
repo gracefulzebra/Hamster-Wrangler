@@ -37,6 +37,11 @@ public class CurrencyManager : MonoBehaviour
         UpdateCurrencyDisplay();
     }
 
+    private void Update()
+    {
+        print(currency);
+    }
+
     /// <summary>
     /// Checks to see if item can be bought 
     /// with current currency
@@ -147,9 +152,9 @@ public class CurrencyManager : MonoBehaviour
         GameManager.instance.uiManager.UpdateUIOnPurchase();
     }
 
-    public void UpdateCurrency(int blowerCount, int zapperCost, int lighterCount, int mowerCount, int rakeCount)
+    public void UpdateCurrency(int blowerCount, int zapperCost, int lighterCount, int mowerCount, int rakeCount, int environmentalCount)
     {
-        int total = (blowerCount + zapperCost + lighterCount + mowerCount + rakeCount) - 1;
+        int total = (blowerCount + zapperCost + lighterCount + mowerCount + rakeCount + environmentalCount) - 1;
         float currencyRewarded = 0;
 
         switch (total)

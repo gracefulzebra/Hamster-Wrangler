@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class GnomeKing : MonoBehaviour
 {
@@ -34,14 +35,23 @@ public class GnomeKing : MonoBehaviour
     {
         GetComponent<SphereCollider>().enabled = false;
     }
-   
+
+    public void ItemInteract(GameObject col)
+    {
+        if (col.GetComponent<HamsterScore>() != null)
+        {
+            col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, "Environmental", 0);
+        }
+    }
+
     private void OnTriggerEnter(Collider col)
     {
         if (col.GetType() == typeof(SphereCollider))
         {
             if (col.CompareTag("Hamster"))
             {
-                col.transform.GetComponent<HamsterBase>().Kill();               
+                ItemInteract(col.gameObject);
+                col.transform.GetComponent<HamsterBase>().Kill();
             }
         }     
     }

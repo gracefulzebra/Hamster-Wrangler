@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HamsterScore : MonoBehaviour
 {
-    private int blowerCount, zapperCount, lighterCount, mowerCount, rakeCount;
+    private int blowerCount, zapperCount, lighterCount, mowerCount, rakeCount, environmentalCount;
 
     private int comboCounter = 0;
     private int comboBonusScore;
@@ -40,6 +40,10 @@ public class HamsterScore : MonoBehaviour
                 case "Rake":
                     rakeCount++;
                     break;
+
+                case "Environmental":
+                    environmentalCount++;
+                    break;
             }
 
             comboCounter += trapInteractCounter + 1;
@@ -63,7 +67,7 @@ public class HamsterScore : MonoBehaviour
     public void SendData()
     {
         GameManager.instance.scoreManager.UpdateScore(blowerCount, zapperCount, lighterCount, mowerCount, rakeCount, comboBonusScore);
-        GameManager.instance.currencyManager.UpdateCurrency(blowerCount, zapperCount, lighterCount, mowerCount, rakeCount);
+        GameManager.instance.currencyManager.UpdateCurrency(blowerCount, zapperCount, lighterCount, mowerCount, rakeCount, environmentalCount);
         GameManager.instance.waveManager.HamstersRemaining();
     }
 
