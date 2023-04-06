@@ -147,9 +147,9 @@ public class CurrencyManager : MonoBehaviour
         GameManager.instance.uiManager.UpdateUIOnPurchase();
     }
 
-    public void UpdateCurrency(int blowerCount, int zapperCost, int lighterCount, int mowerCount, int rakeCount, int environmentalCount)
+    public void UpdateCurrency(int blowerCount, int zapperCount, int lighterCount, int mowerCount, int rakeCount, int environmentalCount)
     {
-        int total = (blowerCount + zapperCost + lighterCount + mowerCount + rakeCount + environmentalCount) - 1;
+        int total = (blowerCount + zapperCount + lighterCount + mowerCount + rakeCount + environmentalCount) - 1;
         float currencyRewarded = 0;
 
         switch (total)
