@@ -37,11 +37,6 @@ public class CurrencyManager : MonoBehaviour
         UpdateCurrencyDisplay();
     }
 
-    private void Update()
-    {
-        print(currency);
-    }
-
     /// <summary>
     /// Checks to see if item can be bought 
     /// with current currency

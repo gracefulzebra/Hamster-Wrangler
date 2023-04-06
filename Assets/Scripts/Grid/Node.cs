@@ -20,7 +20,6 @@ public class Node : IHeapItem<Node>
         worldPosition = _worldPosition;
         gridX = _gridX;
         gridY = _gridY;
-        placeable = _placeable;
     }
 
     public int fCost

@@ -1,21 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.Networking.Types;
 
 public class GroundCheck : MonoBehaviour
 {
 
-   public bool isGrounded;
-    [SerializeField] Transform groundCheck;
-    [SerializeField] float groundDistance;
-    [SerializeField] LayerMask groundMask;
-    [SerializeField] GameObject parentObject;
-    Vector3 rotVector = new Vector3(0f, 90f, 0f);
     Node nodeHit;
     GameObject gridRefObject;
     GridGenerator gridRef;
-    // if gameobejct == holdignitem then button goes item
+
+    [SerializeField] GameObject colour;
+
     private void Awake()
     {
         gridRefObject = GameObject.Find("OliverGriddy");
@@ -24,21 +21,20 @@ public class GroundCheck : MonoBehaviour
 
     public void Update()
     {
-       if (!GetComponentInParent<SnapToGrid>().hasItem)
+        if (!GetComponentInParent<SnapToGrid>().hasItem)
             return;
 
-        nodeHit = gridRef.GetNodeFromWorldPoint(groundCheck.position);
+        nodeHit = gridRef.GetNodeFromWorldPoint(transform.position);
 
-        if (GetComponentInParent<SnapToGrid>().hasItem == false)
+        if (nodeHit.placeable)
         {
-            nodeHit.placeable = false;
+            colour.GetComponent<Renderer>().material.color = Color.yellow;
+            GetComponentInParent<SnapToGrid>().canBePlaced = true;
         }
-
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        if (!isGrounded || !nodeHit.placeable)//&& parentObject.GetComponent<SnapToGrid>().confirmPlacement)
+        else
         {
-            parentObject.gameObject.transform.Rotate(rotVector, Space.Self);
+            colour.GetComponent<Renderer>().material.color = Color.red;
+            GetComponentInParent<SnapToGrid>().canBePlaced = false;
         }
     }
 }

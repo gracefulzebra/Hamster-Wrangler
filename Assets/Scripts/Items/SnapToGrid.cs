@@ -15,7 +15,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
     [SerializeField] LayerMask layerMask;
 
-    bool canBePlaced;
+    public bool canBePlaced;
 
     [SerializeField] GameObject colour;
 
@@ -90,12 +90,11 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
                         canBePlaced = false;
                         colour.GetComponent<Renderer>().material.color = Color.red;
                     }
-                }           
+            }           
         }
     }
     void OnMouseDown()
     {
-
         if (hasItem)
         {
             if (CompareTag("Unplaced Item"))
