@@ -178,23 +178,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf24581301c460041bb58faf63889d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxFuel: 0
-  fuelUsage: 0
   maxChargeCount: 3
-  rechargeFuel: 0
   rechargeDuration: 0
   timeTrapActivePerCharge: 0
-  startCooldown: 0
   chargeCountSymbols: []
   fuelSlider: {fileID: 0}
   refuelSymbol: {fileID: 0}
   itemID: 
   damage: 20
-  timer: 0
-  timer1: 0
   activateTrap: 0
   fireEffect: {fileID: 4118219549432098300}
   smokeEffect: {fileID: 5936391385877511823}
+  noOfHamstersBeforeReduction: 2
+  limitDamageReduction: 10
   lawnmowerSpd: 5
   dmgReductionPerHit: 5
   explosion: {fileID: 294653886677383835, guid: 9299834040719374db4880798af5c369, type: 3}

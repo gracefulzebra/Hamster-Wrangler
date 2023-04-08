@@ -1,16 +1,23 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class LawnMower : TrapBase
 {
     [Header("Particle Effects")]
     [SerializeField] GameObject fireEffect;
     [SerializeField] GameObject smokeEffect;
-    
-    [Header("Generic Values")]
-    float lawnmowerDestroyDelay;
+
+    [Header("Adjustabele")]
+    [SerializeField] int noOfHamstersBeforeReduction;
+    [SerializeField] int limitDamageReduction;
     [SerializeField] float lawnmowerSpd;
     [SerializeField] int dmgReductionPerHit;
+    float lawnmowerDestroyDelay;
+    int hamsterCounter;
+
+
     int counter = 0;
     bool willExplode;
 
@@ -65,7 +72,7 @@ public class LawnMower : TrapBase
         {
             GameManager.instance.audioManager.LawnMowerRunAudio();
             audioOn = true;
-        }   
+        }
         //sets lawn mower to ignore raycast
         transform.parent.gameObject.layer = 2;
         smokeEffect.SetActive(true);
@@ -93,7 +100,7 @@ public class LawnMower : TrapBase
         }
 
         Instantiate(explosion, transform.position, Quaternion.identity);
-        Destroy(gameObject.transform.parent.gameObject);       
+        Destroy(gameObject.transform.parent.gameObject);
     }
 
     void Explosion(GameObject targetObject)
@@ -102,10 +109,10 @@ public class LawnMower : TrapBase
         {
             ItemInteract(targetObject);
             targetObject.GetComponent<ItemEffects>().InExplosionRadius(explosiondamage);
-        }           
+        }
     }
 
-    GameObject interactedHamster = null;
+    List<GameObject> noOfHamsters = new List<GameObject>();
 
     private void OnTriggerStay(Collider col)
     {
@@ -135,17 +142,19 @@ public class LawnMower : TrapBase
             return;
 
         if (col.CompareTag("Hamster"))
-        {   
+        {
             // reduces damage of hamster per hit
-            if (interactedHamster != col.gameObject)
+            if (!noOfHamsters.Contains(col.gameObject))
             {
+                hamsterCounter++;
                 ItemInteract(col.gameObject);
                 col.gameObject.GetComponent<HamsterBase>().TakeDamage(damage);
-                if (damage > 0)
+                if (damage > limitDamageReduction && hamsterCounter >= noOfHamstersBeforeReduction)
                 {
                     damage -= dmgReductionPerHit;
                 }
-                interactedHamster = col.gameObject;
+                noOfHamsters.Add(col.gameObject);
+                print("john");
             }
         }
 
