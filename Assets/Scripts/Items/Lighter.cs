@@ -24,6 +24,11 @@ public class Lighter : TrapBase
             onPlacement = true;
             GetComponentInParent<Rigidbody>().useGravity = true;
         }
+        FuelAndActivation();
+    }
+
+    void FuelAndActivation()
+    {
         if (fuelSlider != null)
         {
             ChangeSliderColour();
@@ -40,7 +45,7 @@ public class Lighter : TrapBase
             {
                 canUseTrap = false;
 
-                UpdateFuel();
+                UseFuel();
                 fireEffect.SetActive(true);
             }
         }
@@ -50,7 +55,7 @@ public class Lighter : TrapBase
             RechargeFuel();
         }
 
-        if (chargeCount == 0)
+        if (chargeCount == 0 && refuelTimer > rechargeDuration)
         {
             refuelSymbol.SetActive(true);
             activateTrap = false;

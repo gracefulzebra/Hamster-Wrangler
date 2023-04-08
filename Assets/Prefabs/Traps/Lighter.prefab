@@ -1298,13 +1298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9453bb3664b56a48ab4e80119fc6c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxFuel: 100
-  fuelUsage: 5
   maxChargeCount: 3
-  rechargeFuel: 0
-  rechargeDuration: 5
-  timeTrapActivePerCharge: 5
-  startCooldown: 0
+  rechargeDuration: 3
+  timeTrapActivePerCharge: 1
   chargeCountSymbols:
   - {fileID: 7692281895026478307}
   - {fileID: 7570227289542741534}
@@ -1313,8 +1309,6 @@ MonoBehaviour:
   refuelSymbol: {fileID: 2707198488005372136}
   itemID: 
   damage: 3
-  timer: 0
-  timer1: 0
   activateTrap: 0
   fireEffect: {fileID: 3136080220528460937}
   burnDuration: 2

@@ -12,9 +12,7 @@ public class BugZapper : TrapBase
 
     [Header("Activation")]
     int trapActivatrionCounter;
-  //  [SerializeField] int chargeCount;
-    float cooldownTimer;
-    [SerializeField] float cooldownTimerMax;
+    bool activatedTrap;
 
     [Header("Line Renderer")]
     [SerializeField] private LayerMask scannableMask;
@@ -23,8 +21,6 @@ public class BugZapper : TrapBase
     private List<GameObject> shockedObjects;
     private LineRenderer lR;
     [SerializeField] LineRenderer lrPrefab;
-
-    bool activatedTrap;
 
     [Header("Adjustable Value")]
     [SerializeField] private float hamsterShockRadius;
@@ -51,10 +47,14 @@ public class BugZapper : TrapBase
             onPlacement = true;
             GetComponentInParent<Rigidbody>().useGravity = true;
         }
-        if (fuelSlider != null)
-        {
-            ChangeSliderColour();
-        }
+        FuelAndActivation();
+    }
+
+    void FuelAndActivation()
+    {
+      
+        ChangeSliderColour();
+
         if (activateTrap)
         {
             if (!GetComponentInParent<SnapToGrid>().hasItem && chargeCount != 0)
@@ -67,68 +67,31 @@ public class BugZapper : TrapBase
                 if (trapActivatrionCounter == 0)
                 {
                     trapActivatrionCounter++;
-                  //  activationEffect.SetActive(true);
-                   //StartCoroutine(Unactivate());
                 }
             }
         }
-      
         if (activatedTrap)
         {
-            UpdateFuel();
-            if (timer > timeTrapActivePerCharge)
+            UseFuel();
+            if (useFuelTimer > timeTrapActivePerCharge)
             {
                 activatedTrap = false;
             }
         }
         else if (!canUseTrap && !activatedTrap)
         {
-            print("waaa");
             RechargeFuel();
             trapActivatrionCounter = 0;
         }
 
-        if (chargeCount == 0)
-        {
-            canUseTrap = false;
-            activateTrap = false;
-            refuelSymbol.SetActive(true);
-        }
-        //  CooldownTimer();
-    }
-
-  /*  void CooldownTimer()
-    {
-
-        if (startCooldown)
-        {
-
-            rechargeSlider.gameObject.SetActive(true);
-            rechargeSlider.value = cooldownTimer;
-            cooldownTimer += Time.deltaTime;
-
-            if (cooldownTimer > cooldownTimerMax)
-            {
-
-                canUseTrap = true;
-                startCooldown = false;
-                activateTrap = false;
-
-                cooldownTimer = 0;
-
-                chargeCount--;
-                rechargeSlider.gameObject.SetActive(false);
-            }
-        }
-
-        if (chargeCount == 0)
+        if (chargeCount == 0 && refuelTimer > rechargeDuration)
         {
             canUseTrap = false;
             activateTrap = false;
             refuelSymbol.SetActive(true);
         }
     }
-  */
+
     // for zap effecr
     IEnumerator Unactivate()
     {

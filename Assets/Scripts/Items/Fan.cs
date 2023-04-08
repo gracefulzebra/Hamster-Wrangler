@@ -11,8 +11,7 @@ public class Fan : TrapBase
     [Header("Generic Values")]
     [SerializeField] float force;
     [SerializeField] float leafblowerDuration;
-
-    
+  
     float maxForce;
     bool audioOn = false;
 
@@ -26,8 +25,6 @@ public class Fan : TrapBase
     public bool overCharge;
     [SerializeField] float overChargeForceMultiplication;
     [SerializeField] GameObject lightningEffect;
-
-
 
     private void Start()
     {
@@ -43,19 +40,22 @@ public class Fan : TrapBase
             onPlacement = true;
             GetComponentInParent<Rigidbody>().useGravity = true;
         }
-        if (fuelSlider != null)
-        {
-            ChangeSliderColour();
-        }
-        // logic doesnt work - update fuel cant be called
+        FuelAndActivation();
+    }
+
+    void FuelAndActivation()
+    {
+
+    ChangeSliderColour();
+
         if (activateTrap)
         {
             if (chargeCount != 0)
             {
                 canUseTrap = false;
 
-                UpdateFuel();
-                windEffect.SetActive(true);   
+                UseFuel();
+                windEffect.SetActive(true);
             }
             if (flameThrower)
             {
@@ -81,7 +81,7 @@ public class Fan : TrapBase
             RechargeFuel();
         }
 
-        if (chargeCount == 0)
+        if (chargeCount == 0 && refuelTimer > rechargeDuration)
         {
             refuelSymbol.SetActive(true);
             activateTrap = false;
@@ -100,18 +100,6 @@ public class Fan : TrapBase
         overCharge = false;
         lightningEffect.SetActive(false);
     }
-
-  /*  void OutOfFuel()
-    {
-        if (hasFuel == false)
-        {
-            canUseTrap = true;
-            activateTrap = false;
-            refuelSymbol.SetActive(true);
-            // resets timer
-            leafblowerTimer = 0f;
-        }
-    }*/
 
     private void OnTriggerStay(Collider col)
     {
