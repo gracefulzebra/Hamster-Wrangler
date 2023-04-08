@@ -19,7 +19,7 @@ public class TutBlowTorch : TrapBase
     {
         itemID = "Lighter";
     }
-
+/*
     private void Update()
     {
         if (GetComponentInParent<BaseSnapToGrid>().hasItem == false && !onPlacement)
@@ -79,5 +79,5 @@ public class TutBlowTorch : TrapBase
                 ItemInteract(col.gameObject);
             }
         }
-    }
+    }*/
 }

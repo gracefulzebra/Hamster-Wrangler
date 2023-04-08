@@ -33,7 +33,6 @@ public class Fan : TrapBase
     {
         maxForce = force;
         itemID = "LeafBlower";
-
         //Physics.IgnoreLayerCollision(0, 9);
     }
    
@@ -44,74 +43,20 @@ public class Fan : TrapBase
             onPlacement = true;
             GetComponentInParent<Rigidbody>().useGravity = true;
         }
-
+        if (fuelSlider != null)
+        {
+            ChangeSliderColour();
+        }
         // logic doesnt work - update fuel cant be called
-   //     if (activateTrap)
-      //  {
-        //    canUseTrap = false;
-            if (chargeCount != 0)
-            {
-                UpdateFuel();
-                leafblowerTimer += Time.deltaTime;
-                windEffect.SetActive(true);
-                if (leafblowerTimer > leafblowerDuration)
-                {
-                    canUseTrap = true;
-                    activateTrap = false;
-                    audioOn = false;
-                    leafblowerTimer = 0f;
-                }           
-           // }
-        }
-        else
-        {
-            windEffect.SetActive(false);
-            // when trap is decativated it ensures it doesnt wake up as flamethrower
-            flameThrower = false;
-            flameThrowerEffect.SetActive(false);
-        }
-
-        if (chargeCount == 0)
-        {
-            refuelSymbol.SetActive(true);
-            activateTrap = false;
-        }
-       // LeafblowerActivation();
-       // OutOfFuel();
-    }
-
-
-
-
-    void LeafblowerActivation()
-    {
-
-
         if (activateTrap)
         {
-            if (!audioOn)
+            if (chargeCount != 0)
             {
-                GameManager.instance.audioManager.LeafBlowerUse();
-                audioOn = true;
+                canUseTrap = false;
+
+                UpdateFuel();
+                windEffect.SetActive(true);   
             }
-
-            // used so leafblower cannot be activated if already on
-            canUseTrap = false;
-            leafblowerTimer += Time.deltaTime;
-            
-            SliderUpdate();
-            UseFuel();
-            windEffect.SetActive(true);
-            
-
-            if (leafblowerTimer > leafblowerDuration)
-            {
-                canUseTrap = true;
-                activateTrap = false;
-                audioOn = false;
-                leafblowerTimer = 0f;
-            }
-
             if (flameThrower)
             {
                 flameThrowerEffect.SetActive(true);
@@ -133,6 +78,14 @@ public class Fan : TrapBase
             // when trap is decativated it ensures it doesnt wake up as flamethrower
             flameThrower = false;
             flameThrowerEffect.SetActive(false);
+            RechargeFuel();
+        }
+
+        if (chargeCount == 0)
+        {
+            refuelSymbol.SetActive(true);
+            activateTrap = false;
+            canUseTrap = false;
         }
 
         if (overCharge)
@@ -148,7 +101,7 @@ public class Fan : TrapBase
         lightningEffect.SetActive(false);
     }
 
-    void OutOfFuel()
+  /*  void OutOfFuel()
     {
         if (hasFuel == false)
         {
@@ -158,7 +111,7 @@ public class Fan : TrapBase
             // resets timer
             leafblowerTimer = 0f;
         }
-    }
+    }*/
 
     private void OnTriggerStay(Collider col)
     {
@@ -213,3 +166,61 @@ public class Fan : TrapBase
     }
 }
 
+/*
+void LeafblowerActivation()
+{
+
+
+    if (activateTrap)
+    {
+        if (!audioOn)
+        {
+            GameManager.instance.audioManager.LeafBlowerUse();
+            audioOn = true;
+        }
+
+        // used so leafblower cannot be activated if already on
+        canUseTrap = false;
+        leafblowerTimer += Time.deltaTime;
+
+        SliderUpdate();
+        UseFuel();
+        windEffect.SetActive(true);
+
+
+        if (leafblowerTimer > leafblowerDuration)
+        {
+            canUseTrap = true;
+            activateTrap = false;
+            audioOn = false;
+            leafblowerTimer = 0f;
+        }
+
+        if (flameThrower)
+        {
+            flameThrowerEffect.SetActive(true);
+        }
+        else
+        {
+            flameThrowerEffect.SetActive(false);
+        }
+
+        if (overCharge)
+        {
+            StartCoroutine(StopOverCharge());
+            lightningEffect.SetActive(true);
+        }
+    }
+    else
+    {
+        windEffect.SetActive(false);
+        // when trap is decativated it ensures it doesnt wake up as flamethrower
+        flameThrower = false;
+        flameThrowerEffect.SetActive(false);
+    }
+
+    if (overCharge)
+    {
+        lightningEffect.SetActive(true);
+    }
+}*/

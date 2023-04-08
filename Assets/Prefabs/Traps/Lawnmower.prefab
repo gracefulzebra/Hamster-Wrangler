@@ -178,12 +178,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf24581301c460041bb58faf63889d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuelUsage: 0
   maxFuel: 0
+  fuelUsage: 0
+  maxChargeCount: 3
+  rechargeFuel: 0
+  rechargeDuration: 0
+  timeTrapActivePerCharge: 0
+  startCooldown: 0
+  chargeCountSymbols: []
   fuelSlider: {fileID: 0}
   refuelSymbol: {fileID: 0}
   itemID: 
   damage: 20
+  timer: 0
+  timer1: 0
   activateTrap: 0
   fireEffect: {fileID: 4118219549432098300}
   smokeEffect: {fileID: 5936391385877511823}
@@ -519,6 +527,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 7679
+  canBePlaced: 0
   colour: {fileID: 2629113378848654385}
 --- !u!1 &4761188882436680822
 GameObject:

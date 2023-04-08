@@ -7,142 +7,126 @@ using UnityEngine.UI;
 public class TrapBase : MonoBehaviour
 {
     [Header("Fuel System")]
-    protected float currentFuel;
-    public float maxFuel;
-    protected bool hasFuel;
-    public float fuelUsage;
-
-
-   public  int chargeCount;
-    public bool rechargeFuel;
-    public int rechargeDuration;
-    public float timeTrapActivePerCharge;
-    public bool startCooldown;
+    protected int chargeCount;
+    [SerializeField] int maxChargeCount;
+    bool rechargeFuel;
+    [SerializeField] int rechargeDuration;
+    [SerializeField] protected float timeTrapActivePerCharge;
+    bool startCooldown;
     [SerializeField] GameObject[] chargeCountSymbols;
 
-
-
-
-    [SerializeField] Slider fuelSlider;
+    [SerializeField] protected Slider fuelSlider;
     [SerializeField] protected GameObject refuelSymbol;
 
     [Header("Generic Values")]
     public string itemID;
     [SerializeField] protected int damage = 10;
-    public float timer;
+    protected float timer;
+    float timer1;
+
     protected bool onPlacement;
 
     [Header("Trap Activation")]
     public bool activateTrap;
     protected bool canUseTrap;
 
-
     protected int trapInteractCounter = 0;
-
 
     // timer needs to be changed 
     protected void UpdateFuel()
     {
-        // overall bool to make sure this doesnt run forever
-        if (!startCooldown)
-            return;
-
-        // timer keeps track of time
-            timer += Time.deltaTime;
-
-
-        // updates sldier based on time
-        if (fuelSlider != null)
-        {
-            fuelSlider.value = timer;
-        }
-
         // if trap isnt out of fuel
         if (!rechargeFuel)
         {
+            fuelSlider.value = timer;
             timer += Time.deltaTime;
-            fuelSlider.maxValue = timeTrapActivePerCharge;
-            if (timer >= timeTrapActivePerCharge)
-                {
-                    timer = 0;
-                // trap needs to be recharged
-                    rechargeFuel = true;
-                // trap no longer active
-                    activateTrap = false;
-                }
-        }
-        // if traps needs to be refuels
-        else
-        {
-            fuelSlider.maxValue = rechargeDuration;
+            timer1 = 0;
 
-            if (timer >= rechargeDuration)
-            {             
-                timer = 0;
-                // trap no longer needs to be fuel
-                rechargeFuel = false;
-                // trap can be used
-                canUseTrap = true;
+            if (timer >= timeTrapActivePerCharge)
+            {
+             //   timer = 0;
                 // removes 1 charge from trap ui
-           //     chargeCountSymbols[chargeCount].SetActive(false);
+                chargeCountSymbols[chargeCount - 1].SetActive(false);
                 // removes 1 charge from trap
                 chargeCount--;
-                // this whole function returns
-                startCooldown = false;               
+
+
+                fuelSlider.value = timer;
+                fuelSlider.maxValue = timeTrapActivePerCharge;
+                fuelSlider.direction = Slider.Direction.LeftToRight;
+                // trap no longer active
+                activateTrap = false;
+                rechargeFuel = true;         
             }
-        }       
+        } 
+    }
+
+    protected void RechargeFuel()
+    {
+        if (rechargeFuel)
+        {
+            timer1 += Time.deltaTime;
+            fuelSlider.value = timer1;
+            timer = 0;
+
+            if (timer1 >= rechargeDuration)
+            {
+                // trap can be used
+                canUseTrap = true;  
+                // this whole function returns
+                startCooldown = false;
+                print("3");
+                // trap no longer needs to be fueled
+                rechargeFuel = false;
+            }
+        }
+    }
+
+    protected void ChangeSliderColour()
+    {
+        if (!rechargeFuel)
+        {
+            fuelSlider.transform.Find("Background").GetComponent<Image>().color = Color.green;
+            GameObject fill = fuelSlider.transform.Find("Fill Area").gameObject;
+            fill.transform.Find("Fill").GetComponent<Image>().color = Color.red;
+
+            fuelSlider.value = timer;
+            fuelSlider.maxValue = timeTrapActivePerCharge;
+            fuelSlider.direction = Slider.Direction.RightToLeft;
+        }
+        else
+        {
+            fuelSlider.transform.Find("Background").GetComponent<Image>().color = Color.red;
+            GameObject fill = fuelSlider.transform.Find("Fill Area").gameObject;
+            fill.transform.Find("Fill").GetComponent<Image>().color = Color.green;
+
+            fuelSlider.maxValue = rechargeDuration;
+            fuelSlider.value = rechargeDuration;
+        }     
     }
 
     public void Awake()
     {
-
+        chargeCount = maxChargeCount;
         if (fuelSlider != null)
         {
-            fuelSlider.maxValue = maxFuel;
-            currentFuel = maxFuel;
-            hasFuel = true;
-            SliderUpdate();
+            fuelSlider.maxValue = timeTrapActivePerCharge;
+            fuelSlider.direction = Slider.Direction.RightToLeft;
+            fuelSlider.value = 0;
         }
         canUseTrap = true;
     }
 
     #region Fuel
 
-    public void SliderUpdate()
-    {
-        if (fuelSlider != null)
-        {
-            fuelSlider.value = currentFuel;
-        }
-    }
-
-    public void UseFuel()
-    {
-        if (hasFuel)
-        {
-            if (currentFuel <= 0)
-            {
-                hasFuel = false;
-            }
-            timer += Time.deltaTime;
-
-            // every half a second, fuel is removed from current fuel whioch updates the slider - so the step size isnt so big
-            if (timer > 0.5f)
-            {
-                currentFuel -= fuelUsage/ 2;
-                timer = 0;
-            }
-        }
-    }
-
     public void RefuelTrap()
     {
         if (GameManager.instance.currencyManager.RepairItemCost() == true)
         {
-            currentFuel = maxFuel;
-            hasFuel = true;
+            canUseTrap = true;
+            chargeCount = maxChargeCount;
             refuelSymbol.SetActive(false);
-            SliderUpdate();
+            fuelSlider.value = 0;
         }
     }
 

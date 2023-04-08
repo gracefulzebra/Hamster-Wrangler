@@ -24,6 +24,10 @@ public class Lighter : TrapBase
             onPlacement = true;
             GetComponentInParent<Rigidbody>().useGravity = true;
         }
+        if (fuelSlider != null)
+        {
+            ChangeSliderColour();
+        }
         if (activateTrap)
         {
             if (!audioOn)
@@ -32,19 +36,25 @@ public class Lighter : TrapBase
                 audioOn = true;
             }
 
-            UseFuel();
-            fireEffect.SetActive(true);
-            SliderUpdate();
+            if (chargeCount != 0)
+            {
+                canUseTrap = false;
+
+                UpdateFuel();
+                fireEffect.SetActive(true);
+            }
         }
         else
         {
             fireEffect.SetActive(false);
+            RechargeFuel();
         }
 
-        if (hasFuel == false)
+        if (chargeCount == 0)
         {
             refuelSymbol.SetActive(true);
             activateTrap = false;
+            canUseTrap = false;
         }
     }
 
