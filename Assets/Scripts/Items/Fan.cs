@@ -11,6 +11,8 @@ public class Fan : TrapBase
     [Header("Generic Values")]
     [SerializeField] float force;
     [SerializeField] float leafblowerDuration;
+
+    
     float maxForce;
     bool audioOn = false;
 
@@ -24,6 +26,7 @@ public class Fan : TrapBase
     public bool overCharge;
     [SerializeField] float overChargeForceMultiplication;
     [SerializeField] GameObject lightningEffect;
+
 
 
     private void Start()
@@ -41,12 +44,49 @@ public class Fan : TrapBase
             onPlacement = true;
             GetComponentInParent<Rigidbody>().useGravity = true;
         }
-        LeafblowerActivation();
-        OutOfFuel();
+
+        // logic doesnt work - update fuel cant be called
+   //     if (activateTrap)
+      //  {
+        //    canUseTrap = false;
+            if (chargeCount != 0)
+            {
+                UpdateFuel();
+                leafblowerTimer += Time.deltaTime;
+                windEffect.SetActive(true);
+                if (leafblowerTimer > leafblowerDuration)
+                {
+                    canUseTrap = true;
+                    activateTrap = false;
+                    audioOn = false;
+                    leafblowerTimer = 0f;
+                }           
+           // }
+        }
+        else
+        {
+            windEffect.SetActive(false);
+            // when trap is decativated it ensures it doesnt wake up as flamethrower
+            flameThrower = false;
+            flameThrowerEffect.SetActive(false);
+        }
+
+        if (chargeCount == 0)
+        {
+            refuelSymbol.SetActive(true);
+            activateTrap = false;
+        }
+       // LeafblowerActivation();
+       // OutOfFuel();
     }
+
+
+
 
     void LeafblowerActivation()
     {
+
+
         if (activateTrap)
         {
             if (!audioOn)

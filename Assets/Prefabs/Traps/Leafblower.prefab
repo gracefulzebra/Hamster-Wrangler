@@ -670,8 +670,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3859e321c023d5c40a092f984619eacf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuelUsage: 7
   maxFuel: 100
+  fuelUsage: 7
+  chargeCount: 3
+  rechargeFuel: 0
+  rechargeDuration: 4
+  timeTrapActivePerCharge: 4
+  startCooldown: 0
+  chargeCountSymbols: []
   fuelSlider: {fileID: 6085266683099542287}
   refuelSymbol: {fileID: 2627660743058041798}
   itemID: 
