@@ -1300,7 +1300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxChargeCount: 3
   rechargeDuration: 3
-  timeTrapActivePerCharge: 1
+  timeTrapActivePerCharge: 3
   chargeCountSymbols:
   - {fileID: 7692281895026478307}
   - {fileID: 7570227289542741534}
@@ -1308,11 +1308,11 @@ MonoBehaviour:
   fuelSlider: {fileID: 669974202616155166}
   refuelSymbol: {fileID: 2707198488005372136}
   itemID: 
-  damage: 3
+  damage: 5
   activateTrap: 0
   fireEffect: {fileID: 3136080220528460937}
   burnDuration: 2
-  burnAmount: 5
+  burnAmount: 3
 --- !u!1001 &576586723643240105
 PrefabInstance:
   m_ObjectHideFlags: 0
