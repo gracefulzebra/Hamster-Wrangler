@@ -118,6 +118,11 @@ public class TrapBase : MonoBehaviour
     {
         if (GameManager.instance.currencyManager.RepairItemCost() == true)
         {
+            for(int i =0; i < chargeCountSymbols.Length; i++)
+            {
+                chargeCountSymbols[i].SetActive(enabled);
+            }
+
             canUseTrap = true;
             chargeCount = maxChargeCount;
             refuelSymbol.SetActive(false);

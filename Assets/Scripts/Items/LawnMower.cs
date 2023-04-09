@@ -154,7 +154,6 @@ public class LawnMower : TrapBase
                     damage -= dmgReductionPerHit;
                 }
                 noOfHamsters.Add(col.gameObject);
-                print("john");
             }
         }
 
