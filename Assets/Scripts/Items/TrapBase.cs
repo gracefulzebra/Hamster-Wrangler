@@ -32,6 +32,10 @@ public class TrapBase : MonoBehaviour
 
     protected int trapInteractCounter = 0;
 
+    GameObject background;
+    GameObject fillArea;
+    GameObject fill;
+
     public void Awake()
     {
         chargeCount = maxChargeCount;
@@ -41,14 +45,17 @@ public class TrapBase : MonoBehaviour
             fuelSlider.direction = Slider.Direction.RightToLeft;
             fuelSlider.value = 0;
         }
+        background = fuelSlider.transform.Find("Background").gameObject;       
+        fillArea = fuelSlider.transform.Find("Fill Area").gameObject;
+        fill = fillArea.transform.Find("Fill").gameObject;
+
         canUseTrap = true;
     }
 
     #region Fuel
-    // timer needs to be changed 
+
     protected void UseFuel()
     {
-        // if trap isnt out of fuel
         if (!rechargeFuel)
         {
             fuelSlider.value = useFuelTimer;
@@ -61,11 +68,6 @@ public class TrapBase : MonoBehaviour
                 chargeCountSymbols[chargeCount - 1].SetActive(false);
                 // removes 1 charge from trap
                 chargeCount--;
-
-                // updates slider to have values of recharge
-                fuelSlider.value = useFuelTimer;
-                fuelSlider.maxValue = timeTrapActivePerCharge;
-                fuelSlider.direction = Slider.Direction.LeftToRight;
 
                 // trap no longer active
                 activateTrap = false;
@@ -96,22 +98,21 @@ public class TrapBase : MonoBehaviour
     {
         if (!rechargeFuel)
         {
-            fuelSlider.transform.Find("Background").GetComponent<Image>().color = Color.green;
-            GameObject fill = fuelSlider.transform.Find("Fill Area").gameObject;
-            fill.transform.Find("Fill").GetComponent<Image>().color = Color.red;
+            background.GetComponent<Image>().color = Color.green;      
+            fill.GetComponent<Image>().color = Color.red;
 
-            fuelSlider.value = useFuelTimer;
+            fuelSlider.value = 0;
             fuelSlider.maxValue = timeTrapActivePerCharge;
             fuelSlider.direction = Slider.Direction.RightToLeft;
         }
         else
         {
-            fuelSlider.transform.Find("Background").GetComponent<Image>().color = Color.red;
-            GameObject fill = fuelSlider.transform.Find("Fill Area").gameObject;
-            fill.transform.Find("Fill").GetComponent<Image>().color = Color.green;
+            background.GetComponent<Image>().color = Color.red;
+            fill.GetComponent<Image>().color = Color.green;
 
+            fuelSlider.value = 0;
             fuelSlider.maxValue = rechargeDuration;
-            fuelSlider.value = rechargeDuration;
+            fuelSlider.direction = Slider.Direction.LeftToRight;
         }
     }
     public void RefuelTrap()
