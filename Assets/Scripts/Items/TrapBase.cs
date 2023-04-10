@@ -52,7 +52,7 @@ public class TrapBase : MonoBehaviour
     }
 
     #region Fuel
-
+    bool tempbool = true;
     protected void UseFuel()
     {
         if (!rechargeFuel)
@@ -61,13 +61,18 @@ public class TrapBase : MonoBehaviour
             useFuelTimer += Time.deltaTime;
             refuelTimer = 0;
 
+            if(activateTrap && tempbool)
+            {
+           
+                tempbool = false;
+            }
+
             if (useFuelTimer >= timeTrapActivePerCharge)
             {
                 // removes 1 charge from trap ui
                 chargeCountSymbols[chargeCount - 1].SetActive(false);
                 // removes 1 charge from trap
                 chargeCount--;
-
                 // trap no longer active
                 activateTrap = false;
                 rechargeFuel = true;
@@ -85,6 +90,7 @@ public class TrapBase : MonoBehaviour
 
             if (refuelTimer >= rechargeDuration)
             {
+                tempbool = true;
                 // trap can be used
                 canUseTrap = true;
                 // trap no longer needs to be fueled
@@ -158,9 +164,6 @@ public class TrapBase : MonoBehaviour
             }
        }    
     }
-
-
-
 
     private List<GameObject> interactedList = new List<GameObject>();
     public void IncrementTrapInteracts(GameObject interactingObject)

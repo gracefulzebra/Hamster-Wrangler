@@ -7,10 +7,12 @@ public class GnomeKing : MonoBehaviour
     [SerializeField] Animator animator;
 
     bool canUseTrap;
+    bool fullCycle;
 
     private void Start()
     {
         canUseTrap = true;
+        fullCycle = true;
     }
 
     private void Update()
@@ -23,16 +25,18 @@ public class GnomeKing : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!canUseTrap)
+        if (!canUseTrap || !fullCycle)
             return;
         animator.SetTrigger("Rotation");
         GetComponent<SphereCollider>().enabled = true;
         canUseTrap = false;
+        fullCycle = false;
     }
 
     // this is called in animation
     public void TurnOffCollider()
     {
+        fullCycle = true;
         GetComponent<SphereCollider>().enabled = false;
     }
 

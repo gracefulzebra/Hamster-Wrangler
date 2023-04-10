@@ -19,6 +19,83 @@ public class TutBlowTorch : TrapBase
     {
         itemID = "Lighter";
     }
+
+    private void Update()
+    {
+        if (GetComponentInParent<BaseSnapToGrid>().hasItem == false && !onPlacement)
+        {
+            onPlacement = true;
+            GetComponentInParent<Rigidbody>().useGravity = true;
+        }
+        FuelAndActivation();
+
+        // step 18ish
+        if (hamster == null)
+        {
+            hamster = GameObject.FindGameObjectWithTag("Hamster");
+        }
+        else if (hamster != null && TutManager.tutInstance.posCounter == 19 || TutManager.tutInstance.posCounter == 20)
+        {
+            float hamsterDistance = (transform.position - hamster.transform.position).magnitude;
+            // make public bool somewhere, will need to be read in from bugzapper for contiuinity probs
+            if (hamsterDistance < 3.5f)
+            {
+                // only works for poscounter18
+                TutManager.tutInstance.LerpTimeDown();
+            }
+        }
+    }
+
+    void FuelAndActivation()
+    {
+        if (fuelSlider != null)
+        {
+            ChangeSliderColour();
+        }
+        if (activateTrap)
+        {
+            if (!audioOn)
+            {
+                GameManager.instance.audioManager.LighterOn();
+                audioOn = true;
+            }
+
+            if (chargeCount != 0)
+            {
+                canUseTrap = false;
+
+                UseFuel();
+                fireEffect.SetActive(true);
+            }
+        }
+        else
+        {
+            fireEffect.SetActive(false);
+            RechargeFuel();
+        }
+
+        if (chargeCount == 0 && refuelTimer > rechargeDuration)
+        {
+            refuelSymbol.SetActive(true);
+            activateTrap = false;
+            canUseTrap = false;
+        }
+    }
+
+    void OnTriggerStay(Collider col)
+    {
+        if (GetComponentInParent<BaseSnapToGrid>().hasItem)
+            return;
+        if (activateTrap)
+        {
+            if (col.CompareTag("Hamster"))
+            {
+                col.gameObject.GetComponent<ItemEffects>().OnFire(damage, burnDuration, burnAmount);
+                ItemInteract(col.gameObject);
+            }
+        }
+    }
+}
 /*
     private void Update()
     {
@@ -80,4 +157,4 @@ public class TutBlowTorch : TrapBase
             }
         }
     }*/
-}
+

@@ -71,7 +71,7 @@ public class TutManager : MonoBehaviour
         if (tutEnd)
             return;
 
-        if ( posCounter == 12 || posCounter == 21)
+        if (posCounter == 12 || posCounter == 21)
         {
             GameManager.instance.uiManager.ShopButtonCantBuy(lawnMowerButton);
             GameManager.instance.uiManager.ShopButtonCantBuy(blowTorchButton);

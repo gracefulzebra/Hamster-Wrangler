@@ -26,6 +26,7 @@ public class CurrencyManager : MonoBehaviour
     public void IncrementCurrency(int amount)
     {
         currency += amount;
+        GameManager.instance.uiManager.UpdateUIOnHamsterDeath();
         UpdateCurrencyDisplay();
     }
 

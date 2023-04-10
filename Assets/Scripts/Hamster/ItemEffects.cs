@@ -10,9 +10,7 @@ public class ItemEffects : MonoBehaviour
     private int burnIndex = 0;
 
     [Header("Bug Zapper")]
-    float closestHamster = 100;
     float hamsterDistance;
-    GameObject nearHamster;
     public bool hasBeenShocked;
     [SerializeField] float LightningAOEDistance;
     int electricDamage;

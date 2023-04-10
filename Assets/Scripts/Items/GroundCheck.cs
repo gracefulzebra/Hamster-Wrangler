@@ -36,5 +36,11 @@ public class GroundCheck : MonoBehaviour
             colour.GetComponent<Renderer>().material.color = Color.red;
             GetComponentInParent<SnapToGrid>().canBePlaced = false;
         }
+/*
+        if (GetComponentInParent<SnapToGrid>().hasItem)
+        {
+            nodeHit.placeable = false;
+        }
+*/
     }
 }
