@@ -44,11 +44,10 @@ public class TrapBase : MonoBehaviour
             fuelSlider.maxValue = timeTrapActivePerCharge;
             fuelSlider.direction = Slider.Direction.RightToLeft;
             fuelSlider.value = 0;
+            background = fuelSlider.transform.Find("Background").gameObject;
+            fillArea = fuelSlider.transform.Find("Fill Area").gameObject;
+            fill = fillArea.transform.Find("Fill").gameObject;
         }
-        background = fuelSlider.transform.Find("Background").gameObject;       
-        fillArea = fuelSlider.transform.Find("Fill Area").gameObject;
-        fill = fillArea.transform.Find("Fill").gameObject;
-
         canUseTrap = true;
     }
 
