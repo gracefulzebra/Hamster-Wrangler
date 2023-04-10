@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -33,12 +34,19 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioClip music;
 
-
+    [SerializeField] AudioMixer audioMixer;
 
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+
+        //assign this in inspector 
+        audioMixer.SetFloat("SFX", volume - 100 * 100);
+
+        // spawn in objects with audio source, pass in what noise wen want, and then delete 
+        // need to have aduio manager delete the instances 
+
     }
 
     public void SetVolume(float volumeLevel)
