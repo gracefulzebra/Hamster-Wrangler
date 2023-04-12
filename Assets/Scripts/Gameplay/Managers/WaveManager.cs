@@ -8,7 +8,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private GameObject hamsterPrefab;
     [SerializeField] private int[] hamstersPerWave;
     [SerializeField] private float spawnDelay;
-    private int hamstersKilled;
+    private int hamstersKilled = 0;
     public bool waveCompleted;
     private int wave = 0;
     private int maxWaves;
@@ -63,7 +63,8 @@ public class WaveManager : MonoBehaviour
     {
         hamstersKilled++;
 
-        if ( hamstersKilled >= hamstersPerWave[wave] * hamsterSpawners.Length)
+        print(wave + " " + hamstersPerWave.Length);
+        if (hamstersKilled >= hamstersPerWave[wave] * hamsterSpawners.Length)
         {
             GameManager.instance.currencyManager.IncrementCurrency(endOfRoundCashBonus);
 

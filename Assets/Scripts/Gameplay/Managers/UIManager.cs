@@ -24,6 +24,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<GameObject> starsLevel2;
     [SerializeField] private Sprite starSprite;
 
+    [SerializeField] private Image inGameStarBar;
+    [SerializeField] private Image gameOverStarBar;
+
     [SerializeField] private GameObject IngameHTP;
   
     // for buttonInputs
@@ -122,16 +125,18 @@ public class UIManager : MonoBehaviour
     }
 
     public void GameOverScreen()
-    {
-            Stars(0);
-            gameOverScreen.SetActive(true);
+    {    
+        gameOverScreen.SetActive(true);
+        DisplayFinalScore(0);
     }
 
-    public void DisplayScore(int score)
-    {
-        if (scoreDisplay != null)
-        scoreDisplay.GetComponent<TextMeshProUGUI>().text = "Score : " + score;
+    public void DisplayScore(float score)
+    {   
+        float fillAmount = score / GameManager.instance.scoreFor3Star;
+        inGameStarBar.fillAmount = fillAmount;        
     }
+
+    
 
     public void DisplayCurrency(int currency)
     {
@@ -151,9 +156,12 @@ public class UIManager : MonoBehaviour
             wavesDisplay.GetComponent<TextMeshProUGUI>().text = waves + "/" + maxWaves;
     }
 
-    public void DisplayFinalScore(int finalScore)
+    public void DisplayFinalScore(float finalScore)
     {
         finalScoreDisplay.GetComponent<TextMeshProUGUI>().text = "Score : " + finalScore;
+        float fillAmount = finalScore / GameManager.instance.scoreFor3Star;
+        gameOverScreen.SetActive(true);
+        gameOverStarBar.fillAmount = fillAmount;
     }
 
     public void UpdateItemCosts()

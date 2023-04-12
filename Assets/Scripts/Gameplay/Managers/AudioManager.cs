@@ -34,7 +34,7 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioClip music;
 
-    [SerializeField] AudioMixer audioMixer;
+    //[SerializeField] AudioMixer audioMixer;
 
 
     private void Awake()
@@ -42,7 +42,7 @@ public class AudioManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         //assign this in inspector 
-        audioMixer.SetFloat("SFX", volume - 100 * 100);
+        //audioMixer.SetFloat("SFX", volume - 100 * 100);
 
         // spawn in objects with audio source, pass in what noise wen want, and then delete 
         // need to have aduio manager delete the instances 

@@ -23,6 +23,7 @@ public class ScoreManager : MonoBehaviour
     {
         currentScore += (blowerCount * blowerScore) + (zapperCount * zapperScore) + (lighterCount * lighterScore) + (mowerCount * mowerScore) + (rakeCount * rakeScore);
         currentScore += comboBonusScore;
+        UpdateScoreDisplay();
     }
 
     public int FinalizeScore(int healthRemaining, int maxHealth)

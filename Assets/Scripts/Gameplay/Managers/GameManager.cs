@@ -155,27 +155,7 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-        finalScore = scoreManager.FinalizeScore(health, maxHealth);
-        int oneStar = (scoreFor3Star / 3);
-        int twoStar = ((scoreFor3Star / 3) * 2);
-
-        if(finalScore == 0)
-        {
-            uiManager.Stars(0);
-        }
-        else if(finalScore >= 0 && finalScore <= oneStar)
-        {
-            uiManager.Stars(1);
-        }
-        else if(finalScore > oneStar && finalScore <= twoStar)
-        {
-            uiManager.Stars(2);
-        }
-        else if(finalScore > twoStar)
-        {
-            uiManager.Stars(3);
-        }
-
+        finalScore = scoreManager.FinalizeScore(health, maxHealth);    
         uiManager.DisplayFinalScore(finalScore);
     }
 
