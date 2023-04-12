@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -34,19 +35,40 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioClip music;
 
-    //[SerializeField] AudioMixer audioMixer;
+    [SerializeField] AudioMixer audioMixer;
 
+    public const string MIXER_MUSIC = "Music";
+   public const string MIXER_SFX = "SFX";
+
+    // these need to be in here for some reason? mayeb caus ein awake
+    [SerializeField] public Slider musicSlider;
+    [SerializeField] public Slider sfxSlider;
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+       // audioSource = GetComponent<AudioSource>();
 
-        //assign this in inspector 
-        //audioMixer.SetFloat("SFX", volume - 100 * 100);
+      musicSlider.onValueChanged.AddListener(SetMusicVolume);
+      sfxSlider.onValueChanged.AddListener(SetSFXVolume);
 
         // spawn in objects with audio source, pass in what noise wen want, and then delete 
         // need to have aduio manager delete the instances 
+    }
 
+    private void Start()
+    {
+       musicSlider.value = PlayerPrefs.GetFloat(GameManager.MUSIC_KEY, 1f);
+       sfxSlider.value = PlayerPrefs.GetFloat(GameManager.SFX_KEY, 1f);
+    }
+
+    void SetMusicVolume(float value)
+    {
+        audioMixer.SetFloat(MIXER_MUSIC, Mathf.Log10(value) * 20);
+    }
+
+    void SetSFXVolume(float value)
+    {
+        audioMixer.SetFloat(MIXER_SFX, Mathf.Log10(value) * 20);
     }
 
     public void SetVolume(float volumeLevel)

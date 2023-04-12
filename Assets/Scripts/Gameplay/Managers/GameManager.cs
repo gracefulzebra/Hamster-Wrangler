@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -28,6 +29,12 @@ public class GameManager : MonoBehaviour
     public int scoreFor3Star;
     public static int finalScore;
     public Vector3 globalTrapRotation;
+
+    [Header("Audio")]
+    [SerializeField] AudioMixer audioMixer;
+    public const string MUSIC_KEY = "Music";
+    public const string SFX_KEY = "SFX";
+
 
     //Manager references
     public ScoreManager scoreManager { get; private set; }
@@ -54,7 +61,23 @@ public class GameManager : MonoBehaviour
         }
 
         InitialiseSystems();
+
         //   holdingItem = false;
+    }
+
+    void LoadVolume()
+    {
+        float musicVolume = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
+       float sfxVolume = PlayerPrefs.GetFloat(SFX_KEY, 1f);
+
+        audioMixer.SetFloat(MUSIC_KEY, Mathf.Log10(musicVolume) * 20);
+       audioMixer.SetFloat(SFX_KEY, Mathf.Log10(sfxVolume) * 20);
+    }
+
+    void OnDisable()
+    {
+        PlayerPrefs.SetFloat(AudioManager.MIXER_MUSIC, GameManager.instance.audioManager.musicSlider.value);
+        PlayerPrefs.SetFloat(AudioManager.MIXER_SFX, GameManager.instance.audioManager.sfxSlider.value);
     }
 
     private void InitialiseSystems()
@@ -80,6 +103,8 @@ public class GameManager : MonoBehaviour
         vfxManager = GetComponent<VFXManager>();
 
         DisplayHealth(health);
+
+        LoadVolume();
 
         if (SceneManager.GetActiveScene().name == "TutorialLevel")
             level = 1;
