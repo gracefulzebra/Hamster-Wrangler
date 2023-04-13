@@ -9,7 +9,6 @@ public class SpawnFlagSpear : MonoBehaviour
     [SerializeField] Vector3 spawnPoint;
 
     bool activate;
-    int currentWave;
 
     private void Start()
     {

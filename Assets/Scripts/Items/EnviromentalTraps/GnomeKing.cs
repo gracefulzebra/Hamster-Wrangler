@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Progress;
 
-public class GnomeKing : MonoBehaviour
+public class GnomeKing : EnvironmentalBase
 {
     [SerializeField] Animator animator;
 
@@ -40,20 +40,13 @@ public class GnomeKing : MonoBehaviour
         GetComponent<SphereCollider>().enabled = false;
     }
 
-    public void ItemInteract(GameObject col)
-    {
-        if (col.GetComponent<HamsterScore>() != null)
-        {
-            col.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, "Environmental", 0);
-        }
-    }
-
     private void OnTriggerEnter(Collider col)
     {
         if (col.GetType() == typeof(SphereCollider))
         {
             if (col.CompareTag("Hamster"))
             {
+                AddScore();
                 ItemInteract(col.gameObject);
                 col.transform.GetComponent<HamsterBase>().Kill();
             }

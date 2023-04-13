@@ -69,6 +69,10 @@ public class TrapBase : MonoBehaviour
 
             if (useFuelTimer >= timeTrapActivePerCharge)
             {
+                fuelSlider.value = 0;
+                fuelSlider.maxValue = rechargeDuration;
+                fuelSlider.direction = Slider.Direction.LeftToRight;
+
                 // removes 1 charge from trap ui
                 chargeCountSymbols[chargeCount - 1].SetActive(false);
                 // removes 1 charge from trap
@@ -90,6 +94,10 @@ public class TrapBase : MonoBehaviour
 
             if (refuelTimer >= rechargeDuration)
             {
+                fuelSlider.value = 0;
+                fuelSlider.maxValue = timeTrapActivePerCharge;
+                fuelSlider.direction = Slider.Direction.RightToLeft;
+
                 tempbool = true;
                 // trap can be used
                 canUseTrap = true;
@@ -106,18 +114,13 @@ public class TrapBase : MonoBehaviour
             background.GetComponent<Image>().color = Color.green;      
             fill.GetComponent<Image>().color = Color.red;
 
-            fuelSlider.value = 0;
-            fuelSlider.maxValue = timeTrapActivePerCharge;
-            fuelSlider.direction = Slider.Direction.RightToLeft;
+         
         }
         else
         {
             background.GetComponent<Image>().color = Color.red;
             fill.GetComponent<Image>().color = Color.green;
 
-            fuelSlider.value = 0;
-            fuelSlider.maxValue = rechargeDuration;
-            fuelSlider.direction = Slider.Direction.LeftToRight;
         }
     }
     public void RefuelTrap()

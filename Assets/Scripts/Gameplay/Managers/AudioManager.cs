@@ -79,6 +79,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayHamsterDeathAudio()
     {
+        return;
         switch(Random.Range(1, 5)) //Max exclusive
         {
             case 1:
@@ -101,6 +102,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayUsedRake()
     {
+        return;
         switch (Random.Range(1, 4)) //Max exclusive
         {
             case 1:
@@ -125,7 +127,7 @@ public class AudioManager : MonoBehaviour
 
     public void ItemPlacedAudio()
     {
-        audioSource.PlayOneShot(trapPlaced, volume / 1.5f);
+      //  audioSource.PlayOneShot(trapPlaced, volume / 1.5f);
     }
 
     public void LawnMowerRunAudio()
@@ -135,16 +137,16 @@ public class AudioManager : MonoBehaviour
 
     public void LawnMowerExplodeAudio()
     {
-        audioSource.PlayOneShot(lmExplode, volume / 1.5f);
+      //  audioSource.PlayOneShot(lmExplode, volume / 1.5f);
     }
 
     public void LeafBlowerUse()
     {
-        audioSource.PlayOneShot(lfBlower, volume / 2f);
+     //   audioSource.PlayOneShot(lfBlower, volume / 2f);
     }
 
     public void PlayMusic()
     {
-        audioSource.PlayOneShot(music, volume / 8);
-    }
+      //  audioSource.PlayOneShot(music, volume / 8);
+    }//
 }

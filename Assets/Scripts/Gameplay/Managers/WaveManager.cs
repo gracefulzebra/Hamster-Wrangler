@@ -11,13 +11,12 @@ public class WaveManager : MonoBehaviour
     private int hamstersKilled = 0;
     public bool waveCompleted;
     private int wave = 0;
-    private int maxWaves;
+    public int maxWaves;
 
     [SerializeField] private int endOfRoundCashBonus;
 
     private void Awake()
     {
-        manager = GetComponent<GameManager>();
         InitializeSpawns();
 
         waveCompleted = true;
@@ -62,8 +61,7 @@ public class WaveManager : MonoBehaviour
     public void HamstersRemaining() //Called in kill function of hamster.
     {
         hamstersKilled++;
-
-        print(wave + " " + hamstersPerWave.Length);
+        
         if (hamstersKilled >= hamstersPerWave[wave] * hamsterSpawners.Length)
         {
             GameManager.instance.currencyManager.IncrementCurrency(endOfRoundCashBonus);

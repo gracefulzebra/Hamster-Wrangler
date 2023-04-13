@@ -81,7 +81,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
                     // for colour changing
                     if (nodeHit.placeable)
                     {
-                        Color customColor = new Color(0.9f, 0.9f, 0.9f, 1f);
+                        Color customColor = new Color(0.5f, 0.5f, 0.5f, 1f);
                         canBePlaced = true;
                         colour.GetComponent<Renderer>().material.color = customColor;
                     }
@@ -90,7 +90,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
                         canBePlaced = false;
                         colour.GetComponent<Renderer>().material.color = Color.red;
                     }
-            }           
+                }           
         }
     }
     void OnMouseDown()
@@ -126,10 +126,10 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         if (!canBePlaced)
             return;
 
-          colour.GetComponent<Renderer>().material.color = Color.white;
+            colour.GetComponent<Renderer>().material.color = Color.white;
             GameManager.instance.holdingItem = false;
             GameManager.instance.uiManager.RemoveShopOutline();
-            GameManager.instance.audioManager.ItemPlacedAudio();
+            //GameManager.instance.audioManager.ItemPlacedAudio();
             GameManager.instance.currencyManager.TryBuy(itemID);
 
             nodeHit.placeable = false;

@@ -11,7 +11,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] private GameObject finalScoreDisplay;
-    [SerializeField] private GameObject scoreDisplay;
     [SerializeField] private GameObject currencyDisplay;
     [SerializeField] private GameObject healthDisplay;
     [SerializeField] private GameObject wavesDisplay;
@@ -49,7 +48,7 @@ public class UIManager : MonoBehaviour
         {
             //StartCoroutine(UpdateAudio());
             UpdateItemCosts();
-            wavesDisplay.GetComponent<TextMeshProUGUI>().text = "0/3";
+            wavesDisplay.GetComponent<TextMeshProUGUI>().text ="0/" + GameManager.instance.waveManager.maxWaves;
         }
     }
 
@@ -140,19 +139,19 @@ public class UIManager : MonoBehaviour
 
     public void DisplayCurrency(int currency)
     {
-        if (scoreDisplay != null)
+        if (currencyDisplay != null)
             currencyDisplay.GetComponent<TextMeshProUGUI>().text = "" + currency;
     }
 
     public void DisplayHealth(int health)
     {
-        if (scoreDisplay != null)
+        if (healthDisplay != null)
             healthDisplay.GetComponent<TextMeshProUGUI>().text = "" + health;
     }
 
     public void DisplayWaves(int waves, int maxWaves)
     {
-        if (scoreDisplay != null)
+        if (wavesDisplay != null)
             wavesDisplay.GetComponent<TextMeshProUGUI>().text = waves + "/" + maxWaves;
     }
 
