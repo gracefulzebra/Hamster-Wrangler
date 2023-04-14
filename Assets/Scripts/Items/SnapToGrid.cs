@@ -129,7 +129,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             colour.GetComponent<Renderer>().material.color = Color.white;
             GameManager.instance.holdingItem = false;
             GameManager.instance.uiManager.RemoveShopOutline();
-            //GameManager.instance.audioManager.ItemPlacedAudio();
+            GameManager.instance.audioManager.ItemPlacedAudio();
             GameManager.instance.currencyManager.TryBuy(itemID);
 
             nodeHit.placeable = false;

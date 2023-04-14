@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
-    private GameManager manager;
     private GameObject[] hamsterSpawners;
     [SerializeField] private GameObject hamsterPrefab;
     [SerializeField] private int[] hamstersPerWave;
     [SerializeField] private float spawnDelay;
     private int hamstersKilled = 0;
-    public bool waveCompleted;
     private int wave = 0;
-    public int maxWaves;
+
+    [HideInInspector] public int maxWaves;
+    [HideInInspector] public bool waveCompleted;
 
     [SerializeField] private int endOfRoundCashBonus;
 
@@ -30,11 +30,11 @@ public class WaveManager : MonoBehaviour
 
     public IEnumerator StartWave()
     {
-        manager.DisplayWaves(wave + 1, maxWaves);
+        GameManager.instance.DisplayWaves(wave + 1, maxWaves);
 
         if (waveCompleted && wave < hamstersPerWave.Length) 
         {
-            manager.DisplayWaves(wave + 1, maxWaves);
+            GameManager.instance.DisplayWaves(wave + 1, maxWaves);
             waveCompleted = false;
             for (int i = 0; i <= hamstersPerWave[wave] - 1; i++)
             {

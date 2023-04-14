@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
 
     public float volume;
 
+    [SerializeField] GameObject audioObject;
+
     [Header("Hamster Audio")]
     [SerializeField] private AudioClip hamsterDeath1;
     [SerializeField] private AudioClip hamsterDeath2;
@@ -29,7 +31,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip rake3;
 
     [Header("LeafBlower")]
-    [SerializeField] private AudioClip lfBlower;
+    [SerializeField] private AudioClip lbActive;
 
     [SerializeField] private AudioClip trapPlaced;
 
@@ -79,74 +81,83 @@ public class AudioManager : MonoBehaviour
 
     public void PlayHamsterDeathAudio()
     {
-        return;
-        switch(Random.Range(1, 5)) //Max exclusive
+        GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
+        StartCoroutine(DeleteAudio(audio));
+        switch (Random.Range(1, 5)) //Max exclusive
         {
+
             case 1:
-                audioSource.PlayOneShot(hamsterDeath1, volume);
+                 audio.GetComponent<AudioSource>().PlayOneShot(hamsterDeath1);
                 break;
 
             case 2:
-                audioSource.PlayOneShot(hamsterDeath2, volume);
+                audio.GetComponent<AudioSource>().PlayOneShot(hamsterDeath2);
                 break;
 
             case 3:
-                audioSource.PlayOneShot(hamsterDeath3, volume);
+                audio.GetComponent<AudioSource>().PlayOneShot(hamsterDeath3);
                 break;
 
             case 4:
-                audioSource.PlayOneShot(hamsterDeath4, volume);
+                audio.GetComponent<AudioSource>().PlayOneShot(hamsterDeath4);
                 break;
         }
     }
 
     public void PlayUsedRake()
-    {
-        return;
-        switch (Random.Range(1, 4)) //Max exclusive
-        {
-            case 1:
-                audioSource.PlayOneShot(rake1, volume);
-                break;
-
-            case 2:
-                audioSource.PlayOneShot(rake2, volume);
-                break;
-
-            case 3:
-                audioSource.PlayOneShot(rake3, volume);
-                break;
-        }
+    {     
+            GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
+            audio.GetComponent<AudioSource>().PlayOneShot(rake1);
+            StartCoroutine(DeleteAudio(audio));
     }
 
     public void LighterOn()
     {
-        //audioSource.PlayOneShot(lighterOn, volume * 2);
-        
+        GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
+        audio.GetComponent<AudioSource>().PlayOneShot(lighterOn);
+        StartCoroutine(DeleteAudio(audio));
     }
+
 
     public void ItemPlacedAudio()
     {
-      //  audioSource.PlayOneShot(trapPlaced, volume / 1.5f);
+        GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
+        audio.GetComponent<AudioSource>().PlayOneShot(trapPlaced);
+        StartCoroutine(DeleteAudio(audio));
     }
 
+
+    // adds to last that is used in lawnmower script
+    public List<GameObject> lmRunList;
     public void LawnMowerRunAudio()
     {
-        //audioSource.PlayOneShot(lmRun, volume / 2f);
+        GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
+        audio.GetComponent<AudioSource>().PlayOneShot(lmRun);
+        lmRunList.Add(audio);
+        StartCoroutine(DeleteAudio(audio));
     }
 
     public void LawnMowerExplodeAudio()
     {
-      //  audioSource.PlayOneShot(lmExplode, volume / 1.5f);
+        GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
+        audio.GetComponent<AudioSource>().PlayOneShot(lmExplode);
+        StartCoroutine(DeleteAudio(audio));
     }
 
+    public List<GameObject> lbSoundList;
     public void LeafBlowerUse()
     {
-     //   audioSource.PlayOneShot(lfBlower, volume / 2f);
+        GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
+        lbSoundList.Add(audio);
+        audio.GetComponent<AudioSource>().PlayOneShot(lmRun);
+        StartCoroutine(DeleteAudio(audio));
     }
 
-    public void PlayMusic()
+    float deleteAudio = 10;
+
+    IEnumerator DeleteAudio(GameObject audio)
     {
-      //  audioSource.PlayOneShot(music, volume / 8);
-    }//
+        yield return new WaitForSeconds(deleteAudio);
+        Destroy(audio);
+    }
 }

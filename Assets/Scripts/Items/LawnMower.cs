@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
+using System.Linq;
 
 public class LawnMower : TrapBase
 {
@@ -32,8 +32,6 @@ public class LawnMower : TrapBase
     [SerializeField] float explosionRange;
     [SerializeField] private LayerMask scannableMask;
     [SerializeField] float lawnmowerExplodeDelay;
-
-    bool audioOn = false;
 
     private void Start()
     {
@@ -66,13 +64,18 @@ public class LawnMower : TrapBase
         }
     }
 
+
+    GameObject lmRunObject;
     public void ActivateLawnmower()
     {
         if (!audioOn)
         {
             GameManager.instance.audioManager.LawnMowerRunAudio();
+            // assigns to gameobject that is destroyed when hits wall
+            lmRunObject = GameManager.instance.audioManager.lmRunList.Last();
             audioOn = true;
         }
+
         //sets lawn mower to ignore raycast
         transform.parent.gameObject.layer = 2;
         smokeEffect.SetActive(true);
@@ -160,6 +163,7 @@ public class LawnMower : TrapBase
         // obstacle
         if (col.gameObject.layer == 7)
         {
+            Destroy(lmRunObject);
             if (willExplode)
             {
                 LawnmowerExplode();

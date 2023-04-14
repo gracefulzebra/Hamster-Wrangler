@@ -72,6 +72,7 @@ public class TutBlowTorch : TrapBase
         {
             fireEffect.SetActive(false);
             RechargeFuel();
+            audioOn = false;
         }
 
         if (chargeCount == 0 && refuelTimer > rechargeDuration)

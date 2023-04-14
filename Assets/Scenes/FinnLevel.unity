@@ -157,7 +157,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -22014,7 +22014,7 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.0001
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -23463,8 +23463,8 @@ RectTransform:
   m_Father: {fileID: 839237333}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -38744,6 +38744,18 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: john
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: lmRun
+      value: 
+      objectReference: {fileID: 8300000, guid: e9a089bf15458a84f901a529c864695c, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: lbActive
+      value: 
+      objectReference: {fileID: 8300000, guid: 46ca1753959a97547bb7c63bebec1f0e, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: sfxSlider
       value: 
       objectReference: {fileID: 757881999}
@@ -38751,6 +38763,14 @@ PrefabInstance:
       propertyPath: audioMixer
       value: 
       objectReference: {fileID: 24100000, guid: edd954a76b242824fbb49061bb1a681f, type: 2}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: trapPlaced
+      value: 
+      objectReference: {fileID: 8300000, guid: c8d16313287759e46a368932c121e8c9, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: audioObject
+      value: 
+      objectReference: {fileID: 5376925212466211457, guid: 60a8df574dc85834d8227ebe0107d90a, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: musicSlider
       value: 

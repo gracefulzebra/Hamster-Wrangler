@@ -10,8 +10,6 @@ public class Lighter : TrapBase
     [SerializeField] private float burnDuration; //Time between instances of burn damage
     [SerializeField] private int burnAmount; //Amount of instances of burn damage
 
-    bool audioOn = false;
-
     private void Start()
     {
         itemID = "Lighter";
@@ -53,6 +51,7 @@ public class Lighter : TrapBase
         {
             fireEffect.SetActive(false);
             RechargeFuel();
+            audioOn = false;
         }
 
         if (chargeCount == 0 && refuelTimer > rechargeDuration)

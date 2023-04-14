@@ -28,7 +28,8 @@ public class TrapBase : MonoBehaviour
 
     [Header("Trap Activation")]
     public bool activateTrap;
-    protected bool canUseTrap;
+    protected bool canUseTrap; 
+    protected bool audioOn;
 
     protected int trapInteractCounter = 0;
 

@@ -67,17 +67,17 @@ public class GameManager : MonoBehaviour
 
     void LoadVolume()
     {
-        float musicVolume = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
+       float musicVolume = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
        float sfxVolume = PlayerPrefs.GetFloat(SFX_KEY, 1f);
 
-        audioMixer.SetFloat(MUSIC_KEY, Mathf.Log10(musicVolume) * 20);
+       audioMixer.SetFloat(MUSIC_KEY, Mathf.Log10(musicVolume) * 20);
        audioMixer.SetFloat(SFX_KEY, Mathf.Log10(sfxVolume) * 20);
     }
 
     void OnDisable()
     {
-        PlayerPrefs.SetFloat(AudioManager.MIXER_MUSIC, GameManager.instance.audioManager.musicSlider.value);
-        PlayerPrefs.SetFloat(AudioManager.MIXER_SFX, GameManager.instance.audioManager.sfxSlider.value);
+        PlayerPrefs.SetFloat(AudioManager.MIXER_MUSIC, audioManager.musicSlider.value);
+        PlayerPrefs.SetFloat(AudioManager.MIXER_SFX, audioManager.sfxSlider.value);
     }
 
     private void InitialiseSystems()
@@ -113,12 +113,6 @@ public class GameManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "MainMenu")
             MainMenuStar();
-    }
-
-    private void Start()
-    {
-        if (SceneManager.GetActiveScene().name != "MainMenu")
-            audioManager.PlayMusic();
     }
 
     public void StartWave()

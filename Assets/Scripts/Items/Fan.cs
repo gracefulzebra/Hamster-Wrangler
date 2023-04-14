@@ -1,5 +1,5 @@
 using System.Collections;
-using Unity.VisualScripting;
+using System.Linq;
 using UnityEngine;
 
 public class Fan : TrapBase
@@ -13,7 +13,6 @@ public class Fan : TrapBase
     [SerializeField] float leafblowerDuration;
   
     float maxForce;
-    bool audioOn = false;
 
     [Header("Flamethrower")]
     public bool flameThrower;
@@ -30,7 +29,6 @@ public class Fan : TrapBase
     {
         maxForce = force;
         itemID = "LeafBlower";
-        //Physics.IgnoreLayerCollision(0, 9);
     }
    
     private void Update()
@@ -43,6 +41,7 @@ public class Fan : TrapBase
         FuelAndActivation();
     }
 
+    GameObject blowerNoiseObject;
     void FuelAndActivation()
     {
 
@@ -53,7 +52,12 @@ public class Fan : TrapBase
             if (chargeCount != 0)
             {
                 canUseTrap = false;
-
+                if (!audioOn)
+                {
+                     GameManager.instance.audioManager.LeafBlowerUse();
+                     blowerNoiseObject = GameManager.instance.audioManager.lbSoundList.LastOrDefault();
+                     audioOn = true;
+                }
                 UseFuel();
                 windEffect.SetActive(true);
             }
@@ -79,6 +83,11 @@ public class Fan : TrapBase
             flameThrower = false;
             flameThrowerEffect.SetActive(false);
             RechargeFuel();
+            if (blowerNoiseObject != null)
+            {
+                Destroy(blowerNoiseObject);
+            }
+            audioOn = false;
         }
 
         if (chargeCount == 0 && refuelTimer > rechargeDuration)
