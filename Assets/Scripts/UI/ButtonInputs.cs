@@ -51,7 +51,6 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     private void Update()
     {
-            // CHANGE THIS 
         if (Input.GetMouseButtonDown(0) && GameManager.instance.uiManager.itemDescriptionOpen == true)
         {
             GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Item Menu");
@@ -64,8 +63,16 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         }
     }
 
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        BuyItem();
+    }
+
     public void OnPointerUp(PointerEventData eventData)
     {
+        GameObject unplacedItem = GameObject.FindGameObjectWithTag("Unplaced Item");
+        if (unplacedItem != null)
+        {
         var raycastResults = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, raycastResults);
 
@@ -73,23 +80,28 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         {
             foreach (var result in raycastResults)
             {
-                if (result.gameObject.transform.name == "Image")
+                if (result.gameObject.transform.name == "Delete Trap")
                 {
-                    GameObject unplacedItem = GameObject.FindGameObjectWithTag("Unplaced Item");
-                    if (unplacedItem != null)
-                    {
+                   
                         Destroy(unplacedItem);
                         GameManager.instance.holdingItem = false;
                         GameManager.instance.uiManager.RemoveShopOutline();
-                    }                  
                 }
-            }
+            }  
+        }          
         }
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        BuyItem();
+        else
+        {
+            if (!GameManager.instance.uiManager.deleteItemMode)
+            {
+                GameManager.instance.uiManager.deleteItemMode = true;
+            }
+            else
+            {
+                GameManager.instance.uiManager.deleteItemMode = false;
+            }
+            print(GameManager.instance.uiManager.deleteItemMode);
+        }
     }
 
     public void BuyItem()
@@ -116,6 +128,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
             guideMenu.SetActive(true);
             Time.timeScale = 0;
             GameManager.instance.uiManager.itemDescriptionOpen = true;
+
         }
     }
  

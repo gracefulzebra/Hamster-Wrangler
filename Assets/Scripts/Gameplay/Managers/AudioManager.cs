@@ -134,7 +134,6 @@ public class AudioManager : MonoBehaviour
         GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
         audio.GetComponent<AudioSource>().PlayOneShot(lmRun);
         lmRunList.Add(audio);
-        StartCoroutine(DeleteAudio(audio));
     }
 
     public void LawnMowerExplodeAudio()
@@ -150,7 +149,6 @@ public class AudioManager : MonoBehaviour
         GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
         lbSoundList.Add(audio);
         audio.GetComponent<AudioSource>().PlayOneShot(lmRun);
-        StartCoroutine(DeleteAudio(audio));
     }
 
     float deleteAudio = 10;

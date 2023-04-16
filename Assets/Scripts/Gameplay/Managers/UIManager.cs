@@ -39,6 +39,8 @@ public class UIManager : MonoBehaviour
     public bool mainMenuActive;
     public bool itemDescriptionOpen;
 
+    public bool deleteItemMode;
+
     private void Awake()
     {
         gameManager = GetComponent<GameManager>();

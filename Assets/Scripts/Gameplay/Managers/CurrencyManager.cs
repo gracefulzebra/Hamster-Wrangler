@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -123,6 +124,33 @@ public class CurrencyManager : MonoBehaviour
                 Debug.Log("Invalid itemID");
                 return false;
         }    
+    }
+
+    public void SellItem(string itemID)
+    {
+        switch (itemID)
+        {
+            case "LeafBlower":
+                currency += blowerCost;
+              break;
+
+            case "BugZapper":
+                currency += zapperCost;
+                break;
+
+            case "LawnMower":
+                currency += mowerCost;
+                break;
+
+            case "Lighter":
+                currency += lighterCost;
+                break;
+
+            case "Rake":
+                currency += rakeCost;
+                break;
+        }
+        UpdateCurrencyDisplay();
     }
 
     public bool RepairItemCost()

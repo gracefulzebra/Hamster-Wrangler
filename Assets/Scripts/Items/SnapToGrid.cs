@@ -1,6 +1,8 @@
+using System.Collections;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEditor.Progress;
 
 public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 {
@@ -21,27 +23,26 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
     void Awake()
     {
-        if (gameObject.name == "Lawnmower(Clone)")
-        {
-            itemID = "LawnMower";
-        }
-        if (gameObject.name == "Leafblower(Clone)")
-        {
-            itemID = "LeafBlower";
-        }
-        if (gameObject.name == "Lighter(Clone)")
-        {
-            itemID = "Lighter";
-        }
-        if (gameObject.name == "Rake(Clone)")
-        {
-            itemID = "Rake";
-        }
-        if (gameObject.name == "BugZapper(Clone)")
-        {
-            itemID = "BugZapper";
-        }
 
+        switch (gameObject.name)
+        {
+            case "Lawnmower(Clone)":
+                itemID = "LawnMower";
+                break;
+            case "Leafblower(Clone)":
+                itemID = "LeafBlower";
+                break;
+            case "Lighter(Clone)":
+                itemID = "Lighter";
+                break;
+            case "Rake(Clone)":
+                itemID = "Rake";
+                break;
+            case "BugZapper(Clone)":
+                itemID = "BugZapper";
+                break;
+          
+        }
         hasItem = true;
         // finds the game object with gridgenerator script
         // then assigns the compentant, cant just drag
@@ -54,7 +55,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 
     private void Update()
     {    
-        //place this in if 
         if (hasItem)
         {
             NodeCheck();
@@ -108,7 +108,26 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             {
                 GetComponentInChildren<TrapBase>().ActivateTrap();
             }
-        }       
+        }    
+        if (GameManager.instance.uiManager.deleteItemMode)
+        {
+            SellItem();
+        }
+    }
+
+    void SellItem()
+    {
+        RaycastHit hit;
+        Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(mousePos, out hit, Mathf.Infinity, layerMask))
+        {
+            nodeHit = gridRef.GetNodeFromWorldPoint(hit.transform.position);
+            nodeHit.placeable = true;
+
+            GameManager.instance.currencyManager.SellItem(itemID);
+
+            Destroy(hit.transform.gameObject);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
