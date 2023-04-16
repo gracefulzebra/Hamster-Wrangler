@@ -2,8 +2,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.Collections;
+using static UnityEditor.Progress;
+using Unity.VisualScripting;
+using UnityEngine.Networking.Types;
 
-public class ButtonInputs : MonoBehaviour, IPointerDownHandler
+public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
    
     [Header("Shop Items")]
@@ -63,6 +66,20 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         BuyItem();
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        RaycastHit hit;
+        Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(mousePos, out hit, Mathf.Infinity))
+        {
+            if (hit.transform.name == "Image")
+            {
+                GameManager.instance.holdingItem = false;
+                GameManager.instance.uiManager.RemoveShopOutline();
+            }
+        }
     }
 
     public void BuyItem()
