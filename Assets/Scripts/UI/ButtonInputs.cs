@@ -92,15 +92,18 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         }
         else
         {
-            if (!GameManager.instance.uiManager.deleteItemMode)
+            if (GameManager.instance.waveManager.waveCompleted)
             {
-                GameManager.instance.uiManager.deleteItemMode = true;
+                if (!GameManager.instance.uiManager.deleteItemMode)
+                {
+                    GameManager.instance.uiManager.deleteItemMode = true;
+                }
+                else
+                {
+                    GameManager.instance.uiManager.deleteItemMode = false;
+                }
+                print(GameManager.instance.uiManager.deleteItemMode);
             }
-            else
-            {
-                GameManager.instance.uiManager.deleteItemMode = false;
-            }
-            print(GameManager.instance.uiManager.deleteItemMode);
         }
     }
 
