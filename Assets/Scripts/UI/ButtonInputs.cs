@@ -5,6 +5,7 @@ using System.Collections;
 using static UnityEditor.Progress;
 using Unity.VisualScripting;
 using UnityEngine.Networking.Types;
+using System.Collections.Generic;
 
 public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -63,23 +64,32 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         }
     }
 
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        var raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raycastResults);
+
+        if (raycastResults.Count > 0)
+        {
+            foreach (var result in raycastResults)
+            {
+                if (result.gameObject.transform.name == "Image")
+                {
+                    GameObject unplacedItem = GameObject.FindGameObjectWithTag("Unplaced Item");
+                    if (unplacedItem != null)
+                    {
+                        Destroy(unplacedItem);
+                        GameManager.instance.holdingItem = false;
+                        GameManager.instance.uiManager.RemoveShopOutline();
+                    }                  
+                }
+            }
+        }
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         BuyItem();
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        RaycastHit hit;
-        Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(mousePos, out hit, Mathf.Infinity))
-        {
-            if (hit.transform.name == "Image")
-            {
-                GameManager.instance.holdingItem = false;
-                GameManager.instance.uiManager.RemoveShopOutline();
-            }
-        }
     }
 
     public void BuyItem()
