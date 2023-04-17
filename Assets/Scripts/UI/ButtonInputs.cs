@@ -111,6 +111,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         if (GameManager.instance.currencyManager.CheckPrice(gameObject.tag) == true && !GameManager.instance.holdingItem)
         {
+            GameManager.instance.uiManager.deleteItemMode = false;
             GameManager.instance.uiManager.ShopButtonOutline(gameObject);
             GameManager.instance.uiManager.highLightedButton = gameObject;
 
