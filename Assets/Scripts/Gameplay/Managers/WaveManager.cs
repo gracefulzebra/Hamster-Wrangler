@@ -9,6 +9,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private float spawnDelay;
     private int hamstersKilled = 0;
     private int wave = 0;
+    private int activeSpawnersAmount = 0;
 
     [HideInInspector] public int maxWaves;
     [HideInInspector] public bool waveCompleted;
@@ -40,10 +41,15 @@ public class WaveManager : MonoBehaviour
             {
                 if (i != 0)
                     yield return new WaitForSeconds(spawnDelay);
+                activeSpawnersAmount = 0;
 
                 for (int j = 0; j < hamsterSpawners.Length; j++)
                 {
-                    SpawnHamster(hamsterSpawners[j]);
+                    if (hamsterSpawners[j].GetComponent<HamsterSpawner>().checkActive(wave))
+                    {
+                        activeSpawnersAmount++;
+                        SpawnHamster(hamsterSpawners[j]);
+                    }
                 }
                 
             } 
@@ -62,7 +68,7 @@ public class WaveManager : MonoBehaviour
     {
         hamstersKilled++;
         
-        if (hamstersKilled >= hamstersPerWave[wave] * hamsterSpawners.Length)
+        if (hamstersKilled >= hamstersPerWave[wave] * activeSpawnersAmount)
         {
             GameManager.instance.currencyManager.IncrementCurrency(endOfRoundCashBonus);
 
