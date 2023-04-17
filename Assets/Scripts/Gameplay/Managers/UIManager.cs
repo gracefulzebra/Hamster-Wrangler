@@ -133,12 +133,31 @@ public class UIManager : MonoBehaviour
     }
 
     public void DisplayScore(float score)
-    {   
+    {
         float fillAmount = score / GameManager.instance.scoreFor3Star;
-        inGameStarBar.fillAmount = fillAmount;        
+        if(fillAmount != 0)
+        { StartCoroutine(GradualScoreDisplay(fillAmount)); }
+        
     }
 
-    
+    IEnumerator GradualScoreDisplay(float targetFill)
+    {
+        bool targetAchieved = true;
+        float startingAmount = inGameStarBar.fillAmount;
+        float time = 0;
+
+        while (targetAchieved)
+        {
+            time += Time.deltaTime;
+            
+            inGameStarBar.fillAmount = Mathf.Lerp(startingAmount, targetFill, ((time / 2) / targetFill));
+
+            if (inGameStarBar.fillAmount >= targetFill)
+                targetAchieved = false;
+
+            yield return null;
+        }
+    }
 
     public void DisplayCurrency(int currency)
     {
