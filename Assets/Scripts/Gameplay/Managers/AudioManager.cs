@@ -6,11 +6,7 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
-    private AudioSource audioSource;
-
-    public float volume;
-
-    [SerializeField] GameObject audioObject;
+   
 
     [Header("Hamster Audio")]
     [SerializeField] private AudioClip hamsterDeath1;
@@ -20,6 +16,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("Lighter")]
     [SerializeField] private AudioClip lighterOn;
+    [SerializeField] private AudioClip hamsterBurning;
 
     [Header("LawnMower")]
     [SerializeField] private AudioClip lmRun;
@@ -33,11 +30,27 @@ public class AudioManager : MonoBehaviour
     [Header("LeafBlower")]
     [SerializeField] private AudioClip lbActive;
 
+    [Header("BugZapper")]
+    [SerializeField] private AudioClip bugZapper;
+
+    [Header("Environmental")]
+    [SerializeField] private AudioClip waterSplash;
+    [SerializeField] private AudioClip windmillChop;
+    [SerializeField] private AudioClip flagSpear;
+    [SerializeField] private AudioClip gnomeKing;
+
+    [Header("UI")]
     [SerializeField] private AudioClip trapPlaced;
-
     [SerializeField] private AudioClip music;
+    [SerializeField] private AudioClip refuel;
+    [SerializeField] private AudioClip uiClick;
 
+    [Header("Misc")]
+    [SerializeField] GameObject audioObject;
     [SerializeField] AudioMixer audioMixer;
+    private AudioSource audioSource;
+    public float volume;
+
 
     public const string MIXER_MUSIC = "Music";
    public const string MIXER_SFX = "SFX";

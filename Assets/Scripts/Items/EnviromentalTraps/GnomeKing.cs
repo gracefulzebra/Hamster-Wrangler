@@ -29,6 +29,8 @@ public class GnomeKing : EnvironmentalBase
             return;
         animator.SetTrigger("Rotation");
         GetComponent<SphereCollider>().enabled = true;
+        GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
+        temp.GetComponent<ComboDisplay>().SetComboText("GNOMEKILL");
         canUseTrap = false;
         fullCycle = false;
     }
