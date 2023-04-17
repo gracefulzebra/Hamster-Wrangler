@@ -63,15 +63,33 @@ public class MainMainUI : MonoBehaviour
         mainMenu.SetActive(true);
     }
 
-    public void Level1()
+    public void LoadTutorial()
     {
         SceneManager.LoadScene("TutorialLevel");
         Time.timeScale = 1;
     }
 
-    public void Level2()
+    public void Level1()
     {
         SceneManager.LoadScene("FinnLevel");
+        Time.timeScale = 1;
+    }
+
+    public void Level2()
+    {
+        SceneManager.LoadScene("JamieLevel");
+        Time.timeScale = 1;
+    }
+
+    public void Level3()
+    {
+        SceneManager.LoadScene("jordan");
+        Time.timeScale = 1;
+    }
+
+     public void Level4()
+    {
+        SceneManager.LoadScene("GnomeLevel");
         Time.timeScale = 1;
     }
 }
