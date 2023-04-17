@@ -69,7 +69,7 @@ public class Lighter : TrapBase
 
             if (useFuelTimer >= timeTrapActivePerCharge)
             {
-                animator.SetTrigger("Deactive");
+                animator.SetTrigger("Deactivate");
                 activateTrap = false;
                 rechargeFuel = true;
             }
@@ -84,7 +84,7 @@ public class Lighter : TrapBase
             useFuelTimer = 0;
             if (refuelTimer >= rechargeDuration)
             {
-                animator.SetTrigger("Active");
+                animator.SetTrigger("Activate");
                 // trap can be used
                 canUseTrap = true;
                 // trap no longer needs to be fueled

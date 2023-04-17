@@ -25,6 +25,7 @@ public class Fan : TrapBase
     [SerializeField] float overChargeForceMultiplication;
     [SerializeField] GameObject lightningEffect;
 
+
     private void Start()
     {
         maxForce = force;
@@ -44,9 +45,6 @@ public class Fan : TrapBase
     GameObject blowerNoiseObject;
     void FuelAndActivation()
     {
-
-    ChangeSliderColour();
-
         if (activateTrap)
         {
             if (chargeCount != 0)
@@ -54,6 +52,7 @@ public class Fan : TrapBase
                 canUseTrap = false;
                 if (!audioOn)
                 {
+                    mat.DisableKeyword("_EMISSION");
                     GameManager.instance.audioManager.LeafBlowerUse();
                      blowerNoiseObject = GameManager.instance.audioManager.lbSoundList.LastOrDefault();
                      audioOn = true;
