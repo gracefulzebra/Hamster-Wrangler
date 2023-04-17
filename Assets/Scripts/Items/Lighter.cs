@@ -69,7 +69,11 @@ public class Lighter : TrapBase
 
             if (useFuelTimer >= timeTrapActivePerCharge)
             {
+                // removes 1 charge from trap
+                chargeCount--;
+
                 animator.SetTrigger("Deactivate");
+
                 activateTrap = false;
                 rechargeFuel = true;
             }

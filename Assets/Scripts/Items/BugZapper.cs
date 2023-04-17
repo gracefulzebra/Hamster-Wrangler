@@ -103,8 +103,12 @@ public class BugZapper : TrapBase
 
             if (useFuelTimer >= timeTrapActivePerCharge)
             {
+                // removes 1 charge from trap
+                chargeCount--;
+
                 mat.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
                 activeEffect.Stop();
+
                 activateTrap = false;
                 rechargeFuel = true;
             }
