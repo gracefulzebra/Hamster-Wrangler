@@ -54,7 +54,7 @@ public class Fan : TrapBase
                 canUseTrap = false;
                 if (!audioOn)
                 {
-                     GameManager.instance.audioManager.LeafBlowerUse();
+                    GameManager.instance.audioManager.LeafBlowerUse();
                      blowerNoiseObject = GameManager.instance.audioManager.lbSoundList.LastOrDefault();
                      audioOn = true;
                 }

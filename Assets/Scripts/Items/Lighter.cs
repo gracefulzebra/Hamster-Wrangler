@@ -10,6 +10,8 @@ public class Lighter : TrapBase
     [SerializeField] private float burnDuration; //Time between instances of burn damage
     [SerializeField] private int burnAmount; //Amount of instances of burn damage
 
+    [SerializeField] Animator animator;
+
     private void Start()
     {
         itemID = "Lighter";
@@ -25,12 +27,9 @@ public class Lighter : TrapBase
         FuelAndActivation();
     }
 
+
     void FuelAndActivation()
     {
-        if (fuelSlider != null)
-        {
-            ChangeSliderColour();
-        }
         if (activateTrap)
         {
             if (!audioOn)
@@ -41,24 +40,56 @@ public class Lighter : TrapBase
 
             if (chargeCount != 0)
             {
-                canUseTrap = false;
-
-                UseFuel();
+                canUseTrap = false;   
+                UseFuel1();
                 fireEffect.SetActive(true);
             }
         }
         else
         {
             fireEffect.SetActive(false);
-            RechargeFuel();
-            audioOn = false;
+            RechargeFuel1();
+                audioOn = false;
         }
-
+        
         if (chargeCount == 0 && refuelTimer > rechargeDuration)
         {
             refuelSymbol.SetActive(true);
             activateTrap = false;
             canUseTrap = false;
+        }
+    }
+
+    protected void UseFuel1()
+    {
+        if (!rechargeFuel)
+        {
+            useFuelTimer += Time.deltaTime;
+            refuelTimer = 0;
+
+            if (useFuelTimer >= timeTrapActivePerCharge)
+            {
+                animator.SetTrigger("Deactive");
+                activateTrap = false;
+                rechargeFuel = true;
+            }
+        }
+    }
+
+    protected void RechargeFuel1()
+    {
+        if (rechargeFuel)
+        {
+            refuelTimer += Time.deltaTime;
+            useFuelTimer = 0;
+            if (refuelTimer >= rechargeDuration)
+            {
+                animator.SetTrigger("Active");
+                // trap can be used
+                canUseTrap = true;
+                // trap no longer needs to be fueled
+                rechargeFuel = false;
+            }
         }
     }
 
