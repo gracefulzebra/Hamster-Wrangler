@@ -10,6 +10,7 @@ public class CurrencyManager : MonoBehaviour
     private static int currency;
     [SerializeField] private int hamsterCost = 100;
     [SerializeField] public int blowerCost, mowerCost, lighterCost, zapperCost, rakeCost, repairCost;
+    [SerializeField] int valueDividedByPrice;
 
     public string[] shopItems;
     public int[] itemCosts;
@@ -131,23 +132,23 @@ public class CurrencyManager : MonoBehaviour
         switch (itemID)
         {
             case "LeafBlower":
-                currency += blowerCost;
+                currency += blowerCost / valueDividedByPrice;
               break;
 
             case "BugZapper":
-                currency += zapperCost;
+                currency += zapperCost / valueDividedByPrice;
                 break;
 
             case "LawnMower":
-                currency += mowerCost;
+                currency += mowerCost / valueDividedByPrice;
                 break;
 
             case "Lighter":
-                currency += lighterCost;
+                currency += lighterCost / valueDividedByPrice;
                 break;
 
             case "Rake":
-                currency += rakeCost;
+                currency += rakeCost / valueDividedByPrice;
                 break;
         }
         UpdateCurrencyDisplay();

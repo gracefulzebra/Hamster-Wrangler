@@ -9,7 +9,7 @@ public class TrapBase : MonoBehaviour
     [Header("Fuel System")]
     protected int chargeCount;
     [SerializeField] int maxChargeCount;
-    bool rechargeFuel;
+    protected bool rechargeFuel;
     [SerializeField] protected int rechargeDuration;
     [SerializeField] protected float timeTrapActivePerCharge;
     bool startCooldown;
@@ -53,7 +53,6 @@ public class TrapBase : MonoBehaviour
     }
 
     #region Fuel
-    bool tempbool = true;
     protected void UseFuel()
     {
         if (!rechargeFuel)
@@ -61,18 +60,8 @@ public class TrapBase : MonoBehaviour
             fuelSlider.value = useFuelTimer;
             useFuelTimer += Time.deltaTime;
             refuelTimer = 0;
-
-            if(activateTrap && tempbool)
-            {
-           
-                tempbool = false;
-            }
-
             if (useFuelTimer >= timeTrapActivePerCharge)
             {
-                fuelSlider.value = 0;
-                fuelSlider.maxValue = rechargeDuration;
-                fuelSlider.direction = Slider.Direction.LeftToRight;
 
                 // removes 1 charge from trap ui
                 chargeCountSymbols[chargeCount - 1].SetActive(false);
@@ -95,11 +84,6 @@ public class TrapBase : MonoBehaviour
 
             if (refuelTimer >= rechargeDuration)
             {
-                fuelSlider.value = 0;
-                fuelSlider.maxValue = timeTrapActivePerCharge;
-                fuelSlider.direction = Slider.Direction.RightToLeft;
-
-                tempbool = true;
                 // trap can be used
                 canUseTrap = true;
                 // trap no longer needs to be fueled
@@ -110,6 +94,7 @@ public class TrapBase : MonoBehaviour
 
     protected void ChangeSliderColour()
     {
+        /*
         if (!rechargeFuel)
         {
             background.GetComponent<Image>().color = Color.green;      
@@ -121,8 +106,8 @@ public class TrapBase : MonoBehaviour
         {
             background.GetComponent<Image>().color = Color.red;
             fill.GetComponent<Image>().color = Color.green;
-
         }
+        */
     }
     public void RefuelTrap()
     {

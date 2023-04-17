@@ -123,7 +123,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         {
             nodeHit = gridRef.GetNodeFromWorldPoint(hit.transform.position);
             nodeHit.placeable = true;
-
             GameManager.instance.currencyManager.SellItem(itemID);
 
             Destroy(hit.transform.gameObject);

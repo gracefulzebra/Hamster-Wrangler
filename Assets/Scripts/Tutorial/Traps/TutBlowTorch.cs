@@ -50,7 +50,7 @@ public class TutBlowTorch : TrapBase
     {
         if (fuelSlider != null)
         {
-            ChangeSliderColour();
+           // ChangeSliderColour();
         }
         if (activateTrap)
         {

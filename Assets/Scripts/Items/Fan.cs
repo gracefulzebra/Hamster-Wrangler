@@ -25,6 +25,8 @@ public class Fan : TrapBase
     [SerializeField] float overChargeForceMultiplication;
     [SerializeField] GameObject lightningEffect;
 
+    [SerializeField] GameObject mat;
+
     private void Start()
     {
         maxForce = force;
@@ -44,9 +46,6 @@ public class Fan : TrapBase
     GameObject blowerNoiseObject;
     void FuelAndActivation()
     {
-
-    ChangeSliderColour();
-
         if (activateTrap)
         {
             if (chargeCount != 0)
@@ -54,11 +53,11 @@ public class Fan : TrapBase
                 canUseTrap = false;
                 if (!audioOn)
                 {
-                     GameManager.instance.audioManager.LeafBlowerUse();
+                    GameManager.instance.audioManager.LeafBlowerUse();
                      blowerNoiseObject = GameManager.instance.audioManager.lbSoundList.LastOrDefault();
                      audioOn = true;
                 }
-                UseFuel();
+                UseFuel1();
                 windEffect.SetActive(true);
             }
             if (flameThrower)
@@ -82,7 +81,7 @@ public class Fan : TrapBase
             // when trap is decativated it ensures it doesnt wake up as flamethrower
             flameThrower = false;
             flameThrowerEffect.SetActive(false);
-            RechargeFuel();
+            RechargeFuel1();
             if (blowerNoiseObject != null)
             {
                 Destroy(blowerNoiseObject);
@@ -100,6 +99,43 @@ public class Fan : TrapBase
         if (overCharge)
         {
             lightningEffect.SetActive(true);
+        }
+    }
+
+    protected void UseFuel1()
+    {
+        if (!rechargeFuel)
+        {
+            useFuelTimer += Time.deltaTime;
+            refuelTimer = 0;
+
+            if (useFuelTimer >= timeTrapActivePerCharge)
+            {
+                // removes 1 charge from trap
+                chargeCount--;
+
+                mat.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
+
+                activateTrap = false;
+                rechargeFuel = true;
+            }
+        }
+    }
+
+    protected void RechargeFuel1()
+    {
+        if (rechargeFuel)
+        {
+            refuelTimer += Time.deltaTime;
+            useFuelTimer = 0;
+            if (refuelTimer >= rechargeDuration)
+            {
+                mat.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+                // trap can be used
+                canUseTrap = true;
+                // trap no longer needs to be fueled
+                rechargeFuel = false;
+            }
         }
     }
 
