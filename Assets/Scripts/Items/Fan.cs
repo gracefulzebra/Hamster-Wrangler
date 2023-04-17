@@ -25,6 +25,7 @@ public class Fan : TrapBase
     [SerializeField] float overChargeForceMultiplication;
     [SerializeField] GameObject lightningEffect;
 
+    [SerializeField] GameObject mat;
 
     private void Start()
     {
@@ -34,6 +35,8 @@ public class Fan : TrapBase
    
     private void Update()
     {
+        mat.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
+
         if (GetComponentInParent<SnapToGrid>().hasItem == false && !onPlacement)
         {
             onPlacement = true;
@@ -52,7 +55,6 @@ public class Fan : TrapBase
                 canUseTrap = false;
                 if (!audioOn)
                 {
-                    mat.DisableKeyword("_EMISSION");
                     GameManager.instance.audioManager.LeafBlowerUse();
                      blowerNoiseObject = GameManager.instance.audioManager.lbSoundList.LastOrDefault();
                      audioOn = true;

@@ -7,9 +7,9 @@ public class BugZapper : TrapBase
 {
 
     [Header("Misc")]
-    [SerializeField] GameObject activationEffect;
+    [SerializeField] ParticleSystem activeEffect;
     [SerializeField] Slider rechargeSlider;
-
+    
     [Header("Activation")]
     int trapActivatrionCounter;
     bool activatedTrap;
@@ -27,12 +27,15 @@ public class BugZapper : TrapBase
     [SerializeField] float lightingAOERange;
     [SerializeField] float shockDuration;
 
+    [SerializeField] GameObject mat;
+
     private void Start()
     {
         itemID = "BugZapper";
       //  rechargeSlider.maxValue = cooldownTimerMax;
       //  rechargeSlider.gameObject.SetActive(false);
-        
+
+
         shockedObjects = new List<GameObject>();
         hamsterShockRadius += 0.5f;
 
@@ -72,7 +75,7 @@ public class BugZapper : TrapBase
         }
         if (activatedTrap)
         {
-            UseFuel();
+            UseFuel1();
             if (useFuelTimer > timeTrapActivePerCharge)
             {
                 activatedTrap = false;
@@ -80,7 +83,7 @@ public class BugZapper : TrapBase
         }
         else if (!canUseTrap && !activatedTrap)
         {
-            RechargeFuel();
+            RechargeFuel1();
             trapActivatrionCounter = 0;
         }
 
@@ -91,15 +94,40 @@ public class BugZapper : TrapBase
             refuelSymbol.SetActive(true);
         }
     }
-
-    // for zap effecr
-    IEnumerator Unactivate()
+    protected void UseFuel1()
     {
-        yield return new WaitForSeconds(0.2f);
-        activateTrap = false;
-        activationEffect.SetActive(false);
+        if (!rechargeFuel)
+        {
+            useFuelTimer += Time.deltaTime;
+            refuelTimer = 0;
+
+            if (useFuelTimer >= timeTrapActivePerCharge)
+            {
+                mat.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
+                activeEffect.Stop();
+                activateTrap = false;
+                rechargeFuel = true;
+            }
+        }
     }
 
+    protected void RechargeFuel1()
+    {
+        if (rechargeFuel)
+        {
+            refuelTimer += Time.deltaTime;
+            useFuelTimer = 0;
+            if (refuelTimer >= rechargeDuration)
+            {
+                activeEffect.Play();
+                mat.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+                // trap can be used
+                canUseTrap = true;
+                // trap no longer needs to be fueled
+                rechargeFuel = false;
+            }
+        }
+    }
     // for refueling
     public void ReactiveTrap()
     {
