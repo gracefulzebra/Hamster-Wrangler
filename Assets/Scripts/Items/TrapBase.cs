@@ -33,22 +33,11 @@ public class TrapBase : MonoBehaviour
 
     protected int trapInteractCounter = 0;
 
-    GameObject background;
-    GameObject fillArea;
-    GameObject fill;
+    protected Color customColor = new Color(0.5f, 0.5f, 0.5f, 1f);
 
     public void Awake()
     {
         chargeCount = maxChargeCount;
-        if (fuelSlider != null)
-        {
-            fuelSlider.maxValue = timeTrapActivePerCharge;
-            fuelSlider.direction = Slider.Direction.RightToLeft;
-            fuelSlider.value = 0;
-            background = fuelSlider.transform.Find("Background").gameObject;
-            fillArea = fuelSlider.transform.Find("Fill Area").gameObject;
-            fill = fillArea.transform.Find("Fill").gameObject;
-        }
         canUseTrap = true;
     }
 

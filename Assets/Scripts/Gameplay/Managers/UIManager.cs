@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 public class UIManager : MonoBehaviour
 {
     private GameManager gameManager;
-    [SerializeField] GameObject pauseMenu;
+    [SerializeField] public GameObject pauseMenu;
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] private GameObject finalScoreDisplay;
     [SerializeField] private GameObject currencyDisplay;

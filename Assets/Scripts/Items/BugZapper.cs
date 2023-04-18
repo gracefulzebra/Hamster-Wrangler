@@ -108,8 +108,9 @@ public class BugZapper : TrapBase
 
                 mat.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
                 activeEffect.Stop();
+                mat.GetComponent<Renderer>().material.color = customColor;
 
-                activateTrap = false;
+              activateTrap = false;
                 rechargeFuel = true;
             }
         }
@@ -125,6 +126,7 @@ public class BugZapper : TrapBase
             {
                 activeEffect.Play();
                 mat.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+                mat.GetComponent<Renderer>().material.color = Color.white;
                 // trap can be used
                 canUseTrap = true;
                 // trap no longer needs to be fueled

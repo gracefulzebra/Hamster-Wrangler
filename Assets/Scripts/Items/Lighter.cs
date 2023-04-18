@@ -11,6 +11,8 @@ public class Lighter : TrapBase
     [SerializeField] private int burnAmount; //Amount of instances of burn damage
 
     [SerializeField] Animator animator;
+    [SerializeField] GameObject mat;
+
 
     private void Start()
     {
@@ -73,6 +75,7 @@ public class Lighter : TrapBase
                 chargeCount--;
 
                 animator.SetTrigger("Deactivate");
+                mat.GetComponent<Renderer>().material.color = customColor;
 
                 activateTrap = false;
                 rechargeFuel = true;
@@ -89,6 +92,8 @@ public class Lighter : TrapBase
             if (refuelTimer >= rechargeDuration)
             {
                 animator.SetTrigger("Activate");
+                mat.GetComponent<Renderer>().material.color = Color.white;
+
                 // trap can be used
                 canUseTrap = true;
                 // trap no longer needs to be fueled
