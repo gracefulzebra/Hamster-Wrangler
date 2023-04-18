@@ -44,6 +44,7 @@ public class HamsterBase : MonoBehaviour
     [HideInInspector]
     public string hamsterID = "baseHamster";
     HamsterAnimation animatorController;
+    HamsterMatChange materialChanger;
 
     enum DeathTypes
     {
@@ -62,6 +63,7 @@ public class HamsterBase : MonoBehaviour
         currentHealth = maxHamsterHealth;
         speed = maxSpeed;
         animatorController = GetComponent<HamsterAnimation>();
+        materialChanger = GetComponent<HamsterMatChange>();
     }
 
     private void Start()
@@ -193,6 +195,8 @@ public class HamsterBase : MonoBehaviour
         {
             Kill();
         }
+
+        HamsterDamageStates();
     }
 
     /// <summary>
@@ -215,6 +219,25 @@ public class HamsterBase : MonoBehaviour
         CreateDecalEffects(); 
         GetComponent<HamsterScore>().SendData();
         Destroy(gameObject);
+    }
+
+    private void HamsterDamageStates()
+    {
+        float pcntHealth = ((float)currentHealth / (float)maxHamsterHealth) * 100;
+
+        if (pcntHealth >= 50 && pcntHealth < 75)
+        {
+            materialChanger.SetDamageState1();
+        }
+        else if(pcntHealth >= 25 && pcntHealth < 50)
+        {
+            materialChanger.SetDamageState2();
+        }
+        else if(pcntHealth < 25)
+        {
+            materialChanger.SetDamageState3();
+        }
+
     }
 
     // play in kill, for different death aimation depending on death 

@@ -102,7 +102,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
                 {
                     GameManager.instance.uiManager.deleteItemMode = false;
                 }
-                print(GameManager.instance.uiManager.deleteItemMode);
+                //print(GameManager.instance.uiManager.deleteItemMode);
             }
         }
     }

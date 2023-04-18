@@ -62,7 +62,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             NodeCheck();
             PlacementConfirmtation();
         }
-        print(nodeHit.placeable);
+        //print(nodeHit.placeable);
     }
 
     /// <summary>

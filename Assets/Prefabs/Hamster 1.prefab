@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 1892701076170301681}
   - component: {fileID: 6423248422091707386}
   - component: {fileID: 8765999746980494386}
+  - component: {fileID: 868922561380225892}
   m_Layer: 9
   m_Name: Hamster 1
   m_TagString: Hamster
@@ -184,6 +185,42 @@ MonoBehaviour:
   mainHamster: {fileID: 4647738096226869914}
   shockHamster: {fileID: 999378547454459715}
   shockAnimationDuration: 1
+--- !u!114 &868922561380225892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622791512648962765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6901b80a96e21c448babbe368a07e0c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hamsterBody: {fileID: 1361137959672223821}
+  hamsterHead: {fileID: 7415851617838529400}
+  hamsterLArm: {fileID: 3265443924797244093}
+  hamsterRArm: {fileID: 5604760573098162895}
+  hamsterLLeg: {fileID: 7113387539022609283}
+  hamsterRLeg: {fileID: 7639002944877451123}
+  hamsterBodyMat1: {fileID: 2100000, guid: 90d1b1724c4dfaf4685b90df5fc96482, type: 2}
+  hamsterHeadMat1: {fileID: 2100000, guid: 3a38ec828deb11c489353957ee5341f7, type: 2}
+  hamsterLArmMat1: {fileID: 2100000, guid: 74fa5bcc2edfb3c4cacc228c3e25326f, type: 2}
+  hamsterRArmMat1: {fileID: 2100000, guid: 74fa5bcc2edfb3c4cacc228c3e25326f, type: 2}
+  hamsterLLegMat1: {fileID: 2100000, guid: dc92dd253117f624bb5951bdc6da2257, type: 2}
+  hamsterRLegMat1: {fileID: 2100000, guid: dc92dd253117f624bb5951bdc6da2257, type: 2}
+  hamsterBodyMat2: {fileID: 2100000, guid: 9eb5b6e91697d8f45b0d94b07065be27, type: 2}
+  hamsterHeadMat2: {fileID: 2100000, guid: 148c7ff64d64acb499d9ff813a0fbad4, type: 2}
+  hamsterLArmMat2: {fileID: 2100000, guid: e5d4de0792320be44b874104a3c8336d, type: 2}
+  hamsterRArmMat2: {fileID: 2100000, guid: e5d4de0792320be44b874104a3c8336d, type: 2}
+  hamsterLLegMat2: {fileID: 2100000, guid: 8968f92e98abd984fa0f509fc316807b, type: 2}
+  hamsterRLegMat2: {fileID: 2100000, guid: 8968f92e98abd984fa0f509fc316807b, type: 2}
+  hamsterBodyMat3: {fileID: 2100000, guid: 82ed72062c606364c97988be19eb75e4, type: 2}
+  hamsterHeadMat3: {fileID: 2100000, guid: c671b0cc66b11a749a8444b2d766e153, type: 2}
+  hamsterLArmMat3: {fileID: 2100000, guid: af0a504fe4727a642847872ed44cd57f, type: 2}
+  hamsterRArmMat3: {fileID: 2100000, guid: af0a504fe4727a642847872ed44cd57f, type: 2}
+  hamsterLLegMat3: {fileID: 2100000, guid: 721aca1470ec91244bf4e042c2be783c, type: 2}
+  hamsterRLegMat3: {fileID: 2100000, guid: 721aca1470ec91244bf4e042c2be783c, type: 2}
 --- !u!1 &2397004462036310874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,6 +1372,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a73b9bfbd6da1c4bac6cfbb61fd1213, type: 3}
+--- !u!137 &1361137959672223821 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6763882542768230055, guid: 0a73b9bfbd6da1c4bac6cfbb61fd1213, type: 3}
+  m_PrefabInstance: {fileID: 5709887669513393898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3265443924797244093 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7092245168824636503, guid: 0a73b9bfbd6da1c4bac6cfbb61fd1213, type: 3}
+  m_PrefabInstance: {fileID: 5709887669513393898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4647738096226869914 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1134218507716506736, guid: 0a73b9bfbd6da1c4bac6cfbb61fd1213, type: 3}
@@ -1343,6 +1390,26 @@ GameObject:
 --- !u!4 &5255803665792096974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 562322145770818596, guid: 0a73b9bfbd6da1c4bac6cfbb61fd1213, type: 3}
+  m_PrefabInstance: {fileID: 5709887669513393898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5604760573098162895 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 213222373826751525, guid: 0a73b9bfbd6da1c4bac6cfbb61fd1213, type: 3}
+  m_PrefabInstance: {fileID: 5709887669513393898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7113387539022609283 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3281519743547960681, guid: 0a73b9bfbd6da1c4bac6cfbb61fd1213, type: 3}
+  m_PrefabInstance: {fileID: 5709887669513393898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7415851617838529400 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3015157013387668882, guid: 0a73b9bfbd6da1c4bac6cfbb61fd1213, type: 3}
+  m_PrefabInstance: {fileID: 5709887669513393898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7639002944877451123 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2683767291122794905, guid: 0a73b9bfbd6da1c4bac6cfbb61fd1213, type: 3}
   m_PrefabInstance: {fileID: 5709887669513393898}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7437080801964132909
