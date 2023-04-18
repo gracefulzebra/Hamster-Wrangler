@@ -5833,7 +5833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &146008083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45114,11 +45114,27 @@ PrefabInstance:
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lmRun
       value: 
-      objectReference: {fileID: 8300000, guid: e9a089bf15458a84f901a529c864695c, type: 3}
+      objectReference: {fileID: 8300000, guid: e4d5acaeef693024b96474b1ca8b9cfd, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: rake1
+      value: 
+      objectReference: {fileID: 8300000, guid: 180ba95a7093f364a8f50619211e7399, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: uiClick
+      value: 
+      objectReference: {fileID: 8300000, guid: 4431a84eb65845943a89882fa619a2a5, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lbActive
       value: 
-      objectReference: {fileID: 8300000, guid: 39175123f094c40449a093ae65815934, type: 3}
+      objectReference: {fileID: 8300000, guid: f610e3c54208dd246abf0a10f6628dcc, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: lighterOn
+      value: 
+      objectReference: {fileID: 8300000, guid: f610e3c54208dd246abf0a10f6628dcc, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: lmExplode
+      value: 
+      objectReference: {fileID: 8300000, guid: 27e4d0983cbdf0d4599d6f2983f95300, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: sfxSlider
       value: 
@@ -45130,7 +45146,7 @@ PrefabInstance:
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: trapPlaced
       value: 
-      objectReference: {fileID: 8300000, guid: 39175123f094c40449a093ae65815934, type: 3}
+      objectReference: {fileID: 8300000, guid: 4431a84eb65845943a89882fa619a2a5, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: audioObject
       value: 
@@ -45139,6 +45155,30 @@ PrefabInstance:
       propertyPath: musicSlider
       value: 
       objectReference: {fileID: 1823744245}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: hamsterDeath1
+      value: 
+      objectReference: {fileID: 8300000, guid: b0a4535116a19734da9e5dfcc9cd04e8, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: hamsterDeath2
+      value: 
+      objectReference: {fileID: 8300000, guid: 4fca36756d897b147940c6594a7ee092, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: hamsterDeath3
+      value: 
+      objectReference: {fileID: 8300000, guid: b21eb515ebcb13c48b3225f3000057d3, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: hamsterDeath4
+      value: 
+      objectReference: {fileID: 8300000, guid: ab0c60cfdd623de4181a9e5c200bd999, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: hamsterBurning
+      value: 
+      objectReference: {fileID: 8300000, guid: 8684e27a1abbf1e4fa4f4ce24debe39e, type: 3}
+    - target: {fileID: 1058055521, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e3bdc30d8c666f54fa3aa1ac87d5047f, type: 3}
     - target: {fileID: 1058055521, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
