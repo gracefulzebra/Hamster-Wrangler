@@ -43,7 +43,6 @@ public class DialogueManager : MonoBehaviour
             TutManager.tutInstance.NextStep();
             StartCoroutine(TypeSentence(sentence));
             sentencePrinting = true;
-
         }
     }
 
