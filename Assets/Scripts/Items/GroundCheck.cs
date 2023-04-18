@@ -23,7 +23,7 @@ public class GroundCheck : MonoBehaviour
     {
         if (!GetComponentInParent<SnapToGrid>().hasItem)
             return;
-
+/*
         nodeHit = gridRef.GetNodeFromWorldPoint(transform.position);
 
         if (nodeHit.placeable)

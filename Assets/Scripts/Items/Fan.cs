@@ -115,6 +115,7 @@ public class Fan : TrapBase
                 chargeCount--;
 
                 mat.GetComponent<Renderer>().material.DisableKeyword("_EMISSION");
+                mat.GetComponent<Renderer>().material.color = customColor;
 
                 activateTrap = false;
                 rechargeFuel = true;
@@ -131,6 +132,7 @@ public class Fan : TrapBase
             if (refuelTimer >= rechargeDuration)
             {
                 mat.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+                mat.GetComponent<Renderer>().material.color = Color.white;
                 // trap can be used
                 canUseTrap = true;
                 // trap no longer needs to be fueled

@@ -1230,6 +1230,7 @@ MonoBehaviour:
   burnDuration: 2
   burnAmount: 3
   animator: {fileID: 6725367978596883541}
+  mat: {fileID: 8515792440851232389}
 --- !u!1001 &576586723643240105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1461,6 +1462,11 @@ Transform:
 --- !u!95 &6725367978596883541 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: -587391963154332858, guid: 19508e5b33090b24186edc91983ebfdc, type: 3}
+  m_PrefabInstance: {fileID: 3065936034765840147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8515792440851232389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6674977378238556566, guid: 19508e5b33090b24186edc91983ebfdc, type: 3}
   m_PrefabInstance: {fileID: 3065936034765840147}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4375261581121593713

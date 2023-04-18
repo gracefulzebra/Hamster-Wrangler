@@ -54,12 +54,15 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     }
 
     private void Update()
-    {    
+    {
+        if (GameManager.instance.uiManager.pauseMenu.activeSelf)
+            return;
         if (hasItem)
         {
             NodeCheck();
             PlacementConfirmtation();
         }
+        print(nodeHit.placeable);
     }
 
     /// <summary>
@@ -73,7 +76,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         {        
                 // for regular placement 
                 if (!hit.transform.CompareTag("Unplaced Item"))//hit.transform.gameObject.tag == "Ground")
-                {
+               {
                     nodeHit = gridRef.GetNodeFromWorldPoint(hit.point);
 
                     gameObject.transform.position = new Vector3(nodeHit.worldPosition.x, nodeHit.worldPosition.y - 0.5f, nodeHit.worldPosition.z);
@@ -81,7 +84,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
                     // for colour changing
                     if (nodeHit.placeable)
                     {
-                        Color customColor = new Color(0.5f, 0.5f, 0.5f, 1f);
+                        Color customColor = new Color(0.7f, 0.7f, 0.7f, 1f);
                         canBePlaced = true;
                         colour.GetComponent<Renderer>().material.color = customColor;
                     }
