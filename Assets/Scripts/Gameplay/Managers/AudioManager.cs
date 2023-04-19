@@ -54,7 +54,7 @@ public class AudioManager : MonoBehaviour
 
 
     public const string MIXER_MUSIC = "Music";
-   public const string MIXER_SFX = "SFX";
+    public const string MIXER_SFX = "SFX";
 
     // these need to be in here for some reason? mayeb caus ein awake
     [SerializeField] public Slider musicSlider;
@@ -62,10 +62,10 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-       // audioSource = GetComponent<AudioSource>();
+        // audioSource = GetComponent<AudioSource>();
 
-      musicSlider.onValueChanged.AddListener(SetMusicVolume);
-      sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+        musicSlider.onValueChanged.AddListener(SetMusicVolume);
+        sfxSlider.onValueChanged.AddListener(SetSFXVolume);
 
         // spawn in objects with audio source, pass in what noise wen want, and then delete 
         // need to have aduio manager delete the instances 
@@ -73,8 +73,24 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-       musicSlider.value = PlayerPrefs.GetFloat(GameManager.MUSIC_KEY, 1f);
-       sfxSlider.value = PlayerPrefs.GetFloat(GameManager.SFX_KEY, 1f);
+        //musicSlider.value = PlayerPrefs.GetFloat(GameManager.MUSIC_KEY, 1f);
+        //sfxSlider.value = PlayerPrefs.GetFloat(GameManager.SFX_KEY, 1f);
+        //print(GameSettings.instance.MusicVolume);
+
+
+        musicSlider.value = GameSettings.instance.MusicVolume;
+        sfxSlider.value = GameSettings.instance.SfxVolume;
+        //print(GameSettings.instance.SfxVolume);
+        StartCoroutine(SaveSettings());
+    }
+
+    IEnumerator SaveSettings()
+    {
+        for (; ;)
+        {
+            yield return new WaitForSeconds(1f);
+            GameSettings.instance.SaveSettings();
+        }
     }
 
     void SetMusicVolume(float value)
