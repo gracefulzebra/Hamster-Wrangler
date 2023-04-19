@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMainUI : MonoBehaviour
@@ -12,6 +13,7 @@ public class MainMainUI : MonoBehaviour
     [SerializeField] GameObject HTPMenu;
     [SerializeField] GameObject settings;
     [SerializeField] GameObject confirmQuitGame;
+    [SerializeField] Image[] levelStars;
 
     void SwitchSetActive(GameObject objectToSwitch)
     {
@@ -49,7 +51,19 @@ public class MainMainUI : MonoBehaviour
 
     public void LevelSelect()
     {
+        levelStars[0].fillAmount = GameSettings.instance.Level1Score / GameManager.instance.scoreFor3Star;
+        levelStars[1].fillAmount = GameSettings.instance.Level2Score / GameManager.instance.scoreFor3Star;
+        levelStars[2].fillAmount = GameSettings.instance.Level3Score / GameManager.instance.scoreFor3Star;
+        levelStars[3].fillAmount = GameSettings.instance.Level4Score / GameManager.instance.scoreFor3Star;
+
+        GameSettings.instance.SaveSettings();
+
         SwitchSetActive(levelSelect);
+    }
+
+    public void ToggleFullScreen(bool isFullScreen)
+    {
+        Screen.fullScreen = isFullScreen;
     }
 
     public void Settings()

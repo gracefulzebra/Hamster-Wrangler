@@ -174,7 +174,36 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-        finalScore = scoreManager.FinalizeScore(health, maxHealth);    
+        finalScore = scoreManager.FinalizeScore(health, maxHealth);
+
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "FinnLevel":
+                
+                if (GameSettings.instance.Level1Score < finalScore)
+                    GameSettings.instance.Level1Score = finalScore;
+               
+                break;
+
+            case "jordan":
+
+                if (GameSettings.instance.Level2Score < finalScore)
+                    GameSettings.instance.Level2Score = finalScore; GameSettings.instance.Level2Score = finalScore;
+                break;
+
+            case "JamieLevel":
+
+                if (GameSettings.instance.Level3Score < finalScore)
+                    GameSettings.instance.Level3Score = finalScore;
+                break;
+
+            case "GnomeLevel":
+
+                if (GameSettings.instance.Level4Score < finalScore)
+                    GameSettings.instance.Level4Score = finalScore;
+                break;
+        }
+
         uiManager.DisplayFinalScore(finalScore);
     }
 
