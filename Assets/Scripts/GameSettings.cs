@@ -59,11 +59,11 @@ public class GameSettings : MonoBehaviour
         result = masterMixer.GetFloat("Music", out musicVol);
         if (!result)
             return;
-        MusicVolume = Mathf.Pow(10, musicVol / 20); print(MusicVolume);
-        SfxVolume = Mathf.Pow(10, sfxVol / 20); print(SfxVolume);
+        MusicVolume = Mathf.Pow(10, musicVol / 20); 
+        SfxVolume = Mathf.Pow(10, sfxVol / 20); 
         string text = "masterVolume=" + "10" + ",musicVolume=" + MusicVolume + ",sfxVolume=" + SfxVolume + ",quality=" + QualitySetting + ",displayMode=" + DisplayMode + ",level1Score=" + level1Score + ",level2Score=" + level2Score + ",level3Score=" + level3Score + ",level4Score=" + level4Score;
 
-        Debug.Log(text);
+        //Debug.Log(text);
         File.WriteAllText(Application.dataPath + "/Resources/options.txt", text);
     }
 
@@ -84,7 +84,7 @@ public class GameSettings : MonoBehaviour
         // Remove Whitespace
         saveString = Regex.Replace(saveString, @"\s+", "");
 
-        Debug.Log("Save String: " + saveString);
+        //Debug.Log("Save String: " + saveString);
         char[] listOfChar = saveString.ToCharArray();
 
         if (listOfChar.Length <= 1 || listOfChar == null || listOfChar.Length == 0)
@@ -118,7 +118,7 @@ public class GameSettings : MonoBehaviour
         {
             MusicVolume = float.Parse(values[3]);
             masterMixer.SetFloat("Music", Mathf.Log10(MusicVolume) * 20);
-            print(MusicVolume);
+            //print(MusicVolume);
         }
         else
             Debug.Log("musicVolume not found in Game Settings.");
@@ -126,7 +126,7 @@ public class GameSettings : MonoBehaviour
         {
             SfxVolume = float.Parse(values[5]);
             masterMixer.SetFloat("SFX", Mathf.Log10(SfxVolume) * 20);
-            print(SfxVolume);    
+            //print(SfxVolume);    
         }
         else
             Debug.Log("SFXVolume not found in Game Settings.");

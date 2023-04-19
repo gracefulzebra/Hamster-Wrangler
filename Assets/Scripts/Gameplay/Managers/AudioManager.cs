@@ -80,7 +80,7 @@ public class AudioManager : MonoBehaviour
 
         musicSlider.value = GameSettings.instance.MusicVolume;
         sfxSlider.value = GameSettings.instance.SfxVolume;
-        //print(GameSettings.instance.SfxVolume);
+        
         StartCoroutine(SaveSettings());
     }
 

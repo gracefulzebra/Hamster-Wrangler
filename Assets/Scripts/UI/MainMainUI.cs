@@ -55,6 +55,7 @@ public class MainMainUI : MonoBehaviour
     public void Settings()
     {
         SwitchSetActive(settings);
+        GameSettings.instance.SaveSettings();
     }
     
     public void ExitButton()
