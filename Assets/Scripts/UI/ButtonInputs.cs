@@ -54,11 +54,10 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         if (Input.GetMouseButtonDown(0) && GameManager.instance.uiManager.itemDescriptionOpen == true)
         {
             GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Item Menu");
-            Time.timeScale = 1;
             foreach (GameObject go in gameObjectArray)
             {
                 GameManager.instance.uiManager.itemDescriptionOpen = false;
-                go.SetActive(false);
+                go.SetActive(false);         
             }
         }
     }
@@ -92,18 +91,19 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         }
         else
         {
-            if (GameManager.instance.waveManager.waveCompleted)
+            if (gameObject.name == "Delete Trap" && GameManager.instance.waveManager.waveCompleted)
             {
-                if (!GameManager.instance.uiManager.deleteItemMode)
-                {
-                    GameManager.instance.uiManager.deleteItemMode = true;
-                }
-                else
-                {
-                    GameManager.instance.uiManager.deleteItemMode = false;
-                }
-                //print(GameManager.instance.uiManager.deleteItemMode);
+                    if (!GameManager.instance.uiManager.deleteItemMode)
+                    {
+                        GameManager.instance.uiManager.deleteItemMode = true;
+                    }
+                    else
+                    {
+                        GameManager.instance.uiManager.deleteItemMode = false;
+                    }
+                    //print(GameManager.instance.uiManager.deleteItemMode);
             }
+            
         }
     }
 
@@ -130,9 +130,8 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         if (!guideMenu.activeSelf)
         {
             guideMenu.SetActive(true);
-            Time.timeScale = 0;
             GameManager.instance.uiManager.itemDescriptionOpen = true;
-
+          //  gameObject.GetComponent<ButtonInputs>().enabled = false;
         }
     }
  

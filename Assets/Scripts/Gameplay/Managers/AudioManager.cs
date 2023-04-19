@@ -150,6 +150,7 @@ public class AudioManager : MonoBehaviour
     {
         GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
         audio.GetComponent<AudioSource>().PlayOneShot(lighterOn);
+        blowTorchList.Add(audio);
     }
 
     public void ItemPlacedAudio()
