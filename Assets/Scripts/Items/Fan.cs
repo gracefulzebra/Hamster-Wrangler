@@ -57,7 +57,7 @@ public class Fan : TrapBase
                      blowerNoiseObject = GameManager.instance.audioManager.lbSoundList.LastOrDefault();
                      audioOn = true;
                 }
-                UseFuel1();
+                UseFuel();
                 windEffect.SetActive(true);
             }
             if (flameThrower)
@@ -88,7 +88,7 @@ public class Fan : TrapBase
             // when trap is decativated it ensures it doesnt wake up as flamethrower
             flameThrower = false;
             flameThrowerEffect.SetActive(false);
-            RechargeFuel1();
+            RechargeFuel();
             if (blowerNoiseObject != null)
             {
                 Destroy(blowerNoiseObject);
@@ -109,7 +109,7 @@ public class Fan : TrapBase
         }
     }
 
-    protected void UseFuel1()
+    protected void UseFuel()
     {
         if (!rechargeFuel)
         {
@@ -130,7 +130,7 @@ public class Fan : TrapBase
         }
     }
 
-    protected void RechargeFuel1()
+    protected void RechargeFuel()
     {
         if (rechargeFuel)
         {

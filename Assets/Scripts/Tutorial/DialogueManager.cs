@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 
@@ -12,6 +13,10 @@ public class DialogueManager : MonoBehaviour
     public bool sentencePrinting;
 
     private Queue<string> sentences;
+
+    Coroutine typingSentence;
+
+    string sentence;
 
     // Start is called before the first frame update
     void Awake()
@@ -39,10 +44,17 @@ public class DialogueManager : MonoBehaviour
                 EndDialogue();
                 return;
             }
-            string sentence = sentences.Dequeue();
+            sentence = sentences.Dequeue();
             TutManager.tutInstance.NextStep();
-            StartCoroutine(TypeSentence(sentence));
+            typingSentence = StartCoroutine(TypeSentence(sentence));
             sentencePrinting = true;
+        }
+        else if (sentencePrinting)
+        {
+            StopCoroutine(typingSentence);
+            dialogueText.text = "";
+            dialogueText.text = sentence;
+            sentencePrinting = false;
         }
     }
 

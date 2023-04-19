@@ -56,8 +56,6 @@ public class BugZapper : TrapBase
     void FuelAndActivation()
     {
       
-        ChangeSliderColour();
-
         if (activateTrap)
         {
             if (!GetComponentInParent<SnapToGrid>().hasItem && chargeCount != 0)
@@ -75,7 +73,7 @@ public class BugZapper : TrapBase
         }
         if (activatedTrap)
         {
-            UseFuel1();
+            UseFuel();
             if (useFuelTimer > timeTrapActivePerCharge)
             {
                 activatedTrap = false;
@@ -83,7 +81,7 @@ public class BugZapper : TrapBase
         }
         else if (!canUseTrap && !activatedTrap)
         {
-            RechargeFuel1();
+            RechargeFuel();
             trapActivatrionCounter = 0;
         }
 
@@ -94,7 +92,7 @@ public class BugZapper : TrapBase
             refuelSymbol.SetActive(true);
         }
     }
-    protected void UseFuel1()
+    protected void UseFuel()
     {
         if (!rechargeFuel)
         {
@@ -116,7 +114,7 @@ public class BugZapper : TrapBase
         }
     }
 
-    protected void RechargeFuel1()
+    protected void RechargeFuel()
     {
         if (rechargeFuel)
         {

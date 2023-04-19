@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TutBlowTorch : TrapBase
@@ -11,7 +12,8 @@ public class TutBlowTorch : TrapBase
     [SerializeField] private float burnDuration; //Time between instances of burn damage
     [SerializeField] private int burnAmount; //Amount of instances of burn damage
 
-    bool audioOn = false;
+    [SerializeField] Animator animator;
+    [SerializeField] GameObject mat;
 
     GameObject hamster;
 
@@ -46,24 +48,21 @@ public class TutBlowTorch : TrapBase
         }
     }
 
+    GameObject blowTorchObject;
     void FuelAndActivation()
     {
-        if (fuelSlider != null)
-        {
-           // ChangeSliderColour();
-        }
         if (activateTrap)
         {
             if (!audioOn)
             {
-           //     GameManager.instance.audioManager.LighterOn();
+                GameManager.instance.audioManager.BlowtorchActive();
+                blowTorchObject = GameManager.instance.audioManager.blowTorchList.LastOrDefault();
                 audioOn = true;
             }
 
             if (chargeCount != 0)
             {
                 canUseTrap = false;
-
                 UseFuel();
                 fireEffect.SetActive(true);
             }
@@ -72,6 +71,10 @@ public class TutBlowTorch : TrapBase
         {
             fireEffect.SetActive(false);
             RechargeFuel();
+            if (blowTorchObject != null)
+            {
+                Destroy(blowTorchObject);
+            }
             audioOn = false;
         }
 
@@ -80,6 +83,46 @@ public class TutBlowTorch : TrapBase
             refuelSymbol.SetActive(true);
             activateTrap = false;
             canUseTrap = false;
+        }
+    }
+
+    protected void UseFuel()
+    {
+        if (!rechargeFuel)
+        {
+            useFuelTimer += Time.deltaTime;
+            refuelTimer = 0;
+
+            if (useFuelTimer >= timeTrapActivePerCharge)
+            {
+                // removes 1 charge from trap
+                chargeCount--;
+
+                animator.SetTrigger("Deactivate");
+                mat.GetComponent<Renderer>().material.color = customColor;
+
+                activateTrap = false;
+                rechargeFuel = true;
+            }
+        }
+    }
+
+    protected void RechargeFuel()
+    {
+        if (rechargeFuel)
+        {
+            refuelTimer += Time.deltaTime;
+            useFuelTimer = 0;
+            if (refuelTimer >= rechargeDuration)
+            {
+                animator.SetTrigger("Activate");
+                mat.GetComponent<Renderer>().material.color = Color.white;
+
+                // trap can be used
+                canUseTrap = true;
+                // trap no longer needs to be fueled
+                rechargeFuel = false;
+            }
         }
     }
 

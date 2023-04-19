@@ -26,8 +26,6 @@ public class TutLawnmower : TrapBase
     [SerializeField] private LayerMask scannableMask;
     [SerializeField] float lawnmowerExplodeDelay;
 
-    bool audioOn = false;
-
     private void Start()
     {
         gridRefObject = GameObject.Find("OliverGriddy");
