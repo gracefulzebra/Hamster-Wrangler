@@ -11,6 +11,7 @@ public class Windmill : EnvironmentalBase
             {
                 AddScore();
                 ItemInteract(col.gameObject);
+                GameManager.instance.audioManager.WindmillAudio();
                 col.transform.GetComponent<HamsterBase>().Kill();
             }
     }

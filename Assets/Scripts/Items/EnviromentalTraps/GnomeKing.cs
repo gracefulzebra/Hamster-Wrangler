@@ -30,6 +30,7 @@ public class GnomeKing : EnvironmentalBase
         animator.SetTrigger("Rotation");
         GetComponent<SphereCollider>().enabled = true;
         GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
+        GameManager.instance.audioManager.GnomeKingAudio();
         temp.GetComponent<ComboDisplay>().SetComboText("GNOMEKILL");
         canUseTrap = false;
         fullCycle = false;

@@ -65,7 +65,7 @@ public class BugZapper : TrapBase
                 canUseTrap = false;
                 //   startCooldown = true;
                 activatedTrap = true;
-
+                GameManager.instance.audioManager.BugZapperActive();
                 ScanForFirstTarget();
                 if (trapActivatrionCounter == 0)
                 {

@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class Lighter : TrapBase
@@ -29,14 +30,15 @@ public class Lighter : TrapBase
         FuelAndActivation();
     }
 
-
+    GameObject blowTorchObject;
     void FuelAndActivation()
     {
         if (activateTrap)
         {
             if (!audioOn)
             {
-                GameManager.instance.audioManager.LighterOn();
+                GameManager.instance.audioManager.BlowtorchActive();
+                blowTorchObject = GameManager.instance.audioManager.blowTorchList.LastOrDefault();
                 audioOn = true;
             }
 
@@ -51,7 +53,11 @@ public class Lighter : TrapBase
         {
             fireEffect.SetActive(false);
             RechargeFuel1();
-                audioOn = false;
+            if (blowTorchObject != null)
+            {
+                Destroy(blowTorchObject);
+            }
+            audioOn = false;
         }
         
         if (chargeCount == 0 && refuelTimer > rechargeDuration)

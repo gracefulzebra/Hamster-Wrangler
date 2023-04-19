@@ -5726,6 +5726,7 @@ GameObject:
   - component: {fileID: 144579365}
   - component: {fileID: 144579364}
   - component: {fileID: 144579363}
+  - component: {fileID: 144579367}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -5812,6 +5813,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 106
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &144579367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144579362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da7459b1029a70448911ba2d4c616b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePerKill: 0
+  comboDisplayPrefab: {fileID: 2360159485657940172, guid: a110d96ae8700924e9a89bc3196df2f6, type: 3}
+  waterSplash: {fileID: 0}
 --- !u!4 &145493411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6117549077645689707, guid: d040bb79412b16d4ab34fece897d7b60, type: 3}
@@ -45128,6 +45144,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: f610e3c54208dd246abf0a10f6628dcc, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: bugZapper
+      value: 
+      objectReference: {fileID: 8300000, guid: 4431a84eb65845943a89882fa619a2a5, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lighterOn
       value: 
       objectReference: {fileID: 8300000, guid: f610e3c54208dd246abf0a10f6628dcc, type: 3}
@@ -45175,6 +45195,10 @@ PrefabInstance:
       propertyPath: hamsterBurning
       value: 
       objectReference: {fileID: 8300000, guid: 8684e27a1abbf1e4fa4f4ce24debe39e, type: 3}
+    - target: {fileID: 1058055521, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1058055521, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_audioClip
       value: 

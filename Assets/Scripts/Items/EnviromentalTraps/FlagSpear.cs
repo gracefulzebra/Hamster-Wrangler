@@ -16,6 +16,7 @@ public class FlagSpear : EnvironmentalBase
         if (!landed)
         {
             CheckForHamster();
+            GameManager.instance.audioManager.FlagSpearLandedAudio();
             landed = true;
         }
     }
