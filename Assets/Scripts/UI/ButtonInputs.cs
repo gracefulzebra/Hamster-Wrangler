@@ -164,16 +164,19 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     public void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameSettings.instance.SaveSettings();
         Time.timeScale = 1;
     }
 
     public void QuitGame()
     {
+        GameSettings.instance.SaveSettings();
         Application.Quit();
     }
 
     public void MainMenu()
     {
+        GameSettings.instance.SaveSettings();
         SceneManager.LoadScene("MainMenu");
     }
 

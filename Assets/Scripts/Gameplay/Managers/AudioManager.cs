@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -79,10 +80,12 @@ public class AudioManager : MonoBehaviour
 
 
         musicSlider.value = GameSettings.instance.MusicVolume;
-        sfxSlider.value = GameSettings.instance.SfxVolume;
+        sfxSlider.value = GameSettings.instance.SfxVolume; 
         
         StartCoroutine(SaveSettings());
     }
+
+   
 
     IEnumerator SaveSettings()
     {

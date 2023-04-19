@@ -69,7 +69,7 @@ public class UIManager : MonoBehaviour
             mainMenuActive = true;
             Time.timeScale = 0;
             gameManager.holdingItem = true;
-            IngameHTP.SetActive(false);
+            //IngameHTP.SetActive(false);
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && mainMenuActive)
         {
@@ -77,13 +77,14 @@ public class UIManager : MonoBehaviour
             mainMenuActive = false;
             Time.timeScale = 1;
             gameManager.holdingItem = false;
-            IngameHTP.SetActive(false);
+            //IngameHTP.SetActive(false);
         }
    }
 
   public void UnpauseGame()
   {
         pauseMenu.SetActive(false);
+        GameSettings.instance.SaveSettings();
         mainMenuActive = false;
         Time.timeScale = 1;
         GetComponent<GameManager>().holdingItem = false;

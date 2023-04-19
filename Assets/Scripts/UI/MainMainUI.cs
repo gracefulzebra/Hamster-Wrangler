@@ -61,6 +61,7 @@ public class MainMainUI : MonoBehaviour
     public void ExitButton()
     {
         transform.parent.gameObject.SetActive(false);
+        GameSettings.instance.SaveSettings();
         mainMenu.SetActive(true);
     }
 
