@@ -36,7 +36,8 @@ public class AudioManager : MonoBehaviour
     [Header("Environmental")]
     [SerializeField] private AudioClip waterSplash;
     [SerializeField] private AudioClip windmillChop;
-    [SerializeField] private AudioClip flagSpear;
+    [SerializeField] private AudioClip flagSpearSpawn;
+    [SerializeField] private AudioClip flagSpearLand;
     [SerializeField] private AudioClip gnomeKing;
 
     [Header("UI")]
@@ -124,13 +125,13 @@ public class AudioManager : MonoBehaviour
             StartCoroutine(DeleteAudio(audio));
     }
 
-    public void LighterOn()
+    // adds to last that is used in lawnmower script
+    public List<GameObject> blowTorchList;
+    public void BlowtorchActive()
     {
         GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
         audio.GetComponent<AudioSource>().PlayOneShot(lighterOn);
-        StartCoroutine(DeleteAudio(audio));
     }
-
 
     public void ItemPlacedAudio()
     {
@@ -162,6 +163,55 @@ public class AudioManager : MonoBehaviour
         GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
         lbSoundList.Add(audio);
         audio.GetComponent<AudioSource>().PlayOneShot(lmRun);
+    }
+
+    public void BugZapperActive()
+    {
+        GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
+        audio.GetComponent<AudioSource>().PlayOneShot(bugZapper);
+        StartCoroutine(DeleteAudio(audio));
+    }
+
+    public void WaterSplashAudio()
+    {
+        GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
+        audio.GetComponent<AudioSource>().PlayOneShot(waterSplash);
+        StartCoroutine(DeleteAudio(audio));
+    }
+
+    public void GnomeKingAudio()
+    {
+        GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
+        audio.GetComponent<AudioSource>().PlayOneShot(gnomeKing);
+        StartCoroutine(DeleteAudio(audio));
+    }
+
+    public void WindmillAudio()
+    {
+        GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
+        audio.GetComponent<AudioSource>().PlayOneShot(windmillChop);
+        StartCoroutine(DeleteAudio(audio));
+    }
+
+    public void FlagSpearSpawnAudio()
+    {
+        GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
+        audio.GetComponent<AudioSource>().PlayOneShot(flagSpearSpawn);
+        StartCoroutine(DeleteAudio(audio));
+    }
+
+    public void FlagSpearLandedAudio()
+    {
+        GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
+        audio.GetComponent<AudioSource>().PlayOneShot(flagSpearLand);
+        StartCoroutine(DeleteAudio(audio));
+    }
+
+    public void RefuelAudio()
+    {
+        GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
+        audio.GetComponent<AudioSource>().PlayOneShot(refuel);
+        StartCoroutine(DeleteAudio(audio));
     }
 
     float deleteAudio = 10;

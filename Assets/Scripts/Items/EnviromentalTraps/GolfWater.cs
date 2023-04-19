@@ -12,6 +12,7 @@ public class GolfWater : EnvironmentalBase
         {
             AddScore();
             ItemInteract(col.gameObject);
+            GameManager.instance.audioManager.WaterSplashAudio();
             col.GetComponent<HamsterBase>().Kill();
         }
     }

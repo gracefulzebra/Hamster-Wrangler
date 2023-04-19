@@ -56,7 +56,7 @@ public class TutBlowTorch : TrapBase
         {
             if (!audioOn)
             {
-                GameManager.instance.audioManager.LighterOn();
+           //     GameManager.instance.audioManager.LighterOn();
                 audioOn = true;
             }
 
