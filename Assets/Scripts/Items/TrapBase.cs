@@ -45,62 +45,7 @@ public class TrapBase : MonoBehaviour
     }
 
     #region Fuel
-    protected void UseFuel()
-    {
-        if (!rechargeFuel)
-        {
-            fuelSlider.value = useFuelTimer;
-            useFuelTimer += Time.deltaTime;
-            refuelTimer = 0;
-            if (useFuelTimer >= timeTrapActivePerCharge)
-            {
 
-                // removes 1 charge from trap ui
-                chargeCountSymbols[chargeCount - 1].SetActive(false);
-                // removes 1 charge from trap
-                chargeCount--;
-                // trap no longer active
-                activateTrap = false;
-                rechargeFuel = true;
-            }
-        }
-    }
-
-    protected void RechargeFuel()
-    {
-        if (rechargeFuel)
-        {
-            refuelTimer += Time.deltaTime;
-            fuelSlider.value = refuelTimer;
-            useFuelTimer = 0;
-
-            if (refuelTimer >= rechargeDuration)
-            {
-                // trap can be used
-                canUseTrap = true;
-                // trap no longer needs to be fueled
-                rechargeFuel = false;
-            }
-        }
-    }
-
-    protected void ChangeSliderColour()
-    {
-        /*
-        if (!rechargeFuel)
-        {
-            background.GetComponent<Image>().color = Color.green;      
-            fill.GetComponent<Image>().color = Color.red;
-
-         
-        }
-        else
-        {
-            background.GetComponent<Image>().color = Color.red;
-            fill.GetComponent<Image>().color = Color.green;
-        }
-        */
-    }
     public void RefuelTrap()
     {
         if (GameManager.instance.currencyManager.RepairItemCost() == true)

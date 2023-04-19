@@ -45,14 +45,14 @@ public class Lighter : TrapBase
             if (chargeCount != 0)
             {
                 canUseTrap = false;   
-                UseFuel1();
+                UseFuel();
                 fireEffect.SetActive(true);
             }
         }
         else
         {
             fireEffect.SetActive(false);
-            RechargeFuel1();
+            RechargeFuel();
             if (blowTorchObject != null)
             {
                 Destroy(blowTorchObject);
@@ -68,7 +68,7 @@ public class Lighter : TrapBase
         }
     }
 
-    protected void UseFuel1()
+    protected void UseFuel()
     {
         if (!rechargeFuel)
         {
@@ -89,7 +89,7 @@ public class Lighter : TrapBase
         }
     }
 
-    protected void RechargeFuel1()
+    protected void RechargeFuel()
     {
         if (rechargeFuel)
         {
