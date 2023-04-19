@@ -5,9 +5,9 @@ using UnityEngine;
 public class Windmill : EnvironmentalBase
 {
 
-    private void OnTriggerEnter(Collider col)
+    private void OnCollisionEnter(Collision col)
     {
-            if (col.CompareTag("Hamster"))
+            if (col.transform.CompareTag("Hamster"))
             {
                 AddScore();
                 ItemInteract(col.gameObject);

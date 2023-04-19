@@ -36,9 +36,12 @@ public class SpawnFlagSpear : MonoBehaviour
     {
         if (!activate)
             return;
-        GameManager.instance.audioManager.FlagSpearSpawnAudio();
-        Instantiate(flagSpear, spawnPoint, Quaternion.identity);
-        activate = false;
+        if (col.CompareTag("Hamster"))
+        {
+            GameManager.instance.audioManager.FlagSpearSpawnAudio();
+            Instantiate(flagSpear, spawnPoint, Quaternion.identity);
+            activate = false;
+        }
     }
 }
 

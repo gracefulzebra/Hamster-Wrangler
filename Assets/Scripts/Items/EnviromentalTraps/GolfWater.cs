@@ -10,6 +10,7 @@ public class GolfWater : EnvironmentalBase
     {
         if(col.CompareTag("Hamster"))
         {
+            Instantiate(waterSplash, col.transform.position, Quaternion.identity);
             AddScore();
             ItemInteract(col.gameObject);
             GameManager.instance.audioManager.WaterSplashAudio();
