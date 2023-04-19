@@ -31,6 +31,9 @@ public class TrapBase : MonoBehaviour
     protected bool canUseTrap; 
     protected bool audioOn;
 
+    protected bool synergyDisplay = false;
+    [SerializeField] protected GameObject comboDisplayPrefab;
+
     protected int trapInteractCounter = 0;
 
     protected Color customColor = new Color(0.5f, 0.5f, 0.5f, 1f);

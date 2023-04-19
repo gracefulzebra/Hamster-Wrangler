@@ -26,7 +26,7 @@ public class Fan : TrapBase
     [SerializeField] GameObject lightningEffect;
 
     [SerializeField] GameObject mat;
-
+    
     private void Start()
     {
         maxForce = force;
@@ -62,6 +62,13 @@ public class Fan : TrapBase
             }
             if (flameThrower)
             {
+                if(!synergyDisplay)
+                {
+                    synergyDisplay = true;
+                    GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
+                    temp.GetComponent<ComboDisplay>().SetComboText("FLAMETHROWER");
+                }
+
                 flameThrowerEffect.SetActive(true);
             }
             else

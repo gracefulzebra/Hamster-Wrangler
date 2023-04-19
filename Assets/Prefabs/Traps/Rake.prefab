@@ -58,13 +58,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab096cfe44a27a8459b847721cfd26f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuelUsage: 0
-  maxFuel: 0
+  maxChargeCount: 0
+  rechargeDuration: 0
+  timeTrapActivePerCharge: 0
+  chargeCountSymbols: []
   fuelSlider: {fileID: 0}
   refuelSymbol: {fileID: 0}
   itemID: 
   damage: 10
   activateTrap: 0
+  comboDisplayPrefab: {fileID: 2360159485657940172, guid: a110d96ae8700924e9a89bc3196df2f6, type: 3}
   activationButton: {fileID: 4922725229534491279}
   rakeObject: {fileID: 2782437662935850512}
   pivotPoint: {fileID: 6392049935673883754}
@@ -285,6 +288,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 7679
+  canBePlaced: 0
   colour: {fileID: 2782437662935850512}
 --- !u!65 &2299829770192630231
 BoxCollider:

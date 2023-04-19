@@ -237,6 +237,12 @@ public class BugZapper : TrapBase
         }
         else if(targetObject.name == "Leafblower(Clone)")
         {
+            if (!synergyDisplay)
+            {
+                synergyDisplay = true;
+                GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
+                temp.GetComponent<ComboDisplay>().SetComboText("OVERCHARGE");
+            }
             IncrementTrapInteracts(targetObject);
             targetObject.GetComponentInChildren<Fan>().IncrementTrapInteracts(this.gameObject);
             targetObject.GetComponentInChildren<Fan>().overCharge = true;

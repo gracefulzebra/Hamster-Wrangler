@@ -9,7 +9,7 @@ public class HamsterScore : MonoBehaviour
     private int comboCounter = 0;
     private int comboBonusScore;
 
-    [SerializeField] private GameObject comboDisplayPrefab;
+    public GameObject comboDisplayPrefab;
 
     private List<GameObject> interactedList = new List<GameObject>();
 
@@ -48,9 +48,6 @@ public class HamsterScore : MonoBehaviour
 
             comboCounter += trapInteractCounter + 1;
 
-            GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
-            temp.GetComponent<ComboDisplay>().SetComboText("x" +comboCounter);
-
             if (trapInteractCounter > 0)
             {
                 UpdateComboScore(trapInteractCounter);
@@ -69,6 +66,9 @@ public class HamsterScore : MonoBehaviour
         GameManager.instance.scoreManager.UpdateScore(blowerCount, zapperCount, lighterCount, mowerCount, rakeCount, comboBonusScore);
         GameManager.instance.currencyManager.UpdateCurrency(blowerCount, zapperCount, lighterCount, mowerCount, rakeCount, environmentalCount);
         GameManager.instance.waveManager.HamstersRemaining();
+
+        GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
+        temp.GetComponent<ComboDisplay>().SetComboText("x" + comboCounter);
     }
 
     public void UpdateWaveManager()

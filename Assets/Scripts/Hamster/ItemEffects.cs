@@ -101,6 +101,8 @@ public class ItemEffects : MonoBehaviour
     // finds hamster in radius and shocks them
     void FinishLightningAOE()
     {
+        GameObject temp = Instantiate(GetComponent<HamsterScore>().comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
+        temp.GetComponent<ComboDisplay>().SetComboText("HAMST-THOR!");
 
         Instantiate(lightningStrikeEffect, transform.position, Quaternion.identity);
 

@@ -89,6 +89,12 @@ public class Rake : TrapBase
 
             if (col.gameObject.name == "Lawnmower(Clone)" && !col.GetComponent<SnapToGrid>().hasItem)
             {
+                if (!synergyDisplay)
+                {
+                    synergyDisplay = true;
+                    GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
+                    temp.GetComponent<ComboDisplay>().SetComboText("FLYIN MOWER");
+                }
                 Rigidbody rb = col.GetComponent<Rigidbody>();
                 rb.velocity = CalculateVel(col.transform);
                 col.GetComponentInChildren<LawnMower>().IncrementTrapInteracts(this.gameObject);

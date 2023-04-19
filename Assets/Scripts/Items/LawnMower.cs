@@ -126,6 +126,13 @@ public class LawnMower : TrapBase
         { 
             if (col.gameObject.GetComponent<TrapBase>().itemID == "Lighter" && col.gameObject.GetComponent<TrapBase>().activateTrap)
             {
+                if (!synergyDisplay)
+                {
+                    synergyDisplay = true;
+                    GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
+                    temp.GetComponent<ComboDisplay>().SetComboText("LAWNSPLOSION!");
+                }
+
                 IncrementTrapInteracts(col.gameObject);
                 willExplode = true;
                 activateTrap = true;
