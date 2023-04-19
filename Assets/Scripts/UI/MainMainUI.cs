@@ -66,6 +66,11 @@ public class MainMainUI : MonoBehaviour
         Screen.fullScreen = isFullScreen;
     }
 
+    public void SetQuality(int qualityLevel)
+    {
+        QualitySettings.SetQualityLevel(qualityLevel);
+    }
+
     public void Settings()
     {
         SwitchSetActive(settings);
