@@ -10,8 +10,8 @@ Shader "Custom/GeometryGrass"
         _GrassHeight("Grass Height", Float) = 1
         _GrassWidth("Grass Width", Float) = 0.06
         _RandomHeight("Grass Height Randomness", Float) = 0.25
-        _WindSpeed("Wind Speed", Float) = 100
-        _WindStrength("Wind Strength", Float) = 0.05
+        _WindSpeed("Wind Speed", Float) = 25
+        _WindStrength("Wind Strength", Float) = 0.01
         _Radius("Interactor Radius", Float) = 0.3
         _Strength("Interactor Strength", Float) = 5
         _Rad("Blade Radius", Range(0,1)) = 0.6
