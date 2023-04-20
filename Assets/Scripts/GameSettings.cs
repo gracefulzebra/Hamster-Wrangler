@@ -63,7 +63,7 @@ public class GameSettings : MonoBehaviour
         SfxVolume = Mathf.Pow(10, sfxVol / 20); 
         string text = "masterVolume=" + "10" + ",musicVolume=" + MusicVolume + ",sfxVolume=" + SfxVolume + ",quality=" + QualitySetting + ",displayMode=" + DisplayMode + ",level1Score=" + level1Score + ",level2Score=" + level2Score + ",level3Score=" + level3Score + ",level4Score=" + level4Score;
 
-        Debug.Log(text);
+        //Debug.Log(text);
         File.WriteAllText(Application.dataPath + "/Resources/options.txt", text);
     }
 
@@ -84,7 +84,7 @@ public class GameSettings : MonoBehaviour
         // Remove Whitespace
         saveString = Regex.Replace(saveString, @"\s+", "");
 
-        Debug.Log("Save String: " + saveString);
+        //Debug.Log("Save String: " + saveString);
         char[] listOfChar = saveString.ToCharArray();
 
         if (listOfChar.Length <= 1 || listOfChar == null || listOfChar.Length == 0)
