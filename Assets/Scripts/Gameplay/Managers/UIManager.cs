@@ -41,6 +41,11 @@ public class UIManager : MonoBehaviour
 
     public bool deleteItemMode;
 
+
+    public Texture2D cursorTexture;
+    public CursorMode cursorMode = CursorMode.Auto;
+    public Vector2 hotSpot = Vector2.zero;
+
     private void Awake()
     {
         gameManager = GetComponent<GameManager>();
@@ -53,6 +58,7 @@ public class UIManager : MonoBehaviour
             UpdateItemCosts();
             wavesDisplay.GetComponent<TextMeshProUGUI>().text ="0/" + GameManager.instance.waveManager.maxWaves;
         }
+        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
     }
 
     private void Update()
