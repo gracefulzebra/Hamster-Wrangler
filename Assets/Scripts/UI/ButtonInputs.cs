@@ -53,7 +53,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         if (Input.GetMouseButtonDown(0) && GameManager.instance.uiManager.itemDescriptionOpen == true)
         {
-            GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Item Menu");
+                    GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Item Menu");
             foreach (GameObject go in gameObjectArray)
             {
                 GameManager.instance.uiManager.itemDescriptionOpen = false;
@@ -65,6 +65,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     public void OnPointerDown(PointerEventData eventData)
     {
         BuyItem();
+
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -88,7 +89,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
                 }
             }  
         }          
-        }
+    }
         else
         {
             if (gameObject.name == "Delete Trap" && GameManager.instance.waveManager.waveCompleted)
@@ -101,9 +102,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
                     {
                         GameManager.instance.uiManager.deleteItemMode = false;
                     }
-                    //print(GameManager.instance.uiManager.deleteItemMode);
-            }
-            
+            }      
         }
     }
 
