@@ -4868,6 +4868,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 13905835}
     - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 300210245}
+    - target: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lighterCost
       value: 
       objectReference: {fileID: 842673720}
@@ -4995,6 +4999,10 @@ PrefabInstance:
       propertyPath: hamsterBurning
       value: 
       objectReference: {fileID: 8300000, guid: 8684e27a1abbf1e4fa4f4ce24debe39e, type: 3}
+    - target: {fileID: 1058055521, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -1622308020616548471, guid: edd954a76b242824fbb49061bb1a681f, type: 2}
     - target: {fileID: 1102496838878895824, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -5039,6 +5047,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: audioMixer
+      value: 
+      objectReference: {fileID: 24100000, guid: edd954a76b242824fbb49061bb1a681f, type: 2}
     - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: holdingItem
       value: 0
@@ -8337,11 +8349,26 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226665242}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.3763926, y: 1.062694, z: 2.3802567}
   m_Center: {x: -0.00000011920929, y: 0.54542166, z: -0.00000017881393}
+--- !u!114 &226665247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226665242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da7459b1029a70448911ba2d4c616b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePerKill: 0
+  comboDisplayPrefab: {fileID: 2360159485657940172, guid: a110d96ae8700924e9a89bc3196df2f6, type: 3}
+  waterSplash: {fileID: 0}
 --- !u!4 &227650701 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0977be8978743bc419178d89702ec93d, type: 3}
@@ -26697,7 +26724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &683656795
 Transform:
   m_ObjectHideFlags: 0
@@ -26706,7 +26733,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683656794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.089, y: 0, z: -0.104}
   m_LocalScale: {x: 0.1, y: 0.5, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -48041,7 +48068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1224490162
 Transform:
   m_ObjectHideFlags: 0
@@ -48050,7 +48077,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224490161}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.325, z: 0.263}
+  m_LocalPosition: {x: -0.089, y: 0.325, z: 0.159}
   m_LocalScale: {x: 0.04663, y: 0.23154, z: 0.5588908}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -57197,7 +57224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1520205569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78682,7 +78709,7 @@ MonoBehaviour:
   cameraMovementDelay: 0.9
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 15615
 --- !u!81 &2145985400
 AudioListener:
   m_ObjectHideFlags: 0
@@ -78722,7 +78749,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 7127
+    m_Bits: 6871
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
