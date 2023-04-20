@@ -41,8 +41,10 @@ public class UIManager : MonoBehaviour
 
     public bool deleteItemMode;
 
+    public Texture2D defaultCursor;
+    public Texture2D holdingItemCursor;
+    public Texture2D uiPointerCursor;
 
-    public Texture2D cursorTexture;
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
 
@@ -58,14 +60,43 @@ public class UIManager : MonoBehaviour
             UpdateItemCosts();
             wavesDisplay.GetComponent<TextMeshProUGUI>().text ="0/" + GameManager.instance.waveManager.maxWaves;
         }
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        Cursor.SetCursor(defaultCursor, hotSpot, cursorMode);
     }
+
+
 
     private void Update()
     {
         if (SceneManager.GetActiveScene().name != "MainMenu")
-        PauseGame();
+            PauseGame();
+
+        if (defaultCursor == null)
+            return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Cursor.SetCursor(holdingItemCursor, hotSpot, cursorMode);
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            Cursor.SetCursor(defaultCursor, hotSpot, cursorMode);
+        }
+        if (GameManager.instance.holdingItem)
+        {
+            Cursor.SetCursor(holdingItemCursor, hotSpot, cursorMode);
+        }
+      //  GameObject[] john = GameObject.FindGameObjectsWithTag("Tar");
+
+       // for (int i = 0; i < john.Length; i++)
+       // {
+         //   if (john[i].gameObject.GetComponent<ButtonInputs>().overUI)
+         //   {
+          //      Cursor.SetCursor(uiPointerCursor, hotSpot, cursorMode);
+          //  }
+        //}
     }
+      
+    
 
    void PauseGame()
    {

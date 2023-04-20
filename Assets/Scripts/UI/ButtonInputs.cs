@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine.Networking.Types;
 using System.Collections.Generic;
 
-public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler
 {
    
     [Header("Shop Items")]
@@ -68,44 +68,66 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
     }
 
+    public bool overUI;
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+
+        var raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raycastResults);
+        if (raycastResults.Count > 0)
+        {
+            foreach (var result in raycastResults)
+            {
+                // ui layer
+                if (result.gameObject.layer == 5)
+                {
+                    overUI = true;
+                }
+                else
+                {
+                    overUI = false;
+                }
+            }
+        }
+    }
+    // its just way smoother if this stays in here cause iof how pointerevents pass data 
     public void OnPointerUp(PointerEventData eventData)
     {
         GameObject unplacedItem = GameObject.FindGameObjectWithTag("Unplaced Item");
         if (unplacedItem != null)
         {
-        var raycastResults = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventData, raycastResults);
+            var raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventData, raycastResults);
 
-        if (raycastResults.Count > 0)
-        {
-            foreach (var result in raycastResults)
+            if (raycastResults.Count > 0)
             {
-                if (result.gameObject.transform.name == "Delete Trap")
+                foreach (var result in raycastResults)
                 {
-                   
+                    if (result.gameObject.transform.name == "Delete Trap")
+                    {
+
                         Destroy(unplacedItem);
                         GameManager.instance.holdingItem = false;
                         GameManager.instance.uiManager.RemoveShopOutline();
+                    }       
                 }
-            }  
-        }          
-    }
+            }
+        }
         else
         {
-            if (gameObject.name == "Delete Trap" && GameManager.instance.waveManager.waveCompleted)
+            if (GameManager.instance.waveManager.waveCompleted)
             {
-                    if (!GameManager.instance.uiManager.deleteItemMode)
-                    {
-                        GameManager.instance.uiManager.deleteItemMode = true;
-                    }
-                    else
-                    {
-                        GameManager.instance.uiManager.deleteItemMode = false;
-                    }
-            }      
+                if (!GameManager.instance.uiManager.deleteItemMode)
+                {
+                    GameManager.instance.uiManager.deleteItemMode = true;
+                }
+                else
+                {
+                    GameManager.instance.uiManager.deleteItemMode = false;
+                }
+            }
         }
     }
-
     public void BuyItem()
     {
         if (GameManager.instance.currencyManager.CheckPrice(gameObject.tag) == true && !GameManager.instance.holdingItem)
