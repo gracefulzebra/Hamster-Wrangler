@@ -66,17 +66,6 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         BuyItem();
 
-        var raycastResults = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventData, raycastResults);
-
-        if (raycastResults.Count > 0)
-        {
-            foreach (var result in raycastResults)
-            {
-                if (result.gameObject.transform.CompareTag("Item Menu"))
-                {
-                }
-        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
