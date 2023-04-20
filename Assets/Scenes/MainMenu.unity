@@ -539,7 +539,6 @@ GameObject:
   - component: {fileID: 119661657}
   - component: {fileID: 119661656}
   - component: {fileID: 119661659}
-  - component: {fileID: 119661660}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -649,7 +648,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 119661660}
+      - m_Target: {fileID: 664445709}
         m_TargetAssemblyTypeName: MainMainUI, Assembly-CSharp
         m_MethodName: ExitButton
         m_Mode: 1
@@ -661,24 +660,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &119661660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 119661654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 191c08b1482d26746bfddad5fd9487b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelSelect: {fileID: 280545116}
-  mainMenu: {fileID: 1246303662}
-  HTPMenu: {fileID: 0}
-  settings: {fileID: 0}
-  confirmQuitGame: {fileID: 0}
-  levelStars: []
 --- !u!1 &129293518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,7 +1208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &249643422
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1955,7 +1936,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2793,7 +2774,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 603667092}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 191c08b1482d26746bfddad5fd9487b1, type: 3}
   m_Name: 
@@ -2804,6 +2785,8 @@ MonoBehaviour:
   settings: {fileID: 0}
   confirmQuitGame: {fileID: 0}
   levelStars: []
+  fullScreenToggle: {fileID: 0}
+  graphicsDropdown: {fileID: 0}
 --- !u!114 &603667095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2848,7 +2831,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 603667094}
+      - m_Target: {fileID: 664445709}
         m_TargetAssemblyTypeName: MainMainUI, Assembly-CSharp
         m_MethodName: Level1
         m_Mode: 1
@@ -3180,6 +3163,8 @@ MonoBehaviour:
   - {fileID: 334306589}
   - {fileID: 1509497544}
   - {fileID: 241348558}
+  fullScreenToggle: {fileID: 781690962}
+  graphicsDropdown: {fileID: 1162115112}
 --- !u!1 &678204870
 GameObject:
   m_ObjectHideFlags: 0
@@ -3480,8 +3465,8 @@ RectTransform:
   m_Father: {fileID: 2109169331}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3611,16 +3596,16 @@ MonoBehaviour:
       - m_Target: {fileID: 664445709}
         m_TargetAssemblyTypeName: MainMainUI, Assembly-CSharp
         m_MethodName: ToggleFullScreen
-        m_Mode: 6
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &792253136
 GameObject:
   m_ObjectHideFlags: 0
@@ -4276,7 +4261,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833794350}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 191c08b1482d26746bfddad5fd9487b1, type: 3}
   m_Name: 
@@ -4287,6 +4272,8 @@ MonoBehaviour:
   settings: {fileID: 0}
   confirmQuitGame: {fileID: 0}
   levelStars: []
+  fullScreenToggle: {fileID: 0}
+  graphicsDropdown: {fileID: 0}
 --- !u!114 &833794353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4331,7 +4318,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 833794352}
+      - m_Target: {fileID: 664445709}
         m_TargetAssemblyTypeName: MainMainUI, Assembly-CSharp
         m_MethodName: Level4
         m_Mode: 1
@@ -4415,7 +4402,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4710,7 +4697,6 @@ GameObject:
   - component: {fileID: 952095420}
   - component: {fileID: 952095419}
   - component: {fileID: 952095418}
-  - component: {fileID: 952095422}
   m_Layer: 5
   m_Name: Setting
   m_TagString: Untagged
@@ -4762,7 +4748,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 952095422}
+      - m_Target: {fileID: 664445709}
         m_TargetAssemblyTypeName: MainMainUI, Assembly-CSharp
         m_MethodName: Settings
         m_Mode: 1
@@ -4833,24 +4819,6 @@ RectTransform:
   m_AnchoredPosition: {x: 48, y: -236}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &952095422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 952095416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 191c08b1482d26746bfddad5fd9487b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelSelect: {fileID: 0}
-  mainMenu: {fileID: 1246303662}
-  HTPMenu: {fileID: 0}
-  settings: {fileID: 249643421}
-  confirmQuitGame: {fileID: 0}
-  levelStars: []
 --- !u!1 &988720654
 GameObject:
   m_ObjectHideFlags: 0
@@ -5102,7 +5070,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1086101793}
+      - m_Target: {fileID: 664445709}
         m_TargetAssemblyTypeName: MainMainUI, Assembly-CSharp
         m_MethodName: Level2
         m_Mode: 1
@@ -5159,7 +5127,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086101788}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 191c08b1482d26746bfddad5fd9487b1, type: 3}
   m_Name: 
@@ -5170,6 +5138,8 @@ MonoBehaviour:
   settings: {fileID: 0}
   confirmQuitGame: {fileID: 0}
   levelStars: []
+  fullScreenToggle: {fileID: 0}
+  graphicsDropdown: {fileID: 0}
 --- !u!1 &1105321844
 GameObject:
   m_ObjectHideFlags: 0
@@ -5787,7 +5757,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222593458}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 191c08b1482d26746bfddad5fd9487b1, type: 3}
   m_Name: 
@@ -5798,6 +5768,8 @@ MonoBehaviour:
   settings: {fileID: 0}
   confirmQuitGame: {fileID: 0}
   levelStars: []
+  fullScreenToggle: {fileID: 0}
+  graphicsDropdown: {fileID: 0}
 --- !u!114 &1222593461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5842,7 +5814,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1222593460}
+      - m_Target: {fileID: 664445709}
         m_TargetAssemblyTypeName: MainMainUI, Assembly-CSharp
         m_MethodName: Level3
         m_Mode: 1
@@ -7214,7 +7186,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1588763902}
+      - m_Target: {fileID: 664445709}
         m_TargetAssemblyTypeName: MainMainUI, Assembly-CSharp
         m_MethodName: ExitButton
         m_Mode: 1
@@ -7271,7 +7243,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588763897}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 191c08b1482d26746bfddad5fd9487b1, type: 3}
   m_Name: 
@@ -7282,6 +7254,8 @@ MonoBehaviour:
   settings: {fileID: 0}
   confirmQuitGame: {fileID: 0}
   levelStars: []
+  fullScreenToggle: {fileID: 0}
+  graphicsDropdown: {fileID: 0}
 --- !u!1 &1648739623
 GameObject:
   m_ObjectHideFlags: 0
@@ -7896,8 +7870,8 @@ RectTransform:
   m_Father: {fileID: 1996921240}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

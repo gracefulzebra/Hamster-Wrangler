@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMainUI : MonoBehaviour
 {
@@ -14,6 +15,19 @@ public class MainMainUI : MonoBehaviour
     [SerializeField] GameObject settings;
     [SerializeField] GameObject confirmQuitGame;
     [SerializeField] Image[] levelStars;
+    [SerializeField] Toggle fullScreenToggle;
+    [SerializeField] TMP_Dropdown graphicsDropdown;
+
+    private void Start()
+    {
+        InitSettings();
+    }
+
+    private void InitSettings()
+    {
+        if(GameSettings.instance.DisplayMode == 0) { fullScreenToggle.isOn = false; ToggleFullScreen(false); } else { fullScreenToggle.isOn = true; ToggleFullScreen(true); }
+        SetQuality(GameSettings.instance.QualitySetting); graphicsDropdown.value = GameSettings.instance.QualitySetting;
+    }
 
     void SwitchSetActive(GameObject objectToSwitch)
     {
@@ -64,11 +78,15 @@ public class MainMainUI : MonoBehaviour
     public void ToggleFullScreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;
+        GameSettings.instance.DisplayMode = isFullScreen ? 1 : 0;
+        GameSettings.instance.SaveSettings();
     }
 
     public void SetQuality(int qualityLevel)
     {
         QualitySettings.SetQualityLevel(qualityLevel);
+        GameSettings.instance.QualitySetting = qualityLevel;
+        GameSettings.instance.SaveSettings();
     }
 
     public void Settings()
@@ -79,7 +97,7 @@ public class MainMainUI : MonoBehaviour
     
     public void ExitButton()
     {
-        transform.parent.gameObject.SetActive(false);
+        settings.SetActive(false); levelSelect.SetActive(false);
         GameSettings.instance.SaveSettings();
         mainMenu.SetActive(true);
     }
