@@ -1484,7 +1484,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Option A
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2787,6 +2787,7 @@ MonoBehaviour:
   levelStars: []
   fullScreenToggle: {fileID: 0}
   graphicsDropdown: {fileID: 0}
+  resolutionDropdown: {fileID: 0}
 --- !u!114 &603667095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3165,6 +3166,7 @@ MonoBehaviour:
   - {fileID: 241348558}
   fullScreenToggle: {fileID: 781690962}
   graphicsDropdown: {fileID: 1162115112}
+  resolutionDropdown: {fileID: 1537281418}
 --- !u!1 &678204870
 GameObject:
   m_ObjectHideFlags: 0
@@ -4274,6 +4276,7 @@ MonoBehaviour:
   levelStars: []
   fullScreenToggle: {fileID: 0}
   graphicsDropdown: {fileID: 0}
+  resolutionDropdown: {fileID: 0}
 --- !u!114 &833794353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5140,6 +5143,7 @@ MonoBehaviour:
   levelStars: []
   fullScreenToggle: {fileID: 0}
   graphicsDropdown: {fileID: 0}
+  resolutionDropdown: {fileID: 0}
 --- !u!1 &1105321844
 GameObject:
   m_ObjectHideFlags: 0
@@ -5770,6 +5774,7 @@ MonoBehaviour:
   levelStars: []
   fullScreenToggle: {fileID: 0}
   graphicsDropdown: {fileID: 0}
+  resolutionDropdown: {fileID: 0}
 --- !u!114 &1222593461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7053,16 +7058,22 @@ MonoBehaviour:
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
-    m_Options:
-    - m_Text: Option A
-      m_Image: {fileID: 0}
-    - m_Text: Option B
-      m_Image: {fileID: 0}
-    - m_Text: Option C
-      m_Image: {fileID: 0}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 664445709}
+        m_TargetAssemblyTypeName: MainMainUI, Assembly-CSharp
+        m_MethodName: SetRes
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1537281419
 MonoBehaviour:
@@ -7256,6 +7267,7 @@ MonoBehaviour:
   levelStars: []
   fullScreenToggle: {fileID: 0}
   graphicsDropdown: {fileID: 0}
+  resolutionDropdown: {fileID: 0}
 --- !u!1 &1648739623
 GameObject:
   m_ObjectHideFlags: 0
