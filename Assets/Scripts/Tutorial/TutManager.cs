@@ -28,6 +28,8 @@ public class TutManager : MonoBehaviour
     [SerializeField] GameObject bugZapperButton;
     [SerializeField] GameObject rakeButton;
 
+    [SerializeField] GameObject sellItem;
+
     [SerializeField] List<GameObject> uiHighlights;
     [SerializeField] List<GameObject> inputGuides;
 
@@ -105,7 +107,8 @@ public class TutManager : MonoBehaviour
 
                     inputGuides[0].SetActive(true);
                     uiHighlights[2].SetActive(true);
-                    placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
+                  //  placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
+                    placementGridSquareLM.transform.GetChild(0).gameObject.SetActive(true);
                     lawnMowerButton.GetComponent<TutButtons>().enabled = true;
                     GameManager.instance.uiManager.DefaultShopOutline(lawnMowerButton);
 
@@ -123,11 +126,13 @@ public class TutManager : MonoBehaviour
                     inputGuides[1].SetActive(true);
                     if (lmPlaceable)
                     {
-                        placementGridSquareLM.GetComponent<Renderer>().material.color = Color.yellow;
+                      //  placementGridSquareLM.GetComponent<Renderer>().material.color = Color.yellow;
+                        placementGridSquareLM.transform.GetChild(0).gameObject.SetActive(false);
                     }
                     else
                     {
-                        placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
+                      //  placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
+                        placementGridSquareLM.transform.GetChild(0).gameObject.SetActive(true);
                     }
                     break;
                     // poscounter +2 when buy trap, tutbuttons always increase, then dialouge 
@@ -137,7 +142,8 @@ public class TutManager : MonoBehaviour
                     lawnMowerButton.GetComponent<TutButtons>().enabled = false;
                     GameManager.instance.uiManager.ShopButtonCantBuy(lawnMowerButton);
 
-                    placementGridSquareLM.GetComponent<Renderer>().material = darkTile;
+                    placementGridSquareLM.transform.GetChild(0).gameObject.SetActive(false);
+                 //   placementGridSquareLM.GetComponent<Renderer>().material = darkTile;
                     DialougeWithNoPC();
                     break;
                     
@@ -193,7 +199,8 @@ public class TutManager : MonoBehaviour
                     uiHighlights[2].SetActive(true);
                     GameManager.instance.uiManager.DefaultShopOutline(lawnMowerButton);
                     lawnMowerButton.GetComponent<TutButtons>().enabled = true;
-                    placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
+               //     placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
+                    placementGridSquareLM.transform.GetChild(0).gameObject.SetActive(true);
                     break;
                     // pressed buy item
                 case 14:
@@ -202,23 +209,28 @@ public class TutManager : MonoBehaviour
 
                     if (lmPlaceable)
                     {
-                        placementGridSquareLM.GetComponent<Renderer>().material.color = Color.yellow;
+                      //  placementGridSquareLM.GetComponent<Renderer>().material.color = Color.yellow;
+                        placementGridSquareLM.transform.GetChild(0).gameObject.SetActive(false);
                     }
                     else
                     {
-                        placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
+                      //  placementGridSquareLM.GetComponent<Renderer>().material.color = Color.black;
+                        placementGridSquareLM.transform.GetChild(0).gameObject.SetActive(true);
+
                     }
                     break;
                     // item placed
                 case 15:
-                    placementGridSquareLM.GetComponent<Renderer>().material = darkTile;
+                    placementGridSquareLM.transform.GetChild(0).gameObject.SetActive(false);
+                 //   placementGridSquareLM.GetComponent<Renderer>().material = darkTile;
                     lawnMowerButton.GetComponent<TutButtons>().enabled = false;
                     GameManager.instance.uiManager.ShopButtonCantBuy(lawnMowerButton);
 
                     uiHighlights[4].SetActive(true);
                     GameManager.instance.uiManager.DefaultShopOutline(blowTorchButton);
                     blowTorchButton.GetComponent<TutButtons>().enabled = true;
-                    placementGridSquareBT.GetComponent<Renderer>().material.color = Color.black;
+                    placementGridSquareBT.transform.GetChild(0).gameObject.SetActive(true);
+                  //  placementGridSquareBT.GetComponent<Renderer>().material.color = Color.black;
                     break;
                 // pressed buy item
                 case 16:
@@ -227,18 +239,22 @@ public class TutManager : MonoBehaviour
 
                     if (btPlaceable)
                     {
-                        placementGridSquareBT.GetComponent<Renderer>().material.color = Color.yellow;
+                       // placementGridSquareBT.GetComponent<Renderer>().material.color = Color.yellow;
+                        placementGridSquareBT.transform.GetChild(0).gameObject.SetActive(false);
+
                     }
                     else
                     {
-                        placementGridSquareBT.GetComponent<Renderer>().material.color = Color.black;
+                      //  placementGridSquareBT.GetComponent<Renderer>().material.color = Color.black;
+                        placementGridSquareBT.transform.GetChild(0).gameObject.SetActive(true);
                     }
                     break;
                 // item placed
                 case 17:
                     GameManager.instance.uiManager.ShopButtonCantBuy(blowTorchButton);
                     blowTorchButton.GetComponent<TutButtons>().enabled = false;
-                    placementGridSquareBT.GetComponent<Renderer>().material = lightTile;
+                    placementGridSquareBT.transform.GetChild(0).gameObject.SetActive(false);
+                  //  placementGridSquareBT.GetComponent<Renderer>().material = lightTile;
 
                     DialougeWithNoPC();
                     break;
@@ -282,8 +298,19 @@ public class TutManager : MonoBehaviour
                     // dilaouge continues
                 case 22:
                     contineDialouge.SetActive(true);
-
                     break;
+                case 23:
+                    sellItem.GetComponent<ButtonInputs>().enabled = true;
+                    break;
+                case 24:
+                    cantIncreasePC = false;
+                    break;
+                case 25:
+                    // maybne end bit now?
+                    break;
+
+                    // when item is sold next step occurs 
+                  /*
                 case 23:
                     contineDialouge.SetActive(false);
                     inputGuides[4].SetActive(true);
@@ -315,13 +342,14 @@ public class TutManager : MonoBehaviour
                     waveStartButton.GetComponent<Button>().enabled = true;
                     tutEnd = true;
                     Destroy(contineDialouge.transform.parent.gameObject);
-                    break;                
+                      break; 
+                  */
             }
         }
     }
 
 
-    void DialougeWithNoPC()
+   public void DialougeWithNoPC()
     {
         if (!cantIncreasePC)
         {

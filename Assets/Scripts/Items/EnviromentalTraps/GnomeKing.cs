@@ -23,6 +23,23 @@ public class GnomeKing : EnvironmentalBase
         }
     }
 
+    void OnMouseOver()
+    {
+        if (GameManager.instance.uiManager.defaultCursor == null)
+            return;
+        if (!GameManager.instance.currencyManager.deleteItemMode)
+        {
+            GameManager.instance.uiManager.overTrap = true;
+        }
+    }
+    void OnMouseExit()
+    {
+        if (GameManager.instance.uiManager.defaultCursor == null)
+            return;
+        GameManager.instance.uiManager.overTrap = false;
+        GameManager.instance.uiManager.ChangeCursor();
+    }
+
     private void OnMouseDown()
     {
         if (!canUseTrap || !fullCycle)

@@ -95,7 +95,14 @@ public class TutBTPlacement : BaseSnapToGrid
                     }
                 }
             }
+        if (GameManager.instance.currencyManager.deleteItemMode)
+        {
+            // when item sold next step occurs
+            SellItem();
+            TutManager.tutInstance.DialougeWithNoPC();
         }
+        }
+
     
 
     IEnumerator SynergyDialouge()
