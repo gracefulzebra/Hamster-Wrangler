@@ -70,11 +70,13 @@ public class BaseSnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHan
     {
         RaycastHit hit;
         Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(mousePos, out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(mousePos, out hit, Mathf.Infinity))
         {
             nodeHit = gridRef.GetNodeFromWorldPoint(hit.transform.position);
             nodeHit.placeable = true;
             GameManager.instance.currencyManager.SellItem(itemID);
+
+            FindObjectOfType<DialogueManager>().DisplayNextSentence();
 
             Destroy(hit.transform.gameObject);
         }

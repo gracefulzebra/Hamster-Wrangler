@@ -138,6 +138,7 @@ public class TutManager : MonoBehaviour
                     // poscounter +2 when buy trap, tutbuttons always increase, then dialouge 
                 case 7:
                     inputGuides[1].SetActive(false);
+                    uiHighlights[2].SetActive(false);
 
                     lawnMowerButton.GetComponent<TutButtons>().enabled = false;
                     GameManager.instance.uiManager.ShopButtonCantBuy(lawnMowerButton);
@@ -300,17 +301,87 @@ public class TutManager : MonoBehaviour
                     contineDialouge.SetActive(true);
                     break;
                 case 23:
+                    contineDialouge.SetActive(false);
+
                     sellItem.GetComponent<ButtonInputs>().enabled = true;
                     break;
-                case 24:
-                    cantIncreasePC = false;
-                    break;
+                // when bt is sold next step occurs 
                 case 25:
-                    // maybne end bit now?
+                    cantIncreasePC = false;
+
+                    contineDialouge.SetActive(false);
                     break;
 
-                    // when item is sold next step occurs 
-                  /*
+                 case 26:
+                    DialougeWithNoPC();
+                    inputGuides[4].SetActive(true);
+
+                    if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        FindObjectOfType<DialogueManager>().DisplayNextSentence();
+                    }
+                    break;
+                case 27:
+                    inputGuides[4].SetActive(false);
+
+                    cantIncreasePC = false;
+                    if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        NextStep();
+                        FindObjectOfType<DialogueManager>().DisplayNextSentence();
+                    }
+                    break;
+                case 28:
+                    lawnMowerButton.GetComponent<TutButtons>().enabled = false;
+                    blowTorchButton.GetComponent<TutButtons>().enabled = false;
+                    inputGuides[4].SetActive(false);
+
+                    lawnMowerButton.GetComponent<ButtonInputs>().enabled = true;
+                    blowTorchButton.GetComponent<ButtonInputs>().enabled = true;
+                    leafBlowerButton.GetComponent<ButtonInputs>().enabled = true;
+                    bugZapperButton.GetComponent<ButtonInputs>().enabled = true;
+                    rakeButton.GetComponent<ButtonInputs>().enabled = true;
+
+                    GameManager.instance.uiManager.UpdateUIOnHamsterDeath();
+                    waveStartButton.GetComponent<Button>().enabled = true;
+                    tutEnd = true;
+                    Destroy(contineDialouge.transform.parent.gameObject);
+                    break;
+                    /*
+                case 27:
+                    contineDialouge.SetActive(false);
+
+                    inputGuides[4].SetActive(true);
+
+                    if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        FindObjectOfType<DialogueManager>().DisplayNextSentence();
+                    }
+                    break;
+                case 26:
+                    if (Input.GetKeyDown(KeyCode.Escape))
+                    {
+                        NextStep();
+                        FindObjectOfType<DialogueManager>().DisplayNextSentence();
+                    }
+                    break;
+                case 27:
+                    lawnMowerButton.GetComponent<TutButtons>().enabled = false;
+                    blowTorchButton.GetComponent<TutButtons>().enabled = false;
+                    inputGuides[4].SetActive(false);
+
+                    lawnMowerButton.GetComponent<ButtonInputs>().enabled = true;
+                    blowTorchButton.GetComponent<ButtonInputs>().enabled = true;
+                    leafBlowerButton.GetComponent<ButtonInputs>().enabled = true;
+                    bugZapperButton.GetComponent<ButtonInputs>().enabled = true;
+                    rakeButton.GetComponent<ButtonInputs>().enabled = true;
+
+                    GameManager.instance.uiManager.UpdateUIOnHamsterDeath();
+                    waveStartButton.GetComponent<Button>().enabled = true;
+                    tutEnd = true;
+                    Destroy(contineDialouge.transform.parent.gameObject);
+                    break;
+/*
                 case 23:
                     contineDialouge.SetActive(false);
                     inputGuides[4].SetActive(true);
@@ -343,7 +414,7 @@ public class TutManager : MonoBehaviour
                     tutEnd = true;
                     Destroy(contineDialouge.transform.parent.gameObject);
                       break; 
-                  */
+*/
             }
         }
     }
