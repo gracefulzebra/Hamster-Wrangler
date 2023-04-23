@@ -12,6 +12,7 @@ public class BaseSnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHan
     [SerializeField] ParticleSystem placementEffect;
     public string itemID;
     public Node nodeHit;
+    [SerializeField] LayerMask layerMask;
 
     [SerializeField] protected bool tutCorrectRotation;
     [SerializeField] protected bool tutCanPlace;
@@ -38,6 +39,23 @@ public class BaseSnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHan
         }
     }
 
+    void OnMouseOver()
+    {
+        if (GameManager.instance.uiManager.defaultCursor == null)
+            return;
+        if (!GameManager.instance.currencyManager.deleteItemMode)
+        {
+            GameManager.instance.uiManager.overTrap = true;
+        }
+    }
+    void OnMouseExit()
+    {
+        if (GameManager.instance.uiManager.defaultCursor == null)
+            return;
+        GameManager.instance.uiManager.overTrap = false;
+        GameManager.instance.uiManager.ChangeCursor();
+    }
+
     public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -45,6 +63,22 @@ public class BaseSnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHan
         if (hasItem)
         {
             TrapPlacement();
+        }
+    }
+
+    protected void SellItem()
+    {
+        RaycastHit hit;
+        Ray mousePos = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(mousePos, out hit, Mathf.Infinity))
+        {
+            nodeHit = gridRef.GetNodeFromWorldPoint(hit.transform.position);
+            nodeHit.placeable = true;
+            GameManager.instance.currencyManager.SellItem(itemID);
+
+            FindObjectOfType<DialogueManager>().DisplayNextSentence();
+
+            Destroy(hit.transform.gameObject);
         }
     }
 

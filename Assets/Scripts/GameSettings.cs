@@ -30,13 +30,16 @@ public class GameSettings : MonoBehaviour
     int qualitySetting;
     public int QualitySetting { get => qualitySetting; set => qualitySetting = value; }
 
+    int resolutionSetting;
+    public int ResolutionSetting { get => resolutionSetting; set => resolutionSetting = value; }
+
     private float sfxVolume;
     public float SfxVolume { get => sfxVolume; set => sfxVolume = value; }
 
     private float musicVolume;
     public float MusicVolume { get => musicVolume; set => musicVolume = value; }
 
-    private const string DEFAULT_VALUE = "masterVolume=10,musicVolume=0.5,sfxVolume=0.5,quality=2,displayMode=0,level1Score=0,level2Score=0,level3Score=0,level4Score=0";
+    private const string DEFAULT_VALUE = "masterVolume=10,musicVolume=0.5,sfxVolume=0.5,quality=2,resolution=18,displayMode=1,level1Score=0,level2Score=0,level3Score=0,level4Score=0";
 
     private void Awake()
     {
@@ -61,7 +64,7 @@ public class GameSettings : MonoBehaviour
             return;
         MusicVolume = Mathf.Pow(10, musicVol / 20); 
         SfxVolume = Mathf.Pow(10, sfxVol / 20); 
-        string text = "masterVolume=" + "10" + ",musicVolume=" + MusicVolume + ",sfxVolume=" + SfxVolume + ",quality=" + QualitySetting + ",displayMode=" + DisplayMode + ",level1Score=" + level1Score + ",level2Score=" + level2Score + ",level3Score=" + level3Score + ",level4Score=" + level4Score;
+        string text = "masterVolume=" + "10" + ",musicVolume=" + MusicVolume + ",sfxVolume=" + SfxVolume + ",quality=" + QualitySetting + ",resolution=" + resolutionSetting +  ",displayMode=" + DisplayMode + ",level1Score=" + level1Score + ",level2Score=" + level2Score + ",level3Score=" + level3Score + ",level4Score=" + level4Score;
 
         //Debug.Log(text);
         File.WriteAllText(Application.dataPath + "/Resources/options.txt", text);
@@ -138,36 +141,44 @@ public class GameSettings : MonoBehaviour
             QualitySetting = 0;
 
         }
-        if (values[8] == "displayMode")
-            DisplayMode = int.Parse(values[9]);
+        if (values[8] == "resolution")
+            ResolutionSetting = int.Parse(values[9]);
+        else
+        {
+            Debug.Log("Resolution Setting not found in Game Settings.");
+            ResolutionSetting = 0;
+
+        }
+        if (values[10] == "displayMode")
+            DisplayMode = int.Parse(values[11]);
         else
         {
             Debug.Log("Display mode not found in Game Settings.");
             DisplayMode = 0;
         }
-        if (values[10] == "level1Score")
-            level1Score = float.Parse(values[11]);
+        if (values[12] == "level1Score")
+            level1Score = float.Parse(values[13]);
         else
         {
             Debug.Log("Level 1 Score not found in Game Settings.");
             level1Score = 0;
         }
-        if (values[12] == "level2Score")
-            level2Score = float.Parse(values[13]);
+        if (values[14] == "level2Score")
+            level2Score = float.Parse(values[15]);
         else
         {
             Debug.Log("Level 2 Score not found in Game Settings.");
             level2Score = 0;
         }
-        if (values[14] == "level3Score")
-            level3Score = float.Parse(values[15]);
+        if (values[16] == "level3Score")
+            level3Score = float.Parse(values[17]);
         else
         {
             Debug.Log("Level 3 Score not found in Game Settings.");
             level3Score = 0;
         }
-        if (values[16] == "level4Score")
-            level4Score = float.Parse(values[17]);
+        if (values[18] == "level4Score")
+            level4Score = float.Parse(values[19]);
         else
         {
             Debug.Log("Level 4 Score not found in Game Settings.");

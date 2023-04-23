@@ -68,9 +68,14 @@ public class TutBTPlacement : BaseSnapToGrid
         }
     }
 
-        void OnMouseDown()
+    void OnMouseDown()
+    {
+        if (GameManager.instance.currencyManager.deleteItemMode)
         {
-            if (hasItem)
+            // when item sold next step occurs
+            SellItem();
+        }
+        if (hasItem)
             {
                 if (CompareTag("Unplaced Item"))
                 {
@@ -83,7 +88,6 @@ public class TutBTPlacement : BaseSnapToGrid
                 {
                     GetComponentInChildren<TrapBase>().ActivateTrap();
                 }
-
                 if (TutManager.tutInstance.tutCanUseBT)
                 {
                     GetComponentInChildren<TrapBase>().ActivateTrap();
@@ -94,9 +98,8 @@ public class TutBTPlacement : BaseSnapToGrid
                         StartCoroutine(SynergyDialouge());
                     }
                 }
-            }
-        }
-    
+            }  
+     }
 
     IEnumerator SynergyDialouge()
     {
@@ -104,5 +107,4 @@ public class TutBTPlacement : BaseSnapToGrid
         singleUseCourtine = true;
         FindObjectOfType<DialogueManager>().DisplayNextSentence();
     }
-
 }

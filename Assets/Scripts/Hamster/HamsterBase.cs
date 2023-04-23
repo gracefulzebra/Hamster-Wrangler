@@ -31,6 +31,7 @@ public class HamsterBase : MonoBehaviour
     private int checkPointIndex = 0;
 
     [Header("Misc.")]
+    [SerializeField] GameObject coins;
     [SerializeField] private GameObject[] bloodEffect;
     [SerializeField] private float maxDecalDistance = 5f;
     [SerializeField] private float decalOffsetDistance = 0.5f;
@@ -213,12 +214,27 @@ public class HamsterBase : MonoBehaviour
     ///Destroys the current Hamster with no delay
     ///</summary>
     public void Kill()
-    {       
+    {
         GameManager.instance.audioManager.PlayHamsterDeathAudio();
         GameManager.instance.vfxManager.HamsterDeathLimbSpawn(transform);
         CreateDecalEffects(); 
         GetComponent<HamsterScore>().SendData();
         Destroy(gameObject);
+    }
+
+    ///<summary>
+    ///Destroys the current Hamster with no delay
+    ///</summary>
+    public void WaterDeath()
+    {
+        GameManager.instance.audioManager.PlayHamsterDeathAudio();
+        GetComponent<HamsterScore>().SendData();
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        coins.SetActive(true);
     }
 
     private void HamsterDamageStates()
