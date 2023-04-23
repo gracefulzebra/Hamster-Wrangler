@@ -15,6 +15,8 @@ public class CurrencyManager : MonoBehaviour
     public string[] shopItems;
     public int[] itemCosts;
 
+    public bool deleteItemMode;
+
     private void Start()
     {
         shopItems = new string[] { "LeafBlower", "BugZapper", "Lighter", "LawnMower", "Rake"};

@@ -112,12 +112,28 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
                 GetComponentInChildren<TrapBase>().ActivateTrap();
             }
         }    
-        if (GameManager.instance.uiManager.deleteItemMode)
+        if (GameManager.instance.currencyManager.deleteItemMode)
         {
             SellItem();
         }
     }
 
+    void OnMouseOver()
+    {
+        if (GameManager.instance.uiManager.defaultCursor == null)
+            return;
+        if (!GameManager.instance.currencyManager.deleteItemMode)
+        {
+            GameManager.instance.uiManager.overTrap = true;
+        }
+    }
+    void OnMouseExit()
+    {
+        if (GameManager.instance.uiManager.defaultCursor == null)
+            return;
+        GameManager.instance.uiManager.overTrap = false;
+        GameManager.instance.uiManager.ChangeCursor();
+    }
     void SellItem()
     {
         RaycastHit hit;
