@@ -17,16 +17,37 @@ public class MainMainUI : MonoBehaviour
     [SerializeField] Image[] levelStars;
     [SerializeField] Toggle fullScreenToggle;
     [SerializeField] TMP_Dropdown graphicsDropdown;
+    [SerializeField] TMP_Dropdown resolutionDropdown;
+
+    Resolution[] resolutions;
+    
 
     private void Start()
     {
+        InitRes();
         InitSettings();
+    }
+
+    private void InitRes()
+    {
+        resolutions = Screen.resolutions;
+
+        List<string> options = new List<string>();
+
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(option);
+        }
+
+        resolutionDropdown.AddOptions(options);
     }
 
     private void InitSettings()
     {
         if(GameSettings.instance.DisplayMode == 0) { fullScreenToggle.isOn = false; ToggleFullScreen(false); } else { fullScreenToggle.isOn = true; ToggleFullScreen(true); }
         SetQuality(GameSettings.instance.QualitySetting); graphicsDropdown.value = GameSettings.instance.QualitySetting;
+        SetRes(GameSettings.instance.ResolutionSetting); resolutionDropdown.value = GameSettings.instance.ResolutionSetting;
     }
 
     void SwitchSetActive(GameObject objectToSwitch)
@@ -86,6 +107,14 @@ public class MainMainUI : MonoBehaviour
     {
         QualitySettings.SetQualityLevel(qualityLevel);
         GameSettings.instance.QualitySetting = qualityLevel;
+        GameSettings.instance.SaveSettings();
+    }
+
+    public void SetRes(int resolution)
+    {
+        Resolution _res = resolutions[resolution];
+        Screen.SetResolution(_res.width, _res.height, Screen.fullScreen);
+        GameSettings.instance.ResolutionSetting = resolution;
         GameSettings.instance.SaveSettings();
     }
 
