@@ -80,6 +80,10 @@ public class TutLMPlacement : BaseSnapToGrid
                     TutManager.tutInstance.tutCanUseLM = false;
             }
         }
+        if (GameManager.instance.currencyManager.deleteItemMode)
+        {
+            SellItem();
+        }
     }     
 }
 

@@ -84,7 +84,10 @@ public class UIManager : MonoBehaviour
         }
         else if (overTrap)
         {
-            Cursor.SetCursor(activateTrapCursor, hotSpot, cursorMode);
+            if (!GameManager.instance.holdingItem)
+            {
+                Cursor.SetCursor(activateTrapCursor, hotSpot, cursorMode);
+            }
         } 
         else if (GameManager.instance.currencyManager.deleteItemMode)
         {
