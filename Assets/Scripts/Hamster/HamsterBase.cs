@@ -231,7 +231,7 @@ public class HamsterBase : MonoBehaviour
     {
         GetComponent<HamsterScore>().SendData();
         GameManager.instance.audioManager.PlayHamsterDeathAudio();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
     }
 
