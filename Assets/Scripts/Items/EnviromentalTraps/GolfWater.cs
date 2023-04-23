@@ -6,15 +6,25 @@ public class GolfWater : EnvironmentalBase
 {
     [SerializeField] ParticleSystem waterSplash;
 
+
+    IEnumerator DeleteWater(ParticleSystem water)
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(water);
+    }
+
     private void OnTriggerEnter(Collider col)
     {
         if(col.CompareTag("Hamster"))
         {
-            Instantiate(waterSplash, col.transform.position, Quaternion.identity);
+            ParticleSystem waterSplashObject = Instantiate(waterSplash, col.transform.position, Quaternion.LookRotation(transform.up));
+            print(col.transform.position);
+            StartCoroutine(DeleteWater(waterSplashObject));
+
             AddScore();
             ItemInteract(col.gameObject);
             GameManager.instance.audioManager.WaterSplashAudio();
-            col.GetComponent<HamsterBase>().Kill();
+            col.GetComponent<HamsterBase>().WaterDeath();
         }
     }
 }

@@ -222,13 +222,16 @@ public class HamsterBase : MonoBehaviour
         Destroy(gameObject);
     }
 
-    ///<summary>
-    ///Destroys the current Hamster with no delay
-    ///</summary>
     public void WaterDeath()
     {
-        GameManager.instance.audioManager.PlayHamsterDeathAudio();
+        StartCoroutine(WaterDeathTimer());
+    }
+
+   public IEnumerator WaterDeathTimer()
+    {
         GetComponent<HamsterScore>().SendData();
+        GameManager.instance.audioManager.PlayHamsterDeathAudio();
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 
