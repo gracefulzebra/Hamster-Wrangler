@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine.Networking.Types;
 using System.Collections.Generic;
 
-public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler
+public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
    
     [Header("Shop Items")]
@@ -65,31 +65,8 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     public void OnPointerDown(PointerEventData eventData)
     {
         BuyItem();
-
     }
 
-    public bool overUI;
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-
-        var raycastResults = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventData, raycastResults);
-        if (raycastResults.Count > 0)
-        {
-            foreach (var result in raycastResults)
-            {
-                // ui layer
-                if (result.gameObject.layer == 5)
-                {
-                    overUI = true;
-                }
-                else
-                {
-                    overUI = false;
-                }
-            }
-        }
-    }
     // its just way smoother if this stays in here cause iof how pointerevents pass data 
     public void OnPointerUp(PointerEventData eventData)
     {
@@ -117,13 +94,13 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         {
             if (GameManager.instance.waveManager.waveCompleted)
             {
-                if (!GameManager.instance.uiManager.deleteItemMode)
+                if (!GameManager.instance.currencyManager.deleteItemMode)
                 {
-                    GameManager.instance.uiManager.deleteItemMode = true;
+                    GameManager.instance.currencyManager.deleteItemMode = true;
                 }
                 else
                 {
-                    GameManager.instance.uiManager.deleteItemMode = false;
+                    GameManager.instance.currencyManager.deleteItemMode = false;
                 }
             }
         }
@@ -132,7 +109,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         if (GameManager.instance.currencyManager.CheckPrice(gameObject.tag) == true && !GameManager.instance.holdingItem)
         {
-            GameManager.instance.uiManager.deleteItemMode = false;
+            GameManager.instance.currencyManager.deleteItemMode = false;
             GameManager.instance.uiManager.ShopButtonOutline(gameObject);
             GameManager.instance.uiManager.highLightedButton = gameObject;
 

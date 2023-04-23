@@ -39,14 +39,15 @@ public class UIManager : MonoBehaviour
     public bool mainMenuActive;
     public bool itemDescriptionOpen;
 
-    public bool deleteItemMode;
+    public bool overTrap;
 
-    public Texture2D defaultCursor;
-    public Texture2D holdingItemCursor;
-    public Texture2D uiPointerCursor;
+    [SerializeField] public Texture2D defaultCursor;
+    [SerializeField] Texture2D holdingItemCursor;
+    [SerializeField] Texture2D activateTrapCursor;
+    [SerializeField] Texture2D deleteItemCursor;
 
-    public CursorMode cursorMode = CursorMode.Auto;
-    public Vector2 hotSpot = Vector2.zero;
+    CursorMode cursorMode = CursorMode.Auto;
+    Vector2 hotSpot = Vector2.zero;
 
     private void Awake()
     {
@@ -81,24 +82,26 @@ public class UIManager : MonoBehaviour
         {
             Cursor.SetCursor(defaultCursor, hotSpot, cursorMode);
         }
+        else if (overTrap)
+        {
+            Cursor.SetCursor(activateTrapCursor, hotSpot, cursorMode);
+        } 
+        else if (GameManager.instance.currencyManager.deleteItemMode)
+        {
+            Cursor.SetCursor(deleteItemCursor, hotSpot, cursorMode);
+        }
         if (GameManager.instance.holdingItem)
         {
             Cursor.SetCursor(holdingItemCursor, hotSpot, cursorMode);
         }
-      //  GameObject[] john = GameObject.FindGameObjectsWithTag("Tar");
-
-       // for (int i = 0; i < john.Length; i++)
-       // {
-         //   if (john[i].gameObject.GetComponent<ButtonInputs>().overUI)
-         //   {
-          //      Cursor.SetCursor(uiPointerCursor, hotSpot, cursorMode);
-          //  }
-        //}
     }
       
-    
+    public void ChangeCursor()
+    {
+        Cursor.SetCursor(defaultCursor, hotSpot, cursorMode);
+    }
 
-   void PauseGame()
+    void PauseGame()
    {
         if (Input.GetKeyDown(KeyCode.Escape) && !mainMenuActive)
         {
