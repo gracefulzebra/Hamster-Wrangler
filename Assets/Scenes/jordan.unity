@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -696,7 +696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: activeOnWave.Array.size
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: checkPoints.Array.data[0]
@@ -736,6 +736,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: activeOnWave.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: activeOnWave.Array.data[3]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: activeOnWave.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: activeOnWave.Array.data[5]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: activeOnWave.Array.data[6]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614661, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
@@ -4921,18 +4937,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: hamstersPerWave.Array.size
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: hamstersPerWave.Array.data[0]
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: hamstersPerWave.Array.data[1]
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: hamstersPerWave.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: hamstersPerWave.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: hamstersPerWave.Array.data[4]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: hamstersPerWave.Array.data[5]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: hamstersPerWave.Array.data[6]
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
@@ -8431,8 +8463,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.2538798, y: 1.0626938, z: 0.14281572}
-  m_Center: {x: 0.027350683, y: 0.5454216, z: -1.24}
+  m_Size: {x: 2.2538798, y: 1.0626937, z: 0.051674396}
+  m_Center: {x: 0.027350683, y: 0.5454216, z: -1.1944301}
 --- !u!65 &226665252
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8444,8 +8476,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1605983, y: 1.0626938, z: 0.14281572}
-  m_Center: {x: -0.015740164, y: 0.5454216, z: 1.1078767}
+  m_Size: {x: 2.1605983, y: 1.0626937, z: 0.074521825}
+  m_Center: {x: -0.015740164, y: 0.5454216, z: 1.0737296}
 --- !u!65 &226665253
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8457,8 +8489,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.09850062, y: 1.0626938, z: 2.4337597}
-  m_Center: {x: 1.12, y: 0.5454216, z: -0.0070244907}
+  m_Size: {x: 0.044422936, y: 1.0626937, z: 2.4337597}
+  m_Center: {x: 1.0929606, y: 0.5454216, z: -0.0070244907}
 --- !u!65 &226665254
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8470,8 +8502,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.09850062, y: 1.0626938, z: 2.3451097}
-  m_Center: {x: -1.1389437, y: 0.5454216, z: -0.02434636}
+  m_Size: {x: 0.07281962, y: 1.0626937, z: 2.3451097}
+  m_Center: {x: -1.126103, y: 0.5454216, z: -0.024346419}
 --- !u!4 &227650701 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0977be8978743bc419178d89702ec93d, type: 3}
@@ -18752,7 +18784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: activeOnWave.Array.size
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: checkPoints.Array.data[0]
@@ -18792,6 +18824,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: activeOnWave.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: activeOnWave.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: activeOnWave.Array.data[4]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: activeOnWave.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: activeOnWave.Array.data[6]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614661, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
