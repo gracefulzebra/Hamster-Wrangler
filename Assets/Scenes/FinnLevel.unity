@@ -48965,23 +48965,39 @@ PrefabInstance:
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lmRun
       value: 
-      objectReference: {fileID: 8300000, guid: e4d5acaeef693024b96474b1ca8b9cfd, type: 3}
+      objectReference: {fileID: 8300000, guid: ff86ef83390eca24aa78537da970cfc6, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: rake1
       value: 
       objectReference: {fileID: 8300000, guid: 180ba95a7093f364a8f50619211e7399, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: refuel
+      value: 
+      objectReference: {fileID: 8300000, guid: a12e7a9017872f447a49199862c65733, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: uiClick
       value: 
       objectReference: {fileID: 8300000, guid: 4431a84eb65845943a89882fa619a2a5, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: hamsThor
+      value: 
+      objectReference: {fileID: 8300000, guid: 0af0481234cc90f469124e3371f64c57, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lbActive
       value: 
-      objectReference: {fileID: 8300000, guid: f610e3c54208dd246abf0a10f6628dcc, type: 3}
+      objectReference: {fileID: 8300000, guid: 68d9d0a547c799140906c322c62b46da, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: bugZapper
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c7fd0e54be6ee140a3be0ad6ddba2f0, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: gnomeKing
+      value: 
+      objectReference: {fileID: 8300000, guid: 4429fcb67c30f6e40890ae952ce0cc36, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lighterOn
       value: 
-      objectReference: {fileID: 8300000, guid: f610e3c54208dd246abf0a10f6628dcc, type: 3}
+      objectReference: {fileID: 8300000, guid: 20156c8be5be0ec4e987f076dd3d5814, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lmExplode
       value: 
@@ -49007,6 +49023,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1550123391}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: waterSplash
+      value: 
+      objectReference: {fileID: 8300000, guid: 056d0a3792e965444af35721a009938a, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: windmillChop
+      value: 
+      objectReference: {fileID: 8300000, guid: 1195284a06aea5d4aabc3d6aeabb0533, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: flagSpearLand
+      value: 
+      objectReference: {fileID: 8300000, guid: 18d1c42814a16584baea6688966ab45e, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: hamsterDeath1
       value: 
       objectReference: {fileID: 8300000, guid: b0a4535116a19734da9e5dfcc9cd04e8, type: 3}
@@ -49023,9 +49051,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: ab0c60cfdd623de4181a9e5c200bd999, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: flagSpearSpawn
+      value: 
+      objectReference: {fileID: 8300000, guid: 4061c971f3a1afa43bf5f1fd4d893d31, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: hamsterBurning
       value: 
-      objectReference: {fileID: 8300000, guid: 8684e27a1abbf1e4fa4f4ce24debe39e, type: 3}
+      objectReference: {fileID: 8300000, guid: 08c245eb6bc573844b5c066057c50663, type: 3}
     - target: {fileID: 1058055521, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_audioClip
       value: 
@@ -71737,6 +71769,7 @@ GameObject:
   - component: {fileID: 1883617987}
   - component: {fileID: 1883617989}
   - component: {fileID: 1883617988}
+  - component: {fileID: 1883617990}
   m_Layer: 7
   m_Name: Bush_Berries1 (1)
   m_TagString: Untagged
@@ -71809,6 +71842,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883617986}
   m_Mesh: {fileID: -4489966225845457196, guid: ac09d0845f11eee45aaead616b9b0d2d, type: 3}
+--- !u!135 &1883617990
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883617986}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 27.132317
+  m_Center: {x: -81.83363, y: -7.4693913, z: 114.30646}
 --- !u!4 &1883763633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4a00e889cd58a8249a53209fdf6c433e, type: 3}
@@ -75103,6 +75149,7 @@ GameObject:
   - component: {fileID: 1997369813}
   - component: {fileID: 1997369815}
   - component: {fileID: 1997369814}
+  - component: {fileID: 1997369816}
   m_Layer: 7
   m_Name: Bush_Normal1 (1)
   m_TagString: Untagged
@@ -75175,6 +75222,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1997369812}
   m_Mesh: {fileID: -6645634710490150993, guid: 4c8c143e1b9b7ec4e85808c7bb64a8b6, type: 3}
+--- !u!135 &1997369816
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997369812}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 25.506426
+  m_Center: {x: 3.3632817, y: -7.469386, z: 114.40299}
 --- !u!1001 &1998820735
 PrefabInstance:
   m_ObjectHideFlags: 0
