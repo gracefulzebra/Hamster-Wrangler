@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -45,7 +43,11 @@ public class DialogueManager : MonoBehaviour
                 return;
             }
             sentence = sentences.Dequeue();
-            TutManager.tutInstance.NextStep();
+            
+            if (SceneManager.GetActiveScene().name == "TutorialLevel")
+            { 
+                    TutManager.tutInstance.NextStep();
+            }
             typingSentence = StartCoroutine(TypeSentence(sentence));
             sentencePrinting = true;
         }
