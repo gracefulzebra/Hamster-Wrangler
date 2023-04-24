@@ -94,7 +94,7 @@ public class PredictedPathRenderer : MonoBehaviour
             RaycastHit hitInfo;
             Physics.Raycast(path[i], -transform.up, out hitInfo);
 
-            GameObject footprintInstance = Instantiate(hamsterFootprintPrefab, hitInfo.point + (Vector3.up * 0.01f), Quaternion.LookRotation(hitInfo.normal));
+            GameObject footprintInstance = Instantiate(hamsterFootprintPrefab, hitInfo.point + (Vector3.up * 0.03f), Quaternion.LookRotation(hitInfo.normal));
 
             Vector3 dir;
 
