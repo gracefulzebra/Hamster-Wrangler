@@ -1,4 +1,6 @@
+using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class GnomeKing : EnvironmentalBase
@@ -48,9 +50,7 @@ public class GnomeKing : EnvironmentalBase
             return;
         animator.SetTrigger("Rotation");
         GetComponent<SphereCollider>().enabled = true;
-        GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
         GameManager.instance.audioManager.GnomeKingAudio();
-        temp.GetComponent<ComboDisplay>().SetComboText("GNOMEKILL");
         redLight.SetActive(false);
         canUseTrap = false;
         fullCycle = false;
@@ -59,16 +59,25 @@ public class GnomeKing : EnvironmentalBase
     // this is called in animation
     public void TurnOffCollider()
     {
+        if (counter != 0)
+        {
+            GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
+            temp.GetComponent<ComboDisplay>().SetComboText("GNOMEKILL X" + counter);
+        }
+
         fullCycle = true;
         GetComponent<SphereCollider>().enabled = false;
+        counter = 0;
     }
 
+    int counter;
     private void OnTriggerEnter(Collider col)
     {
         if (col.GetType() == typeof(SphereCollider))
         {
             if (col.CompareTag("Hamster"))
             {
+                counter++;
                 AddScore();
                 ItemInteract(col.gameObject);
                 col.transform.GetComponent<HamsterBase>().Kill();
