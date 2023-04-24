@@ -6,6 +6,7 @@ public class GolfWater : EnvironmentalBase
 {
     [SerializeField] ParticleSystem waterSplash;
 
+    [SerializeField] GameObject colour;
 
     IEnumerator DeleteWater(ParticleSystem water)
     {
