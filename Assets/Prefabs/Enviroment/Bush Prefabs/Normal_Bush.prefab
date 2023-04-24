@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5383841643800927923}
-  - component: {fileID: 236217079061420029}
+  - component: {fileID: -1559958642150524516}
   m_Layer: 7
   m_Name: Normal_Bush
   m_TagString: Untagged
@@ -33,8 +33,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &236217079061420029
-SphereCollider:
+--- !u!65 &-1559958642150524516
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -44,8 +44,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 19.784662
-  m_Center: {x: 5.527776, y: -8.163174, z: 112.23098}
+  m_Size: {x: 36.865513, y: 37.274876, z: 38.618626}
+  m_Center: {x: 3.99, y: -7.9870434, z: 116.3}
 --- !u!1 &1524565017645291662
 GameObject:
   m_ObjectHideFlags: 0
