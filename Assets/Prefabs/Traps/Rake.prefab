@@ -71,6 +71,7 @@ MonoBehaviour:
   activationButton: {fileID: 4922725229534491279}
   rakeObject: {fileID: 2782437662935850512}
   pivotPoint: {fileID: 6392049935673883754}
+  groundCheck: {fileID: 5249562917618314518}
   target: {fileID: 1947474798769253397}
   height: 8
   gravity: -9.81
@@ -700,7 +701,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5249562917618314518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.14100003, z: -1.18}
+  m_LocalPosition: {x: 0, y: 0.063, z: -1.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

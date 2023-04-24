@@ -85,7 +85,7 @@ public class HamsterScore : MonoBehaviour
             case 7:
                 temp.GetComponent<ComboDisplay>().SetComboText(comboCounter + "X " + comboName[2]);
                 break;
-            case > 7:
+            case >= 8:
                 temp.GetComponent<ComboDisplay>().SetComboText(comboCounter + "X " + comboName[3]);
                 break;
         }
