@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class ItemEffects : MonoBehaviour
@@ -31,12 +32,14 @@ public class ItemEffects : MonoBehaviour
 
     #region Fire
 
+    GameObject onFireNoiseObject;
+    bool burningAudioOn;
+
     ///<summary>
     /// called when hamster interacts with fire 
     ///</summary>
     public void OnFire(int burnDamage, float burnDuration, int burnAmount)
-    {
-        gameObject.GetComponentInChildren<Renderer>().material.color = new Color(0.91f, 0.3f, 0.21f);
+    {      
         fireEffect.SetActive(true);
 
         if (onFire)
@@ -54,12 +57,20 @@ public class ItemEffects : MonoBehaviour
     ///</summary>
     IEnumerator burnToDeath(int burnDamage, float burnDuration, int burnAmount)
     {
+        if (!burningAudioOn)
+        {
+            GameManager.instance.audioManager.HamsterBurningAudio();
+            onFireNoiseObject = GameManager.instance.audioManager.hamsterBurningAudioList.Last();
+            burningAudioOn = true;
+        }
         onFire = true;
         for (burnIndex = 0; burnIndex < burnAmount; burnIndex++)
         {
             yield return new WaitForSeconds(burnDuration);
             GetComponent<HamsterBase>().TakeDamage(burnDamage);
         }
+        Destroy(onFireNoiseObject);
+        burningAudioOn = false;
         onFire = false;
         fireEffect.SetActive(false);
     }

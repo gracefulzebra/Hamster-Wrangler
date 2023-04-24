@@ -90,6 +90,7 @@ public class LawnMower : TrapBase
 
     void LawnmowerExplode()
     {
+        Destroy(lmRunObject);
         GameManager.instance.audioManager.LawnMowerExplodeAudio();
 
         RaycastHit[] nearbyObjects = Physics.SphereCastAll(transform.position, explosionRange, Vector3.up, explosionRange, scannableMask);
