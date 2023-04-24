@@ -2,7 +2,6 @@ using System.Collections;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static UnityEditor.Progress;
 
 public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
 {

@@ -1,10 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
-using System.Collections;
-using static UnityEditor.Progress;
-using Unity.VisualScripting;
-using UnityEngine.Networking.Types;
 using System.Collections.Generic;
 
 public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
