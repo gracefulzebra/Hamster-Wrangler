@@ -13,6 +13,7 @@ public class MainMainUI : MonoBehaviour
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject HTPMenu;
     [SerializeField] GameObject settings;
+    [SerializeField] GameObject creditsScreen;
     [SerializeField] GameObject confirmQuitGame;
     [SerializeField] Image[] levelStars;
     [SerializeField] Toggle fullScreenToggle;
@@ -123,10 +124,15 @@ public class MainMainUI : MonoBehaviour
         SwitchSetActive(settings);
         GameSettings.instance.SaveSettings();
     }
+
+    public void Credits()
+    {
+        SwitchSetActive(creditsScreen);
+    }
     
     public void ExitButton()
     {
-        settings.SetActive(false); levelSelect.SetActive(false);
+        settings.SetActive(false); levelSelect.SetActive(false); creditsScreen.SetActive(false);
         GameSettings.instance.SaveSettings();
         mainMenu.SetActive(true);
     }
