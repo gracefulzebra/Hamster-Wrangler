@@ -33,6 +33,8 @@ public class AudioManager : MonoBehaviour
 
     [Header("BugZapper")]
     [SerializeField] private AudioClip bugZapper;
+    [SerializeField] private AudioClip hamsThor;
+
 
     [Header("Environmental")]
     [SerializeField] private AudioClip waterSplash;
