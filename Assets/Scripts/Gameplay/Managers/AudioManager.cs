@@ -35,7 +35,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip bugZapper;
     [SerializeField] private AudioClip hamsThor;
 
-
     [Header("Environmental")]
     [SerializeField] private AudioClip waterSplash;
     [SerializeField] private AudioClip windmillChop;
@@ -54,7 +53,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioMixer audioMixer;
     private AudioSource audioSource;
     public float volume;
-
 
     public const string MIXER_MUSIC = "Music";
     public const string MIXER_SFX = "SFX";
@@ -87,7 +85,10 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(SaveSettings());
     }
 
-   
+    private void Update()
+    {
+        audioSource.Pause();
+    }
 
     IEnumerator SaveSettings()
     {
@@ -184,7 +185,7 @@ public class AudioManager : MonoBehaviour
     {
         GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
         lbSoundList.Add(audio);
-        audio.GetComponent<AudioSource>().PlayOneShot(lmRun);
+        audio.GetComponent<AudioSource>().PlayOneShot(lbActive);
     }
 
     public void BugZapperActive()
@@ -234,6 +235,14 @@ public class AudioManager : MonoBehaviour
         GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
         audio.GetComponent<AudioSource>().PlayOneShot(refuel);
         StartCoroutine(DeleteAudio(audio));
+    }
+
+    public List<GameObject> hamsterBurningAudioList;
+    public void HamsterBurningAudio()
+    {
+        GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
+        audio.GetComponent<AudioSource>().PlayOneShot(hamsterBurning);
+        hamsterBurningAudioList.Add(audio);
     }
 
     float deleteAudio = 10;
