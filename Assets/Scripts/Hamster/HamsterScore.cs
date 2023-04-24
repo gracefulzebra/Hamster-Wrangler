@@ -61,6 +61,8 @@ public class HamsterScore : MonoBehaviour
         comboBonusScore += comboScoreMultiplier * trapInteractCounter;
     }
 
+    [SerializeField] List<string> comboName;
+
     public void SendData()
     {
         GameManager.instance.scoreManager.UpdateScore(blowerCount, zapperCount, lighterCount, mowerCount, rakeCount, comboBonusScore);
@@ -68,7 +70,25 @@ public class HamsterScore : MonoBehaviour
         GameManager.instance.waveManager.HamstersRemaining();
 
         GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
-        temp.GetComponent<ComboDisplay>().SetComboText("x" + comboCounter);
+        print(comboName);
+        switch (comboCounter)
+            {
+            case < 5:
+                temp.GetComponent<ComboDisplay>().SetComboText(comboCounter + "X");
+                break;
+            case 5:
+                temp.GetComponent<ComboDisplay>().SetComboText(comboCounter + "X " + comboName[0]);
+                break;
+            case 6:
+                temp.GetComponent<ComboDisplay>().SetComboText(comboCounter + "X " + comboName[1]);
+                break;
+            case 7:
+                temp.GetComponent<ComboDisplay>().SetComboText(comboCounter + "X " + comboName[2]);
+                break;
+            case > 7:
+                temp.GetComponent<ComboDisplay>().SetComboText(comboCounter + "X " + comboName[3]);
+                break;
+        }
     }
 
     public void UpdateWaveManager()
