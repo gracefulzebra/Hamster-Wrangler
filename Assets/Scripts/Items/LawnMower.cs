@@ -33,6 +33,7 @@ public class LawnMower : TrapBase
     [SerializeField] private LayerMask scannableMask;
     [SerializeField] float lawnmowerExplodeDelay;
 
+
     private void Start()
     {
         gridRefObject = GameObject.Find("OliverGriddy");

@@ -88,7 +88,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         }
         else
         {
-            if (GameManager.instance.waveManager.waveCompleted)
+            if (GameManager.instance.waveManager.waveCompleted && gameObject.transform.name == "Delete Trap")
             {
                 if (!GameManager.instance.currencyManager.deleteItemMode)
                 {
