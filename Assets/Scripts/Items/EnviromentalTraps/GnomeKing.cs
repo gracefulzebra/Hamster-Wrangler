@@ -4,6 +4,7 @@ using UnityEngine;
 public class GnomeKing : EnvironmentalBase
 {
     [SerializeField] Animator animator;
+    [SerializeField] GameObject redLight;
 
     bool canUseTrap;
     bool fullCycle;
@@ -19,6 +20,7 @@ public class GnomeKing : EnvironmentalBase
         if (GameManager.instance.waveManager.waveCompleted)
         {
             canUseTrap = true;
+            redLight.SetActive(true);
         }
     }
 
@@ -31,6 +33,7 @@ public class GnomeKing : EnvironmentalBase
             GameManager.instance.uiManager.overTrap = true;
         }
     }
+
     void OnMouseExit()
     {
         if (GameManager.instance.uiManager.defaultCursor == null)
@@ -48,6 +51,7 @@ public class GnomeKing : EnvironmentalBase
         GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
         GameManager.instance.audioManager.GnomeKingAudio();
         temp.GetComponent<ComboDisplay>().SetComboText("GNOMEKILL");
+        redLight.SetActive(false);
         canUseTrap = false;
         fullCycle = false;
     }
