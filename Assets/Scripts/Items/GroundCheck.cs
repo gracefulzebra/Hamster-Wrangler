@@ -20,28 +20,26 @@ public class GroundCheck : MonoBehaviour
     }
 
     public void Update()
-    {
+    {     
         if (!GetComponentInParent<SnapToGrid>().hasItem)
             return;
 
         nodeHit = gridRef.GetNodeFromWorldPoint(transform.position);
 
-        if (nodeHit.placeable)
-        {
-            Color customColor = new Color(0.7f, 0.7f, 0.7f, 1f);
-            colour.GetComponent<Renderer>().material.color = customColor;
-            GetComponentInParent<SnapToGrid>().canBePlaced = true;
-        }
-        else
+        if (!nodeHit.placeable) 
         {
             colour.GetComponent<Renderer>().material.color = Color.red;
             GetComponentInParent<SnapToGrid>().canBePlaced = false;
         }
+    }
 
-      /*  if (GetComponentInParent<SnapToGrid>().hasItem)
-        {
-            nodeHit.placeable = false;
-        }*/
+    public void MakeGridUnplaceable()
+    {
+        nodeHit.placeable = false;
+    }
 
+    private void OnDestroy()
+    {
+        nodeHit.placeable = true;
     }
 }

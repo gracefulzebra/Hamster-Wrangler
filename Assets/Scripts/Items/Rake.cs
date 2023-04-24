@@ -6,6 +6,7 @@ public class Rake : TrapBase
    [SerializeField] GameObject activationButton;
    [SerializeField] GameObject rakeObject;
    [SerializeField] GameObject pivotPoint;
+   [SerializeField] GameObject groundCheck;
 
     public Transform target;
 
@@ -26,6 +27,7 @@ public class Rake : TrapBase
         itemID = "Rake";
         gridRef = GameObject.Find("OliverGriddy").GetComponent<GridGenerator>();
     }
+
     private void Update()
     {
         if (GetComponentInParent<SnapToGrid>().hasItem == false && !onPlacement)
@@ -33,6 +35,7 @@ public class Rake : TrapBase
             onPlacement = true;
             gameObject.layer = 0;
             GetComponentInParent<Rigidbody>().useGravity = true;
+            groundCheck.GetComponent<GroundCheck>().MakeGridUnplaceable();
         }
 
         if (activateTrap && !inProgress)
