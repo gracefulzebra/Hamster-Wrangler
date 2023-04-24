@@ -16,6 +16,9 @@ public class DialogueManager : MonoBehaviour
 
     string sentence;
 
+    [SerializeField] float textDelay;
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -44,10 +47,10 @@ public class DialogueManager : MonoBehaviour
             }
             sentence = sentences.Dequeue();
             
-            if (SceneManager.GetActiveScene().name == "TutorialLevel")
-            { 
-                    TutManager.tutInstance.NextStep();
-            }
+          //  if (SceneManager.GetActiveScene().name == "TutorialLevel")
+          //  { 
+          //          TutManager.tutInstance.NextStep();
+          //  }
             typingSentence = StartCoroutine(TypeSentence(sentence));
             sentencePrinting = true;
         }
@@ -66,7 +69,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
              dialogueText.text += letter;
-             yield return new WaitForSecondsRealtime(TutManager.tutInstance.textDelay);
+             yield return new WaitForSecondsRealtime(textDelay);
         }
         sentencePrinting = false;
     }

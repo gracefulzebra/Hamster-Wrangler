@@ -14,7 +14,10 @@ public class GolfLevel : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Destroy(gameObject);
+            if (!GetComponent<DialogueManager>().sentencePrinting)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

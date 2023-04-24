@@ -9,8 +9,6 @@ public class TutManager : MonoBehaviour
     public int posCounter;
     float timer;
 
-    public float textDelay;
-
     public static TutManager tutInstance;
 
     [SerializeField] Material darkTile;

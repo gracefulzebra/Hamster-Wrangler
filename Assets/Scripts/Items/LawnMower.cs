@@ -17,7 +17,6 @@ public class LawnMower : TrapBase
     float lawnmowerDestroyDelay;
     int hamsterCounter;
 
-
     int counter = 0;
     bool willExplode;
 
@@ -26,6 +25,7 @@ public class LawnMower : TrapBase
     GridGenerator gridRef;
     [SerializeField] GameObject explosion;
     Node nodeHit;
+    [SerializeField] Animator animator;
 
     [Header("Explosion")]
     [SerializeField] int explosiondamage;
@@ -64,7 +64,6 @@ public class LawnMower : TrapBase
         }
     }
 
-
     GameObject lmRunObject;
     public void ActivateLawnmower()
     {
@@ -76,6 +75,7 @@ public class LawnMower : TrapBase
             audioOn = true;
         }
 
+        animator.SetTrigger("Start");
         //sets lawn mower to ignore raycast
         transform.parent.gameObject.layer = 2;
         smokeEffect.SetActive(true);
@@ -186,7 +186,7 @@ public class LawnMower : TrapBase
         // on ground
         if (col.gameObject.layer == 6 && activateTrap)
         {
-            ActivateLawnmower();
+                ActivateLawnmower();    
         }
     }
 }
