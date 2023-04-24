@@ -116,6 +116,7 @@ public class ItemEffects : MonoBehaviour
         temp.GetComponent<ComboDisplay>().SetComboText("HAMST-THOR!");
 
         Instantiate(lightningStrikeEffect, transform.position, Quaternion.identity);
+        GameManager.instance.audioManager.HamsThorSound();
 
         GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Hamster");
 

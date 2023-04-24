@@ -183,6 +183,13 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(DeleteAudio(audio));
     }
 
+    public void HamsThorSound()
+    {
+        GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
+        audio.GetComponent<AudioSource>().PlayOneShot(hamsThor);
+        StartCoroutine(DeleteAudio(audio));
+    }
+
     public void WaterSplashAudio()
     {
         GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
