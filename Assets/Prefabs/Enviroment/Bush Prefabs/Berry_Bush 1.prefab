@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2182906908268309926}
-  - component: {fileID: 1213429076175932229}
+  - component: {fileID: 4569865822164394821}
   m_Layer: 7
   m_Name: Berry_Bush 1
   m_TagString: Untagged
@@ -116,8 +116,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1213429076175932229
-SphereCollider:
+--- !u!65 &4569865822164394821
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,5 +127,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 17.498146
-  m_Center: {x: -81.19141, y: -10.914632, z: 113.50722}
+  m_Size: {x: 36.865513, y: 37.274876, z: 38.618626}
+  m_Center: {x: -74.14986, y: -7.9870434, z: 118.31328}

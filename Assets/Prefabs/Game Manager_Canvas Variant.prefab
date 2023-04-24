@@ -8736,6 +8736,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1058055514, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: blowerCost
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055514, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: zapperCost
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055514, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: hamsterCost
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055514, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: lighterCost
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055514, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: valueDividedByPrice
       value: 4
       objectReference: {fileID: 0}
