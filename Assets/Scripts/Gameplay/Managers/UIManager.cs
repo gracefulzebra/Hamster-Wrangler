@@ -15,7 +15,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject currencyDisplay;
     [SerializeField] private GameObject healthDisplay;
     [SerializeField] private GameObject wavesDisplay;
-    [SerializeField] private Slider slider;
     [SerializeField] private GameObject lmCost, lbCost, rakeCost, tarCost, lighterCost;
     // for ip3 we can use a slider thats fill is the yellow colour for the stars, so when you finish the level you can see how close to the 
     // next star you are, right now im just hard coding it 
@@ -158,15 +157,6 @@ public class UIManager : MonoBehaviour
             {
                 GameManager.instance.uiManager.DefaultShopOutline(GameObject.FindGameObjectWithTag(GameManager.instance.currencyManager.shopItems[i]));
             }
-        }
-    }
-
-    IEnumerator UpdateAudio()
-    {
-        for(; ;)
-        {
-            gameManager.UpdateVolume(slider.value);
-            yield return new WaitForSeconds(.5f);
         }
     }
 

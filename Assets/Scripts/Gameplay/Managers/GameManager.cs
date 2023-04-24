@@ -141,11 +141,6 @@ public class GameManager : MonoBehaviour
         uiManager.DisplayWaves(waves, maxWaves);
     }
 
-    public void UpdateVolume(float volume)
-    {
-        audioManager.SetVolume(volume);
-    }
-
     /// <summary>
     /// checks if any objects with tag is in scene, if so they 
     /// cannot use the shop until item no longer has tag

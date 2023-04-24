@@ -51,7 +51,6 @@ public class AudioManager : MonoBehaviour
     [Header("Misc")]
     [SerializeField] GameObject audioObject;
     [SerializeField] AudioMixer audioMixer;
-    private AudioSource audioSource;
     public float volume;
 
     public const string MIXER_MUSIC = "Music";
@@ -85,11 +84,6 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(SaveSettings());
     }
 
-    private void Update()
-    {
-        audioSource.Pause();
-    }
-
     IEnumerator SaveSettings()
     {
         for (; ;)
@@ -107,12 +101,6 @@ public class AudioManager : MonoBehaviour
     void SetSFXVolume(float value)
     {
         audioMixer.SetFloat(MIXER_SFX, Mathf.Log10(value) * 20);
-    }
-
-    public void SetVolume(float volumeLevel)
-    {
-        volume = volumeLevel / 5;
-        audioSource.volume = volume;
     }
 
     public void PlayHamsterDeathAudio()
