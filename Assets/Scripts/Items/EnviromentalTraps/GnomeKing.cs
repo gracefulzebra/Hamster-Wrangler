@@ -36,7 +36,7 @@ public class GnomeKing : EnvironmentalBase
         if (GameManager.instance.uiManager.defaultCursor == null)
             return;
         GameManager.instance.uiManager.overTrap = false;
-        GameManager.instance.uiManager.ChangeCursor();
+        GameManager.instance.uiManager.ChangeCursorDefault();
     }
 
     private void OnMouseDown()

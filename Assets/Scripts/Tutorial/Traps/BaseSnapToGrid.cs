@@ -53,7 +53,7 @@ public class BaseSnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHan
         if (GameManager.instance.uiManager.defaultCursor == null)
             return;
         GameManager.instance.uiManager.overTrap = false;
-        GameManager.instance.uiManager.ChangeCursor();
+        GameManager.instance.uiManager.ChangeCursorDefault();
     }
 
     public void OnPointerEnter(PointerEventData eventData) { eventData.pointerPress = gameObject; }

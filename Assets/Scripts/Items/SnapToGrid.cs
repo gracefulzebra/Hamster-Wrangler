@@ -28,6 +28,9 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             case "Lawnmower(Clone)":
                 itemID = "LawnMower";
                 break;
+           case "Golf Leafblower Variant(Clone)":
+                itemID = "LeafBlower";
+                break;
             case "Leafblower(Clone)":
                 itemID = "LeafBlower";
                 break;
@@ -131,7 +134,7 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
         if (GameManager.instance.uiManager.defaultCursor == null)
             return;
         GameManager.instance.uiManager.overTrap = false;
-        GameManager.instance.uiManager.ChangeCursor();
+        GameManager.instance.uiManager.ChangeCursorDefault();
     }
     void SellItem()
     {

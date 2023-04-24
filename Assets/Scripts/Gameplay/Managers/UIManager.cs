@@ -98,15 +98,21 @@ public class UIManager : MonoBehaviour
         }
     }
       
-    public void ChangeCursor()
+    public void ChangeCursorDefault()
     {
         Cursor.SetCursor(defaultCursor, hotSpot, cursorMode);
     }
 
+    public void ChangeCursorPointer()
+    {
+        Cursor.SetCursor(activateTrapCursor, hotSpot, cursorMode);
+    }
+
     void PauseGame()
-   {
+    {
         if (Input.GetKeyDown(KeyCode.Escape) && !mainMenuActive)
         {
+           // ChangeCursorPointer();
             pauseMenu.SetActive(true);
             mainMenuActive = true;
             Time.timeScale = 0;
