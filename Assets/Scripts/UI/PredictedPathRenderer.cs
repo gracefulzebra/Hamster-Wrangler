@@ -116,7 +116,7 @@ public class PredictedPathRenderer : MonoBehaviour
 
     List<Coroutine> runningCoroutine1 = new List<Coroutine>();
     public Coroutine runningCoroutine2;
-    public bool active = true;
+    [HideInInspector]public bool active = true;
 
     public IEnumerator AnimationHandler()
     {
@@ -130,9 +130,7 @@ public class PredictedPathRenderer : MonoBehaviour
         {
             if (active)
             {
-                print("Coroutine Running");
                 StartCoroutine(AnimatePath1());
-                
             }
             yield return new WaitForSeconds(5f);
         }
@@ -144,9 +142,6 @@ public class PredictedPathRenderer : MonoBehaviour
         for (int i = startPoint1; i < hamsterFootprints.Count; i++)
         {
             hamsterFootprints[i].GetComponent<PawPrintManager>().StartAnimation();
-
-            //if (startPoint2 + i < hamsterFootprints.Count - 2) { hamsterFootprints[startPoint2 + i].GetComponent<PawPrintManager>().StartAnimation(); }
-            //if (startPoint3 + i < hamsterFootprints.Count - 2) { hamsterFootprints[startPoint3 + i].GetComponent<PawPrintManager>().StartAnimation(); }
 
             yield return new WaitForSeconds(0.1f);
         }
