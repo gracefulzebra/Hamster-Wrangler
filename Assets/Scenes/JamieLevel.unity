@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43784687, g: 0.6225135, b: 0.56783754, a: 1}
+  m_IndirectSpecularColor: {r: 0.43789536, g: 0.62254053, b: 0.5679034, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8937,7 +8937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: activeOnWave.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: checkPoints.Array.data[0]
@@ -8961,7 +8961,7 @@ PrefabInstance:
       objectReference: {fileID: 1386356427}
     - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: activeOnWave.Array.data[0]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: activeOnWave.Array.data[1]
@@ -8969,6 +8969,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: activeOnWave.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: activeOnWave.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: activeOnWave.Array.data[4]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: activeOnWave.Array.data[5]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614661, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
@@ -56301,6 +56313,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0977be8978743bc419178d89702ec93d, type: 3}
   m_PrefabInstance: {fileID: 449832738}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1447331296 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 48825886fa56b2748bd7df7c030a125d, type: 3}
+  m_PrefabInstance: {fileID: 927226751}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1447331300
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447331296}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5707871911567454157, guid: 48825886fa56b2748bd7df7c030a125d, type: 3}
 --- !u!1001 &1447691303
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56934,6 +56965,26 @@ PrefabInstance:
     - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: endOfRoundCashBonus
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: hamstersPerWave.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: hamstersPerWave.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: hamstersPerWave.Array.data[3]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: hamstersPerWave.Array.data[4]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: hamstersPerWave.Array.data[5]
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2282532741587085682, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: coinsDeath
@@ -58046,7 +58097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: activeOnWave.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: checkPoints.Array.data[0]
@@ -58070,10 +58121,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: activeOnWave.Array.data[1]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: activeOnWave.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: activeOnWave.Array.data[3]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: activeOnWave.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: activeOnWave.Array.data[5]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614661, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
@@ -68873,6 +68936,7 @@ MonoBehaviour:
     m_Bits: 0
   isGrounded: 0
   hamsterID: baseHamster
+  deathType: 0
 --- !u!4 &1805373570 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0977be8978743bc419178d89702ec93d, type: 3}
