@@ -9,7 +9,7 @@ using UnityEngine.Networking.Types;
 public class HamsterBase : MonoBehaviour
 {
     [Header("Hamster Health")]
-    [SerializeField] private int currentHealth;
+    [SerializeField] public int currentHealth;
     [SerializeField] private int maxHamsterHealth;
 
     [Header("Hamster Movement")]
@@ -81,7 +81,6 @@ public class HamsterBase : MonoBehaviour
     bool playOnce;
     private void Update()
     {
-
         if (transform.position.y < 0.3f)
             MoveToTarget();
         UpdateCheckPoints();
@@ -262,31 +261,54 @@ public class HamsterBase : MonoBehaviour
     // play in kill, for different death aimation depending on death 
     void HamsterDeathEffect()
     {
+        if (GetComponent<ItemEffects>().hasBeenShocked)
+        {
+            deathType = DeathTypes.BugZapper;
+        } 
+        else if (GetComponent<ItemEffects>().onFire)
+        {
+            deathType = DeathTypes.Fire;
+        }
+        else
+        {
+            deathType = DeathTypes.Default;
+        }
         switch (deathType)
         {
             case (DeathTypes.Default):
                 GameManager.instance.vfxManager.HamsterDeathLimbSpawn(transform);
                 CreateDecalEffects();
+
                 Destroy(gameObject);
                 break;
             case (DeathTypes.Fire):
-                //play animation and noise
                 GetComponent<HamsterAnimation>().SetDisintegrateTrigger(); 
 
-                StartCoroutine(DelayDeath());
+                StartCoroutine(DelayDeathFire());
                 break;
             case (DeathTypes.BugZapper):
-                GameManager.instance.vfxManager.HamsterDeathLimbSpawn(transform);
+                StartCoroutine(GetComponent<HamsterAnimation>().SetShockedDeathTrigger());
+
+             //   gameObject.layer = 
+
+                StartCoroutine(DelayDeathShock());
                 break;
         }
     }
 
-    IEnumerator DelayDeath()
+    IEnumerator DelayDeathFire()
     {
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 
+    IEnumerator DelayDeathShock()
+    {
+        speed = 0;
+
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+    }
     private Ray GenerateRandomAngleRay()
     {
         Vector3 rayDirection = new Vector3(Random.Range(-10, 10), Random.Range(-40, -10), Random.Range(-10, 10));
