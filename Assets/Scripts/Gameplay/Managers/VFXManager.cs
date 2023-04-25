@@ -16,11 +16,17 @@ public class VFXManager : MonoBehaviour
     [Range(1, 5)]
     [SerializeField] private int limbQuantity;
     [SerializeField] private float limbDestroyDuration;
+    [SerializeField] GameObject coinsDeath;
 
     private List<int> limbRestrictionList = new List<int>();
 
     public void HamsterDeathLimbSpawn(Transform hamsterPos)
     {
+        Vector3 coinSpawnPos = new Vector3(hamsterPos.position.x, hamsterPos.position.y + 0.8f, hamsterPos.position.z);
+        GameObject coinEffect = Instantiate(coinsDeath, coinSpawnPos, Quaternion.LookRotation(transform.up));
+        coinEffect.GetComponentInChildren<ParticleSystem>().Play();
+        StartCoroutine(DestroyCoins(coinEffect));
+
         limbRestrictionList.Clear();
         for(int i = 0; i < limbQuantity; i++)
         { SpawnLimb(ChooseLimb(), hamsterPos); }
@@ -54,6 +60,12 @@ public class VFXManager : MonoBehaviour
     {
         yield return new WaitForSeconds(limbDestroyDuration);
         Destroy(limbInstance);
+    }
+
+    IEnumerator DestroyCoins(GameObject coinEffect)
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(coinEffect);
     }
 
     private Vector3 LimbForce(Transform hamsterPos, Transform limbPos)

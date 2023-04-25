@@ -435,7 +435,7 @@ RectTransform:
   - {fileID: 813135885}
   - {fileID: 1877047210}
   m_Father: {fileID: 782853009}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1120,8 +1120,8 @@ GameObject:
   - component: {fileID: 535906617}
   - component: {fileID: 535906616}
   m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
+  m_Name: Info Buttons
+  m_TagString: InfoButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1263,6 +1263,8 @@ MonoBehaviour:
   rakeInfo: {fileID: 1676663682}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
+  binOpen: {fileID: 0}
+  binClosed: {fileID: 0}
 --- !u!1 &636645905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,7 +1298,7 @@ RectTransform:
   - {fileID: 958870553}
   - {fileID: 1786381380}
   m_Father: {fileID: 782853009}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1460,8 +1462,8 @@ GameObject:
   - component: {fileID: 682862041}
   - component: {fileID: 682862040}
   m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
+  m_Name: Info Buttons
+  m_TagString: InfoButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1603,6 +1605,8 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
+  binOpen: {fileID: 0}
+  binClosed: {fileID: 0}
 --- !u!1 &693475174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,6 +1764,8 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
+  binOpen: {fileID: 0}
+  binClosed: {fileID: 0}
 --- !u!1 &709798704
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,6 +1923,8 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
+  binOpen: {fileID: 0}
+  binClosed: {fileID: 0}
 --- !u!1 &782853005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,6 +1960,7 @@ RectTransform:
   - {fileID: 2048418074}
   - {fileID: 1950288665}
   - {fileID: 1039056165}
+  - {fileID: 6151266602142294443}
   - {fileID: 302224716}
   - {fileID: 2079777469}
   - {fileID: 1404536194}
@@ -2139,7 +2148,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 815, y: 354.8756}
+  m_AnchoredPosition: {x: 789.1, y: 354.8756}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &813135887
@@ -2170,7 +2179,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c09673b3231cc204d85dacb421ac0a9e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c89d4b79f99d5d640877e4c70f9ff908, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3093,8 +3102,8 @@ GameObject:
   - component: {fileID: 1165932158}
   - component: {fileID: 1165932157}
   m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
+  m_Name: Info Buttons
+  m_TagString: InfoButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3236,6 +3245,8 @@ MonoBehaviour:
   rakeInfo: {fileID: 1676663682}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 2005328705}
+  binOpen: {fileID: 0}
+  binClosed: {fileID: 0}
 --- !u!1 &1229429587
 GameObject:
   m_ObjectHideFlags: 0
@@ -3396,7 +3407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 814, y: -189.17871}
+  m_AnchoredPosition: {x: 787, y: -199}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1342362878
@@ -3427,7 +3438,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c09673b3231cc204d85dacb421ac0a9e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c89d4b79f99d5d640877e4c70f9ff908, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3595,6 +3606,8 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
+  binOpen: {fileID: 0}
+  binClosed: {fileID: 0}
 --- !u!1 &1404536193
 GameObject:
   m_ObjectHideFlags: 0
@@ -3625,7 +3638,7 @@ RectTransform:
   m_Children:
   - {fileID: 1589494023}
   m_Father: {fileID: 782853009}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3665,7 +3678,7 @@ RectTransform:
   - {fileID: 1152327390}
   - {fileID: 1628086305}
   m_Father: {fileID: 782853009}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3907,8 +3920,8 @@ GameObject:
   - component: {fileID: 1595172764}
   - component: {fileID: 1595172763}
   m_Layer: 5
-  m_Name: Image (1)
-  m_TagString: Untagged
+  m_Name: Info Buttons
+  m_TagString: InfoButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4050,6 +4063,8 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 2005328705}
+  binOpen: {fileID: 0}
+  binClosed: {fileID: 0}
 --- !u!1 &1628086304
 GameObject:
   m_ObjectHideFlags: 0
@@ -4284,6 +4299,8 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
+  binOpen: {fileID: 0}
+  binClosed: {fileID: 0}
 --- !u!1 &1658153384
 GameObject:
   m_ObjectHideFlags: 0
@@ -4580,7 +4597,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 813, y: -10.784058}
+  m_AnchoredPosition: {x: 787, y: -13}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1676663685
@@ -4611,7 +4628,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c09673b3231cc204d85dacb421ac0a9e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c89d4b79f99d5d640877e4c70f9ff908, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5103,8 +5120,8 @@ GameObject:
   - component: {fileID: 1859321379}
   - component: {fileID: 1859321378}
   m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
+  m_Name: Info Buttons
+  m_TagString: InfoButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5246,6 +5263,8 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
+  binOpen: {fileID: 0}
+  binClosed: {fileID: 0}
 --- !u!1 &1877047209
 GameObject:
   m_ObjectHideFlags: 0
@@ -5282,7 +5301,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 815, y: 171.55298}
+  m_AnchoredPosition: {x: 789.6, y: 171.55298}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1877047212
@@ -5313,7 +5332,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c09673b3231cc204d85dacb421ac0a9e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c89d4b79f99d5d640877e4c70f9ff908, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5558,6 +5577,8 @@ MonoBehaviour:
   rakeInfo: {fileID: 1676663682}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
+  binOpen: {fileID: 0}
+  binClosed: {fileID: 0}
 --- !u!1 &1939587923
 GameObject:
   m_ObjectHideFlags: 0
@@ -5716,6 +5737,8 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 2005328705}
+  binOpen: {fileID: 0}
+  binClosed: {fileID: 0}
 --- !u!1 &1950288664
 GameObject:
   m_ObjectHideFlags: 0
@@ -5887,7 +5910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 814, y: -140.88403}
+  m_AnchoredPosition: {x: 787, y: -147}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2005328708
@@ -5918,7 +5941,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c09673b3231cc204d85dacb421ac0a9e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c89d4b79f99d5d640877e4c70f9ff908, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6097,7 +6120,7 @@ RectTransform:
   - {fileID: 441187471}
   - {fileID: 992076367}
   m_Father: {fileID: 782853009}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6533,6 +6556,8 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 1342362875}
   lighterInfo: {fileID: 0}
+  binOpen: {fileID: 0}
+  binClosed: {fileID: 0}
 --- !u!1 &2140342928
 GameObject:
   m_ObjectHideFlags: 0
@@ -6566,7 +6591,7 @@ RectTransform:
   - {fileID: 530006767}
   - {fileID: 529543921}
   m_Father: {fileID: 782853009}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6738,6 +6763,8 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
+  binOpen: {fileID: 0}
+  binClosed: {fileID: 0}
 --- !u!1 &284173654659596709
 GameObject:
   m_ObjectHideFlags: 0
@@ -7121,6 +7148,8 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
+  binOpen: {fileID: 0}
+  binClosed: {fileID: 0}
 --- !u!1 &1584618550477138312
 GameObject:
   m_ObjectHideFlags: 0
@@ -8170,7 +8199,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2282532740743085668}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: UnpauseGame
         m_Mode: 1
@@ -8205,6 +8234,8 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
+  binOpen: {fileID: 0}
+  binClosed: {fileID: 0}
 --- !u!1 &6360274434105255818
 GameObject:
   m_ObjectHideFlags: 0
@@ -8279,6 +8310,42 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 67.3, y: 0.00005722046}
   m_SizeDelta: {x: 17.58, y: 6.0483017}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &7173274150162210488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6151266602142294443}
+  m_Layer: 5
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6151266602142294443
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7173274150162210488}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0972, y: 1.0814066, z: 1.0972}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 782853009}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -91, y: -43}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7820212056381541240
 GameObject:
@@ -8728,6 +8795,8 @@ MonoBehaviour:
   rakeInfo: {fileID: 0}
   zapperInfo: {fileID: 0}
   lighterInfo: {fileID: 0}
+  binOpen: {fileID: 0}
+  binClosed: {fileID: 0}
 --- !u!1001 &2282532740188347192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8870,23 +8939,39 @@ PrefabInstance:
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lmRun
       value: 
-      objectReference: {fileID: 8300000, guid: e4d5acaeef693024b96474b1ca8b9cfd, type: 3}
+      objectReference: {fileID: 8300000, guid: ff86ef83390eca24aa78537da970cfc6, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: rake1
       value: 
       objectReference: {fileID: 8300000, guid: 180ba95a7093f364a8f50619211e7399, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: refuel
+      value: 
+      objectReference: {fileID: 8300000, guid: a12e7a9017872f447a49199862c65733, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: uiClick
       value: 
       objectReference: {fileID: 8300000, guid: 4431a84eb65845943a89882fa619a2a5, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: hamsThor
+      value: 
+      objectReference: {fileID: 8300000, guid: 0af0481234cc90f469124e3371f64c57, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lbActive
       value: 
-      objectReference: {fileID: 8300000, guid: f610e3c54208dd246abf0a10f6628dcc, type: 3}
+      objectReference: {fileID: 8300000, guid: 68d9d0a547c799140906c322c62b46da, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: bugZapper
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c7fd0e54be6ee140a3be0ad6ddba2f0, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: gnomeKing
+      value: 
+      objectReference: {fileID: 8300000, guid: 4429fcb67c30f6e40890ae952ce0cc36, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lighterOn
       value: 
-      objectReference: {fileID: 8300000, guid: f610e3c54208dd246abf0a10f6628dcc, type: 3}
+      objectReference: {fileID: 8300000, guid: 20156c8be5be0ec4e987f076dd3d5814, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lmExplode
       value: 
@@ -8898,7 +8983,7 @@ PrefabInstance:
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: sfxSlider
       value: 
-      objectReference: {fileID: 7489521745817798269}
+      objectReference: {fileID: 0}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: audioMixer
       value: 
@@ -8914,7 +8999,19 @@ PrefabInstance:
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: musicSlider
       value: 
-      objectReference: {fileID: 7619176817581382119}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: waterSplash
+      value: 
+      objectReference: {fileID: 8300000, guid: 056d0a3792e965444af35721a009938a, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: windmillChop
+      value: 
+      objectReference: {fileID: 8300000, guid: 1195284a06aea5d4aabc3d6aeabb0533, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: flagSpearLand
+      value: 
+      objectReference: {fileID: 8300000, guid: 18d1c42814a16584baea6688966ab45e, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: hamsterDeath1
       value: 
@@ -8932,9 +9029,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: ab0c60cfdd623de4181a9e5c200bd999, type: 3}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: flagSpearSpawn
+      value: 
+      objectReference: {fileID: 8300000, guid: 4061c971f3a1afa43bf5f1fd4d893d31, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: hamsterBurning
       value: 
-      objectReference: {fileID: 8300000, guid: 8684e27a1abbf1e4fa4f4ce24debe39e, type: 3}
+      objectReference: {fileID: 8300000, guid: 08c245eb6bc573844b5c066057c50663, type: 3}
     - target: {fileID: 1058055521, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: Loop
       value: 1
@@ -9010,6 +9111,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1102496838878895824, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
   m_PrefabInstance: {fileID: 2282532740188347192}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2282532740743085668 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1058055516, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+  m_PrefabInstance: {fileID: 2282532740188347192}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f667652eed53b340bebc7ab063106db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7908311905726673584 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}

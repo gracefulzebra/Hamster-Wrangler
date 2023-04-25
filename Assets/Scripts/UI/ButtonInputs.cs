@@ -23,6 +23,7 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     [SerializeField] GameObject zapperInfo;
     [SerializeField] GameObject lighterInfo;
 
+    bool menuOpen;
 
     [SerializeField] GameObject binOpen;
     [SerializeField] GameObject binClosed;
@@ -54,11 +55,18 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         if (Input.GetMouseButtonDown(0) && GameManager.instance.uiManager.itemDescriptionOpen == true)
         {
-                    GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("Item Menu");
-            foreach (GameObject go in gameObjectArray)
+            GameObject[] itemMenuObjectArray = GameObject.FindGameObjectsWithTag("Item Menu");
+            foreach (GameObject go in itemMenuObjectArray)
             {
+                go.SetActive(false);       
                 GameManager.instance.uiManager.itemDescriptionOpen = false;
-                go.SetActive(false);         
+            }
+
+            GameObject[] infoButtonsObjectArray = GameObject.FindGameObjectsWithTag("InfoButtons");
+
+            foreach (GameObject go in infoButtonsObjectArray)
+            {
+                go.GetComponent<Button>().enabled = true;
             }
         }
     }
@@ -109,7 +117,13 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
                 }
             }
         }
+        if (GameManager.instance.uiManager.itemDescriptionOpen)
+        {
+            var raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventData, raycastResults);
+        }
     }
+
     public void BuyItem()
     {
         if (GameManager.instance.currencyManager.CheckPrice(gameObject.tag) == true && !GameManager.instance.holdingItem)
@@ -129,12 +143,12 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         if (GameManager.instance.uiManager.itemDescriptionOpen)
             return;
-
+     
         if (!guideMenu.activeSelf)
         {
             guideMenu.SetActive(true);
             GameManager.instance.uiManager.itemDescriptionOpen = true;
-          //  gameObject.GetComponent<ButtonInputs>().enabled = false;
+            gameObject.GetComponent<Button>().enabled = false;
         }
     }
  

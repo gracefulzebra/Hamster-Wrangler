@@ -796,11 +796,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 12501839}
   m_Mesh: {fileID: -6645634710490150993, guid: 4c8c143e1b9b7ec4e85808c7bb64a8b6, type: 3}
---- !u!224 &13896326 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 782853009, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
-  m_PrefabInstance: {fileID: 1466272793}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &17711997 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6117549077645689707, guid: d040bb79412b16d4ab34fece897d7b60, type: 3}
@@ -34047,14 +34042,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943364744}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -953, y: -535, z: -9.237775}
-  m_LocalScale: {x: 0.53154, y: 0.53154, z: 0.53154}
+  m_LocalPosition: {x: -785.63617, y: -460, z: -8.419409}
+  m_LocalScale: {x: 0.48445132, y: 0.49152648, z: 0.48445132}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 374373754}
   - {fileID: 2094259678}
-  m_Father: {fileID: 13896326}
-  m_RootOrder: 10
+  m_Father: {fileID: 1454503067}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &943364746
 MonoBehaviour:
@@ -56494,6 +56489,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b575483fb9edd6f4cbda6a2f9dc4facd, type: 3}
+--- !u!224 &1454503067 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6151266602142294443, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+  m_PrefabInstance: {fileID: 1466272793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1456336673
 GameObject:
   m_ObjectHideFlags: 0
@@ -56738,6 +56738,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ZapperMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 1342362875, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1645601030, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: leafBlower
       value: 
@@ -56854,6 +56858,10 @@ PrefabInstance:
       propertyPath: endOfRoundCashBonus
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 2282532741587085682, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: coinsDeath
+      value: 
+      objectReference: {fileID: 1841589945386523884, guid: 40d6ae577ce3e744a90cd5b08271a46c, type: 3}
     - target: {fileID: 2311070687187441227, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: binOpen
       value: 
@@ -56862,9 +56870,33 @@ PrefabInstance:
       propertyPath: binClosed
       value: 
       objectReference: {fileID: 1466272794}
+    - target: {fileID: 2573293963984931864, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573293963984931864, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3660518049958067359, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122684442633565441, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122684442633565441, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7273281549186575895, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: m_Name
       value: Game Manager_Canvas Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7661071579570187697, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
@@ -57904,6 +57936,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4709637732087390002, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.017000116
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732087390002, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.14599991
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732087390002, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.25500005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732087390002, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732087390002, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732087390002, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732087390002, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4709637732087390002, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4709637732169614660, guid: 830ffe7e2e78b4f468f9991c0df0b519, type: 3}
       propertyPath: checkPoints.Array.size
       value: 2
@@ -68727,7 +68791,6 @@ MonoBehaviour:
   maxSpeed: 0
   rotationSpeed: 0
   checkPoints: []
-  coins: {fileID: 0}
   bloodEffect: []
   maxDecalDistance: 5
   decalOffsetDistance: 0.5

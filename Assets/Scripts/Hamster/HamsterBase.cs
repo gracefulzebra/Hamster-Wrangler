@@ -31,7 +31,6 @@ public class HamsterBase : MonoBehaviour
     private int checkPointIndex = 0;
 
     [Header("Misc.")]
-    [SerializeField] GameObject coins;
     [SerializeField] private GameObject[] bloodEffect;
     [SerializeField] private float maxDecalDistance = 5f;
     [SerializeField] private float decalOffsetDistance = 0.5f;
@@ -233,12 +232,7 @@ public class HamsterBase : MonoBehaviour
         GameManager.instance.audioManager.PlayHamsterDeathAudio();
         yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
-        coins.SetActive(true);
-    }
+   }
 
     private void HamsterDamageStates()
     {
