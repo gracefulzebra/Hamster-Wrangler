@@ -40,7 +40,6 @@ public class HamsterAnimation : MonoBehaviour
         mainHamster.SetActive(false);
         disintegrateHamster.SetActive(true);
 
-        animator.SetTrigger("Burn");
         for (int i =0; i < bodyParts.Length; i++)
         {
             StartCoroutine(bodyParts[i].GetComponent<DisintegrationController>().Disintegrate());

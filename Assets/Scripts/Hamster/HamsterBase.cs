@@ -68,11 +68,19 @@ public class HamsterBase : MonoBehaviour
     private void Start()
     {
         PathRequestManager.RequestPath(transform.position, currentTarget.position, OnPathFound, this.gameObject);
+        StartCoroutine(start());
     }
 
     IEnumerator start()
     {
-        yield return null;
+        yield return new WaitForSeconds(3f);
+        //play animation and noise
+        GetComponent<HamsterAnimation>().SetDisintegrateTrigger();
+       // GameManager.instance.audioManager.PlayHamsterDeathAudio();
+
+        // sends all the info
+       // GetComponent<HamsterScore>().SendData();
+
     }
 
     bool playOnce;
