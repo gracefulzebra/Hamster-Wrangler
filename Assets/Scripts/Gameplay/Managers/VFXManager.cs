@@ -24,7 +24,6 @@ public class VFXManager : MonoBehaviour
     {
         Vector3 coinSpawnPos = new Vector3(hamsterPos.position.x, hamsterPos.position.y + 0.8f, hamsterPos.position.z);
         GameObject coinEffect = Instantiate(coinsDeath, coinSpawnPos, Quaternion.LookRotation(transform.up));
-        coinEffect.GetComponentInChildren<ParticleSystem>().Play();
         StartCoroutine(DestroyCoins(coinEffect));
 
         limbRestrictionList.Clear();
