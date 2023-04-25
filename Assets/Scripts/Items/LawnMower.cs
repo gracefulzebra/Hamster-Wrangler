@@ -58,8 +58,8 @@ public class LawnMower : TrapBase
             {
                 canUseTrap = false;
                 // finds the cloest node for the player and makes it placeable
-                nodeHit = gridRef.GetNodeFromWorldPoint(transform.position); print(nodeHit.gridX + "," + nodeHit.gridY);
-                nodeHit.placeable = true;
+                GetComponentInParent<SnapToGrid>().RemoveNodePlacement();
+                //nodeHit.placeable = true;
                 counter++;
             }
         }

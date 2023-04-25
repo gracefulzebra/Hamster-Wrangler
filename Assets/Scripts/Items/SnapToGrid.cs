@@ -172,7 +172,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
             GameManager.instance.currencyManager.TryBuy(itemID);
 
             nodeHit.placeable = false;
-            print("Placed : " + nodeHit.gridX + "," + nodeHit.gridY);
             hasItem = false;
             // need this sa if you let go the if statemnt in button inputs will destroy it 
             gameObject.tag = "Placed Item";
@@ -193,6 +192,6 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
     
     public void RemoveNodePlacement()
     {
-        nodeHit.placeable = false;
+        nodeHit.placeable = true;
     }
 }
