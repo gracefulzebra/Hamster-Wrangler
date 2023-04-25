@@ -4,6 +4,7 @@ using System.Linq;
 
 public class HamsterAnimation : MonoBehaviour
 {
+    [SerializeField] Animator shockDeathanimator;
     Animator animator;
     public GameObject mainHamster, shockHamster, shockDeathHamster, disintegrateHamster;
     public float shockAnimationDuration;
@@ -31,8 +32,22 @@ public class HamsterAnimation : MonoBehaviour
 
         yield return new WaitForSeconds(shockAnimationDuration);
 
-        mainHamster.SetActive(true);
-        shockHamster.SetActive(false);
+        if (GetComponent<HamsterBase>().currentHealth > 0)
+        {
+            mainHamster.SetActive(true);
+            shockHamster.SetActive(false);
+        }
+    }
+
+
+    public IEnumerator SetShockedDeathTrigger()
+    {
+        mainHamster.SetActive(false);
+        Destroy(shockHamster);
+        shockDeathHamster.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+        shockDeathanimator.SetTrigger("ShockDeath");
     }
 
     DisintegrationController[] disintegrationControllers;
