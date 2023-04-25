@@ -322,12 +322,12 @@ public class TutManager : MonoBehaviour
 
                     if (Input.GetKeyDown(KeyCode.Escape))
                     {
-                        FindObjectOfType<DialogueManager>().DisplayNextSentence();
+                        NextStep();
                     }              
                     break;
                 case 28:
                     inputGuides[4].SetActive(false);
-
+                    inputGuides[4].SetActive(false);
                     cantIncreasePC = false;
                     if (Input.GetKeyDown(KeyCode.Escape))
                     {
