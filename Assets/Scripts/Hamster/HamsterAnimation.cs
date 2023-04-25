@@ -4,7 +4,7 @@ using System.Collections;
 public class HamsterAnimation : MonoBehaviour
 {
     Animator animator;
-    public GameObject mainHamster, shockHamster;
+    public GameObject mainHamster, shockHamster, shockDeathHamster, disintegrateHamster;
     public float shockAnimationDuration;
 
     private void Awake()
@@ -32,6 +32,14 @@ public class HamsterAnimation : MonoBehaviour
 
         mainHamster.SetActive(true);
         shockHamster.SetActive(false);
+    }
+
+    public void SetDisintegrateTrigger()
+    {
+        mainHamster.SetActive(false);
+        disintegrateHamster.SetActive(true);
+
+        animator.SetTrigger("Burn");
     }
 
     public void ExplosionDeathAnimation()
