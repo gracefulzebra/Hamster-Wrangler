@@ -300,6 +300,7 @@ public class TutManager : MonoBehaviour
                     break;
                 case 23:
                     contineDialouge.SetActive(false);
+                    uiHighlights[5].SetActive(true);
 
                     sellItem.GetComponent<ButtonInputs>().enabled = true;
                     sellItem.GetComponent<Button>().enabled = true;
@@ -308,17 +309,22 @@ public class TutManager : MonoBehaviour
                 case 25:
                     cantIncreasePC = false;
                     sellItem.GetComponent<Button>().enabled = false;
-                    contineDialouge.SetActive(false);
+                    sellItem.GetComponent<ButtonInputs>().enabled = false;
+                    uiHighlights[5].SetActive(false);
 
-                    DialougeWithNoPC();
+                    contineDialouge.SetActive(true);
+                    break;
+                 case 26:
+                    contineDialouge.SetActive(false);
                     inputGuides[4].SetActive(true);
 
                     if (Input.GetKeyDown(KeyCode.Escape))
                     {
                         FindObjectOfType<DialogueManager>().DisplayNextSentence();
                     }
+                 
                     break;
-                 case 26:
+                case 27:
                     inputGuides[4].SetActive(false);
 
                     cantIncreasePC = false;
@@ -326,9 +332,9 @@ public class TutManager : MonoBehaviour
                     {
                         NextStep();
                         FindObjectOfType<DialogueManager>().DisplayNextSentence();
-                    }
+                    }         
                     break;
-                case 27:
+                case 28:
                     lawnMowerButton.GetComponent<TutButtons>().enabled = false;
                     blowTorchButton.GetComponent<TutButtons>().enabled = false;
                     inputGuides[4].SetActive(false);
@@ -338,6 +344,9 @@ public class TutManager : MonoBehaviour
                     leafBlowerButton.GetComponent<ButtonInputs>().enabled = true;
                     bugZapperButton.GetComponent<ButtonInputs>().enabled = true;
                     rakeButton.GetComponent<ButtonInputs>().enabled = true;
+
+                    sellItem.GetComponent<ButtonInputs>().enabled = true;
+                    sellItem.GetComponent<Button>().enabled = true;
 
                     GameManager.instance.uiManager.UpdateUIOnHamsterDeath();
                     waveStartButton.GetComponent<Button>().enabled = true;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TutLawnmower : TrapBase
@@ -25,6 +26,8 @@ public class TutLawnmower : TrapBase
     [SerializeField] float explosionRange;
     [SerializeField] private LayerMask scannableMask;
     [SerializeField] float lawnmowerExplodeDelay;
+    [SerializeField] Animator animator;
+
 
     private void Start()
     {
@@ -71,14 +74,24 @@ public class TutLawnmower : TrapBase
         }         
     }
 
+
+    GameObject lmRunObject;
+    bool once = false;
     public void ActivateLawnmower()
     {
         if (!audioOn)
         {
             GameManager.instance.audioManager.LawnMowerRunAudio();
+            // assigns to gameobject that is destroyed when hits wall
+            lmRunObject = GameManager.instance.audioManager.lmRunList.Last();
             audioOn = true;
         }
 
+        if (!once)
+        {
+            animator.SetTrigger("Start");
+            once = true;
+        }
         transform.parent.gameObject.layer = 2;
         smokeEffect.SetActive(true);
         transform.parent.Translate(Vector3.forward * lawnmowerSpd * Time.deltaTime);
@@ -92,6 +105,7 @@ public class TutLawnmower : TrapBase
 
     void LawnmowerExplode()
     {
+        Destroy(lmRunObject);
         GameManager.instance.audioManager.LawnMowerExplodeAudio();
 
         RaycastHit[] nearbyObjects = Physics.SphereCastAll(transform.position, explosionRange, Vector3.up, explosionRange, scannableMask);
@@ -163,6 +177,7 @@ public class TutLawnmower : TrapBase
         // obstacle
         if (col.gameObject.layer == 7)
         {
+            Destroy(lmRunObject);
             if (willExplode)
             {
                 LawnmowerExplode();
