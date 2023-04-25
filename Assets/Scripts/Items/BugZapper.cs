@@ -236,7 +236,7 @@ public class BugZapper : TrapBase
             targetObject.GetComponent<ItemEffects>().BeenElectrocuted(shockDuration, damage, hamsterShockRadius, lightingAOERange);
             targetObject.GetComponent<HamsterScore>().UpdateInteracts(this.gameObject, itemID, trapActivatrionCounter);
         }
-        else if(targetObject.name == "Leafblower(Clone)")
+        else if(targetObject.name == "Leafblower(Clone)" || targetObject.name == "Golf Leafblower Variant(Clone)")
         {
             if (!synergyDisplay)
             {
