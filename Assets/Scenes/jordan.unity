@@ -3987,6 +3987,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8652cee9ddd110344b6ec4002aa55792, type: 3}
   m_PrefabInstance: {fileID: 1922413674}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &102840164 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3685828581318032170, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+  m_PrefabInstance: {fileID: 1289621198}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &102952051
 GameObject:
   m_ObjectHideFlags: 0
@@ -37406,6 +37411,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8652cee9ddd110344b6ec4002aa55792, type: 3}
+--- !u!1 &1020736929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 284173654659596709, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+  m_PrefabInstance: {fileID: 1289621198}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1021075849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44208,6 +44218,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 682862040, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: zapperInfo
+      value: 
+      objectReference: {fileID: 2089152035}
+    - target: {fileID: 682862041, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ZapperMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 284173654659596709, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1216522100009731560, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -44252,6 +44274,62 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: lmRun
+      value: 
+      objectReference: {fileID: 8300000, guid: ff86ef83390eca24aa78537da970cfc6, type: 3}
+    - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: refuel
+      value: 
+      objectReference: {fileID: 8300000, guid: a12e7a9017872f447a49199862c65733, type: 3}
+    - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: hamsThor
+      value: 
+      objectReference: {fileID: 8300000, guid: 0af0481234cc90f469124e3371f64c57, type: 3}
+    - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: lbActive
+      value: 
+      objectReference: {fileID: 8300000, guid: 68d9d0a547c799140906c322c62b46da, type: 3}
+    - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: bugZapper
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c7fd0e54be6ee140a3be0ad6ddba2f0, type: 3}
+    - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: gnomeKing
+      value: 
+      objectReference: {fileID: 8300000, guid: 4429fcb67c30f6e40890ae952ce0cc36, type: 3}
+    - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: lighterOn
+      value: 
+      objectReference: {fileID: 8300000, guid: 20156c8be5be0ec4e987f076dd3d5814, type: 3}
+    - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: sfxSlider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: musicSlider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: waterSplash
+      value: 
+      objectReference: {fileID: 8300000, guid: 056d0a3792e965444af35721a009938a, type: 3}
+    - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: windmillChop
+      value: 
+      objectReference: {fileID: 8300000, guid: 1195284a06aea5d4aabc3d6aeabb0533, type: 3}
+    - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: flagSpearLand
+      value: 
+      objectReference: {fileID: 8300000, guid: 18d1c42814a16584baea6688966ab45e, type: 3}
+    - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: flagSpearSpawn
+      value: 
+      objectReference: {fileID: 8300000, guid: 4061c971f3a1afa43bf5f1fd4d893d31, type: 3}
+    - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: hamsterBurning
+      value: 
+      objectReference: {fileID: 8300000, guid: 08c245eb6bc573844b5c066057c50663, type: 3}
     - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: endOfRoundCashBonus
       value: 150
@@ -44283,6 +44361,18 @@ PrefabInstance:
     - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: hamstersPerWave.Array.data[5]
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2311070687187441227, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: binOpen
+      value: 
+      objectReference: {fileID: 1020736929}
+    - target: {fileID: 2311070687187441227, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: binClosed
+      value: 
+      objectReference: {fileID: 102840164}
+    - target: {fileID: 3685828581318032170, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7273281549186575895, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: m_Name
@@ -68103,6 +68193,11 @@ MeshFilter:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ae512c3b86c317e4785fbc5c601f603b, type: 3}
   m_PrefabInstance: {fileID: 1621216622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2089152035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1342362875, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+  m_PrefabInstance: {fileID: 1289621198}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2095341971 stripped
 Transform:
