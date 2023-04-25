@@ -11,9 +11,13 @@ PrefabInstance:
       propertyPath: force
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2627660743058041798, guid: db76777b4290ec6418513f1d061e5f2c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3728910289697894905, guid: db76777b4290ec6418513f1d061e5f2c, type: 3}
       propertyPath: m_Name
-      value: Golf Leafblower
+      value: Golf Leafblower Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4103923347380611907, guid: db76777b4290ec6418513f1d061e5f2c, type: 3}
       propertyPath: m_RootOrder
@@ -58,6 +62,18 @@ PrefabInstance:
     - target: {fileID: 4103923347380611907, guid: db76777b4290ec6418513f1d061e5f2c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4312855523951451033, guid: db76777b4290ec6418513f1d061e5f2c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4312855523951451033, guid: db76777b4290ec6418513f1d061e5f2c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.064
+      objectReference: {fileID: 0}
+    - target: {fileID: 4312855523951451033, guid: db76777b4290ec6418513f1d061e5f2c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.097
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db76777b4290ec6418513f1d061e5f2c, type: 3}

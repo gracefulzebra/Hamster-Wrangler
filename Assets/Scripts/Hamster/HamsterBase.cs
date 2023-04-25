@@ -221,7 +221,10 @@ public class HamsterBase : MonoBehaviour
     ///</summary>
     public void Kill()
     {
-        GetComponent<HamsterScore>().SendData();
+        if (gameObject.layer != 2)
+        {
+           GetComponent<HamsterScore>().SendData();
+        }
         GameManager.instance.audioManager.PlayHamsterDeathAudio();
         HamsterDeathEffect();
     }
@@ -289,7 +292,8 @@ public class HamsterBase : MonoBehaviour
             case (DeathTypes.BugZapper):
                 StartCoroutine(GetComponent<HamsterAnimation>().SetShockedDeathTrigger());
 
-             //   gameObject.layer = 
+                // changes later to one that hamsters dont touch
+                gameObject.layer = 2;
 
                 StartCoroutine(DelayDeathShock());
                 break;
@@ -304,9 +308,7 @@ public class HamsterBase : MonoBehaviour
 
     IEnumerator DelayDeathShock()
     {
-        speed = 0;
-
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         Destroy(gameObject);
     }
     private Ray GenerateRandomAngleRay()
