@@ -63,12 +63,14 @@ public class ItemEffects : MonoBehaviour
             onFireNoiseObject = GameManager.instance.audioManager.hamsterBurningAudioList.Last();
             burningAudioOn = true;
         }
+        GetComponent<HamsterBase>().deathType = HamsterBase.DeathTypes.Fire;
         onFire = true;
         for (burnIndex = 0; burnIndex < burnAmount; burnIndex++)
         {
             yield return new WaitForSeconds(burnDuration);
             GetComponent<HamsterBase>().TakeDamage(burnDamage);
         }
+        GetComponent<HamsterBase>().deathType = HamsterBase.DeathTypes.Default;
         Destroy(onFireNoiseObject);
         burningAudioOn = false;
         onFire = false;
@@ -94,6 +96,7 @@ public class ItemEffects : MonoBehaviour
    
     public void ElectricDamage()
     {
+        GetComponent<HamsterBase>().deathType = HamsterBase.DeathTypes.BugZapper;
 
         hasBeenShocked = true;
         GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
@@ -145,6 +148,7 @@ public class ItemEffects : MonoBehaviour
     {
         animationController.SetShockedTrigger();
         yield return new WaitForSeconds(shockDur);
+        GetComponent<HamsterBase>().deathType = HamsterBase.DeathTypes.Default;
         hasBeenShocked = false;
         lightningEffect.SetActive(false);
         GetComponent<HamsterBase>().speed = GetComponent<HamsterBase>().maxSpeed;

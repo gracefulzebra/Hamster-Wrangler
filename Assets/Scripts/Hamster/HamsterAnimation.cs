@@ -34,15 +34,19 @@ public class HamsterAnimation : MonoBehaviour
         shockHamster.SetActive(false);
     }
 
+    DisintegrationController[] disintegrationControllers;
+
     public void SetDisintegrateTrigger()
     {
-        GameObject[] bodyParts = GameObject.FindGameObjectsWithTag("Disintegrate");
+        disintegrationControllers = GetComponentsInChildren<DisintegrationController>();
+
+      //  GameObject[] bodyParts = GameObject.FindGameObjectsWithTag("Disintegrate");
         mainHamster.SetActive(false);
         disintegrateHamster.SetActive(true);
 
-        for (int i =0; i < bodyParts.Length; i++)
+        foreach (DisintegrationController script in disintegrationControllers)
         {
-            StartCoroutine(bodyParts[i].GetComponent<DisintegrationController>().Disintegrate());
+             StartCoroutine(script.GetComponent<DisintegrationController>().Disintegrate());
         }
     }
 

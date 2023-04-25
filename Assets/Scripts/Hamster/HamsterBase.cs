@@ -46,14 +46,14 @@ public class HamsterBase : MonoBehaviour
     HamsterAnimation animatorController;
     HamsterMatChange materialChanger;
 
-    enum DeathTypes
+    public enum DeathTypes
     {
-        Fire,
         Default,
+        Fire,
         BugZapper
     };
 
-    DeathTypes deathType;
+   public DeathTypes deathType;
 
     private void Awake()
     {
@@ -68,7 +68,7 @@ public class HamsterBase : MonoBehaviour
     private void Start()
     {
         PathRequestManager.RequestPath(transform.position, currentTarget.position, OnPathFound, this.gameObject);
-        StartCoroutine(start());
+       // StartCoroutine(start());
     }
 
     IEnumerator start()
@@ -86,6 +86,12 @@ public class HamsterBase : MonoBehaviour
     bool playOnce;
     private void Update()
     {
+        if (deathType == DeathTypes.BugZapper)
+        {
+            print(deathType);
+
+        }
+
         if (transform.position.y < 0.3f)
             MoveToTarget();
         UpdateCheckPoints();
