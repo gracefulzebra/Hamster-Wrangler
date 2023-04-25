@@ -26,7 +26,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private int damage;
     [SerializeField] private int startingCurrency;
+    
     public int scoreFor3Star;
+    public int scoreFor3StarTutorial;
+    public int scoreFor3StarLevel1;
+    public int scoreFor3StarLevel2;
+    public int scoreFor3StarLevel3;
+    public int scoreFor3StarLevel4;
+
     public static int finalScore;
     public Vector3 globalTrapRotation;
 
@@ -58,6 +65,25 @@ public class GameManager : MonoBehaviour
         if (instance != this)
         {
             Destroy(gameObject);
+        }
+
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "TutorialLevel":
+                scoreFor3Star = scoreFor3StarTutorial;
+                break;
+            case "FinnLevel":
+                scoreFor3Star = scoreFor3StarLevel1;
+                break;
+            case "jordan":
+                scoreFor3Star = scoreFor3StarLevel2;
+                break;
+            case "JamieLevel":
+                scoreFor3Star = scoreFor3StarLevel3;
+                break;
+            case "GnomeLevel":
+                scoreFor3Star = scoreFor3StarLevel4;
+                break;
         }
 
         InitialiseSystems();
