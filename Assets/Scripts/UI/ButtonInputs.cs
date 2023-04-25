@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -21,6 +22,10 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     [SerializeField] GameObject rakeInfo;
     [SerializeField] GameObject zapperInfo;
     [SerializeField] GameObject lighterInfo;
+
+
+    [SerializeField] GameObject binOpen;
+    [SerializeField] GameObject binClosed;
 
 
     void Start()
@@ -93,10 +98,14 @@ public class ButtonInputs : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
                 if (!GameManager.instance.currencyManager.deleteItemMode)
                 {
                     GameManager.instance.currencyManager.deleteItemMode = true;
+                    binClosed.SetActive(false);
+                    binOpen.SetActive(true);
                 }
                 else
                 {
                     GameManager.instance.currencyManager.deleteItemMode = false;
+                    binClosed.SetActive(true);
+                    binOpen.SetActive(false);
                 }
             }
         }
