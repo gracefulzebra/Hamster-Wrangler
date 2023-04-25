@@ -70,7 +70,6 @@ public class HamsterScore : MonoBehaviour
         GameManager.instance.waveManager.HamstersRemaining();
 
         GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
-        print(comboName);
         switch (comboCounter)
             {
             case < 5:
