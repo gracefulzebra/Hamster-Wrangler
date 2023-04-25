@@ -7,7 +7,9 @@ public class DisintegrationController : MonoBehaviour
 {
     public Animator anim;
     public VisualEffect VFXgraph;
-    public SkinnedMeshRenderer meshRenderer;
+    public SkinnedMeshRenderer meshRendererBody;
+    public SkinnedMeshRenderer meshRendererLeg;
+
     public float dissolveRate = 0.05f;
     public float refreshrate = 0.02f;
 
@@ -22,9 +24,10 @@ public class DisintegrationController : MonoBehaviour
             VFXgraph.gameObject.SetActive(false);
         }
 
-        if(meshRenderer != null)
+        if(meshRendererBody != null)
         {
-            disintegrateMaterials = meshRenderer.materials;
+            disintegrateMaterials = meshRendererBody.materials;
+            disintegrateMaterials = meshRendererLeg.materials;
         }
     }
 
