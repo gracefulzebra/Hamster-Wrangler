@@ -27,6 +27,12 @@ public class WaveManager : MonoBehaviour
     private void InitializeSpawns()
     {
         hamsterSpawners = GameObject.FindGameObjectsWithTag("Spawner");
+        
+        foreach(GameObject spawner in hamsterSpawners)
+        {
+            spawner.GetComponent<HamsterSpawner>().StartRoutines();
+            spawner.GetComponent<HamsterSpawner>().SetLight(wave);
+        }
     }
 
     public IEnumerator StartWave()
@@ -75,9 +81,19 @@ public class WaveManager : MonoBehaviour
             waveCompleted = true;
             wave++;
             hamstersKilled = 0;
+
             if (wave >= maxWaves)
             {
                 GameManager.instance.WinGame();
+            }
+
+            foreach (GameObject spawner in hamsterSpawners)
+            {
+                spawner.GetComponent<HamsterSpawner>().StopPathAnimations();
+            }
+                foreach (GameObject spawner in hamsterSpawners)
+            { 
+                spawner.GetComponent<HamsterSpawner>().SetLight(wave);
             }
 
         }

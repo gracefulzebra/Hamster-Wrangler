@@ -21,6 +21,10 @@ public class PredictedPathRenderer : MonoBehaviour
 
     Node oldPos;
 
+    int startPoint1;
+    int startPoint2;
+    int startPoint3;
+
     private void Awake()
     {
         target = GameObject.Find("Target").transform;
@@ -106,25 +110,57 @@ public class PredictedPathRenderer : MonoBehaviour
             hamsterFootprints.Add(footprintInstance);
         }
 
-        StartCoroutine(AnimationHandler());
+        //StartCoroutine(AnimationHandler());
 
     }
 
-    IEnumerator AnimationHandler()
+    List<Coroutine> runningCoroutine1 = new List<Coroutine>();
+    public Coroutine runningCoroutine2;
+    public bool active = true;
+
+    public IEnumerator AnimationHandler()
     {
+        yield return new WaitForSeconds(1f);
+
+        startPoint1 = 0;
+        startPoint2 = (hamsterFootprints.Count / 3);
+        startPoint3 = (hamsterFootprints.Count / 3) * 2;
+
         for(; ; )
         {
-            StartCoroutine(AnimatePath());
-            yield return new WaitForSeconds(10f);
+            if (active)
+            {
+                print("Coroutine Running");
+                StartCoroutine(AnimatePath1());
+                
+            }
+            yield return new WaitForSeconds(5f);
         }
     }
 
-    IEnumerator AnimatePath()
+    IEnumerator AnimatePath1()
     {
-        for(int i = 0; i < hamsterFootprints.Count; i++)
+        //print("start co 1");
+        for (int i = startPoint1; i < hamsterFootprints.Count; i++)
         {
-            hamsterFootprints[i].GetComponent<Animator>().SetTrigger("PlayAnim");
-            yield return new WaitForSeconds(1.5f);
+            hamsterFootprints[i].GetComponent<PawPrintManager>().StartAnimation();
+
+            //if (startPoint2 + i < hamsterFootprints.Count - 2) { hamsterFootprints[startPoint2 + i].GetComponent<PawPrintManager>().StartAnimation(); }
+            //if (startPoint3 + i < hamsterFootprints.Count - 2) { hamsterFootprints[startPoint3 + i].GetComponent<PawPrintManager>().StartAnimation(); }
+
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+
+    
+    public void StopPathAnimations()
+    {
+        active = false;
+
+        for (int i = 0; i < hamsterFootprints.Count; i++)
+        {
+            hamsterFootprints[i].GetComponent<PawPrintManager>().StopAnimation();
         }
     }
 }

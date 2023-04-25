@@ -67,7 +67,7 @@ public class GameSettings : MonoBehaviour
         string text = "masterVolume=" + "10" + ",musicVolume=" + MusicVolume + ",sfxVolume=" + SfxVolume + ",quality=" + QualitySetting + ",resolution=" + resolutionSetting +  ",displayMode=" + DisplayMode + ",level1Score=" + level1Score + ",level2Score=" + level2Score + ",level3Score=" + level3Score + ",level4Score=" + level4Score;
 
         //Debug.Log(text);
-        File.WriteAllText(Application.dataPath + "/Resources/options.txt", text);
+        //File.WriteAllText(Application.dataPath + "/Resources/options.txt", text);
     }
 
     private void LoadSettings()
