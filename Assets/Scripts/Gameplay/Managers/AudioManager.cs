@@ -212,11 +212,12 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(DeleteAudio(audio));
     }
 
+    public List<GameObject> flagSpearSpawnNoise;
     public void FlagSpearSpawnAudio()
     {
         GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
         audio.GetComponent<AudioSource>().PlayOneShot(flagSpearSpawn);
-        StartCoroutine(DeleteAudio(audio));
+        flagSpearSpawnNoise.Add(audio);
     }
 
     public void FlagSpearLandedAudio()

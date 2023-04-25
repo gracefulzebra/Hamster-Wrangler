@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnFlagSpear : MonoBehaviour
@@ -32,8 +31,9 @@ public class SpawnFlagSpear : MonoBehaviour
        activate = true;
     }
 
-    private void OnTriggerEnter(Collider col)
-    {
+
+     private void OnTriggerEnter(Collider col)
+     {
         if (!activate)
             return;
         if (col.CompareTag("Hamster"))

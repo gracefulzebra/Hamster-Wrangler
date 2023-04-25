@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class FlagSpear : EnvironmentalBase
@@ -7,11 +8,13 @@ public class FlagSpear : EnvironmentalBase
 
     [SerializeField] int damage;
     [SerializeField] float range;
-
     bool landed;
 
+    GameObject flagSpearSpawnObject;
     private void OnCollisionEnter(Collision col)
     {
+        flagSpearSpawnObject = GameManager.instance.audioManager.flagSpearSpawnNoise.Last();
+        Destroy(flagSpearSpawnObject);
         if (!landed)
         {
             CheckForHamster();
