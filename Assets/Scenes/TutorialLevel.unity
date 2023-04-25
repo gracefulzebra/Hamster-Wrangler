@@ -22933,7 +22933,7 @@ RectTransform:
   m_GameObject: {fileID: 768698630}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.9848063, y: 3.8956857, z: 4.281581}
+  m_LocalScale: {x: 4.2330594, y: 6.1699867, z: 4.281581}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 174056229}
@@ -22941,7 +22941,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -817.2, y: 315}
+  m_AnchoredPosition: {x: -817.2, y: 367}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &768698632
@@ -27659,7 +27659,7 @@ RectTransform:
   m_GameObject: {fileID: 904598048}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.92484, y: 4.5120726, z: 5}
+  m_LocalScale: {x: 0.82674223, y: 4.0334773, z: 4.4696503}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1596893535}
@@ -27667,7 +27667,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 63, y: -293}
+  m_AnchoredPosition: {x: 48, y: -293}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &904598051
@@ -27746,7 +27746,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 36edece8c81776a46842103d09331ce6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 17a6cb7d298cbb849a48abf70219bbe2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -37976,6 +37976,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1622308020616548471, guid: edd954a76b242824fbb49061bb1a681f, type: 2}
     - target: {fileID: 1834955338, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: coinsDeath
+      value: 
+      objectReference: {fileID: 6816239295723855088, guid: e99118bec140a424ab464eafd2f10871, type: 3}
+    - target: {fileID: 1834955338, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: spawnHeight
       value: 0.04
       objectReference: {fileID: 0}
@@ -47628,8 +47632,8 @@ MonoBehaviour:
     - "Welcome to... Hamster Wrangler! Before we let you face\nthe Hamster Hordes,
       here\u2019s a quick run-through of the \nbasics. "
     - "In Hamster Wrangler, your goal is to prevent the Hamsters\nfrom eating your
-      beloved cheese. You can see your \ncheese health and currency in the top left
-      side of the \nscreen.\_"
+      beloved cheese. You can see your \nscore, cheese health and currency in the
+      top left side of the \nscreen.\_"
     - "Traps for purchase can be found on the right side of your \nscreen. Try pressing
       the information button for the \nLawnmower Trap. "
     - "Now the fun begins! Purchase a lawnmower using your \ncurrency by dragging
@@ -47657,9 +47661,11 @@ MonoBehaviour:
     - "Woah! By combining traps like the lawnmower and \nblowtorchyou will not only
       discover new interactions \nand effects, but you will also gain additional
       score! "
-    - "Press on the trash can symbol to enter sell mode and \nthen click the trap!"
-    - "You will receive less money for this buit it can be useful\nin many situtiaons,
-      dont forget to turn it off incase you \ndelete traps by mistake!"
+    - Click on the trash can symbol to enter sell mode and sell the blowtorch to
+      continue.
+    - "Selling traps give less money than their intial cost, selling can be useful
+      to remove unwanted traps whilst getting money. Dont forget to turn it off incase
+      you \ndelete traps by mistake!"
     - "From here you can either exit to the menu and play another\nlevel or continue
       playing on the tutorial level by pressing \nthe continue button and discover
       more trap combinations.   "
@@ -50764,7 +50770,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 459, y: -195}
+  m_AnchoredPosition: {x: 459, y: -179}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1597669583
