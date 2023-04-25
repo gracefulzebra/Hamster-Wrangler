@@ -191,22 +191,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62407bfc8e157d24881507982a2508f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuelUsage: 0
-  maxFuel: 0
+  maxChargeCount: 0
+  rechargeDuration: 0
+  timeTrapActivePerCharge: 0
+  chargeCountSymbols: []
   fuelSlider: {fileID: 0}
   refuelSymbol: {fileID: 0}
   itemID: 
   damage: 20
   activateTrap: 0
+  comboDisplayPrefab: {fileID: 0}
   fireEffect: {fileID: 4118219549432098300}
   smokeEffect: {fileID: 5936391385877511823}
   lawnmowerSpd: 5
+  dmgReductionPerHit: 0
   explosion: {fileID: 294653886677383835, guid: 9299834040719374db4880798af5c369, type: 3}
   explosionRange: 2
   scannableMask:
     serializedVersion: 2
     m_Bits: 512
   lawnmowerExplodeDelay: 0.5
+  animator: {fileID: 2700426189357925362}
 --- !u!1 &2891822492899386897
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +458,7 @@ Transform:
   - {fileID: 5936391385877511810}
   - {fileID: 2466632522998702171}
   - {fileID: 4118219549432098273}
-  - {fileID: 4100431033216669637}
+  - {fileID: 2518477780617405476}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -514,6 +519,9 @@ MonoBehaviour:
   hasItem: 0
   placementEffect: {fileID: 2466632521393769144}
   itemID: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   tutCorrectRotation: 0
   tutCanPlace: 0
 --- !u!1 &4761188882436680822
@@ -1378,99 +1386,76 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3237936196528610582, guid: 1b18f375f858ebb41af568ccfa6add6f, type: 3}
   m_PrefabInstance: {fileID: 1569978414839869674}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4570328102330396718
+--- !u!1001 &5607841687068793597
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 132374030631317105}
     m_Modifications:
-    - target: {fileID: -8877515583567957912, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
-      propertyPath: m_Layer
-      value: 0
+    - target: {fileID: 7236071649412818019, guid: 19416dbcf1fa860439cd1a6f88be6b5c, type: 3}
+      propertyPath: m_Name
+      value: LawnmowerAnimated
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
+    - target: {fileID: 7236071649412818019, guid: 19416dbcf1fa860439cd1a6f88be6b5c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007506236884319961, guid: 19416dbcf1fa860439cd1a6f88be6b5c, type: 3}
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
+    - target: {fileID: 8007506236884319961, guid: 19416dbcf1fa860439cd1a6f88be6b5c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
+    - target: {fileID: 8007506236884319961, guid: 19416dbcf1fa860439cd1a6f88be6b5c, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
+    - target: {fileID: 8007506236884319961, guid: 19416dbcf1fa860439cd1a6f88be6b5c, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
+    - target: {fileID: 8007506236884319961, guid: 19416dbcf1fa860439cd1a6f88be6b5c, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
+    - target: {fileID: 8007506236884319961, guid: 19416dbcf1fa860439cd1a6f88be6b5c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
+    - target: {fileID: 8007506236884319961, guid: 19416dbcf1fa860439cd1a6f88be6b5c, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
+    - target: {fileID: 8007506236884319961, guid: 19416dbcf1fa860439cd1a6f88be6b5c, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
+    - target: {fileID: 8007506236884319961, guid: 19416dbcf1fa860439cd1a6f88be6b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
+    - target: {fileID: 8007506236884319961, guid: 19416dbcf1fa860439cd1a6f88be6b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
+    - target: {fileID: 8007506236884319961, guid: 19416dbcf1fa860439cd1a6f88be6b5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7272911518199237601, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -259972160606440404, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 819899237366316187, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
-      propertyPath: m_Name
-      value: Lawnmower_v9_28-02
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1499585630707973733, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4177302620104308133, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8425886082142767183, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
---- !u!4 &4100431033216669637 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 19416dbcf1fa860439cd1a6f88be6b5c, type: 3}
+--- !u!4 &2518477780617405476 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4469c646964489344a86e00ecdfc1a28, type: 3}
-  m_PrefabInstance: {fileID: 4570328102330396718}
+  m_CorrespondingSourceObject: {fileID: 8007506236884319961, guid: 19416dbcf1fa860439cd1a6f88be6b5c, type: 3}
+  m_PrefabInstance: {fileID: 5607841687068793597}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2700426189357925362 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7542079129882695951, guid: 19416dbcf1fa860439cd1a6f88be6b5c, type: 3}
+  m_PrefabInstance: {fileID: 5607841687068793597}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5795993807365041006
 PrefabInstance:

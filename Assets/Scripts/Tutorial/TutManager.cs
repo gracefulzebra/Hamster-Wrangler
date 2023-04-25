@@ -135,6 +135,7 @@ public class TutManager : MonoBehaviour
                     break;
                     // poscounter +2 when buy trap, tutbuttons always increase, then dialouge 
                 case 7:
+                    inputGuides[0].SetActive(false);
                     inputGuides[1].SetActive(false);
                     uiHighlights[2].SetActive(false);
 
@@ -149,7 +150,8 @@ public class TutManager : MonoBehaviour
                 // poscounter +2 when placed, then dialouge plays
                 case 8:
                     cantIncreasePC = false;
-                    
+                    inputGuides[0].SetActive(false);
+
                     inputGuides[2].SetActive(true);
                     uiHighlights[3].SetActive(true);
                     waveStartButton.GetComponent<Button>().enabled = true;
@@ -306,7 +308,7 @@ public class TutManager : MonoBehaviour
                     sellItem.GetComponent<Button>().enabled = true;
                     break;
                 // when bt is sold next step occurs 
-                case 25:
+                case 26:
                     cantIncreasePC = false;
                     sellItem.GetComponent<Button>().enabled = false;
                     sellItem.GetComponent<ButtonInputs>().enabled = false;
@@ -314,17 +316,16 @@ public class TutManager : MonoBehaviour
 
                     contineDialouge.SetActive(true);
                     break;
-                 case 26:
+                 case 27:
                     contineDialouge.SetActive(false);
                     inputGuides[4].SetActive(true);
 
                     if (Input.GetKeyDown(KeyCode.Escape))
                     {
                         FindObjectOfType<DialogueManager>().DisplayNextSentence();
-                    }
-                 
+                    }              
                     break;
-                case 27:
+                case 28:
                     inputGuides[4].SetActive(false);
 
                     cantIncreasePC = false;
@@ -334,7 +335,7 @@ public class TutManager : MonoBehaviour
                         FindObjectOfType<DialogueManager>().DisplayNextSentence();
                     }         
                     break;
-                case 28:
+                case 29:
                     lawnMowerButton.GetComponent<TutButtons>().enabled = false;
                     blowTorchButton.GetComponent<TutButtons>().enabled = false;
                     inputGuides[4].SetActive(false);
