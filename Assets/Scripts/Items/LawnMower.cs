@@ -58,8 +58,8 @@ public class LawnMower : TrapBase
             {
                 canUseTrap = false;
                 // finds the cloest node for the player and makes it placeable
-                nodeHit = gridRef.GetNodeFromWorldPoint(transform.position);
-                nodeHit.placeable = true;
+                GetComponentInParent<SnapToGrid>().RemoveNodePlacement();
+                //nodeHit.placeable = true;
                 counter++;
             }
         }
@@ -84,7 +84,6 @@ public class LawnMower : TrapBase
         }
         //sets lawn mower to ignore raycast
         transform.parent.gameObject.layer = 2;
-        GetComponentInParent<SnapToGrid>().UnmarkNode();
         smokeEffect.SetActive(true);
         transform.parent.Translate(Vector3.forward * lawnmowerSpd * Time.deltaTime);
     }
