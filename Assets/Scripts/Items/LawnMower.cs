@@ -66,6 +66,7 @@ public class LawnMower : TrapBase
     }
 
     GameObject lmRunObject;
+    bool once = false;
     public void ActivateLawnmower()
     {
         if (!audioOn)
@@ -76,9 +77,14 @@ public class LawnMower : TrapBase
             audioOn = true;
         }
 
-        animator.SetTrigger("Start");
+        if (!once)
+        {
+            animator.SetTrigger("Start");
+            once = true;
+        }
         //sets lawn mower to ignore raycast
         transform.parent.gameObject.layer = 2;
+        GetComponentInParent<SnapToGrid>().UnmarkNode();
         smokeEffect.SetActive(true);
         transform.parent.Translate(Vector3.forward * lawnmowerSpd * Time.deltaTime);
     }

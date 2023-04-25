@@ -27,6 +27,8 @@ public class BugZapper : TrapBase
     [SerializeField] float lightingAOERange;
     [SerializeField] float shockDuration;
 
+    [SerializeField] private Animator zapperAnimator;
+
     [SerializeField] GameObject mat;
 
     private void Start()
@@ -64,6 +66,7 @@ public class BugZapper : TrapBase
                 //   startCooldown = true;
                 activatedTrap = true;
                 GameManager.instance.audioManager.BugZapperActive();
+                zapperAnimator.SetTrigger("Activated");
                 ScanForFirstTarget();
                 if (trapActivatrionCounter == 0)
                 {

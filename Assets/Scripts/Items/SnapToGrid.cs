@@ -188,5 +188,10 @@ public class SnapToGrid : MonoBehaviour, IPointerUpHandler, IPointerEnterHandler
                 gameObject.transform.Rotate(rotVector, Space.Self);
                 GameManager.instance.globalTrapRotation = gameObject.transform.eulerAngles;
             }
-        }    
+        }   
+    
+    public void UnmarkNode()
+    {
+        gridRef.GetNodeFromWorldPoint(transform.position).placeable = true;
+    }
 }
