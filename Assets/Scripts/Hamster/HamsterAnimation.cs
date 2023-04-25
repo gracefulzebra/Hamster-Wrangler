@@ -36,10 +36,15 @@ public class HamsterAnimation : MonoBehaviour
 
     public void SetDisintegrateTrigger()
     {
+        GameObject[] bodyParts = GameObject.FindGameObjectsWithTag("Disintegrate");
         mainHamster.SetActive(false);
         disintegrateHamster.SetActive(true);
 
         animator.SetTrigger("Burn");
+        for (int i =0; i < bodyParts.Length; i++)
+        {
+            StartCoroutine(bodyParts[i].GetComponent<DisintegrationController>().Disintegrate());
+        }
     }
 
     public void ExplosionDeathAnimation()

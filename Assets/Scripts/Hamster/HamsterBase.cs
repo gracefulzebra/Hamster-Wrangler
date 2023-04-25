@@ -70,6 +70,11 @@ public class HamsterBase : MonoBehaviour
         PathRequestManager.RequestPath(transform.position, currentTarget.position, OnPathFound, this.gameObject);
     }
 
+    IEnumerator start()
+    {
+        yield return null;
+    }
+
     bool playOnce;
     private void Update()
     {
@@ -261,9 +266,6 @@ public class HamsterBase : MonoBehaviour
                 GameManager.instance.vfxManager.HamsterDeathLimbSpawn(transform);
                 break;
             case (DeathTypes.Fire):
-
-                // stop them moving
-                speed = 0;
 
                 //play animation and noise
                 GetComponent<HamsterAnimation>().SetDisintegrateTrigger();
