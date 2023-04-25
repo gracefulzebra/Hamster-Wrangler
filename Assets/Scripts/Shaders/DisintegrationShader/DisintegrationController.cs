@@ -32,10 +32,10 @@ public class DisintegrationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(Disintegrate());
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+      //      StartCoroutine(Disintegrate());
+        //}
     }
 
    public IEnumerator Disintegrate()
@@ -67,6 +67,6 @@ public class DisintegrationController : MonoBehaviour
                 yield return new WaitForSeconds(refreshrate);
             }
         }
-        VFXgraph.Stop();
+        VFXgraph.Stop();     
     }
 }

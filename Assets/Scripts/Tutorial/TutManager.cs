@@ -308,11 +308,8 @@ public class TutManager : MonoBehaviour
                 case 25:
                     cantIncreasePC = false;
                     sellItem.GetComponent<Button>().enabled = false;
-
                     contineDialouge.SetActive(false);
-                    break;
 
-                 case 26:
                     DialougeWithNoPC();
                     inputGuides[4].SetActive(true);
 
@@ -321,7 +318,7 @@ public class TutManager : MonoBehaviour
                         FindObjectOfType<DialogueManager>().DisplayNextSentence();
                     }
                     break;
-                case 27:
+                 case 26:
                     inputGuides[4].SetActive(false);
 
                     cantIncreasePC = false;
@@ -331,7 +328,7 @@ public class TutManager : MonoBehaviour
                         FindObjectOfType<DialogueManager>().DisplayNextSentence();
                     }
                     break;
-                case 28:
+                case 27:
                     lawnMowerButton.GetComponent<TutButtons>().enabled = false;
                     blowTorchButton.GetComponent<TutButtons>().enabled = false;
                     inputGuides[4].SetActive(false);

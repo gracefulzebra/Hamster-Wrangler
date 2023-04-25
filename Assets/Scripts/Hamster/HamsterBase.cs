@@ -68,29 +68,19 @@ public class HamsterBase : MonoBehaviour
     private void Start()
     {
         PathRequestManager.RequestPath(transform.position, currentTarget.position, OnPathFound, this.gameObject);
-       // StartCoroutine(start());
+
+     //   StartCoroutine(start());
     }
 
     IEnumerator start()
     {
         yield return new WaitForSeconds(3f);
-        //play animation and noise
         GetComponent<HamsterAnimation>().SetDisintegrateTrigger();
-       // GameManager.instance.audioManager.PlayHamsterDeathAudio();
-
-        // sends all the info
-       // GetComponent<HamsterScore>().SendData();
-
     }
 
     bool playOnce;
     private void Update()
     {
-        if (deathType == DeathTypes.BugZapper)
-        {
-            print(deathType);
-
-        }
 
         if (transform.position.y < 0.3f)
             MoveToTarget();
@@ -232,11 +222,9 @@ public class HamsterBase : MonoBehaviour
     ///</summary>
     public void Kill()
     {
-        GameManager.instance.audioManager.PlayHamsterDeathAudio();
-        GameManager.instance.vfxManager.HamsterDeathLimbSpawn(transform);
-        CreateDecalEffects(); 
         GetComponent<HamsterScore>().SendData();
-        Destroy(gameObject);
+        GameManager.instance.audioManager.PlayHamsterDeathAudio();
+        HamsterDeathEffect();
     }
 
     public void WaterDeath()
@@ -278,18 +266,14 @@ public class HamsterBase : MonoBehaviour
         {
             case (DeathTypes.Default):
                 GameManager.instance.vfxManager.HamsterDeathLimbSpawn(transform);
+                CreateDecalEffects();
+                Destroy(gameObject);
                 break;
             case (DeathTypes.Fire):
-
                 //play animation and noise
-                GetComponent<HamsterAnimation>().SetDisintegrateTrigger();
-                GameManager.instance.audioManager.PlayHamsterDeathAudio();
-         
-                // sends all the info
-                GetComponent<HamsterScore>().SendData();
+                GetComponent<HamsterAnimation>().SetDisintegrateTrigger(); 
 
-                // probaly call on corotuine?
-                Destroy(gameObject);
+                StartCoroutine(DelayDeath());
                 break;
             case (DeathTypes.BugZapper):
                 GameManager.instance.vfxManager.HamsterDeathLimbSpawn(transform);
@@ -297,6 +281,11 @@ public class HamsterBase : MonoBehaviour
         }
     }
 
+    IEnumerator DelayDeath()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+    }
 
     private Ray GenerateRandomAngleRay()
     {

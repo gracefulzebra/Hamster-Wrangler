@@ -15250,7 +15250,7 @@ GameObject:
   - component: {fileID: 519929445}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: InfoButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21634,7 +21634,7 @@ GameObject:
   - component: {fileID: 735732582}
   m_Layer: 5
   m_Name: Image (1)
-  m_TagString: Untagged
+  m_TagString: InfoButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22497,7 +22497,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 815, y: 171.55298}
+  m_AnchoredPosition: {x: 825, y: 171.55298}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &757779805
@@ -27912,7 +27912,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 813, y: -10.784058}
+  m_AnchoredPosition: {x: 826.5, y: -16.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &910720628
@@ -33562,7 +33562,7 @@ GameObject:
   - component: {fileID: 1090597719}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: InfoButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38517,7 +38517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 814, y: -140.88403}
+  m_AnchoredPosition: {x: 830, y: -141.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1230511931 stripped
@@ -42210,7 +42210,7 @@ GameObject:
   - component: {fileID: 1333513895}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: InfoButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46324,7 +46324,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 815, y: 354.8756}
+  m_AnchoredPosition: {x: 824.9, y: 354.8756}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1453073204
@@ -47658,14 +47658,14 @@ MonoBehaviour:
       place a \nblowtorch on the marked adjacent tile facing towards \nthe lawnmower. "
     - 'Now we are prepared, let''s start the next wave. '
     - "Go now! Activate the blowtorch by clicking on it with the \nleft mouse button. "
-    - "Woah! By combining traps like the lawnmower and \nblowtorchyou will not only
+    - "Woah! By combining traps like the lawnmower and \nblowtorch you will not only
       discover new interactions \nand effects, but you will also gain additional
       score! "
-    - Click on the trash can symbol to enter sell mode and sell the blowtorch to
-      continue.
-    - "Selling traps give less money than their intial cost, selling can be useful
-      to remove unwanted traps whilst getting money. Dont forget to turn it off incase
-      you \ndelete traps by mistake!"
+    - "Click on the trash can symbol to enter sell mode and \nsell the blowtorch
+      to continue."
+    - "Selling traps give less money than their intial cost, \nselling can be useful
+      to remove unwanted traps \nwhilst getting money. Dont forget to turn it off
+      incase \nyou delete traps by mistake!"
     - "From here you can either exit to the menu and play another\nlevel or continue
       playing on the tutorial level by pressing \nthe continue button and discover
       more trap combinations.   "
@@ -49658,7 +49658,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 814, y: -189.17871}
+  m_AnchoredPosition: {x: 826.9, y: -204.4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1568442818
@@ -57631,6 +57631,7 @@ MonoBehaviour:
     m_Bits: 0
   isGrounded: 0
   hamsterID: baseHamster
+  deathType: 0
 --- !u!4 &1806431711 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4a00e889cd58a8249a53209fdf6c433e, type: 3}
@@ -58462,7 +58463,7 @@ GameObject:
   - component: {fileID: 1832468168}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: InfoButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63131,7 +63132,7 @@ RectTransform:
   m_GameObject: {fileID: 2036664734}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.1544158, y: 0.49832618, z: 3.3325377}
+  m_LocalScale: {x: 1.7702, y: 0.221275, z: 1.7702}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1561253755}
@@ -63139,7 +63140,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.920947, y: 3.8259177}
+  m_AnchoredPosition: {x: -16, y: -1.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2036664736
@@ -63162,7 +63163,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 280913885d3e217408b620b31f5c8be7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1f66aa0b44c218f419d8e65615be3480, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

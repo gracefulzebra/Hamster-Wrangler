@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class HamsterAnimation : MonoBehaviour
 {
@@ -38,11 +39,11 @@ public class HamsterAnimation : MonoBehaviour
 
     public void SetDisintegrateTrigger()
     {
-        disintegrationControllers = GetComponentsInChildren<DisintegrationController>();
 
-      //  GameObject[] bodyParts = GameObject.FindGameObjectsWithTag("Disintegrate");
         mainHamster.SetActive(false);
         disintegrateHamster.SetActive(true);
+
+        disintegrationControllers = GetComponentsInChildren<DisintegrationController>();
 
         foreach (DisintegrationController script in disintegrationControllers)
         {

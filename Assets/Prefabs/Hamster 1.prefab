@@ -105,6 +105,7 @@ MonoBehaviour:
     m_Bits: 64
   isGrounded: 0
   hamsterID: baseHamster
+  deathType: 0
 --- !u!114 &1892701076170301681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1263,6 +1264,10 @@ PrefabInstance:
       value: Disintegrate
       objectReference: {fileID: 0}
     - target: {fileID: 3126372979112029954, guid: fe329d24c21d4fb4884c0799eb366a3d, type: 3}
+      propertyPath: hamster
+      value: 
+      objectReference: {fileID: 1622791512648962765}
+    - target: {fileID: 3126372979112029954, guid: fe329d24c21d4fb4884c0799eb366a3d, type: 3}
       propertyPath: meshRendererBody
       value: 
       objectReference: {fileID: 8409874249535883809}
@@ -1271,6 +1276,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3126372979460149992, guid: fe329d24c21d4fb4884c0799eb366a3d, type: 3}
+      propertyPath: hamster
+      value: 
+      objectReference: {fileID: 1622791512648962765}
+    - target: {fileID: 3126372979460149992, guid: fe329d24c21d4fb4884c0799eb366a3d, type: 3}
       propertyPath: meshRendererBody
       value: 
       objectReference: {fileID: 6016471199180040093}
@@ -1278,6 +1287,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3126372979892491549, guid: fe329d24c21d4fb4884c0799eb366a3d, type: 3}
+      propertyPath: hamster
+      value: 
+      objectReference: {fileID: 1622791512648962765}
     - target: {fileID: 3126372979892491549, guid: fe329d24c21d4fb4884c0799eb366a3d, type: 3}
       propertyPath: meshRendererBody
       value: 
@@ -1291,6 +1304,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3126372980064933316, guid: fe329d24c21d4fb4884c0799eb366a3d, type: 3}
+      propertyPath: hamster
+      value: 
+      objectReference: {fileID: 1622791512648962765}
+    - target: {fileID: 3126372980064933316, guid: fe329d24c21d4fb4884c0799eb366a3d, type: 3}
       propertyPath: meshRendererBody
       value: 
       objectReference: {fileID: 3143028591906515107}
@@ -1299,9 +1316,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3126372980559343871, guid: fe329d24c21d4fb4884c0799eb366a3d, type: 3}
+      propertyPath: hamster
+      value: 
+      objectReference: {fileID: 1622791512648962765}
+    - target: {fileID: 3126372980559343871, guid: fe329d24c21d4fb4884c0799eb366a3d, type: 3}
       propertyPath: meshRendererBody
       value: 
       objectReference: {fileID: 6888143309146852246}
+    - target: {fileID: 3126372981058658682, guid: fe329d24c21d4fb4884c0799eb366a3d, type: 3}
+      propertyPath: hamster
+      value: 
+      objectReference: {fileID: 1622791512648962765}
     - target: {fileID: 3126372981058658682, guid: fe329d24c21d4fb4884c0799eb366a3d, type: 3}
       propertyPath: meshRendererBody
       value: 
@@ -1400,26 +1425,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 678429631962890763, guid: fe329d24c21d4fb4884c0799eb366a3d, type: 3}
   m_PrefabInstance: {fileID: 6711347666817266421}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &865790355160300945
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6073450456270860542}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 552f8afbd00f2014ea872c6f585b1637, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!137 &6614143387321371501 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 498025420029966744, guid: fe329d24c21d4fb4884c0799eb366a3d, type: 3}
