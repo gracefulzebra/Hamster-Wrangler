@@ -32,10 +32,10 @@ public class DisintegrationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     //  if (Input.GetKeyDown(KeyCode.Space))
-     //   {
+       if (Input.GetKeyDown(KeyCode.Space))
+        {
             StartCoroutine(Disintegrate());
-      //  }
+        }
     }
 
    public IEnumerator Disintegrate()
