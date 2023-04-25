@@ -47,10 +47,10 @@ public class DialogueManager : MonoBehaviour
             }
             sentence = sentences.Dequeue();
             
-          //  if (SceneManager.GetActiveScene().name == "TutorialLevel")
-          //  { 
-          //          TutManager.tutInstance.NextStep();
-          //  }
+            if (SceneManager.GetActiveScene().name == "TutorialLevel")
+            { 
+                    TutManager.tutInstance.NextStep();
+            }
             typingSentence = StartCoroutine(TypeSentence(sentence));
             sentencePrinting = true;
         }
