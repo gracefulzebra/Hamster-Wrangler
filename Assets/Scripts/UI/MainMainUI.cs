@@ -21,6 +21,12 @@ public class MainMainUI : MonoBehaviour
     [SerializeField] TMP_Dropdown resolutionDropdown;
     [SerializeField] GameObject animObject;
     [SerializeField] GameObject pressAnyKeyText;
+    [SerializeField] GameObject creditsButtonPos;
+    [SerializeField] GameObject exitButtonPos;
+    [SerializeField] GameObject creditsButton;
+    [SerializeField] GameObject exitButton;
+    Vector3 creditsStartPos;
+    Vector3 exitStartPos;
 
     Resolution[] resolutions;
 
@@ -29,6 +35,9 @@ public class MainMainUI : MonoBehaviour
     {
         InitRes();
         InitSettings();
+
+        creditsStartPos = creditsButton.transform.position;
+        exitStartPos = exitButton.transform.position;
     }
 
     bool once = false;
@@ -47,12 +56,16 @@ public class MainMainUI : MonoBehaviour
         if (once)
         {
             animTimer += Time.deltaTime;
+            
         }
 
         if(animTimer >= animDuration)
         {
             animObject.SetActive(false);
             mainMenu.SetActive(true);
+
+            creditsButton.transform.position = Vector3.Lerp(creditsStartPos, creditsButtonPos.transform.position, ((animTimer - animDuration) / animDuration) * 2.5f);
+            exitButton.transform.position = Vector3.Lerp(exitStartPos, exitButtonPos.transform.position, ((animTimer - animDuration) / animDuration) * 2.5f);
         }
     }
 
