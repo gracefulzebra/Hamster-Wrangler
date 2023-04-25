@@ -56762,12 +56762,30 @@ PrefabInstance:
       propertyPath: endOfRoundCashBonus
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 2311070687187441227, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: binOpen
+      value: 
+      objectReference: {fileID: 1466272795}
+    - target: {fileID: 2311070687187441227, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: binClosed
+      value: 
+      objectReference: {fileID: 1466272794}
     - target: {fileID: 7273281549186575895, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: m_Name
       value: Game Manager_Canvas Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+--- !u!1 &1466272794 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3685828581318032170, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+  m_PrefabInstance: {fileID: 1466272793}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1466272795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 284173654659596709, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+  m_PrefabInstance: {fileID: 1466272793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1466953394
 PrefabInstance:
   m_ObjectHideFlags: 0
