@@ -49,8 +49,7 @@ public class HamsterBase : MonoBehaviour
     enum DeathTypes
     {
         Fire,
-        Explosion,
-        LawnMower,
+        Default,
         BugZapper
     };
 
@@ -258,14 +257,23 @@ public class HamsterBase : MonoBehaviour
     {
         switch (deathType)
         {
-            case (DeathTypes.Explosion):
-                GetComponent<HamsterAnimation>().ExplosionDeathAnimation();
-                break;
-            case (DeathTypes.LawnMower):
+            case (DeathTypes.Default):
                 GameManager.instance.vfxManager.HamsterDeathLimbSpawn(transform);
                 break;
             case (DeathTypes.Fire):
-                GameManager.instance.vfxManager.HamsterDeathLimbSpawn(transform);
+
+                // stop them moving
+                speed = 0;
+
+                //play animation and noise
+                GetComponent<HamsterAnimation>().SetDisintegrateTrigger();
+                GameManager.instance.audioManager.PlayHamsterDeathAudio();
+         
+                // sends all the info
+                GetComponent<HamsterScore>().SendData();
+
+                // probaly call on corotuine?
+                Destroy(gameObject);
                 break;
             case (DeathTypes.BugZapper):
                 GameManager.instance.vfxManager.HamsterDeathLimbSpawn(transform);
