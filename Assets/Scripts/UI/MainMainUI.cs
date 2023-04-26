@@ -25,6 +25,7 @@ public class MainMainUI : MonoBehaviour
     [SerializeField] GameObject exitButtonPos;
     [SerializeField] GameObject creditsButton;
     [SerializeField] GameObject exitButton;
+
     Vector3 creditsStartPos;
     Vector3 exitStartPos;
 

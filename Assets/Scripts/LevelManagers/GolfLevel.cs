@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GolfLevel : MonoBehaviour
@@ -12,9 +13,9 @@ public class GolfLevel : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (!GetComponent<DialogueManager>().sentencePrinting)
+        if (Input.anyKey)
+        { 
+        if (!GetComponent<DialogueManager>().sentencePrinting)
             {
                 Destroy(gameObject);
             }

@@ -747,6 +747,7 @@ GameObject:
   - component: {fileID: 128678170}
   - component: {fileID: 128678169}
   - component: {fileID: 128678168}
+  - component: {fileID: 128678171}
   m_Layer: 5
   m_Name: Animation
   m_TagString: Untagged
@@ -842,6 +843,19 @@ Transform:
   m_Father: {fileID: 814230511}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &128678171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128678167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb834cf468bdee04192eb0a3c98b27a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSourceObject: {fileID: 1722645355}
 --- !u!1 &129293518
 GameObject:
   m_ObjectHideFlags: 0
@@ -3915,13 +3929,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24100000, guid: edd954a76b242824fbb49061bb1a681f, type: 2}
     - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: audioObject
+      value: 
+      objectReference: {fileID: 5376925212466211457, guid: 60a8df574dc85834d8227ebe0107d90a, type: 3}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: musicSlider
       value: 
       objectReference: {fileID: 481935671}
+    - target: {fileID: 1058055520, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: windmillChop
+      value: 
+      objectReference: {fileID: 8300000, guid: 1195284a06aea5d4aabc3d6aeabb0533, type: 3}
     - target: {fileID: 1058055521, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 0c642a4f8a2f52747af64f920e92d536, type: 3}
+      objectReference: {fileID: 8300000, guid: 4b21d069eebfed24792f7780aaa36ffc, type: 3}
+    - target: {fileID: 1058055521, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1058055521, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
@@ -10321,6 +10347,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722428787}
   m_CullTransparentMesh: 1
+--- !u!82 &1722645355 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1058055521, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+  m_PrefabInstance: {fileID: 602866316}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1730215589
 GameObject:
   m_ObjectHideFlags: 0

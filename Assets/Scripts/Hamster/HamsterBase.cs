@@ -221,7 +221,7 @@ public class HamsterBase : MonoBehaviour
     ///</summary>
     public void Kill()
     {
-        if (gameObject.layer != 2)
+        if (gameObject.layer != 3)
         {
            GetComponent<HamsterScore>().SendData();
         }
@@ -293,7 +293,7 @@ public class HamsterBase : MonoBehaviour
                 StartCoroutine(GetComponent<HamsterAnimation>().SetShockedDeathTrigger());
 
                 // changes later to one that hamsters dont touch
-                gameObject.layer = 2;
+                gameObject.layer = 3;
 
                 StartCoroutine(DelayDeathShock());
                 break;
