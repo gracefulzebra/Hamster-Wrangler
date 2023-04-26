@@ -37,17 +37,31 @@ public class MainMainUI : MonoBehaviour
         InitRes();
         InitSettings();
 
+        print(GameSettings.gameStart);
+        
+        if (!GameSettings.gameStart) 
+        {   
+            animObject.SetActive(false); 
+            mainMenu.SetActive(true); 
+            creditsButton.transform.position = creditsButtonPos.transform.position; 
+            exitButton.transform.position = exitButtonPos.transform.position; 
+        }
+
         creditsStartPos = creditsButton.transform.position;
         exitStartPos = exitButton.transform.position;
     }
 
     bool once = false;
+    bool once2 = false;
     float animTimer = 0;
     float animDuration = 1.65f;
     private void Update()
     {
+        if(!once2) { GameSettings.gameStart = false; once2 = true;}
+
         if (Input.anyKey && !once)
         {
+            animTimer = 0f;
             //playanim 
             animObject.GetComponent<Animator>().SetTrigger("StartAnimation");
             pressAnyKeyText.SetActive(false);
@@ -57,17 +71,18 @@ public class MainMainUI : MonoBehaviour
         if (once)
         {
             animTimer += Time.deltaTime;
-            
         }
 
-        if(animTimer >= animDuration)
+        if (animTimer >= animDuration)
         {
             animObject.SetActive(false);
             mainMenu.SetActive(true);
 
             creditsButton.transform.position = Vector3.Lerp(creditsStartPos, creditsButtonPos.transform.position, ((animTimer - animDuration) / animDuration) * 2.5f);
             exitButton.transform.position = Vector3.Lerp(exitStartPos, exitButtonPos.transform.position, ((animTimer - animDuration) / animDuration) * 2.5f);
+                      
         }
+
     }
 
     private void InitRes()

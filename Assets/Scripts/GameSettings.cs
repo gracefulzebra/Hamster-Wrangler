@@ -10,6 +10,8 @@ public class GameSettings : MonoBehaviour
 {
     public static GameSettings instance;
 
+    public static bool gameStart = true;
+
     public AudioMixer masterMixer;
     
     private float level1Score;
