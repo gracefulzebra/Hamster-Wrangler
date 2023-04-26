@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class MenuSounds : MonoBehaviour
 {
+
     [SerializeField] AudioSource audioSourceObject;
 
-    public void StartMainMenuMusic()
+    public void StartMusic()
     {
         audioSourceObject.Play();
     }
 
-    public void MainMenuSlice()
+    public void HamsterSlice()
     {
         GameManager.instance.audioManager.WindmillAudio();
+    }
+
+    public void HamsterSqueal()
+    {
+        GameManager.instance.audioManager.PlayHamsterDeathAudio();
     }
 }
