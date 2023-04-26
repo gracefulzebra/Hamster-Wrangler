@@ -131,14 +131,6 @@ public class GameManager : MonoBehaviour
         DisplayHealth(health);
 
         LoadVolume();
-
-        if (SceneManager.GetActiveScene().name == "TutorialLevel")
-            level = 1;
-        if (SceneManager.GetActiveScene().name == "FinnLevel")
-            level = 2;
-
-        if (SceneManager.GetActiveScene().name == "MainMenu")
-            MainMenuStar();
     }
 
     public void StartWave()
