@@ -27,8 +27,7 @@ public class FixedCam : MonoBehaviour
         inputCooldown += Time.deltaTime;
 
           transform.LookAt(center);
-          timer = speed * Time.deltaTime; 
-          transform.position = Vector3.MoveTowards(transform.position, cameraPos[count].transform.position, timer);
+          transform.position = Vector3.MoveTowards(transform.position, cameraPos[count].transform.position, speed * Time.deltaTime);
         // when you press direction key 
         if (Input.GetKeyDown(KeyCode.A) | Input.GetKeyDown(KeyCode.LeftArrow) | Input.mouseScrollDelta.y > 0 && inputCooldown > cameraMovementDelay)
         {
