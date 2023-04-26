@@ -1980,17 +1980,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8652cee9ddd110344b6ec4002aa55792, type: 3}
   m_PrefabInstance: {fileID: 1898227662}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &48141825 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7619176817581382119, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
-  m_PrefabInstance: {fileID: 1466272793}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &52208130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43150,17 +43139,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051115618}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1051512863 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7489521745817798269, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
-  m_PrefabInstance: {fileID: 1466272793}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1051833537 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8652cee9ddd110344b6ec4002aa55792, type: 3}
@@ -59496,7 +59474,7 @@ PrefabInstance:
     - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: lmRun
       value: 
-      objectReference: {fileID: 8300000, guid: ff86ef83390eca24aa78537da970cfc6, type: 3}
+      objectReference: {fileID: 8300000, guid: c0257b199a99e72448913cfa069603b4, type: 3}
     - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: refuel
       value: 
@@ -59508,11 +59486,11 @@ PrefabInstance:
     - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: lbActive
       value: 
-      objectReference: {fileID: 8300000, guid: 68d9d0a547c799140906c322c62b46da, type: 3}
+      objectReference: {fileID: 8300000, guid: 9b29ab3c65c3cd544becc54f13ddf810, type: 3}
     - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: bugZapper
       value: 
-      objectReference: {fileID: 8300000, guid: 4c7fd0e54be6ee140a3be0ad6ddba2f0, type: 3}
+      objectReference: {fileID: 8300000, guid: 9594d2d77e7209d4bb8b4136251e67eb, type: 3}
     - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: gnomeKing
       value: 
@@ -59520,15 +59498,15 @@ PrefabInstance:
     - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: lighterOn
       value: 
-      objectReference: {fileID: 8300000, guid: 20156c8be5be0ec4e987f076dd3d5814, type: 3}
+      objectReference: {fileID: 8300000, guid: adafb19082ea65443bbeca8852b87003, type: 3}
     - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: sfxSlider
       value: 
-      objectReference: {fileID: 1051512863}
+      objectReference: {fileID: 0}
     - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: musicSlider
       value: 
-      objectReference: {fileID: 48141825}
+      objectReference: {fileID: 0}
     - target: {fileID: 2282532740743085656, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: waterSplash
       value: 
