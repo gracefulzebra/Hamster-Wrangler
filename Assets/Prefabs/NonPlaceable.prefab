@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7242924694998812539}
   - component: {fileID: 7587493816725742293}
-  - component: {fileID: 6189335960636117339}
   m_Layer: 0
   m_Name: NonPlaceable
   m_TagString: Untagged
@@ -45,16 +44,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff9f18ddb1626746b95bf56592875a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &6189335960636117339
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3201273709956682706}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.2
-  m_Center: {x: 0, y: 0, z: 0}
