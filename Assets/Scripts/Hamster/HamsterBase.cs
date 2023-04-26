@@ -264,7 +264,11 @@ public class HamsterBase : MonoBehaviour
     // play in kill, for different death aimation depending on death 
     void HamsterDeathEffect()
     {
-        if (GetComponent<ItemEffects>().hasBeenShocked)
+        if (GetComponent<ItemEffects>().hasBeenShocked && GetComponent<ItemEffects>().onFire)
+        {
+            deathType = DeathTypes.BugZapper;
+        }
+        else if (GetComponent<ItemEffects>().hasBeenShocked)
         {
             deathType = DeathTypes.BugZapper;
         } 
