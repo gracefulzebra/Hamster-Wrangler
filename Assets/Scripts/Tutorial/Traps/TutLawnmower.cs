@@ -148,6 +148,8 @@ public class TutLawnmower : TrapBase
                     GameObject temp = Instantiate(comboDisplayPrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
                     temp.GetComponent<ComboDisplay>().SetComboText("LAWNSPLOSION!");
                 }
+
+                IncrementTrapInteracts(col.gameObject);
                 willExplode = true;
                 activateTrap = true;
                 StartCoroutine(DelayLawnMowerExplode());
