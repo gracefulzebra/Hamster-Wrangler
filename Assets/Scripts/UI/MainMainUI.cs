@@ -129,7 +129,7 @@ public class MainMainUI : MonoBehaviour
     public void LevelSelect()
     {
         levelStars[0].fillAmount = GameSettings.instance.Level1Score / GameManager.instance.scoreFor3StarLevel1;
-        levelStars[1].fillAmount = GameSettings.instance.Level2Score / GameManager.instance.scoreFor3StarLevel3;
+        levelStars[1].fillAmount = GameSettings.instance.Level2Score / GameManager.instance.scoreFor3StarLevel3;//Level orders are weird
         levelStars[2].fillAmount = GameSettings.instance.Level3Score / GameManager.instance.scoreFor3StarLevel2;
         levelStars[3].fillAmount = GameSettings.instance.Level4Score / GameManager.instance.scoreFor3StarLevel4;
 

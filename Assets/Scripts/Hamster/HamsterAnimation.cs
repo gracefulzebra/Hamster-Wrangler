@@ -64,6 +64,13 @@ public class HamsterAnimation : MonoBehaviour
         {
              StartCoroutine(script.GetComponent<DisintegrationController>().Disintegrate());
         }
+        StartCoroutine(BonesSpawn());
+    }
+
+    IEnumerator BonesSpawn()
+    {
+        yield return new WaitForSeconds(0.3f);
+        GameManager.instance.vfxManager.HamsterDeathBoneSpawn(transform);
     }
 
     public void ExplosionDeathAnimation()
