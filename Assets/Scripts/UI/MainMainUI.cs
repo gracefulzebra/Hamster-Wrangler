@@ -37,7 +37,6 @@ public class MainMainUI : MonoBehaviour
         InitRes();
         InitSettings();
 
-        //print(GameSettings.gameStart);
         
         if (!GameSettings.gameStart) 
         {

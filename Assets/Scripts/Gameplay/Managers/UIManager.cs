@@ -166,8 +166,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void GameOverScreen()
-    {    
+    public IEnumerator GameOverScreen()
+    {
+        yield return new WaitForSeconds(1f);
         gameOverScreen.SetActive(true);
         DisplayFinalScore(0);
     }

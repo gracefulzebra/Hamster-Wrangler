@@ -92,7 +92,7 @@ public class TrapBase : MonoBehaviour
         if (!interactedList.Contains(interactingObject))
         {
             interactedList.Add(interactingObject);
-            //print("interacts incremented");
+     
             trapInteractCounter++;
         }    
     }

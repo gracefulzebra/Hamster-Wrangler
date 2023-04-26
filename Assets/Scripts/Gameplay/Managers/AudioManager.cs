@@ -75,7 +75,8 @@ public class AudioManager : MonoBehaviour
     {
         //musicSlider.value = PlayerPrefs.GetFloat(GameManager.MUSIC_KEY, 1f);
         //sfxSlider.value = PlayerPrefs.GetFloat(GameManager.SFX_KEY, 1f);
-        //print(GameSettings.instance.MusicVolume);
+
+
 
 
         musicSlider.value = GameSettings.instance.MusicVolume;

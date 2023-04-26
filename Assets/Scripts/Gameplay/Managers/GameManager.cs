@@ -247,7 +247,7 @@ public class GameManager : MonoBehaviour
     {
         if (health <= 0)
         {
-            uiManager.GameOverScreen();
+            StartCoroutine(uiManager.GameOverScreen());
         }
     }
 }
