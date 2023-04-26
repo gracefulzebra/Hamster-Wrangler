@@ -359,6 +359,14 @@ public class TutManager : MonoBehaviour
     }
 
 
+    public void KeepPlayingCase28()
+    {
+        if (posCounter == 28)
+        {
+            NextStep();
+        }
+    }
+
    public void DialougeWithNoPC()
     {
         if (!cantIncreasePC)

@@ -59,8 +59,6 @@ public class ItemEffects : MonoBehaviour
     {
         if (!burningAudioOn)
         {
-            GameManager.instance.audioManager.HamsterBurningAudio();
-            onFireNoiseObject = GameManager.instance.audioManager.hamsterBurningAudioList.Last();
             burningAudioOn = true;
         }
         onFire = true;
@@ -69,7 +67,6 @@ public class ItemEffects : MonoBehaviour
             yield return new WaitForSeconds(burnDuration);
             GetComponent<HamsterBase>().TakeDamage(burnDamage);
         }     
-        Destroy(onFireNoiseObject);
         burningAudioOn = false;
         onFire = false;
         fireEffect.SetActive(false);

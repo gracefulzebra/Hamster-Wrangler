@@ -234,14 +234,6 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(DeleteAudio(audio));
     }
 
-    public List<GameObject> hamsterBurningAudioList;
-    public void HamsterBurningAudio()
-    {
-        GameObject audio = Instantiate(audioObject, Vector3.zero, Quaternion.identity);
-        audio.GetComponent<AudioSource>().PlayOneShot(hamsterBurning);
-        hamsterBurningAudioList.Add(audio);
-    }
-
     float deleteAudio = 10;
 
     IEnumerator DeleteAudio(GameObject audio)
