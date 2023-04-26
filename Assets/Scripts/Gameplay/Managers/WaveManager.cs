@@ -87,15 +87,17 @@ public class WaveManager : MonoBehaviour
                 GameManager.instance.WinGame();
             }
 
-            foreach (GameObject spawner in hamsterSpawners)
+            if(wave < maxWaves)
             {
-                spawner.GetComponent<HamsterSpawner>().StopPathAnimations();
-            }
                 foreach (GameObject spawner in hamsterSpawners)
-            { 
-                spawner.GetComponent<HamsterSpawner>().SetLight(wave);
+                {
+                    spawner.GetComponent<HamsterSpawner>().StopPathAnimations();
+                }
+                foreach (GameObject spawner in hamsterSpawners)
+                {
+                    spawner.GetComponent<HamsterSpawner>().SetLight(wave);
+                }
             }
-
         }
     }
 }
