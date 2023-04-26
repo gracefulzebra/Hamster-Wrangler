@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43789536, g: 0.62254053, b: 0.5679034, a: 1}
+  m_IndirectSpecularColor: {r: 0.43784687, g: 0.6225135, b: 0.56783754, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17873,7 +17873,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 100, y: 0.96, z: 53.333477}
+  m_Size: {x: 100, y: 1, z: 53.333477}
   m_Center: {x: 0, y: 0, z: 23.333261}
 --- !u!1 &488696988
 GameObject:
@@ -59603,23 +59603,23 @@ PrefabInstance:
       objectReference: {fileID: 1779216626}
     - target: {fileID: 2573293963984931864, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2573293963984931864, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3660518049958067359, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6122684442633565441, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6122684442633565441, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7273281549186575895, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: m_Name
@@ -59627,6 +59627,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7661071579570187697, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670673804137222219, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
