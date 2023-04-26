@@ -40,7 +40,8 @@ public class MainMainUI : MonoBehaviour
         print(GameSettings.gameStart);
         
         if (!GameSettings.gameStart) 
-        {   
+        {
+            GameManager.instance.GetComponent<AudioSource>().Play();
             animObject.SetActive(false); 
             mainMenu.SetActive(true); 
             creditsButton.transform.position = creditsButtonPos.transform.position; 
