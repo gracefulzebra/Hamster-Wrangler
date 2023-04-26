@@ -10185,7 +10185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1058055514, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: hamsterCost
-      value: 60
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 1058055514, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: lighterCost
@@ -10506,6 +10506,26 @@ PrefabInstance:
     - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: holdingItem
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: scoreFor3StarLevel1
+      value: 15000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: scoreFor3StarLevel2
+      value: 17500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: scoreFor3StarLevel3
+      value: 17500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: scoreFor3StarLevel4
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: scoreFor3StarTutorial
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 8881886160524883247, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: m_Name

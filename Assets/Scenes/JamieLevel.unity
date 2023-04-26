@@ -17920,7 +17920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da7459b1029a70448911ba2d4c616b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scorePerKill: 0
+  scorePerKill: 20
   comboDisplayPrefab: {fileID: 2360159485657940172, guid: a110d96ae8700924e9a89bc3196df2f6, type: 3}
   waterSplash: {fileID: 6499097434272055817, guid: 99fb27ab0b3eead4b8e1deb403967a57, type: 3}
   colour: {fileID: 0}
@@ -36942,7 +36942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da7459b1029a70448911ba2d4c616b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scorePerKill: 0
+  scorePerKill: 20
   comboDisplayPrefab: {fileID: 2360159485657940172, guid: a110d96ae8700924e9a89bc3196df2f6, type: 3}
   waterSplash: {fileID: 6499097434272055817, guid: 99fb27ab0b3eead4b8e1deb403967a57, type: 3}
   colour: {fileID: 0}
@@ -55039,7 +55039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da7459b1029a70448911ba2d4c616b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scorePerKill: 0
+  scorePerKill: 20
   comboDisplayPrefab: {fileID: 2360159485657940172, guid: a110d96ae8700924e9a89bc3196df2f6, type: 3}
   waterSplash: {fileID: 6499097434272055817, guid: 99fb27ab0b3eead4b8e1deb403967a57, type: 3}
   colour: {fileID: 0}
@@ -56355,7 +56355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da7459b1029a70448911ba2d4c616b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scorePerKill: 0
+  scorePerKill: 20
   comboDisplayPrefab: {fileID: 2360159485657940172, guid: a110d96ae8700924e9a89bc3196df2f6, type: 3}
   waterSplash: {fileID: 6499097434272055817, guid: 99fb27ab0b3eead4b8e1deb403967a57, type: 3}
   colour: {fileID: 0}
@@ -59557,6 +59557,14 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 4b21d069eebfed24792f7780aaa36ffc, type: 3}
+    - target: {fileID: 2282532740743085666, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: hamsterCost
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: spawnDelay
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: endOfRoundCashBonus
       value: 150
@@ -70025,7 +70033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da7459b1029a70448911ba2d4c616b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scorePerKill: 0
+  scorePerKill: 20
   comboDisplayPrefab: {fileID: 2360159485657940172, guid: a110d96ae8700924e9a89bc3196df2f6, type: 3}
   waterSplash: {fileID: 6499097434272055817, guid: 99fb27ab0b3eead4b8e1deb403967a57, type: 3}
   colour: {fileID: 0}
@@ -81477,7 +81485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da7459b1029a70448911ba2d4c616b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scorePerKill: 0
+  scorePerKill: 20
   comboDisplayPrefab: {fileID: 2360159485657940172, guid: a110d96ae8700924e9a89bc3196df2f6, type: 3}
   waterSplash: {fileID: 6499097434272055817, guid: 99fb27ab0b3eead4b8e1deb403967a57, type: 3}
   colour: {fileID: 0}
@@ -82672,7 +82680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da7459b1029a70448911ba2d4c616b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scorePerKill: 0
+  scorePerKill: 20
   comboDisplayPrefab: {fileID: 2360159485657940172, guid: a110d96ae8700924e9a89bc3196df2f6, type: 3}
   waterSplash: {fileID: 6499097434272055817, guid: 99fb27ab0b3eead4b8e1deb403967a57, type: 3}
   colour: {fileID: 0}
@@ -85936,7 +85944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da7459b1029a70448911ba2d4c616b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scorePerKill: 0
+  scorePerKill: 20
   comboDisplayPrefab: {fileID: 2360159485657940172, guid: a110d96ae8700924e9a89bc3196df2f6, type: 3}
   waterSplash: {fileID: 6499097434272055817, guid: 99fb27ab0b3eead4b8e1deb403967a57, type: 3}
   colour: {fileID: 0}

@@ -30183,9 +30183,41 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 4b21d069eebfed24792f7780aaa36ffc, type: 3}
+    - target: {fileID: 2282532740743085666, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: hamsterCost
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: spawnDelay
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: endOfRoundCashBonus
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: hamstersPerWave.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: hamstersPerWave.Array.data[0]
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: hamstersPerWave.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: hamstersPerWave.Array.data[2]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: hamstersPerWave.Array.data[3]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282532740743085669, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: hamstersPerWave.Array.data[4]
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7273281549186575895, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: m_Name
@@ -30194,6 +30226,14 @@ PrefabInstance:
     - target: {fileID: 7273281549186575895, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908311905726673584, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: scoreFor3Star
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7908311905726673584, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+      propertyPath: scoreFor3StarLevel1
+      value: 15000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
