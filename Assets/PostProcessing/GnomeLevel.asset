@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   color:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
@@ -65,13 +65,13 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 0.9824217, y: 0.6507236, z: 1, w: 0}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 0.9085713, y: 1, z: 0.9667789, w: 0}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 0.92556363, y: 0.9891498, z: 1, w: 0}
   shadowsStart:
     m_OverrideState: 1
     m_Value: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
     m_Value: 0.2
   contrast:
     m_OverrideState: 1
-    m_Value: -4
+    m_Value: -75
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1, g: 0.6612527, b: 0.3915094, a: 1}
@@ -131,6 +131,7 @@ MonoBehaviour:
   - {fileID: -5471162809047124817}
   - {fileID: -2440856729723744506}
   - {fileID: 7467975000441984166}
+  - {fileID: 6392220568786762742}
 --- !u!114 &1403693838001679799
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -172,6 +173,28 @@ MonoBehaviour:
   dirtIntensity:
     m_OverrideState: 1
     m_Value: 4
+--- !u!114 &6392220568786762742
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5485954d14dfb9a4c8ead8edb0ded5b1, type: 3}
+  m_Name: LiftGammaGain
+  m_EditorClassIdentifier: 
+  active: 1
+  lift:
+    m_OverrideState: 1
+    m_Value: {x: 0.7994327, y: 0.94521284, z: 1, w: 0}
+  gamma:
+    m_OverrideState: 1
+    m_Value: {x: 0.9717453, y: 1, z: 0.506471, w: 0}
+  gain:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 0, z: 0.9661174, w: 0}
 --- !u!114 &7467975000441984166
 MonoBehaviour:
   m_ObjectHideFlags: 3
