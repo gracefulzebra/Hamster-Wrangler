@@ -45203,14 +45203,14 @@ PrefabInstance:
     - target: {fileID: 2311070687187441227, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: binOpen
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 102840164}
     - target: {fileID: 2311070687187441227, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: binClosed
       value: 
-      objectReference: {fileID: 102840164}
+      objectReference: {fileID: 2047670122}
     - target: {fileID: 3685828581318032170, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7273281549186575895, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
       propertyPath: m_Name
@@ -68663,6 +68663,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8652cee9ddd110344b6ec4002aa55792, type: 3}
   m_PrefabInstance: {fileID: 1279097092}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2047670122 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7036055969424731265, guid: 723236a747eff9e469beb4dc991f788c, type: 3}
+  m_PrefabInstance: {fileID: 1289621198}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2049481385
 GameObject:
