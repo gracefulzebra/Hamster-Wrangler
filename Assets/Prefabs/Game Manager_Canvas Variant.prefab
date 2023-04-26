@@ -10312,6 +10312,14 @@ PrefabInstance:
       propertyPath: star1.Array.data[2]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: spawnDelay
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058055517, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
+      propertyPath: endOfRoundCashBonus
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 1058055519, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: ShopAni
       value: 
@@ -10522,15 +10530,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: scoreFor3StarLevel2
-      value: 17500
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: scoreFor3StarLevel3
-      value: 17500
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: scoreFor3StarLevel4
-      value: 20000
+      value: 22500
       objectReference: {fileID: 0}
     - target: {fileID: 8219870486892685704, guid: a4bd9deb371687e41bbb0661317a7e39, type: 3}
       propertyPath: scoreFor3StarTutorial
